@@ -757,6 +757,107 @@ section {
   letter-spacing: 0.2em; color: var(--ivory-faint);
 }
 
+/* ═══════ TEN BREAKTHROUGHS ═══════ */
+.bt-wrap {
+  overflow-x: auto;
+  margin: 0 -12px;
+  padding: 0 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-deep) transparent;
+}
+.bt-wrap::-webkit-scrollbar { height: 8px; }
+.bt-wrap::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 4px; }
+
+.bt-table {
+  display: grid;
+  grid-template-columns: 200px repeat(5, minmax(200px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  min-width: 1100px;
+}
+.bt-corner, .bt-col-head, .bt-row-head, .bt-cell {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 16px;
+}
+.bt-corner {
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-style: italic;
+  font-size: 13px; color: var(--ivory-faint);
+  letter-spacing: 0.04em;
+}
+.bt-col-head {
+  background: var(--bg-2);
+  text-align: center;
+}
+.bt-col-head .lvl {
+  display: block;
+  font-family: var(--display); font-size: 28px;
+  font-weight: 400; font-style: italic;
+  color: var(--gold-bright);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.bt-col-head .lbl {
+  display: block;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ivory-dim);
+  margin-top: 6px;
+}
+.bt-col-head[data-level="1"] .lvl { color: #c9c4b8; }
+.bt-col-head[data-level="2"] .lvl { color: #caa567; }
+.bt-col-head[data-level="3"] .lvl { color: #8bb57b; }
+.bt-col-head[data-level="4"] .lvl { color: #6fa5c7; }
+.bt-col-head[data-level="5"] .lvl { color: #d66b4a; }
+
+.bt-row-head {
+  background: var(--bg-2);
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+}
+.bt-row-head .t-cn {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 20px; color: var(--gold-bright);
+  letter-spacing: 0.15em;
+  line-height: 1.05;
+}
+.bt-row-head .t-en {
+  font-family: var(--display); font-size: 14px;
+  font-style: italic; color: var(--ivory-dim);
+  letter-spacing: -0.01em;
+}
+.bt-row-head .t-idx {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.25em; color: var(--ivory-faint);
+  margin-top: 2px;
+}
+
+.bt-cell {
+  font-family: var(--serif); font-size: 13px;
+  line-height: 1.5;
+  color: var(--ivory);
+  display: flex; align-items: center;
+  position: relative;
+  transition: background 0.3s;
+}
+.bt-cell:hover {
+  background: rgba(201, 162, 75, 0.05);
+}
+.bt-cell em {
+  display: block;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold-deep); font-style: normal;
+  margin-top: 6px;
+}
+.bt-cell[data-level="1"] { border-left: 2px solid transparent; }
+.bt-cell[data-level="5"] { background: rgba(214, 107, 74, 0.04); }
+.bt-cell[data-level="5"]:hover { background: rgba(214, 107, 74, 0.08); }
+
 /* ═══════ FOURTEEN CULTURES ═══════ */
 .culture-grid {
   display: grid;
@@ -1243,6 +1344,7 @@ footer a:hover { color: var(--gold); }
     <a href="#seven"><span class="n">7</span> Path</a>
     <a href="#hubs"><span class="n">8</span> Hubs</a>
     <a href="#matrix"><span class="n">9</span> Matrix</a>
+    <a href="#breakthroughs"><span class="n">10</span> Breakthroughs</a>
     <a href="#cultures"><span class="n">14</span> Cultures</a>
     <a href="#beliefs"><span class="n">15</span> Beliefs</a>
     <a href="#fourteen"><span class="n">16·L</span> Levels</a>
@@ -1280,6 +1382,7 @@ footer a:hover { color: var(--gold); }
     <div><span>7</span> · Path</div>
     <div><span>8</span> · Hubs</div>
     <div><span>9</span> · Matrix</div>
+    <div><span>10</span> · Breakthroughs</div>
     <div><span>14</span> · Cultures</div>
     <div><span>15</span> · Beliefs</div>
     <div><span>16</span> · Levels</div>
@@ -1852,6 +1955,151 @@ footer a:hover { color: var(--gold); }
   </div>
 </section>
 
+<!-- ═══════ TEN · BREAKTHROUGHS ═══════ -->
+<section id="breakthroughs">
+  <div class="section-intro">
+    <div class="section-num">10</div>
+    <h2 class="section-title">
+      Ten Major Breakthroughs
+      <span class="cn">十 大 突 破</span>
+    </h2>
+    <div class="section-stamp">§ 10 · Levels 1 → 5 across 10 frontiers</div>
+  </div>
+
+  <div class="bt-wrap">
+    <div class="bt-table">
+      <!-- Header row -->
+      <div class="bt-corner">Tech ⇣ · Level ⇢</div>
+      <div class="bt-col-head" data-level="1"><span class="lvl">L1</span><span class="lbl">Foundation</span></div>
+      <div class="bt-col-head" data-level="2"><span class="lvl">L2</span><span class="lbl">Assisted</span></div>
+      <div class="bt-col-head" data-level="3"><span class="lvl">L3</span><span class="lbl">Conditional</span></div>
+      <div class="bt-col-head" data-level="4"><span class="lvl">L4</span><span class="lbl">Advanced</span></div>
+      <div class="bt-col-head" data-level="5"><span class="lvl">L5</span><span class="lbl">Mastery</span></div>
+
+      <!-- 01 · Large Models -->
+      <div class="bt-row-head">
+        <div class="t-cn">大 模 型</div>
+        <div class="t-en">Large Models</div>
+        <div class="t-idx">10 · 01</div>
+      </div>
+      <div class="bt-cell" data-level="1">Chat</div>
+      <div class="bt-cell" data-level="2">Reasoning</div>
+      <div class="bt-cell" data-level="3">Intelligent Agent</div>
+      <div class="bt-cell" data-level="4">Innovation</div>
+      <div class="bt-cell" data-level="5">Organizer</div>
+
+      <!-- 02 · Humanoid Robots -->
+      <div class="bt-row-head">
+        <div class="t-cn">人 形 机 器 人</div>
+        <div class="t-en">Humanoid Robots</div>
+        <div class="t-idx">10 · 02</div>
+      </div>
+      <div class="bt-cell" data-level="1">Basic operation assistance</div>
+      <div class="bt-cell" data-level="2">Environmental perception &amp; simple interaction</div>
+      <div class="bt-cell" data-level="3">Conditional autonomy &amp; situational understanding</div>
+      <div class="bt-cell" data-level="4">Highly autonomous, complex task execution</div>
+      <div class="bt-cell" data-level="5">Fully autonomous, human-like intelligence</div>
+
+      <!-- 03 · Autonomous Driving -->
+      <div class="bt-row-head">
+        <div class="t-cn">自 动 驾 驶</div>
+        <div class="t-en">Autonomous Driving</div>
+        <div class="t-idx">10 · 03</div>
+      </div>
+      <div class="bt-cell" data-level="1">Driver assistance</div>
+      <div class="bt-cell" data-level="2">Partial autonomous driving</div>
+      <div class="bt-cell" data-level="3">Conditional autonomous driving</div>
+      <div class="bt-cell" data-level="4">Highly autonomous driving</div>
+      <div class="bt-cell" data-level="5">Fully autonomous driving</div>
+
+      <!-- 04 · BCI -->
+      <div class="bt-row-head">
+        <div class="t-cn">脑 机 接 口</div>
+        <div class="t-en">Brain–Computer Interface</div>
+        <div class="t-idx">10 · 04</div>
+      </div>
+      <div class="bt-cell" data-level="1">Basic signal acquisition &amp; decoding <em>research stage</em></div>
+      <div class="bt-cell" data-level="2">Simple one-way control <em>cursor · robotic arm</em></div>
+      <div class="bt-cell" data-level="3">Two-way interaction <em>read + stimulate</em></div>
+      <div class="bt-cell" data-level="4">Partial clinical applications <em>ALS · paralysis</em></div>
+      <div class="bt-cell" data-level="5">High-bandwidth, natural human-machine symbiosis</div>
+
+      <!-- 05 · Web3 -->
+      <div class="bt-row-head">
+        <div class="t-cn">W e b 3</div>
+        <div class="t-en">Web3</div>
+        <div class="t-idx">10 · 05</div>
+      </div>
+      <div class="bt-cell" data-level="1">Decentralized ledger</div>
+      <div class="bt-cell" data-level="2">Smart contracts</div>
+      <div class="bt-cell" data-level="3">DAO</div>
+      <div class="bt-cell" data-level="4">Metaverse</div>
+      <div class="bt-cell" data-level="5">Automated nation</div>
+
+      <!-- 06 · Longevity -->
+      <div class="bt-row-head">
+        <div class="t-cn">长 生 不 老</div>
+        <div class="t-en">Longevity / Immortality</div>
+        <div class="t-idx">10 · 06</div>
+      </div>
+      <div class="bt-cell" data-level="1">Health optimization <em>lifestyle that slows aging</em></div>
+      <div class="bt-cell" data-level="2">Organ &amp; system-level repair <em>lifespan engineering</em></div>
+      <div class="bt-cell" data-level="3">Cellular / molecular periodic reset <em>partial reversal</em></div>
+      <div class="bt-cell" data-level="4">Continuous damage clearing &amp; modular replacement <em>extreme extension</em></div>
+      <div class="bt-cell" data-level="5">Autonomous maintenance · transferable continuity <em>technical immortality</em></div>
+
+      <!-- 07 · Energy -->
+      <div class="bt-row-head">
+        <div class="t-cn">能 源</div>
+        <div class="t-en">Energy</div>
+        <div class="t-idx">10 · 07</div>
+      </div>
+      <div class="bt-cell" data-level="1">Fossil fuels</div>
+      <div class="bt-cell" data-level="2">Solar energy</div>
+      <div class="bt-cell" data-level="3">Nuclear fission</div>
+      <div class="bt-cell" data-level="4">Controlled nuclear fusion</div>
+      <div class="bt-cell" data-level="5">Dyson sphere</div>
+
+      <!-- 08 · Materials -->
+      <div class="bt-row-head">
+        <div class="t-cn">物 质</div>
+        <div class="t-en">Materials</div>
+        <div class="t-idx">10 · 08</div>
+      </div>
+      <div class="bt-cell" data-level="1">Smelting</div>
+      <div class="bt-cell" data-level="2">Precision machining</div>
+      <div class="bt-cell" data-level="3">3D printing</div>
+      <div class="bt-cell" data-level="4">Nanotechnology</div>
+      <div class="bt-cell" data-level="5">Nano 3D synthesis</div>
+
+      <!-- 09 · VR -->
+      <div class="bt-row-head">
+        <div class="t-cn">虚 拟 现 实</div>
+        <div class="t-en">Virtual Reality</div>
+        <div class="t-idx">10 · 09</div>
+      </div>
+      <div class="bt-cell" data-level="1">Video games</div>
+      <div class="bt-cell" data-level="2">Electronic games with economic ecosystems</div>
+      <div class="bt-cell" data-level="3">Open world games</div>
+      <div class="bt-cell" data-level="4">Self-running open worlds</div>
+      <div class="bt-cell" data-level="5">Metaverse</div>
+
+      <!-- 10 · Space -->
+      <div class="bt-row-head">
+        <div class="t-cn">空 间 移 动</div>
+        <div class="t-en">Space Travel</div>
+        <div class="t-idx">10 · 10</div>
+      </div>
+      <div class="bt-cell" data-level="1">Automobiles</div>
+      <div class="bt-cell" data-level="2">Aircraft</div>
+      <div class="bt-cell" data-level="3">Rockets</div>
+      <div class="bt-cell" data-level="4">Space elevator</div>
+      <div class="bt-cell" data-level="5">Curvature drive</div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════ FOURTEEN · CULTURES ═══════ -->
 <section id="cultures">
   <div class="section-intro">
@@ -1887,10 +2135,10 @@ footer a:hover { color: var(--gold); }
         <div class="c-divider">→</div>
       </div>
       <div>
-        <div class="c-concept">Jante</div>
-        <div class="c-concept-small">FI · Janteloven</div>
-        <div class="c-gloss">Don't think you're anything special.</div>
-        <div class="c-gloss-cn">均 等 · 谦 抑</div>
+        <div class="c-concept">Sisu</div>
+        <div class="c-concept-small">FI · /ˈsi.su/</div>
+        <div class="c-gloss">Persevering grit; resilience under duress.</div>
+        <div class="c-gloss-cn">坚 毅 · 西 苏</div>
       </div>
     </div>
 
