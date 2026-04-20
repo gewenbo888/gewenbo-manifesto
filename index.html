@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>One Mission — 一使命 · The Manifesto of Gewenbo</title>
+<meta name="description" content="A bilingual manifesto in ascending order: One Mission, Two Identities, Three Principles, Four Integrations, Five Elements, Six Domains, Seven-Step Path, Sixteen Visions." />
+<meta property="og:title" content="One Mission — 一使命" />
+<meta property="og:description" content="1 · 2 · 3 · 4 · 5 · 6 · 7 · 16 — a bilingual life manifesto." />
+<meta property="og:type" content="website" />
+<script defer src="https://analytics-dashboard-two-blue.vercel.app/tracker.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,500&family=Noto+Serif+SC:wght@200;300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0a0908;
+  --bg-2: #14110d;
+  --bg-3: #1f1a13;
+  --gold: #c9a24b;
+  --gold-bright: #e6c071;
+  --gold-deep: #7c6024;
+  --ivory: #ece4d3;
+  --ivory-dim: rgba(236, 228, 211, 0.65);
+  --ivory-faint: rgba(236, 228, 211, 0.25);
+  --jade: #5a8f73;
+  --rouge: #b14d42;
+  --rouge-deep: #7a2f26;
+  --line: rgba(201, 162, 75, 0.2);
+  --line-soft: rgba(236, 228, 211, 0.08);
+  --serif: "Cormorant Garamond", "Noto Serif SC", serif;
+  --display: "Fraunces", "Noto Serif SC", serif;
+  --cjk: "Noto Serif SC", "Cormorant Garamond", serif;
+  --mono: "JetBrains Mono", monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ivory);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 162, 75, 0.08), transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(90, 143, 115, 0.04), transparent 50%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.82  0 0 0 0 0.64  0 0 0 0 0.29  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-attachment: fixed;
+}
+
+::selection { background: var(--gold); color: var(--bg); }
+
+/* ═══════ TOP BAR ═══════ */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 44px;
+  background: rgba(10, 9, 8, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--display); font-weight: 300;
+  font-style: italic;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+}
+.brand .mark {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 10px; font-style: normal;
+  color: var(--gold);
+}
+.brand .cn { font-family: var(--cjk); font-weight: 400; font-style: normal;
+             color: var(--ivory-dim); letter-spacing: 0.2em; font-size: 14px; }
+.top-nav {
+  display: flex; gap: 4px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.15em;
+}
+.top-nav a {
+  color: var(--ivory-dim); text-decoration: none;
+  padding: 6px 10px;
+  transition: color 0.2s;
+}
+.top-nav a:hover { color: var(--gold); }
+.top-nav .n { color: var(--gold-deep); }
+
+/* ═══════ SECTION BASE ═══════ */
+section {
+  position: relative;
+  padding: 140px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.section-intro {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 80px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.section-num {
+  font-family: var(--display);
+  font-size: clamp(88px, 11vw, 168px);
+  font-weight: 200;
+  font-style: italic;
+  line-height: 0.85;
+  color: var(--gold);
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144;
+}
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ivory);
+}
+.section-title .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.5em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-top: 8px;
+}
+.section-stamp {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ivory-faint);
+  text-align: right;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ═══════ HERO ═══════ */
+.hero {
+  min-height: 100vh;
+  padding: 160px 48px 80px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.hero-top {
+  display: flex; justify-content: space-between;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+.hero-center {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  gap: 32px;
+  padding: 40px 0;
+}
+.hero-monad {
+  position: relative; width: 220px; height: 220px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.hero-monad::before, .hero-monad::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+}
+.hero-monad::before {
+  border: 1px solid var(--gold);
+  opacity: 0.3;
+  animation: pulse 4s ease-in-out infinite;
+}
+.hero-monad::after {
+  border: 1px solid var(--gold);
+  opacity: 0.15;
+  transform: scale(1.25);
+  animation: pulse 4s ease-in-out infinite 1s;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.15; }
+}
+.hero-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 40px var(--gold), 0 0 80px rgba(201, 162, 75, 0.3);
+}
+.hero-dot-label {
+  position: absolute; bottom: -8px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.3em; color: var(--gold-deep);
+}
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(52px, 8.5vw, 132px);
+  font-weight: 200;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ivory);
+  font-variation-settings: "opsz" 144;
+}
+.hero h1 .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-weight: 300;
+  font-size: 0.52em;
+  letter-spacing: 0.22em;
+  margin-top: 20px;
+  color: var(--gold);
+}
+.hero h1 em {
+  font-style: italic; color: var(--gold-bright);
+  font-weight: 400;
+}
+.hero-tagline {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 300;
+  color: var(--ivory-dim);
+  max-width: 720px;
+  line-height: 1.5;
+}
+.hero-tagline .cn {
+  display: block; font-family: var(--cjk); font-style: normal;
+  font-size: 0.9em; margin-top: 12px; color: var(--ivory-faint);
+  letter-spacing: 0.1em;
+}
+.hero-bottom {
+  display: flex; justify-content: center; gap: 60px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--ivory-faint);
+  padding-top: 40px;
+  border-top: 1px solid var(--line-soft);
+}
+.hero-bottom span { color: var(--gold); }
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--ivory-faint);
+  animation: bob 2.5s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.6; }
+  50% { transform: translate(-50%, 8px); opacity: 1; }
+}
+
+/* ═══════ TWO IDENTITIES ═══════ */
+.two-grid {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+.two-cell {
+  padding: 64px 56px;
+  position: relative;
+}
+.two-cell .icon {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 120px; color: var(--gold);
+  line-height: 1; margin-bottom: 32px;
+  opacity: 0.9;
+}
+.two-cell .role-label {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+}
+.two-cell .role-title {
+  font-family: var(--display); font-size: 44px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); line-height: 1.1;
+  margin-bottom: 6px;
+}
+.two-cell .role-title-cn {
+  font-family: var(--cjk); font-size: 22px;
+  font-weight: 500; color: var(--gold);
+  margin-bottom: 28px; letter-spacing: 0.15em;
+}
+.two-cell .role-desc {
+  font-size: 17px; line-height: 1.7;
+  color: var(--ivory-dim);
+}
+.two-cell .role-desc-cn {
+  font-family: var(--cjk); font-size: 15px;
+  line-height: 1.9; color: var(--ivory-dim);
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-soft);
+}
+.two-cell .direction {
+  position: absolute; top: 28px; right: 28px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.3em; color: var(--ivory-faint);
+}
+.two-cell.creator .direction { left: 28px; right: auto; }
+.two-divider {
+  width: 1px; background: var(--line);
+  position: relative;
+}
+.two-divider::after {
+  content: "×";
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg);
+  width: 44px; height: 44px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 22px;
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ═══════ THREE PRINCIPLES ═══════ */
+.three-wrap {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
+  align-items: center;
+}
+.triangle-diagram {
+  aspect-ratio: 1;
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.triangle-diagram svg { width: 100%; height: 100%; }
+.three-list {
+  display: flex; flex-direction: column; gap: 0;
+}
+.three-item {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line-soft);
+  display: grid; grid-template-columns: 100px 1fr; gap: 32px;
+  align-items: baseline;
+}
+.three-item:last-child { border-bottom: none; }
+.three-item .char {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 80px; color: var(--gold);
+  line-height: 1;
+}
+.three-item .name-en {
+  font-family: var(--display); font-size: 36px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); letter-spacing: -0.02em;
+}
+.three-item .name-roman {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em; color: var(--ivory-faint);
+  margin-top: 8px;
+}
+.three-item .desc {
+  margin-top: 14px;
+  font-size: 15px; line-height: 1.7;
+  color: var(--ivory-dim);
+}
+
+/* ═══════ FOUR INTEGRATIONS ═══════ */
+.four-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.four-cell {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 48px;
+  position: relative;
+  min-height: 260px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: background 0.3s;
+}
+.four-cell:hover { background: var(--bg-2); }
+.four-cell .four-num {
+  position: absolute; top: 24px; right: 28px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; color: var(--gold-deep);
+}
+.four-cell .four-kind {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.four-cell .four-formula {
+  font-family: var(--display); font-size: 30px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); line-height: 1.2;
+}
+.four-cell .four-formula .x {
+  color: var(--rouge); font-style: normal; margin: 0 14px;
+  font-weight: 500;
+}
+.four-cell .four-formula-cn {
+  font-family: var(--cjk); font-size: 20px;
+  font-weight: 500;
+  color: var(--gold); margin-top: 12px;
+  letter-spacing: 0.1em;
+}
+.four-cell .four-formula-cn .x {
+  color: var(--rouge); margin: 0 10px;
+}
+.four-cell .four-note {
+  margin-top: 28px;
+  font-size: 14px; line-height: 1.7;
+  color: var(--ivory-dim); font-style: italic;
+  max-width: 340px;
+}
+.four-cell .four-note-cn {
+  margin-top: 6px;
+  font-family: var(--cjk); font-size: 13px;
+  line-height: 1.9; color: var(--ivory-faint);
+}
+
+/* ═══════ FIVE ELEMENTS ═══════ */
+.five-wrap {
+  display: grid; grid-template-columns: 1.1fr 1.4fr; gap: 64px;
+  align-items: center;
+}
+.pentagram {
+  position: relative;
+  aspect-ratio: 1;
+  max-width: 520px;
+}
+.pentagram svg { width: 100%; height: 100%; }
+.five-list {
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+.five-row {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line-soft);
+  display: grid; grid-template-columns: 70px 150px 1fr auto;
+  gap: 20px; align-items: center;
+  transition: padding-left 0.3s;
+  cursor: pointer;
+}
+.five-row:hover { padding-left: 16px; }
+.five-row[data-el="metal"] { --el-color: #c9c4b8; }
+.five-row[data-el="wood"]  { --el-color: #8bb57b; }
+.five-row[data-el="water"] { --el-color: #6fa5c7; }
+.five-row[data-el="fire"]  { --el-color: #d66b4a; }
+.five-row[data-el="earth"] { --el-color: #caa567; }
+.five-row .el-char {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 52px; color: var(--el-color);
+  line-height: 1;
+}
+.five-row .el-name {
+  font-family: var(--display); font-size: 22px;
+  font-style: italic; color: var(--ivory);
+  line-height: 1.1;
+}
+.five-row .el-name .en2 {
+  font-family: var(--mono); font-size: 10px;
+  display: block; letter-spacing: 0.2em;
+  color: var(--el-color); margin-top: 4px;
+  font-style: normal;
+}
+.five-row .el-quality {
+  font-family: var(--display); font-size: 18px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory-dim);
+}
+.five-row .el-quality-cn {
+  font-family: var(--cjk); font-size: 13px;
+  color: var(--el-color); margin-top: 2px;
+  letter-spacing: 0.1em;
+}
+.five-row .el-figures {
+  font-family: var(--display); font-size: 16px;
+  font-weight: 500; color: var(--ivory);
+  text-align: right; line-height: 1.3;
+}
+.five-row .el-figures .mid {
+  color: var(--rouge); margin: 0 8px; font-style: italic;
+}
+
+/* ═══════ SIX DOMAINS ═══════ */
+.six-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 40px;
+}
+.six-cell {
+  padding: 44px 32px;
+  border-right: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  transition: background 0.3s;
+}
+.six-cell:nth-child(3n) { border-right: none; }
+.six-cell:nth-child(n+4) { border-bottom: none; }
+.six-cell:hover { background: rgba(201, 162, 75, 0.04); }
+.six-cell .six-glyph {
+  position: absolute; top: 20px; right: 24px;
+  font-family: var(--display);
+  font-size: 100px; font-weight: 200;
+  color: var(--gold); opacity: 0.15;
+  line-height: 0.8;
+  font-style: italic;
+  pointer-events: none;
+}
+.six-cell .six-num {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; color: var(--gold);
+  margin-bottom: 14px;
+}
+.six-cell .six-name-en {
+  font-family: var(--display); font-size: 34px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.six-cell .six-name-cn {
+  font-family: var(--cjk); font-size: 18px;
+  font-weight: 500; color: var(--gold);
+  margin-top: 6px; letter-spacing: 0.2em;
+}
+
+/* ═══════ SEVEN-STEP PATH ═══════ */
+.seven-wrap {
+  position: relative;
+  padding-left: 80px;
+}
+.seven-wrap::before {
+  content: ""; position: absolute;
+  left: 40px; top: 20px; bottom: 20px;
+  width: 1px; background: linear-gradient(to bottom, transparent 0%, var(--gold) 8%, var(--gold) 92%, transparent 100%);
+}
+.seven-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  padding: 36px 0;
+  position: relative;
+  border-bottom: 1px dashed var(--line-soft);
+}
+.seven-step:last-child { border-bottom: none; }
+.seven-step::before {
+  content: "";
+  position: absolute;
+  left: -44px; top: 48px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--gold);
+}
+.seven-step .step-num {
+  position: absolute;
+  left: -96px; top: 34px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.25em; color: var(--gold-deep);
+}
+.seven-step .step-title-en {
+  font-family: var(--display); font-size: 38px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.seven-step .step-title-cn {
+  font-family: var(--cjk); font-size: 22px;
+  font-weight: 500; color: var(--gold);
+  margin-top: 10px; letter-spacing: 0.15em;
+}
+.seven-step .step-body {
+  font-size: 16px; line-height: 1.8;
+  color: var(--ivory-dim);
+}
+.seven-step .step-body-cn {
+  font-family: var(--cjk); font-size: 15px;
+  line-height: 2; color: var(--ivory-faint);
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-soft);
+}
+
+/* ═══════ SIXTEEN VISIONS ═══════ */
+.sixteen-intro {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  margin-bottom: 0;
+  border: 1px solid var(--line);
+  border-bottom: none;
+}
+.sixteen-head {
+  padding: 24px 20px;
+  border-right: 1px solid var(--line);
+  text-align: center;
+}
+.sixteen-head:last-child { border-right: none; }
+.sixteen-head .axis {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 6px;
+}
+.sixteen-head .axis-en {
+  font-family: var(--display); font-size: 22px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory);
+}
+.sixteen-head .axis-cn {
+  font-family: var(--cjk); font-size: 14px;
+  color: var(--gold); margin-top: 4px;
+  letter-spacing: 0.15em;
+}
+.sixteen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+  border-top: none;
+}
+.sixteen-cell {
+  padding: 28px 22px;
+  border-right: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  min-height: 160px;
+  position: relative;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: background 0.25s;
+}
+.sixteen-cell:nth-child(4n) { border-right: none; }
+.sixteen-cell:nth-child(n+13) { border-bottom: none; }
+.sixteen-cell:hover { background: var(--bg-2); }
+.sixteen-cell .six-idx {
+  position: absolute; top: 12px; right: 14px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.2em; color: var(--ivory-faint);
+}
+.sixteen-cell .vision-en {
+  font-family: var(--display); font-size: 19px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); line-height: 1.2;
+}
+.sixteen-cell .vision-cn {
+  font-family: var(--cjk); font-size: 14px;
+  color: var(--gold); margin-top: 10px;
+  letter-spacing: 0.14em;
+}
+
+/* ═══════ CODA ═══════ */
+.coda {
+  padding: 180px 48px 120px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(201, 162, 75, 0.06), transparent 70%);
+  border-top: 1px solid var(--line);
+}
+.coda-seal {
+  display: inline-block;
+  width: 100px; height: 100px;
+  border: 2px solid var(--rouge);
+  border-radius: 6px;
+  color: var(--rouge);
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 42px; line-height: 1;
+  padding: 14px;
+  margin-bottom: 40px;
+  transform: rotate(-3deg);
+  letter-spacing: 2px;
+}
+.coda-line {
+  font-family: var(--display);
+  font-size: clamp(28px, 4vw, 54px);
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); line-height: 1.25;
+  max-width: 820px; margin: 0 auto;
+  letter-spacing: -0.02em;
+}
+.coda-line .cn {
+  display: block; font-family: var(--cjk);
+  font-style: normal; font-size: 0.58em;
+  margin-top: 24px; color: var(--gold);
+  letter-spacing: 0.15em;
+}
+.coda-sig {
+  margin-top: 72px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+.coda-sig b {
+  display: block; margin-top: 8px;
+  font-family: var(--display); font-weight: 300;
+  font-style: italic; font-size: 24px;
+  color: var(--gold); letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+/* ═══════ FOOTER ═══════ */
+footer {
+  padding: 48px 48px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+footer a { color: var(--gold-deep); text-decoration: none; margin-left: 20px; }
+footer a:hover { color: var(--gold); }
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 1000px) {
+  section { padding: 80px 24px; }
+  .topbar { padding: 14px 20px; }
+  .top-nav { display: none; }
+  .section-intro { grid-template-columns: auto 1fr; gap: 24px; margin-bottom: 48px; }
+  .section-num { font-size: 80px; }
+  .section-stamp { display: none; }
+  .two-grid { grid-template-columns: 1fr; }
+  .two-divider { height: 1px; width: 100%; }
+  .two-divider::after { top: 50%; }
+  .two-cell { padding: 40px 28px; }
+  .two-cell .icon { font-size: 76px; }
+  .three-wrap { grid-template-columns: 1fr; gap: 48px; }
+  .four-grid { grid-template-columns: 1fr; }
+  .four-cell:nth-child(odd) { border-right: 1px solid var(--line); }
+  .five-wrap { grid-template-columns: 1fr; gap: 48px; }
+  .five-row { grid-template-columns: 50px 120px 1fr; gap: 14px; }
+  .five-row .el-figures { display: none; }
+  .six-grid { grid-template-columns: 1fr 1fr; }
+  .six-cell { border-right: 1px solid var(--line-soft) !important; }
+  .six-cell:nth-child(2n) { border-right: none !important; }
+  .seven-wrap { padding-left: 44px; }
+  .seven-wrap::before { left: 20px; }
+  .seven-step { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
+  .seven-step::before { left: -24px; top: 38px; }
+  .seven-step .step-num { left: -52px; top: 28px; font-size: 9px; }
+  .sixteen-intro, .sixteen-grid { grid-template-columns: 1fr 1fr; }
+  .sixteen-head:nth-child(2n), .sixteen-cell:nth-child(2n) { border-right: none; }
+  .sixteen-head:nth-child(n+1) { border-right: 1px solid var(--line); }
+  .sixteen-head:nth-child(2n) { border-right: none; }
+  .hero h1 { font-size: 56px; }
+  .hero-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ TOP BAR ═══════ -->
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">∞</span>
+    <span>One Mission</span>
+    <span class="cn">一 使 命</span>
+  </div>
+  <nav class="top-nav">
+    <a href="#one"><span class="n">Ⅰ</span> Mission</a>
+    <a href="#two"><span class="n">Ⅱ</span> Identity</a>
+    <a href="#three"><span class="n">Ⅲ</span> Principles</a>
+    <a href="#four"><span class="n">Ⅳ</span> Integrations</a>
+    <a href="#five"><span class="n">Ⅴ</span> Elements</a>
+    <a href="#six"><span class="n">Ⅵ</span> Domains</a>
+    <a href="#seven"><span class="n">Ⅶ</span> Path</a>
+    <a href="#sixteen"><span class="n">Ⅹ Ⅵ</span> Visions</a>
+  </nav>
+</header>
+
+<!-- ═══════ HERO · ONE ═══════ -->
+<section class="hero" id="one">
+  <div class="hero-top">
+    <span>Manifesto · Edition One</span>
+    <span>2026</span>
+  </div>
+  <div class="hero-center">
+    <div class="hero-monad" aria-hidden="true">
+      <div class="hero-dot"></div>
+      <div class="hero-dot-label">Ⅰ · 一</div>
+    </div>
+    <h1>
+      One <em>Mission</em>
+      <span class="cn">一 使 命</span>
+    </h1>
+    <p class="hero-tagline">
+      To become a person who has a significant impact on the world — and to build enterprises that change the world.
+      <span class="cn">立志成为对世界有重大影响之人，构筑足以改变世界之事业。</span>
+    </p>
+  </div>
+  <div class="hero-bottom">
+    <div><span>1</span> · Mission</div>
+    <div><span>2</span> · Identities</div>
+    <div><span>3</span> · Principles</div>
+    <div><span>4</span> · Integrations</div>
+    <div><span>5</span> · Elements</div>
+    <div><span>6</span> · Domains</div>
+    <div><span>7</span> · Path</div>
+    <div><span>16</span> · Visions</div>
+  </div>
+  <div class="hero-scroll">Ⅱ ↓ 二</div>
+</section>
+
+<!-- ═══════ TWO · IDENTITIES ═══════ -->
+<section id="two">
+  <div class="section-intro">
+    <div class="section-num">Ⅱ</div>
+    <h2 class="section-title">
+      Two Identities
+      <span class="cn">二 重 身 份</span>
+    </h2>
+    <div class="section-stamp">§ 02 · Creator × Seeker</div>
+  </div>
+  <div class="two-grid">
+    <div class="two-cell creator">
+      <div class="direction">← Outward · 向 外</div>
+      <div class="icon">创</div>
+      <div class="role-label">Identity One</div>
+      <div class="role-title">The Creator</div>
+      <div class="role-title-cn">创 造 者</div>
+      <p class="role-desc">Builds business empires. Accumulates wealth and influence. Shapes the outer world through enterprise and execution.</p>
+      <p class="role-desc-cn">构筑商业帝国，积累财富与影响。以事业与行动改造外在世界。</p>
+    </div>
+    <div class="two-divider" aria-hidden="true"></div>
+    <div class="two-cell seeker">
+      <div class="direction">Inward → · 向 内</div>
+      <div class="icon">求</div>
+      <div class="role-label">Identity Two</div>
+      <div class="role-title">The Seeker</div>
+      <div class="role-title-cn">求 道 者</div>
+      <p class="role-desc">Pursues truth, self-knowledge, and philosophical foundations. Shapes the inner world through inquiry and stillness.</p>
+      <p class="role-desc-cn">追求真理，认识自我，奠定哲学根基。以问道与静观形塑内在世界。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ THREE · PRINCIPLES ═══════ -->
+<section id="three">
+  <div class="section-intro">
+    <div class="section-num">Ⅲ</div>
+    <h2 class="section-title">
+      Three Core Principles
+      <span class="cn">三 大 原 则</span>
+    </h2>
+    <div class="section-stamp">§ 03 · 真 · 善 · 美</div>
+  </div>
+  <div class="three-wrap">
+    <div class="triangle-diagram">
+      <svg viewBox="0 0 400 400">
+        <defs>
+          <radialGradient id="glow3" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#c9a24b" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#c9a24b" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="200" cy="200" r="180" fill="url(#glow3)"/>
+        <polygon points="200,40 360,320 40,320" fill="none" stroke="#c9a24b" stroke-width="1" stroke-linejoin="round"/>
+        <polygon points="200,40 360,320 40,320" fill="none" stroke="#c9a24b" stroke-width="0.5" opacity="0.3" transform="rotate(180 200 200)"/>
+        <circle cx="200" cy="40" r="28" fill="#0a0908" stroke="#c9a24b" stroke-width="1"/>
+        <circle cx="360" cy="320" r="28" fill="#0a0908" stroke="#c9a24b" stroke-width="1"/>
+        <circle cx="40" cy="320" r="28" fill="#0a0908" stroke="#c9a24b" stroke-width="1"/>
+        <text x="200" y="49" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#e6c071">真</text>
+        <text x="360" y="329" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#e6c071">善</text>
+        <text x="40" y="329" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#e6c071">美</text>
+        <text x="200" y="22" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#7c6024" letter-spacing="2">TRUTH</text>
+        <text x="372" y="302" text-anchor="start" font-family="JetBrains Mono" font-size="10" fill="#7c6024" letter-spacing="2">GOOD</text>
+        <text x="28" y="302" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#7c6024" letter-spacing="2">BEAUTY</text>
+        <circle cx="200" cy="227" r="6" fill="#c9a24b"/>
+        <text x="200" y="250" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="12" fill="#ece4d3" opacity="0.5">trinitas</text>
+      </svg>
+    </div>
+    <div class="three-list">
+      <div class="three-item">
+        <div class="char">真</div>
+        <div>
+          <div class="name-en">Truth</div>
+          <div class="name-roman">TRUTH · ZHĒN</div>
+          <p class="desc">What is. The real behind appearances. The ground all thought and action must eventually meet.</p>
+        </div>
+      </div>
+      <div class="three-item">
+        <div class="char">善</div>
+        <div>
+          <div class="name-en">Goodness</div>
+          <div class="name-roman">GOODNESS · SHÀN</div>
+          <p class="desc">What ought to be. Right action toward others, the planet, and the long arc of civilisation.</p>
+        </div>
+      </div>
+      <div class="three-item">
+        <div class="char">美</div>
+        <div>
+          <div class="name-en">Beauty</div>
+          <div class="name-roman">BEAUTY · MĚI</div>
+          <p class="desc">What delights. Form that moves. Harmony of thought, thing, and deed. The signature of a life well made.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOUR · INTEGRATIONS ═══════ -->
+<section id="four">
+  <div class="section-intro">
+    <div class="section-num">Ⅳ</div>
+    <h2 class="section-title">
+      Four Integrations
+      <span class="cn">四 大 融 合</span>
+    </h2>
+    <div class="section-stamp">§ 04 · Dialectics to Dissolve</div>
+  </div>
+  <div class="four-grid">
+    <div class="four-cell">
+      <div class="four-num">Ⅳ · 01</div>
+      <div>
+        <div class="four-kind">Institutional</div>
+        <div class="four-formula">Capitalism <span class="x">×</span> Socialism</div>
+        <div class="four-formula-cn">资本主义 <span class="x">×</span> 社会主义</div>
+      </div>
+      <p class="four-note">
+        Neither pole suffices. Enterprise drives efficiency; solidarity drives meaning. Integrate both.
+        <span class="four-note-cn">两极皆不足：效率源于企业，意义源于团结。两者当合。</span>
+      </p>
+    </div>
+    <div class="four-cell">
+      <div class="four-num">Ⅳ · 02</div>
+      <div>
+        <div class="four-kind">Consciousness</div>
+        <div class="four-formula">AI <span class="x">×</span> Human</div>
+        <div class="four-formula-cn">机 器 意 识 <span class="x">×</span> 人 类 意 识</div>
+      </div>
+      <p class="four-note">
+        Two kinds of mind now share the stage. The task is not replacement but resonance — a co-evolving field of intelligence.
+        <span class="four-note-cn">机器与人类意识同台。非为取代，乃为共振，共同演化之智能场。</span>
+      </p>
+    </div>
+    <div class="four-cell">
+      <div class="four-num">Ⅳ · 03</div>
+      <div>
+        <div class="four-kind">Theoretical</div>
+        <div class="four-formula">Quantum <span class="x">×</span> Relativity</div>
+        <div class="four-formula-cn">量 子 力 学 <span class="x">×</span> 相 对 论</div>
+      </div>
+      <p class="four-note">
+        The physics of the very small and the very vast still quarrel. The long work of the century is to speak them in one grammar.
+        <span class="four-note-cn">至微与至广之物理，仍未合一。百年之工，是令其同归一语。</span>
+      </p>
+    </div>
+    <div class="four-cell">
+      <div class="four-num">Ⅳ · 04</div>
+      <div>
+        <div class="four-kind">World</div>
+        <div class="four-formula">Digital <span class="x">×</span> Physical</div>
+        <div class="four-formula-cn">数 字 世 界 <span class="x">×</span> 物 理 世 界</div>
+      </div>
+      <p class="four-note">
+        Bits and atoms bleed into each other. The coming economy belongs to those who build at the seam.
+        <span class="four-note-cn">比特与原子日渐交融。未来之经济，属于善于缝合两者之人。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FIVE · ELEMENTS ═══════ -->
+<section id="five">
+  <div class="section-intro">
+    <div class="section-num">Ⅴ</div>
+    <h2 class="section-title">
+      Five Archetypes
+      <span class="cn">五 行 人 格</span>
+    </h2>
+    <div class="section-stamp">§ 05 · Wu Xing · 金木水火土</div>
+  </div>
+  <div class="five-wrap">
+    <div class="pentagram">
+      <svg viewBox="0 0 420 420">
+        <defs>
+          <radialGradient id="glow5" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#c9a24b" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#c9a24b" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="210" cy="210" r="200" fill="url(#glow5)"/>
+        <circle cx="210" cy="210" r="170" fill="none" stroke="#c9a24b" stroke-width="0.5" opacity="0.5"/>
+        <circle cx="210" cy="210" r="120" fill="none" stroke="#c9a24b" stroke-width="0.5" opacity="0.3" stroke-dasharray="2 3"/>
+        <!-- 5 nodes equally spaced starting at top -->
+        <g id="penta">
+          <!-- Metal top -->
+          <g transform="translate(210 40)">
+            <circle r="38" fill="#0a0908" stroke="#c9c4b8" stroke-width="1.2"/>
+            <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#c9c4b8">金</text>
+          </g>
+          <!-- Wood top-right -->
+          <g transform="translate(371 157)">
+            <circle r="38" fill="#0a0908" stroke="#8bb57b" stroke-width="1.2"/>
+            <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#8bb57b">木</text>
+          </g>
+          <!-- Fire bottom-right -->
+          <g transform="translate(310 354)">
+            <circle r="38" fill="#0a0908" stroke="#d66b4a" stroke-width="1.2"/>
+            <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#d66b4a">火</text>
+          </g>
+          <!-- Water bottom-left -->
+          <g transform="translate(110 354)">
+            <circle r="38" fill="#0a0908" stroke="#6fa5c7" stroke-width="1.2"/>
+            <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#6fa5c7">水</text>
+          </g>
+          <!-- Earth top-left -->
+          <g transform="translate(49 157)">
+            <circle r="38" fill="#0a0908" stroke="#caa567" stroke-width="1.2"/>
+            <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#caa567">土</text>
+          </g>
+        </g>
+        <!-- Edges: generation cycle (gold) 金→水→木→火→土→金 approximate on pentagon -->
+        <g stroke="#c9a24b" stroke-width="1" fill="none" opacity="0.55">
+          <line x1="210" y1="78" x2="110" y2="316"/>
+          <line x1="110" y1="316" x2="371" y2="157"/>
+          <line x1="371" y1="157" x2="310" y2="316"/>
+          <line x1="310" y1="316" x2="49" y2="157"/>
+          <line x1="49" y1="157" x2="210" y2="78"/>
+        </g>
+        <circle cx="210" cy="210" r="4" fill="#c9a24b"/>
+        <text x="210" y="236" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="13" fill="#ece4d3" opacity="0.55">wu xing · 五行</text>
+      </svg>
+    </div>
+    <div class="five-list">
+      <div class="five-row" data-el="metal">
+        <div class="el-char">金</div>
+        <div class="el-name">Blade <span class="en2">METAL · JĪN</span></div>
+        <div class="el-quality">Cutting — Sharpness &amp; Rules<div class="el-quality-cn">锋 · 利 · 规 矩</div></div>
+        <div class="el-figures">Iron Man <span class="mid">×</span> Steve Jobs</div>
+      </div>
+      <div class="five-row" data-el="wood">
+        <div class="el-char">木</div>
+        <div class="el-name">Awakening <span class="en2">WOOD · MÙ</span></div>
+        <div class="el-quality">Growth — Awakening &amp; Understanding<div class="el-quality-cn">长 · 悟 · 通 达</div></div>
+        <div class="el-figures">Einstein <span class="mid">×</span> Elon Musk</div>
+      </div>
+      <div class="five-row" data-el="water">
+        <div class="el-char">水</div>
+        <div class="el-name">Flow <span class="en2">WATER · SHUǏ</span></div>
+        <div class="el-quality">Control — Adapting &amp; Riding the Trend<div class="el-quality-cn">流 · 顺 · 乘 势</div></div>
+        <div class="el-figures">Liu Bang <span class="mid">×</span> Luffy</div>
+      </div>
+      <div class="five-row" data-el="fire">
+        <div class="el-char">火</div>
+        <div class="el-name">Wind <span class="en2">FIRE · HUǑ</span></div>
+        <div class="el-quality">Ignition — Rebellion &amp; Activation<div class="el-quality-cn">燃 · 反 · 激 起</div></div>
+        <div class="el-figures">Stephen Chow <span class="mid">×</span> Wei Xiaobao</div>
+      </div>
+      <div class="five-row" data-el="earth">
+        <div class="el-char">土</div>
+        <div class="el-name">Soul <span class="en2">EARTH · TǓ</span></div>
+        <div class="el-quality">Bearing — Stability &amp; Transcendence<div class="el-quality-cn">承 · 稳 · 超 越</div></div>
+        <div class="el-figures">Laozi <span class="mid">×</span> Nietzsche</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SIX · DOMAINS ═══════ -->
+<section id="six">
+  <div class="section-intro">
+    <div class="section-num">Ⅵ</div>
+    <h2 class="section-title">
+      Six Major Domains
+      <span class="cn">六 大 领 域</span>
+    </h2>
+    <div class="section-stamp">§ 06 · Territory of Work</div>
+  </div>
+  <div class="six-grid">
+    <div class="six-cell">
+      <div class="six-glyph">i</div>
+      <div class="six-num">Ⅵ · 01</div>
+      <div class="six-name-en">Matter</div>
+      <div class="six-name-cn">物 质</div>
+    </div>
+    <div class="six-cell">
+      <div class="six-glyph">ii</div>
+      <div class="six-num">Ⅵ · 02</div>
+      <div class="six-name-en">Energy</div>
+      <div class="six-name-cn">能 量</div>
+    </div>
+    <div class="six-cell">
+      <div class="six-glyph">iii</div>
+      <div class="six-num">Ⅵ · 03</div>
+      <div class="six-name-en">Information</div>
+      <div class="six-name-cn">信 息</div>
+    </div>
+    <div class="six-cell">
+      <div class="six-glyph">iv</div>
+      <div class="six-num">Ⅵ · 04</div>
+      <div class="six-name-en">Biology</div>
+      <div class="six-name-cn">生 命</div>
+    </div>
+    <div class="six-cell">
+      <div class="six-glyph">v</div>
+      <div class="six-num">Ⅵ · 05</div>
+      <div class="six-name-en">Consciousness</div>
+      <div class="six-name-cn">意 识</div>
+    </div>
+    <div class="six-cell">
+      <div class="six-glyph">vi</div>
+      <div class="six-num">Ⅵ · 06</div>
+      <div class="six-name-en">Space-Time</div>
+      <div class="six-name-cn">时 空</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SEVEN · PATH ═══════ -->
+<section id="seven">
+  <div class="section-intro">
+    <div class="section-num">Ⅶ</div>
+    <h2 class="section-title">
+      Seven-Step Path
+      <span class="cn">七 步 之 道</span>
+    </h2>
+    <div class="section-stamp">§ 07 · Anchor to Inheritance</div>
+  </div>
+  <div class="seven-wrap">
+    <div class="seven-step">
+      <div class="step-num">Ⅶ · 01</div>
+      <div>
+        <div class="step-title-en">Anchor</div>
+        <div class="step-title-cn">立 锚</div>
+      </div>
+      <div>
+        <p class="step-body">Find a concrete problem you truly understand. Not a field, not a vibe — a problem, specific enough to name.</p>
+        <p class="step-body-cn">寻得你真正理解的一个具体问题。非领域，非情怀，乃是一可以被点名的问题。</p>
+      </div>
+    </div>
+    <div class="seven-step">
+      <div class="step-num">Ⅶ · 02</div>
+      <div>
+        <div class="step-title-en">Deepen</div>
+        <div class="step-title-cn">深 耕</div>
+      </div>
+      <div>
+        <p class="step-body">Spend ten years building irreplaceability in that single field. Depth is the currency of the long game.</p>
+        <p class="step-body-cn">在此一域深耕十年，铸造不可替代。深度，乃长期之通货。</p>
+      </div>
+    </div>
+    <div class="seven-step">
+      <div class="step-num">Ⅶ · 03</div>
+      <div>
+        <div class="step-title-en">Breakthrough</div>
+        <div class="step-title-cn">破 壁</div>
+      </div>
+      <div>
+        <p class="step-body">Let the results speak. Real outputs attract resources, allies, and talent without your having to ask.</p>
+        <p class="step-body-cn">令成果自语。真正之产出自能招资源、聚同道、纳人才，无须求。</p>
+      </div>
+    </div>
+    <div class="seven-step">
+      <div class="step-num">Ⅶ · 04</div>
+      <div>
+        <div class="step-title-en">Momentum</div>
+        <div class="step-title-cn">势 成</div>
+      </div>
+      <div>
+        <p class="step-body">Create the flywheel — wealth, influence, and capability compounding on themselves. The curve bends.</p>
+        <p class="step-body-cn">成其飞轮：财富、影响力、能力互相复利。曲线自此弯折。</p>
+      </div>
+    </div>
+    <div class="seven-step">
+      <div class="step-num">Ⅶ · 05</div>
+      <div>
+        <div class="step-title-en">Cross-Domain</div>
+        <div class="step-title-cn">跨 界</div>
+      </div>
+      <div>
+        <p class="step-body">Extend from the anchor field into its adjacent worlds. Expertise in one is a passport to many.</p>
+        <p class="step-body-cn">由原本之锚域跨向毗邻之世界。一域之精通，乃多域之通行证。</p>
+      </div>
+    </div>
+    <div class="seven-step">
+      <div class="step-num">Ⅶ · 06</div>
+      <div>
+        <div class="step-title-en">Integration</div>
+        <div class="step-title-cn">融 合</div>
+      </div>
+      <div>
+        <p class="step-body">Drive the four integrations. Leverage the six domains. Make the system itself the point of the work.</p>
+        <p class="step-body-cn">推动四大融合，驾驭六大领域，令体系本身成为工作的意义。</p>
+      </div>
+    </div>
+    <div class="seven-step">
+      <div class="step-num">Ⅶ · 07</div>
+      <div>
+        <div class="step-title-en">Inheritance</div>
+        <div class="step-title-cn">传 承</div>
+      </div>
+      <div>
+        <p class="step-body">Build systems and ideas that outlast the personal lifetime. A life rounds into a legacy.</p>
+        <p class="step-body-cn">建构超越个体生命之体系与思想。一生方能化为一脉。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SIXTEEN · VISIONS ═══════ -->
+<section id="sixteen">
+  <div class="section-intro">
+    <div class="section-num">Ⅹ Ⅵ</div>
+    <h2 class="section-title">
+      Sixteen Visions
+      <span class="cn">十 六 愿 景</span>
+    </h2>
+    <div class="section-stamp">§ 16 · Four axes × four each</div>
+  </div>
+  <div class="sixteen-intro">
+    <div class="sixteen-head">
+      <div class="axis">Axis I</div>
+      <div class="axis-en">Truth-Seeking</div>
+      <div class="axis-cn">求 真</div>
+    </div>
+    <div class="sixteen-head">
+      <div class="axis">Axis II</div>
+      <div class="axis-en">Benevolence</div>
+      <div class="axis-cn">行 善</div>
+    </div>
+    <div class="sixteen-head">
+      <div class="axis">Axis III</div>
+      <div class="axis-en">Beauty-Creation</div>
+      <div class="axis-cn">造 美</div>
+    </div>
+    <div class="sixteen-head">
+      <div class="axis">Axis IV</div>
+      <div class="axis-en">World Utility</div>
+      <div class="axis-cn">致 用</div>
+    </div>
+  </div>
+  <div class="sixteen-grid">
+    <!-- Row 1: Truth-seeking -->
+    <div class="sixteen-cell">
+      <div class="six-idx">01</div>
+      <div><div class="vision-en">Attain truth</div><div class="vision-cn">求 得 真 理</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">02</div>
+      <div><div class="vision-en">Serve the people</div><div class="vision-cn">服 务 众 生</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">03</div>
+      <div><div class="vision-en">Create history</div><div class="vision-cn">创 造 历 史</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">04</div>
+      <div><div class="vision-en">Improve life</div><div class="vision-cn">改 善 生 活</div></div>
+    </div>
+
+    <div class="sixteen-cell">
+      <div class="six-idx">05</div>
+      <div><div class="vision-en">Understand the self</div><div class="vision-cn">认 识 自 我</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">06</div>
+      <div><div class="vision-en">Save all beings</div><div class="vision-cn">普 度 众 生</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">07</div>
+      <div><div class="vision-en">Spread civilisation</div><div class="vision-cn">传 扬 文 明</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">08</div>
+      <div><div class="vision-en">Transform life</div><div class="vision-cn">改 变 生 命</div></div>
+    </div>
+
+    <div class="sixteen-cell">
+      <div class="six-idx">09</div>
+      <div><div class="vision-en">Explore the unknown</div><div class="vision-cn">探 索 未 知</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">10</div>
+      <div><div class="vision-en">Heal the planet</div><div class="vision-cn">疗 愈 地 球</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">11</div>
+      <div><div class="vision-en">Become a bringer of light</div><div class="vision-cn">成 为 明 灯</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">12</div>
+      <div><div class="vision-en">Reshape the world</div><div class="vision-cn">重 塑 世 界</div></div>
+    </div>
+
+    <div class="sixteen-cell">
+      <div class="six-idx">13</div>
+      <div><div class="vision-en">Everything is mathematics</div><div class="vision-cn">万 物 皆 数</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">14</div>
+      <div><div class="vision-en">Liberate humanity</div><div class="vision-cn">解 放 人 类</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">15</div>
+      <div><div class="vision-en">Harmony of heaven &amp; humanity</div><div class="vision-cn">天 人 合 一</div></div>
+    </div>
+    <div class="sixteen-cell">
+      <div class="six-idx">16</div>
+      <div><div class="vision-en">Planetary-scale operation</div><div class="vision-cn">行 星 尺 度</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CODA ═══════ -->
+<section class="coda">
+  <div class="coda-seal">戈 文 波</div>
+  <div class="coda-line">
+    A single dot becomes a path; a path becomes a life; a life becomes an inheritance.
+    <span class="cn">一 点 成 道， 道 成 一 生， 一 生 成 一 脉。</span>
+  </div>
+  <div class="coda-sig">
+    Edition One · 甲辰 · MMXXVI
+    <b>— Gewenbo</b>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div>© 2026 · One Mission · 一使命</div>
+  <div>
+    <a href="https://github.com/gewenbo888/gewenbo-manifesto" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://gewenbo-hub.vercel.app" target="_blank" rel="noopener">Hub</a>
+    <a href="https://gewenbo-links.vercel.app" target="_blank" rel="noopener">Links</a>
+  </div>
+</footer>
+
+<script>
+// Subtle scroll-reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = 1;
+      e.target.style.transform = 'translateY(0)';
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('section').forEach(s => {
+  s.style.opacity = 0;
+  s.style.transform = 'translateY(20px)';
+  s.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+  io.observe(s);
+});
+// Hero is immediately visible
+document.querySelector('.hero').style.opacity = 1;
+document.querySelector('.hero').style.transform = 'none';
+</script>
+</body>
+</html>
