@@ -71,7 +71,16 @@ body {
   letter-spacing: 0.02em;
   color: var(--gold);
   flex-shrink: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
+.brand:hover { opacity: 0.75; }
+.brand:hover .mark {
+  background: var(--gold);
+  color: var(--bg);
+}
+.brand .mark { transition: background 0.2s, color 0.2s; }
 .brand .mark {
   width: 22px; height: 22px; border-radius: 50%;
   border: 1px solid var(--gold);
@@ -1616,6 +1625,77 @@ section {
   letter-spacing: 0.12em;
 }
 
+/* ═══════ SECTION 16 · SUBSECTION HEADS ═══════ */
+.subsection-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: baseline;
+  margin: 72px 0 40px;
+  padding-bottom: 18px;
+  border-bottom: 2px double var(--gold-deep);
+}
+.subsection-head:first-of-type {
+  margin-top: 0;
+}
+.subsection-head .sub-letter {
+  font-family: var(--display);
+  font-size: 68px;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+.subsection-head .sub-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.subsection-head .sub-title {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ivory);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.subsection-head .sub-title .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-style: normal;
+  font-size: 16px;
+  color: var(--gold);
+  margin-top: 6px;
+  letter-spacing: 0.22em;
+}
+.subsection-head .sub-desc {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ivory-dim);
+  line-height: 1.5;
+  margin-top: 8px;
+  max-width: 620px;
+}
+[data-lang="zh"] .subsection-head .sub-desc {
+  font-family: var(--cjk);
+  font-style: normal;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .subsection-head {
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    margin: 52px 0 28px;
+  }
+  .subsection-head .sub-letter { font-size: 48px; }
+  .subsection-head .sub-title { font-size: 22px; }
+  .subsection-head .sub-desc { grid-column: 1 / -1; }
+}
+
 /* ═══════ SIXTEEN VISIONS ═══════ */
 .sixteen-intro {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
@@ -1822,11 +1902,11 @@ footer a:hover { color: var(--gold); }
 
 <!-- ═══════ TOP BAR ═══════ -->
 <header class="topbar">
-  <div class="brand">
+  <a href="#one" class="brand" aria-label="Back to top">
     <span class="mark">∞</span>
     <span>One Mission</span>
     <span class="cn">一 使 命</span>
-  </div>
+  </a>
   <nav class="top-nav">
     <a href="#one" data-label="Mission"><span class="n">1</span></a>
     <a href="#two" data-label="Identities"><span class="n">2</span></a>
@@ -1843,8 +1923,7 @@ footer a:hover { color: var(--gold); }
     <a href="#navigation" data-label="Navigation"><span class="n">13</span></a>
     <a href="#cultures" data-label="Cultures"><span class="n">14</span></a>
     <a href="#beliefs" data-label="Beliefs"><span class="n">15</span></a>
-    <a href="#fourteen" data-label="Levels"><span class="n">16ᴸ</span></a>
-    <a href="#sixteen" data-label="Visions"><span class="n">16ⱽ</span></a>
+    <a href="#sixteen" data-label="Visions"><span class="n">16</span></a>
   </nav>
 </header>
 
@@ -3330,15 +3409,29 @@ footer a:hover { color: var(--gold); }
   </div>
 </section>
 
-<!-- ═══════ SIXTEEN · LEVELS ═══════ -->
-<section id="fourteen">
+<!-- ═══════ SIXTEEN · UNIFIED (LEVELS + VISIONS) ═══════ -->
+<section id="sixteen">
   <div class="section-intro">
     <div class="section-num">16</div>
     <h2 class="section-title">
-      Sixteen Levels
-      <span class="cn">十 六 阶</span>
+      Sixteen Visions
+      <span class="cn">十 六 愿 景</span>
     </h2>
-    <div class="section-stamp">§ 16ᴸ · Ladder of Emerging Tech</div>
+    <div class="section-stamp">§ 16 · The Ladder &amp; The Axes</div>
+  </div>
+
+  <!-- Part A · The Ladder (16 Levels) -->
+  <div class="subsection-head" id="fourteen">
+    <div class="sub-letter">A</div>
+    <div class="sub-title-block">
+      <div class="sub-title">
+        The Ladder of Emerging Tech
+        <span class="cn">十 六 阶 · 天 梯</span>
+      </div>
+      <div class="sub-desc">
+        The ascending ladder of emerging technology across three tiers — Universe Attributes (6), Matter (7), Brain Products (3). What to build.
+      </div>
+    </div>
   </div>
 
   <div class="fourteen-wrap">
@@ -3467,18 +3560,21 @@ footer a:hover { color: var(--gold); }
     </div>
 
   </div>
-</section>
 
-<!-- ═══════ SIXTEEN · VISIONS ═══════ -->
-<section id="sixteen">
-  <div class="section-intro">
-    <div class="section-num">16</div>
-    <h2 class="section-title">
-      Sixteen Visions
-      <span class="cn">十 六 愿 景</span>
-    </h2>
-    <div class="section-stamp">§ 16ⱽ · Four axes × four each</div>
+  <!-- Part B · The Axes (16 Visions) -->
+  <div class="subsection-head">
+    <div class="sub-letter">B</div>
+    <div class="sub-title-block">
+      <div class="sub-title">
+        The Four Axes of Vision
+        <span class="cn">四 轴 · 十 六 愿 景</span>
+      </div>
+      <div class="sub-desc">
+        Four dimensions of purpose — Truth-Seeking, Benevolence, Beauty-Creation, World Utility — each expressed through four specific visions. What to achieve.
+      </div>
+    </div>
   </div>
+
   <div class="sixteen-intro">
     <div class="sixteen-head">
       <div class="axis">Axis 1</div>
