@@ -57,40 +57,67 @@ body {
 .topbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 18px 44px;
-  background: rgba(10, 9, 8, 0.72);
+  padding: 14px 28px;
+  gap: 20px;
+  background: rgba(10, 9, 8, 0.82);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
 .brand {
-  display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: 10px;
   font-family: var(--display); font-weight: 300;
   font-style: italic;
-  font-size: 20px;
+  font-size: 17px;
   letter-spacing: 0.02em;
   color: var(--gold);
+  flex-shrink: 0;
 }
 .brand .mark {
-  width: 26px; height: 26px; border-radius: 50%;
+  width: 22px; height: 22px; border-radius: 50%;
   border: 1px solid var(--gold);
   display: inline-flex; align-items: center; justify-content: center;
   font-family: var(--mono); font-size: 10px; font-style: normal;
   color: var(--gold);
+  flex-shrink: 0;
 }
 .brand .cn { font-family: var(--cjk); font-weight: 400; font-style: normal;
-             color: var(--ivory-dim); letter-spacing: 0.2em; font-size: 14px; }
-.top-nav {
-  display: flex; gap: 4px;
-  font-family: var(--mono); font-size: 11px;
-  letter-spacing: 0.15em;
+             color: var(--ivory-dim); letter-spacing: 0.2em; font-size: 12px; }
+@media (max-width: 1400px) {
+  .brand .cn { display: none; }
 }
+.top-nav {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-end;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+}
+.top-nav::-webkit-scrollbar { display: none; }
 .top-nav a {
   color: var(--ivory-dim); text-decoration: none;
-  padding: 6px 10px;
-  transition: color 0.2s;
+  padding: 6px 8px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
 }
-.top-nav a:hover { color: var(--gold); }
-.top-nav .n { color: var(--gold-deep); }
+.top-nav a:hover { color: var(--gold); background: rgba(201, 162, 75, 0.06); }
+.top-nav .n {
+  color: var(--gold);
+  font-weight: 500;
+  min-width: 14px;
+  text-align: right;
+  letter-spacing: 0;
+}
 
 /* ═══════ SECTION BASE ═══════ */
 section {
