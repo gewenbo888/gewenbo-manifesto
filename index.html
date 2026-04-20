@@ -983,6 +983,108 @@ section {
   color: #a090b8;
 }
 
+/* ═══════ TWELVE PURPOSES ═══════ */
+.matrix12 {
+  display: grid;
+  grid-template-columns: 200px repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.m12-corner, .m12-col-head, .m12-row-head, .m12-cell {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 24px;
+}
+.m12-corner {
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-style: italic;
+  font-size: 13px; color: var(--ivory-faint);
+}
+.m12-col-head {
+  background: var(--bg-2);
+  text-align: center;
+}
+.m12-col-head .col-num {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 6px;
+}
+.m12-col-head .col-en {
+  font-family: var(--display); font-size: 18px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory-dim);
+  letter-spacing: 0.02em;
+}
+
+.m12-row-head {
+  background: var(--bg-2);
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+}
+.m12-row-head .lvl-num {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--level-accent, var(--gold));
+  margin-bottom: 4px;
+}
+.m12-row-head .lvl-en {
+  font-family: var(--display); font-size: 26px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.m12-row-head .lvl-cn {
+  font-family: var(--cjk); font-size: 15px;
+  font-weight: 500;
+  color: var(--level-accent, var(--gold));
+  margin-top: 6px;
+  letter-spacing: 0.25em;
+}
+
+.matrix12 .tier-row[data-level="nation"]     { --level-accent: var(--rouge); }
+.matrix12 .tier-row[data-level="society"]    { --level-accent: var(--gold-bright); }
+.matrix12 .tier-row[data-level="enterprise"] { --level-accent: var(--jade); }
+.matrix12 .tier-row[data-level="individual"] { --level-accent: #6fa5c7; }
+
+.m12-cell {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  min-height: 150px;
+  position: relative;
+  transition: background 0.3s;
+}
+.m12-cell:hover {
+  background: rgba(201, 162, 75, 0.05);
+}
+.m12-cell .p-ch {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 38px; color: var(--level-accent, var(--gold));
+  line-height: 1;
+  letter-spacing: 0.1em;
+}
+.m12-cell .p-en {
+  font-family: var(--display); font-size: 18px;
+  font-style: italic;
+  color: var(--ivory);
+  margin-top: 12px;
+  letter-spacing: -0.01em;
+}
+.m12-cell .p-idx {
+  position: absolute; top: 14px; right: 16px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.2em; color: var(--ivory-faint);
+}
+
+/* The matrix is a "contents" table — we need row accents.
+   Since grid doesn't support row-based pseudo-classes cleanly,
+   we apply data-level to each cell/header via HTML. */
+
 /* ═══════ THIRTEEN NAVIGATION ═══════ */
 .nav13-wrap {
   display: flex; flex-direction: column; gap: 48px;
@@ -1569,6 +1671,13 @@ footer a:hover { color: var(--gold); }
   .seven-step { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
   .seven-step::before { left: -24px; top: 38px; }
   .seven-step .step-num { left: -52px; top: 28px; font-size: 9px; }
+  .matrix12 { grid-template-columns: 110px repeat(3, 1fr); }
+  .m12-corner, .m12-col-head, .m12-row-head, .m12-cell { padding: 16px 10px; }
+  .m12-row-head .lvl-en { font-size: 18px; }
+  .m12-row-head .lvl-cn { font-size: 12px; letter-spacing: 0.15em; }
+  .m12-cell { min-height: 110px; }
+  .m12-cell .p-ch { font-size: 26px; }
+  .m12-cell .p-en { font-size: 13px; }
   .agi-row { grid-template-columns: 60px 1fr; gap: 12px; padding: 14px 0; }
   .agi-row .a-method, .agi-row .a-desc { grid-column: 1 / -1; padding-left: 0; }
   .agi-row .a-object { font-size: 17px; }
@@ -1630,6 +1739,7 @@ footer a:hover { color: var(--gold); }
     <a href="#matrix"><span class="n">9</span> Matrix</a>
     <a href="#breakthroughs"><span class="n">10</span> Breakthroughs</a>
     <a href="#agi"><span class="n">11</span> AGI</a>
+    <a href="#purposes"><span class="n">12</span> Purposes</a>
     <a href="#navigation"><span class="n">13</span> Navigation</a>
     <a href="#cultures"><span class="n">14</span> Cultures</a>
     <a href="#beliefs"><span class="n">15</span> Beliefs</a>
@@ -1670,6 +1780,7 @@ footer a:hover { color: var(--gold); }
     <div><span>9</span> · Matrix</div>
     <div><span>10</span> · Breakthroughs</div>
     <div><span>11</span> · AGI Paths</div>
+    <div><span>12</span> · Purposes</div>
     <div><span>13</span> · Navigation</div>
     <div><span>14</span> · Cultures</div>
     <div><span>15</span> · Beliefs</div>
@@ -2510,6 +2621,124 @@ footer a:hover { color: var(--gold); }
         <div class="a-method">missing<span class="cn">尚 未 实 现</span></div>
         <div class="a-desc">Emotion-controlled thinking and behaviour — no paradigm today captures this.</div>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ TWELVE · PURPOSES ═══════ -->
+<section id="purposes">
+  <div class="section-intro">
+    <div class="section-num">12</div>
+    <h2 class="section-title">
+      Twelve Organizational Purposes
+      <span class="cn">十 二 组 织 宗 旨</span>
+    </h2>
+    <div class="section-stamp">§ 12 · 4 Scales × 3 Purposes</div>
+  </div>
+
+  <div class="matrix12">
+    <!-- Header row -->
+    <div class="m12-corner">Scale ⇣ · Purpose ⇢</div>
+    <div class="m12-col-head">
+      <div class="col-num">Purpose 01</div>
+      <div class="col-en">Purpose 1</div>
+    </div>
+    <div class="m12-col-head">
+      <div class="col-num">Purpose 02</div>
+      <div class="col-en">Purpose 2</div>
+    </div>
+    <div class="m12-col-head">
+      <div class="col-num">Purpose 03</div>
+      <div class="col-en">Purpose 3</div>
+    </div>
+
+    <!-- Nation -->
+    <div class="m12-row-head" style="--level-accent: #b14d42;">
+      <div class="lvl-num">12 · Ⅰ</div>
+      <div class="lvl-en">Nation</div>
+      <div class="lvl-cn">国 家</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #b14d42;">
+      <div class="p-idx">12 · 01</div>
+      <div class="p-ch">民 主</div>
+      <div class="p-en">Democracy</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #b14d42;">
+      <div class="p-idx">12 · 02</div>
+      <div class="p-ch">法 治</div>
+      <div class="p-en">Rule of Law</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #b14d42;">
+      <div class="p-idx">12 · 03</div>
+      <div class="p-ch">人 权</div>
+      <div class="p-en">Human Rights</div>
+    </div>
+
+    <!-- Society -->
+    <div class="m12-row-head" style="--level-accent: #e6c071;">
+      <div class="lvl-num">12 · Ⅱ</div>
+      <div class="lvl-en">Society</div>
+      <div class="lvl-cn">社 会</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #e6c071;">
+      <div class="p-idx">12 · 04</div>
+      <div class="p-ch">自 由</div>
+      <div class="p-en">Freedom</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #e6c071;">
+      <div class="p-idx">12 · 05</div>
+      <div class="p-ch">平 等</div>
+      <div class="p-en">Equality</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #e6c071;">
+      <div class="p-idx">12 · 06</div>
+      <div class="p-ch">博 爱</div>
+      <div class="p-en">Fraternity</div>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="m12-row-head" style="--level-accent: #5a8f73;">
+      <div class="lvl-num">12 · Ⅲ</div>
+      <div class="lvl-en">Enterprise</div>
+      <div class="lvl-cn">企 业</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #5a8f73;">
+      <div class="p-idx">12 · 07</div>
+      <div class="p-ch">产 品</div>
+      <div class="p-en">Product</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #5a8f73;">
+      <div class="p-idx">12 · 08</div>
+      <div class="p-ch">需 求</div>
+      <div class="p-en">Demand</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #5a8f73;">
+      <div class="p-idx">12 · 09</div>
+      <div class="p-ch">趋 势</div>
+      <div class="p-en">Trend</div>
+    </div>
+
+    <!-- Individual -->
+    <div class="m12-row-head" style="--level-accent: #6fa5c7;">
+      <div class="lvl-num">12 · Ⅳ</div>
+      <div class="lvl-en">Individual</div>
+      <div class="lvl-cn">个 人</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #6fa5c7;">
+      <div class="p-idx">12 · 10</div>
+      <div class="p-ch">财 富</div>
+      <div class="p-en">Wealth</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #6fa5c7;">
+      <div class="p-idx">12 · 11</div>
+      <div class="p-ch">健 康</div>
+      <div class="p-en">Health</div>
+    </div>
+    <div class="m12-cell" style="--level-accent: #6fa5c7;">
+      <div class="p-idx">12 · 12</div>
+      <div class="p-ch">幸 福</div>
+      <div class="p-en">Happiness</div>
     </div>
 
   </div>
