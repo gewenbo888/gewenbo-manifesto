@@ -757,6 +757,94 @@ section {
   letter-spacing: 0.2em; color: var(--ivory-faint);
 }
 
+/* ═══════ FOURTEEN CULTURES ═══════ */
+.culture-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.culture-card {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 36px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: center;
+  min-height: 170px;
+  position: relative;
+  transition: background 0.3s;
+  overflow: hidden;
+}
+.culture-card:hover { background: rgba(201, 162, 75, 0.04); }
+.culture-card::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--culture-accent, var(--gold));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s ease;
+}
+.culture-card:hover::before { transform: scaleY(1); }
+
+.culture-card .c-num {
+  position: absolute; top: 18px; right: 22px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--ivory-faint);
+}
+.culture-card .c-country-en {
+  font-family: var(--display); font-size: 26px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); letter-spacing: -0.01em;
+  line-height: 1;
+}
+.culture-card .c-country-cn {
+  font-family: var(--cjk); font-size: 15px;
+  font-weight: 500; color: var(--culture-accent, var(--gold));
+  margin-top: 6px;
+  letter-spacing: 0.2em;
+}
+.culture-card .c-divider {
+  color: var(--culture-accent, var(--gold));
+  font-family: var(--mono); font-size: 14px;
+  margin-top: 10px;
+}
+.culture-card .c-concept {
+  font-family: var(--display); font-size: 30px;
+  font-weight: 500; font-style: italic;
+  color: var(--culture-accent, var(--gold-bright));
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.culture-card .c-concept-small {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ivory-faint);
+  margin-top: 8px;
+}
+.culture-card .c-gloss {
+  font-family: var(--serif); font-size: 14px;
+  font-style: italic; color: var(--ivory-dim);
+  margin-top: 12px; line-height: 1.5;
+}
+.culture-card .c-gloss-cn {
+  font-family: var(--cjk); font-size: 12px;
+  color: var(--gold-deep); margin-top: 4px;
+  letter-spacing: 0.15em;
+}
+
+.culture-card[data-region="south-asia"] { --culture-accent: #d66b4a; }
+.culture-card[data-region="nordic"]     { --culture-accent: #6fa5c7; }
+.culture-card[data-region="diaspora"]   { --culture-accent: #c9a24b; }
+.culture-card[data-region="east-asia"]  { --culture-accent: #b14d42; }
+.culture-card[data-region="americas"]   { --culture-accent: #5a7a9e; }
+.culture-card[data-region="w-europe"]   { --culture-accent: #5a8f73; }
+.culture-card[data-region="africa"]     { --culture-accent: #a8855a; }
+
 /* ═══════ FIFTEEN BELIEFS ═══════ */
 .beliefs-grid {
   display: grid;
@@ -1108,6 +1196,9 @@ footer a:hover { color: var(--gold); }
   .seven-step { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
   .seven-step::before { left: -24px; top: 38px; }
   .seven-step .step-num { left: -52px; top: 28px; font-size: 9px; }
+  .culture-grid { grid-template-columns: 1fr; }
+  .culture-card { grid-template-columns: 1fr; gap: 12px; padding: 22px 24px; min-height: 140px; }
+  .culture-card .c-concept { font-size: 24px; }
   .beliefs-grid { grid-template-columns: repeat(2, 1fr); }
   .belief-card { padding: 28px 22px; min-height: 240px; }
   .belief-card .belief-glyph { font-size: 64px; }
@@ -1152,6 +1243,7 @@ footer a:hover { color: var(--gold); }
     <a href="#seven"><span class="n">7</span> Path</a>
     <a href="#hubs"><span class="n">8</span> Hubs</a>
     <a href="#matrix"><span class="n">9</span> Matrix</a>
+    <a href="#cultures"><span class="n">14</span> Cultures</a>
     <a href="#beliefs"><span class="n">15</span> Beliefs</a>
     <a href="#fourteen"><span class="n">16·L</span> Levels</a>
     <a href="#sixteen"><span class="n">16·V</span> Visions</a>
@@ -1188,6 +1280,7 @@ footer a:hover { color: var(--gold); }
     <div><span>7</span> · Path</div>
     <div><span>8</span> · Hubs</div>
     <div><span>9</span> · Matrix</div>
+    <div><span>14</span> · Cultures</div>
     <div><span>15</span> · Beliefs</div>
     <div><span>16</span> · Levels</div>
     <div><span>16</span> · Visions</div>
@@ -1759,6 +1852,231 @@ footer a:hover { color: var(--gold); }
   </div>
 </section>
 
+<!-- ═══════ FOURTEEN · CULTURES ═══════ -->
+<section id="cultures">
+  <div class="section-intro">
+    <div class="section-num">14</div>
+    <h2 class="section-title">
+      Fourteen Cultural Concepts
+      <span class="cn">十 四 文 化 观</span>
+    </h2>
+    <div class="section-stamp">§ 14 · The Untranslatables</div>
+  </div>
+  <div class="culture-grid">
+
+    <div class="culture-card" data-region="south-asia">
+      <div class="c-num">14 · 01</div>
+      <div>
+        <div class="c-country-en">India</div>
+        <div class="c-country-cn">印 度</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Jugaad</div>
+        <div class="c-concept-small">HI · जुगाड़</div>
+        <div class="c-gloss">Frugal, inventive workaround.</div>
+        <div class="c-gloss-cn">巧 · 权变 · 因陋就简</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="nordic">
+      <div class="c-num">14 · 02</div>
+      <div>
+        <div class="c-country-en">Finland</div>
+        <div class="c-country-cn">芬 兰</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Jante</div>
+        <div class="c-concept-small">FI · Janteloven</div>
+        <div class="c-gloss">Don't think you're anything special.</div>
+        <div class="c-gloss-cn">均 等 · 谦 抑</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="nordic">
+      <div class="c-num">14 · 03</div>
+      <div>
+        <div class="c-country-en">Denmark</div>
+        <div class="c-country-cn">丹 麦</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Hygge</div>
+        <div class="c-concept-small">DK · /ˈhuː.ɡə/</div>
+        <div class="c-gloss">Cosy, convivial contentment.</div>
+        <div class="c-gloss-cn">舒 适 · 温 馨</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="nordic">
+      <div class="c-num">14 · 04</div>
+      <div>
+        <div class="c-country-en">Sweden</div>
+        <div class="c-country-cn">瑞 典</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Lagom</div>
+        <div class="c-concept-small">SE · /ˈlɑː.ɡɔm/</div>
+        <div class="c-gloss">Just the right amount, neither more nor less.</div>
+        <div class="c-gloss-cn">适 度 · 恰 好</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="diaspora">
+      <div class="c-num">14 · 05</div>
+      <div>
+        <div class="c-country-en">Jewish</div>
+        <div class="c-country-cn">犹 太</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Chutzpah</div>
+        <div class="c-concept-small">YI · חוצפה</div>
+        <div class="c-gloss">Brazen audacity; nerve past propriety.</div>
+        <div class="c-gloss-cn">胆 识 · 放 胆</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="east-asia">
+      <div class="c-num">14 · 06</div>
+      <div>
+        <div class="c-country-en">China</div>
+        <div class="c-country-cn">中 国</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">和 · Hé</div>
+        <div class="c-concept-small">CN · harmony</div>
+        <div class="c-gloss">Harmony — the many gathered into one.</div>
+        <div class="c-gloss-cn">和 · 和 谐</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="east-asia">
+      <div class="c-num">14 · 07</div>
+      <div>
+        <div class="c-country-en">Japan</div>
+        <div class="c-country-cn">日 本</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Wa · 和</div>
+        <div class="c-concept-small">JP · わ</div>
+        <div class="c-gloss">Social harmony as the highest good.</div>
+        <div class="c-gloss-cn">和 · 同 心</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="east-asia">
+      <div class="c-num">14 · 08</div>
+      <div>
+        <div class="c-country-en">South Korea</div>
+        <div class="c-country-cn">韩 国</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Jeong · 정</div>
+        <div class="c-concept-small">KR · 情</div>
+        <div class="c-gloss">Deep, accumulated affection beyond words.</div>
+        <div class="c-gloss-cn">情 · 情 义</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="americas">
+      <div class="c-num">14 · 09</div>
+      <div>
+        <div class="c-country-en">United States</div>
+        <div class="c-country-cn">美 国</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Freedom</div>
+        <div class="c-concept-small">US · liberty</div>
+        <div class="c-gloss">Personal liberty as founding myth.</div>
+        <div class="c-gloss-cn">自 由</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="w-europe">
+      <div class="c-num">14 · 10</div>
+      <div>
+        <div class="c-country-en">United Kingdom</div>
+        <div class="c-country-cn">英 国</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Stiff upper lip</div>
+        <div class="c-concept-small">UK · stoicism</div>
+        <div class="c-gloss">Composure under duress; no fuss.</div>
+        <div class="c-gloss-cn">沉 着 · 坚 忍</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="w-europe">
+      <div class="c-num">14 · 11</div>
+      <div>
+        <div class="c-country-en">France</div>
+        <div class="c-country-cn">法 国</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Joie de vivre</div>
+        <div class="c-concept-small">FR · /ʒwa.də.vivʁ/</div>
+        <div class="c-gloss">The joy of simply being alive.</div>
+        <div class="c-gloss-cn">生 活 之 乐</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="w-europe">
+      <div class="c-num">14 · 12</div>
+      <div>
+        <div class="c-country-en">Germany</div>
+        <div class="c-country-cn">德 国</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Ordnung</div>
+        <div class="c-concept-small">DE · /ˈɔʁdnʊŋ/</div>
+        <div class="c-gloss">Order — everything in its place.</div>
+        <div class="c-gloss-cn">秩 序</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="w-europe">
+      <div class="c-num">14 · 13</div>
+      <div>
+        <div class="c-country-en">Italy</div>
+        <div class="c-country-cn">意 大 利</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Dolce Vita</div>
+        <div class="c-concept-small">IT · /ˈdoltʃe ˈvita/</div>
+        <div class="c-gloss">The sweet, unhurried life.</div>
+        <div class="c-gloss-cn">甜 蜜 生 活</div>
+      </div>
+    </div>
+
+    <div class="culture-card" data-region="africa">
+      <div class="c-num">14 · 14</div>
+      <div>
+        <div class="c-country-en">Africa</div>
+        <div class="c-country-cn">非 洲</div>
+        <div class="c-divider">→</div>
+      </div>
+      <div>
+        <div class="c-concept">Ubuntu</div>
+        <div class="c-concept-small">NGUNI · humanity</div>
+        <div class="c-gloss">I am because we are.</div>
+        <div class="c-gloss-cn">人 之 为 人 · 众 我</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ═══════ FIFTEEN · BELIEFS ═══════ -->
 <section id="beliefs">
   <div class="section-intro">
@@ -1858,7 +2176,7 @@ footer a:hover { color: var(--gold); }
       <div class="belief-glyph">∞</div>
       <div class="belief-name">Marvel<div class="belief-name-cn">漫 威</div></div>
       <div class="belief-arrow">→ supreme</div>
-      <div class="belief-deity">One Above All<div class="belief-deity-cn">至 高 无 上</div></div>
+      <div class="belief-deity">One Above All <span style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--gold-deep);">(OAA)</span><div class="belief-deity-cn">至 高 无 上</div></div>
     </div>
 
     <div class="belief-card" data-kind="primal">
