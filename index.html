@@ -87,36 +87,62 @@ body {
 }
 .top-nav {
   display: flex;
-  gap: 0;
-  flex: 1;
-  min-width: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  justify-content: flex-end;
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.1em;
-  scrollbar-width: none;
-  mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-}
-.top-nav::-webkit-scrollbar { display: none; }
-.top-nav a {
-  color: var(--ivory-dim); text-decoration: none;
-  padding: 6px 8px;
-  transition: color 0.2s, background 0.2s;
-  white-space: nowrap;
+  flex-wrap: nowrap;
+  gap: 3px;
+  align-items: center;
   flex-shrink: 0;
-  border-radius: 3px;
-  display: inline-flex;
-  align-items: baseline;
-  gap: 5px;
 }
-.top-nav a:hover { color: var(--gold); background: rgba(201, 162, 75, 0.06); }
-.top-nav .n {
+.top-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  min-width: 28px; height: 28px;
+  padding: 0 6px;
+  color: var(--ivory-dim);
+  text-decoration: none;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.top-nav a:hover {
   color: var(--gold);
+  border-color: var(--line);
+  background: rgba(201, 162, 75, 0.06);
+}
+.top-nav .n {
+  font-family: var(--display);
+  font-style: italic;
   font-weight: 500;
-  min-width: 14px;
-  text-align: right;
+  font-size: 13px;
+  color: var(--gold);
   letter-spacing: 0;
+  line-height: 1;
+}
+.top-nav a::after {
+  content: attr(data-label);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  padding: 4px 9px;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  color: var(--gold-bright);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 60;
+}
+.top-nav a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ═══════ SECTION BASE ═══════ */
@@ -1718,8 +1744,11 @@ footer a:hover { color: var(--gold); }
 /* ═══════ RESPONSIVE ═══════ */
 @media (max-width: 1000px) {
   section { padding: 80px 24px; }
-  .topbar { padding: 14px 20px; }
-  .top-nav { display: none; }
+  .topbar { padding: 12px 16px; gap: 12px; }
+  .top-nav { gap: 2px; }
+  .top-nav a { min-width: 24px; height: 24px; padding: 0 4px; border-radius: 12px; }
+  .top-nav .n { font-size: 11px; }
+  .top-nav a::after { display: none; }
   .section-intro { grid-template-columns: auto 1fr; gap: 24px; margin-bottom: 48px; }
   .section-num { font-size: 80px; }
   .section-stamp { display: none; }
@@ -1799,23 +1828,23 @@ footer a:hover { color: var(--gold); }
     <span class="cn">一 使 命</span>
   </div>
   <nav class="top-nav">
-    <a href="#one"><span class="n">1</span> Mission</a>
-    <a href="#two"><span class="n">2</span> Identity</a>
-    <a href="#three"><span class="n">3</span> Principles</a>
-    <a href="#four"><span class="n">4</span> Integrations</a>
-    <a href="#five"><span class="n">5</span> Elements</a>
-    <a href="#six"><span class="n">6</span> Domains</a>
-    <a href="#seven"><span class="n">7</span> Path</a>
-    <a href="#hubs"><span class="n">8</span> Hubs</a>
-    <a href="#matrix"><span class="n">9</span> Matrix</a>
-    <a href="#breakthroughs"><span class="n">10</span> Breakthroughs</a>
-    <a href="#agi"><span class="n">11</span> AGI</a>
-    <a href="#purposes"><span class="n">12</span> Purposes</a>
-    <a href="#navigation"><span class="n">13</span> Navigation</a>
-    <a href="#cultures"><span class="n">14</span> Cultures</a>
-    <a href="#beliefs"><span class="n">15</span> Beliefs</a>
-    <a href="#fourteen"><span class="n">16·L</span> Levels</a>
-    <a href="#sixteen"><span class="n">16·V</span> Visions</a>
+    <a href="#one" data-label="Mission"><span class="n">1</span></a>
+    <a href="#two" data-label="Identities"><span class="n">2</span></a>
+    <a href="#three" data-label="Principles"><span class="n">3</span></a>
+    <a href="#four" data-label="Integrations"><span class="n">4</span></a>
+    <a href="#five" data-label="Elements"><span class="n">5</span></a>
+    <a href="#six" data-label="Domains"><span class="n">6</span></a>
+    <a href="#seven" data-label="Path"><span class="n">7</span></a>
+    <a href="#hubs" data-label="Hubs"><span class="n">8</span></a>
+    <a href="#matrix" data-label="Matrix"><span class="n">9</span></a>
+    <a href="#breakthroughs" data-label="Breakthroughs"><span class="n">10</span></a>
+    <a href="#agi" data-label="AGI Paths"><span class="n">11</span></a>
+    <a href="#purposes" data-label="Purposes"><span class="n">12</span></a>
+    <a href="#navigation" data-label="Navigation"><span class="n">13</span></a>
+    <a href="#cultures" data-label="Cultures"><span class="n">14</span></a>
+    <a href="#beliefs" data-label="Beliefs"><span class="n">15</span></a>
+    <a href="#fourteen" data-label="Levels"><span class="n">16ᴸ</span></a>
+    <a href="#sixteen" data-label="Visions"><span class="n">16ⱽ</span></a>
   </nav>
 </header>
 
