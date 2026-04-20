@@ -858,6 +858,131 @@ section {
 .bt-cell[data-level="5"] { background: rgba(214, 107, 74, 0.04); }
 .bt-cell[data-level="5"]:hover { background: rgba(214, 107, 74, 0.08); }
 
+/* ═══════ ELEVEN · AGI PATHS ═══════ */
+.agi-wrap {
+  display: flex; flex-direction: column; gap: 48px;
+}
+.agi-domain {
+  position: relative;
+}
+.agi-domain-head {
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 24px; align-items: baseline;
+  padding: 14px 0;
+  border-top: 1px solid var(--domain-accent, var(--gold));
+  border-bottom: 1px dashed var(--line-soft);
+  margin-bottom: 2px;
+}
+.agi-domain[data-domain="1"] { --domain-accent: #c9c4b8; }
+.agi-domain[data-domain="2"] { --domain-accent: var(--gold-bright); }
+.agi-domain[data-domain="3"] { --domain-accent: var(--jade); }
+.agi-domain[data-domain="4"] { --domain-accent: var(--rouge); }
+.agi-domain[data-domain="5"] { --domain-accent: #9e7ac2; }
+
+.agi-domain-head .dom-num {
+  font-family: var(--display); font-size: 36px;
+  font-weight: 300; font-style: italic;
+  color: var(--domain-accent); line-height: 1;
+  letter-spacing: -0.02em;
+}
+.agi-domain-head .dom-name {
+  font-family: var(--display); font-size: 22px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); line-height: 1.05;
+}
+.agi-domain-head .dom-name .cn {
+  display: block; font-family: var(--cjk); font-style: normal;
+  font-weight: 500; font-size: 14px;
+  color: var(--domain-accent); margin-top: 4px;
+  letter-spacing: 0.2em;
+}
+.agi-domain-head .dom-count {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+
+.agi-row {
+  display: grid;
+  grid-template-columns: 80px 1.2fr 1.4fr 1.6fr;
+  gap: 28px;
+  padding: 20px 4px;
+  border-bottom: 1px solid var(--line-soft);
+  align-items: baseline;
+  transition: padding-left 0.3s, background 0.3s;
+}
+.agi-row:hover {
+  padding-left: 12px;
+  background: rgba(201, 162, 75, 0.03);
+}
+.agi-row .a-num {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--domain-accent, var(--gold));
+  padding-top: 4px;
+}
+.agi-row .a-object {
+  font-family: var(--display); font-size: 20px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); line-height: 1.2;
+}
+.agi-row .a-object .cn {
+  display: block;
+  font-family: var(--cjk); font-weight: 500; font-style: normal;
+  font-size: 13px;
+  color: var(--domain-accent, var(--gold));
+  margin-top: 4px;
+  letter-spacing: 0.18em;
+}
+.agi-row .a-method {
+  font-family: var(--display); font-size: 18px;
+  font-weight: 500; font-style: italic;
+  color: var(--gold-bright);
+  line-height: 1.3;
+}
+.agi-row .a-method .cn {
+  display: block;
+  font-family: var(--cjk); font-weight: 500; font-style: normal;
+  font-size: 12px;
+  color: var(--ivory-dim);
+  margin-top: 4px;
+  letter-spacing: 0.15em;
+}
+.agi-row .a-desc {
+  font-family: var(--serif); font-size: 14px;
+  font-style: italic;
+  color: var(--ivory-dim); line-height: 1.5;
+}
+
+.agi-row.missing {
+  background: rgba(158, 122, 194, 0.06);
+}
+.agi-row.missing .a-method {
+  font-style: normal;
+  font-family: var(--mono); font-size: 13px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: #c9a7e4;
+  padding: 8px 14px;
+  border: 1px dashed #9e7ac2;
+  display: inline-block;
+  max-width: fit-content;
+}
+.agi-row.missing .a-method::before {
+  content: "⟨ ";
+}
+.agi-row.missing .a-method::after {
+  content: " ⟩";
+}
+.agi-row.missing .a-method .cn {
+  display: block;
+  font-family: var(--cjk); font-size: 11px;
+  color: #9e7ac2; margin-top: 6px;
+  text-transform: none; letter-spacing: 0.25em;
+}
+.agi-row.missing .a-desc {
+  color: #a090b8;
+}
+
 /* ═══════ THIRTEEN NAVIGATION ═══════ */
 .nav13-wrap {
   display: flex; flex-direction: column; gap: 48px;
@@ -1444,6 +1569,11 @@ footer a:hover { color: var(--gold); }
   .seven-step { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
   .seven-step::before { left: -24px; top: 38px; }
   .seven-step .step-num { left: -52px; top: 28px; font-size: 9px; }
+  .agi-row { grid-template-columns: 60px 1fr; gap: 12px; padding: 14px 0; }
+  .agi-row .a-method, .agi-row .a-desc { grid-column: 1 / -1; padding-left: 0; }
+  .agi-row .a-object { font-size: 17px; }
+  .agi-domain-head { grid-template-columns: auto 1fr; gap: 16px; }
+  .agi-domain-head .dom-count { grid-column: 1 / -1; font-size: 9px; }
   .nav13-phase { padding-left: 28px; }
   .nav13-phase-head { grid-template-columns: auto 1fr; gap: 16px; }
   .nav13-phase-head .ph-range { grid-column: 1 / -1; font-size: 9px; }
@@ -1499,6 +1629,7 @@ footer a:hover { color: var(--gold); }
     <a href="#hubs"><span class="n">8</span> Hubs</a>
     <a href="#matrix"><span class="n">9</span> Matrix</a>
     <a href="#breakthroughs"><span class="n">10</span> Breakthroughs</a>
+    <a href="#agi"><span class="n">11</span> AGI</a>
     <a href="#navigation"><span class="n">13</span> Navigation</a>
     <a href="#cultures"><span class="n">14</span> Cultures</a>
     <a href="#beliefs"><span class="n">15</span> Beliefs</a>
@@ -1538,6 +1669,7 @@ footer a:hover { color: var(--gold); }
     <div><span>8</span> · Hubs</div>
     <div><span>9</span> · Matrix</div>
     <div><span>10</span> · Breakthroughs</div>
+    <div><span>11</span> · AGI Paths</div>
     <div><span>13</span> · Navigation</div>
     <div><span>14</span> · Cultures</div>
     <div><span>15</span> · Beliefs</div>
@@ -2253,6 +2385,133 @@ footer a:hover { color: var(--gold); }
       <div class="bt-cell" data-level="5">Curvature drive</div>
 
     </div>
+  </div>
+</section>
+
+<!-- ═══════ ELEVEN · AGI PATHS ═══════ -->
+<section id="agi">
+  <div class="section-intro">
+    <div class="section-num">11</div>
+    <h2 class="section-title">
+      Eleven Approaches to AGI
+      <span class="cn">十 一 种 通 往 A G I 之 路</span>
+    </h2>
+    <div class="section-stamp">§ 11 · 5 Domains · 2 Open Frontiers</div>
+  </div>
+
+  <div class="agi-wrap">
+
+    <!-- Domain 1 · Mathematics -->
+    <div class="agi-domain" data-domain="1">
+      <div class="agi-domain-head">
+        <div class="dom-num">Ⅰ</div>
+        <div class="dom-name">Mathematics<span class="cn">数 学</span></div>
+        <div class="dom-count">01 approach</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 01</div>
+        <div class="a-object">Fractal Geometry<span class="cn">分 形 几 何</span></div>
+        <div class="a-method">Fractal Generative Models<span class="cn">分 形 生 成 模 型</span></div>
+        <div class="a-desc">Pixel-by-pixel image generation from fractal self-similarity.</div>
+      </div>
+    </div>
+
+    <!-- Domain 2 · Physics -->
+    <div class="agi-domain" data-domain="2">
+      <div class="agi-domain-head">
+        <div class="dom-num">Ⅱ</div>
+        <div class="dom-name">Physics<span class="cn">物 理</span></div>
+        <div class="dom-count">01 approach</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 02</div>
+        <div class="a-object">Entropy Increase<span class="cn">熵 增</span></div>
+        <div class="a-method">Diffusion Models &amp; Boltzmann Machines<span class="cn">扩 散 模 型 · 玻 尔 兹 曼 机</span></div>
+        <div class="a-desc">Generating images by increasing system randomness, then denoising.</div>
+      </div>
+    </div>
+
+    <!-- Domain 3 · Biology -->
+    <div class="agi-domain" data-domain="3">
+      <div class="agi-domain-head">
+        <div class="dom-num">Ⅲ</div>
+        <div class="dom-name">Biology<span class="cn">生 物 学</span></div>
+        <div class="dom-count">01 approach</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 03</div>
+        <div class="a-object">Evolution<span class="cn">进 化</span></div>
+        <div class="a-method">Genetic Algorithms<span class="cn">遗 传 算 法</span></div>
+        <div class="a-desc">Optimisation through selection &amp; mutation — biology on metal.</div>
+      </div>
+    </div>
+
+    <!-- Domain 4 · Brain Structure -->
+    <div class="agi-domain" data-domain="4">
+      <div class="agi-domain-head">
+        <div class="dom-num">Ⅳ</div>
+        <div class="dom-name">Brain Structure<span class="cn">脑 结 构</span></div>
+        <div class="dom-count">01 approach</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 04</div>
+        <div class="a-object">Brain<span class="cn">大 脑</span></div>
+        <div class="a-method">Neural Networks<span class="cn">神 经 网 络</span></div>
+        <div class="a-desc">Imitation of biological neurons and their connectivity patterns.</div>
+      </div>
+    </div>
+
+    <!-- Domain 5 · Brain Thinking Methods -->
+    <div class="agi-domain" data-domain="5">
+      <div class="agi-domain-head">
+        <div class="dom-num">Ⅴ</div>
+        <div class="dom-name">Brain Thinking Methods<span class="cn">脑 思 维 方 法</span></div>
+        <div class="dom-count">07 approaches · 2 missing</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 05</div>
+        <div class="a-object">Empiricism — Historical Knowledge<span class="cn">经 验 主 义 · 历 史 知 识</span></div>
+        <div class="a-method">Pre-training · Fine-tuning · Distillation · CoT<span class="cn">预 训 练 · 微 调 · 蒸 馏 · 思 维 链</span></div>
+        <div class="a-desc">Learning limited rules from large volumes of data.</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 06</div>
+        <div class="a-object">Empiricism — Reward &amp; Punishment<span class="cn">经 验 主 义 · 奖 惩</span></div>
+        <div class="a-method">Reinforcement Learning<span class="cn">强 化 学 习</span></div>
+        <div class="a-desc">Modelling interaction with the real world through feedback loops.</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 07</div>
+        <div class="a-object">Rationalist Symbolic School<span class="cn">理 性 主 义 · 符 号 学 派</span></div>
+        <div class="a-method">Reasoning<span class="cn">推 理</span></div>
+        <div class="a-desc">Generating infinite language from a finite set of rules.</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 08</div>
+        <div class="a-object">Analogical School<span class="cn">类 比 学 派</span></div>
+        <div class="a-method">Transformer<span class="cn">变 换 器</span></div>
+        <div class="a-desc">Similarity computation across vectors — the current frontier.</div>
+      </div>
+      <div class="agi-row">
+        <div class="a-num">11 · 09</div>
+        <div class="a-object">Bayesian Method<span class="cn">贝 叶 斯 方 法</span></div>
+        <div class="a-method">Probabilistic Prediction<span class="cn">概 率 预 测</span></div>
+        <div class="a-desc">Updating probability estimates against observed data.</div>
+      </div>
+      <div class="agi-row missing">
+        <div class="a-num">11 · 10</div>
+        <div class="a-object">Einsteinian Thinking<span class="cn">爱 因 斯 坦 式 思 维</span></div>
+        <div class="a-method">missing<span class="cn">尚 未 实 现</span></div>
+        <div class="a-desc">Deducing complex theories through pure imagination — no paradigm today captures this.</div>
+      </div>
+      <div class="agi-row missing">
+        <div class="a-num">11 · 11</div>
+        <div class="a-object">Emotion<span class="cn">情 感</span></div>
+        <div class="a-method">missing<span class="cn">尚 未 实 现</span></div>
+        <div class="a-desc">Emotion-controlled thinking and behaviour — no paradigm today captures this.</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
