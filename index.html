@@ -590,6 +590,173 @@ section {
   border-top: 1px dashed var(--line-soft);
 }
 
+/* ═══════ EIGHT HUBS ═══════ */
+.hubs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.hub-card {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 300px;
+  position: relative;
+  transition: background 0.3s;
+  overflow: hidden;
+}
+.hub-card::after {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--hub-accent, var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.hub-card:hover { background: rgba(201, 162, 75, 0.04); }
+.hub-card:hover::after { transform: scaleX(1); }
+.hub-card[data-region="asia"]     { --hub-accent: #b14d42; }
+.hub-card[data-region="mena"]     { --hub-accent: #c9a24b; }
+.hub-card[data-region="europe"]   { --hub-accent: #5a8f73; }
+.hub-card[data-region="americas"] { --hub-accent: #5a7a9e; }
+
+.hub-num {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--hub-accent);
+  margin-bottom: auto;
+}
+.hub-coord-glyph {
+  position: absolute; top: 26px; right: 24px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.15em; color: var(--ivory-faint);
+}
+.hub-name-en {
+  font-family: var(--display); font-size: 36px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hub-name-cn {
+  font-family: var(--cjk); font-size: 22px;
+  font-weight: 500; letter-spacing: 0.2em;
+  color: var(--hub-accent);
+}
+.hub-sep {
+  width: 28px; height: 1px; background: var(--line);
+  margin: 8px 0;
+}
+.hub-role {
+  font-family: var(--display); font-size: 15px;
+  font-style: italic;
+  color: var(--ivory-dim);
+  line-height: 1.4;
+}
+.hub-region {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--hub-accent);
+  margin-top: 8px;
+}
+
+/* ═══════ NINE MATRIX ═══════ */
+.matrix9 {
+  display: grid;
+  grid-template-columns: 180px repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.matrix9-corner, .matrix9-col-head, .matrix9-row-head, .matrix9-cell {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 24px;
+}
+.matrix9-corner {
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-style: italic;
+  font-size: 13px; color: var(--ivory-faint);
+  letter-spacing: 0.1em;
+}
+.matrix9-col-head {
+  background: var(--bg-2);
+  text-align: center;
+}
+.matrix9-row-head {
+  background: var(--bg-2);
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: flex-start;
+}
+.matrix9-col-head .col-en {
+  font-family: var(--display); font-size: 22px;
+  font-weight: 400; font-style: italic;
+  color: var(--col-color, var(--gold));
+  line-height: 1;
+}
+.matrix9-col-head .col-cn {
+  font-family: var(--cjk); font-size: 15px;
+  font-weight: 500; color: var(--col-color, var(--gold));
+  margin-top: 8px; letter-spacing: 0.25em;
+}
+.matrix9-col-head[data-col="matter"]  { --col-color: #c9c4b8; }
+.matrix9-col-head[data-col="info"]    { --col-color: #5a8f73; }
+.matrix9-col-head[data-col="energy"]  { --col-color: #b14d42; }
+
+.matrix9-row-head .row-en {
+  font-family: var(--display); font-size: 22px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory);
+  line-height: 1;
+}
+.matrix9-row-head .row-cn {
+  font-family: var(--cjk); font-size: 15px;
+  font-weight: 500; color: var(--gold);
+  margin-top: 8px; letter-spacing: 0.25em;
+}
+.matrix9-row-head .row-tag {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ivory-faint);
+  margin-top: 14px;
+}
+
+.matrix9-cell {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 170px;
+  position: relative;
+  transition: background 0.3s;
+}
+.matrix9-cell:hover {
+  background: rgba(201, 162, 75, 0.05);
+}
+.matrix9-cell[data-col="matter"]  { --col-color: #c9c4b8; }
+.matrix9-cell[data-col="info"]    { --col-color: #5a8f73; }
+.matrix9-cell[data-col="energy"]  { --col-color: #b14d42; }
+.matrix9-cell .cell-ch {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 50px; color: var(--col-color);
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+.matrix9-cell .cell-en {
+  font-family: var(--display); font-size: 17px;
+  font-style: italic; color: var(--ivory);
+  margin-top: 12px;
+  letter-spacing: -0.01em;
+}
+.matrix9-cell .cell-idx {
+  position: absolute; top: 14px; right: 16px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.2em; color: var(--ivory-faint);
+}
+
 /* ═══════ FOURTEEN LEVELS ═══════ */
 .fourteen-wrap {
   display: flex; flex-direction: column; gap: 72px;
@@ -859,6 +1026,14 @@ footer a:hover { color: var(--gold); }
   .seven-step { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
   .seven-step::before { left: -24px; top: 38px; }
   .seven-step .step-num { left: -52px; top: 28px; font-size: 9px; }
+  .hubs-grid { grid-template-columns: repeat(2, 1fr); }
+  .matrix9 { grid-template-columns: 90px repeat(3, 1fr); }
+  .matrix9-corner, .matrix9-col-head, .matrix9-row-head, .matrix9-cell { padding: 16px 10px; }
+  .matrix9-col-head .col-en, .matrix9-row-head .row-en { font-size: 15px; }
+  .matrix9-col-head .col-cn, .matrix9-row-head .row-cn { font-size: 11px; letter-spacing: 0.15em; }
+  .matrix9-cell { min-height: 110px; }
+  .matrix9-cell .cell-ch { font-size: 34px; }
+  .matrix9-cell .cell-en { font-size: 12px; }
   .level-row { grid-template-columns: 60px 1fr; gap: 14px; }
   .level-row .lvl-tech, .level-row .lvl-code { grid-column: 2; text-align: left; }
   .level-row .lvl-code { color: var(--tier-accent); }
@@ -883,15 +1058,17 @@ footer a:hover { color: var(--gold); }
     <span class="cn">一 使 命</span>
   </div>
   <nav class="top-nav">
-    <a href="#one"><span class="n">Ⅰ</span> Mission</a>
-    <a href="#two"><span class="n">Ⅱ</span> Identity</a>
-    <a href="#three"><span class="n">Ⅲ</span> Principles</a>
-    <a href="#four"><span class="n">Ⅳ</span> Integrations</a>
-    <a href="#five"><span class="n">Ⅴ</span> Elements</a>
-    <a href="#six"><span class="n">Ⅵ</span> Domains</a>
-    <a href="#seven"><span class="n">Ⅶ</span> Path</a>
-    <a href="#fourteen"><span class="n">Ⅹ Ⅵ ᴸ</span> Levels</a>
-    <a href="#sixteen"><span class="n">Ⅹ Ⅵ ⱽ</span> Visions</a>
+    <a href="#one"><span class="n">1</span> Mission</a>
+    <a href="#two"><span class="n">2</span> Identity</a>
+    <a href="#three"><span class="n">3</span> Principles</a>
+    <a href="#four"><span class="n">4</span> Integrations</a>
+    <a href="#five"><span class="n">5</span> Elements</a>
+    <a href="#six"><span class="n">6</span> Domains</a>
+    <a href="#seven"><span class="n">7</span> Path</a>
+    <a href="#hubs"><span class="n">8</span> Hubs</a>
+    <a href="#matrix"><span class="n">9</span> Matrix</a>
+    <a href="#fourteen"><span class="n">16·L</span> Levels</a>
+    <a href="#sixteen"><span class="n">16·V</span> Visions</a>
   </nav>
 </header>
 
@@ -904,7 +1081,7 @@ footer a:hover { color: var(--gold); }
   <div class="hero-center">
     <div class="hero-monad" aria-hidden="true">
       <div class="hero-dot"></div>
-      <div class="hero-dot-label">Ⅰ · 一</div>
+      <div class="hero-dot-label">1 · 一</div>
     </div>
     <h1>
       One <em>Mission</em>
@@ -923,16 +1100,18 @@ footer a:hover { color: var(--gold); }
     <div><span>5</span> · Elements</div>
     <div><span>6</span> · Domains</div>
     <div><span>7</span> · Path</div>
+    <div><span>8</span> · Hubs</div>
+    <div><span>9</span> · Matrix</div>
     <div><span>16</span> · Levels</div>
     <div><span>16</span> · Visions</div>
   </div>
-  <div class="hero-scroll">Ⅱ ↓ 二</div>
+  <div class="hero-scroll">2 ↓ 二</div>
 </section>
 
 <!-- ═══════ TWO · IDENTITIES ═══════ -->
 <section id="two">
   <div class="section-intro">
-    <div class="section-num">Ⅱ</div>
+    <div class="section-num">02</div>
     <h2 class="section-title">
       Two Identities
       <span class="cn">二 重 身 份</span>
@@ -965,7 +1144,7 @@ footer a:hover { color: var(--gold); }
 <!-- ═══════ THREE · PRINCIPLES ═══════ -->
 <section id="three">
   <div class="section-intro">
-    <div class="section-num">Ⅲ</div>
+    <div class="section-num">03</div>
     <h2 class="section-title">
       Three Core Principles
       <span class="cn">三 大 原 则</span>
@@ -1029,7 +1208,7 @@ footer a:hover { color: var(--gold); }
 <!-- ═══════ FOUR · INTEGRATIONS ═══════ -->
 <section id="four">
   <div class="section-intro">
-    <div class="section-num">Ⅳ</div>
+    <div class="section-num">04</div>
     <h2 class="section-title">
       Four Integrations
       <span class="cn">四 大 融 合</span>
@@ -1038,7 +1217,7 @@ footer a:hover { color: var(--gold); }
   </div>
   <div class="four-grid">
     <div class="four-cell">
-      <div class="four-num">Ⅳ · 01</div>
+      <div class="four-num">04 · 01</div>
       <div>
         <div class="four-kind">Institutional</div>
         <div class="four-formula">Capitalism <span class="x">×</span> Socialism</div>
@@ -1050,7 +1229,7 @@ footer a:hover { color: var(--gold); }
       </p>
     </div>
     <div class="four-cell">
-      <div class="four-num">Ⅳ · 02</div>
+      <div class="four-num">04 · 02</div>
       <div>
         <div class="four-kind">Consciousness</div>
         <div class="four-formula">AI <span class="x">×</span> Human</div>
@@ -1062,7 +1241,7 @@ footer a:hover { color: var(--gold); }
       </p>
     </div>
     <div class="four-cell">
-      <div class="four-num">Ⅳ · 03</div>
+      <div class="four-num">04 · 03</div>
       <div>
         <div class="four-kind">Theoretical</div>
         <div class="four-formula">Quantum <span class="x">×</span> Relativity</div>
@@ -1074,7 +1253,7 @@ footer a:hover { color: var(--gold); }
       </p>
     </div>
     <div class="four-cell">
-      <div class="four-num">Ⅳ · 04</div>
+      <div class="four-num">04 · 04</div>
       <div>
         <div class="four-kind">World</div>
         <div class="four-formula">Digital <span class="x">×</span> Physical</div>
@@ -1091,7 +1270,7 @@ footer a:hover { color: var(--gold); }
 <!-- ═══════ FIVE · ELEMENTS ═══════ -->
 <section id="five">
   <div class="section-intro">
-    <div class="section-num">Ⅴ</div>
+    <div class="section-num">05</div>
     <h2 class="section-title">
       Five Archetypes
       <span class="cn">五 行 人 格</span>
@@ -1188,7 +1367,7 @@ footer a:hover { color: var(--gold); }
 <!-- ═══════ SIX · DOMAINS ═══════ -->
 <section id="six">
   <div class="section-intro">
-    <div class="section-num">Ⅵ</div>
+    <div class="section-num">06</div>
     <h2 class="section-title">
       Six Major Domains
       <span class="cn">六 大 领 域</span>
@@ -1198,37 +1377,37 @@ footer a:hover { color: var(--gold); }
   <div class="six-grid">
     <div class="six-cell">
       <div class="six-glyph">i</div>
-      <div class="six-num">Ⅵ · 01</div>
+      <div class="six-num">06 · 01</div>
       <div class="six-name-en">Matter</div>
       <div class="six-name-cn">物 质</div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">ii</div>
-      <div class="six-num">Ⅵ · 02</div>
+      <div class="six-num">06 · 02</div>
       <div class="six-name-en">Energy</div>
       <div class="six-name-cn">能 量</div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">iii</div>
-      <div class="six-num">Ⅵ · 03</div>
+      <div class="six-num">06 · 03</div>
       <div class="six-name-en">Information</div>
       <div class="six-name-cn">信 息</div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">iv</div>
-      <div class="six-num">Ⅵ · 04</div>
+      <div class="six-num">06 · 04</div>
       <div class="six-name-en">Biology</div>
       <div class="six-name-cn">生 命</div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">v</div>
-      <div class="six-num">Ⅵ · 05</div>
+      <div class="six-num">06 · 05</div>
       <div class="six-name-en">Consciousness</div>
       <div class="six-name-cn">意 识</div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">vi</div>
-      <div class="six-num">Ⅵ · 06</div>
+      <div class="six-num">06 · 06</div>
       <div class="six-name-en">Space-Time</div>
       <div class="six-name-cn">时 空</div>
     </div>
@@ -1238,7 +1417,7 @@ footer a:hover { color: var(--gold); }
 <!-- ═══════ SEVEN · PATH ═══════ -->
 <section id="seven">
   <div class="section-intro">
-    <div class="section-num">Ⅶ</div>
+    <div class="section-num">07</div>
     <h2 class="section-title">
       Seven-Step Path
       <span class="cn">七 步 之 道</span>
@@ -1247,7 +1426,7 @@ footer a:hover { color: var(--gold); }
   </div>
   <div class="seven-wrap">
     <div class="seven-step">
-      <div class="step-num">Ⅶ · 01</div>
+      <div class="step-num">07 · 01</div>
       <div>
         <div class="step-title-en">Anchor</div>
         <div class="step-title-cn">立 锚</div>
@@ -1258,7 +1437,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="seven-step">
-      <div class="step-num">Ⅶ · 02</div>
+      <div class="step-num">07 · 02</div>
       <div>
         <div class="step-title-en">Deepen</div>
         <div class="step-title-cn">深 耕</div>
@@ -1269,7 +1448,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="seven-step">
-      <div class="step-num">Ⅶ · 03</div>
+      <div class="step-num">07 · 03</div>
       <div>
         <div class="step-title-en">Breakthrough</div>
         <div class="step-title-cn">破 壁</div>
@@ -1280,7 +1459,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="seven-step">
-      <div class="step-num">Ⅶ · 04</div>
+      <div class="step-num">07 · 04</div>
       <div>
         <div class="step-title-en">Momentum</div>
         <div class="step-title-cn">势 成</div>
@@ -1291,7 +1470,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="seven-step">
-      <div class="step-num">Ⅶ · 05</div>
+      <div class="step-num">07 · 05</div>
       <div>
         <div class="step-title-en">Cross-Domain</div>
         <div class="step-title-cn">跨 界</div>
@@ -1302,7 +1481,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="seven-step">
-      <div class="step-num">Ⅶ · 06</div>
+      <div class="step-num">07 · 06</div>
       <div>
         <div class="step-title-en">Integration</div>
         <div class="step-title-cn">融 合</div>
@@ -1313,7 +1492,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="seven-step">
-      <div class="step-num">Ⅶ · 07</div>
+      <div class="step-num">07 · 07</div>
       <div>
         <div class="step-title-en">Inheritance</div>
         <div class="step-title-cn">传 承</div>
@@ -1326,10 +1505,177 @@ footer a:hover { color: var(--gold); }
   </div>
 </section>
 
+<!-- ═══════ EIGHT · HUBS ═══════ -->
+<section id="hubs">
+  <div class="section-intro">
+    <div class="section-num">08</div>
+    <h2 class="section-title">
+      Eight Major Hubs
+      <span class="cn">八 大 枢 纽</span>
+    </h2>
+    <div class="section-stamp">§ 08 · Cities of Operation</div>
+  </div>
+  <div class="hubs-grid">
+    <div class="hub-card" data-region="asia">
+      <div class="hub-num">08 · 01</div>
+      <div class="hub-coord-glyph">22.5°N / 114.1°E</div>
+      <div class="hub-name-en">Shenzhen</div>
+      <div class="hub-name-cn">深 圳</div>
+      <div class="hub-sep"></div>
+      <div class="hub-role">Hardware &amp; Maker Capital</div>
+      <div class="hub-region">Asia · Greater Bay</div>
+    </div>
+    <div class="hub-card" data-region="asia">
+      <div class="hub-num">08 · 02</div>
+      <div class="hub-coord-glyph">39.9°N / 116.4°E</div>
+      <div class="hub-name-en">Beijing</div>
+      <div class="hub-name-cn">北 京</div>
+      <div class="hub-sep"></div>
+      <div class="hub-role">Policy &amp; Research</div>
+      <div class="hub-region">Asia · PRC</div>
+    </div>
+    <div class="hub-card" data-region="asia">
+      <div class="hub-num">08 · 03</div>
+      <div class="hub-coord-glyph">1.3°N / 103.8°E</div>
+      <div class="hub-name-en">Singapore</div>
+      <div class="hub-name-cn">新 加 坡</div>
+      <div class="hub-sep"></div>
+      <div class="hub-role">Trade &amp; Capital</div>
+      <div class="hub-region">Asia · SEA</div>
+    </div>
+    <div class="hub-card" data-region="mena">
+      <div class="hub-num">08 · 04</div>
+      <div class="hub-coord-glyph">25.2°N / 55.3°E</div>
+      <div class="hub-name-en">Dubai</div>
+      <div class="hub-name-cn">迪 拜</div>
+      <div class="hub-sep"></div>
+      <div class="hub-role">Crossroads of Continents</div>
+      <div class="hub-region">MENA · UAE</div>
+    </div>
+    <div class="hub-card" data-region="europe">
+      <div class="hub-num">08 · 05</div>
+      <div class="hub-coord-glyph">51.5°N / 0.1°W</div>
+      <div class="hub-name-en">London</div>
+      <div class="hub-name-cn">伦 敦</div>
+      <div class="hub-sep"></div>
+      <div class="hub-role">Finance &amp; Law</div>
+      <div class="hub-region">Europe · UK</div>
+    </div>
+    <div class="hub-card" data-region="europe">
+      <div class="hub-num">08 · 06</div>
+      <div class="hub-coord-glyph">48.9°N / 2.3°E</div>
+      <div class="hub-name-en">Paris</div>
+      <div class="hub-name-cn">巴 黎</div>
+      <div class="hub-sep"></div>
+      <div class="hub-role">Culture &amp; Design</div>
+      <div class="hub-region">Europe · France</div>
+    </div>
+    <div class="hub-card" data-region="americas">
+      <div class="hub-num">08 · 07</div>
+      <div class="hub-coord-glyph">40.7°N / 74.0°W</div>
+      <div class="hub-name-en">New York</div>
+      <div class="hub-name-cn">纽 约</div>
+      <div class="hub-sep"></div>
+      <div class="hub-role">Capital &amp; Media</div>
+      <div class="hub-region">Americas · US East</div>
+    </div>
+    <div class="hub-card" data-region="americas">
+      <div class="hub-num">08 · 08</div>
+      <div class="hub-coord-glyph">37.4°N / 122.1°W</div>
+      <div class="hub-name-en">Silicon Valley</div>
+      <div class="hub-name-cn">硅 谷</div>
+      <div class="hub-sep"></div>
+      <div class="hub-role">Frontier Tech</div>
+      <div class="hub-region">Americas · US West</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ NINE · ONTOLOGICAL MATRIX ═══════ -->
+<section id="matrix">
+  <div class="section-intro">
+    <div class="section-num">09</div>
+    <h2 class="section-title">
+      Ontological Matrix
+      <span class="cn">存 在 之 矩 阵</span>
+    </h2>
+    <div class="section-stamp">§ 09 · 3 × 3 = 9</div>
+  </div>
+  <div class="matrix9">
+    <div class="matrix9-corner">3 × 3</div>
+    <div class="matrix9-col-head" data-col="matter"><div class="col-en">Matter</div><div class="col-cn">物 质</div></div>
+    <div class="matrix9-col-head" data-col="info"><div class="col-en">Information</div><div class="col-cn">信 息</div></div>
+    <div class="matrix9-col-head" data-col="energy"><div class="col-en">Energy</div><div class="col-cn">能 量</div></div>
+
+    <div class="matrix9-row-head">
+      <div class="row-en">Existence</div>
+      <div class="row-cn">存 在</div>
+      <div class="row-tag">Row 01 · What Is</div>
+    </div>
+    <div class="matrix9-cell" data-col="matter">
+      <div class="cell-idx">01 · 01</div>
+      <div class="cell-ch">物 质</div>
+      <div class="cell-en">Matter</div>
+    </div>
+    <div class="matrix9-cell" data-col="info">
+      <div class="cell-idx">01 · 02</div>
+      <div class="cell-ch">信 息</div>
+      <div class="cell-en">Information</div>
+    </div>
+    <div class="matrix9-cell" data-col="energy">
+      <div class="cell-idx">01 · 03</div>
+      <div class="cell-ch">能 量</div>
+      <div class="cell-en">Energy</div>
+    </div>
+
+    <div class="matrix9-row-head">
+      <div class="row-en">Structure</div>
+      <div class="row-cn">结 构</div>
+      <div class="row-tag">Row 02 · How It Holds</div>
+    </div>
+    <div class="matrix9-cell" data-col="matter">
+      <div class="cell-idx">02 · 01</div>
+      <div class="cell-ch">引 力</div>
+      <div class="cell-en">Gravity</div>
+    </div>
+    <div class="matrix9-cell" data-col="info">
+      <div class="cell-idx">02 · 02</div>
+      <div class="cell-ch">空 间</div>
+      <div class="cell-en">Space</div>
+    </div>
+    <div class="matrix9-cell" data-col="energy">
+      <div class="cell-idx">02 · 03</div>
+      <div class="cell-ch">时 间</div>
+      <div class="cell-en">Time</div>
+    </div>
+
+    <div class="matrix9-row-head">
+      <div class="row-en">Property</div>
+      <div class="row-cn">性 质</div>
+      <div class="row-tag">Row 03 · How It Behaves</div>
+    </div>
+    <div class="matrix9-cell" data-col="matter">
+      <div class="cell-idx">03 · 01</div>
+      <div class="cell-ch">量 子</div>
+      <div class="cell-en">Quantum</div>
+    </div>
+    <div class="matrix9-cell" data-col="info">
+      <div class="cell-idx">03 · 02</div>
+      <div class="cell-ch">维 度</div>
+      <div class="cell-en">Dimension</div>
+    </div>
+    <div class="matrix9-cell" data-col="energy">
+      <div class="cell-idx">03 · 03</div>
+      <div class="cell-ch">熵</div>
+      <div class="cell-en">Entropy</div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════ SIXTEEN · LEVELS ═══════ -->
 <section id="fourteen">
   <div class="section-intro">
-    <div class="section-num">Ⅹ Ⅵ</div>
+    <div class="section-num">16</div>
     <h2 class="section-title">
       Sixteen Levels
       <span class="cn">十 六 阶</span>
@@ -1342,42 +1688,42 @@ footer a:hover { color: var(--gold); }
     <!-- TIER I · UNIVERSE ATTRIBUTES (6) -->
     <div class="tier" data-tier="1">
       <div class="tier-head">
-        <div class="tier-num">Ⅰ</div>
+        <div class="tier-num">01</div>
         <div class="tier-name">Universe Attributes <span class="cn">宇 宙 属 性</span></div>
         <div class="tier-range">Levels 01 — 06</div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 01</div>
+        <div class="lvl-num">16 · 01</div>
         <div class="lvl-basis">Dimension<span class="cn">维 度</span></div>
         <div class="lvl-tech">Dimensional traversal<span class="sub">Perception · 与天人合一</span></div>
         <div class="lvl-code">Multiverse<span class="cn">多 元 宇 宙</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 02</div>
+        <div class="lvl-num">16 · 02</div>
         <div class="lvl-basis">Space<span class="cn">空 间</span></div>
         <div class="lvl-tech">Space migration<span class="sub">Exploration · 行星运作</span></div>
         <div class="lvl-code">Eternal Cosmos<span class="cn">永 恒 宇 宙</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 03</div>
+        <div class="lvl-num">16 · 03</div>
         <div class="lvl-basis">Time<span class="cn">时 间</span></div>
         <div class="lvl-tech">Time travel<span class="sub">Eternity · 创造历史</span></div>
         <div class="lvl-code">Primordial Universe<span class="cn">鸿 蒙 宇 宙</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 04</div>
+        <div class="lvl-num">16 · 04</div>
         <div class="lvl-basis">Entropy<span class="cn">熵</span></div>
         <div class="lvl-tech">Longevity &amp; anti-aging<span class="sub">Order · 改善生活</span></div>
         <div class="lvl-code">Infinite Operations<span class="cn">无 限 运 作</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 05</div>
+        <div class="lvl-num">16 · 05</div>
         <div class="lvl-basis">Graviton<span class="cn">引 力 子</span></div>
         <div class="lvl-tech">Curvature engine<span class="sub">Motion · 探索未知</span></div>
         <div class="lvl-code">Curvature Navigation<span class="cn">曲 率 航 行</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 06</div>
+        <div class="lvl-num">16 · 06</div>
         <div class="lvl-basis">Quantum<span class="cn">量 子</span></div>
         <div class="lvl-tech">Quantum computing<span class="sub">Science · 求得真理</span></div>
         <div class="lvl-code">Quantum Dynamics<span class="cn">量 子 动 力</span></div>
@@ -1387,48 +1733,48 @@ footer a:hover { color: var(--gold); }
     <!-- TIER II · MATTER (7) -->
     <div class="tier" data-tier="2">
       <div class="tier-head">
-        <div class="tier-num">Ⅱ</div>
+        <div class="tier-num">02</div>
         <div class="tier-name">Matter <span class="cn">物 质</span></div>
         <div class="tier-range">Levels 07 — 13</div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 07</div>
+        <div class="lvl-num">16 · 07</div>
         <div class="lvl-basis">Photon<span class="cn">光 子</span></div>
         <div class="lvl-tech">Solar energy<span class="sub">Energy · 成为明灯</span></div>
         <div class="lvl-code">Singularity Energy<span class="cn">奇 点 能 源</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 08</div>
+        <div class="lvl-num">16 · 08</div>
         <div class="lvl-basis">Electron<span class="cn">电 子</span></div>
         <div class="lvl-tech">Chip technology<span class="sub">Information · 万物皆数</span></div>
         <div class="lvl-code">Top-Level Driving Force<span class="cn">顶 层 驱 动 力</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 09</div>
+        <div class="lvl-num">16 · 09</div>
         <div class="lvl-basis">Atomic Nucleus<span class="cn">原 子 核</span></div>
         <div class="lvl-tech">Controlled nuclear fusion<span class="sub">Power · 拯救地球</span></div>
         <div class="lvl-code">Proton Energy<span class="cn">质 子 能 源</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 10</div>
+        <div class="lvl-num">16 · 10</div>
         <div class="lvl-basis">Atom<span class="cn">原 子</span></div>
         <div class="lvl-tech">Nanotechnology<span class="sub">Material · 重塑世界</span></div>
         <div class="lvl-code">Joy Element<span class="cn">欢 愉 元 素</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 11</div>
+        <div class="lvl-num">16 · 11</div>
         <div class="lvl-basis">Molecule<span class="cn">分 子</span></div>
         <div class="lvl-tech">Gene editing<span class="sub">Life · 改变生命</span></div>
         <div class="lvl-code">Skin &amp; Organ Genes<span class="cn">皮 肤 器 官 基 因</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 12</div>
+        <div class="lvl-num">16 · 12</div>
         <div class="lvl-basis">Neuron<span class="cn">神 经 元</span></div>
         <div class="lvl-tech">Artificial intelligence<span class="sub">Intelligence · 解放人类</span></div>
         <div class="lvl-code">Autonomous Thinking<span class="cn">自 主 思 维</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 13</div>
+        <div class="lvl-num">16 · 13</div>
         <div class="lvl-basis">Brain<span class="cn">大 脑</span></div>
         <div class="lvl-tech">Brain–computer interface<span class="sub">Connection · 人机融合</span></div>
         <div class="lvl-code">Neural Network<span class="cn">神 经 网 络</span></div>
@@ -1438,24 +1784,24 @@ footer a:hover { color: var(--gold); }
     <!-- TIER III · BRAIN PRODUCTS (3) -->
     <div class="tier" data-tier="3">
       <div class="tier-head">
-        <div class="tier-num">Ⅲ</div>
+        <div class="tier-num">03</div>
         <div class="tier-name">Brain Products <span class="cn">脑 力 产 物</span></div>
         <div class="tier-range">Levels 14 — 16</div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 14</div>
+        <div class="lvl-num">16 · 14</div>
         <div class="lvl-basis">Finance<span class="cn">金 融</span></div>
         <div class="lvl-tech">Digital currency<span class="sub">Transaction · 普世繁荣</span></div>
         <div class="lvl-code">Huashuo Finance<span class="cn">华 说 金 融</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 15</div>
+        <div class="lvl-num">16 · 15</div>
         <div class="lvl-basis">Culture<span class="cn">文 化</span></div>
         <div class="lvl-tech">Content &amp; media<span class="sub">Expression · 传扬文明</span></div>
         <div class="lvl-code">Civilisational Echo<span class="cn">文 明 回 响</span></div>
       </div>
       <div class="level-row">
-        <div class="lvl-num">Ⅹ Ⅵ · 16</div>
+        <div class="lvl-num">16 · 16</div>
         <div class="lvl-basis">Design<span class="cn">设 计</span></div>
         <div class="lvl-tech">3D printing<span class="sub">Creation · 服务众生</span></div>
         <div class="lvl-code">Wormhole Trade<span class="cn">虫 洞 贸 易</span></div>
@@ -1468,7 +1814,7 @@ footer a:hover { color: var(--gold); }
 <!-- ═══════ SIXTEEN · VISIONS ═══════ -->
 <section id="sixteen">
   <div class="section-intro">
-    <div class="section-num">Ⅹ Ⅵ</div>
+    <div class="section-num">16</div>
     <h2 class="section-title">
       Sixteen Visions
       <span class="cn">十 六 愿 景</span>
@@ -1477,22 +1823,22 @@ footer a:hover { color: var(--gold); }
   </div>
   <div class="sixteen-intro">
     <div class="sixteen-head">
-      <div class="axis">Axis I</div>
+      <div class="axis">Axis 1</div>
       <div class="axis-en">Truth-Seeking</div>
       <div class="axis-cn">求 真</div>
     </div>
     <div class="sixteen-head">
-      <div class="axis">Axis II</div>
+      <div class="axis">Axis 2</div>
       <div class="axis-en">Benevolence</div>
       <div class="axis-cn">行 善</div>
     </div>
     <div class="sixteen-head">
-      <div class="axis">Axis III</div>
+      <div class="axis">Axis 3</div>
       <div class="axis-en">Beauty-Creation</div>
       <div class="axis-cn">造 美</div>
     </div>
     <div class="sixteen-head">
-      <div class="axis">Axis IV</div>
+      <div class="axis">Axis 4</div>
       <div class="axis-en">World Utility</div>
       <div class="axis-cn">致 用</div>
     </div>
@@ -1577,7 +1923,7 @@ footer a:hover { color: var(--gold); }
     <span class="cn">一 点 成 道， 道 成 一 生， 一 生 成 一 脉。</span>
   </div>
   <div class="coda-sig">
-    Edition One · 甲辰 · MMXXVI
+    Edition One · 甲辰 · 2026
     <b>— Gewenbo</b>
   </div>
 </section>
