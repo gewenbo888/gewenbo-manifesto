@@ -757,6 +757,88 @@ section {
   letter-spacing: 0.2em; color: var(--ivory-faint);
 }
 
+/* ═══════ FIFTEEN BELIEFS ═══════ */
+.beliefs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.belief-card {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 36px 32px;
+  min-height: 300px;
+  position: relative;
+  display: flex; flex-direction: column;
+  transition: background 0.3s;
+  overflow: hidden;
+}
+.belief-card:hover { background: rgba(201, 162, 75, 0.04); }
+.belief-card .belief-num {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.belief-card .belief-category {
+  position: absolute; top: 30px; right: 28px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+.belief-card .belief-glyph {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 88px; line-height: 1;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin: 12px 0 26px;
+  opacity: 0.95;
+}
+.belief-card .belief-sep {
+  width: 40px; height: 1px; background: var(--line);
+  margin-bottom: 16px;
+}
+.belief-card .belief-name {
+  font-family: var(--display); font-size: 22px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.belief-card .belief-name-cn {
+  font-family: var(--cjk); font-size: 14px;
+  font-weight: 500; color: var(--ivory-dim);
+  letter-spacing: 0.18em;
+  margin-top: 4px;
+}
+.belief-card .belief-arrow {
+  font-family: var(--mono); font-size: 14px;
+  color: var(--gold); margin: 14px 0 6px;
+  letter-spacing: 0.1em;
+}
+.belief-card .belief-deity {
+  font-family: var(--display); font-size: 20px;
+  font-weight: 500; font-style: italic;
+  color: var(--gold-bright);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.belief-card .belief-deity-cn {
+  font-family: var(--cjk); font-size: 14px;
+  font-weight: 500; color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-top: 4px;
+}
+
+/* Category accents */
+.belief-card[data-kind="abrahamic"] .belief-glyph { color: #d8b061; }
+.belief-card[data-kind="eastern"]   .belief-glyph { color: #5a8f73; }
+.belief-card[data-kind="ideology"]  .belief-glyph { color: #b14d42; }
+.belief-card[data-kind="modern"]    .belief-glyph { color: #5a7a9e; }
+.belief-card[data-kind="primal"]    .belief-glyph { color: #a8855a; }
+.belief-card[data-kind="pop"]       .belief-glyph { color: #9e5a7a; }
+
 /* ═══════ FOURTEEN LEVELS ═══════ */
 .fourteen-wrap {
   display: flex; flex-direction: column; gap: 72px;
@@ -1026,6 +1108,9 @@ footer a:hover { color: var(--gold); }
   .seven-step { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
   .seven-step::before { left: -24px; top: 38px; }
   .seven-step .step-num { left: -52px; top: 28px; font-size: 9px; }
+  .beliefs-grid { grid-template-columns: repeat(2, 1fr); }
+  .belief-card { padding: 28px 22px; min-height: 240px; }
+  .belief-card .belief-glyph { font-size: 64px; }
   .hubs-grid { grid-template-columns: repeat(2, 1fr); }
   .matrix9 { grid-template-columns: 90px repeat(3, 1fr); }
   .matrix9-corner, .matrix9-col-head, .matrix9-row-head, .matrix9-cell { padding: 16px 10px; }
@@ -1067,6 +1152,7 @@ footer a:hover { color: var(--gold); }
     <a href="#seven"><span class="n">7</span> Path</a>
     <a href="#hubs"><span class="n">8</span> Hubs</a>
     <a href="#matrix"><span class="n">9</span> Matrix</a>
+    <a href="#beliefs"><span class="n">15</span> Beliefs</a>
     <a href="#fourteen"><span class="n">16·L</span> Levels</a>
     <a href="#sixteen"><span class="n">16·V</span> Visions</a>
   </nav>
@@ -1102,6 +1188,7 @@ footer a:hover { color: var(--gold); }
     <div><span>7</span> · Path</div>
     <div><span>8</span> · Hubs</div>
     <div><span>9</span> · Matrix</div>
+    <div><span>15</span> · Beliefs</div>
     <div><span>16</span> · Levels</div>
     <div><span>16</span> · Visions</div>
   </div>
@@ -1669,6 +1756,156 @@ footer a:hover { color: var(--gold); }
       <div class="cell-ch">熵</div>
       <div class="cell-en">Entropy</div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════ FIFTEEN · BELIEFS ═══════ -->
+<section id="beliefs">
+  <div class="section-intro">
+    <div class="section-num">15</div>
+    <h2 class="section-title">
+      Fifteen Belief Aggregations
+      <span class="cn">十 五 信 仰 集 合</span>
+    </h2>
+    <div class="section-stamp">§ 15 · Supreme Deities &amp; Ultimate Principles</div>
+  </div>
+  <div class="beliefs-grid">
+
+    <div class="belief-card" data-kind="ideology">
+      <div class="belief-num">15 · 01</div>
+      <div class="belief-category">Ideology</div>
+      <div class="belief-glyph">人</div>
+      <div class="belief-name">Communism<div class="belief-name-cn">共 产 主 义</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">The People<div class="belief-deity-cn">人 民</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="abrahamic">
+      <div class="belief-num">15 · 02</div>
+      <div class="belief-category">Abrahamic</div>
+      <div class="belief-glyph">神</div>
+      <div class="belief-name">Christianity<div class="belief-name-cn">基 督 教</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">God<div class="belief-deity-cn">上 帝</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="abrahamic">
+      <div class="belief-num">15 · 03</div>
+      <div class="belief-category">Abrahamic</div>
+      <div class="belief-glyph">יהוה</div>
+      <div class="belief-name">Judaism<div class="belief-name-cn">犹 太 教</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Yahweh<div class="belief-deity-cn">耶 和 华</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="abrahamic">
+      <div class="belief-num">15 · 04</div>
+      <div class="belief-category">Abrahamic</div>
+      <div class="belief-glyph">真</div>
+      <div class="belief-name">Islam<div class="belief-name-cn">伊 斯 兰 教</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Allah<div class="belief-deity-cn">安 拉</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="eastern">
+      <div class="belief-num">15 · 05</div>
+      <div class="belief-category">Eastern</div>
+      <div class="belief-glyph">道</div>
+      <div class="belief-name">Taoism<div class="belief-name-cn">道 教</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Nature · Dao<div class="belief-deity-cn">自 然 · 道</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="eastern">
+      <div class="belief-num">15 · 06</div>
+      <div class="belief-category">Eastern</div>
+      <div class="belief-glyph">佛</div>
+      <div class="belief-name">Buddhism<div class="belief-name-cn">佛 教</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Buddha<div class="belief-deity-cn">佛 陀</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="modern">
+      <div class="belief-num">15 · 07</div>
+      <div class="belief-category">Inquiry</div>
+      <div class="belief-glyph">念</div>
+      <div class="belief-name">Philosophy<div class="belief-name-cn">哲 学</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Absolute Idea<div class="belief-deity-cn">绝 对 理 念</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="modern">
+      <div class="belief-num">15 · 08</div>
+      <div class="belief-category">Inquiry</div>
+      <div class="belief-glyph">理</div>
+      <div class="belief-name">Science<div class="belief-name-cn">科 学</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Ultimate Truth<div class="belief-deity-cn">终 极 真 理</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="modern">
+      <div class="belief-num">15 · 09</div>
+      <div class="belief-category">Modern</div>
+      <div class="belief-glyph">算</div>
+      <div class="belief-name">Artificial Intelligence<div class="belief-name-cn">人 工 智 能</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Ultimate Algorithm<div class="belief-deity-cn">终 极 算 法</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="pop">
+      <div class="belief-num">15 · 10</div>
+      <div class="belief-category">Pop · Mythos</div>
+      <div class="belief-glyph">∞</div>
+      <div class="belief-name">Marvel<div class="belief-name-cn">漫 威</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">One Above All<div class="belief-deity-cn">至 高 无 上</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="primal">
+      <div class="belief-num">15 · 11</div>
+      <div class="belief-category">Primal</div>
+      <div class="belief-glyph">泛</div>
+      <div class="belief-name">Pantheism<div class="belief-name-cn">泛 神 论</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">God (as all)<div class="belief-deity-cn">万 物 之 神</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="primal">
+      <div class="belief-num">15 · 12</div>
+      <div class="belief-category">Primal</div>
+      <div class="belief-glyph">灵</div>
+      <div class="belief-name">Animism<div class="belief-name-cn">万 物 有 灵</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Spirit<div class="belief-deity-cn">灵</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="abrahamic">
+      <div class="belief-num">15 · 13</div>
+      <div class="belief-category">Framework</div>
+      <div class="belief-glyph">一</div>
+      <div class="belief-name">Monotheism<div class="belief-name-cn">一 神 论</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Creator<div class="belief-deity-cn">造 物 主</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="eastern">
+      <div class="belief-num">15 · 14</div>
+      <div class="belief-category">Eastern</div>
+      <div class="belief-glyph">照</div>
+      <div class="belief-name">Shinto<div class="belief-name-cn">神 道</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Amaterasu<div class="belief-deity-cn">天 照 大 神</div></div>
+    </div>
+
+    <div class="belief-card" data-kind="primal">
+      <div class="belief-num">15 · 15</div>
+      <div class="belief-category">Primal</div>
+      <div class="belief-glyph">天</div>
+      <div class="belief-name">Shamanism<div class="belief-name-cn">萨 满 教</div></div>
+      <div class="belief-arrow">→ supreme</div>
+      <div class="belief-deity">Heaven · Sky<div class="belief-deity-cn">长 生 天</div></div>
+    </div>
+
   </div>
 </section>
 
