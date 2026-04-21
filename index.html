@@ -97,61 +97,63 @@ body {
 .top-nav {
   display: flex;
   flex-wrap: nowrap;
-  gap: 3px;
+  gap: 0;
   align-items: center;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+  justify-content: flex-end;
 }
+.top-nav::-webkit-scrollbar { display: none; }
 .top-nav a {
   position: relative;
   display: inline-flex;
-  align-items: center; justify-content: center;
-  min-width: 28px; height: 28px;
-  padding: 0 6px;
+  align-items: baseline;
+  gap: 5px;
+  padding: 6px 9px;
   color: var(--ivory-dim);
   text-decoration: none;
-  border-radius: 14px;
-  border: 1px solid transparent;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  border-radius: 3px;
+  transition: color 0.2s, background 0.2s;
   flex-shrink: 0;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 .top-nav a:hover {
   color: var(--gold);
-  border-color: var(--line);
-  background: rgba(201, 162, 75, 0.06);
+  background: rgba(201, 162, 75, 0.07);
+}
+.top-nav a + a::before {
+  content: "·";
+  color: var(--ivory-faint);
+  opacity: 0.4;
+  margin-left: -4px;
+  margin-right: 2px;
+  align-self: center;
 }
 .top-nav .n {
   font-family: var(--display);
   font-style: italic;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--gold);
   letter-spacing: 0;
   line-height: 1;
 }
-.top-nav a::after {
-  content: attr(data-label);
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-4px);
-  padding: 4px 9px;
-  background: var(--bg-3);
-  border: 1px solid var(--line);
-  color: var(--gold-bright);
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  border-radius: 3px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease;
-  z-index: 60;
+.top-nav .l {
+  line-height: 1;
 }
-.top-nav a:hover::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+@media (max-width: 1280px) {
+  .top-nav .l { display: none; }
+  .top-nav a + a::before { display: none; }
+  .top-nav a { padding: 4px 6px; }
+  .top-nav .n { font-size: 13px; }
 }
 
 /* ═══════ SECTION BASE ═══════ */
@@ -211,7 +213,7 @@ section {
   min-height: 100vh;
   padding: 160px 48px 80px;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   text-align: center;
   max-width: 1400px;
   margin: 0 auto;
@@ -296,59 +298,6 @@ section {
   display: block; font-family: var(--cjk); font-style: normal;
   font-size: 0.9em; margin-top: 12px; color: var(--ivory-faint);
   letter-spacing: 0.1em;
-}
-.hero-bottom {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 24px;
-  padding-top: 40px;
-  border-top: 1px solid var(--line-soft);
-  font-family: var(--mono); font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--ivory-faint);
-}
-.hero-bottom .ladder-start,
-.hero-bottom .ladder-end {
-  color: var(--gold);
-  font-size: 12px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.hero-bottom .ladder-numbers {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0;
-  border-top: 1px dashed var(--line);
-  border-bottom: 1px dashed var(--line);
-  padding: 10px 16px;
-  overflow: hidden;
-}
-.hero-bottom .ladder-numbers span {
-  color: var(--gold);
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 16px;
-  letter-spacing: 0;
-  min-width: 24px;
-  text-align: center;
-  flex-shrink: 0;
-}
-.hero-bottom .ladder-numbers i {
-  color: var(--ivory-faint);
-  font-style: normal;
-  font-family: var(--mono);
-  font-size: 10px;
-  flex-shrink: 0;
-  padding: 0 2px;
-}
-@media (max-width: 900px) {
-  .hero-bottom { grid-template-columns: 1fr; text-align: center; gap: 12px; }
-  .hero-bottom .ladder-numbers { font-size: 13px; }
-  .hero-bottom .ladder-numbers span { font-size: 13px; min-width: 18px; }
-  .hero-bottom .ladder-numbers i { padding: 0 1px; }
 }
 .hero-scroll {
   position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
@@ -1825,10 +1774,8 @@ footer a:hover { color: var(--gold); }
 @media (max-width: 1000px) {
   section { padding: 80px 24px; }
   .topbar { padding: 12px 16px; gap: 12px; }
-  .top-nav { gap: 2px; }
-  .top-nav a { min-width: 24px; height: 24px; padding: 0 4px; border-radius: 12px; }
-  .top-nav .n { font-size: 11px; }
-  .top-nav a::after { display: none; }
+  .top-nav a { padding: 4px 5px; }
+  .top-nav .n { font-size: 12px; }
   .section-intro { grid-template-columns: auto 1fr; gap: 24px; margin-bottom: 48px; }
   .section-num { font-size: 80px; }
   .section-stamp { display: none; }
@@ -1908,22 +1855,22 @@ footer a:hover { color: var(--gold); }
     <span class="cn">一 使 命</span>
   </a>
   <nav class="top-nav">
-    <a href="#one" data-label="Mission"><span class="n">1</span></a>
-    <a href="#two" data-label="Identities"><span class="n">2</span></a>
-    <a href="#three" data-label="Principles"><span class="n">3</span></a>
-    <a href="#four" data-label="Integrations"><span class="n">4</span></a>
-    <a href="#five" data-label="Elements"><span class="n">5</span></a>
-    <a href="#six" data-label="Domains"><span class="n">6</span></a>
-    <a href="#seven" data-label="Path"><span class="n">7</span></a>
-    <a href="#hubs" data-label="Hubs"><span class="n">8</span></a>
-    <a href="#matrix" data-label="Matrix"><span class="n">9</span></a>
-    <a href="#breakthroughs" data-label="Breakthroughs"><span class="n">10</span></a>
-    <a href="#agi" data-label="AGI Paths"><span class="n">11</span></a>
-    <a href="#purposes" data-label="Purposes"><span class="n">12</span></a>
-    <a href="#navigation" data-label="Navigation"><span class="n">13</span></a>
-    <a href="#cultures" data-label="Cultures"><span class="n">14</span></a>
-    <a href="#beliefs" data-label="Beliefs"><span class="n">15</span></a>
-    <a href="#sixteen" data-label="Visions"><span class="n">16</span></a>
+    <a href="#one"><span class="n">1</span><span class="l">Mission</span></a>
+    <a href="#two"><span class="n">2</span><span class="l">Identity</span></a>
+    <a href="#three"><span class="n">3</span><span class="l">Principles</span></a>
+    <a href="#four"><span class="n">4</span><span class="l">Merge</span></a>
+    <a href="#five"><span class="n">5</span><span class="l">Elements</span></a>
+    <a href="#six"><span class="n">6</span><span class="l">Domains</span></a>
+    <a href="#seven"><span class="n">7</span><span class="l">Path</span></a>
+    <a href="#hubs"><span class="n">8</span><span class="l">Hubs</span></a>
+    <a href="#matrix"><span class="n">9</span><span class="l">Matrix</span></a>
+    <a href="#breakthroughs"><span class="n">10</span><span class="l">Tech</span></a>
+    <a href="#agi"><span class="n">11</span><span class="l">AGI</span></a>
+    <a href="#purposes"><span class="n">12</span><span class="l">Purpose</span></a>
+    <a href="#navigation"><span class="n">13</span><span class="l">Nav</span></a>
+    <a href="#cultures"><span class="n">14</span><span class="l">Culture</span></a>
+    <a href="#beliefs"><span class="n">15</span><span class="l">Belief</span></a>
+    <a href="#sixteen"><span class="n">16</span><span class="l">Visions</span></a>
   </nav>
 </header>
 
@@ -1946,13 +1893,6 @@ footer a:hover { color: var(--gold); }
       To become a person who has a significant impact on the world — and to build enterprises that change the world.
       <span class="cn">立志成为对世界有重大影响之人，构筑足以改变世界之事业。</span>
     </p>
-  </div>
-  <div class="hero-bottom">
-    <div class="ladder-start">§ 01</div>
-    <div class="ladder-numbers">
-      <span>1</span><i>·</i><span>2</span><i>·</i><span>3</span><i>·</i><span>4</span><i>·</i><span>5</span><i>·</i><span>6</span><i>·</i><span>7</span><i>·</i><span>8</span><i>·</i><span>9</span><i>·</i><span>10</span><i>·</i><span>11</span><i>·</i><span>12</span><i>·</i><span>13</span><i>·</i><span>14</span><i>·</i><span>15</span><i>·</i><span>16</span>
-    </div>
-    <div class="ladder-end">§ 16</div>
   </div>
   <div class="hero-scroll">2 ↓ 二</div>
 </section>
