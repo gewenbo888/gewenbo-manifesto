@@ -537,6 +537,95 @@ section {
   color: var(--rouge); margin: 0 8px; font-style: italic;
 }
 
+/* ═══════ FIVE · PERSONAL MANTRA BANNER ═══════ */
+.five-mantra {
+  margin: 40px 0 64px;
+  padding: 34px 24px 30px;
+  border-top: 2px double var(--gold-deep);
+  border-bottom: 2px double var(--gold-deep);
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(201, 162, 75, 0.05), transparent 70%);
+}
+.five-mantra .mantra-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 22px;
+}
+.five-mantra .mantra-eyebrow .cn {
+  font-family: var(--cjk);
+  letter-spacing: 0.25em;
+  text-transform: none;
+  color: var(--gold);
+  margin-left: 16px;
+}
+.five-mantra .mantra-chars {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.mantra-unit {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.mantra-unit .mc {
+  font-family: var(--cjk);
+  font-weight: 900;
+  font-size: 96px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+.mantra-unit[data-el="metal"] .mc { color: #c9c4b8; }
+.mantra-unit[data-el="wood"]  .mc { color: #8bb57b; }
+.mantra-unit[data-el="water"] .mc { color: #6fa5c7; }
+.mantra-unit[data-el="fire"]  .mc { color: #d66b4a; }
+.mantra-unit[data-el="earth"] .mc { color: #caa567; }
+.mantra-unit .mc-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+.mantra-unit .mc-meta b {
+  color: var(--gold);
+  font-weight: 500;
+  font-family: var(--cjk);
+  letter-spacing: 0.1em;
+}
+.five-mantra .mantra-tag {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ivory-dim);
+  margin-top: 28px;
+  max-width: 600px;
+  margin-left: auto; margin-right: auto;
+  line-height: 1.55;
+}
+.five-mantra .mantra-tag .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-style: normal;
+  font-size: 13px;
+  color: var(--gold-deep);
+  margin-top: 8px;
+  letter-spacing: 0.22em;
+}
+
+@media (max-width: 900px) {
+  .five-mantra .mantra-chars { gap: 18px; }
+  .mantra-unit .mc { font-size: 58px; }
+  .mantra-unit .mc-meta { font-size: 9px; letter-spacing: 0.15em; }
+  .five-mantra { padding: 24px 16px; }
+}
+
 /* ═══════ SIX DOMAINS ═══════ */
 .six-grid {
   display: grid;
@@ -2058,8 +2147,42 @@ footer a:hover { color: var(--gold); }
       Five Archetypes
       <span class="cn">五 行 人 格</span>
     </h2>
-    <div class="section-stamp">§ 05 · Wu Xing · 金木水火土</div>
+    <div class="section-stamp">§ 05 · Wu Xing · 金木水火土 · 戈苏御风魂</div>
   </div>
+
+  <!-- Personal five-character mantra -->
+  <div class="five-mantra">
+    <div class="mantra-eyebrow">
+      Personal Signature <span class="cn">五 字 之 号 · 戈 苏 御 风 魂</span>
+    </div>
+    <div class="mantra-chars">
+      <div class="mantra-unit" data-el="metal">
+        <div class="mc">戈</div>
+        <div class="mc-meta">gē · <b>金</b></div>
+      </div>
+      <div class="mantra-unit" data-el="wood">
+        <div class="mc">苏</div>
+        <div class="mc-meta">sū · <b>木</b></div>
+      </div>
+      <div class="mantra-unit" data-el="water">
+        <div class="mc">御</div>
+        <div class="mc-meta">yù · <b>水</b></div>
+      </div>
+      <div class="mantra-unit" data-el="fire">
+        <div class="mc">风</div>
+        <div class="mc-meta">fēng · <b>火</b></div>
+      </div>
+      <div class="mantra-unit" data-el="earth">
+        <div class="mc">魂</div>
+        <div class="mc-meta">hún · <b>土</b></div>
+      </div>
+    </div>
+    <div class="mantra-tag">
+      A five-character mantra distilling the five archetypes into a single breath — one character per element.
+      <span class="cn">五 字 一 息， 每 字 一 行。</span>
+    </div>
+  </div>
+
   <div class="five-wrap">
     <div class="pentagram">
       <svg viewBox="0 0 420 420">
