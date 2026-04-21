@@ -979,7 +979,7 @@ section {
   font-family: var(--serif); font-size: 13px;
   line-height: 1.5;
   color: var(--ivory);
-  display: flex; align-items: center;
+  display: flex; align-items: flex-start; flex-direction: column; justify-content: center;
   position: relative;
   transition: background 0.3s;
 }
@@ -991,7 +991,12 @@ section {
   font-family: var(--mono); font-size: 9px;
   letter-spacing: 0.15em; text-transform: uppercase;
   color: var(--gold-deep); font-style: normal;
-  margin-top: 6px;
+  margin-top: 4px;
+}
+.cell-cn {
+  font-family: var(--cjk); font-size: 11px;
+  color: var(--ivory-dim); margin-top: 5px;
+  letter-spacing: 0.05em; line-height: 1.4;
 }
 .bt-cell[data-level="1"] { border-left: 2px solid transparent; }
 .bt-cell[data-level="5"] { background: rgba(214, 107, 74, 0.04); }
@@ -2641,11 +2646,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Large Models</div>
         <div class="t-idx">10 · 01</div>
       </div>
-      <div class="bt-cell" data-level="1">Chat</div>
-      <div class="bt-cell" data-level="2">Reasoning</div>
-      <div class="bt-cell" data-level="3">Intelligent Agent</div>
-      <div class="bt-cell" data-level="4">Innovation</div>
-      <div class="bt-cell" data-level="5">Organizer</div>
+      <div class="bt-cell" data-level="1">Chat<span class="cell-cn">聊天</span></div>
+      <div class="bt-cell" data-level="2">Reasoning<span class="cell-cn">推理</span></div>
+      <div class="bt-cell" data-level="3">Intelligent Agent<span class="cell-cn">智能体</span></div>
+      <div class="bt-cell" data-level="4">Innovation<span class="cell-cn">创新</span></div>
+      <div class="bt-cell" data-level="5">Organizer<span class="cell-cn">组织者</span></div>
 
       <!-- 02 · Humanoid Robots -->
       <div class="bt-row-head">
@@ -2653,11 +2658,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Humanoid Robots</div>
         <div class="t-idx">10 · 02</div>
       </div>
-      <div class="bt-cell" data-level="1">Basic operation assistance</div>
-      <div class="bt-cell" data-level="2">Environmental perception &amp; simple interaction</div>
-      <div class="bt-cell" data-level="3">Conditional autonomy &amp; situational understanding</div>
-      <div class="bt-cell" data-level="4">Highly autonomous, complex task execution</div>
-      <div class="bt-cell" data-level="5">Fully autonomous, human-like intelligence</div>
+      <div class="bt-cell" data-level="1">Basic operation assistance<span class="cell-cn">基础操作辅助</span></div>
+      <div class="bt-cell" data-level="2">Environmental perception &amp; simple interaction<span class="cell-cn">环境感知与简单交互</span></div>
+      <div class="bt-cell" data-level="3">Conditional autonomy &amp; situational understanding<span class="cell-cn">条件自主与情境理解</span></div>
+      <div class="bt-cell" data-level="4">Highly autonomous, complex task execution<span class="cell-cn">高度自主与复杂任务执行</span></div>
+      <div class="bt-cell" data-level="5">Fully autonomous, human-like intelligence<span class="cell-cn">完全自主与类人智能</span></div>
 
       <!-- 03 · Autonomous Driving -->
       <div class="bt-row-head">
@@ -2665,11 +2670,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Autonomous Driving</div>
         <div class="t-idx">10 · 03</div>
       </div>
-      <div class="bt-cell" data-level="1">Driver assistance</div>
-      <div class="bt-cell" data-level="2">Partial autonomous driving</div>
-      <div class="bt-cell" data-level="3">Conditional autonomous driving</div>
-      <div class="bt-cell" data-level="4">Highly autonomous driving</div>
-      <div class="bt-cell" data-level="5">Fully autonomous driving</div>
+      <div class="bt-cell" data-level="1">Driver assistance<span class="cell-cn">驾驶员辅助</span></div>
+      <div class="bt-cell" data-level="2">Partial autonomous driving<span class="cell-cn">部分自动驾驶</span></div>
+      <div class="bt-cell" data-level="3">Conditional autonomous driving<span class="cell-cn">有条件自动驾驶</span></div>
+      <div class="bt-cell" data-level="4">Highly autonomous driving<span class="cell-cn">高度自动驾驶</span></div>
+      <div class="bt-cell" data-level="5">Fully autonomous driving<span class="cell-cn">完全自动驾驶</span></div>
 
       <!-- 04 · BCI -->
       <div class="bt-row-head">
@@ -2677,11 +2682,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Brain–Computer Interface</div>
         <div class="t-idx">10 · 04</div>
       </div>
-      <div class="bt-cell" data-level="1">Basic signal acquisition &amp; decoding <em>research stage</em></div>
-      <div class="bt-cell" data-level="2">Simple one-way control <em>cursor · robotic arm</em></div>
-      <div class="bt-cell" data-level="3">Two-way interaction <em>read + stimulate</em></div>
-      <div class="bt-cell" data-level="4">Partial clinical applications <em>ALS · paralysis</em></div>
-      <div class="bt-cell" data-level="5">High-bandwidth, natural human-machine symbiosis</div>
+      <div class="bt-cell" data-level="1">Basic signal acquisition &amp; decoding <em>research stage</em><span class="cell-cn">基础信号采集与解码（科研实验阶段）</span></div>
+      <div class="bt-cell" data-level="2">Simple one-way control <em>cursor · robotic arm</em><span class="cell-cn">简单的单向控制（如移动光标、机械臂）</span></div>
+      <div class="bt-cell" data-level="3">Two-way interaction <em>read + stimulate</em><span class="cell-cn">双向交互（既能读取脑信号，也能通过刺激反馈）</span></div>
+      <div class="bt-cell" data-level="4">Partial clinical applications <em>ALS · paralysis</em><span class="cell-cn">部分临床应用（脑瘫患者、渐冻症患者辅助交流）</span></div>
+      <div class="bt-cell" data-level="5">High-bandwidth, natural human-machine symbiosis<span class="cell-cn">高带宽、自然化的人机共生</span></div>
 
       <!-- 05 · Web3 -->
       <div class="bt-row-head">
@@ -2689,11 +2694,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Web3</div>
         <div class="t-idx">10 · 05</div>
       </div>
-      <div class="bt-cell" data-level="1">Decentralized ledger</div>
-      <div class="bt-cell" data-level="2">Smart contracts</div>
-      <div class="bt-cell" data-level="3">DAO</div>
-      <div class="bt-cell" data-level="4">Metaverse</div>
-      <div class="bt-cell" data-level="5">Automated nation</div>
+      <div class="bt-cell" data-level="1">Decentralized ledger<span class="cell-cn">去中心化的账本</span></div>
+      <div class="bt-cell" data-level="2">Smart contracts<span class="cell-cn">智能合约</span></div>
+      <div class="bt-cell" data-level="3">DAO<span class="cell-cn">DAO</span></div>
+      <div class="bt-cell" data-level="4">Metaverse<span class="cell-cn">元宇宙</span></div>
+      <div class="bt-cell" data-level="5">Automated nation<span class="cell-cn">自动化的国家</span></div>
 
       <!-- 06 · Longevity -->
       <div class="bt-row-head">
@@ -2701,11 +2706,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Longevity / Immortality</div>
         <div class="t-idx">10 · 06</div>
       </div>
-      <div class="bt-cell" data-level="1">Health optimization <em>lifestyle that slows aging</em></div>
-      <div class="bt-cell" data-level="2">Organ &amp; system-level repair <em>lifespan engineering</em></div>
-      <div class="bt-cell" data-level="3">Cellular / molecular periodic reset <em>partial reversal</em></div>
-      <div class="bt-cell" data-level="4">Continuous damage clearing &amp; modular replacement <em>extreme extension</em></div>
-      <div class="bt-cell" data-level="5">Autonomous maintenance · transferable continuity <em>technical immortality</em></div>
+      <div class="bt-cell" data-level="1">Health optimization <em>lifestyle that slows aging</em><span class="cell-cn">健康优化与可逆轻度干预（"延缓衰老的生活方式"）</span></div>
+      <div class="bt-cell" data-level="2">Organ &amp; system-level repair <em>lifespan engineering</em><span class="cell-cn">器官与系统层级的修复维护（"延寿工程化"）</span></div>
+      <div class="bt-cell" data-level="3">Cellular / molecular periodic reset <em>partial reversal</em><span class="cell-cn">细胞与分子层面的周期性重置（"部分可逆老化"）</span></div>
+      <div class="bt-cell" data-level="4">Continuous damage clearing &amp; modular replacement <em>extreme extension</em><span class="cell-cn">持续的损伤净清零与模块化替换（"实用级极限延寿"）</span></div>
+      <div class="bt-cell" data-level="5">Autonomous maintenance · transferable continuity <em>technical immortality</em><span class="cell-cn">自主维持与可迁移的个体连续性（"强意义上的技术性不老"）</span></div>
 
       <!-- 07 · Energy -->
       <div class="bt-row-head">
@@ -2713,11 +2718,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Energy</div>
         <div class="t-idx">10 · 07</div>
       </div>
-      <div class="bt-cell" data-level="1">Fossil fuels</div>
-      <div class="bt-cell" data-level="2">Solar energy</div>
-      <div class="bt-cell" data-level="3">Nuclear fission</div>
-      <div class="bt-cell" data-level="4">Controlled nuclear fusion</div>
-      <div class="bt-cell" data-level="5">Dyson sphere</div>
+      <div class="bt-cell" data-level="1">Fossil fuels<span class="cell-cn">化石燃料</span></div>
+      <div class="bt-cell" data-level="2">Solar energy<span class="cell-cn">太阳能</span></div>
+      <div class="bt-cell" data-level="3">Nuclear fission<span class="cell-cn">核裂变</span></div>
+      <div class="bt-cell" data-level="4">Controlled nuclear fusion<span class="cell-cn">可控核聚变</span></div>
+      <div class="bt-cell" data-level="5">Dyson sphere<span class="cell-cn">戴森球</span></div>
 
       <!-- 08 · Materials -->
       <div class="bt-row-head">
@@ -2725,11 +2730,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Materials</div>
         <div class="t-idx">10 · 08</div>
       </div>
-      <div class="bt-cell" data-level="1">Smelting</div>
-      <div class="bt-cell" data-level="2">Precision machining</div>
-      <div class="bt-cell" data-level="3">3D printing</div>
-      <div class="bt-cell" data-level="4">Nanotechnology</div>
-      <div class="bt-cell" data-level="5">Nano 3D synthesis</div>
+      <div class="bt-cell" data-level="1">Smelting<span class="cell-cn">冶炼</span></div>
+      <div class="bt-cell" data-level="2">Precision machining<span class="cell-cn">精密加工</span></div>
+      <div class="bt-cell" data-level="3">3D printing<span class="cell-cn">3D打印</span></div>
+      <div class="bt-cell" data-level="4">Nanotechnology<span class="cell-cn">纳米技术</span></div>
+      <div class="bt-cell" data-level="5">Nano 3D synthesis<span class="cell-cn">纳米3D合成</span></div>
 
       <!-- 09 · VR -->
       <div class="bt-row-head">
@@ -2737,11 +2742,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Virtual Reality</div>
         <div class="t-idx">10 · 09</div>
       </div>
-      <div class="bt-cell" data-level="1">Video games</div>
-      <div class="bt-cell" data-level="2">Electronic games with economic ecosystems</div>
-      <div class="bt-cell" data-level="3">Open world games</div>
-      <div class="bt-cell" data-level="4">Self-running open worlds</div>
-      <div class="bt-cell" data-level="5">Metaverse</div>
+      <div class="bt-cell" data-level="1">Video games<span class="cell-cn">电子游戏</span></div>
+      <div class="bt-cell" data-level="2">Electronic games with economic ecosystems<span class="cell-cn">带经济生态的电子游戏</span></div>
+      <div class="bt-cell" data-level="3">Open world games<span class="cell-cn">开放世界游戏</span></div>
+      <div class="bt-cell" data-level="4">Self-running open worlds<span class="cell-cn">自运行的开放世界游戏</span></div>
+      <div class="bt-cell" data-level="5">Metaverse<span class="cell-cn">元宇宙</span></div>
 
       <!-- 10 · Space -->
       <div class="bt-row-head">
@@ -2749,11 +2754,11 @@ footer a:hover { color: var(--gold); }
         <div class="t-en">Space Travel</div>
         <div class="t-idx">10 · 10</div>
       </div>
-      <div class="bt-cell" data-level="1">Automobiles</div>
-      <div class="bt-cell" data-level="2">Aircraft</div>
-      <div class="bt-cell" data-level="3">Rockets</div>
-      <div class="bt-cell" data-level="4">Space elevator</div>
-      <div class="bt-cell" data-level="5">Curvature drive</div>
+      <div class="bt-cell" data-level="1">Automobiles<span class="cell-cn">汽车级</span></div>
+      <div class="bt-cell" data-level="2">Aircraft<span class="cell-cn">飞机级</span></div>
+      <div class="bt-cell" data-level="3">Rockets<span class="cell-cn">火箭级</span></div>
+      <div class="bt-cell" data-level="4">Space elevator<span class="cell-cn">飞船级</span></div>
+      <div class="bt-cell" data-level="5">Curvature drive<span class="cell-cn">曲率引擎</span></div>
 
     </div>
   </div>
