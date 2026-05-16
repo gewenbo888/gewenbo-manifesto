@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atlas — 全图 · The Psyverse</title>
+<meta name="description" content="Every site in the Psyverse — a live atlas of 200+ projects, traffic, and trends." />
+<meta property="og:title" content="Atlas — 全图" />
+<meta property="og:description" content="Every site in the Psyverse, sorted by traffic." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://psyverse.fun/og.png" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+<script defer src="https://analytics-dashboard-two-blue.vercel.app/tracker.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=Noto+Serif+SC:wght@200;300;400;500;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0a0908;
+  --bg-2: #14110d;
+  --bg-3: #1f1a13;
+  --gold: #c9a24b;
+  --gold-bright: #e6c071;
+  --gold-deep: #7c6024;
+  --ivory: #ece4d3;
+  --ivory-dim: rgba(236, 228, 211, 0.65);
+  --ivory-faint: rgba(236, 228, 211, 0.25);
+  --jade: #5a8f73;
+  --rouge: #b14d42;
+  --line: rgba(201, 162, 75, 0.2);
+  --line-soft: rgba(236, 228, 211, 0.08);
+  --serif: "Cormorant Garamond", "Noto Serif SC", serif;
+  --display: "Fraunces", "Noto Serif SC", serif;
+  --cjk: "Noto Serif SC", "Cormorant Garamond", serif;
+  --mono: "JetBrains Mono", monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ivory);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 162, 75, 0.08), transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(90, 143, 115, 0.04), transparent 50%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.82  0 0 0 0 0.64  0 0 0 0 0.29  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-attachment: fixed;
+}
+::selection { background: var(--gold); color: var(--bg); }
+
+/* ═══════ TOP BAR ═══════ */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 28px; gap: 20px;
+  background: rgba(10, 9, 8, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--display); font-weight: 300;
+  font-style: italic; font-size: 17px;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.brand:hover { opacity: 0.75; }
+.brand:hover .mark { background: var(--gold); color: var(--bg); }
+.brand .mark {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 10px; font-style: normal;
+  color: var(--gold);
+  transition: background 0.2s, color 0.2s;
+}
+.top-nav {
+  display: flex; flex-wrap: nowrap; gap: 0;
+  align-items: center; flex-shrink: 1; min-width: 0;
+  overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+  justify-content: flex-end;
+}
+.top-nav::-webkit-scrollbar { display: none; }
+.top-nav a {
+  display: inline-flex; align-items: baseline; gap: 4px;
+  padding: 6px 6px;
+  color: var(--ivory-dim);
+  text-decoration: none;
+  border-radius: 3px;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0; white-space: nowrap;
+  font-family: var(--mono); font-size: 9.5px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.top-nav a:hover { color: var(--gold); background: rgba(201, 162, 75, 0.07); }
+.top-nav a.active { color: var(--gold); }
+.top-nav a + a::before {
+  content: "·"; color: var(--ivory-faint);
+  opacity: 0.4; margin-left: -4px; margin-right: 2px;
+  align-self: center;
+}
+.top-nav .n {
+  font-family: var(--display); font-style: italic;
+  font-weight: 500; font-size: 12px;
+  color: var(--gold); letter-spacing: 0; line-height: 1;
+}
+.top-nav .l { line-height: 1; }
+@media (max-width: 1100px) {
+  .top-nav .l { display: none; }
+  .top-nav a + a::before { display: none; }
+  .top-nav a { padding: 4px 6px; }
+  .top-nav .n { font-size: 13px; }
+}
+
+/* ═══════ LAYOUT ═══════ */
+main { max-width: 1400px; margin: 0 auto; padding: 120px 32px 80px; }
+
+.hero {
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px; align-items: end;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 200; line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ivory);
+  font-variation-settings: "opsz" 144;
+}
+.hero h1 em {
+  font-style: italic; color: var(--gold-bright);
+  font-weight: 400;
+}
+.hero h1 .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-weight: 300;
+  font-size: 0.42em;
+  letter-spacing: 0.22em;
+  margin-top: 14px;
+  color: var(--gold);
+}
+.hero-side {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+  text-align: right;
+  line-height: 1.9;
+}
+.hero-side .num {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--gold);
+  letter-spacing: 0;
+  text-transform: none;
+  display: block;
+}
+
+.lede {
+  max-width: 740px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(17px, 1.6vw, 22px);
+  font-weight: 300;
+  color: var(--ivory-dim);
+  line-height: 1.55;
+  margin-bottom: 56px;
+}
+.lede .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-style: normal;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  color: var(--ivory-faint);
+  margin-top: 10px;
+}
+
+/* ═══════ CONTROLS ═══════ */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px; align-items: center;
+  margin-bottom: 36px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.search {
+  position: relative;
+}
+.search input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 4px 12px 24px;
+  color: var(--ivory);
+  font-family: var(--serif);
+  font-size: 18px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search input::placeholder { color: var(--ivory-faint); font-style: italic; }
+.search input:focus { border-bottom-color: var(--gold); }
+.search::before {
+  content: "⌕";
+  position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  color: var(--gold);
+  font-size: 18px;
+}
+.sort {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.sort span { color: var(--ivory-faint); margin-right: 12px; }
+.sort button {
+  background: transparent;
+  border: none;
+  padding: 6px 10px;
+  color: var(--ivory-dim);
+  font: inherit;
+  cursor: pointer;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.sort button:hover { color: var(--ivory); }
+.sort button.active { color: var(--gold); }
+.sort button + button::before {
+  content: "·"; color: var(--ivory-faint);
+  margin-right: 10px; margin-left: -4px;
+}
+
+.chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 40px;
+}
+.chip {
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 7px 14px;
+  border-radius: 100px;
+  color: var(--ivory-dim);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip:hover {
+  color: var(--ivory);
+  border-color: var(--gold-deep);
+}
+.chip.active {
+  color: var(--bg);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.chip .count {
+  font-family: var(--mono);
+  font-size: 9px;
+  opacity: 0.6;
+  margin-left: 6px;
+}
+.chip.active .count { opacity: 0.7; }
+
+/* ═══════ GRID ═══════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line-soft);
+}
+.card {
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: background 0.2s;
+  overflow: hidden;
+}
+.card:hover { background: var(--bg-2); }
+.card:hover .card-arrow { color: var(--gold-bright); transform: translateX(4px); }
+.card:hover .card-host { color: var(--gold-bright); }
+.card:hover .card-shot img { transform: scale(1.02); opacity: 1; }
+
+.card-shot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--bg-2);
+  background-image:
+    linear-gradient(135deg, rgba(201,162,75,0.04) 0%, transparent 50%, rgba(201,162,75,0.02) 100%);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-soft);
+}
+.card-shot img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0.88;
+  transition: opacity 0.4s, transform 0.5s ease;
+  display: block;
+}
+.card-shot .placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--gold-deep);
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+}
+.card-body {
+  padding: 18px 20px 18px;
+  display: flex; flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.card-top {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 12px;
+}
+.card-host {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  word-break: break-all;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+.card-arrow {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--ivory-faint);
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+.card-title {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--ivory);
+  line-height: 1.25;
+  margin-top: 2px;
+}
+.card-group {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+.card-stats {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+}
+.card-views {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ivory-dim);
+  letter-spacing: 0.05em;
+}
+.card-views b {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--gold);
+  margin-right: 4px;
+  letter-spacing: 0;
+}
+.card-views .today {
+  display: block;
+  margin-top: 3px;
+  font-size: 9px;
+  color: var(--ivory-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.card-spark { flex-shrink: 0; }
+
+.empty {
+  padding: 80px 32px;
+  text-align: center;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ivory-faint);
+}
+.loading {
+  padding: 120px 32px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+
+/* ═══════ FOOTER ═══════ */
+footer {
+  margin: 80px auto 0;
+  max-width: 1400px;
+  padding: 40px 32px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ivory-faint);
+}
+footer a {
+  color: var(--ivory-dim);
+  text-decoration: none;
+  margin-left: 18px;
+  transition: color 0.2s;
+}
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 700px) {
+  main { padding: 100px 18px 60px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-side { text-align: left; }
+  .controls { grid-template-columns: 1fr; }
+  .sort { flex-wrap: wrap; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  footer { flex-direction: column; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="/" class="brand" aria-label="Back to manifesto">
+    <span class="mark">∞</span>
+    <span>One Mission</span>
+  </a>
+  <nav class="top-nav">
+    <a href="/#one"><span class="n">1</span><span class="l">Mission</span></a>
+    <a href="/#six"><span class="n">6</span><span class="l">Domains</span></a>
+    <a href="/#hubs"><span class="n">8</span><span class="l">Hubs</span></a>
+    <a href="/#breakthroughs"><span class="n">10</span><span class="l">Tech</span></a>
+    <a href="/#sixteen"><span class="n">16</span><span class="l">Visions</span></a>
+    <a href="/atlas" class="active"><span class="n">∴</span><span class="l">Atlas</span></a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>
+      The <em>Atlas</em>
+      <span class="cn">全 图</span>
+    </h1>
+    <div class="hero-side">
+      <span class="num" id="stat-projects">—</span>
+      sites shipped<br>
+      <span class="num" id="stat-views">—</span>
+      total pageviews<br>
+      <span class="num" id="stat-today">—</span>
+      today
+    </div>
+  </div>
+
+  <p class="lede">
+    Every site in the Psyverse — atlases of thought, operating systems, rankings, civilizational maps. The manifesto says <em>do work that matters across six domains</em>. This page is the proof.
+    <span class="cn">一份宣言之外，是这些落成的网站本身。</span>
+  </p>
+
+  <div class="controls">
+    <div class="search">
+      <input id="q" type="text" placeholder="Search by name or subdomain…" autocomplete="off" />
+    </div>
+    <div class="sort">
+      <span>Sort</span>
+      <button data-sort="views" class="active">Most viewed</button>
+      <button data-sort="alpha">A–Z</button>
+      <button data-sort="trend">Trending</button>
+    </div>
+  </div>
+
+  <div class="chips" id="chips"></div>
+
+  <div id="content">
+    <div class="loading">Loading the atlas…</div>
+  </div>
+</main>
+
+<footer>
+  <div>© 2026 · psyverse.fun · 全图</div>
+  <div>
+    <a href="/">Manifesto</a>
+    <a href="https://hub.psyverse.fun" target="_blank" rel="noopener">Hub</a>
+    <a href="https://blog.psyverse.fun" target="_blank" rel="noopener">Blog</a>
+    <a href="https://github.com/gewenbo888" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script>
+// ═══════ subdomain ↔ canonical key map (from analytics-dashboard collect.js) ═══════
+const SUBDOMAIN_BY_KEY = {};
+const PSYVERSE_MAP = {
+  'psyverse.fun': 'gewenbo-manifesto',
+  'manifesto.psyverse.fun': 'gewenbo-manifesto',
+  'idea-evolution.psyverse.fun': 'idea-evolution',
+  'hub.psyverse.fun': 'gewenbo-hub',
+  'links.psyverse.fun': 'gewenbo-links',
+  'blog.psyverse.fun': 'gewenbo-blog',
+  'store.psyverse.fun': 'gewenbo-store',
+  'atlas.psyverse.fun': 'global-atlas-lake',
+  'civilizations.psyverse.fun': 'civilizations-compared',
+  'regions.psyverse.fun': 'three-regions',
+  'roads.psyverse.fun': 'three-roads-agi',
+  'tao.psyverse.fun': 'tao-science',
+  'tech.psyverse.fun': 'emerging-tech-nine',
+  'aitools.psyverse.fun': 'ai-tools-guide-henna',
+  'insights.psyverse.fun': 'ai-insights-beta',
+  'researchers.psyverse.fun': 'chinese-ai-researchers',
+  'agi.psyverse.fun': 'agi-research-seven',
+  'string.psyverse.fun': 'web-topaz-two-62',
+  'evolution.psyverse.fun': 'evolution-ai-six',
+  'levels.psyverse.fun': 'tech-levels',
+  'brain.psyverse.fun': 'brain-atlas-ten',
+  'autoresearch.psyverse.fun': 'autoresearch-showcase',
+  'prompts.psyverse.fun': 'prompt-vault-two-sooty',
+  'wiki.psyverse.fun': 'llm-wiki-snowy',
+  'triangle.psyverse.fun': 'impossible-triangle-lemon',
+  'names.psyverse.fun': 'chinese-name-gen',
+  'island.psyverse.fun': 'island-gun-king',
+  'highway.psyverse.fun': 'prototype-indol-five',
+  'haplo.psyverse.fun': 'y-haplogroups',
+  'quantum.psyverse.fun': 'quantum-crypto-three',
+  'dance.psyverse.fun': 'tokendance',
+  'gosu.psyverse.fun': 'gosu-yu',
+  'libertarian.psyverse.fun': 'libertarian',
+  'kol.psyverse.fun': 'crypto-kol',
+  'mindseye.psyverse.fun': 'mindseye',
+  'cnkol.psyverse.fun': 'chinese-crypto-kols',
+  'skills.psyverse.fun': 'skills-showcase',
+  'llms.psyverse.fun': 'llm-models',
+  'aiapps.psyverse.fun': 'ai-apps-rank',
+  'ides.psyverse.fun': 'ides-rank',
+  'saas.psyverse.fun': 'saas-rank',
+  'gear.psyverse.fun': 'gear-rank',
+  'creators.psyverse.fun': 'creators-rank',
+  'coders.psyverse.fun': 'coders-rank',
+  'learn.psyverse.fun': 'learn-rank',
+  'oss.psyverse.fun': 'oss-rank',
+  'apis.psyverse.fun': 'apis-rank',
+  'langbrain.psyverse.fun': 'langbrain',
+  'agents.psyverse.fun': 'agents-rank',
+  'figures.psyverse.fun': 'figures-rank',
+  'arena.psyverse.fun': 'ai-arena',
+  'psy.psyverse.fun': 'psy-protocol-site',
+  'idc.psyverse.fun': 'china-idc-ranking',
+  'heat.psyverse.fun': 'heating-comparison',
+  'privacy.psyverse.fun': 'privacy-zk-landscape',
+  'humanoids.psyverse.fun': 'humanoid-robots-ranking',
+  'av.psyverse.fun': 'autonomous-driving-ranking',
+  'warp.psyverse.fun': 'curvature-engine',
+  'apes.psyverse.fun': 'apes-comparison',
+  'innovators.psyverse.fun': 'innovators-atlas',
+  'seeker.psyverse.fun': 'the-seeker',
+  'staples.psyverse.fun': 'staple-foods-atlas',
+  'chains.psyverse.fun': 'blockchain-performance-atlas',
+  'minds.psyverse.fun': 'thinking-styles-atlas',
+  'omega.psyverse.fun': 'omega-engine',
+  'urcde.psyverse.fun': 'urcde-engine',
+  'mindatlas.psyverse.fun': 'atlas-of-mind',
+  'tools.psyverse.fun': 'tool-hub',
+  'aha.psyverse.fun': 'aha-psyverse',
+  'ledger.psyverse.fun': 'ledger-psyverse',
+  'ideaspace.psyverse.fun': 'ideaspace-psyverse',
+  'convergence.psyverse.fun': 'convergence-psyverse',
+  'chainmind.psyverse.fun': 'chainmind-psyverse',
+  'architect.psyverse.fun': 'architect-psyverse',
+  'cognition-gym.psyverse.fun': 'cognition-gym',
+  'mirror.psyverse.fun': 'humanity-mirror',
+  'mind-arena.psyverse.fun': 'mind-arena',
+  'reality.psyverse.fun': 'reality-explorer',
+  'ethics-engine.psyverse.fun': 'ethics-engine',
+  'humanity-os.psyverse.fun': 'humanity-os',
+  'truth.psyverse.fun': 'truth-engine',
+  'market.psyverse.fun': 'intelligence-market',
+  'sim.psyverse.fun': 'simulation-universe',
+  'attention.psyverse.fun': 'attention-os',
+  'meaning.psyverse.fun': 'meaning-engine',
+  'time.psyverse.fun': 'time-machine',
+  'knowledge-os.psyverse.fun': 'knowledge-os',
+  'influence-os.psyverse.fun': 'influence-os',
+  'uncertainty-os.psyverse.fun': 'uncertainty-os',
+  'chaos-os.psyverse.fun': 'chaos-os',
+  'strategy-os.psyverse.fun': 'strategy-os',
+  'emotion-os.psyverse.fun': 'emotion-os',
+  'blockchain-atlas.psyverse.fun': 'blockchain-atlas',
+  'ge.psyverse.fun': 'ge-clan-atlas',
+  'jin-atlas.psyverse.fun': 'jin-atlas',
+  'surnames.psyverse.fun': 'surname-atlas',
+  'grassland.psyverse.fun': 'grassland-atlas',
+  'org.psyverse.fun': 'organization-atlas',
+  'chain.psyverse.fun': 'chain-essence',
+  'signal.psyverse.fun': 'signal-os',
+  'parenting-os.psyverse.fun': 'parenting-os',
+  'mindforge.psyverse.fun': 'mindforge',
+  'awaken-os.psyverse.fun': 'awaken-os',
+  'clarity-os.psyverse.fun': 'clarity-os',
+  'self-construction-os.psyverse.fun': 'self-construction-os',
+  'agency-genesis.psyverse.fun': 'agency-genesis',
+  'civilization-waves.psyverse.fun': 'civilization-waves',
+  'southward-migration.psyverse.fun': 'southward-migration',
+  'steppe-empire.psyverse.fun': 'steppe-empire',
+  'human-future-atlas.psyverse.fun': 'human-future-atlas',
+  'climate-civilization.psyverse.fun': 'climate-civilization',
+  'states-of-reality.psyverse.fun': 'states-of-reality',
+  'frontier-garrisons.psyverse.fun': 'frontier-garrisons',
+  'oceanic-civilization.psyverse.fun': 'oceanic-civilization',
+  'the-human-library.psyverse.fun': 'the-human-library',
+  'yellow-river-frontier.psyverse.fun': 'yellow-river-frontier',
+  'techne.psyverse.fun': 'techne',
+  'zk-civilization.psyverse.fun': 'zk-civilization',
+  'survival-intelligence.psyverse.fun': 'survival-intelligence',
+  'cryptocivilization.psyverse.fun': 'cryptocivilization',
+  'neolithic-world.psyverse.fun': 'neolithic-world',
+  'elements-of-civilization.psyverse.fun': 'elements-of-civilization',
+  'pacific-rim-ports.psyverse.fun': 'pacific-rim-ports',
+  'huangqihai-civilization.psyverse.fun': 'huangqihai-civilization',
+  'china-regional-systems.psyverse.fun': 'china-regional-systems',
+  'dongbei-renaissance.psyverse.fun': 'dongbei-renaissance',
+  'mountain-merchants.psyverse.fun': 'mountain-merchants',
+  'psy-killer-apps.psyverse.fun': 'psy-killer-apps',
+  'psy-civilization.psyverse.fun': 'psy-civilization',
+  'sentience.psyverse.fun': 'sentience',
+  'evolution-of-eyes.psyverse.fun': 'evolution-of-eyes',
+  'psy-spec.psyverse.fun': 'psy-spec',
+  'cognitive-civilization.psyverse.fun': 'cognitive-civilization',
+  'sinosphere.psyverse.fun': 'sinosphere',
+  'clan-civilization.psyverse.fun': 'clan-civilization',
+  'civilization-os.psyverse.fun': 'civilization-os',
+  'psyverse-os.psyverse.fun': 'psyverse-os',
+  'civilization-os-infinity.psyverse.fun': 'civilization-os-infinity',
+  'material-civilization.psyverse.fun': 'material-civilization',
+  'civos.psyverse.fun': 'civos',
+  'civos-civilization-os.psyverse.fun': 'civos-civilization-os',
+  'civos-idea-evolution.psyverse.fun': 'civos-idea-evolution',
+  'civos-material-civilization.psyverse.fun': 'civos-material-civilization',
+  'civos-clan-civilization.psyverse.fun': 'civos-clan-civilization',
+  'psy-protocol-spec.psyverse.fun': 'psy-protocol-spec',
+  'sensory-os.psyverse.fun': 'sensory-os',
+  'reality-kernel.psyverse.fun': 'reality-kernel',
+  'decision-os.psyverse.fun': 'decision-os',
+  'cycle-engine.psyverse.fun': 'cycle-engine',
+  'life-os.psyverse.fun': 'life-os',
+  'mask-engine.psyverse.fun': 'mask-engine',
+  'attraction-lab.psyverse.fun': 'attraction-lab',
+  'dream-foundry.psyverse.fun': 'dream-foundry',
+  'parallel-life.psyverse.fun': 'parallel-life',
+  'internet-tribes.psyverse.fun': 'internet-tribes',
+  'persona-engine.psyverse.fun': 'persona-engine',
+  'desire-atlas.psyverse.fun': 'desire-atlas',
+  'life-cinematic.psyverse.fun': 'life-cinematic',
+  'social-temperature.psyverse.fun': 'social-temperature',
+  'chaos-simulator.psyverse.fun': 'chaos-simulator',
+  'last-seen.psyverse.fun': 'last-seen',
+  'inner-monologue.psyverse.fun': 'inner-monologue',
+  'fusion-os.psyverse.fun': 'fusion-os',
+  'ai-replacement-map.psyverse.fun': 'ai-replacement-map',
+  'civlab.psyverse.fun': 'civlab',
+  'civilization-tree.psyverse.fun': 'civilization-tree',
+  'how-the-world-works.psyverse.fun': 'how-the-world-works',
+  'humanity-problem-database.psyverse.fun': 'humanity-problem-database',
+  'future-simulator.psyverse.fun': 'future-simulator',
+  'ai-society-sandbox.psyverse.fun': 'ai-society-sandbox',
+  'global-materials-graph.psyverse.fun': 'global-materials-graph',
+  'civlab-ai-replacement-map.psyverse.fun': 'civlab-ai-replacement-map',
+  'failure-museum.psyverse.fun': 'failure-museum',
+  'knowledge-compression-engine.psyverse.fun': 'knowledge-compression-engine',
+  'human-memory-project.psyverse.fun': 'human-memory-project',
+  'reality-engine.psyverse.fun': 'reality-engine',
+  'invisible-systems.psyverse.fun': 'invisible-systems',
+  'digital-species.psyverse.fun': 'digital-species',
+  'memory-atlas.psyverse.fun': 'memory-atlas',
+  'collapse-watch.psyverse.fun': 'collapse-watch',
+  'ai-universe.psyverse.fun': 'ai-universe',
+  'human-os.psyverse.fun': 'human-os',
+  'future-economy.psyverse.fun': 'future-economy',
+  'intelligence-network.psyverse.fun': 'intelligence-network',
+  'synthetic-history.psyverse.fun': 'synthetic-history',
+  'civtech.psyverse.fun': 'civtech',
+  'ai-scientist-lab.psyverse.fun': 'ai-scientist-lab',
+  'chip-war-atlas.psyverse.fun': 'chip-war-atlas',
+  'future-materials-database.psyverse.fun': 'future-materials-database',
+  'civilization-tech-tree.psyverse.fun': 'civilization-tech-tree',
+  'quantum-computing-visualizer.psyverse.fun': 'quantum-computing-visualizer',
+  'autonomous-software-civilization.psyverse.fun': 'autonomous-software-civilization',
+  'future-energy-dashboard.psyverse.fun': 'future-energy-dashboard',
+  'robot-civilization-observatory.psyverse.fun': 'robot-civilization-observatory',
+  'brain-computer-interface-world.psyverse.fun': 'brain-computer-interface-world',
+  'reality-simulation-engine.psyverse.fun': 'reality-simulation-engine',
+  'chrono-void.psyverse.fun': 'chrono-void',
+  'five-worlds.psyverse.fun': 'five-worlds',
+  'suyu.psyverse.fun': 'suyu',
+  'five-challenges.psyverse.fun': 'five-challenges',
+};
+for (const [sub, key] of Object.entries(PSYVERSE_MAP)) {
+  // Prefer the shortest subdomain for each canonical key (handles aliases like manifesto.psyverse.fun → gewenbo-manifesto)
+  if (!SUBDOMAIN_BY_KEY[key] || sub.length < SUBDOMAIN_BY_KEY[key].length) {
+    SUBDOMAIN_BY_KEY[key] = sub;
+  }
+}
+
+// ═══════ explicit groups (from collect.js ecosystem comments) ═══════
+const CIVLAB = new Set([
+  'civlab', 'civilization-tree', 'how-the-world-works', 'humanity-problem-database',
+  'future-simulator', 'ai-society-sandbox', 'global-materials-graph',
+  'civlab-ai-replacement-map', 'failure-museum', 'knowledge-compression-engine',
+  'human-memory-project',
+]);
+const STARTUP_LAB = new Set([
+  'reality-engine', 'invisible-systems', 'digital-species', 'memory-atlas',
+  'collapse-watch', 'ai-universe', 'human-os', 'future-economy',
+  'intelligence-network', 'synthetic-history',
+]);
+const CIVTECH = new Set([
+  'civtech', 'ai-scientist-lab', 'chip-war-atlas', 'future-materials-database',
+  'civilization-tech-tree', 'quantum-computing-visualizer',
+  'autonomous-software-civilization', 'future-energy-dashboard',
+  'robot-civilization-observatory', 'brain-computer-interface-world',
+  'reality-simulation-engine', 'chrono-void',
+]);
+const CORE = new Set([
+  'gewenbo-manifesto', 'gewenbo-hub', 'gewenbo-blog', 'gewenbo-store',
+  'gewenbo-links', 'psy-protocol-site', 'psy-spec', 'psy-protocol-spec',
+  'psy-killer-apps', 'psy-civilization', 'psyverse-os',
+]);
+
+function groupOf(key) {
+  if (CORE.has(key)) return 'Core';
+  if (CIVLAB.has(key)) return 'CivLab';
+  if (STARTUP_LAB.has(key)) return 'Startup Lab';
+  if (CIVTECH.has(key)) return 'CivTech';
+  if (key.endsWith('-os') || key === 'reality-kernel') return 'OS Series';
+  if (key.includes('atlas') || key.endsWith('-map')) return 'Atlases';
+  if (key.includes('rank') || key.includes('comparison') || key === 'ai-arena') return 'Rankings';
+  if (key.includes('civ') || key.includes('civilization') || key.includes('sinosphere') || key.includes('migration') || key.includes('frontier') || key.includes('empire') || key.includes('neolithic')) return 'Civilization';
+  if (key.includes('engine') || key.includes('lab') || key.includes('foundry')) return 'Engines';
+  return 'Other';
+}
+
+// ═══════ title humanization ═══════
+const TITLE_OVERRIDES = {
+  'gewenbo-manifesto': 'One Mission · 一使命',
+  'gewenbo-hub': 'Hub',
+  'gewenbo-blog': 'Blog',
+  'gewenbo-store': 'Store',
+  'gewenbo-links': 'Links',
+  'ai-tools-guide-henna': 'AI Tools Guide',
+  'ai-insights-beta': 'AI Insights',
+  'agi-research-seven': 'AGI Research',
+  'web-topaz-two-62': 'String Theory',
+  'evolution-ai-six': 'Evolution of AI',
+  'brain-atlas-ten': 'Brain Atlas',
+  'prompt-vault-two-sooty': 'Prompt Vault',
+  'llm-wiki-snowy': 'LLM Wiki',
+  'impossible-triangle-lemon': 'Impossible Triangle',
+  'island-gun-king': 'Island Strategy',
+  'prototype-indol-five': 'Highway',
+  'y-haplogroups': 'Y-Haplogroups',
+  'quantum-crypto-three': 'Quantum Crypto',
+  'crypto-kol': 'Crypto KOL',
+  'chinese-crypto-kols': 'Chinese Crypto KOLs',
+  'ai-apps-rank': 'AI Apps',
+  'llm-models': 'LLM Models',
+  'psy-protocol-site': 'Psy Protocol',
+  'ai-arena': 'AI Arena',
+  'autonomous-driving-ranking': 'Autonomous Driving',
+  'humanoid-robots-ranking': 'Humanoid Robots',
+  'curvature-engine': 'Warp · Curvature Engine',
+  'tao-science': 'Tao Science',
+  'emerging-tech-nine': 'Emerging Tech',
+  'three-roads-agi': 'Three Roads to AGI',
+  'three-regions': 'Three Regions',
+  'civilizations-compared': 'Civilizations Compared',
+  'global-atlas-lake': 'Global Atlas',
+  'chinese-ai-researchers': 'Chinese AI Researchers',
+  'autoresearch-showcase': 'Autoresearch',
+  'chinese-name-gen': 'Chinese Name Gen',
+  'heating-comparison': 'Heating Comparison',
+  'china-idc-ranking': 'China IDC',
+  'privacy-zk-landscape': 'Privacy / ZK Landscape',
+  'apes-comparison': 'Apes Comparison',
+  'innovators-atlas': 'Innovators Atlas',
+  'the-seeker': 'The Seeker',
+  'staple-foods-atlas': 'Staple Foods',
+  'blockchain-performance-atlas': 'Blockchain Performance',
+  'thinking-styles-atlas': 'Thinking Styles',
+  'atlas-of-mind': 'Atlas of Mind',
+  'tool-hub': 'Tool Hub',
+  'ge-clan-atlas': 'Ge Clan Atlas',
+  'jin-atlas': 'Jin Atlas',
+  'surname-atlas': 'Surname Atlas',
+  'grassland-atlas': 'Grassland Atlas',
+  'organization-atlas': 'Organization Atlas',
+  'chain-essence': 'Chain Essence',
+  'signal-os': 'Signal OS',
+  'aha-psyverse': 'Aha',
+  'ledger-psyverse': 'Ledger',
+  'ideaspace-psyverse': 'Ideaspace',
+  'convergence-psyverse': 'Convergence',
+  'chainmind-psyverse': 'Chainmind',
+  'architect-psyverse': 'Architect',
+  'cognition-gym': 'Cognition Gym',
+  'humanity-mirror': 'Humanity Mirror',
+  'mind-arena': 'Mind Arena',
+  'reality-explorer': 'Reality Explorer',
+  'ethics-engine': 'Ethics Engine',
+  'humanity-os': 'Humanity OS',
+  'truth-engine': 'Truth Engine',
+  'intelligence-market': 'Intelligence Market',
+  'simulation-universe': 'Simulation Universe',
+  'meaning-engine': 'Meaning Engine',
+  'time-machine': 'Time Machine',
+  'five-worlds': 'Five Worlds · 五世界',
+  'suyu': 'Suyu · 戈苏御',
+  'five-challenges': 'Five Challenges · 五大挑战',
+};
+function titleOf(key) {
+  if (TITLE_OVERRIDES[key]) return TITLE_OVERRIDES[key];
+  return key.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+}
+
+// ═══════ sparkline ═══════
+function sparkline(last7, w = 60, h = 22) {
+  const vals = last7.map(d => d.views || 0);
+  const max = Math.max(...vals, 1);
+  const step = w / (vals.length - 1 || 1);
+  const pts = vals.map((v, i) => {
+    const x = i * step;
+    const y = h - (v / max) * (h - 2) - 1;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  const lastY = h - (vals[vals.length - 1] / max) * (h - 2) - 1;
+  return `<svg class="card-spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+    <polyline points="${pts}" fill="none" stroke="#c9a24b" stroke-width="1.2" opacity="0.65"/>
+    <circle cx="${w}" cy="${lastY.toFixed(1)}" r="1.6" fill="#e6c071"/>
+  </svg>`;
+}
+
+// ═══════ state ═══════
+let projects = [];
+let activeGroup = 'All';
+let activeSort = 'views';
+let query = '';
+
+function trendScore(p) {
+  // Sum of last 3 days minus prior 3 days — simple trend
+  const last7 = p.last7 || [];
+  const recent = last7.slice(-3).reduce((s, d) => s + (d.views || 0), 0);
+  const prior = last7.slice(0, 3).reduce((s, d) => s + (d.views || 0), 0);
+  return recent - prior;
+}
+
+function render() {
+  const filtered = projects.filter(p => {
+    if (activeGroup !== 'All' && p.group !== activeGroup) return false;
+    if (!query) return true;
+    const q = query.toLowerCase();
+    return p.title.toLowerCase().includes(q)
+        || p.project.toLowerCase().includes(q)
+        || (p.subdomain || '').toLowerCase().includes(q)
+        || p.group.toLowerCase().includes(q);
+  });
+
+  if (activeSort === 'views') filtered.sort((a, b) => b.total - a.total);
+  else if (activeSort === 'alpha') filtered.sort((a, b) => a.title.localeCompare(b.title));
+  else if (activeSort === 'trend') filtered.sort((a, b) => trendScore(b) - trendScore(a));
+
+  const content = document.getElementById('content');
+  if (!filtered.length) {
+    content.innerHTML = '<div class="empty">Nothing matches.</div>';
+    return;
+  }
+
+  const html = filtered.map(p => {
+    const host = p.subdomain || `${p.project}.psyverse.fun`;
+    const href = `https://${host}/`;
+    const initial = (p.title.match(/[A-Za-z\u4e00-\u9fff]/) || ['∴'])[0];
+    return `<a class="card" href="${href}" target="_blank" rel="noopener">
+      <div class="card-shot">
+        <div class="placeholder">${initial}</div>
+        <img loading="lazy" src="/screens/${p.project}.webp" alt=""
+          onerror="this.style.display='none'"
+          onload="this.previousElementSibling.style.display='none'"/>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <span class="card-host">${host}</span>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card-title">${p.title}</div>
+        <div class="card-group">${p.group}</div>
+        <div class="card-stats">
+          <div class="card-views"><b>${p.total.toLocaleString()}</b> views<span class="today">today · ${p.today}</span></div>
+          ${sparkline(p.last7)}
+        </div>
+      </div>
+    </a>`;
+  }).join('');
+  content.innerHTML = `<div class="grid">${html}</div>`;
+}
+
+function renderChips() {
+  const groups = ['All', ...new Set(projects.map(p => p.group))];
+  const order = ['All', 'Core', 'Atlases', 'OS Series', 'Rankings', 'Civilization', 'Engines', 'CivLab', 'CivTech', 'Startup Lab', 'Other'];
+  groups.sort((a, b) => {
+    const ai = order.indexOf(a); const bi = order.indexOf(b);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  });
+  const counts = {};
+  for (const p of projects) counts[p.group] = (counts[p.group] || 0) + 1;
+  counts['All'] = projects.length;
+  const chipsEl = document.getElementById('chips');
+  chipsEl.innerHTML = groups.map(g =>
+    `<button class="chip${g === activeGroup ? ' active' : ''}" data-group="${g}">${g}<span class="count">${counts[g] || 0}</span></button>`
+  ).join('');
+  chipsEl.querySelectorAll('.chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeGroup = btn.dataset.group;
+      renderChips();
+      render();
+    });
+  });
+}
+
+async function load() {
+  try {
+    const res = await fetch('https://dashboard.psyverse.fun/api/stats', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`stats ${res.status}`);
+    const data = await res.json();
+    projects = (data.projects || []).map(p => ({
+      ...p,
+      title: titleOf(p.project),
+      group: groupOf(p.project),
+      subdomain: SUBDOMAIN_BY_KEY[p.project] || null,
+    }));
+
+    const totalViews = projects.reduce((s, p) => s + p.total, 0);
+    const todayViews = projects.reduce((s, p) => s + p.today, 0);
+    document.getElementById('stat-projects').textContent = projects.length;
+    document.getElementById('stat-views').textContent = totalViews.toLocaleString();
+    document.getElementById('stat-today').textContent = todayViews.toLocaleString();
+
+    renderChips();
+    render();
+  } catch (err) {
+    document.getElementById('content').innerHTML =
+      `<div class="empty">Couldn't load atlas data. <br><span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;">${err.message}</span></div>`;
+  }
+}
+
+document.getElementById('q').addEventListener('input', e => {
+  query = e.target.value.trim();
+  render();
+});
+document.querySelectorAll('.sort button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sort button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeSort = btn.dataset.sort;
+    render();
+  });
+});
+
+load();
+</script>
+</body>
+</html>

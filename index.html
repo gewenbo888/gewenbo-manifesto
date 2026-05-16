@@ -2000,6 +2000,7 @@ footer a:hover { color: var(--gold); }
     <a href="#cultures"><span class="n">14</span><span class="l">Culture</span></a>
     <a href="#beliefs"><span class="n">15</span><span class="l">Belief</span></a>
     <a href="#sixteen"><span class="n">16</span><span class="l">Visions</span></a>
+    <a href="/atlas"><span class="n">∴</span><span class="l">Atlas</span></a>
   </nav>
 </header>
 
@@ -3785,10 +3786,93 @@ footer a:hover { color: var(--gold); }
   </div>
 </section>
 
+<!-- ═══════ LIVE PULSE ═══════ -->
+<style>
+  .pulse {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 48px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(236, 228, 211, 0.4);
+    border-top: 1px solid rgba(201, 162, 75, 0.12);
+  }
+  .pulse .stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .pulse .stat b {
+    font-family: "Fraunces", "Noto Serif SC", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: #c9a24b;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .pulse .stat .dot {
+    display: inline-block;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #c9a24b;
+    margin-right: 4px;
+    animation: pulse-dot 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.25); }
+  }
+  .pulse .enter {
+    color: #c9a24b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+    font-weight: 500;
+  }
+  .pulse .enter:hover {
+    border-bottom-color: #c9a24b;
+    color: #e6c071;
+  }
+  @media (max-width: 700px) {
+    .pulse { padding: 32px 24px 24px; gap: 18px; font-size: 9.5px; }
+    .pulse .stat b { font-size: 18px; }
+  }
+</style>
+<aside class="pulse" id="pulse">
+  <span class="stat"><span class="dot"></span><b id="pulse-sites">—</b>sites shipped</span>
+  <span class="stat"><b id="pulse-views">—</b>pageviews</span>
+  <span class="stat"><b id="pulse-today">—</b>today</span>
+  <a class="enter" href="/atlas">Enter the Atlas →</a>
+</aside>
+<script>
+(async () => {
+  try {
+    const r = await fetch('https://dashboard.psyverse.fun/api/stats', { cache: 'no-store' });
+    if (!r.ok) return;
+    const d = await r.json();
+    const total = (d.projects || []).reduce((s, p) => s + (p.total || 0), 0);
+    const today = (d.projects || []).reduce((s, p) => s + (p.today || 0), 0);
+    document.getElementById('pulse-sites').textContent = d.totalProjects || (d.projects || []).length;
+    document.getElementById('pulse-views').textContent = total.toLocaleString();
+    document.getElementById('pulse-today').textContent = today.toLocaleString();
+  } catch (e) {
+    document.getElementById('pulse').style.display = 'none';
+  }
+})();
+</script>
+
 <!-- ═══════ FOOTER ═══════ -->
 <footer>
   <div>© 2026 · psyverse.fun · 一使命</div>
   <div>
+    <a href="/atlas">Atlas</a>
     <a href="https://github.com/gewenbo888/gewenbo-manifesto" target="_blank" rel="noopener">GitHub</a>
     <a href="https://hub.psyverse.fun" target="_blank" rel="noopener">Hub</a>
     <a href="https://links.psyverse.fun" target="_blank" rel="noopener">Links</a>
