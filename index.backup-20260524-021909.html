@@ -1938,62 +1938,6 @@ footer a:hover { color: var(--gold); }
   .sixteen-head:nth-child(2n) { border-right: none; }
   .hero h1 { font-size: 56px; }
   .hero-bottom { flex-direction: column; gap: 16px; text-align: center; }
-  .lang-switch { margin-left: 8px; }
-}
-
-/* ════════════════════ LANGUAGE TOGGLE ════════════════════ */
-.lang-switch {
-  display: inline-flex; align-items: center; flex-shrink: 0;
-  margin-left: 16px; padding: 2px; gap: 2px;
-  border: 1px solid var(--line); border-radius: 999px;
-  background: rgba(10, 9, 8, 0.45);
-}
-.lang-switch button {
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em;
-  line-height: 1; white-space: nowrap; cursor: pointer;
-  padding: 5px 9px; border: none; border-radius: 999px;
-  background: transparent; color: var(--ivory-faint);
-  transition: color .25s, background .25s;
-}
-.lang-switch button.active { background: var(--gold); color: var(--bg); }
-.lang-switch button:not(.active):hover { color: var(--ivory); }
-
-html[data-lang="en"] .cn,
-html[data-lang="en"] .vision-cn,
-html[data-lang="en"] .axis-cn { display: none !important; }
-html[data-lang="zh"] .en,
-html[data-lang="zh"] .vision-en,
-html[data-lang="zh"] .axis-en,
-html[data-lang="zh"] .sub-desc,
-html[data-lang="zh"] .section-stamp,
-html[data-lang="zh"] #sixteen .tier-range { display: none !important; }
-html[data-lang="en"] .auto-zh { display: none !important; }
-html[data-lang="zh"] .auto-en { display: none !important; }
-
-/* ════════════════════ §16 · ELEVATION ════════════════════ */
-#sixteen .level-row {
-  transition: padding-left .4s cubic-bezier(.2,.7,.2,1), background .4s;
-}
-#sixteen .level-row:hover {
-  background: linear-gradient(90deg, rgba(201,162,75,0.055), transparent 72%);
-}
-#sixteen .lvl-basis .cn { letter-spacing: 0.2em; }
-#sixteen .sixteen-cell {
-  transition: transform .35s cubic-bezier(.2,.7,.2,1), background .35s, border-color .35s;
-}
-#sixteen .sixteen-cell:hover {
-  transform: translateY(-3px);
-  background: rgba(201,162,75,0.045);
-}
-/* scroll reveal — only active when JS opts in, so no-JS still shows everything */
-html.js-anim #sixteen .level-row,
-html.js-anim #sixteen .sixteen-cell {
-  opacity: 0; transform: translateY(14px);
-}
-html.js-anim #sixteen .level-row.in,
-html.js-anim #sixteen .sixteen-cell.in {
-  opacity: 1; transform: none;
-  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
 }
 </style>
 <!-- SEO · GEO · psyverse -->
@@ -2065,11 +2009,6 @@ html.js-anim #sixteen .sixteen-cell.in {
     <a href="#sixteen"><span class="n">16</span><span class="l">Visions</span></a>
     <a href="/atlas"><span class="n">∴</span><span class="l">Atlas</span></a>
   </nav>
-  <div class="lang-switch" role="group" aria-label="Language">
-    <button type="button" data-setlang="both">双语</button>
-    <button type="button" data-setlang="zh">中</button>
-    <button type="button" data-setlang="en">EN</button>
-  </div>
 </header>
 
 <!-- ═══════ HERO · ONE ═══════ -->
@@ -3596,8 +3535,8 @@ html.js-anim #sixteen .sixteen-cell.in {
   <div class="subsection-head" id="fourteen">
     <div class="sub-letter">A</div>
     <div class="sub-title-block">
-      <div class="sub-title"><span class="en">
-        The Ladder of Emerging Tech</span>
+      <div class="sub-title">
+        The Ladder of Emerging Tech
         <span class="cn">十 六 阶 · 天 梯</span>
       </div>
       <div class="sub-desc">
@@ -3612,44 +3551,44 @@ html.js-anim #sixteen .sixteen-cell.in {
     <div class="tier" data-tier="1">
       <div class="tier-head">
         <div class="tier-num">01</div>
-        <div class="tier-name"><span class="en">Universe Attributes</span> <span class="cn">宇 宙 属 性</span></div>
+        <div class="tier-name">Universe Attributes <span class="cn">宇 宙 属 性</span></div>
         <div class="tier-range">Levels 01 — 06</div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 01</div>
-        <div class="lvl-basis"><span class="en">Dimension</span><span class="cn">维 度</span></div>
-        <div class="lvl-tech"><span class="en">Dimensional traversal</span><span class="cn">维 度 穿 梭</span><span class="sub"><span class="en">Perception</span> <span class="cn">感知 · 天人感应</span></span></div>
-        <div class="lvl-code"><span class="en">Multiverse</span><span class="cn">多 元 宇 宙</span></div>
+        <div class="lvl-basis">Dimension<span class="cn">维 度</span></div>
+        <div class="lvl-tech">Dimensional traversal<span class="cn">维 度 穿 梭</span><span class="sub">Perception 感知 · 天人感应</span></div>
+        <div class="lvl-code">Multiverse<span class="cn">多 元 宇 宙</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 02</div>
-        <div class="lvl-basis"><span class="en">Space</span><span class="cn">空 间</span></div>
-        <div class="lvl-tech"><span class="en">Space migration</span><span class="cn">太 空 移 民</span><span class="sub"><span class="en">Exploration</span> <span class="cn">探索 · 星球运营</span></span></div>
-        <div class="lvl-code"><span class="en">Eternal Stars</span><span class="cn">繁 星 永 恒</span></div>
+        <div class="lvl-basis">Space<span class="cn">空 间</span></div>
+        <div class="lvl-tech">Space migration<span class="cn">太 空 移 民</span><span class="sub">Exploration 探索 · 星球运营</span></div>
+        <div class="lvl-code">Eternal Stars<span class="cn">繁 星 永 恒</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 03</div>
-        <div class="lvl-basis"><span class="en">Time</span><span class="cn">时 间</span></div>
-        <div class="lvl-tech"><span class="en">Time travel</span><span class="cn">时 间 旅 行</span><span class="sub"><span class="en">Eternity</span> <span class="cn">永恒 · 创造历史</span></span></div>
-        <div class="lvl-code"><span class="en">Primordial Universe</span><span class="cn">元 古 宇 宙</span></div>
+        <div class="lvl-basis">Time<span class="cn">时 间</span></div>
+        <div class="lvl-tech">Time travel<span class="cn">时 间 旅 行</span><span class="sub">Eternity 永恒 · 创造历史</span></div>
+        <div class="lvl-code">Primordial Universe<span class="cn">元 古 宇 宙</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 04</div>
-        <div class="lvl-basis"><span class="en">Entropy</span><span class="cn">熵</span></div>
-        <div class="lvl-tech"><span class="en">Longevity &amp; anti-aging</span><span class="cn">长 生 不 老</span><span class="sub"><span class="en">Order</span> <span class="cn">秩序 · 改良生活</span></span></div>
-        <div class="lvl-code"><span class="en">Infinite Operations</span><span class="cn">无 量 运 行</span></div>
+        <div class="lvl-basis">Entropy<span class="cn">熵</span></div>
+        <div class="lvl-tech">Longevity &amp; anti-aging<span class="cn">长 生 不 老</span><span class="sub">Order 秩序 · 改良生活</span></div>
+        <div class="lvl-code">Infinite Operations<span class="cn">无 量 运 行</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 05</div>
-        <div class="lvl-basis"><span class="en">Graviton</span><span class="cn">引 力 子</span></div>
-        <div class="lvl-tech"><span class="en">Curvature engine</span><span class="cn">曲 率 引 擎</span><span class="sub"><span class="en">Motion</span> <span class="cn">运动 · 探索未知</span></span></div>
-        <div class="lvl-code"><span class="en">Curvature Navigation</span><span class="cn">曲 率 导 航</span></div>
+        <div class="lvl-basis">Graviton<span class="cn">引 力 子</span></div>
+        <div class="lvl-tech">Curvature engine<span class="cn">曲 率 引 擎</span><span class="sub">Motion 运动 · 探索未知</span></div>
+        <div class="lvl-code">Curvature Navigation<span class="cn">曲 率 导 航</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 06</div>
-        <div class="lvl-basis"><span class="en">Quantum</span><span class="cn">量 子</span></div>
-        <div class="lvl-tech"><span class="en">Quantum computing</span><span class="cn">量 子 计 算</span><span class="sub"><span class="en">Science</span> <span class="cn">科学 · 获取真理</span></span></div>
-        <div class="lvl-code"><span class="en">Quantum Dynamics</span><span class="cn">量 子 动 力</span></div>
+        <div class="lvl-basis">Quantum<span class="cn">量 子</span></div>
+        <div class="lvl-tech">Quantum computing<span class="cn">量 子 计 算</span><span class="sub">Science 科学 · 获取真理</span></div>
+        <div class="lvl-code">Quantum Dynamics<span class="cn">量 子 动 力</span></div>
       </div>
     </div>
 
@@ -3657,50 +3596,50 @@ html.js-anim #sixteen .sixteen-cell.in {
     <div class="tier" data-tier="2">
       <div class="tier-head">
         <div class="tier-num">02</div>
-        <div class="tier-name"><span class="en">Matter</span> <span class="cn">物 质</span></div>
+        <div class="tier-name">Matter <span class="cn">物 质</span></div>
         <div class="tier-range">Levels 07 — 13</div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 07</div>
-        <div class="lvl-basis"><span class="en">Photon</span><span class="cn">光 子</span></div>
-        <div class="lvl-tech"><span class="en">Solar energy</span><span class="cn">太 阳 能</span><span class="sub"><span class="en">Energy</span> <span class="cn">能量 · 光明使者</span></span></div>
-        <div class="lvl-code"><span class="en">Singularity Energy</span><span class="cn">奇 点 能 源</span></div>
+        <div class="lvl-basis">Photon<span class="cn">光 子</span></div>
+        <div class="lvl-tech">Solar energy<span class="cn">太 阳 能</span><span class="sub">Energy 能量 · 光明使者</span></div>
+        <div class="lvl-code">Singularity Energy<span class="cn">奇 点 能 源</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 08</div>
-        <div class="lvl-basis"><span class="en">Electron</span><span class="cn">电 子</span></div>
-        <div class="lvl-tech"><span class="en">Chip technology</span><span class="cn">芯 片</span><span class="sub"><span class="en">Information</span> <span class="cn">信息 · 万物皆数</span></span></div>
-        <div class="lvl-code"><span class="en">Top-Level Driving Force</span><span class="cn">顶 驱 动 力</span></div>
+        <div class="lvl-basis">Electron<span class="cn">电 子</span></div>
+        <div class="lvl-tech">Chip technology<span class="cn">芯 片</span><span class="sub">Information 信息 · 万物皆数</span></div>
+        <div class="lvl-code">Top-Level Driving Force<span class="cn">顶 驱 动 力</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 09</div>
-        <div class="lvl-basis"><span class="en">Atomic Nucleus</span><span class="cn">原 子 核</span></div>
-        <div class="lvl-tech"><span class="en">Controlled nuclear fusion</span><span class="cn">可 控 核 聚 变</span><span class="sub"><span class="en">Power</span> <span class="cn">动力 · 拯救地球</span></span></div>
-        <div class="lvl-code"><span class="en">Proton Energy</span><span class="cn">质 子 能 源</span></div>
+        <div class="lvl-basis">Atomic Nucleus<span class="cn">原 子 核</span></div>
+        <div class="lvl-tech">Controlled nuclear fusion<span class="cn">可 控 核 聚 变</span><span class="sub">Power 动力 · 拯救地球</span></div>
+        <div class="lvl-code">Proton Energy<span class="cn">质 子 能 源</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 10</div>
-        <div class="lvl-basis"><span class="en">Atom</span><span class="cn">原 子</span></div>
-        <div class="lvl-tech"><span class="en">Nanotechnology</span><span class="cn">纳 米 技 术</span><span class="sub"><span class="en">Material</span> <span class="cn">物质 · 改造世界</span></span></div>
-        <div class="lvl-code"><span class="en">Joy Element</span><span class="cn">开 心 元 素</span></div>
+        <div class="lvl-basis">Atom<span class="cn">原 子</span></div>
+        <div class="lvl-tech">Nanotechnology<span class="cn">纳 米 技 术</span><span class="sub">Material 物质 · 改造世界</span></div>
+        <div class="lvl-code">Joy Element<span class="cn">开 心 元 素</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 11</div>
-        <div class="lvl-basis"><span class="en">Molecule</span><span class="cn">分 子</span></div>
-        <div class="lvl-tech"><span class="en">Gene editing</span><span class="cn">基 因 编 辑</span><span class="sub"><span class="en">Life</span> <span class="cn">生命 · 改造生命</span></span></div>
-        <div class="lvl-code"><span class="en">Skin &amp; Organ Genes</span><span class="cn">皮 球 基 因</span></div>
+        <div class="lvl-basis">Molecule<span class="cn">分 子</span></div>
+        <div class="lvl-tech">Gene editing<span class="cn">基 因 编 辑</span><span class="sub">Life 生命 · 改造生命</span></div>
+        <div class="lvl-code">Skin &amp; Organ Genes<span class="cn">皮 球 基 因</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 12</div>
-        <div class="lvl-basis"><span class="en">Neuron</span><span class="cn">神 经 元</span></div>
-        <div class="lvl-tech"><span class="en">Artificial intelligence</span><span class="cn">人 工 智 能</span><span class="sub"><span class="en">Intelligence</span> <span class="cn">智能 · 解放人类</span></span></div>
-        <div class="lvl-code"><span class="en">Autonomous Thinking</span><span class="cn">自 主 思 维</span></div>
+        <div class="lvl-basis">Neuron<span class="cn">神 经 元</span></div>
+        <div class="lvl-tech">Artificial intelligence<span class="cn">人 工 智 能</span><span class="sub">Intelligence 智能 · 解放人类</span></div>
+        <div class="lvl-code">Autonomous Thinking<span class="cn">自 主 思 维</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 13</div>
-        <div class="lvl-basis"><span class="en">Brain</span><span class="cn">大 脑</span></div>
-        <div class="lvl-tech"><span class="en">Brain–computer interface</span><span class="cn">脑 机 接 口</span><span class="sub"><span class="en">Consciousness</span> <span class="cn">意识 · 认识自己</span></span></div>
-        <div class="lvl-code"><span class="en">Sovereign Mind</span><span class="cn">脑 主 神 明</span></div>
+        <div class="lvl-basis">Brain<span class="cn">大 脑</span></div>
+        <div class="lvl-tech">Brain–computer interface<span class="cn">脑 机 接 口</span><span class="sub">Consciousness 意识 · 认识自己</span></div>
+        <div class="lvl-code">Sovereign Mind<span class="cn">脑 主 神 明</span></div>
       </div>
     </div>
 
@@ -3708,26 +3647,26 @@ html.js-anim #sixteen .sixteen-cell.in {
     <div class="tier" data-tier="3">
       <div class="tier-head">
         <div class="tier-num">03</div>
-        <div class="tier-name"><span class="en">Brain Products</span> <span class="cn">脑 力 产 物</span></div>
+        <div class="tier-name">Brain Products <span class="cn">脑 力 产 物</span></div>
         <div class="tier-range">Levels 14 — 16</div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 14</div>
-        <div class="lvl-basis"><span class="en">Finance</span><span class="cn">金 融</span></div>
-        <div class="lvl-tech"><span class="en">Digital currency</span><span class="cn">数 字 货 币</span><span class="sub"><span class="en">Transaction</span> <span class="cn">交易 · 普渡众生</span></span></div>
-        <div class="lvl-code"><span class="en">Huaxu Finance</span><span class="cn">华 墟 金 融</span></div>
+        <div class="lvl-basis">Finance<span class="cn">金 融</span></div>
+        <div class="lvl-tech">Digital currency<span class="cn">数 字 货 币</span><span class="sub">Transaction 交易 · 普渡众生</span></div>
+        <div class="lvl-code">Huaxu Finance<span class="cn">华 墟 金 融</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 15</div>
-        <div class="lvl-basis"><span class="en">Culture</span><span class="cn">文 化</span></div>
-        <div class="lvl-tech"><span class="en">Virtual reality</span><span class="cn">虚 拟 现 实</span><span class="sub"><span class="en">History</span> <span class="cn">历史 · 传播文明</span></span></div>
-        <div class="lvl-code"><span class="en">Joy Engine</span><span class="cn">欢 乐 引 擎</span></div>
+        <div class="lvl-basis">Culture<span class="cn">文 化</span></div>
+        <div class="lvl-tech">Virtual reality<span class="cn">虚 拟 现 实</span><span class="sub">History 历史 · 传播文明</span></div>
+        <div class="lvl-code">Joy Engine<span class="cn">欢 乐 引 擎</span></div>
       </div>
       <div class="level-row">
         <div class="lvl-num">16 · 16</div>
-        <div class="lvl-basis"><span class="en">Design</span><span class="cn">设 计</span></div>
-        <div class="lvl-tech"><span class="en">3D printing</span><span class="cn">3D 打 印</span><span class="sub"><span class="en">Creation</span> <span class="cn">造物 · 为人民服务</span></span></div>
-        <div class="lvl-code"><span class="en">Wormhole Trade</span><span class="cn">虫 洞 贸 易</span></div>
+        <div class="lvl-basis">Design<span class="cn">设 计</span></div>
+        <div class="lvl-tech">3D printing<span class="cn">3D 打 印</span><span class="sub">Creation 造物 · 为人民服务</span></div>
+        <div class="lvl-code">Wormhole Trade<span class="cn">虫 洞 贸 易</span></div>
       </div>
     </div>
 
@@ -3737,8 +3676,8 @@ html.js-anim #sixteen .sixteen-cell.in {
   <div class="subsection-head">
     <div class="sub-letter">B</div>
     <div class="sub-title-block">
-      <div class="sub-title"><span class="en">
-        The Four Axes of Vision</span>
+      <div class="sub-title">
+        The Four Axes of Vision
         <span class="cn">四 轴 · 十 六 愿 景</span>
       </div>
       <div class="sub-desc">
@@ -3968,96 +3907,6 @@ document.querySelectorAll('section').forEach(s => {
 // Hero is immediately visible
 document.querySelector('.hero').style.opacity = 1;
 document.querySelector('.hero').style.transform = 'none';
-</script>
-<script>
-/* ── Auto language classifier: tag every text node so 中 / EN can hide the other side.
-   Source content is untouched — this only adds wrapper classes in the live DOM. ── */
-(function(){
-  var CJK = /[㐀-鿿豈-﫿぀-ヿ]/;
-  var LAT = /[A-Za-z]/;
-  var RUN = /[㐀-鿿豈-﫿぀-ヿ]+|[^㐀-鿿豈-﫿぀-ヿ]+/g;
-  var SKIP = { SCRIPT:1, STYLE:1, NOSCRIPT:1 };
-  function langOf(s){ var c=CJK.test(s), l=LAT.test(s); return (c&&l)?'mix':(c?'zh':(l?'en':null)); }
-  function tagged(p){ return p.classList && (p.classList.contains('cn')||p.classList.contains('en')||p.classList.contains('auto-zh')||p.classList.contains('auto-en')); }
-  function run(){
-    var body = document.body; if(!body) return;
-    var w = document.createTreeWalker(body, NodeFilter.SHOW_TEXT, null);
-    var nodes = [], n;
-    while(n = w.nextNode()){ if(n.nodeValue && n.nodeValue.trim()) nodes.push(n); }
-    nodes.forEach(function(t){
-      var p = t.parentElement; if(!p || SKIP[p.tagName]) return;
-      if(p.closest('.topbar') || p.closest('svg') || tagged(p)) return;
-      var L = langOf(t.nodeValue);
-      if(!L) return;
-      if(L === 'mix'){
-        var frag = document.createDocumentFragment(), m;
-        RUN.lastIndex = 0;
-        while(m = RUN.exec(t.nodeValue)){
-          var seg = m[0], sl = langOf(seg);
-          if(sl === 'zh' || sl === 'en'){
-            var sp = document.createElement('span');
-            sp.className = (sl==='zh') ? 'auto-zh' : 'auto-en';
-            sp.appendChild(document.createTextNode(seg));
-            frag.appendChild(sp);
-          } else { frag.appendChild(document.createTextNode(seg)); }
-        }
-        p.replaceChild(frag, t);
-      } else if(langOf(p.textContent) === L){
-        // p is purely language L. Hide it (in the opposite mode) ONLY if an IMMEDIATE SIBLING
-        // is purely the other language — a true translation counterpart. Checking direct
-        // siblings (not the whole container) avoids hiding structural cells like a grid's
-        // corner/header, whose removal reflows auto-flow grids (§10, §12). Solo/untranslated
-        // blocks stay visible in both modes, so no empty holes.
-        var opp = (L === 'zh') ? 'en' : 'zh', par = p.parentElement, paired = false;
-        if(par){ var ch = par.children; for(var i=0;i<ch.length;i++){ if(ch[i] !== p && langOf(ch[i].textContent) === opp){ paired = true; break; } } }
-        if(paired && !p.querySelector('section, header'))
-          p.classList.add(L === 'zh' ? 'auto-zh' : 'auto-en');
-      } else {
-        // mixed parent → this run is paired with the other language in the same element → wrap & hide
-        var s = document.createElement('span');
-        s.className = (L === 'zh') ? 'auto-zh' : 'auto-en';
-        p.replaceChild(s, t); s.appendChild(t);
-      }
-    });
-  }
-  run();
-})();
-
-/* ── Language toggle (双语 / 中 / EN), persisted ── */
-(function(){
-  var root = document.documentElement;
-  var KEY = 'mft-lang';
-  var valid = { both:1, zh:1, en:1 };
-  var btns = document.querySelectorAll('.lang-switch button');
-  function apply(lang){
-    if(!valid[lang]) lang = 'both';
-    if(lang === 'both') root.removeAttribute('data-lang');
-    else root.setAttribute('data-lang', lang);
-    btns.forEach(function(b){
-      b.classList.toggle('active', b.getAttribute('data-setlang') === lang);
-    });
-    try { localStorage.setItem(KEY, lang); } catch(e){}
-  }
-  btns.forEach(function(b){
-    b.addEventListener('click', function(){ apply(b.getAttribute('data-setlang')); });
-  });
-  var saved = 'both';
-  try { saved = localStorage.getItem(KEY) || 'both'; } catch(e){}
-  apply(saved);
-})();
-
-/* ── §16 scroll reveal (opt-in, degrades gracefully) ── */
-(function(){
-  if(!('IntersectionObserver' in window)) return;
-  document.documentElement.classList.add('js-anim');
-  var ro = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('#sixteen .level-row, #sixteen .sixteen-cell')
-    .forEach(function(it){ ro.observe(it); });
-})();
 </script>
 </body>
 </html>
