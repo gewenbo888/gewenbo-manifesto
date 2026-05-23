@@ -1970,6 +1970,18 @@ html[data-lang="zh"] #sixteen .tier-range { display: none !important; }
 html[data-lang="en"] .auto-zh { display: none !important; }
 html[data-lang="zh"] .auto-en { display: none !important; }
 
+/* §3 & §11 · Chinese-page translations */
+html[data-lang="zh"] #three .name-en,
+html[data-lang="zh"] #three .name-roman,
+html[data-lang="zh"] #agi .dom-count { display: none !important; }
+#three .desc .cn,
+#agi .a-desc .cn {
+  display: block; margin-top: 7px;
+  font-family: var(--cjk); font-style: normal;
+  font-size: 0.92em; line-height: 1.75;
+  color: var(--ivory-dim);
+}
+
 /* ════════════════════ §16 · ELEVATION ════════════════════ */
 #sixteen .level-row {
   transition: padding-left .4s cubic-bezier(.2,.7,.2,1), background .4s;
@@ -2169,7 +2181,7 @@ html.js-anim #sixteen .sixteen-cell.in {
         <div>
           <div class="name-en">Truth</div>
           <div class="name-roman">TRUTH · ZHĒN</div>
-          <p class="desc">What is. The real behind appearances. The ground all thought and action must eventually meet.</p>
+          <p class="desc">What is. The real behind appearances. The ground all thought and action must eventually meet.<span class="cn">实然之物。表象背后的真实。一切思想与行动终须归依的根基。</span></p>
         </div>
       </div>
       <div class="three-item">
@@ -2177,7 +2189,7 @@ html.js-anim #sixteen .sixteen-cell.in {
         <div>
           <div class="name-en">Goodness</div>
           <div class="name-roman">GOODNESS · SHÀN</div>
-          <p class="desc">What ought to be. Right action toward others, the planet, and the long arc of civilisation.</p>
+          <p class="desc">What ought to be. Right action toward others, the planet, and the long arc of civilisation.<span class="cn">应然之事。对他人、对地球、对文明长河的正当作为。</span></p>
         </div>
       </div>
       <div class="three-item">
@@ -2185,7 +2197,7 @@ html.js-anim #sixteen .sixteen-cell.in {
         <div>
           <div class="name-en">Beauty</div>
           <div class="name-roman">BEAUTY · MĚI</div>
-          <p class="desc">What delights. Form that moves. Harmony of thought, thing, and deed. The signature of a life well made.</p>
+          <p class="desc">What delights. Form that moves. Harmony of thought, thing, and deed. The signature of a life well made.<span class="cn">悦然之美。动人的形式。思、物、行的和谐。一个精心铸就的生命的印记。</span></p>
         </div>
       </div>
     </div>
@@ -2862,7 +2874,7 @@ html.js-anim #sixteen .sixteen-cell.in {
         <div class="a-num">11 · 01</div>
         <div class="a-object">Fractal Geometry<span class="cn">分 形 几 何</span></div>
         <div class="a-method">Fractal Generative Models<span class="cn">分 形 生 成 模 型</span></div>
-        <div class="a-desc">Pixel-by-pixel image generation from fractal self-similarity.</div>
+        <div class="a-desc">Pixel-by-pixel image generation from fractal self-similarity.<span class="cn">由分形自相似性逐像素生成图像。</span></div>
       </div>
     </div>
 
@@ -2877,7 +2889,7 @@ html.js-anim #sixteen .sixteen-cell.in {
         <div class="a-num">11 · 02</div>
         <div class="a-object">Entropy Increase<span class="cn">熵 增</span></div>
         <div class="a-method">Diffusion Models &amp; Boltzmann Machines<span class="cn">扩 散 模 型 · 玻 尔 兹 曼 机</span></div>
-        <div class="a-desc">Generating images by increasing system randomness, then denoising.</div>
+        <div class="a-desc">Generating images by increasing system randomness, then denoising.<span class="cn">先增大系统随机性，再去噪以生成图像。</span></div>
       </div>
     </div>
 
@@ -2892,7 +2904,7 @@ html.js-anim #sixteen .sixteen-cell.in {
         <div class="a-num">11 · 03</div>
         <div class="a-object">Evolution<span class="cn">进 化</span></div>
         <div class="a-method">Genetic Algorithms<span class="cn">遗 传 算 法</span></div>
-        <div class="a-desc">Optimisation through selection &amp; mutation — biology on metal.</div>
+        <div class="a-desc">Optimisation through selection &amp; mutation — biology on metal.<span class="cn">以选择与变异进行优化——在硅上运行的生物学。</span></div>
       </div>
     </div>
 
@@ -2907,7 +2919,7 @@ html.js-anim #sixteen .sixteen-cell.in {
         <div class="a-num">11 · 04</div>
         <div class="a-object">Brain<span class="cn">大 脑</span></div>
         <div class="a-method">Neural Networks<span class="cn">神 经 网 络</span></div>
-        <div class="a-desc">Imitation of biological neurons and their connectivity patterns.</div>
+        <div class="a-desc">Imitation of biological neurons and their connectivity patterns.<span class="cn">模仿生物神经元及其连接方式。</span></div>
       </div>
     </div>
 
@@ -2922,43 +2934,43 @@ html.js-anim #sixteen .sixteen-cell.in {
         <div class="a-num">11 · 05</div>
         <div class="a-object">Empiricism — Historical Knowledge<span class="cn">经 验 主 义 · 历 史 知 识</span></div>
         <div class="a-method">Pre-training · Fine-tuning · Distillation · CoT<span class="cn">预 训 练 · 微 调 · 蒸 馏 · 思 维 链</span></div>
-        <div class="a-desc">Learning limited rules from large volumes of data.</div>
+        <div class="a-desc">Learning limited rules from large volumes of data.<span class="cn">从海量数据中学习有限的规则。</span></div>
       </div>
       <div class="agi-row">
         <div class="a-num">11 · 06</div>
         <div class="a-object">Empiricism — Reward &amp; Punishment<span class="cn">经 验 主 义 · 奖 惩</span></div>
         <div class="a-method">Reinforcement Learning<span class="cn">强 化 学 习</span></div>
-        <div class="a-desc">Modelling interaction with the real world through feedback loops.</div>
+        <div class="a-desc">Modelling interaction with the real world through feedback loops.<span class="cn">通过反馈回路建模与真实世界的交互。</span></div>
       </div>
       <div class="agi-row">
         <div class="a-num">11 · 07</div>
         <div class="a-object">Rationalist Symbolic School<span class="cn">理 性 主 义 · 符 号 学 派</span></div>
         <div class="a-method">Reasoning<span class="cn">推 理</span></div>
-        <div class="a-desc">Generating infinite language from a finite set of rules.</div>
+        <div class="a-desc">Generating infinite language from a finite set of rules.<span class="cn">以有限的规则生成无限的语言。</span></div>
       </div>
       <div class="agi-row">
         <div class="a-num">11 · 08</div>
         <div class="a-object">Analogical School<span class="cn">类 比 学 派</span></div>
         <div class="a-method">Transformer<span class="cn">变 换 器</span></div>
-        <div class="a-desc">Similarity computation across vectors — the current frontier.</div>
+        <div class="a-desc">Similarity computation across vectors — the current frontier.<span class="cn">跨向量的相似度计算——当下的前沿。</span></div>
       </div>
       <div class="agi-row">
         <div class="a-num">11 · 09</div>
         <div class="a-object">Bayesian Method<span class="cn">贝 叶 斯 方 法</span></div>
         <div class="a-method">Probabilistic Prediction<span class="cn">概 率 预 测</span></div>
-        <div class="a-desc">Updating probability estimates against observed data.</div>
+        <div class="a-desc">Updating probability estimates against observed data.<span class="cn">依据观测数据更新概率估计。</span></div>
       </div>
       <div class="agi-row missing">
         <div class="a-num">11 · 10</div>
         <div class="a-object">Einsteinian Thinking<span class="cn">爱 因 斯 坦 式 思 维</span></div>
         <div class="a-method">missing<span class="cn">尚 未 实 现</span></div>
-        <div class="a-desc">Deducing complex theories through pure imagination — no paradigm today captures this.</div>
+        <div class="a-desc">Deducing complex theories through pure imagination — no paradigm today captures this.<span class="cn">以纯粹想象推演复杂理论——当今尚无范式可及。</span></div>
       </div>
       <div class="agi-row missing">
         <div class="a-num">11 · 11</div>
         <div class="a-object">Emotion<span class="cn">情 感</span></div>
         <div class="a-method">missing<span class="cn">尚 未 实 现</span></div>
-        <div class="a-desc">Emotion-controlled thinking and behaviour — no paradigm today captures this.</div>
+        <div class="a-desc">Emotion-controlled thinking and behaviour — no paradigm today captures this.<span class="cn">由情感主导的思维与行为——当今尚无范式可及。</span></div>
       </div>
     </div>
 
