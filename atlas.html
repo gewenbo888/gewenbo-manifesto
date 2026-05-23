@@ -735,6 +735,7 @@ const PSYVERSE_MAP = {
   'five-worlds.psyverse.fun': 'five-worlds',
   'suyu.psyverse.fun': 'suyu',
   'five-challenges.psyverse.fun': 'five-challenges',
+  'great-convergence.psyverse.fun': 'great-convergence',
 };
 for (const [sub, key] of Object.entries(PSYVERSE_MAP)) {
   // Prefer the shortest subdomain for each canonical key (handles aliases like manifesto.psyverse.fun → gewenbo-manifesto)
@@ -783,6 +784,7 @@ function groupOf(key) {
 
 // ═══════ title humanization ═══════
 const TITLE_OVERRIDES = {
+  'great-convergence': 'The Great Convergence · 大融合',
   'ai-genesis': 'AI Genesis · AI 创世',
   'tech-civilization': 'Tech Civilization Atlas · 科技文明图谱',
   'liquid-civilization': 'Liquid Civilization · 液体文明',
