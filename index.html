@@ -2228,6 +2228,20 @@ section:nth-of-type(17) { --atmo: rgba(201,162,75,0.06); } /* Coda       · gold
 .top-nav a.active { background: rgba(201,162,75,0.1); }
 .top-nav a.active .l { color: var(--gold); }
 
+/* compact current-section pill — mobile wayfinding (dot rail is hidden ≤980px) */
+.sec-indicator {
+  position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+  z-index: 56; display: none;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); background: rgba(10,9,8,0.8); backdrop-filter: blur(8px);
+  border: 1px solid var(--line); border-radius: 20px; padding: 6px 14px;
+  pointer-events: none; white-space: nowrap;
+}
+@media (max-width: 980px) { .sec-indicator { display: block; } }
+
+/* on narrow screens the nav reads naturally from "1" rather than the far end */
+@media (max-width: 1100px) { .top-nav { justify-content: flex-start; } }
+
 @media (hover: hover) and (pointer: fine) {
   @media (prefers-reduced-motion: no-preference) {
     /* trailing gold cursor aura (native cursor stays) */
@@ -4392,6 +4406,12 @@ section:nth-of-type(17) { --atmo: rgba(201,162,75,0.06); } /* Coda       · gold
   });
   document.body.appendChild(rail);
 
+  // compact current-section pill (shown where the dot rail is hidden, ≤980px)
+  var indicator = document.createElement('div');
+  indicator.className = 'sec-indicator';
+  indicator.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(indicator);
+
   window.addEventListener('scroll', progress, { passive: true });
   window.addEventListener('resize', progress, { passive: true });
   progress();
@@ -4406,7 +4426,18 @@ section:nth-of-type(17) { --atmo: rgba(201,162,75,0.06); } /* Coda       · gold
         if(!m) return;
         map.forEach(function(x){ x.dot.classList.remove('active'); if(x.nav) x.nav.classList.remove('active'); });
         m.dot.classList.add('active');
-        if(m.nav) m.nav.classList.add('active');
+        if(m.nav){
+          m.nav.classList.add('active');
+          // keep the current section visible in the horizontally-scrollable top nav (mobile + narrow desktop)
+          var cont = m.nav.parentNode;
+          if(cont && cont.scrollWidth > cont.clientWidth + 4){
+            var cr = cont.getBoundingClientRect(), nr = m.nav.getBoundingClientRect();
+            var delta = (nr.left + nr.width/2) - (cr.left + cr.width/2);
+            cont.scrollTo({ left: cont.scrollLeft + delta, behavior: 'smooth' });
+          }
+          var ni = m.nav.querySelector('.n'), li = m.nav.querySelector('.l');
+          indicator.textContent = (ni ? ni.textContent : '') + ' · ' + (li ? li.textContent : '');
+        }
       });
     }, { threshold: 0, rootMargin: '-45% 0px -45% 0px' });
     map.forEach(function(m){ io.observe(m.sec); });
