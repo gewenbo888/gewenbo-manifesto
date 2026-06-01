@@ -2198,6 +2198,52 @@ body { hanging-punctuation: first allow-end; }
 a:focus-visible, button:focus-visible, .dot-rail a:focus-visible {
   outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px;
 }
+
+/* ════════════════════════════════════════════════════════
+   TIER 2+ · per-section accent tinting · active nav · cursor aura
+   ════════════════════════════════════════════════════════ */
+
+/* per-section atmosphere hue — a muted spectral journey (warm → cool → warm).
+   The side (left/right) still alternates via the odd/even rules above. */
+section:not(.hero)::after        { background: radial-gradient(ellipse at center, var(--atmo, rgba(201,162,75,0.06)), transparent 70%); }
+section:nth-of-type(even):not(.hero)::after { background: radial-gradient(ellipse at center, var(--atmo, rgba(201,162,75,0.06)), transparent 70%); }
+section:nth-of-type(2)  { --atmo: rgba(201,162,75,0.06); } /* Identity   · gold   */
+section:nth-of-type(3)  { --atmo: rgba(198,150,78,0.06); } /* Principles · amber  */
+section:nth-of-type(4)  { --atmo: rgba(182,128,112,0.06);} /* Merge      · clay   */
+section:nth-of-type(5)  { --atmo: rgba(96,150,120,0.06); } /* Elements   · jade   */
+section:nth-of-type(6)  { --atmo: rgba(82,146,146,0.06); } /* Domains    · teal   */
+section:nth-of-type(7)  { --atmo: rgba(92,134,170,0.07); } /* Path       · sky    */
+section:nth-of-type(8)  { --atmo: rgba(90,124,184,0.07); } /* Hubs       · azure  */
+section:nth-of-type(9)  { --atmo: rgba(116,116,184,0.07);} /* Matrix     · indigo */
+section:nth-of-type(10) { --atmo: rgba(142,112,182,0.07);} /* Tech       · violet */
+section:nth-of-type(11) { --atmo: rgba(86,152,162,0.07); } /* AGI        · cyan   */
+section:nth-of-type(12) { --atmo: rgba(201,162,75,0.06); } /* Purpose    · gold   */
+section:nth-of-type(13) { --atmo: rgba(122,142,162,0.07);} /* Nav        · steel  */
+section:nth-of-type(14) { --atmo: rgba(184,134,92,0.06); } /* Culture    · warm   */
+section:nth-of-type(15) { --atmo: rgba(152,112,172,0.07);} /* Belief     · amethyst */
+section:nth-of-type(16) { --atmo: rgba(212,172,92,0.07); } /* Visions    · bright gold */
+section:nth-of-type(17) { --atmo: rgba(201,162,75,0.06); } /* Coda       · gold   */
+
+/* current section highlighted in the top nav (synced with the dot rail) */
+.top-nav a.active { background: rgba(201,162,75,0.1); }
+.top-nav a.active .l { color: var(--gold); }
+
+@media (hover: hover) and (pointer: fine) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* trailing gold cursor aura (native cursor stays) */
+    .cursor-aura {
+      position: fixed; top: 0; left: 0; width: 26px; height: 26px; border-radius: 50%;
+      border: 1px solid var(--gold); background: transparent;
+      pointer-events: none; z-index: 70; opacity: 0;
+      transform: translate(-50%, -50%); mix-blend-mode: screen;
+      transition: width .25s, height .25s, opacity .3s, background .25s, border-color .25s;
+    }
+    .cursor-aura.on  { opacity: .5; }
+    .cursor-aura.hot { width: 46px; height: 46px; opacity: .85; background: rgba(201,162,75,0.06); }
+    /* magnetic targets ease back smoothly when released */
+    .top-nav a, .lang-switch button, footer a { will-change: transform; }
+  }
+}
 </style>
 <!-- SEO · GEO · psyverse -->
 <link rel="canonical" href="https://psyverse.fun/" />
@@ -4342,7 +4388,7 @@ a:focus-visible, button:focus-visible, .dot-rail a:focus-visible {
     dot.setAttribute('aria-label', name || id);
     dot.innerHTML = '<span class="lbl">' + (num ? num + ' · ' : '') + name + '</span>';
     rail.appendChild(dot);
-    map.push({ sec: sec, dot: dot });
+    map.push({ sec: sec, dot: dot, nav: a });
   });
   document.body.appendChild(rail);
 
@@ -4358,12 +4404,61 @@ a:focus-visible, button:focus-visible, .dot-rail a:focus-visible {
         var m = null;
         for(var i=0;i<map.length;i++){ if(map[i].sec === e.target){ m = map[i]; break; } }
         if(!m) return;
-        map.forEach(function(x){ x.dot.classList.remove('active'); });
+        map.forEach(function(x){ x.dot.classList.remove('active'); if(x.nav) x.nav.classList.remove('active'); });
         m.dot.classList.add('active');
+        if(m.nav) m.nav.classList.add('active');
       });
     }, { threshold: 0, rootMargin: '-45% 0px -45% 0px' });
     map.forEach(function(m){ io.observe(m.sec); });
   }
+})();
+</script>
+<script>
+/* ── Pointer flourishes: trailing gold cursor aura + gentle magnetic pull ──
+   Fine-pointer devices only; fully disabled under reduced-motion. */
+(function(){
+  var mm = window.matchMedia;
+  if(!mm) return;
+  if(mm('(prefers-reduced-motion: reduce)').matches) return;
+  if(!mm('(hover: hover) and (pointer: fine)').matches) return;
+
+  // trailing aura (native cursor stays visible)
+  var aura = document.createElement('div');
+  aura.className = 'cursor-aura';
+  document.body.appendChild(aura);
+  var tx = window.innerWidth/2, ty = window.innerHeight/2, cx = tx, cy = ty, seen = false;
+  window.addEventListener('mousemove', function(e){
+    tx = e.clientX; ty = e.clientY;
+    if(!seen){ seen = true; aura.classList.add('on'); }
+  }, { passive: true });
+  document.addEventListener('mouseleave', function(){ aura.classList.remove('on'); });
+  document.addEventListener('mouseover', function(e){
+    if(e.target.closest && e.target.closest('a, button')) aura.classList.add('hot');
+  });
+  document.addEventListener('mouseout', function(e){
+    if(e.target.closest && e.target.closest('a, button')) aura.classList.remove('hot');
+  });
+  (function loop(){
+    cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
+    aura.style.left = cx.toFixed(1) + 'px';
+    aura.style.top  = cy.toFixed(1) + 'px';
+    requestAnimationFrame(loop);
+  })();
+
+  // gentle magnetic pull (preserves each element's own transitions)
+  function magnetic(el, strength, keep){
+    el.style.transition = 'transform .3s cubic-bezier(.2,.7,.2,1)' + (keep ? ', ' + keep : '');
+    el.addEventListener('mousemove', function(e){
+      var r = el.getBoundingClientRect();
+      var mx = (e.clientX - (r.left + r.width/2)) * strength;
+      var my = (e.clientY - (r.top + r.height/2)) * strength;
+      el.style.transform = 'translate(' + mx.toFixed(1) + 'px,' + my.toFixed(1) + 'px)';
+    });
+    el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
+  }
+  document.querySelectorAll('.lang-switch button').forEach(function(b){ magnetic(b, 0.3, 'background .25s, color .25s, box-shadow .25s'); });
+  document.querySelectorAll('footer a').forEach(function(a){ magnetic(a, 0.25, 'color .3s'); });
+  var brand = document.querySelector('.brand'); if(brand) magnetic(brand, 0.2, 'opacity .2s');
 })();
 </script>
 </body>
