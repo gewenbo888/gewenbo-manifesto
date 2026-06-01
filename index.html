@@ -2114,6 +2114,90 @@ body::after {
     50%      { background-position: 54% 3%, 16% 76%, 0 0; }
   }
 }
+
+/* ════════════════════════════════════════════════════════
+   TIER 2 · wayfinding · typography · micro-interactions
+   TIER 3 · focus states (injected DOM is presentational only)
+   ════════════════════════════════════════════════════════ */
+
+/* — Scroll-progress bar — */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 60;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-bright));
+  box-shadow: 0 0 10px rgba(201,162,75,0.5);
+  will-change: width;
+}
+
+/* — Right-edge section-dot rail — */
+.dot-rail {
+  position: fixed; right: 18px; top: 50%; transform: translateY(-50%);
+  z-index: 55; display: flex; flex-direction: column; gap: 13px; align-items: flex-end;
+}
+.dot-rail a {
+  position: relative; width: 9px; height: 9px; display: block;
+}
+.dot-rail a::after {
+  content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 7px; height: 7px; border-radius: 50%;
+  border: 1px solid var(--gold); background: transparent; opacity: 0.38;
+  transition: opacity .3s, background .3s, box-shadow .3s, width .3s, height .3s;
+}
+.dot-rail a:hover::after { opacity: 1; }
+.dot-rail a.active::after {
+  opacity: 1; width: 9px; height: 9px;
+  background: var(--gold); box-shadow: 0 0 9px var(--gold);
+}
+.dot-rail .lbl {
+  position: absolute; right: 20px; top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  white-space: nowrap; font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+  background: rgba(10,9,8,0.82); padding: 3px 9px; border: 1px solid var(--line);
+  border-radius: 3px; backdrop-filter: blur(6px);
+  opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s;
+}
+.dot-rail a:hover .lbl { opacity: 1; transform: translateY(-50%) translateX(0); }
+@media (max-width: 980px) { .dot-rail { display: none; } }
+
+/* — Refined card micro-interactions: lift + gold ring-glow — */
+.four-cell, .hub-card, .culture-card, .belief-card, .sixteen-cell {
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.four-cell:hover, .hub-card:hover, .culture-card:hover, .belief-card:hover, .sixteen-cell:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7),
+              0 0 0 1px rgba(201,162,75,0.28),
+              0 0 32px -8px rgba(201,162,75,0.2);
+}
+
+/* the × pivots and warms when its pairing card is hovered */
+.four-formula .x, .four-formula-cn .x { display: inline-block; transition: transform .45s cubic-bezier(.2,.7,.2,1), color .3s; }
+.four-cell:hover .four-formula .x, .four-cell:hover .four-formula-cn .x { transform: rotate(90deg); color: var(--gold-bright); }
+
+/* — Footer links: underline that draws on hover — */
+footer a { position: relative; }
+footer a::after {
+  content: ""; position: absolute; left: 0; bottom: -2px; height: 1px; width: 100%;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+footer a:hover { color: var(--gold); }
+footer a:hover::after { transform: scaleX(1); }
+
+/* — Language toggle: tactile feedback + active glow — */
+.lang-switch button { transition: background .25s, color .25s, transform .12s, box-shadow .25s; }
+.lang-switch button:active { transform: scale(0.93); }
+.lang-switch button.active { box-shadow: 0 0 12px -2px var(--gold); }
+
+/* — Typography refinement — */
+.hero h1, .section-title { text-wrap: balance; }
+p, .four-note, .four-note-cn, .hero-tagline { text-wrap: pretty; }
+body { hanging-punctuation: first allow-end; }
+
+/* — Visible keyboard focus (accessibility) — */
+a:focus-visible, button:focus-visible, .dot-rail a:focus-visible {
+  outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px;
+}
 </style>
 <!-- SEO · GEO · psyverse -->
 <link rel="canonical" href="https://psyverse.fun/" />
@@ -4224,6 +4308,62 @@ body::after {
   }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('#sixteen .level-row, #sixteen .sixteen-cell')
     .forEach(function(it){ ro.observe(it); });
+})();
+</script>
+<script>
+/* ── Tier-2 wayfinding: scroll-progress bar + section-dot rail ──
+   Built from the existing nav anchors; injects presentational DOM only. */
+(function(){
+  var navLinks = [].slice.call(document.querySelectorAll('.top-nav a[href^="#"]'));
+  if(!navLinks.length) return;
+
+  // progress bar
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+  function progress(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.pageYOffset / h) * 100 : 0) + '%';
+  }
+
+  // dot rail
+  var rail = document.createElement('nav');
+  rail.className = 'dot-rail';
+  rail.setAttribute('aria-label', 'Section navigation');
+  var map = [];
+  navLinks.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var sec = document.getElementById(id);
+    if(!sec) return;
+    var num = (a.querySelector('.n') || {}).textContent || '';
+    var name = (a.querySelector('.l') || {}).textContent || '';
+    var dot = document.createElement('a');
+    dot.href = '#' + id;
+    dot.setAttribute('aria-label', name || id);
+    dot.innerHTML = '<span class="lbl">' + (num ? num + ' · ' : '') + name + '</span>';
+    rail.appendChild(dot);
+    map.push({ sec: sec, dot: dot });
+  });
+  document.body.appendChild(rail);
+
+  window.addEventListener('scroll', progress, { passive: true });
+  window.addEventListener('resize', progress, { passive: true });
+  progress();
+
+  // highlight the section crossing the viewport's middle band
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var m = null;
+        for(var i=0;i<map.length;i++){ if(map[i].sec === e.target){ m = map[i]; break; } }
+        if(!m) return;
+        map.forEach(function(x){ x.dot.classList.remove('active'); });
+        m.dot.classList.add('active');
+      });
+    }, { threshold: 0, rootMargin: '-45% 0px -45% 0px' });
+    map.forEach(function(m){ io.observe(m.sec); });
+  }
 })();
 </script>
 </body>
