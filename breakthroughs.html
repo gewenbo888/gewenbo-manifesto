@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ten Major Breakthroughs · 十大突破 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Ten Major Breakthroughs — ten technological frontiers each progressing across five levels from foundation to mastery. A standalone world of the Psyverse manifesto." />
+<meta name="keywords" content="breakthroughs, technology, frontiers, levels, materials, VR, energy, longevity, space travel, large models, BCI, humanoid robots, autonomous driving, Web3, Psyverse, 十大突破" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/breakthroughs" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/breakthroughs" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/breakthroughs" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/breakthroughs" />
+<meta property="og:title" content="Ten Major Breakthroughs · 十大突破" />
+<meta property="og:description" content="Ten technological frontiers each progressing across five levels — from foundation to mastery. Materials, energy, AI, space, longevity, and more." />
+<meta property="og:url" content="https://psyverse.fun/breakthroughs" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ten Major Breakthroughs · 十大突破" />
+<meta name="twitter:description" content="Ten technological frontiers each progressing across five levels — from foundation to mastery." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Ten Major Breakthroughs",
+  "about": "Ten technological frontiers each progressing across five levels from foundation to mastery, mapping humanity's most consequential engineering challenges.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* page-local flourish: breakthrough level meter */
+.bt-spark {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 64px;
+  margin: 8px 0 36px;
+}
+.bt-spark-bar {
+  width: 16px;
+  border-radius: 3px 3px 0 0;
+  background: var(--gold);
+  opacity: 0.2;
+  transition: opacity 0.3s;
+}
+.bt-spark-bar:nth-child(1) { height: 16%; }
+.bt-spark-bar:nth-child(2) { height: 34%; }
+.bt-spark-bar:nth-child(3) { height: 55%; }
+.bt-spark-bar:nth-child(4) { height: 78%; }
+.bt-spark-bar:nth-child(5) { height: 100%; opacity: 0.85; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .bt-spark-bar {
+    animation: spark-rise 1.8s ease-out forwards;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+  }
+  .bt-spark-bar:nth-child(1) { animation-delay: 0.1s; }
+  .bt-spark-bar:nth-child(2) { animation-delay: 0.3s; }
+  .bt-spark-bar:nth-child(3) { animation-delay: 0.5s; }
+  .bt-spark-bar:nth-child(4) { animation-delay: 0.7s; }
+  .bt-spark-bar:nth-child(5) { animation-delay: 0.9s; }
+
+  @keyframes spark-rise {
+    0%   { opacity: 0; transform: scaleY(0); }
+    60%  { opacity: 1; }
+    100% { transform: scaleY(1); }
+  }
+
+  .bt-spark-bar:nth-child(1) { opacity: 0.2; }
+  .bt-spark-bar:nth-child(2) { opacity: 0.35; }
+  .bt-spark-bar:nth-child(3) { opacity: 0.5; }
+  .bt-spark-bar:nth-child(4) { opacity: 0.7; }
+  .bt-spark-bar:nth-child(5) { opacity: 0.92; box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 60%, transparent); }
+}
+
+/* frontier cards — a 2-col layout within the w-grid */
+.frontier-card {
+  grid-column: span 1;
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  border-radius: 6px;
+  padding: 20px 22px 22px;
+  background: color-mix(in srgb, var(--gold) 3%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.frontier-card .f-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.frontier-card .f-idx {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
+}
+.frontier-card .f-title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: var(--gold-bright);
+  line-height: 1.25;
+}
+.frontier-card .f-title .cn {
+  display: block;
+  font-family: var(--serif-cn);
+  font-weight: 400;
+  font-size: 0.78em;
+  color: var(--ivory-faint);
+  margin-top: 2px;
+  letter-spacing: 0.06em;
+}
+.level-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.level-row {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 6px;
+  align-items: baseline;
+}
+.level-row .lv {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .05em;
+  color: color-mix(in srgb, var(--gold) 50%, transparent);
+  text-align: right;
+  padding-top: 1px;
+}
+.level-row[data-l="5"] .lv { color: var(--gold-bright); }
+.level-row .lv-text {
+  font-size: 12.5px;
+  color: var(--ivory-faint);
+  line-height: 1.45;
+}
+.level-row[data-l="5"] .lv-text { color: var(--ivory); }
+.level-row .lv-text .cn {
+  display: block;
+  font-family: var(--serif-cn);
+  font-size: 11.5px;
+  color: color-mix(in srgb, var(--ivory-faint) 70%, transparent);
+  margin-top: 1px;
+}
+.level-row[data-l="5"] .lv-text .cn { color: color-mix(in srgb, var(--ivory-faint) 90%, transparent); }
+
+/* level-legend strip */
+.level-legend {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 4px 0 6px;
+}
+.level-legend .ll-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 6px;
+  border: 1px solid color-mix(in srgb, var(--gold) 15%, transparent);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--gold) 3%, transparent);
+  text-align: center;
+}
+.level-legend .ll-lv {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gold-bright);
+  letter-spacing: .06em;
+}
+.level-legend .ll-name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--ivory);
+  line-height: 1.3;
+}
+.level-legend .ll-cn {
+  font-family: var(--serif-cn);
+  font-size: 11px;
+  color: var(--ivory-faint);
+  letter-spacing: .04em;
+}
+.level-legend .ll-bar {
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gold);
+  margin-top: 2px;
+}
+.level-legend .ll-item:nth-child(1) .ll-bar { opacity: 0.18; }
+.level-legend .ll-item:nth-child(2) .ll-bar { opacity: 0.35; }
+.level-legend .ll-item:nth-child(3) .ll-bar { opacity: 0.55; }
+.level-legend .ll-item:nth-child(4) .ll-bar { opacity: 0.75; }
+.level-legend .ll-item:nth-child(5) .ll-bar { opacity: 1; box-shadow: 0 0 8px color-mix(in srgb, var(--gold) 50%, transparent); }
+
+@media (max-width: 600px) {
+  .level-legend { grid-template-columns: repeat(3, 1fr); }
+  .level-legend .ll-item:nth-child(4),
+  .level-legend .ll-item:nth-child(5) { grid-column: span 1; }
+}
+</style>
+</head>
+<body data-world="breakthroughs">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">10 · Ten Major Breakthroughs · 十 大 突 破</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <div class="bt-spark" aria-hidden="true">
+    <div class="bt-spark-bar"></div>
+    <div class="bt-spark-bar"></div>
+    <div class="bt-spark-bar"></div>
+    <div class="bt-spark-bar"></div>
+    <div class="bt-spark-bar"></div>
+  </div>
+  <div class="eyebrow">Psyverse · World 10 / 16</div>
+  <div class="w-num">10</div>
+  <h1>Ten Major <em>Breakthroughs</em><span class="cn">十 大 突 破</span></h1>
+  <p class="tagline">
+    <span class="en">Ten technological frontiers — each ascending from foundation to mastery across five levels. The map of what humanity is building next.</span>
+    <span class="cn">十条技术前沿，每条都从基础跨越五个层级，直抵精通。这是人类正在建造的未来之图。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 10.1 · The Logic of Levels</div>
+    <h2 class="w-h2">Why five levels?<span class="cn">为何设定五个层级？</span></h2>
+    <p class="w-lead">
+      <span class="en">A breakthrough is not a single event. It is a progression — each level unlocking possibilities the previous one could not even name. Level 1 is a foundation, not a destination; Level 5 is mastery, rarely reached in any one lifetime.</span>
+      <span class="cn">突破不是一个孤立的瞬间，而是一段进程——每个层级都开启上一层级根本无从命名的可能。第一级是基础，而非终点；第五级是精通，在任何一代人的时间里都鲜有企及。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The five-level model does three things at once: it locates where we are today, it names where we are going, and it reveals the distance still to travel. Knowing that Autonomous Driving sits at L3 globally is not discouraging — it is a precise invitation to close the gap.</span>
+      <span class="cn">五级模型同时做了三件事：定位我们今天所在的位置，命名我们前往的方向，揭示尚待跨越的距离。知道自动驾驶在全球范围内大体处于第三级，并不令人沮丧——这恰恰是一份精准的邀约，邀我们去弥合这段距离。</span>
+    </p>
+
+    <div class="level-legend" role="list" aria-label="Level definitions">
+      <div class="ll-item" role="listitem">
+        <div class="ll-lv">L1</div>
+        <div class="ll-name">Foundation</div>
+        <div class="ll-cn">基础奠定</div>
+        <div class="ll-bar"></div>
+      </div>
+      <div class="ll-item" role="listitem">
+        <div class="ll-lv">L2</div>
+        <div class="ll-name">Assisted</div>
+        <div class="ll-cn">辅助增强</div>
+        <div class="ll-bar"></div>
+      </div>
+      <div class="ll-item" role="listitem">
+        <div class="ll-lv">L3</div>
+        <div class="ll-name">Conditional</div>
+        <div class="ll-cn">条件自主</div>
+        <div class="ll-bar"></div>
+      </div>
+      <div class="ll-item" role="listitem">
+        <div class="ll-lv">L4</div>
+        <div class="ll-name">Advanced</div>
+        <div class="ll-cn">高度进阶</div>
+        <div class="ll-bar"></div>
+      </div>
+      <div class="ll-item" role="listitem">
+        <div class="ll-lv">L5</div>
+        <div class="ll-name">Mastery</div>
+        <div class="ll-cn">精通极致</div>
+        <div class="ll-bar"></div>
+      </div>
+    </div>
+
+    <p class="w-p">
+      <span class="en">Each level is not merely "better" than the one below — it is qualitatively different. L3 Conditional means the system can operate within a defined envelope but fails outside it. L4 Advanced means the envelope is very large. L5 Mastery means there is effectively no envelope. These are not grades on a curve; they are phase transitions.</span>
+      <span class="cn">每个层级并非仅仅"比上一级更好"——而是性质上的不同。第三级「条件自主」意味着系统能在限定范围内运行，却在边界之外失效；第四级「高度进阶」意味着这个范围已经极为宽广；第五级「精通极致」则意味着范围的边界事实上已不复存在。这些不是分数曲线上的刻度，而是相变。</span>
+    </p>
+  </section>
+
+  <hr class="w-rule" />
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 10.2 · Ten Frontiers</div>
+    <h2 class="w-h2">The ten technological frontiers<span class="cn">十条技术前沿</span></h2>
+    <p class="w-lead">
+      <span class="en">These ten were not chosen arbitrarily. Together they cover the material, digital, biological, spatial, and civilizational dimensions of what advanced technology can do. Each is a frontier precisely because progress is hard, non-linear, and contested — yet each has a clear ladder from where we are to where we could be.</span>
+      <span class="cn">这十条并非随意选择。它们共同覆盖了先进技术所能触及的物质、数字、生物、空间与文明五个维度。每一条之所以是「前沿」，正因为进展艰难、非线性且充满争议——然而每一条都有一架清晰的梯子，从我们现在所处的位置，通往我们本可抵达之处。</span>
+    </p>
+
+    <div class="w-grid">
+
+      <!-- 01 · Materials -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 01</span>
+          <div class="f-title">Materials<span class="cn">物 质 科 学</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Every civilization is ultimately a materials story. The Bronze Age, the Iron Age, the Silicon Age — each named for the dominant substrate that enabled everything else. Materials science is still in motion.</span>
+          <span class="cn">每一段文明归根结底都是一则材料的故事：青铜时代、铁器时代、硅时代——各以主导的基底材料命名，正是这些材料使其他一切成为可能。材料科学至今仍在行进之中。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Smelting<span class="cn">冶炼——从矿石中提取金属</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Precision machining<span class="cn">精密加工——以微米级公差塑形材料</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">3D printing<span class="cn">3D打印——逐层累积，任意形体</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Nanotechnology<span class="cn">纳米技术——在原子尺度设计物质属性</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Nano 3D synthesis<span class="cn">纳米3D合成——在原子分辨率上逐层构建任意三维结构</span></span></div>
+        </div>
+      </div>
+
+      <!-- 02 · VR -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 02</span>
+          <div class="f-title">Virtual Reality<span class="cn">虚 拟 现 实</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Reality is what the nervous system accepts. A sufficiently rich, responsive, persistent, and social virtual world is not a simulation of experience — it is experience. The ladder here runs from pixels to presence.</span>
+          <span class="cn">现实是神经系统所接受的一切。一个足够丰富、有响应、持续存在、具有社会性的虚拟世界，不是对体验的模拟——它本身就是体验。这条梯子，从像素通向临场感。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Video games<span class="cn">电子游戏——规则驱动的封闭互动世界</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Games with economic ecosystems<span class="cn">带经济生态的电子游戏——虚拟物品具备真实价值</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">Open world games<span class="cn">开放世界游戏——玩家自由塑造叙事走向</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Self-running open worlds<span class="cn">自运行的开放世界——AI居民自主演化，无需脚本</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Metaverse<span class="cn">元宇宙——持久的、跨平台的、与物理世界等权的数字现实</span></span></div>
+        </div>
+      </div>
+
+      <!-- 03 · Energy -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 03</span>
+          <div class="f-title">Energy<span class="cn">能 源</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Energy is the master resource. Cheap, abundant, clean energy does not merely solve climate — it dissolves a hundred constraints on agriculture, manufacturing, desalination, computation, and space travel simultaneously. The scale of ambition at L5 is cosmological.</span>
+          <span class="cn">能源是母资源。廉价、充裕、清洁的能源不仅仅解决气候问题——它同时消解了农业、制造、海水淡化、计算与太空旅行上的百重约束。第五级的雄心，是宇宙尺度的。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Fossil fuels<span class="cn">化石燃料——有限储量，高碳排放</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Solar energy<span class="cn">太阳能——可再生，但受昼夜与纬度制约</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">Nuclear fission<span class="cn">核裂变——高密度，但有核废料与扩散风险</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Controlled nuclear fusion<span class="cn">可控核聚变——近乎无限的洁净能源，工程挑战巨大</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Dyson sphere<span class="cn">戴森球——直接捕获恒星全部辐射输出</span></span></div>
+        </div>
+      </div>
+
+      <!-- 04 · Longevity -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 04</span>
+          <div class="f-title">Longevity / Immortality<span class="cn">长 生 不 老</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Aging is not inevitable in the way gravity is. It is a process — a cascade of damage accumulation, gene expression drift, and systemic failure — that in principle has levers. The question is not whether biology can be extended but by how much, at what cost, and for whom.</span>
+          <span class="cn">衰老并非如重力那般不可更改。它是一个过程——损伤累积、基因表达漂移、系统性衰竭的级联——在原则上是有可干预之处的。问题不在于生物学能否被延展，而在于延展多少、代价几何、为谁而设。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Health optimization<span class="cn">健康优化——延缓衰老的生活方式与轻度可逆干预</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Organ &amp; system-level repair<span class="cn">器官与系统层级的修复维护——「延寿工程化」</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">Cellular / molecular periodic reset<span class="cn">细胞与分子层面的周期性重置——部分可逆老化</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Continuous damage clearing &amp; modular replacement<span class="cn">持续净清零损伤与模块化替换——实用级极限延寿</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Autonomous maintenance · transferable continuity<span class="cn">自主维持与可迁移的个体连续性——强意义上的技术性不老</span></span></div>
+        </div>
+      </div>
+
+      <!-- 05 · Space Travel -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 05</span>
+          <div class="f-title">Space Travel<span class="cn">空 间 移 动</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Mobility is the oldest technology. From walking to wheels to wings, each upgrade changed not just transport but the entire shape of civilization — who could reach whom, what could be traded, where power could project. Space travel is the next phase of that story.</span>
+          <span class="cn">移动能力是最古老的技术。从步行到轮子再到翅膀，每一次升级改变的不仅是运输，而是整个文明的形态——谁能抵达谁、什么可以交换、权力能投射到何处。太空旅行，是这个故事的下一个篇章。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Automobiles<span class="cn">汽车级——地面交通，百公里时速</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Aircraft<span class="cn">飞机级——大气层内，跨洋飞行</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">Rockets<span class="cn">火箭级——突破大气，进入近地轨道</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Space elevator<span class="cn">飞船级——轨道常态往返，行星际航行</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Curvature drive<span class="cn">曲率引擎——突破光速限制，恒星际旅行</span></span></div>
+        </div>
+      </div>
+
+      <!-- 06 · Large Models -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 06</span>
+          <div class="f-title">Large Models<span class="cn">大 模 型</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Language models are, at minimum, a new kind of tool — one that compresses human knowledge into a queryable form and can compose novel combinations from it. At maximum, they are something stranger: entities that reason, reflect, and eventually innovate. The ladder here runs from useful to transformative to civilizational.</span>
+          <span class="cn">大语言模型至少是一种新型工具——将人类知识压缩为可查询的形式，并能从中组合出新的组合。往极端看，它们是更陌生的存在：能够推理、反思，最终实现创新的实体。这条梯子，从有用，到变革性，到文明级别。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Chat<span class="cn">聊天——问答与对话，知识检索的流畅界面</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Reasoning<span class="cn">推理——多步逻辑、数学与代码生成</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">Intelligent Agent<span class="cn">智能体——自主规划与执行跨工具的复杂任务</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Innovation<span class="cn">创新——产生人类尚未想到的新假设与方案</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Organizer<span class="cn">组织者——协调大规模人机协作，重塑社会结构</span></span></div>
+        </div>
+      </div>
+
+      <!-- 07 · BCI -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 07</span>
+          <div class="f-title">Brain–Computer Interface<span class="cn">脑 机 接 口</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Every tool we have ever made has sat outside the skull. BCI dissolves that boundary. The implications cascade: for medicine, for communication, for the definition of individual agency, and — at L5 — for what it means to be human in a world where thought and computation are continuous.</span>
+          <span class="cn">我们造出的所有工具，始终置于颅骨之外。脑机接口将消解这道边界。其含义层层展开：对医学、对沟通、对个体能动性的定义，以及——在第五级——在思维与计算连续贯通的世界里，「人」意味着什么。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Basic signal acquisition &amp; decoding<span class="cn">基础信号采集与解码——科研实验阶段</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Simple one-way control<span class="cn">简单单向控制——移动光标、操控机械臂</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">Two-way interaction<span class="cn">双向交互——既能读取脑信号，也能通过刺激反馈</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Partial clinical applications<span class="cn">部分临床应用——渐冻症与脊髓损伤患者的辅助沟通</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">High-bandwidth, natural human-machine symbiosis<span class="cn">高带宽、自然化的人机共生——思维与数字世界无缝互联</span></span></div>
+        </div>
+      </div>
+
+      <!-- 08 · Humanoid Robots -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 08</span>
+          <div class="f-title">Humanoid Robots<span class="cn">人 形 机 器 人</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">A humanoid robot is an unusual engineering bet: it says that the physical world, shaped for human bodies, is best navigated by human-shaped machines. It is also an implicit claim about the transferability of intelligence — that a body built like ours can inherit, at some point, minds built like ours.</span>
+          <span class="cn">人形机器人是一个特殊的工程赌注：它断言，为人类身体塑造的物理世界，最适合由人形机器来穿行。这也是一种关于智能可迁移性的隐含主张——一具与我们相似的身体，在某个时刻，能够承载与我们相似的心智。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Basic operation assistance<span class="cn">基础操作辅助——执行预设的简单动作</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Environmental perception &amp; simple interaction<span class="cn">环境感知与简单交互——识别障碍与人物</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">Conditional autonomy &amp; situational understanding<span class="cn">条件自主与情境理解——在结构化环境中独立完成任务</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Highly autonomous, complex task execution<span class="cn">高度自主与复杂任务执行——无监督跨域操作</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Fully autonomous, human-like intelligence<span class="cn">完全自主与类人智能——开放环境中自主学习与判断</span></span></div>
+        </div>
+      </div>
+
+      <!-- 09 · Autonomous Driving -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 09</span>
+          <div class="f-title">Autonomous Driving<span class="cn">自 动 驾 驶</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Autonomous driving is perhaps the most visible frontier: a daily-life technology whose progress is measurable, whose failure modes are public, and whose L5 endpoint — a world where no human ever needs to drive — would reclaim billions of hours annually. It is also the clearest proof that moving from L3 to L4 can take a decade.</span>
+          <span class="cn">自动驾驶也许是能见度最高的前沿：一项日常生活中的技术，进展可度量，失败模式公开透明，而其第五级终点——一个任何人都不再需要开车的世界——每年将归还数十亿小时。它也是最清晰的证明：从第三级跨越到第四级，可能需要整整十年。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Driver assistance<span class="cn">驾驶员辅助——车道保持、自动刹车等单一功能</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Partial autonomous driving<span class="cn">部分自动驾驶——组合功能，但驾驶员须持续监控</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">Conditional autonomous driving<span class="cn">有条件自动驾驶——特定场景下无需介入，但须随时准备接管</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Highly autonomous driving<span class="cn">高度自动驾驶——大多数条件下无需驾驶员干预</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Fully autonomous driving<span class="cn">完全自动驾驶——任意道路、任意天气、无需方向盘</span></span></div>
+        </div>
+      </div>
+
+      <!-- 10 · Web3 -->
+      <div class="frontier-card w-card">
+        <div class="f-head">
+          <span class="f-idx">10 · 10</span>
+          <div class="f-title">Web3<span class="cn">W e b 3</span></div>
+        </div>
+        <p class="w-p" style="margin:0; font-size:13px;">
+          <span class="en">Web3 is a bet on trustless coordination — the idea that rules encoded in software, enforced by mathematics, and distributed across many parties can substitute for institutions that require trust in a central authority. At L5 the vision is radical: a nation-state not of geography but of protocol.</span>
+          <span class="cn">Web3 是对「无需信任的协作」的押注——用软件编码的规则、由数学强制执行、分布在众多参与方之间，能够替代那些依赖中央权威信任的机构。在第五级，这个愿景是激进的：一个不以地理为基础、而以协议为基础的国家形态。</span>
+        </p>
+        <div class="level-ladder">
+          <div class="level-row" data-l="1"><span class="lv">L1</span><span class="lv-text">Decentralized ledger<span class="cn">去中心化账本——不可篡改的交易记录</span></span></div>
+          <div class="level-row" data-l="2"><span class="lv">L2</span><span class="lv-text">Smart contracts<span class="cn">智能合约——自动执行的链上协议</span></span></div>
+          <div class="level-row" data-l="3"><span class="lv">L3</span><span class="lv-text">DAO<span class="cn">去中心化自治组织——代码治理的集体决策</span></span></div>
+          <div class="level-row" data-l="4"><span class="lv">L4</span><span class="lv-text">Metaverse<span class="cn">元宇宙——数字产权与经济在虚拟世界中自洽运行</span></span></div>
+          <div class="level-row" data-l="5"><span class="lv">L5</span><span class="lv-text">Automated nation<span class="cn">自动化的国家——以协议而非领土为基础的政治共同体</span></span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="w-rule" />
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 10.3 · Reading the Map</div>
+    <h2 class="w-h2">Where we are — and where we are going<span class="cn">我们在哪里——以及我们去往何处</span></h2>
+    <p class="w-p">
+      <span class="en">No frontier is at Level 5 today. Most sit between L2 and L4, with enormous variation by country, organization, and application. The map is not a prediction; it is a framework for honest navigation. It tells you which breakthroughs are engineering problems, which are physics problems, and which are coordination problems — and those are very different kinds of hard.</span>
+      <span class="cn">今天，没有任何一条前沿已达到第五级。大多数处于第二至第四级之间，因国家、机构与应用场景的不同而差异巨大。这张地图不是预测，而是诚实导航的框架。它告诉你：哪些突破是工程问题，哪些是物理问题，哪些是协作问题——而这三类「难」有着本质的区别。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Engineering problems yield to more resources and better coordination. Physics problems require conceptual breakthroughs — no amount of money can shortcut them if the underlying idea is wrong. Coordination problems require trust, governance, and political will. Knowing which type you face changes how you allocate effort.</span>
+      <span class="cn">工程问题通过更多资源和更好协作得以突破。物理问题需要概念性飞跃——如果底层构想是错的，再多钱也无法走捷径。协作问题需要信任、治理与政治意愿。知道你面对的是哪一类，将改变你分配努力的方式。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Autonomous Driving from L3 to L4 is largely an engineering and data problem. Controlled Nuclear Fusion from L3 to L4 is partly a physics problem and partly an engineering one. A Dyson Sphere is a physics problem of the first order — we do not yet have the materials science, the propulsion, or the manufacturing scale to even begin. Web3 from L3 to L5 is almost entirely a coordination and governance problem; the cryptography already works.</span>
+      <span class="cn">自动驾驶从第三级到第四级，主要是工程与数据问题。可控核聚变从第三级到第四级，部分是物理问题，部分是工程问题。戴森球是第一性的物理问题——我们尚不具备所需的材料科学、推进技术或制造规模，甚至还无法起步。Web3从第三级到第五级，几乎完全是协作与治理问题；密码学本身已然可行。</span>
+    </p>
+
+    <blockquote class="w-quote">
+      <span class="en">"A level is not a ceiling. It is a landing on the way up — a place to consolidate before the next climb. The mistake is to mistake the landing for the summit."</span>
+      <span class="cn">「层级不是天花板。它是攀登途中的一处平台——在下一段攀爬之前，用来巩固的地方。错误在于把平台误认为顶峰。」</span>
+      <span class="w-quote-attr">On the level model · 关于层级模型的说明</span>
+    </blockquote>
+  </section>
+
+  <hr class="w-rule" />
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 10.4 · From Frontiers to Convergence</div>
+    <h2 class="w-h2">When frontiers intersect<span class="cn">当前沿彼此相遇</span></h2>
+    <p class="w-lead">
+      <span class="en">The ten frontiers are not independent. They converge, accelerate, and in some cases require each other. The most powerful dynamics happen at intersections.</span>
+      <span class="cn">这十条前沿并非相互独立。它们交汇、相互加速，在某些情况下彼此依存。最强大的动力，往往在交叉点上迸发。</span>
+    </p>
+    <div class="w-grid">
+      <div class="w-card">
+        <div class="idx">Materials × Energy</div>
+        <div class="ttl">The substrate of abundance<span class="cn">丰裕的基底</span></div>
+        <div class="body">
+          <span class="en">Every energy transition has depended on a materials breakthrough. Solar panels need semiconductor purity. Fusion reactors need materials that can withstand plasma temperatures. Nano 3D synthesis at L5 might manufacture fusion reactor components atom by atom.</span>
+          <span class="cn">每一次能源转型都依赖于材料学的突破。太阳能电池板需要半导体纯度；聚变反应堆需要能承受等离子体温度的材料。第五级的纳米3D合成，也许能逐原子制造聚变堆部件。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Large Models × BCI</div>
+        <div class="ttl">The amplified mind<span class="cn">被放大的心智</span></div>
+        <div class="body">
+          <span class="en">A Large Model at L4 (Innovation) coupled with a BCI at L4 (clinical-grade two-way interface) would make the human-AI collaborative loop faster than language. Thought becomes query; query becomes insight; insight flows back before the next breath.</span>
+          <span class="cn">第四级的大模型（创新级）与第四级的脑机接口（临床级双向接口）结合，将使人机协作回路快于语言。思维成为查询，查询成为洞见，洞见在下一次呼吸之前流回。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Space Travel × Longevity</div>
+        <div class="ttl">The range of life<span class="cn">生命的射程</span></div>
+        <div class="body">
+          <span class="en">Interstellar travel at even a fraction of light speed takes decades or centuries. Without L4–L5 Longevity, no biological crew survives the journey. These two frontiers are not merely complementary — they are each other's preconditions for the most ambitious version of the mission.</span>
+          <span class="cn">即便以光速的一小部分飞行，星际旅行也需要数十年乃至数百年。没有第四至第五级的长生不老技术，没有任何生物学意义上的船员能存活抵达。这两条前沿不仅是互补关系——对于使命最宏大的版本而言，它们互为彼此的前提。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Humanoid Robots × VR</div>
+        <div class="ttl">The distributed body<span class="cn">分布式的身体</span></div>
+        <div class="body">
+          <span class="en">A humanoid robot operating in the physical world can be teleoperated from a rich VR environment, or eventually controlled by an AI. When VR reaches L5 Metaverse and humanoid robots reach L4–L5 autonomy, the distinction between physical presence and virtual presence collapses.</span>
+          <span class="cn">在物理世界中运行的人形机器人，可以从丰富的VR环境中进行远程操控，最终可由AI驱动。当虚拟现实达到第五级元宇宙、人形机器人达到第四至第五级自主时，物理临场与虚拟临场之间的区别将消弭。</span>
+        </div>
+      </div>
+    </div>
+    <p class="w-p">
+      <span class="en">The mission — using science, technology, and engineering to solve real problems — does not require all ten frontiers to reach Level 5 simultaneously. It requires steady, honest progress on each, and the wisdom to notice when a breakthrough on one frontier unlocks a previously blocked path on another.</span>
+      <span class="cn">这条使命——用科学、技术和工程解决真实问题——并不要求十条前沿同时抵达第五级。它所需要的是在每一条上稳定而诚实地推进，以及当一条前沿的突破开启了另一条此前被封锁的路径时，能够察觉到的智慧。</span>
+    </p>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Ten Major Breakthroughs · 十大突破 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

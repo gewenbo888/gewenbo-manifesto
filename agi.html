@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eleven Approaches to AGI · 十一种通往AGI之路 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Eleven Approaches to AGI — five foundational domains and two open frontiers mapping the paths humanity is taking toward artificial general intelligence. A standalone world of the Psyverse manifesto." />
+<meta name="keywords" content="AGI, artificial general intelligence, neural networks, diffusion models, reinforcement learning, transformer, Bayesian, fractal geometry, genetic algorithms, Psyverse, 通用人工智能" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/agi" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/agi" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/agi" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/agi" />
+<meta property="og:title" content="Eleven Approaches to AGI · 十一种通往AGI之路" />
+<meta property="og:description" content="Five foundational domains and two open frontiers — a map of every serious path toward artificial general intelligence." />
+<meta property="og:url" content="https://psyverse.fun/agi" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Eleven Approaches to AGI · 十一种通往AGI之路" />
+<meta name="twitter:description" content="Five foundational domains and two open frontiers — a map of every serious path toward artificial general intelligence." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Eleven Approaches to AGI",
+  "about": "A map of the eleven serious approaches to artificial general intelligence, organised across five foundational domains and two open frontiers.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* page-local flourish: converging paths toward a node */
+.agi-lattice {
+  position: relative;
+  width: 160px;
+  height: 120px;
+  margin: 4px 0 32px;
+}
+.agi-lattice svg {
+  width: 160px;
+  height: 120px;
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .agi-path {
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: agi-draw 2.4s ease-out forwards;
+  }
+  .agi-path:nth-child(1) { animation-delay: 0s; }
+  .agi-path:nth-child(2) { animation-delay: 0.18s; }
+  .agi-path:nth-child(3) { animation-delay: 0.36s; }
+  .agi-path:nth-child(4) { animation-delay: 0.54s; }
+  .agi-path:nth-child(5) { animation-delay: 0.72s; }
+  .agi-node-pulse {
+    animation: agi-pulse 2.6s ease-in-out infinite 2s;
+  }
+  @keyframes agi-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes agi-pulse {
+    0%, 100% { r: 6; opacity: 1; }
+    50% { r: 9; opacity: 0.7; }
+  }
+}
+
+/* approach cards — domain coloring */
+.agi-domain-block {
+  margin-bottom: 2.4rem;
+}
+.dom-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+}
+.dom-numeral {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(22px, 2.5vw, 32px);
+  color: var(--gold);
+  flex-shrink: 0;
+  min-width: 2rem;
+}
+.dom-title {
+  font-family: var(--display);
+  font-size: clamp(15px, 1.8vw, 20px);
+  font-weight: 500;
+  color: var(--ivory);
+  letter-spacing: 0.04em;
+}
+.dom-title .cn {
+  margin-left: 0.6em;
+  font-size: 0.85em;
+  color: var(--ivory-faint);
+  letter-spacing: 0.12em;
+}
+.dom-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ivory-faint);
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* approach row cards */
+.approach-card {
+  background: color-mix(in srgb, var(--gold) 3.5%, var(--void));
+  border: 1px solid color-mix(in srgb, var(--gold) 14%, transparent);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 0.7rem;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr 1fr;
+  gap: 0.5rem 1.2rem;
+  align-items: start;
+}
+.approach-card.frontier {
+  border-color: color-mix(in srgb, var(--gold) 9%, transparent);
+  opacity: 0.72;
+}
+.a-idx {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  padding-top: 2px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.a-object-col {
+  font-family: var(--display);
+  font-size: clamp(13px, 1.5vw, 16px);
+  font-weight: 500;
+  color: var(--ivory);
+}
+.a-object-col .cn {
+  display: block;
+  font-size: 0.82em;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+.a-method-col {
+  font-family: var(--display);
+  font-size: clamp(12px, 1.4vw, 15px);
+  color: var(--ivory-faint);
+}
+.a-method-col .cn {
+  display: block;
+  font-size: 0.82em;
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+.a-desc-row {
+  grid-column: 2 / -1;
+  font-size: clamp(12px, 1.3vw, 14px);
+  line-height: 1.65;
+  color: var(--ivory-faint);
+  border-top: 1px solid color-mix(in srgb, var(--gold) 9%, transparent);
+  padding-top: 0.5rem;
+  margin-top: 0.25rem;
+}
+.a-desc-row .cn {
+  display: block;
+  margin-top: 0.25rem;
+  color: color-mix(in srgb, var(--ivory-faint) 70%, transparent);
+}
+.frontier-label {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--gold) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .approach-card {
+    grid-template-columns: 3rem 1fr;
+  }
+  .a-method-col {
+    grid-column: 2;
+    margin-top: -0.25rem;
+  }
+  .a-desc-row {
+    grid-column: 1 / -1;
+  }
+}
+</style>
+</head>
+<body data-world="agi">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">11 · Eleven Approaches to AGI · 十 一 种 通 往 A G I 之 路</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <div class="agi-lattice" aria-hidden="true">
+    <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- converging paths from five source nodes to one AGI node -->
+      <line class="agi-path" x1="8" y1="12" x2="120" y2="60" stroke="#c9a24b" stroke-width="0.9" opacity="0.55" />
+      <line class="agi-path" x1="8" y1="38" x2="120" y2="60" stroke="#c9a24b" stroke-width="0.9" opacity="0.55" />
+      <line class="agi-path" x1="8" y1="62" x2="120" y2="60" stroke="#c9a24b" stroke-width="0.9" opacity="0.55" />
+      <line class="agi-path" x1="8" y1="86" x2="120" y2="60" stroke="#c9a24b" stroke-width="0.9" opacity="0.55" />
+      <line class="agi-path" x1="8" y1="110" x2="120" y2="60" stroke="#c9a24b" stroke-width="0.9" opacity="0.55" />
+      <!-- source nodes -->
+      <circle cx="8"  cy="12"  r="3" fill="#c9a24b" opacity="0.5" />
+      <circle cx="8"  cy="38"  r="3" fill="#c9a24b" opacity="0.5" />
+      <circle cx="8"  cy="62"  r="3" fill="#c9a24b" opacity="0.5" />
+      <circle cx="8"  cy="86"  r="3" fill="#c9a24b" opacity="0.5" />
+      <circle cx="8"  cy="110" r="3" fill="#c9a24b" opacity="0.5" />
+      <!-- AGI node -->
+      <circle class="agi-node-pulse" cx="120" cy="60" r="6" fill="#e6c071" opacity="0.95" />
+      <circle cx="120" cy="60" r="12" fill="none" stroke="#c9a24b" stroke-width="0.7" opacity="0.3" />
+      <circle cx="120" cy="60" r="18" fill="none" stroke="#c9a24b" stroke-width="0.5" opacity="0.15" />
+      <!-- label -->
+      <text x="134" y="64" font-family="monospace" font-size="9" fill="#c9a24b" opacity="0.7">AGI</text>
+    </svg>
+  </div>
+  <div class="eyebrow">Psyverse · World 11 / 16</div>
+  <div class="w-num">11</div>
+  <h1>Eleven Approaches to <em>AGI</em><span class="cn">十 一 种 通 往 A G I 之 路</span></h1>
+  <p class="tagline">
+    <span class="en">Five foundational domains. Two open frontiers. Eleven distinct paths that serious researchers have walked — or are still searching for — on the way to artificial general intelligence.</span>
+    <span class="cn">五个基础领域，两道开放前沿。十一条严肃研究者走过——或仍在探寻——的通往通用人工智能之路。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <!-- § 11.0 — Orientation -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.0 · The Map and Its Gaps</div>
+    <p class="w-lead">
+      <span class="en">No single discipline owns AGI. Every approach below arrives from a different epistemic tradition — mathematics, physics, biology, brain structure, or the cognitive methods of thinking itself. Each one is a bet on what intelligence fundamentally is.</span>
+      <span class="cn">没有哪一门学科独占通往AGI的路径。以下每种路径各自发源于不同的认识论传统——数学、物理、生物学、脑结构，抑或思维本身的认知方法。每一条都是对「智能本质上是什么」的一次押注。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Nine of the eleven have working implementations. Two remain open frontiers: we know the cognitive capacity exists in humans, but no paradigm has yet captured it in a machine. The map is incomplete — and that gap is the most important part.</span>
+      <span class="cn">十一条路径中，九条已有可运行的实现。两条仍是开放前沿：我们知道人类拥有这种认知能力，但尚无任何范式能在机器上复现它。这张地图还不完整——而那道缺口，恰恰是其中最重要的部分。</span>
+    </p>
+    <div class="w-grid" style="--cols:5;">
+      <div class="w-card">
+        <div class="idx">Ⅰ</div>
+        <div class="ttl">Mathematics<span class="cn">数学</span></div>
+        <div class="body"><span class="en">1 approach</span><span class="cn">1条路径</span></div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Ⅱ</div>
+        <div class="ttl">Physics<span class="cn">物理</span></div>
+        <div class="body"><span class="en">1 approach</span><span class="cn">1条路径</span></div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Ⅲ</div>
+        <div class="ttl">Biology<span class="cn">生物学</span></div>
+        <div class="body"><span class="en">1 approach</span><span class="cn">1条路径</span></div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Ⅳ</div>
+        <div class="ttl">Brain Structure<span class="cn">脑结构</span></div>
+        <div class="body"><span class="en">1 approach</span><span class="cn">1条路径</span></div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Ⅴ</div>
+        <div class="ttl">Brain Thinking Methods<span class="cn">脑思维方法</span></div>
+        <div class="body"><span class="en">7 approaches · 2 missing</span><span class="cn">7条路径 · 2条尚缺</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 11.1 — Domain I: Mathematics -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.1 · Domain Ⅰ — Mathematics · 数学</div>
+    <h2 class="w-h2">Structure as substrate<span class="cn">以结构为基底</span></h2>
+    <p class="w-p">
+      <span class="en">Mathematics offers something no other discipline can: absolute certainty within a formal system. The bet here is that intelligence is, at its core, a kind of structured pattern — and that the right mathematical formalism can generate it from scratch.</span>
+      <span class="cn">数学提供了其他任何学科都无法给予的东西：形式系统内的绝对确定性。这条路的押注是：智能在本质上是一种结构化的模式——而正确的数学形式主义能够从头生成它。</span>
+    </p>
+
+    <div class="agi-domain-block">
+      <div class="dom-header">
+        <span class="dom-numeral">Ⅰ</span>
+        <span class="dom-title">Mathematics <span class="cn">数 学</span></span>
+        <span class="dom-count">01 approach</span>
+      </div>
+
+      <div class="approach-card">
+        <div class="a-idx">11 · 01</div>
+        <div class="a-object-col">
+          <span class="en">Fractal Geometry</span>
+          <span class="cn">分形几何</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Fractal Generative Models</span>
+          <span class="cn">分形生成模型</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">Self-similarity at every scale is one of the deepest patterns nature uses to produce complexity from simplicity. Fractal generative models apply this principle computationally: a compact set of rules, applied recursively, can produce pixel-by-pixel imagery — and by extension, arbitrarily rich structures — without storing those structures explicitly. The insight is that a short description can encode vast complexity, which is precisely what compression and generalisation in intelligence require.</span>
+          <span class="cn">每个尺度上的自相似性，是自然界用以从简单中产生复杂的最深刻模式之一。分形生成模型将这一原理计算化：一套紧凑的规则，经递归施用，便可逐像素生成图像——乃至任意丰富的结构——而无需显式存储那些结构。其洞见在于：一段简短的描述可以编码巨大的复杂性，而这恰恰是智能的压缩与泛化所需要的。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 11.2 — Domain II: Physics -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.2 · Domain Ⅱ — Physics · 物理</div>
+    <h2 class="w-h2">Order from disorder<span class="cn">从无序中涌现秩序</span></h2>
+    <p class="w-p">
+      <span class="en">Physics contributes a profound inversion: instead of building structure up, start from noise and learn to subtract it. The second law of thermodynamics — entropy increases — becomes a generative engine when you run its logic in reverse.</span>
+      <span class="cn">物理学贡献了一种深刻的倒转：不是自下而上地建立结构，而是从噪声出发，学会将其减去。热力学第二定律——熵增——当你将其逻辑反向运行时，便成了一台生成引擎。</span>
+    </p>
+
+    <div class="agi-domain-block">
+      <div class="dom-header">
+        <span class="dom-numeral">Ⅱ</span>
+        <span class="dom-title">Physics <span class="cn">物 理</span></span>
+        <span class="dom-count">01 approach</span>
+      </div>
+
+      <div class="approach-card">
+        <div class="a-idx">11 · 02</div>
+        <div class="a-object-col">
+          <span class="en">Entropy Increase</span>
+          <span class="cn">熵增</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Diffusion Models &amp; Boltzmann Machines</span>
+          <span class="cn">扩散模型 · 玻尔兹曼机</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">Diffusion models corrupt a signal by adding Gaussian noise step by step — systematically increasing entropy — then train a network to reverse each step. At inference time, starting from pure noise and denoising iteratively produces coherent images, audio, and molecular structures. Boltzmann machines operate on the same thermodynamic intuition from a different angle: they model a probability distribution as the equilibrium state of a stochastic system, where 「temperature」 controls the balance between order and exploration. Both approaches treat intelligence as thermodynamic navigation.</span>
+          <span class="cn">扩散模型通过逐步添加高斯噪声来破坏信号——系统性地增大熵——再训练网络逆转每一步。推理时，从纯噪声出发迭代去噪，便可生成连贯的图像、音频与分子结构。玻尔兹曼机从另一角度运用同样的热力学直觉：它将概率分布建模为一个随机系统的平衡态，其中「温度」控制着秩序与探索之间的权衡。两种方法都将智能视为热力学意义上的导航。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 11.3 — Domain III: Biology -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.3 · Domain Ⅲ — Biology · 生物学</div>
+    <h2 class="w-h2">Fitness as compass<span class="cn">以适应度为罗盘</span></h2>
+    <p class="w-p">
+      <span class="en">Evolution is the only process we know of that produced general intelligence once. The biological bet is that the mechanism — variation, selection, inheritance — is substrate-independent. What worked in carbon can work in silicon, given the right fitness landscape and enough generations.</span>
+      <span class="cn">进化是我们所知唯一曾经产生出通用智能的过程。生物学的押注是：这一机制——变异、选择、遗传——与基底无关。在合适的适应度地景与足够多的世代面前，在碳上奏效的，在硅上同样可以。</span>
+    </p>
+
+    <div class="agi-domain-block">
+      <div class="dom-header">
+        <span class="dom-numeral">Ⅲ</span>
+        <span class="dom-title">Biology <span class="cn">生 物 学</span></span>
+        <span class="dom-count">01 approach</span>
+      </div>
+
+      <div class="approach-card">
+        <div class="a-idx">11 · 03</div>
+        <div class="a-object-col">
+          <span class="en">Evolution</span>
+          <span class="cn">进化</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Genetic Algorithms</span>
+          <span class="cn">遗传算法</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">Genetic algorithms encode candidate solutions as strings (the 「genome」), evaluate each against a fitness function, select the strongest, combine them via crossover, and introduce random mutations — then repeat. The result climbs a fitness landscape without needing to know its shape in advance. Modern extensions — neuroevolution, quality-diversity search, open-ended evolution — go further still, asking not just what solves a problem today but what kinds of minds might be worth growing. Biology on metal: optimisation through selection and mutation.</span>
+          <span class="cn">遗传算法将候选解编码为字符串（「基因组」），依据适应度函数评估每个解，选出最优者，通过交叉组合它们，并引入随机变异——如此循环。结果是在无需预先知道地景形状的情况下攀登适应度地景。现代延伸——神经进化、质量多样性搜索、开放性进化——走得更远，追问的不只是今天能解决什么问题，而是什么样的心智值得培育。在硅上运行的生物学：以选择与变异进行优化。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 11.4 — Domain IV: Brain Structure -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.4 · Domain Ⅳ — Brain Structure · 脑结构</div>
+    <h2 class="w-h2">Copy the hardware<span class="cn">复制硬件</span></h2>
+    <p class="w-p">
+      <span class="en">If you want to replicate what a system does, one strategy is to replicate how it is built. The brain is the only existence proof of general intelligence we have — so imitate its architecture. Not cell by cell, but in its organisational logic: layers, weights, activations, and the principle that useful representations emerge from learning rather than being hand-crafted.</span>
+      <span class="cn">如果你想复现一个系统的功能，一种策略是复现它的构建方式。大脑是我们唯一拥有的通用智能的存在性证明——因此，模仿它的架构。不是逐细胞地模仿，而是在其组织逻辑上：层、权重、激活，以及有用的表征从学习中涌现而非手工打造这一原则。</span>
+    </p>
+
+    <div class="agi-domain-block">
+      <div class="dom-header">
+        <span class="dom-numeral">Ⅳ</span>
+        <span class="dom-title">Brain Structure <span class="cn">脑 结 构</span></span>
+        <span class="dom-count">01 approach</span>
+      </div>
+
+      <div class="approach-card">
+        <div class="a-idx">11 · 04</div>
+        <div class="a-object-col">
+          <span class="en">Brain</span>
+          <span class="cn">大脑</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Neural Networks</span>
+          <span class="cn">神经网络</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">Artificial neural networks abstract the neuron as a unit that sums weighted inputs and applies a nonlinear activation. Stack millions of such units in layers, expose them to data, and adjust the weights by gradient descent until the network's outputs match desired targets. From this single idea — the imitation of biological connectivity — grew convolutional networks, recurrent networks, attention mechanisms, and ultimately the transformer architectures that define the current frontier. The structural metaphor of brain as computation machine has proved to be one of the most generative in the history of science.</span>
+          <span class="cn">人工神经网络将神经元抽象为一个对加权输入求和并施加非线性激活的单元。将数百万此类单元层叠起来，暴露于数据中，通过梯度下降调整权重，直到网络输出与目标吻合。从这一单一想法——对生物连接方式的模仿——生长出了卷积网络、循环网络、注意力机制，乃至定义当前前沿的变换器架构。将大脑视为计算机器的结构性隐喻，已被证明是科学史上最具生产力的隐喻之一。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 11.5 — Domain V: Brain Thinking Methods -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.5 · Domain Ⅴ — Brain Thinking Methods · 脑思维方法</div>
+    <h2 class="w-h2">Copy the software<span class="cn">复制软件</span></h2>
+    <p class="w-p">
+      <span class="en">Where Domain IV asks 「how is the brain wired?」, Domain V asks 「how does the brain think?」 — and finds seven distinct cognitive methods worth encoding. Five have been implemented. Two remain open, standing as the most honest acknowledgement in this entire map: we know these capacities exist; we do not know how to build them.</span>
+      <span class="cn">第四领域问的是「大脑是如何连接的」，第五领域问的是「大脑是如何思考的」——并发现了七种值得编码的不同认知方法。其中五种已有实现，两种仍是开放问题，这是整张地图中最诚实的承认：我们知道这些能力存在；我们不知道如何构建它们。</span>
+    </p>
+
+    <div class="agi-domain-block">
+      <div class="dom-header">
+        <span class="dom-numeral">Ⅴ</span>
+        <span class="dom-title">Brain Thinking Methods <span class="cn">脑 思 维 方 法</span></span>
+        <span class="dom-count">07 approaches · 2 missing</span>
+      </div>
+
+      <!-- 11·05 Empiricism — Historical Knowledge -->
+      <div class="approach-card">
+        <div class="a-idx">11 · 05</div>
+        <div class="a-object-col">
+          <span class="en">Empiricism — Historical Knowledge</span>
+          <span class="cn">经验主义 · 历史知识</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Pre-training · Fine-tuning · Distillation · CoT</span>
+          <span class="cn">预训练 · 微调 · 蒸馏 · 思维链</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">The dominant insight of the last decade: compress the regularities of human recorded knowledge — books, code, scientific papers, conversation — into a model's weights via self-supervised pre-training. Fine-tuning sharpens the model for particular tasks; distillation transfers knowledge from a large teacher to a small student; chain-of-thought prompting externalises intermediate reasoning steps and measurably improves accuracy on multi-step problems. This is empiricism operationalised: learning limited but powerful rules from vast volumes of data, just as a person learns the shape of the world through lived experience.</span>
+          <span class="cn">过去十年的主导洞见：通过自监督预训练，将人类记录知识的规律——书籍、代码、科学论文、对话——压缩进模型的权重中。微调使模型针对特定任务变得更锋利；蒸馏将知识从大型教师模型传递给小型学生模型；思维链提示将中间推理步骤外化，可测量地提升多步骤问题的准确率。这是经验主义的操作化：从海量数据中学习有限但强大的规则，正如一个人通过亲身经历学习世界的形状。</span>
+        </div>
+      </div>
+
+      <!-- 11·06 Empiricism — Reward & Punishment -->
+      <div class="approach-card">
+        <div class="a-idx">11 · 06</div>
+        <div class="a-object-col">
+          <span class="en">Empiricism — Reward &amp; Punishment</span>
+          <span class="cn">经验主义 · 奖惩</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Reinforcement Learning</span>
+          <span class="cn">强化学习</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">The second empiricist tradition models not passive observation but active interaction: an agent takes actions, receives scalar rewards or penalties, and updates its policy to maximise cumulative return. From Bellman equations to deep Q-networks to AlphaGo and beyond, reinforcement learning has produced the clearest demonstrations of superhuman performance in bounded domains. When combined with large pre-trained models via RLHF, it steers language model behaviour toward human preference. The analogy to biological conditioning — Pavlov, Skinner — is not accidental; it is the direct intellectual ancestor.</span>
+          <span class="cn">第二种经验主义传统建模的不是被动观察，而是主动交互：一个智能体采取行动，接收标量奖励或惩罚，并更新其策略以最大化累积回报。从贝尔曼方程到深度Q网络，再到AlphaGo及以后，强化学习在有界领域中产生了最清晰的超人类性能演示。当通过RLHF与大型预训练模型相结合时，它将语言模型行为引导向人类偏好。与生物性条件反射的类比——巴甫洛夫、斯金纳——并非偶然；它是直接的知识祖先。</span>
+        </div>
+      </div>
+
+      <!-- 11·07 Rationalist Symbolic School -->
+      <div class="approach-card">
+        <div class="a-idx">11 · 07</div>
+        <div class="a-object-col">
+          <span class="en">Rationalist Symbolic School</span>
+          <span class="cn">理性主义 · 符号学派</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Reasoning</span>
+          <span class="cn">推理</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">The oldest tradition in AI: represent knowledge as explicit symbols, rules, and logical relations, and derive conclusions by formal inference. Chomsky's generative grammar demonstrated that a finite inventory of rules can produce infinitely many well-formed sentences — that structured productivity is the fingerprint of mind. Expert systems, Prolog, theorem provers, and formal verification all descend from this lineage. Today, the symbolic tradition lives on in neuro-symbolic hybrids that combine the pattern-matching power of neural networks with the compositionality and auditability of explicit reasoning chains.</span>
+          <span class="cn">AI中最古老的传统：将知识表示为显式符号、规则和逻辑关系，并通过形式推理推导结论。乔姆斯基的生成语法证明了，有限的规则库可以产生无限多的合法句子——这种结构性的生产力是心智的指纹。专家系统、Prolog、定理证明器和形式验证都源自这一谱系。今天，符号传统在神经符号混合体中延续，将神经网络的模式匹配能力与显式推理链的组合性和可审计性相结合。</span>
+        </div>
+      </div>
+
+      <!-- 11·08 Analogical School -->
+      <div class="approach-card">
+        <div class="a-idx">11 · 08</div>
+        <div class="a-object-col">
+          <span class="en">Analogical School</span>
+          <span class="cn">类比学派</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Transformer</span>
+          <span class="cn">变换器</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">Analogy — recognising that two situations are structurally similar even when superficially unlike — is one of the most powerful and underexplored cognitive mechanisms humans possess. The transformer instantiates a computational version: self-attention computes pairwise similarity across all positions in a sequence simultaneously, allowing the model to find and route relevant structure regardless of distance. GPT, BERT, CLIP, Gemini, and Claude all live inside this paradigm. It is the current frontier: the dominant approach that currently underlies most state-of-the-art results across language, vision, and code.</span>
+          <span class="cn">类比——识别两种情境在结构上相似，即便表面上截然不同——是人类拥有的最强大且最未被充分探索的认知机制之一。变换器实例化了一个计算版本：自注意力机制同时计算序列中所有位置之间的两两相似度，使模型能够无论距离远近都能发现并路由相关结构。GPT、BERT、CLIP、Gemini和Claude都栖居于这一范式之中。这是当前前沿：目前主导着语言、视觉和代码领域大多数最先进成果的主流路径。</span>
+        </div>
+      </div>
+
+      <!-- 11·09 Bayesian Method -->
+      <div class="approach-card">
+        <div class="a-idx">11 · 09</div>
+        <div class="a-object-col">
+          <span class="en">Bayesian Method</span>
+          <span class="cn">贝叶斯方法</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">Probabilistic Prediction</span>
+          <span class="cn">概率预测</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">Bayesian reasoning treats all knowledge as a probability distribution over hypotheses and updates that distribution as evidence accumulates. Unlike purely empirical or purely symbolic approaches, it offers a principled account of uncertainty — 「how confident should I be, given what I have seen?」 Bayesian networks, Gaussian processes, and hierarchical Bayesian models encode structured beliefs that can generalise from very few examples. The ideal Bayesian agent is arguably the cleanest mathematical definition of a rational reasoner — which is why it remains a reference point even as scale-based methods have taken the empirical lead.</span>
+          <span class="cn">贝叶斯推理将所有知识视为关于假设的概率分布，并随着证据的积累更新该分布。与纯粹的经验主义或纯粹的符号主义路径不同，它提供了对不确定性的原则性解释——「鉴于我所见，我应该有多自信？」贝叶斯网络、高斯过程和层次贝叶斯模型编码了能够从极少样本中泛化的结构化信念。理想的贝叶斯智能体可以说是对理性推理者最简洁的数学定义——这正是为何即便基于规模的方法在实证上已领先，它依然是参照基准。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 11.6 — Open Frontiers -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.6 · Open Frontiers · 开放前沿</div>
+    <h2 class="w-h2">The two missing paradigms<span class="cn">两道尚缺的范式</span></h2>
+    <p class="w-lead">
+      <span class="en">Approaches 10 and 11 are not speculative additions — they describe real cognitive modes that humans demonstrably possess. What is missing is not evidence that the capacity exists, but any credible computational account of how it works and how it could be instantiated in a machine.</span>
+      <span class="cn">第10条和第11条路径并非推测性的补充——它们描述的是人类可证明拥有的真实认知模式。缺少的不是该能力存在的证据，而是任何关于它如何运作、如何能在机器中被实例化的可信计算解释。</span>
+    </p>
+
+    <div class="agi-domain-block">
+      <div class="dom-header">
+        <span class="dom-numeral">Ⅴ</span>
+        <span class="dom-title">Open Frontiers within Brain Thinking Methods <span class="cn">脑思维方法中的开放前沿</span></span>
+        <span class="dom-count">02 missing approaches</span>
+      </div>
+
+      <!-- 11·10 Einsteinian Thinking -->
+      <div class="approach-card frontier">
+        <div class="a-idx">11 · 10</div>
+        <div class="a-object-col">
+          <span class="en">Einsteinian Thinking</span>
+          <span class="cn">爱因斯坦式思维</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">— missing —<span class="frontier-label">open frontier</span></span>
+          <span class="cn">尚 未 实 现</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">Einstein did not derive special relativity by processing more data or running more experiments. He held a contradiction in mind — the conflict between Newtonian mechanics and Maxwell's electromagnetism — and resolved it through a leap of pure imagination: asking what it would feel like to ride alongside a beam of light. This mode of thought — deducing complex, predictive theories through sustained imagination and thought experiment rather than induction from observation — has no established computational paradigm. It is not pattern-matching; it is not gradient descent; it is something closer to creative theoretical synthesis that our current formalisms cannot yet name, let alone instantiate.</span>
+          <span class="cn">爱因斯坦推导出狭义相对论，靠的不是处理更多数据或进行更多实验。他将一个矛盾悬置于心中——牛顿力学与麦克斯韦电磁学之间的冲突——并通过一次纯粹想象的跃迁加以解决：追问骑行在一束光旁边会是什么感觉。这种思维模式——通过持续的想象与思想实验而非从观察中归纳，推演出复杂的、具有预测力的理论——尚无成熟的计算范式。它不是模式匹配；它不是梯度下降；它更接近于一种创造性的理论综合，我们当前的形式主义尚无法命名，更遑论实例化。</span>
+        </div>
+      </div>
+
+      <!-- 11·11 Emotion -->
+      <div class="approach-card frontier">
+        <div class="a-idx">11 · 11</div>
+        <div class="a-object-col">
+          <span class="en">Emotion</span>
+          <span class="cn">情感</span>
+        </div>
+        <div class="a-method-col">
+          <span class="en">— missing —<span class="frontier-label">open frontier</span></span>
+          <span class="cn">尚 未 实 现</span>
+        </div>
+        <div class="a-desc-row">
+          <span class="en">Emotion is not an obstacle to intelligence but one of its most powerful coordination mechanisms. Fear narrows attention and accelerates response; curiosity broadens search; grief reorients value; love sustains long-horizon commitment against short-term incentives. In humans, emotion is not a separate module layered on top of cognition — it is woven into every level of perception, memory, and decision-making. A system that processes the world without emotion is missing the mechanism that assigns salience, motivates inquiry, and makes caring about outcomes possible. No current paradigm can instantiate this — not because machines cannot simulate affect, but because no one has a rigorous account of what emotion computationally is.</span>
+          <span class="cn">情感不是智能的障碍，而是其最强大的协调机制之一。恐惧收窄注意力并加速反应；好奇心拓宽搜索范围；悲伤重新定向价值；爱在逆短期激励的情况下维持长远承诺。在人类身上，情感不是叠加在认知之上的独立模块——它交织于感知、记忆和决策的每一个层次之中。一个在没有情感的情况下处理世界的系统，缺失的是赋予显著性、激发探究、使关心结果成为可能的机制。目前没有任何范式能够实例化这一点——不是因为机器无法模拟情感，而是因为没有人对情感在计算上究竟是什么有严格的解释。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 11.7 — The Wager -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.7 · The Wager · 押注</div>
+    <h2 class="w-h2">What the map implies<span class="cn">这张地图意味着什么</span></h2>
+    <p class="w-p">
+      <span class="en">Nine working approaches, clustered around empiricism and structure imitation, have produced the most capable AI systems in history. Yet the two missing paradigms — imagination-driven theory formation and emotion-guided cognition — are precisely the capacities that characterise what we mean when we say someone is not just intelligent but genuinely wise. The question AGI ultimately asks is whether the map can ever be completed: whether Einsteinian thinking and emotion can be formalised, or whether they require a kind of being that our current computational framework cannot produce.</span>
+      <span class="cn">九条可用路径，以经验主义和结构模仿为核心，已产出了历史上能力最强的AI系统。然而，两条缺失的范式——由想象驱动的理论建构与由情感引导的认知——恰恰是那些使我们说某人不只是聪明而且真正睿智时所指的能力。AGI最终提出的问题是：这张地图能否有朝一日被补全——爱因斯坦式思维与情感能否被形式化，抑或它们需要一种我们当前计算框架无法产生的存在方式。</span>
+    </p>
+
+    <blockquote class="w-quote">
+      <span class="en">"The map of approaches to AGI is also a map of what we think intelligence is — and the two blank squares tell us more than the nine filled ones."</span>
+      <span class="cn">「通往AGI的路径地图，也是一张关于我们认为智能是什么的地图——而那两个空白格，比九个已填格告诉我们的更多。」</span>
+      <span class="w-quote-attr">The wager of World 11 · 第十一重世界的押注</span>
+    </blockquote>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Eleven Approaches to AGI · 十一种通往AGI之路 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

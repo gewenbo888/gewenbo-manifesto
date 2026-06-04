@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eight Major Hubs · 八大枢纽 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Eight Major Hubs — eight cities across Asia, the Middle East, Europe, and the Americas that anchor Psyverse operations. A standalone world of the Psyverse manifesto." />
+<meta name="keywords" content="eight hubs, cities of operation, Shenzhen, Beijing, Singapore, Dubai, London, Paris, New York, Silicon Valley, Psyverse, 八大枢纽" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/hubs" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/hubs" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/hubs" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/hubs" />
+<meta property="og:title" content="Eight Major Hubs · 八大枢纽" />
+<meta property="og:description" content="Eight cities across four regions — each a node in a living network of science, capital, culture, and code." />
+<meta property="og:url" content="https://psyverse.fun/hubs" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Eight Major Hubs · 八大枢纽" />
+<meta name="twitter:description" content="Eight cities across four regions — each a node in a living network of science, capital, culture, and code." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Eight Major Hubs",
+  "about": "Eight cities across Asia, the Middle East, Europe, and the Americas that anchor Psyverse operations and embody different facets of the mission.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* page-local flourish: hub constellation */
+.hub-constellation {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 8px 0 34px;
+}
+.hub-constellation svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.hub-constellation .c-ring {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.6;
+  opacity: 0.2;
+}
+.hub-constellation .c-node {
+  fill: var(--gold-bright);
+  opacity: 0.85;
+}
+.hub-constellation .c-edge {
+  stroke: var(--gold);
+  stroke-width: 0.5;
+  opacity: 0.18;
+}
+.hub-constellation .c-center {
+  fill: var(--gold-bright);
+  filter: drop-shadow(0 0 6px var(--gold));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hub-constellation .c-node {
+    animation: node-pulse 4s ease-in-out infinite;
+  }
+  .hub-constellation .c-node:nth-child(odd) {
+    animation-delay: -2s;
+  }
+  .hub-constellation .c-node:nth-child(3n) {
+    animation-delay: -1s;
+  }
+  .hub-constellation .c-center {
+    animation: center-glow 3s ease-in-out infinite;
+  }
+  @keyframes node-pulse {
+    0%, 100% { opacity: 0.85; r: 3; }
+    50% { opacity: 0.4; r: 2.2; }
+  }
+  @keyframes center-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+  }
+}
+
+/* hub region tags */
+.hub-region-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  opacity: 0.6;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  padding: 1px 5px;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+/* coord glyph inside card */
+.hub-coord {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ivory-faint);
+  opacity: 0.5;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+/* region summary strip */
+.region-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.region-pill {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  padding: 3px 10px;
+  opacity: 0.7;
+}
+</style>
+</head>
+<body data-world="hubs">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">08 · Eight Major Hubs · 八 大 枢 纽</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <div class="hub-constellation" aria-hidden="true">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- outer rings -->
+      <circle class="c-ring" cx="80" cy="80" r="68" />
+      <circle class="c-ring" cx="80" cy="80" r="50" opacity="0.12" />
+      <!-- edges from center to nodes -->
+      <line class="c-edge" x1="80" y1="80" x2="80" y2="12" />
+      <line class="c-edge" x1="80" y1="80" x2="145" y2="46" />
+      <line class="c-edge" x1="80" y1="80" x2="148" y2="114" />
+      <line class="c-edge" x1="80" y1="80" x2="80" y2="148" />
+      <line class="c-edge" x1="80" y1="80" x2="15" y2="114" />
+      <line class="c-edge" x1="80" y1="80" x2="12" y2="46" />
+      <line class="c-edge" x1="80" y1="80" x2="29" y2="20" />
+      <line class="c-edge" x1="80" y1="80" x2="131" y2="20" />
+      <!-- peripheral cross-edges -->
+      <line class="c-edge" x1="80" y1="12" x2="145" y2="46" />
+      <line class="c-edge" x1="145" y1="46" x2="148" y2="114" />
+      <line class="c-edge" x1="148" y1="114" x2="80" y2="148" />
+      <line class="c-edge" x1="80" y1="148" x2="15" y2="114" />
+      <line class="c-edge" x1="15" y1="114" x2="12" y2="46" />
+      <line class="c-edge" x1="12" y1="46" x2="80" y2="12" />
+      <line class="c-edge" x1="29" y1="20" x2="131" y2="20" />
+      <!-- 8 outer city nodes -->
+      <circle class="c-node" cx="80" cy="12" r="3" />
+      <circle class="c-node" cx="145" cy="46" r="3" />
+      <circle class="c-node" cx="148" cy="114" r="3" />
+      <circle class="c-node" cx="80" cy="148" r="3" />
+      <circle class="c-node" cx="15" cy="114" r="3" />
+      <circle class="c-node" cx="12" cy="46" r="3" />
+      <circle class="c-node" cx="29" cy="20" r="3" />
+      <circle class="c-node" cx="131" cy="20" r="3" />
+      <!-- center -->
+      <circle class="c-center" cx="80" cy="80" r="5" />
+    </svg>
+  </div>
+  <div class="eyebrow">Psyverse · World 08 / 16</div>
+  <div class="w-num">08</div>
+  <h1>Eight <em>Major Hubs</em><span class="cn">八 大 枢 纽</span></h1>
+  <p class="tagline">
+    <span class="en">Eight cities across four regions — each a node in a living network of science, capital, culture, and code.</span>
+    <span class="cn">四个大区，八座城市——每一座都是科学、资本、文化与代码构成的活跃网络中的一个节点。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 08.1 · Why Hubs</div>
+    <p class="w-lead">
+      <span class="en">A mission that operates only from one place is a project. A mission that operates from everywhere is noise. The eight hubs are a deliberate middle path: enough geographic spread to touch every major flow of capital, talent, and technology — focused enough that each city earns its place by doing something the others cannot.</span>
+      <span class="cn">只从一处运作的使命，不过是一个项目；从四面八方同时运作，则沦为噪声。八大枢纽是一条深思熟虑的中间道路：地理分布足以触及资本、人才与技术的每一条主要脉络——而聚焦程度又足以让每座城市凭借其他城市无法替代的价值，来赢得自己的席位。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Cities are not mere addresses. They are operating environments: distinct legal systems, talent pools, cultural tempos, and network densities. To work across them is to move at the speed of the world rather than the speed of one room.</span>
+      <span class="cn">城市不只是地址，而是运营环境：各自拥有独特的法律体系、人才储备、文化节奏和网络密度。在它们之间穿行，是以世界的速度运转，而不是被困在一间房里。</span>
+    </p>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 08.2 · The Eight Cities</div>
+    <h2 class="w-h2">Cities of Operation<span class="cn">行动之城</span></h2>
+    <div class="w-grid">
+
+      <div class="w-card">
+        <div class="idx">08 · 01</div>
+        <div class="hub-coord">22.5°N / 114.1°E</div>
+        <div class="ttl">Shenzhen<span class="cn">深 圳</span></div>
+        <div class="body">
+          <span class="en">Hardware &amp; Maker Capital. Where ideas become prototypes overnight and supply chains are measured in city blocks. Shenzhen compresses the distance between a schematic and a shipping box to near zero — making it the indispensable first stop for anything that must become physical.</span>
+          <span class="cn">硬件与创客之都。在这里，想法一夜之间变成原型，供应链以街区为单位丈量。深圳将设计图纸与出货装箱之间的距离压缩至近乎为零——使其成为任何需要「物化」之物不可或缺的第一站。</span>
+        </div>
+        <span class="hub-region-tag">Asia · Greater Bay</span>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">08 · 02</div>
+        <div class="hub-coord">39.9°N / 116.4°E</div>
+        <div class="ttl">Beijing<span class="cn">北 京</span></div>
+        <div class="body">
+          <span class="en">Policy &amp; Research. The capital that sets the rules and produces the researchers who push the frontier. Beijing holds the densest concentration of national laboratories, top universities, and regulatory bodies in China — making it the node where long-horizon thinking and institutional legitimacy converge.</span>
+          <span class="cn">政策与研究之都。这座首都既制定规则，又培养推动前沿的研究者。北京汇聚了中国最密集的国家实验室、顶尖高校与监管机构——是长远思维与制度合法性交汇的节点。</span>
+        </div>
+        <span class="hub-region-tag">Asia · PRC</span>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">08 · 03</div>
+        <div class="hub-coord">1.3°N / 103.8°E</div>
+        <div class="ttl">Singapore<span class="cn">新 加 坡</span></div>
+        <div class="body">
+          <span class="en">Trade &amp; Capital. The city-state that punches far above its geography: rule-of-law infrastructure, deep capital markets, neutral jurisdiction, and a polyglot talent base fluent in both East and West. Singapore is the gateway that neither side of the world closes.</span>
+          <span class="cn">贸易与资本之都。这座城市国家的影响力远超其地理体量：法治基础设施完善、资本市场深厚、司法管辖中立，多语人才兼通东西。新加坡是世界两侧都不会关闭的那扇大门。</span>
+        </div>
+        <span class="hub-region-tag">Asia · SEA</span>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">08 · 04</div>
+        <div class="hub-coord">25.2°N / 55.3°E</div>
+        <div class="ttl">Dubai<span class="cn">迪 拜</span></div>
+        <div class="body">
+          <span class="en">Crossroads of Continents. Sitting at the intersection of Africa, Asia, and Europe, Dubai is the world's most deliberate infrastructure bet: free zones, sovereign capital, and a government willing to run experiments that other cities call impossible. It is the hub that bets on the future as a product.</span>
+          <span class="cn">大陆交汇之地。迪拜地处非洲、亚洲与欧洲的交叉点，是世界上最蓄意为之的基础设施押注：自由区、主权资本，以及一个愿意尝试其他城市称之为「不可能」的实验的政府。这是一座把未来本身当作产品来押注的枢纽。</span>
+        </div>
+        <span class="hub-region-tag">MENA · UAE</span>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">08 · 05</div>
+        <div class="hub-coord">51.5°N / 0.1°W</div>
+        <div class="ttl">London<span class="cn">伦 敦</span></div>
+        <div class="body">
+          <span class="en">Finance &amp; Law. The city where centuries of commercial law, a global reserve currency of contract language, and the deepest pools of institutional capital outside New York converge. London is where deals are structured, disputes are resolved, and global standards are written into binding form.</span>
+          <span class="cn">金融与法律之都。几个世纪的商业法积累、全球通用的合同语言，以及纽约之外最深厚的机构资本池，在这里汇聚一堂。伦敦是交易被结构化、争端被裁定、全球标准被写入具有约束力文本的地方。</span>
+        </div>
+        <span class="hub-region-tag">Europe · UK</span>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">08 · 06</div>
+        <div class="hub-coord">48.9°N / 2.3°E</div>
+        <div class="ttl">Paris<span class="cn">巴 黎</span></div>
+        <div class="body">
+          <span class="en">Culture &amp; Design. The city that taught the world that aesthetics are not decoration but argument — that form shapes perception, and perception shapes demand. Paris is where the meaning layer of products is tested, where luxury learns its grammar, and where European creative talent concentrates.</span>
+          <span class="cn">文化与设计之都。这座城市向世界证明，美学不是装饰，而是论点——形式塑造感知，感知塑造需求。巴黎是产品意义层被检验的地方，是奢侈品学习其语法的地方，也是欧洲创意人才聚集的地方。</span>
+        </div>
+        <span class="hub-region-tag">Europe · France</span>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">08 · 07</div>
+        <div class="hub-coord">40.7°N / 74.0°W</div>
+        <div class="ttl">New York<span class="cn">纽 约</span></div>
+        <div class="body">
+          <span class="en">Capital &amp; Media. The city where money, narrative, and ambition collide at the highest density on earth. New York sets prices — of equities, of ideas, of reputations — and amplifies signal across every industry simultaneously. To operate here is to accept that everything will be tested at scale, immediately.</span>
+          <span class="cn">资本与媒体之都。这座城市是地球上金钱、叙事与野心碰撞密度最高之处。纽约为一切定价——股票、想法、声誉——并同时向每个行业放大信号。在这里运营，意味着接受一切都将被立即推向规模检验。</span>
+        </div>
+        <span class="hub-region-tag">Americas · US East</span>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">08 · 08</div>
+        <div class="hub-coord">37.4°N / 122.1°W</div>
+        <div class="ttl">Silicon Valley<span class="cn">硅 谷</span></div>
+        <div class="body">
+          <span class="en">Frontier Tech. The single densest concentration of people who believe that software can eat the world — and have the track record to back it. Silicon Valley is where the tolerance for audacity is highest, the feedback loops from idea to capital are shortest, and the vocabulary of exponential change is native.</span>
+          <span class="cn">前沿技术之都。这里是地球上相信「软件可以吞噬世界」的人密度最高之处——而且他们有战绩支撑。硅谷对大胆的容忍度最高，从想法到资本的反馈循环最短，指数级变化的词汇在这里是母语。</span>
+        </div>
+        <span class="hub-region-tag">Americas · US West</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 08.3 · Four Regions</div>
+    <h2 class="w-h2">The geographic logic<span class="cn">地理逻辑</span></h2>
+    <p class="w-p">
+      <span class="en">The eight cities resolve into four distinct regional clusters. No region is merely a location — each carries a different set of constraints, opportunities, and cultural assumptions that shape what is possible from within it.</span>
+      <span class="cn">这八座城市归属于四个截然不同的区域集群。每个区域不仅仅是一个地理位置——它各自携带着不同的约束、机遇与文化预设，共同塑造着从其内部出发所能实现的可能。</span>
+    </p>
+    <div class="w-grid">
+      <div class="w-card">
+        <div class="idx">Region A</div>
+        <div class="ttl">Asia<span class="cn">亚洲</span></div>
+        <div class="body">
+          <span class="en">Three cities — Shenzhen, Beijing, Singapore — covering manufacturing velocity, institutional depth, and neutral logistics. Together they span the full lifecycle from idea to shipped product to regional distribution, without leaving the continent.</span>
+          <span class="cn">三座城市——深圳、北京、新加坡——涵盖制造速度、制度深度与中立物流。三者合力，足以在不离开亚洲的情况下，跨越从创意、制造到区域分发的完整生命周期。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Region B</div>
+        <div class="ttl">MENA<span class="cn">中东与北非</span></div>
+        <div class="body">
+          <span class="en">One city — Dubai — but a city that functions as an entire region's clearinghouse. Its sovereign wealth, infrastructure ambition, and geographic position between three continents give it a leverage disproportionate to its size.</span>
+          <span class="cn">一座城市——迪拜——却扮演着整个大区清算所的角色。其主权财富、基础设施野心，以及三大洲之间的地理位置，赋予它远超体量的杠杆力量。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Region C</div>
+        <div class="ttl">Europe<span class="cn">欧洲</span></div>
+        <div class="body">
+          <span class="en">Two cities — London and Paris — representing two different faces of European civilizational output: the transactional and the aesthetic. One writes the contract; the other decides what is worth wanting.</span>
+          <span class="cn">两座城市——伦敦与巴黎——代表欧洲文明产出的两张不同面孔：交易性的与审美性的。一座写下合同；另一座决定什么值得被渴望。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Region D</div>
+        <div class="ttl">Americas<span class="cn">美洲</span></div>
+        <div class="body">
+          <span class="en">Two cities — New York and Silicon Valley — representing the two dominant American modes: scale capital and frontier technology. One monetises the present; the other bets on the next ten years.</span>
+          <span class="cn">两座城市——纽约与硅谷——代表美国两种主导模式：规模资本与前沿技术。一座将当下变现；另一座押注未来十年。</span>
+        </div>
+      </div>
+    </div>
+    <div class="region-strip" aria-hidden="true">
+      <span class="region-pill">Asia × 3</span>
+      <span class="region-pill">MENA × 1</span>
+      <span class="region-pill">Europe × 2</span>
+      <span class="region-pill">Americas × 2</span>
+    </div>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 08.4 · The Network, Not the Node</div>
+    <h2 class="w-h2">What eight cities together can do<span class="cn">八座城市合力能做什么</span></h2>
+    <p class="w-p">
+      <span class="en">Any single hub has a ceiling. Shenzhen can build fast but cannot price a global deal. London can structure a transaction but cannot prototype hardware overnight. New York can amplify narrative but cannot manufacture at volume. The value of the network is that each city's floor is another city's ceiling — and the gaps close when you operate across all eight.</span>
+      <span class="cn">任何单一枢纽都有上限。深圳能快速制造，却无法为全球交易定价。伦敦能构建交易结构，却无法在一夜之间完成硬件原型。纽约能放大叙事，却无法实现量产。这个网络的价值在于：一座城市的底板，正是另一座城市的天花板——当你同时跨越这八座城市运营时，那些缺口便自然弥合。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">This is not presence for its own sake. It is a working hypothesis: that the problems worth solving in the next generation will require fluency in making, financing, regulating, narrating, and distributing — and that fluency demands real ground in the places where each of those activities reaches its highest expression.</span>
+      <span class="cn">这不是为了存在而存在的布局，而是一个工作假设：下一代值得解决的问题，将需要在「制造、融资、监管、叙事与分发」五个维度同时具备流利度——而这种流利度，需要在每一项活动达到最高表达的地方扎下真实的根基。</span>
+    </p>
+  </section>
+
+  <section class="w-section">
+    <blockquote class="w-quote">
+      <span class="en">"A node alone is a point. Eight nodes connected are a map of the possible."</span>
+      <span class="cn">「孤立的节点只是一个点。八个节点相连，便是一张可能性的地图。」</span>
+      <span class="w-quote-attr">The wager of the hubs · 枢纽的赌注</span>
+    </blockquote>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 08.5 · From Hubs to the Whole</div>
+    <p class="w-lead">
+      <span class="en">The eight hubs are the spatial expression of the mission. Every other world in this Psyverse — the principles, the domains, the vision — must eventually touch ground in one of these eight places. Geography is not a constraint on ambition; it is the test of whether ambition is real.</span>
+      <span class="cn">八大枢纽是使命的空间表达。这片心域中的其他每一重世界——原则、领域、愿景——最终都必须在这八处落地。地理不是对野心的约束，而是检验野心是否真实的试金石。</span>
+    </p>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Eight Major Hubs · 八大枢纽 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

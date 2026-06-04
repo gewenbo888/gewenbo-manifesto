@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ontological Matrix · 存在之矩阵 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Ontological Matrix — a 3×3 map of reality: Matter, Information, and Energy across Existence, Structure, and Property. World 09 of the Psyverse manifesto." />
+<meta name="keywords" content="ontology, matter, information, energy, gravity, space, time, quantum, dimension, entropy, Psyverse, 存在之矩阵, 本体论" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/matrix" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/matrix" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/matrix" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/matrix" />
+<meta property="og:title" content="Ontological Matrix · 存在之矩阵" />
+<meta property="og:description" content="A 3×3 map of reality: Matter, Information, and Energy across Existence, Structure, and Property." />
+<meta property="og:url" content="https://psyverse.fun/matrix" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ontological Matrix · 存在之矩阵" />
+<meta name="twitter:description" content="A 3×3 map of reality: Matter, Information, and Energy across Existence, Structure, and Property." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Ontological Matrix",
+  "about": "A 3×3 map of reality — Matter, Information, and Energy read across Existence, Structure, and Property.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* page-local flourish: 3×3 lattice hero ornament */
+.om-lattice {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  margin: 8px 0 34px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 6px;
+}
+.om-lattice-cell {
+  border: 1px solid var(--gold);
+  opacity: 0.35;
+  border-radius: 3px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .om-lattice-cell {
+    animation: lattice-pulse 4s ease-in-out infinite;
+  }
+  .om-lattice-cell:nth-child(1) { animation-delay: 0s; }
+  .om-lattice-cell:nth-child(2) { animation-delay: 0.44s; }
+  .om-lattice-cell:nth-child(3) { animation-delay: 0.88s; }
+  .om-lattice-cell:nth-child(4) { animation-delay: 1.33s; }
+  .om-lattice-cell:nth-child(5) { animation-delay: 0.22s; }
+  .om-lattice-cell:nth-child(6) { animation-delay: 1.77s; }
+  .om-lattice-cell:nth-child(7) { animation-delay: 0.66s; }
+  .om-lattice-cell:nth-child(8) { animation-delay: 2.22s; }
+  .om-lattice-cell:nth-child(9) { animation-delay: 1.11s; }
+  @keyframes lattice-pulse {
+    0%, 100% { opacity: 0.20; background: transparent; }
+    50% { opacity: 0.60; background: color-mix(in srgb, var(--gold) 8%, transparent); }
+  }
+}
+
+/* 3×3 matrix table */
+.om-matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 28px 0;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.om-matrix th,
+.om-matrix td {
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  vertical-align: top;
+}
+.om-matrix thead th {
+  text-align: center;
+  background: color-mix(in srgb, var(--gold) 6%, transparent);
+  color: var(--gold-bright);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  border-bottom-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.om-matrix thead th:first-child {
+  background: transparent;
+  border: none;
+}
+.om-matrix .row-head {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--ivory-faint);
+  text-align: right;
+  white-space: nowrap;
+  border-right-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  background: color-mix(in srgb, var(--gold) 3%, transparent);
+}
+.om-matrix .row-head .row-cn {
+  display: block;
+  font-style: normal;
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+.om-matrix .row-head .row-tag {
+  display: block;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+.om-matrix td.matter-cell { border-top-color: color-mix(in srgb, #c9a24b 40%, transparent); }
+.om-matrix td.info-cell   { border-top-color: color-mix(in srgb, #4baa7a 40%, transparent); }
+.om-matrix td.energy-cell { border-top-color: color-mix(in srgb, #c45a5a 40%, transparent); }
+
+.cell-idx-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gold);
+  opacity: 0.6;
+  margin-bottom: 6px;
+  display: block;
+  letter-spacing: 0.04em;
+}
+.cell-primary {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ivory-bright);
+  display: block;
+}
+.cell-primary .cell-cn {
+  font-size: 14px;
+  color: var(--ivory-faint);
+  margin-left: 6px;
+  opacity: 0.75;
+}
+.cell-body {
+  margin-top: 8px;
+  font-family: var(--body);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.cell-body .en { display: block; color: var(--ivory-mid); }
+.cell-body .cn { display: block; color: var(--ivory-faint); margin-top: 4px; font-size: 12px; opacity: 0.8; }
+
+/* column accent borders on header */
+.om-matrix thead .th-matter { border-bottom-color: #c9a24b; }
+.om-matrix thead .th-info   { border-bottom-color: #4baa7a; }
+.om-matrix thead .th-energy { border-bottom-color: #c45a5a; }
+
+/* responsive: stack on narrow screens */
+@media (max-width: 680px) {
+  .om-matrix, .om-matrix thead, .om-matrix tbody, .om-matrix tr, .om-matrix th, .om-matrix td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .om-matrix thead { display: none; }
+  .om-matrix td[data-col]::before {
+    content: attr(data-col);
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+}
+</style>
+</head>
+<body data-world="matrix">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">09 · Ontological Matrix · 存 在 之 矩 阵</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <div class="om-lattice" aria-hidden="true">
+    <div class="om-lattice-cell"></div>
+    <div class="om-lattice-cell"></div>
+    <div class="om-lattice-cell"></div>
+    <div class="om-lattice-cell"></div>
+    <div class="om-lattice-cell"></div>
+    <div class="om-lattice-cell"></div>
+    <div class="om-lattice-cell"></div>
+    <div class="om-lattice-cell"></div>
+    <div class="om-lattice-cell"></div>
+  </div>
+  <div class="eyebrow">Psyverse · World 09 / 16</div>
+  <div class="w-num">09</div>
+  <h1>Ontological <em>Matrix</em><span class="cn">存 在 之 矩 阵</span></h1>
+  <p class="tagline">
+    <span class="en">Reality is not a list. It is a grid — three columns that name what exists, three rows that ask how it holds. Nine cells. One world.</span>
+    <span class="cn">现实不是一张清单，而是一张矩阵——三列命名存在之物，三行追问其如何成立。九格，一重世界。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 09.1 · Why a Matrix</div>
+    <p class="w-lead">
+      <span class="en">Most descriptions of reality arrange things in a line — from small to large, from simple to complex, from ancient to new. A line is useful; a matrix is truer. A matrix shows that the same three columns of what exists (Matter, Information, Energy) operate at every row of how existence holds (Existence itself, Structure, Property). Every intersection is a real thing, not an abstraction.</span>
+      <span class="cn">大多数对现实的描述，都将事物排成一列——从小到大，从简单到复杂，从古老到崭新。一列有其用处；矩阵则更接近真实。矩阵显示：存在之物的三列（物质、信息、能量）在存在如何成立的每一行（存在本身、结构、性质）上均以相同方式运作。每一个交叉点都是一个真实之物，而非抽象。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The axes are not arbitrary. Matter, Information, and Energy are the three irreducible currencies of physical reality — you cannot reduce any one fully to the others, yet every phenomenon trades in all three simultaneously. The rows — Existence, Structure, Property — ask progressively deeper questions: What is there? How does it hold together? How does it behave?</span>
+      <span class="cn">这些坐标轴并非随意选取。物质、信息与能量是物理现实中三种不可化约的「货币」——任何一种都无法完全还原为其余两种，然而每一种现象都同时流通着这三者。三行——存在、结构、性质——提出的问题层层递深：那里有什么？它如何聚合成形？它如何表现自身？</span>
+    </p>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 09.2 · The Matrix — 3 × 3 = 9</div>
+    <h2 class="w-h2">All nine cells<span class="cn">全部九格</span></h2>
+
+    <table class="om-matrix" role="table" aria-label="Ontological Matrix 3x3">
+      <thead>
+        <tr>
+          <th scope="col" style="border:none;background:transparent;"></th>
+          <th scope="col" class="th-matter">
+            <span class="en">Matter</span>
+            <span class="cn" style="display:block;font-size:12px;opacity:0.7;margin-top:2px;">物 质</span>
+          </th>
+          <th scope="col" class="th-info">
+            <span class="en">Information</span>
+            <span class="cn" style="display:block;font-size:12px;opacity:0.7;margin-top:2px;">信 息</span>
+          </th>
+          <th scope="col" class="th-energy">
+            <span class="en">Energy</span>
+            <span class="cn" style="display:block;font-size:12px;opacity:0.7;margin-top:2px;">能 量</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Row 01 · Existence -->
+        <tr>
+          <th scope="row" class="row-head">
+            Existence
+            <span class="row-cn">存 在</span>
+            <span class="row-tag">Row 01 · What Is</span>
+          </th>
+          <td class="matter-cell" data-col="Matter">
+            <span class="cell-idx-tag">01 · 01</span>
+            <span class="cell-primary">Matter <span class="cell-cn">物质</span></span>
+            <div class="cell-body">
+              <span class="en">Mass that persists. The substrate of all tangible things — from quarks to galaxies — matter is the basic fact of presence: it occupies space, resists displacement, and endures through time.</span>
+              <span class="cn">持存的质量。一切有形之物的基底——从夸克到星系——物质是「在场」这一基本事实：它占据空间，抵抗移动，穿越时间而长存。</span>
+            </div>
+          </td>
+          <td class="info-cell" data-col="Information">
+            <span class="cell-idx-tag">01 · 02</span>
+            <span class="cell-primary">Information <span class="cell-cn">信息</span></span>
+            <div class="cell-body">
+              <span class="en">Pattern that distinguishes. Where matter asks "what is there," information asks "what differs from what." A distinction made, held, and transmitted is already information — independent of its physical carrier.</span>
+              <span class="cn">作出区分的模式。物质问「那里有什么」，信息问「何者与何者相异」。一个区分被作出、保持并传递，便已是信息——与其物理载体无关。</span>
+            </div>
+          </td>
+          <td class="energy-cell" data-col="Energy">
+            <span class="cell-idx-tag">01 · 03</span>
+            <span class="cell-primary">Energy <span class="cell-cn">能量</span></span>
+            <div class="cell-body">
+              <span class="en">Capacity that causes change. Energy is the currency of causation — the quantity conserved when one state becomes another. Without it, neither matter nor information ever moves or transforms.</span>
+              <span class="cn">引发改变的能力。能量是因果关系的「货币」——当一种状态转变为另一种时保持守恒的量。没有它，物质与信息都无从运动或转化。</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Row 02 · Structure -->
+        <tr>
+          <th scope="row" class="row-head">
+            Structure
+            <span class="row-cn">结 构</span>
+            <span class="row-tag">Row 02 · How It Holds</span>
+          </th>
+          <td class="matter-cell" data-col="Matter">
+            <span class="cell-idx-tag">02 · 01</span>
+            <span class="cell-primary">Gravity <span class="cell-cn">引力</span></span>
+            <div class="cell-body">
+              <span class="en">Structure of matter. Gravity is matter's own tendency to organise itself — mass pulling mass, shaping planets, stars, and the large-scale web of the cosmos. It is the architecture that matter builds from nothing but its own presence.</span>
+              <span class="cn">物质的结构。引力是物质自我组织的内在倾向——质量吸引质量，塑造行星、恒星与宇宙的大尺度网络。它是物质仅凭自身在场便编织出的建筑。</span>
+            </div>
+          </td>
+          <td class="info-cell" data-col="Information">
+            <span class="cell-idx-tag">02 · 02</span>
+            <span class="cell-primary">Space <span class="cell-cn">空间</span></span>
+            <div class="cell-body">
+              <span class="en">Structure of information. Space is the relational scaffold in which distinctions are located — the field of possible positions, distances, and orientations. Without space, information has no address; without information, space has no content.</span>
+              <span class="cn">信息的结构。空间是区分得以定位的关系支架——可能的位置、距离与方向的场域。没有空间，信息无处落脚；没有信息，空间毫无内容。</span>
+            </div>
+          </td>
+          <td class="energy-cell" data-col="Energy">
+            <span class="cell-idx-tag">02 · 03</span>
+            <span class="cell-primary">Time <span class="cell-cn">时间</span></span>
+            <div class="cell-body">
+              <span class="en">Structure of energy. Time is the dimension along which energy does its work — change requires a before and an after. Time gives causation its direction, and energy its opportunity to act.</span>
+              <span class="cn">能量的结构。时间是能量完成其工作的维度——改变需要「之前」与「之后」。时间赋予因果以方向，赋予能量以施展的机会。</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Row 03 · Property -->
+        <tr>
+          <th scope="row" class="row-head">
+            Property
+            <span class="row-cn">性 质</span>
+            <span class="row-tag">Row 03 · How It Behaves</span>
+          </th>
+          <td class="matter-cell" data-col="Matter">
+            <span class="cell-idx-tag">03 · 01</span>
+            <span class="cell-primary">Quantum <span class="cell-cn">量子</span></span>
+            <div class="cell-body">
+              <span class="en">Property of matter. At the smallest scales, matter does not behave like a miniature rock — it exists in superposition, entangles across space, and resolves only upon measurement. The quantum is how matter reveals its deepest nature: probabilistic, relational, irreducibly strange.</span>
+              <span class="cn">物质的性质。在最微小的尺度上，物质的行为不像一块微型岩石——它以叠加态存在，跨越空间纠缠，仅在测量时才坍缩。量子揭示了物质最深层的本性：概率性的、关系性的、不可化约地奇异。</span>
+            </div>
+          </td>
+          <td class="info-cell" data-col="Information">
+            <span class="cell-idx-tag">03 · 02</span>
+            <span class="cell-primary">Dimension <span class="cell-cn">维度</span></span>
+            <div class="cell-body">
+              <span class="en">Property of information. A dimension is an independent axis of variation — a degree of freedom in which information can differ. The number of dimensions determines how much can be said, distinguished, mapped. Reality's richness is its dimensionality.</span>
+              <span class="cn">信息的性质。维度是独立的变化轴——信息得以相互区别的自由度。维度的数量决定了可以表达、区分、映射的容量。现实的丰富性，正是其维度性。</span>
+            </div>
+          </td>
+          <td class="energy-cell" data-col="Energy">
+            <span class="cell-idx-tag">03 · 03</span>
+            <span class="cell-primary">Entropy <span class="cell-cn">熵</span></span>
+            <div class="cell-body">
+              <span class="en">Property of energy. Entropy measures the spread of energy across possible states — and it only ever increases. This asymmetry is the arrow of time, the engine of life, and the eventual fate of every ordered thing. Entropy does not destroy; it disperses.</span>
+              <span class="cn">能量的性质。熵度量能量在可能状态中的分散程度——且只增不减。这种不对称性是时间之箭、生命之引擎，以及每一有序之物的最终命运。熵不是摧毁，而是消散。</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 09.3 · The Three Columns</div>
+    <h2 class="w-h2">Matter · Information · Energy<span class="cn">物质 · 信息 · 能量</span></h2>
+    <p class="w-p">
+      <span class="en">These three are not merely categories — they are the irreducible substrates of every process in the universe. No phenomenon is purely one; every phenomenon trades in all three. A thought is electrochemical matter (neurons) processing information (patterns of activation) through metabolic energy. A star is gravitationally structured matter fusing atomic information via nuclear energy. A memory is neural matter encoding informational distinctions sustained by metabolic energy.</span>
+      <span class="cn">这三者不仅仅是分类——它们是宇宙中一切过程不可化约的底质。没有任何现象是纯粹的某一种；每一种现象都同时流通三者。一个念头是电化学物质（神经元）通过代谢能量处理信息（激活模式）。一颗恒星是引力结构化的物质，借助核能熔合原子层面的信息。一段记忆是神经物质对信息区分的编码，由代谢能量维系。</span>
+    </p>
+    <div class="w-grid">
+      <div class="w-card">
+        <div class="idx" style="color:#c9a24b;">Matter · 物质</div>
+        <div class="ttl">The substrate of presence<span class="cn">在场的基底</span></div>
+        <div class="body">
+          <span class="en">Matter is what occupies. It has mass, inertia, and extent. It can be weighed, counted, and touched. Every physical law is ultimately a statement about what matter does under which conditions. The entire periodic table is one kind of answer to the question: what kinds of matter can exist?</span>
+          <span class="cn">物质是「占据」之物。它有质量、惯性与广延。它可以被称量、计数与触碰。每一条物理定律，归根结底都是关于物质在何种条件下如何表现的陈述。整张元素周期表，是对「何种物质可以存在」这一问题的一类回答。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx" style="color:#4baa7a;">Information · 信息</div>
+        <div class="ttl">The substrate of distinction<span class="cn">区分的基底</span></div>
+        <div class="body">
+          <span class="en">Information is what differs. It requires no specific physical form — a scratch on stone, a voltage in a circuit, a gene in a cell all carry information. What they share is the making and holding of a distinction. John Wheeler's phrase 「it from bit」 suggests that even physical existence may be grounded in informational difference.</span>
+          <span class="cn">信息是「相异」之物。它不需要特定的物理形式——石头上的刻痕、电路中的电压、细胞里的基因，都承载信息。它们的共同点在于作出并保持一个区分。惠勒的短语「万物源于比特」暗示，即便物理存在本身也可能根植于信息差异。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx" style="color:#c45a5a;">Energy · 能量</div>
+        <div class="ttl">The substrate of change<span class="cn">改变的基底</span></div>
+        <div class="body">
+          <span class="en">Energy is what enables. It is the conserved quantity that makes transitions possible — and it is everywhere, in every form from photons to heat to chemical bonds. Without energy, matter stays still and information stays fixed. Energy is the permission slip that causation requires.</span>
+          <span class="cn">能量是「使能」之物。它是使转变成为可能的守恒量——无处不在，从光子到热，到化学键，形态各异。没有能量，物质静止不动，信息一成不变。能量是因果关系所需的通行证。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 09.4 · The Three Rows</div>
+    <h2 class="w-h2">Existence · Structure · Property<span class="cn">存在 · 结构 · 性质</span></h2>
+    <p class="w-p">
+      <span class="en">The rows are not levels of scale — they are levels of question. Row one names what is simply there. Row two asks how it coheres — what organises the given into form. Row three asks how it behaves at the extremes, where naive expectation breaks down and deeper laws show through.</span>
+      <span class="cn">三行并非尺度的层级——而是问题的层级。第一行命名「就在那里」之物。第二行追问它如何凝聚——是什么将所给之物组织成形。第三行追问它在极端情形下如何表现——在那里，朴素的预期失效，更深层的规律显露。</span>
+    </p>
+    <div class="w-grid">
+      <div class="w-card">
+        <div class="idx">Row 01</div>
+        <div class="ttl">Existence — What Is<span class="cn">存在——有什么</span></div>
+        <div class="body">
+          <span class="en">The simplest ontological question. Before asking how or why, we ask what. The answer — Matter, Information, Energy — names the three basic currencies. Everything that exists can be accounted for in these three, even if the accounting grows very complicated.</span>
+          <span class="cn">最简单的本体论问题。在追问「如何」或「为何」之前，我们先问「什么」。答案——物质、信息、能量——命名了三种基本货币。一切存在之物都可以用这三者来核算，即便核算过程会变得十分复杂。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Row 02</div>
+        <div class="ttl">Structure — How It Holds<span class="cn">结构——如何成形</span></div>
+        <div class="body">
+          <span class="en">The structural question asks what framework makes existence stable. Gravity holds matter into bodies. Space holds information into addressable locations. Time holds energy into sequences of cause and effect. Structure is what prevents reality from being a formless surge.</span>
+          <span class="cn">结构性问题追问：是什么框架使存在稳定。引力将物质聚合成天体。空间将信息固定于可寻址的位置。时间将能量排列为因果的序列。结构是防止现实成为无形涌动的东西。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Row 03</div>
+        <div class="ttl">Property — How It Behaves<span class="cn">性质——如何表现</span></div>
+        <div class="body">
+          <span class="en">Properties are how things reveal themselves under pressure — at the boundary between scales, at the limit of measurement, at the threshold of complexity. Quantum behaviour, dimensionality, and entropy are not exceptions to the rules; they are the deep rules that the simpler-seeming rules approximate.</span>
+          <span class="cn">性质是事物在压力下如何显示自身——在尺度的边界、测量的极限、复杂性的阈值处。量子行为、维度性与熵并非规律的例外；它们才是深层规律，那些看似更简单的规律不过是对它们的近似。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-section" style="text-align:center;">
+    <blockquote class="w-quote">
+      <span class="en">"The universe is not made of things; it is made of events, relations, and the differences between states. The matrix is a map of those differences."</span>
+      <span class="cn">「宇宙并非由事物构成；它由事件、关系，以及状态之间的差异构成。矩阵是那些差异的地图。」</span>
+      <span class="w-quote-attr">A reading of the nine cells · 九格读解</span>
+    </blockquote>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 09.5 · The Matrix and the Mission</div>
+    <p class="w-lead">
+      <span class="en">The Psyverse is not a physics lecture. The Ontological Matrix earns its place in the manifesto because every domain the mission engages — health, energy, cognition, coordination, technology — can be located precisely within these nine cells. Understanding which cell a problem lives in sharpens both the diagnosis and the tool.</span>
+      <span class="cn">「心域宇宙」不是一堂物理课。存在之矩阵在宣言中占有一席之地，是因为使命所触及的每一个领域——健康、能量、认知、协作、技术——都可以在这九格中精确定位。理解一个问题居于哪一格，既能锐化诊断，也能选准工具。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">A disease is a disruption in the matter column, reading across all three rows: the molecules are wrong (existence), the cellular architecture fails (structure), and the quantum chemistry of enzyme binding misbehaves (property). An AI system lives primarily in the information column: data as existence, learned representations as structure, generalisation capacity as property. The matrix does not reduce complexity — it locates it.</span>
+      <span class="cn">一种疾病是物质列中的一次扰动，横贯三行：分子出了问题（存在），细胞架构失效（结构），酶结合的量子化学表现异常（性质）。一个人工智能系统主要居于信息列：数据作为存在，学习到的表征作为结构，泛化能力作为性质。矩阵不化约复杂性——它定位复杂性。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">This is why the matrix sits near the centre of the manifesto. Before you can engineer anything, you need to know what kind of thing it is. The nine cells answer that question — not finally, but generatively, as a scaffold for clearer thinking about everything that comes after.</span>
+      <span class="cn">这就是矩阵被置于宣言中心附近的原因。在工程设计任何事物之前，你需要知道它是哪种事物。九格回答了这个问题——并非终极性的，而是生成性的，作为对此后一切更清晰思考的脚手架。</span>
+    </p>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 09.6 · Reading the Diagonals</div>
+    <h2 class="w-h2">Where cells intersect in unexpected ways<span class="cn">格与格之间出人意料的交汇</span></h2>
+    <p class="w-p">
+      <span class="en">A matrix is not just nine separate claims — it invites diagonal reading. The main diagonal (Matter/Existence, Information/Structure, Energy/Property) traces a line from the most basic presence through relational scaffolding to the deep dynamics of change. This is the arc from particle physics through geometry to thermodynamics.</span>
+      <span class="cn">矩阵不只是九个孤立的断言——它邀请对角线式的阅读。主对角线（物质/存在、信息/结构、能量/性质）从最基本的在场，经关系支架，延伸至变化的深层动力学。这是从粒子物理经几何学到热力学的弧线。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The anti-diagonal (Quantum, Space, Matter — read upward) reveals a different insight: where matter and energy act at extremes, they exhibit informational properties. Quantum entanglement is nonlocal correlation — pure information without a classical causal story. Entropy is a count of microstates — an informational quantity applied to an energetic process. The columns are more entangled than the column headings suggest.</span>
+      <span class="cn">副对角线（量子、空间、物质——向上阅读）揭示了另一层洞见：当物质与能量在极端情形下表现时，它们呈现出信息性质。量子纠缠是非定域关联——纯粹的信息，没有经典因果故事。熵是微观状态的计数——一个用于能量过程的信息量。这几列之间的纠缠，远比列标题所暗示的更深。</span>
+    </p>
+    <div class="w-grid">
+      <div class="w-card">
+        <div class="idx">Diagonal A</div>
+        <div class="ttl">Matter → Space → Entropy<span class="cn">物质→空间→熵</span></div>
+        <div class="body">
+          <span class="en">The classical physics diagonal: massive objects curve the space they occupy, and the dispersal of that mass over time increases entropy. This is Einsteinian gravity, geometry, and thermodynamics in one sweep.</span>
+          <span class="cn">经典物理对角线：有质量的物体弯曲其所占据的空间，而该质量随时间的分散增大熵。这是爱因斯坦引力、几何学与热力学的一次横贯。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Diagonal B</div>
+        <div class="ttl">Information → Time → Gravity<span class="cn">信息→时间→引力</span></div>
+        <div class="body">
+          <span class="en">The emergent physics diagonal: proposals in quantum gravity suggest that time may emerge from quantum entanglement (information), and that gravity itself may be an entropic force arising from the statistics of spacetime information. The deepest physics questions live here.</span>
+          <span class="cn">涌现物理对角线：量子引力中的提议暗示，时间可能从量子纠缠（信息）中涌现，而引力本身可能是时空信息统计学产生的熵力。最深层的物理学问题居于此处。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Diagonal C</div>
+        <div class="ttl">Energy → Dimension → Quantum<span class="cn">能量→维度→量子</span></div>
+        <div class="body">
+          <span class="en">The complexity diagonal: higher-dimensional spaces allow more complex information structures, and the quantum behaviour of those structures underlies every energetic process at the fundamental scale. This is the territory of string theory and quantum field theory.</span>
+          <span class="cn">复杂性对角线：更高维度的空间允许更复杂的信息结构，而这些结构的量子行为是基本尺度上一切能量过程的底层。这是弦理论与量子场论的领域。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Ontological Matrix · 存在之矩阵 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

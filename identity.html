@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Two Identities · 二重身份 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Two Identities — Creator and Seeker, outward and inward, empire and inquiry. One person, two complete orientations. A standalone world of the Psyverse manifesto." />
+<meta name="keywords" content="two identities, creator, seeker, inner world, outer world, self-knowledge, enterprise, philosophy, Psyverse, 二重身份, 创造者, 求道者" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/identity" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/identity" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/identity" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/identity" />
+<meta property="og:title" content="Two Identities · 二重身份" />
+<meta property="og:description" content="Creator and Seeker — building outward, searching inward. One life, two complete orientations held without contradiction." />
+<meta property="og:url" content="https://psyverse.fun/identity" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Two Identities · 二重身份" />
+<meta name="twitter:description" content="Creator and Seeker — building outward, searching inward. One life, two complete orientations held without contradiction." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Two Identities",
+  "about": "Creator and Seeker — two complete orientations, outward and inward, held by one person without contradiction.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* page-local flourish: the duality mirror */
+.identity-duality {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 8px 0 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.identity-duality::before,
+.identity-duality::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  transform: translateY(-50%);
+  transition: opacity 0.4s;
+}
+.identity-duality::before {
+  left: 8px;
+  opacity: 0.55;
+  box-shadow: inset 0 0 28px rgba(201,162,75,0.07);
+}
+.identity-duality::after {
+  right: 8px;
+  opacity: 0.28;
+  box-shadow: inset 0 0 28px rgba(201,162,75,0.04);
+}
+.identity-duality .id-char {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 32px;
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--gold-bright);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.identity-duality .id-char span:first-child { opacity: 0.9; }
+.identity-duality .id-char span:last-child  { opacity: 0.45; }
+@media (prefers-reduced-motion: no-preference) {
+  .identity-duality::before {
+    animation: id-pulse-a 6s ease-in-out infinite;
+  }
+  .identity-duality::after {
+    animation: id-pulse-b 6s ease-in-out infinite 3s;
+  }
+  @keyframes id-pulse-a {
+    0%,100% { opacity: 0.55; transform: translateY(-50%) scale(1); }
+    50%      { opacity: 0.30; transform: translateY(-50%) scale(1.07); }
+  }
+  @keyframes id-pulse-b {
+    0%,100% { opacity: 0.28; transform: translateY(-50%) scale(1); }
+    50%      { opacity: 0.50; transform: translateY(-50%) scale(1.07); }
+  }
+}
+
+/* axis label used in the duality section */
+.axis-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 28px 0 4px;
+  border: 1px solid rgba(201,162,75,0.18);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.axis-cell {
+  flex: 1;
+  padding: 20px 22px;
+  background: rgba(201,162,75,0.03);
+}
+.axis-cell + .axis-cell {
+  border-left: 1px solid rgba(201,162,75,0.18);
+  background: rgba(201,162,75,0.015);
+}
+.axis-dir {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  opacity: 0.65;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.axis-glyph {
+  font-family: var(--display);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--gold-bright);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.axis-name {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ivory);
+  margin-bottom: 3px;
+}
+.axis-name-cn {
+  font-family: var(--serif-cn);
+  font-size: 13px;
+  color: var(--ivory-faint);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.axis-body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ivory-faint);
+}
+.axis-sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--gold);
+  opacity: 0.5;
+  background: transparent;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body data-world="identity">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">02 · Two Identities · 二 重 身 份</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <div class="identity-duality" aria-hidden="true">
+    <div class="id-char"><span>创</span><span>求</span></div>
+  </div>
+  <div class="eyebrow">Psyverse · World 02 / 16</div>
+  <div class="w-num">02</div>
+  <h1>Two <em>Identities</em><span class="cn">二 重 身 份</span></h1>
+  <p class="tagline">
+    <span class="en">Creator and Seeker — one builds outward into the world, one searches inward for its meaning; neither is complete without the other.</span>
+    <span class="cn">创造者与求道者——一个向外建造世界，一个向内追寻意义；缺少任何一重，另一重便不完整。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 02.1 · The Paradox Stated</div>
+    <p class="w-lead">
+      <span class="en">Most frameworks demand a single self — consistent, optimised, legible to the world. This one insists on two.</span>
+      <span class="cn">大多数框架要求一个单一的自我——前后一致、优化清晰、对世界可读。而这里，坚持要有两重。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Not two personalities, not a split, not a contradiction to be resolved: two complete orientations that coexist and, over a long enough arc, strengthen each other. The Creator faces outward. The Seeker faces inward. One generates; the other interrogates. One presses forward; the other asks whether forward is even right.</span>
+      <span class="cn">不是两种人格，不是分裂，也不是有待弥合的矛盾——而是两种完整的取向，共存于一人之内，在足够长的弧度里彼此增益。创造者朝外。求道者朝内。一个创生，另一个追问；一个向前推进，另一个拷问「向前」本身是否正确。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The tension is the point. A creator with no inner interrogator builds faster and faster toward the wrong thing. A seeker with no outward action lives in questions that never touch ground. Two identities, held honestly, prevent both failure modes.</span>
+      <span class="cn">张力正是关键所在。没有内在追问者的创造者，只会越来越快地建造错误之物。没有外在行动的求道者，活在永远不着地的问题里。诚实地持守两重身份，能同时防止这两种失败。</span>
+    </p>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 02.2 · Creator × Seeker</div>
+    <h2 class="w-h2">The two poles, named<span class="cn">两极，命名</span></h2>
+
+    <div class="axis-row" aria-label="Creator and Seeker comparison">
+      <div class="axis-cell">
+        <div class="axis-dir">← Outward · 向 外</div>
+        <div class="axis-glyph">创</div>
+        <div class="axis-name">The Creator</div>
+        <div class="axis-name-cn">创 造 者</div>
+        <div class="axis-body">
+          <span class="en">Builds business empires. Accumulates wealth and influence. Shapes the outer world through enterprise and execution. The Creator's currency is leverage — systems that persist and compound beyond the original act of building.</span>
+          <span class="cn">构筑商业帝国，积累财富与影响。以事业与行动改造外在世界。创造者的货币是杠杆——那些超越最初建造行为而持续生长、复利运转的系统。</span>
+        </div>
+      </div>
+      <div class="axis-sep">×</div>
+      <div class="axis-cell">
+        <div class="axis-dir">Inward → · 向 内</div>
+        <div class="axis-glyph">求</div>
+        <div class="axis-name">The Seeker</div>
+        <div class="axis-name-cn">求 道 者</div>
+        <div class="axis-body">
+          <span class="en">Pursues truth, self-knowledge, and philosophical foundations. Shapes the inner world through inquiry and stillness. The Seeker's currency is clarity — the kind that can only be earned slowly, by sitting with difficult questions long enough for real answers to surface.</span>
+          <span class="cn">追求真理，认识自我，奠定哲学根基。以问道与静观形塑内在世界。求道者的货币是清明——那种只能通过缓慢积累而得来的清明，需要与难题长久同坐，直到真正的答案浮现。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 02.3 · What Each Identity Demands</div>
+    <h2 class="w-h2">The full cost of each orientation<span class="cn">每种取向的完整代价</span></h2>
+    <div class="w-grid cols-2">
+      <div class="w-card">
+        <div class="idx">Creator · 01</div>
+        <div class="ttl">Tolerance for incompleteness<span class="cn">对不完整的容忍</span></div>
+        <div class="body">
+          <span class="en">To build is to ship something unfinished into the world and let reality finish it. The Creator must act before certainty arrives — and live with the consequences of that bet.</span>
+          <span class="cn">建造，意味着把未完成之物送进世界，让现实替你完成它。创造者必须在确定性到来之前行动，并承担那场赌注的后果。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Seeker · 01</div>
+        <div class="ttl">Tolerance for open questions<span class="cn">对开放问题的容忍</span></div>
+        <div class="body">
+          <span class="en">To seek is to hold a question without rushing it to a false resolution. The Seeker must resist the comfort of premature answers — and trust that the question itself is doing necessary work.</span>
+          <span class="cn">问道，意味着持守一个问题而不将其仓促推向虚假的答案。求道者必须抵御过早收结的诱惑——并相信，这个问题本身正在完成必要的工作。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Creator · 02</div>
+        <div class="ttl">The discipline of execution<span class="cn">执行的纪律</span></div>
+        <div class="body">
+          <span class="en">Ideas are abundant; execution is scarce. The Creator's identity is forged not in conception but in the unglamorous daily work of making things real — the long middle where most ambitions quietly collapse.</span>
+          <span class="cn">想法俯拾皆是，执行极为稀缺。创造者的身份不是在构想中铸就的，而是在让事物成真的、不光鲜的每日劳作中——在大多数雄心悄然崩塌的漫长中段。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Seeker · 02</div>
+        <div class="ttl">The discipline of return<span class="cn">回归的纪律</span></div>
+        <div class="body">
+          <span class="en">Insight gained in stillness must eventually return to action. The Seeker's discipline is not perpetual withdrawal but the rhythmic loop: go in, understand something, come back changed. Stillness that never ends is avoidance.</span>
+          <span class="cn">在静观中获得的洞见，终须回归行动。求道者的纪律不是永久隐退，而是节律性的循环：入内，理解某些东西，带着改变归来。永无止境的静观，不过是回避。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Creator · 03</div>
+        <div class="ttl">Accountability to outcomes<span class="cn">对结果的问责</span></div>
+        <div class="body">
+          <span class="en">The outer world is the scoreboard. What ships either works or does not; the market, the user, the institution renders a verdict. The Creator accepts that verdict as information and iterates — without letting it become identity.</span>
+          <span class="cn">外在世界就是记分板。交付之物要么有效，要么无效；市场、用户、机构做出裁决。创造者把这个裁决当作信息并迭代——同时不让它变成自己的身份认同。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Seeker · 03</div>
+        <div class="ttl">Accountability to truth<span class="cn">对真理的问责</span></div>
+        <div class="body">
+          <span class="en">The inner world is also a scoreboard — one that does not lie even when no one else is watching. The Seeker holds beliefs provisionally and revises them honestly, even when revision is uncomfortable.</span>
+          <span class="cn">内在世界同样是一块记分板——即便无人注视，它也不会说谎。求道者暂时性地持有信念，诚实地修正它们，即便修正令人不适。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 02.4 · How They Feed Each Other</div>
+    <h2 class="w-h2">The mutual reinforcement<span class="cn">相互增益</span></h2>
+    <p class="w-lead">
+      <span class="en">The two identities are not merely tolerated side by side. Over time, each actively makes the other stronger.</span>
+      <span class="cn">这两重身份不只是被并排容忍。随着时间推移，它们各自积极地使另一重更为强大。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The Creator feeds the Seeker by generating real friction — the kind that only comes from having built something, lost something, or been proven wrong in public. Theory without that friction stays abstract. The Seeker feeds the Creator by supplying the slower, harder questions: What is this really for? Who does it actually serve? Is more of this what the world needs? Without that, enterprise drifts from the mission it claims to serve.</span>
+      <span class="cn">创造者滋养求道者，方式是制造真实的摩擦——那种只有建造过什么、失去过什么、或公开被证明错误后才会有的摩擦。缺乏这种摩擦的理论始终停留在抽象层面。求道者滋养创造者，方式是提供那些更缓慢、更艰难的问题：这究竟是为了什么？它真正服务于谁？世界需要的是更多这样的东西吗？没有这些追问，事业便会偏离它声称要服务的使命。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The rarest combination is not the brilliant builder or the clear-eyed philosopher — it is the person who can inhabit both modes, hold them in productive tension, and switch between them without losing either thread.</span>
+      <span class="cn">最稀有的组合，不是卓越的建造者，也不是目光清澈的哲学家——而是能够同时栖居两种模式、在富有成效的张力中持守它们、并能在两者间切换而不失去任何一根线索的人。</span>
+    </p>
+  </section>
+
+  <section class="w-section" style="text-align:center;">
+    <blockquote class="w-quote">
+      <span class="en">"Outward, to shape the world. Inward, to understand why it is worth shaping at all."</span>
+      <span class="cn">「向外，以塑造世界。向内，以理解世界为何值得被塑造。」</span>
+      <span class="w-quote-attr">The wager of two identities · 二重身份的赌注</span>
+    </blockquote>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 02.5 · Identity Is Not a Role</div>
+    <h2 class="w-h2">What identity means here<span class="cn">「身份」在此的含义</span></h2>
+    <p class="w-lead">
+      <span class="en">Identity, as this world uses the word, is not a job title, a public persona, or a brand. It is a stable orientation — a way of being aimed.</span>
+      <span class="cn">「身份」，在这重世界里，不是职衔、公众形象或个人品牌。它是一种稳定的取向——一种被瞄准的存在方式。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Roles are contingent: they shift with circumstance, institution, and market. An orientation persists. The Creator orientation does not require a company; it is present in how you approach any problem that could be made real. The Seeker orientation does not require a monastery; it is present in how you sit with uncertainty, follow a question past convenience, and revise your beliefs when the evidence demands it.</span>
+      <span class="cn">角色是偶然的：它随情境、机构和市场而变动。取向则持久存在。创造者取向不需要一家公司；它体现在你如何对待任何可以被落地的问题。求道者取向不需要一座寺院；它体现在你如何与不确定性同坐、如何在方便之处之外追随一个问题、如何在证据要求时修正自己的信念。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Carried this way, both identities are portable. They survive the loss of any particular company, project, title, or belief — because they live in the practice, not in the outcome.</span>
+      <span class="cn">以这种方式持守，两重身份都是可携带的。它们能在失去任何具体的公司、项目、头衔或信念之后依然存续——因为它们活在实践之中，而非活在结果之中。</span>
+    </p>
+    <div class="w-grid cols-4">
+      <div class="w-card">
+        <div class="idx">I</div>
+        <div class="ttl">Enterprise<span class="cn">事业</span></div>
+        <div class="body">
+          <span class="en">The outer vehicle of the Creator — business, technology, institutions built to last.</span>
+          <span class="cn">创造者的外在载体——事业、技术、为持久而建的机构。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">II</div>
+        <div class="ttl">Inquiry<span class="cn">追问</span></div>
+        <div class="body">
+          <span class="en">The inner vehicle of the Seeker — philosophy, reflection, the patient examination of first principles.</span>
+          <span class="cn">求道者的内在载体——哲学、反思、对第一原则的耐心审视。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">III</div>
+        <div class="ttl">Wealth<span class="cn">财富</span></div>
+        <div class="body">
+          <span class="en">The Creator accumulates resources not as an end but as amplification — more leverage for the mission.</span>
+          <span class="cn">创造者积累资源不是作为目的，而是作为放大——为使命提供更大杠杆。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">IV</div>
+        <div class="ttl">Stillness<span class="cn">静观</span></div>
+        <div class="body">
+          <span class="en">The Seeker cultivates silence not as retreat but as clarity — so the signal does not drown in noise.</span>
+          <span class="cn">求道者培育寂静不是退隐，而是获得清明——让信号不被噪音淹没。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 02.6 · From Identities to Worlds</div>
+    <p class="w-lead">
+      <span class="en">If World 01 is the why — the mission aimed at real problems — then World 02 is who carries it. The Creator and the Seeker together are the person the mission requires.</span>
+      <span class="cn">若第一重世界是「为何」——对准真实问题的使命——那么第二重世界是「谁」来承载它。创造者与求道者共同构成使命所需要的那个人。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Every world that follows — the principles, the domains, the long horizon — assumes this dual orientation. The Creator will build it. The Seeker will ask whether it is worth building. Both are always present.</span>
+      <span class="cn">此后的每一重世界——原则、领域、那道漫长的地平线——都预设了这种双重取向。创造者将去建造。求道者将去追问它是否值得建造。两者始终同在。</span>
+    </p>
+    <div class="w-rule"></div>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Two Identities · 二重身份 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

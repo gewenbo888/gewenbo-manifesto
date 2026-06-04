@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sixteen Visions · 十六愿景 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Sixteen Visions — the culminating world of the Psyverse. A ladder of emerging technology across three tiers and four axes of purpose: Truth-Seeking, Benevolence, Beauty-Creation, World Utility." />
+<meta name="keywords" content="sixteen visions, emerging technology, ladder, axes, truth-seeking, benevolence, beauty, world utility, Psyverse, 十六愿景, 天梯" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/visions" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/visions" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/visions" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/visions" />
+<meta property="og:title" content="Sixteen Visions · 十六愿景" />
+<meta property="og:description" content="A ladder of sixteen emerging-technology levels and four axes of purpose — the culminating world of the Psyverse manifesto." />
+<meta property="og:url" content="https://psyverse.fun/visions" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sixteen Visions · 十六愿景" />
+<meta name="twitter:description" content="A ladder of sixteen emerging-technology levels and four axes of purpose — the culminating world of the Psyverse manifesto." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Sixteen Visions",
+  "about": "The culminating world of the Psyverse: a ladder of sixteen emerging technologies and four axes of purpose — Truth-Seeking, Benevolence, Beauty-Creation, World Utility.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* page-local flourish: ascending ladder / rising horizon */
+
+/* Hero rising ladder — 16 vertical marks that ascend left-to-right */
+.visions-ladder {
+  position: relative;
+  width: 280px;
+  height: 80px;
+  margin: 8px 0 34px;
+  overflow: visible;
+}
+.visions-ladder svg { display: block; }
+
+/* Tier badge pills used in the ladder section */
+.tier-pill {
+  display: inline-block;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  padding: 1px 7px;
+  opacity: .75;
+  margin-bottom: 2px;
+}
+
+/* Ladder level rows */
+.ladder-tier {
+  margin-bottom: 40px;
+}
+.ladder-tier-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(201,162,75,.18);
+}
+.ladder-tier-num {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(32px,4vw,50px);
+  color: var(--gold-bright);
+  line-height: 1;
+  min-width: 2ch;
+}
+.ladder-tier-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ladder-tier-label .en {
+  font-family: var(--display);
+  font-size: clamp(16px,2vw,22px);
+  font-weight: 500;
+  color: var(--ivory);
+}
+.ladder-tier-label .cn {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 13px;
+  color: var(--ivory-faint);
+  letter-spacing: .18em;
+}
+.ladder-tier-range {
+  margin-left: auto;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  color: var(--ivory-faint);
+  opacity: .6;
+  white-space: nowrap;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+}
+.level-card {
+  background: rgba(201,162,75,.04);
+  border: 1px solid rgba(201,162,75,.14);
+  border-radius: 6px;
+  padding: 14px 16px 12px;
+  position: relative;
+}
+.level-card::before {
+  content: attr(data-lvl);
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  color: var(--gold);
+  opacity: .5;
+  letter-spacing: .04em;
+}
+.level-card .basis {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(18px,2vw,22px);
+  color: var(--gold-bright);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.level-card .basis .cn {
+  font-size: 12px;
+  font-style: normal;
+  letter-spacing: .15em;
+  margin-left: 6px;
+  color: var(--ivory-faint);
+}
+.level-card .tech {
+  font-size: 14px;
+  color: var(--ivory);
+  margin-bottom: 4px;
+}
+.level-card .tech .cn {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 12px;
+  letter-spacing: .12em;
+  color: var(--ivory-faint);
+  margin-left: 6px;
+}
+.level-card .sub-line {
+  font-size: 11px;
+  color: var(--ivory-faint);
+  opacity: .7;
+  margin-top: 4px;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  letter-spacing: .04em;
+}
+.level-card .code-name {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(201,162,75,.1);
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 11px;
+  color: var(--gold);
+  opacity: .75;
+  letter-spacing: .1em;
+}
+.level-card .code-name .en {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  color: var(--gold);
+  opacity: .7;
+  margin-left: 6px;
+  letter-spacing: .04em;
+}
+
+/* Four Axes grid */
+.axes-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+@media (max-width: 680px) {
+  .axes-header { grid-template-columns: repeat(2, 1fr); }
+}
+.axis-col-head {
+  background: rgba(201,162,75,.06);
+  border: 1px solid rgba(201,162,75,.22);
+  border-radius: 6px;
+  padding: 12px 14px;
+  text-align: center;
+}
+.axis-col-head .axis-num {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  color: var(--gold);
+  opacity: .65;
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+.axis-col-head .axis-name-en {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(15px,2vw,18px);
+  color: var(--gold-bright);
+}
+.axis-col-head .axis-name-cn {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--ivory-faint);
+  margin-top: 2px;
+}
+
+.visions-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid rgba(201,162,75,.16);
+  border-radius: 6px;
+  overflow: hidden;
+}
+@media (max-width: 680px) {
+  .visions-4col { grid-template-columns: repeat(2, 1fr); }
+}
+.vision-cell {
+  padding: 14px 14px 12px;
+  border-right: 1px solid rgba(201,162,75,.1);
+  border-bottom: 1px solid rgba(201,162,75,.1);
+}
+.vision-cell:nth-child(4n) { border-right: none; }
+@media (max-width: 680px) {
+  .vision-cell:nth-child(2n) { border-right: none; }
+}
+.vision-cell .v-idx {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  color: var(--gold);
+  opacity: .5;
+  letter-spacing: .06em;
+  margin-bottom: 6px;
+}
+.vision-cell .v-en {
+  font-size: clamp(12px,1.4vw,15px);
+  color: var(--ivory);
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+.vision-cell .v-cn {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 12px;
+  letter-spacing: .14em;
+  color: var(--gold);
+  opacity: .8;
+}
+.vision-cell .v-desc {
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: var(--ivory-faint);
+  opacity: .72;
+  line-height: 1.55;
+}
+.vision-cell .v-desc .cn {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+
+/* Animated ladder in hero */
+@media (prefers-reduced-motion: no-preference) {
+  .rung { animation: rung-rise var(--d, 3s) ease-out infinite; }
+  @keyframes rung-rise {
+    0%,100% { opacity: var(--base-op, .35); transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-4px); }
+  }
+}
+</style>
+</head>
+<body data-world="visions">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">16 · Sixteen Visions · 十 六 愿 景</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <!-- Ascending ladder SVG flourish -->
+  <div class="visions-ladder" aria-hidden="true">
+    <svg viewBox="0 0 280 80" width="280" height="80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Horizon baseline -->
+      <line x1="0" y1="72" x2="280" y2="72" stroke="#c9a24b" stroke-width="0.6" opacity="0.3" />
+      <!-- 16 ascending rungs -->
+      <rect class="rung" style="--d:2.8s;--base-op:.22" x="4"   y="66" width="5" height="6"  rx="1" fill="#c9a24b" opacity="0.22" />
+      <rect class="rung" style="--d:3.1s;--base-op:.26" x="22"  y="63" width="5" height="9"  rx="1" fill="#c9a24b" opacity="0.26" />
+      <rect class="rung" style="--d:3.4s;--base-op:.28" x="40"  y="59" width="5" height="13" rx="1" fill="#c9a24b" opacity="0.28" />
+      <rect class="rung" style="--d:2.6s;--base-op:.30" x="58"  y="56" width="5" height="16" rx="1" fill="#c9a24b" opacity="0.30" />
+      <rect class="rung" style="--d:3.7s;--base-op:.33" x="76"  y="52" width="5" height="20" rx="1" fill="#c9a24b" opacity="0.33" />
+      <rect class="rung" style="--d:2.9s;--base-op:.36" x="94"  y="48" width="5" height="24" rx="1" fill="#c9a24b" opacity="0.36" />
+      <rect class="rung" style="--d:3.2s;--base-op:.38" x="112" y="44" width="5" height="28" rx="1" fill="#c9a24b" opacity="0.38" />
+      <rect class="rung" style="--d:3.5s;--base-op:.40" x="130" y="40" width="5" height="32" rx="1" fill="#c9a24b" opacity="0.40" />
+      <rect class="rung" style="--d:2.7s;--base-op:.43" x="148" y="36" width="5" height="36" rx="1" fill="#c9a24b" opacity="0.43" />
+      <rect class="rung" style="--d:3.3s;--base-op:.46" x="166" y="31" width="5" height="41" rx="1" fill="#c9a24b" opacity="0.46" />
+      <rect class="rung" style="--d:3.6s;--base-op:.50" x="184" y="27" width="5" height="45" rx="1" fill="#c9a24b" opacity="0.50" />
+      <rect class="rung" style="--d:2.8s;--base-op:.55" x="202" y="22" width="5" height="50" rx="1" fill="#c9a24b" opacity="0.55" />
+      <rect class="rung" style="--d:3.0s;--base-op:.60" x="220" y="17" width="5" height="55" rx="1" fill="#c9a24b" opacity="0.60" />
+      <rect class="rung" style="--d:3.4s;--base-op:.68" x="238" y="11" width="5" height="61" rx="1" fill="#c9a24b" opacity="0.68" />
+      <rect class="rung" style="--d:2.9s;--base-op:.78" x="256" y="5"  width="5" height="67" rx="1" fill="#c9a24b" opacity="0.78" />
+      <!-- apex dot -->
+      <circle cx="274" cy="3" r="3.5" fill="#e6c071" opacity="0.95" />
+      <!-- ascending guide line -->
+      <line x1="6" y1="69" x2="274" y2="3" stroke="#c9a24b" stroke-width="0.5" opacity="0.15" stroke-dasharray="3 4" />
+    </svg>
+  </div>
+  <div class="eyebrow">Psyverse · World 16 / 16</div>
+  <div class="w-num">16</div>
+  <h1>Sixteen <em>Visions</em><span class="cn">十 六 愿 景</span></h1>
+  <p class="tagline">
+    <span class="en">A ladder of emerging technologies ascending from quantum to cosmos, and four axes of purpose — Truth-Seeking, Benevolence, Beauty-Creation, World Utility — that give the whole edifice its direction.</span>
+    <span class="cn">从量子到宇宙，十六级天梯拾级而上；求真、行善、造美、致用，四轴愿景为整座大厦赋予方向。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <!-- §16.0 · Overview -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 16.0 · The Shape of the Culmination</div>
+    <p class="w-lead">
+      <span class="en">Every mission resolves, in the end, into visions — concrete images of what the world could become if the work is actually done. World 16 holds two complementary maps: a Ladder that orders the technologies by their depth in nature, and four Axes that order the purposes by their scope in human life.</span>
+      <span class="cn">每一条使命，最终都落定为愿景——如果工作真正完成，世界将成为何种模样的具体图景。第十六重世界持有两张互补的地图：天梯，按照技术在自然中的深度排列次序；四轴，按照目的在人类生命中的广度排列次序。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The Ladder is physical — it ascends from the universe's own attributes down through matter's layers to the products of the brain. The Axes are ethical — they ask what the technologies are ultimately for. Together they form the complete answer to the mission's implicit question: build toward what, and for whom?</span>
+      <span class="cn">天梯是物理性的——它从宇宙自身的属性，向下穿越物质的层级，直至大脑的产物。四轴是伦理性的——它们追问：这些技术究竟为了什么？合而为一，它们构成了对使命隐含之问的完整回答：建造向何处，又为了谁？</span>
+    </p>
+  </section>
+
+  <!-- §16.A · The Ladder -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 16.A · The Ladder of Emerging Tech · 十六阶 · 天梯</div>
+    <h2 class="w-h2">Three tiers, sixteen rungs<span class="cn">三层 · 十六级</span></h2>
+    <p class="w-p">
+      <span class="en">The ladder does not rank by importance — every rung is load-bearing. It ranks by ontological depth: how close to the substrate of reality does each frontier sit? Tier I begins with the universe's own grammar (dimension, space, time, entropy, gravity, quantum). Tier II descends to matter's building blocks (photon to brain). Tier III reaches the products the brain itself has created (finance, culture, design). The ascent is also a map of difficulty: the rungs closest to the substrate reward the longest investment horizons and the boldest imaginations.</span>
+      <span class="cn">天梯并非按重要性排列——每一级都是承重的。它按存在论深度排列：每个前沿离现实的基底有多近？第一层从宇宙自身的语法开始（维度、空间、时间、熵、引力、量子）。第二层深入物质的构件（从光子到大脑）。第三层抵达大脑自身创造的产物（金融、文化、设计）。攀升也是一张难度地图：越靠近基底的级，越回馈最长的投资期限和最大胆的想象力。</span>
+    </p>
+
+    <!-- Tier I: Universe Attributes -->
+    <div class="ladder-tier">
+      <div class="ladder-tier-head">
+        <div class="ladder-tier-num">I</div>
+        <div class="ladder-tier-label">
+          <span class="en">Universe Attributes</span>
+          <span class="cn">宇 宙 属 性</span>
+        </div>
+        <div class="ladder-tier-range">Levels 01 — 06</div>
+      </div>
+      <p class="w-p" style="margin-bottom:16px">
+        <span class="en">These six levels correspond to the deepest structures of physical reality — the parameters and forces that govern everything else. Mastery here would not merely improve civilisation; it would redefine what civilisation means.</span>
+        <span class="cn">这六级对应物理现实最深层的结构——支配一切其他事物的参数与力。在这里的掌握，不仅能改善文明，更将重新定义文明意味着什么。</span>
+      </p>
+      <div class="level-grid">
+        <div class="level-card" data-lvl="16 · 01">
+          <div class="basis"><span class="en">Dimension</span><span class="cn">维 度</span></div>
+          <div class="tech"><span class="en">Dimensional traversal</span><span class="cn">维度穿梭</span></div>
+          <div class="sub-line">Perception · 感知 · 天人感应</div>
+          <div class="code-name"><span class="cn">多元宇宙</span><span class="en">Multiverse</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 02">
+          <div class="basis"><span class="en">Space</span><span class="cn">空 间</span></div>
+          <div class="tech"><span class="en">Space migration</span><span class="cn">太空移民</span></div>
+          <div class="sub-line">Exploration · 探索 · 星球运营</div>
+          <div class="code-name"><span class="cn">繁星永恒</span><span class="en">Eternal Stars</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 03">
+          <div class="basis"><span class="en">Time</span><span class="cn">时 间</span></div>
+          <div class="tech"><span class="en">Time travel</span><span class="cn">时间旅行</span></div>
+          <div class="sub-line">Eternity · 永恒 · 创造历史</div>
+          <div class="code-name"><span class="cn">元古宇宙</span><span class="en">Primordial Universe</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 04">
+          <div class="basis"><span class="en">Entropy</span><span class="cn">熵</span></div>
+          <div class="tech"><span class="en">Longevity &amp; anti-aging</span><span class="cn">长生不老</span></div>
+          <div class="sub-line">Order · 秩序 · 改良生活</div>
+          <div class="code-name"><span class="cn">无量运行</span><span class="en">Infinite Operations</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 05">
+          <div class="basis"><span class="en">Graviton</span><span class="cn">引力子</span></div>
+          <div class="tech"><span class="en">Curvature engine</span><span class="cn">曲率引擎</span></div>
+          <div class="sub-line">Motion · 运动 · 探索未知</div>
+          <div class="code-name"><span class="cn">曲率导航</span><span class="en">Curvature Navigation</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 06">
+          <div class="basis"><span class="en">Quantum</span><span class="cn">量 子</span></div>
+          <div class="tech"><span class="en">Quantum computing</span><span class="cn">量子计算</span></div>
+          <div class="sub-line">Science · 科学 · 获取真理</div>
+          <div class="code-name"><span class="cn">量子动力</span><span class="en">Quantum Dynamics</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier II: Matter -->
+    <div class="ladder-tier">
+      <div class="ladder-tier-head">
+        <div class="ladder-tier-num">II</div>
+        <div class="ladder-tier-label">
+          <span class="en">Matter</span>
+          <span class="cn">物 质</span>
+        </div>
+        <div class="ladder-tier-range">Levels 07 — 13</div>
+      </div>
+      <p class="w-p" style="margin-bottom:16px">
+        <span class="en">Seven levels that move upward through matter's hierarchy — from the photon that carries energy, through the electron and nucleus, up through atoms, molecules, neurons, and finally the organ that makes thought possible. The richest tier: all seven frontiers are actively contested today.</span>
+        <span class="cn">七级，沿物质的层级向上攀升——从携带能量的光子，经过电子与原子核，再穿越原子、分子、神经元，最终抵达使思维成为可能的器官。最丰富的一层：七个前沿，今日皆已激战正酣。</span>
+      </p>
+      <div class="level-grid">
+        <div class="level-card" data-lvl="16 · 07">
+          <div class="basis"><span class="en">Photon</span><span class="cn">光 子</span></div>
+          <div class="tech"><span class="en">Solar energy</span><span class="cn">太阳能</span></div>
+          <div class="sub-line">Energy · 能量 · 光明使者</div>
+          <div class="code-name"><span class="cn">奇点能源</span><span class="en">Singularity Energy</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 08">
+          <div class="basis"><span class="en">Electron</span><span class="cn">电 子</span></div>
+          <div class="tech"><span class="en">Chip technology</span><span class="cn">芯片</span></div>
+          <div class="sub-line">Information · 信息 · 万物皆数</div>
+          <div class="code-name"><span class="cn">顶驱动力</span><span class="en">Top-Level Driving Force</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 09">
+          <div class="basis"><span class="en">Atomic Nucleus</span><span class="cn">原子核</span></div>
+          <div class="tech"><span class="en">Controlled nuclear fusion</span><span class="cn">可控核聚变</span></div>
+          <div class="sub-line">Power · 动力 · 拯救地球</div>
+          <div class="code-name"><span class="cn">质子能源</span><span class="en">Proton Energy</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 10">
+          <div class="basis"><span class="en">Atom</span><span class="cn">原 子</span></div>
+          <div class="tech"><span class="en">Nanotechnology</span><span class="cn">纳米技术</span></div>
+          <div class="sub-line">Material · 物质 · 改造世界</div>
+          <div class="code-name"><span class="cn">开心元素</span><span class="en">Joy Element</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 11">
+          <div class="basis"><span class="en">Molecule</span><span class="cn">分 子</span></div>
+          <div class="tech"><span class="en">Gene editing</span><span class="cn">基因编辑</span></div>
+          <div class="sub-line">Life · 生命 · 改造生命</div>
+          <div class="code-name"><span class="cn">皮球基因</span><span class="en">Skin &amp; Organ Genes</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 12">
+          <div class="basis"><span class="en">Neuron</span><span class="cn">神经元</span></div>
+          <div class="tech"><span class="en">Artificial intelligence</span><span class="cn">人工智能</span></div>
+          <div class="sub-line">Intelligence · 智能 · 解放人类</div>
+          <div class="code-name"><span class="cn">自主思维</span><span class="en">Autonomous Thinking</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 13">
+          <div class="basis"><span class="en">Brain</span><span class="cn">大 脑</span></div>
+          <div class="tech"><span class="en">Brain–computer interface</span><span class="cn">脑机接口</span></div>
+          <div class="sub-line">Consciousness · 意识 · 认识自己</div>
+          <div class="code-name"><span class="cn">脑主神明</span><span class="en">Sovereign Mind</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier III: Brain Products -->
+    <div class="ladder-tier">
+      <div class="ladder-tier-head">
+        <div class="ladder-tier-num">III</div>
+        <div class="ladder-tier-label">
+          <span class="en">Brain Products</span>
+          <span class="cn">脑力产物</span>
+        </div>
+        <div class="ladder-tier-range">Levels 14 — 16</div>
+      </div>
+      <p class="w-p" style="margin-bottom:16px">
+        <span class="en">The three levels at the summit are not physical substrates but social technologies — finance, culture, design — the crystalised outputs of human cognition operating at civilisational scale. They are highest on the ladder not because they are most abstract, but because they depend on all the tiers beneath them and coordinate their use.</span>
+        <span class="cn">天梯顶端的三级，不是物理基底，而是社会技术——金融、文化、设计——人类认知在文明尺度上运作所结晶的产物。它们位居最高，不是因为最抽象，而是因为它们依赖其下所有层级，并统筹协调它们的使用。</span>
+      </p>
+      <div class="level-grid">
+        <div class="level-card" data-lvl="16 · 14">
+          <div class="basis"><span class="en">Finance</span><span class="cn">金 融</span></div>
+          <div class="tech"><span class="en">Digital currency</span><span class="cn">数字货币</span></div>
+          <div class="sub-line">Transaction · 交易 · 普渡众生</div>
+          <div class="code-name"><span class="cn">华墟金融</span><span class="en">Huaxu Finance</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 15">
+          <div class="basis"><span class="en">Culture</span><span class="cn">文 化</span></div>
+          <div class="tech"><span class="en">Virtual reality</span><span class="cn">虚拟现实</span></div>
+          <div class="sub-line">History · 历史 · 传播文明</div>
+          <div class="code-name"><span class="cn">欢乐引擎</span><span class="en">Joy Engine</span></div>
+        </div>
+        <div class="level-card" data-lvl="16 · 16">
+          <div class="basis"><span class="en">Design</span><span class="cn">设 计</span></div>
+          <div class="tech"><span class="en">3D printing</span><span class="cn">3D 打印</span></div>
+          <div class="sub-line">Creation · 造物 · 为人民服务</div>
+          <div class="code-name"><span class="cn">虫洞贸易</span><span class="en">Wormhole Trade</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §16.B · The Four Axes -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 16.B · The Four Axes of Vision · 四轴 · 十六愿景</div>
+    <h2 class="w-h2">What to achieve, and for whom<span class="cn">达成什么，为了谁</span></h2>
+    <p class="w-p">
+      <span class="en">The ladder says what to build. The axes ask why — and for whom the building is worth doing. Four classical orientations of human purpose, each extended into four concrete visions, yield the sixteen that give this world its name.</span>
+      <span class="cn">天梯说明建造什么。四轴追问为何——以及建造究竟值得为谁而做。人类目的的四种古典取向，各自延伸为四条具体的愿景，共得十六条——这正是本世界得名的由来。</span>
+    </p>
+
+    <div class="axes-header">
+      <div class="axis-col-head">
+        <div class="axis-num">Axis 1</div>
+        <div class="axis-name-en">Truth-Seeking</div>
+        <div class="axis-name-cn">求 真</div>
+      </div>
+      <div class="axis-col-head">
+        <div class="axis-num">Axis 2</div>
+        <div class="axis-name-en">Benevolence</div>
+        <div class="axis-name-cn">行 善</div>
+      </div>
+      <div class="axis-col-head">
+        <div class="axis-num">Axis 3</div>
+        <div class="axis-name-en">Beauty-Creation</div>
+        <div class="axis-name-cn">造 美</div>
+      </div>
+      <div class="axis-col-head">
+        <div class="axis-num">Axis 4</div>
+        <div class="axis-name-en">World Utility</div>
+        <div class="axis-name-cn">致 用</div>
+      </div>
+    </div>
+
+    <div class="visions-4col">
+      <!-- Row 1 -->
+      <div class="vision-cell">
+        <div class="v-idx">01</div>
+        <div class="v-en">Attain truth</div>
+        <div class="v-cn">获 取 真 理</div>
+        <div class="v-desc">
+          <span class="en">Truth is the load-bearing foundation of every other vision. Without verified reality, benevolence misfires and beauty deceives.</span>
+          <span class="cn">真理是所有其他愿景的承重基础。没有经过验证的现实，行善会打偏，造美会欺骗。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">02</div>
+        <div class="v-en">Serve the people</div>
+        <div class="v-cn">为 人 民 服 务</div>
+        <div class="v-desc">
+          <span class="en">Not an ideology but an orientation: capability is measured by how many lives it reaches and how meaningfully it changes them.</span>
+          <span class="cn">这不是意识形态，而是一种取向：能力以它触及多少生命、以多深刻的方式改变它们来衡量。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">03</div>
+        <div class="v-en">Create history</div>
+        <div class="v-cn">创 造 历 史</div>
+        <div class="v-desc">
+          <span class="en">The work that outlasts its maker — ideas, artefacts, and institutions that future generations will inherit and build upon.</span>
+          <span class="cn">超越造物者而长存的工作——未来世代将继承并在其上建造的思想、制品与制度。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">04</div>
+        <div class="v-en">Improve life</div>
+        <div class="v-cn">改 良 生 活</div>
+        <div class="v-desc">
+          <span class="en">Entropy is the enemy of order; biology is a constant fight against decay. Every increment of health, ease, and safety is a real victory.</span>
+          <span class="cn">熵是秩序的敌人；生物学是一场对抗衰败的持续战争。每一点健康、便利与安全的增进，都是真实的胜利。</span>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="vision-cell">
+        <div class="v-idx">05</div>
+        <div class="v-en">Understand the self</div>
+        <div class="v-cn">认 识 自 己</div>
+        <div class="v-desc">
+          <span class="en">「认识你自己」 — the oldest imperative and still the least complete. Consciousness, identity, and the neural basis of experience remain open problems.</span>
+          <span class="cn">「认识你自己」——最古老的命令，也仍是最未完成的。意识、身份认同与体验的神经基础，依然是悬而未决的问题。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">06</div>
+        <div class="v-en">Save all beings</div>
+        <div class="v-cn">普 渡 众 生</div>
+        <div class="v-desc">
+          <span class="en">Compassion scaled to civilisational reach: the suffering of any conscious being anywhere is a problem that the mission is obliged to take seriously.</span>
+          <span class="cn">慈悲扩展至文明所及之处：任何有意识的生命在任何地方的苦难，都是使命有义务认真对待的问题。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">07</div>
+        <div class="v-en">Spread civilisation</div>
+        <div class="v-cn">传 播 文 明</div>
+        <div class="v-desc">
+          <span class="en">Knowledge, art, and scientific understanding are not finite; sharing them costs nothing and grows their value. Distribution is creation.</span>
+          <span class="cn">知识、艺术与科学理解并非有限资源；分享它们分文不费，却增加其价值。传播即创造。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">08</div>
+        <div class="v-en">Transform life</div>
+        <div class="v-cn">改 造 生 命</div>
+        <div class="v-desc">
+          <span class="en">Biology is substrate, not destiny. Gene editing, synthetic biology, and cellular reprogramming open the possibility of life redesigned from within.</span>
+          <span class="cn">生物学是基底，不是命运。基因编辑、合成生物学与细胞重编程，开启了从内部重新设计生命的可能。</span>
+        </div>
+      </div>
+      <!-- Row 3 -->
+      <div class="vision-cell">
+        <div class="v-idx">09</div>
+        <div class="v-en">Explore the unknown</div>
+        <div class="v-cn">探 索 未 知</div>
+        <div class="v-desc">
+          <span class="en">The frontier is the most honest teacher: it cannot be gamed, cannot be flattered, and returns exactly what you are capable of learning from it.</span>
+          <span class="cn">前沿是最诚实的老师：它无法被操纵，无法被奉承，只回馈你真正有能力从中学到的东西。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">10</div>
+        <div class="v-en">Heal the planet</div>
+        <div class="v-cn">拯 救 地 球</div>
+        <div class="v-desc">
+          <span class="en">The only home we have verified so far. A damaged biosphere is a narrowed possibility space for every vision on this list.</span>
+          <span class="cn">迄今唯一经过验证的家园。一个受损的生物圈，是这张清单上每一条愿景的可能性空间的收窄。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">11</div>
+        <div class="v-en">Become a bringer of light</div>
+        <div class="v-cn">光 明 使 者</div>
+        <div class="v-desc">
+          <span class="en">Enlightenment as a stance, not a state: carrying the lamp forward — into ignorance, poverty, despair — wherever light has not yet reached.</span>
+          <span class="cn">启蒙是一种姿态，而非一种状态：向前举起灯——进入无知、贫困、绝望——凡是光还未抵达之处。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">12</div>
+        <div class="v-en">Reshape the world</div>
+        <div class="v-cn">改 造 世 界</div>
+        <div class="v-desc">
+          <span class="en">Matter is more plastic than it looks: nanotechnology, materials science, and additive manufacturing suggest a world that can be reorganised at every scale.</span>
+          <span class="cn">物质比看起来更具可塑性：纳米技术、材料科学与增材制造，暗示一个可以在每个尺度上被重新组织的世界。</span>
+        </div>
+      </div>
+      <!-- Row 4 -->
+      <div class="vision-cell">
+        <div class="v-idx">13</div>
+        <div class="v-en">Everything is mathematics</div>
+        <div class="v-cn">万 物 皆 数</div>
+        <div class="v-desc">
+          <span class="en">The deepest bet of physics: reality has a formal structure, and sufficiently precise mathematics can discover, predict, and eventually engineer it.</span>
+          <span class="cn">物理学最深的赌注：现实具有形式结构，足够精确的数学可以发现、预测并最终工程化它。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">14</div>
+        <div class="v-en">Liberate humanity</div>
+        <div class="v-cn">解 放 人 类</div>
+        <div class="v-desc">
+          <span class="en">Automation, AI, and intelligent infrastructure can lift the weight of drudgery — returning time, attention, and creative capacity to every person.</span>
+          <span class="cn">自动化、人工智能与智能基础设施，可以卸去繁重的重量——将时间、注意力与创造力归还给每一个人。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">15</div>
+        <div class="v-en">Harmony of heaven &amp; humanity</div>
+        <div class="v-cn">天 人 感 应</div>
+        <div class="v-desc">
+          <span class="en">The ancient intuition that human order and cosmic order are not separate — that the most durable civilisations are those that understand and align with the grain of nature.</span>
+          <span class="cn">古老的直觉：人类的秩序与宇宙的秩序并不分离——最持久的文明，是那些理解并顺应自然纹理的文明。</span>
+        </div>
+      </div>
+      <div class="vision-cell">
+        <div class="v-idx">16</div>
+        <div class="v-en">Planetary-scale operation</div>
+        <div class="v-cn">星 球 运 营</div>
+        <div class="v-desc">
+          <span class="en">Earth — and eventually other worlds — operated as coherent systems: energy flows balanced, biospheres maintained, human capacities coordinated at the largest scale.</span>
+          <span class="cn">地球——以及最终其他星球——作为连贯的系统运行：能量流动平衡，生物圈得以维护，人类能力在最大尺度上协调。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §16.C · Axes in depth -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 16.C · The Logic of the Axes</div>
+    <h2 class="w-h2">Why these four, why in this order<span class="cn">为何是这四条，为何是此顺序</span></h2>
+    <div class="w-grid">
+      <div class="w-card">
+        <div class="idx">Axis 1</div>
+        <div class="ttl">Truth-Seeking · 求真<span class="cn"></span></div>
+        <div class="body">
+          <span class="en">Comes first because every other axis depends on it. A benevolence built on false models harms those it intends to help. A beauty detached from reality becomes ornament at best, propaganda at worst. World utility built on misconceptions is a machine pointed in the wrong direction. Truth-seeking — attaining truth, understanding the self, exploring the unknown, and recognising that everything is mathematics — is the epistemic foundation the others stand on.</span>
+          <span class="cn">居于首位，因为其他所有轴都依赖于它。建立在错误模型上的行善，会伤害它本想帮助的人。与现实脱节的造美，往好了说是装饰，往坏了说是宣传。建立在误解上的致用，是一台指向错误方向的机器。求真——获取真理、认识自己、探索未知、承认万物皆数——是其他三轴赖以立足的认识论基础。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Axis 2</div>
+        <div class="ttl">Benevolence · 行善<span class="cn"></span></div>
+        <div class="body">
+          <span class="en">The moral axis: the mission is not self-serving. The four visions — serving the people, saving all beings, healing the planet, liberating humanity — share a common structure: the agent identifies a class of suffering or constraint that technology can reduce, and commits to reducing it. Note that this axis extends beyond the human: it includes any conscious being capable of suffering, and the living systems of the planet.</span>
+          <span class="cn">道德轴：使命不是自利的。这四条愿景——为人民服务、普渡众生、拯救地球、解放人类——共享一个共同结构：行动者识别出一类技术可以减轻的苦难或限制，并承诺去减轻它。注意这个轴延伸超越了人类：它包含任何有能力受苦的有意识存在，以及地球的生命系统。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Axis 3</div>
+        <div class="ttl">Beauty-Creation · 造美<span class="cn"></span></div>
+        <div class="body">
+          <span class="en">Neither decoration nor luxury: the creation of beauty is a cognitive and civilisational necessity. The visions — creating history, spreading civilisation, becoming a bringer of light, harmony of heaven and humanity — are all acts of pattern-making: finding the deep structure of things and making it visible, transmissible, inhabitable. Beauty is truth made perceptible.</span>
+          <span class="cn">既非装饰，亦非奢侈：造美是认知与文明的必需。这四条愿景——创造历史、传播文明、光明使者、天人感应——都是构建模式的行为：发现事物的深层结构，并使其可见、可传、可居。美是被感知的真理。</span>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="idx">Axis 4</div>
+        <div class="ttl">World Utility · 致用<span class="cn"></span></div>
+        <div class="body">
+          <span class="en">The practical axis: ideas become visions only when they become operative in the world. Improving life, transforming life, reshaping the world, planetary-scale operation — these four visions have something in common: they are measured by what actually changes in the physical and social fabric of existence, not by the elegance of the intention. Utility is the test that truth, benevolence, and beauty all must pass.</span>
+          <span class="cn">实践轴：思想只有在世界中变得运作时，才成为愿景。改良生活、改造生命、改造世界、星球运营——这四条愿景有一个共同点：它们以存在的物质与社会结构中实际发生了什么来衡量，而非以意图的优雅来衡量。致用是真理、行善与造美都必须通过的检验。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §16.D · The Closing -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 16.D · From World 16 Back to World 01</div>
+    <p class="w-lead">
+      <span class="en">The Psyverse does not end here — it completes a circle. World 16 names where the work is pointed; World 01 names what powers it. The sixteen visions are not a wish list pinned to a wall: they are the long-range targets that make it rational to spend a life on science, technology, and engineering.</span>
+      <span class="cn">心域并不在此终结——它完成了一个圆。第十六重世界命名工作所指的方向；第一重世界命名驱动工作的力量。十六条愿景不是贴在墙上的愿望清单：它们是使将一生投入科学、技术与工程变得理性的长程目标。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Read forward through the sixteen worlds and you descend into specificity: from mission, through identity and principles, through the domains of work, down to concrete visions. Read backward and you ascend toward meaning: each vision points back, eventually, to that single sentence — solve real problems, meet real needs, create new possibilities.</span>
+      <span class="cn">顺着十六重世界读下去，你走向具体：从使命，经过身份与原则，穿过工作的领域，落定为具体的愿景。逆向读回去，你走向意义：每一条愿景，最终都指向那一句话——解决真实的问题，满足人们的需求，创造新的可能。</span>
+    </p>
+
+    <blockquote class="w-quote">
+      <span class="en">The ladder is a map of what the universe allows. The axes are a map of what we are for. The mission is the decision to climb.</span>
+      <span class="cn">天梯是宇宙允许之事的地图。四轴是我们为何存在的地图。使命，是攀登的决定。</span>
+      <span class="w-quote-attr">World 16 · Sixteen Visions — the culmination of the Psyverse</span>
+    </blockquote>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Sixteen Visions · 十六愿景 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Twelve Organizational Purposes · 十二组织宗旨 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Twelve Organizational Purposes — four scales of human organization (Nation, Society, Enterprise, Individual) each held to three irreducible purposes. A standalone world of the Psyverse manifesto." />
+<meta name="keywords" content="organizational purposes, democracy, rule of law, human rights, freedom, equality, fraternity, product, demand, trend, wealth, health, happiness, Psyverse, 组织宗旨" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/purposes" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/purposes" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/purposes" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/purposes" />
+<meta property="og:title" content="Twelve Organizational Purposes · 十二组织宗旨" />
+<meta property="og:description" content="Four scales of human organization — Nation, Society, Enterprise, Individual — each held to three irreducible purposes." />
+<meta property="og:url" content="https://psyverse.fun/purposes" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Twelve Organizational Purposes · 十二组织宗旨" />
+<meta name="twitter:description" content="Four scales of human organization — Nation, Society, Enterprise, Individual — each held to three irreducible purposes." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Twelve Organizational Purposes",
+  "about": "Four scales of human organization — Nation, Society, Enterprise, Individual — each held to three irreducible purposes: a 4×3 map of why organizations exist.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* page-local flourish: concentric rings of scale */
+.purpose-rings {
+  position: relative;
+  width: 148px;
+  height: 148px;
+  margin: 8px 0 34px;
+  flex-shrink: 0;
+}
+.purpose-rings .ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  transform-origin: center;
+}
+.purpose-rings .ring:nth-child(1) { opacity: .12; transform: scale(1.00); }
+.purpose-rings .ring:nth-child(2) { opacity: .22; transform: scale(0.74); }
+.purpose-rings .ring:nth-child(3) { opacity: .36; transform: scale(0.50); }
+.purpose-rings .ring:nth-child(4) { opacity: .55; transform: scale(0.28); }
+.purpose-rings .ring-dot {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 8px; height: 8px;
+  margin: -4px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 20px var(--gold);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .purpose-rings .ring:nth-child(1) { animation: pr-pulse 7s ease-in-out infinite 0s; }
+  .purpose-rings .ring:nth-child(2) { animation: pr-pulse 7s ease-in-out infinite 1.4s; }
+  .purpose-rings .ring:nth-child(3) { animation: pr-pulse 7s ease-in-out infinite 2.8s; }
+  .purpose-rings .ring:nth-child(4) { animation: pr-pulse 7s ease-in-out infinite 4.2s; }
+  @keyframes pr-pulse {
+    0%, 100% { opacity: var(--op, .12); }
+    50%       { opacity: calc(var(--op, .12) * 2.2); }
+  }
+  .purpose-rings .ring:nth-child(1) { --op: .12; }
+  .purpose-rings .ring:nth-child(2) { --op: .22; }
+  .purpose-rings .ring:nth-child(3) { --op: .36; }
+  .purpose-rings .ring:nth-child(4) { --op: .55; }
+}
+
+/* scale-band accent strips inside cards */
+.scale-band {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  border-radius: 2px;
+  background: var(--band-color, var(--gold));
+  vertical-align: middle;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+/* purpose trio — three-column grid within a scale section */
+.purpose-trio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+.purpose-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(201,162,75,.15);
+  border-top: 2px solid var(--pc-accent, var(--gold));
+  border-radius: 6px;
+  padding: 22px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.purpose-card .pc-idx {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--ivory-faint);
+  opacity: .55;
+}
+.purpose-card .pc-title {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 400;
+  color: var(--pc-accent, var(--gold-bright));
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.purpose-card .pc-title .cn {
+  font-family: var(--serif-cn);
+  font-size: .72em;
+  color: var(--ivory-faint);
+  opacity: .75;
+}
+.purpose-card .pc-body {
+  font-size: 14px;
+  line-height: 1.72;
+  color: var(--ivory-faint);
+  opacity: .82;
+}
+.purpose-card .pc-body .cn {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--serif-cn);
+  font-size: .95em;
+  opacity: .7;
+}
+
+/* scale header pill */
+.scale-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.scale-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--ivory-faint);
+  opacity: .5;
+}
+.scale-name {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-weight: 400;
+  color: var(--sh-color, var(--gold-bright));
+}
+.scale-name-cn {
+  font-family: var(--serif-cn);
+  font-size: clamp(14px, 1.6vw, 18px);
+  color: var(--ivory-faint);
+  opacity: .65;
+  letter-spacing: .1em;
+}
+</style>
+</head>
+<body data-world="purposes">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">12 · Twelve Organizational Purposes · 十 二 组 织 宗 旨</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <div class="purpose-rings" aria-hidden="true">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring-dot"></div>
+  </div>
+  <div class="eyebrow">Psyverse · World 12 / 16</div>
+  <div class="w-num">12</div>
+  <h1>Twelve <em>Organizational Purposes</em><span class="cn">十 二 组 织 宗 旨</span></h1>
+  <p class="tagline">
+    <span class="en">Four scales of human organization — Nation, Society, Enterprise, Individual — each held to three irreducible purposes. Twelve commitments that name what organizations are ultimately for.</span>
+    <span class="cn">人类组织的四个尺度——国家、社会、企业、个人——各自承载三项不可化约的宗旨。十二项承诺，道明组织终究是为了什么而存在。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 12.0 · The Argument</div>
+    <p class="w-lead">
+      <span class="en">Every organization — from a nation-state to a single person navigating a life — can be asked the same question: what are you for? The answer is never just one thing. This world holds that each scale of organization carries exactly three irreducible purposes, and that losing any one of them damages the whole.</span>
+      <span class="cn">每一个组织——从民族国家到一个独立行走于生命中的个人——都可以被追问同一个问题：你究竟为何而存在？答案从来不只是一件事。本世界的主张是：每个尺度的组织都承载着恰好三项不可化约的宗旨，任何一项的缺失都会损伤整体。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The twelve are not a checklist to tick off. They are tensions held together. Democracy without rule of law becomes mob rule; rule of law without human rights becomes bureaucratic cruelty; human rights without democracy becomes an edict with no author. The pattern repeats at every scale.</span>
+      <span class="cn">这十二项不是一份待勾选的清单，而是被共同维系的张力。没有法治的民主会沦为多数人的暴政；没有人权的法治会变成官僚机器的冷酷；没有民主的人权不过是一道无人署名的敕令。这种模式在每个尺度上反复出现。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Four scales, three purposes per scale. Read across scales and the purposes rhyme: every scale needs a governing principle, a relational principle, and a distributive principle. The words change; the structure holds.</span>
+      <span class="cn">四个尺度，每个尺度三项宗旨。横向阅读各尺度，宗旨之间彼此呼应：每个尺度都需要一项治理原则、一项关系原则和一项分配原则。措辞各异，结构不变。</span>
+    </p>
+  </section>
+
+  <!-- ── SCALE I: NATION ───────────────────────────────── -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 12.Ⅰ · Scale: Nation</div>
+    <div class="scale-header">
+      <span class="scale-num">12 · Ⅰ</span>
+      <span class="scale-name" style="--sh-color:#b14d42;">Nation</span>
+      <span class="scale-name-cn">国 家</span>
+    </div>
+    <p class="w-p">
+      <span class="en">Nations are humanity's largest durable coordination structures. Their purposes are not granted by geography or ancestry — they must be continually justified by what they protect and make possible. Three purposes anchor every legitimate state.</span>
+      <span class="cn">国家是人类最宏大而持久的协调结构。其宗旨并非由地理或血缘赋予——它必须通过所保护之物、所使能之事来不断自我证明。三项宗旨为每一个合法国家奠基。</span>
+    </p>
+    <div class="purpose-trio">
+
+      <div class="purpose-card" style="--pc-accent:#b14d42;">
+        <div class="pc-idx">12 · 01</div>
+        <div class="pc-title">Democracy <span class="cn">民 主</span></div>
+        <div class="pc-body">
+          <span class="en">Power originates in the people and returns to them. Democracy is not merely elections — it is the ongoing discipline of making power answerable. Without accountability to the governed, any other purpose a state claims is imposed rather than chosen.</span>
+          <span class="cn">权力源于人民，也回归于人民。民主不仅仅是选举——它是使权力持续接受问责的纪律。若缺乏对被治理者的问责，国家所宣称的任何其他宗旨都不过是强加，而非选择。</span>
+        </div>
+      </div>
+
+      <div class="purpose-card" style="--pc-accent:#b14d42;">
+        <div class="pc-idx">12 · 02</div>
+        <div class="pc-title">Rule of Law <span class="cn">法 治</span></div>
+        <div class="pc-body">
+          <span class="en">No person or institution stands above the rules that bind everyone. Rule of law is democracy's skeleton: without it, majorities can be weaponized and rights become negotiable. It is what makes tomorrow predictable enough to plan and invest in.</span>
+          <span class="cn">没有任何人或机构凌驾于约束所有人的规则之上。法治是民主的骨骼：没有它，多数可以被武器化，权利也将变得可议价。正是法治，让明天可预期到足以规划与投入。</span>
+        </div>
+      </div>
+
+      <div class="purpose-card" style="--pc-accent:#b14d42;">
+        <div class="pc-idx">12 · 03</div>
+        <div class="pc-title">Human Rights <span class="cn">人 权</span></div>
+        <div class="pc-body">
+          <span class="en">Certain dignities belong to every person before any state exists to recognize them. Human rights set the floor beneath which no law, no majority, and no emergency can push a person. They are what the state exists to protect — not to bestow.</span>
+          <span class="cn">某些尊严属于每一个人，先于任何承认它的国家而存在。人权划定了一条底线——任何法律、任何多数、任何紧急状态都不能将一个人推入其下。它们是国家为之存在的保护对象，而非国家的赐予。</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SCALE II: SOCIETY ─────────────────────────────── -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 12.Ⅱ · Scale: Society</div>
+    <div class="scale-header">
+      <span class="scale-num">12 · Ⅱ</span>
+      <span class="scale-name" style="--sh-color:#e6c071;">Society</span>
+      <span class="scale-name-cn">社 会</span>
+    </div>
+    <p class="w-p">
+      <span class="en">Society is the web of relationships, norms, and institutions that people build between the individual and the state. It has its own purposes — ones that law can protect but never fully manufacture. The French revolutionary triad names them well enough to have lasted two centuries.</span>
+      <span class="cn">社会是人们在个人与国家之间编织的关系、规范与制度之网。它有着自己的宗旨——法律可以保护，却永远无法完全制造它们。法国大革命的那组三联词，因其命名之准确而流传了两个世纪。</span>
+    </p>
+    <div class="purpose-trio">
+
+      <div class="purpose-card" style="--pc-accent:#e6c071;">
+        <div class="pc-idx">12 · 04</div>
+        <div class="pc-title">Freedom <span class="cn">自 由</span></div>
+        <div class="pc-body">
+          <span class="en">The latitude to think, speak, move, associate, and build a life on one's own terms. Freedom is not the absence of all constraint — it is the presence of enough space that a person can author their own story. Every other social purpose depends on this one being real, not nominal.</span>
+          <span class="cn">按照自己的方式思考、言说、行动、结社与建构生命的余地。自由不是一切约束的消失——而是有足够空间让一个人得以书写自己的故事。所有其他社会宗旨都依赖于这一宗旨的真实存在，而非名义上的存在。</span>
+        </div>
+      </div>
+
+      <div class="purpose-card" style="--pc-accent:#e6c071;">
+        <div class="pc-idx">12 · 05</div>
+        <div class="pc-title">Equality <span class="cn">平 等</span></div>
+        <div class="pc-body">
+          <span class="en">Equal standing before the law, equal voice in shared decisions, and equal chance to develop one's capacities. Equality does not flatten all difference — it refuses to let accidents of birth become permanent ceilings. Freedom without equality is freedom for the lucky.</span>
+          <span class="cn">在法律面前的平等地位、在公共决策中的平等发言权、发展自身能力的平等机会。平等不是抹平一切差异——而是拒绝让出身的偶然成为永久的天花板。没有平等的自由，不过是幸运者的自由。</span>
+        </div>
+      </div>
+
+      <div class="purpose-card" style="--pc-accent:#e6c071;">
+        <div class="pc-idx">12 · 06</div>
+        <div class="pc-title">Fraternity <span class="cn">博 爱</span></div>
+        <div class="pc-body">
+          <span class="en">The recognition that others' flourishing is bound up with one's own — not as sentiment, but as a structural fact of interdependence. Fraternity is what turns a collection of rights-holders into a community. Without it, freedom and equality remain cold architecture with no one living inside.</span>
+          <span class="cn">认识到他人的繁荣与自身的繁荣紧密相连——不是作为情感，而是作为相互依存的结构性事实。博爱使一群权利持有者转变为一个共同体。没有它，自由与平等只是冰冷的建筑，里面无人居住。</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SCALE III: ENTERPRISE ─────────────────────────── -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 12.Ⅲ · Scale: Enterprise</div>
+    <div class="scale-header">
+      <span class="scale-num">12 · Ⅲ</span>
+      <span class="scale-name" style="--sh-color:#5a8f73;">Enterprise</span>
+      <span class="scale-name-cn">企 业</span>
+    </div>
+    <p class="w-p">
+      <span class="en">An enterprise is a purposeful organization that mobilizes resources toward something it wants to make real in the world. Its purposes live at the intersection of what people need, what can be built, and what direction the world is moving. All three must be held at once.</span>
+      <span class="cn">企业是一种目标导向的组织，调动资源去实现某种它希望在世界上变为现实的事物。其宗旨存在于人们的需求、可以构建之物与世界前进方向三者的交汇处。三者必须同时兼顾。</span>
+    </p>
+    <div class="purpose-trio">
+
+      <div class="purpose-card" style="--pc-accent:#5a8f73;">
+        <div class="pc-idx">12 · 07</div>
+        <div class="pc-title">Product <span class="cn">产 品</span></div>
+        <div class="pc-body">
+          <span class="en">A product is crystallized intention — capability made tangible, transferable, and usable without the creator present. The purpose of building a product is to put a tool in someone else's hands that extends what they can do. Every enterprise that loses the product impulse becomes an administrative shell.</span>
+          <span class="cn">产品是凝固的意图——将能力变为有形之物，可传递，无需创造者在场即可使用。构建产品的宗旨，是将一件工具交到他人手中，延伸他们所能做到的事。每一家失去产品冲动的企业，都将沦为行政的空壳。</span>
+        </div>
+      </div>
+
+      <div class="purpose-card" style="--pc-accent:#5a8f73;">
+        <div class="pc-idx">12 · 08</div>
+        <div class="pc-title">Demand <span class="cn">需 求</span></div>
+        <div class="pc-body">
+          <span class="en">Need is not the same as want, and want is not the same as demand. Demand is the gap between the world as it is and the world a person is willing to act to change. Enterprises that understand demand find the real problem beneath the stated one — and build to close the actual gap.</span>
+          <span class="cn">需要不等于想要，想要不等于需求。需求是世界现状与一个人愿意为之采取行动的改变之间的落差。真正理解需求的企业，能在人们所述的问题之下找到真实的问题——并着手弥合真正的落差。</span>
+        </div>
+      </div>
+
+      <div class="purpose-card" style="--pc-accent:#5a8f73;">
+        <div class="pc-idx">12 · 09</div>
+        <div class="pc-title">Trend <span class="cn">趋 势</span></div>
+        <div class="pc-body">
+          <span class="en">A trend is a replicator gaining ground — a behavior, technology, or value that more people are adopting and fewer are abandoning. Enterprises that read trends correctly are not chasing fashion; they are discerning which directions are self-reinforcing and aligning their work with forces that will still be present tomorrow.</span>
+          <span class="cn">趋势是一个正在扩张的复制子——一种有更多人采纳、更少人放弃的行为、技术或价值。正确读懂趋势的企业，并非在追逐时髦；而是在辨别哪些方向具有自我强化的特性，并将工作与明天依然存在的力量对齐。</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SCALE IV: INDIVIDUAL ──────────────────────────── -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 12.Ⅳ · Scale: Individual</div>
+    <div class="scale-header">
+      <span class="scale-num">12 · Ⅳ</span>
+      <span class="scale-name" style="--sh-color:#6fa5c7;">Individual</span>
+      <span class="scale-name-cn">个 人</span>
+    </div>
+    <p class="w-p">
+      <span class="en">The individual is not the smallest unit of analysis — they are the point at which all other scales converge and become real. Nations and societies and enterprises ultimately succeed or fail in what they make possible for individual lives. Three purposes name what a life is trying to secure.</span>
+      <span class="cn">个人不是分析的最小单元——而是所有其他尺度汇聚并变为现实的那个点。国家、社会与企业，最终都在它们为个人生命所开启的可能中成败。三项宗旨道出了一个生命试图守护的事物。</span>
+    </p>
+    <div class="purpose-trio">
+
+      <div class="purpose-card" style="--pc-accent:#6fa5c7;">
+        <div class="pc-idx">12 · 10</div>
+        <div class="pc-title">Wealth <span class="cn">财 富</span></div>
+        <div class="pc-body">
+          <span class="en">Wealth is stored optionality — the accumulated ability to act, to wait, to invest, and to withstand setbacks without being destroyed by them. It is not an end in itself, but it is a precondition for nearly every other end. An individual without a floor of material security cannot fully exercise freedom, cannot develop capacities, cannot build toward anything.</span>
+          <span class="cn">财富是储存的可选性——是积累起来的行动能力、等待能力、投资能力，以及在挫折面前屹立不倒的能力。它本身不是目的，却是几乎所有其他目的的前提。一个缺乏物质安全底线的人，无法充分行使自由，无法发展能力，无法为任何事物而建造。</span>
+        </div>
+      </div>
+
+      <div class="purpose-card" style="--pc-accent:#6fa5c7;">
+        <div class="pc-idx">12 · 11</div>
+        <div class="pc-title">Health <span class="cn">健 康</span></div>
+        <div class="pc-body">
+          <span class="en">Health is the dynamic balance of a living system — not the absence of disease but the presence of capacity: to feel, to think, to move, to recover. It is the most personal of the twelve purposes because it is the one that is lived from the inside. Without health, all other purposes are exercised at a fraction of their potential.</span>
+          <span class="cn">健康是一个生命系统的动态平衡——不是疾病的缺席，而是能力的在场：感知、思考、行动、恢复的能力。它是十二项宗旨中最私人的一项，因为它从内部被体验。没有健康，所有其他宗旨都只能在潜力的一隅发挥。</span>
+        </div>
+      </div>
+
+      <div class="purpose-card" style="--pc-accent:#6fa5c7;">
+        <div class="pc-idx">12 · 12</div>
+        <div class="pc-title">Happiness <span class="cn">快 乐</span></div>
+        <div class="pc-body">
+          <span class="en">The last purpose is also the oldest. Happiness is not a reward for the other eleven — it is the signal that they are working. It includes pleasure but is not reducible to it: at its deepest it is the felt sense of living a life that is one's own, in connection with others, aimed at something worth aiming at.</span>
+          <span class="cn">最后一项宗旨也是最古老的一项。快乐不是其他十一项的奖赏——它是那十一项正在奏效的信号。它包含愉悦，却不能归结为愉悦：在最深处，它是那种活在属于自己的生命中、与他人相连、指向某个值得指向之物的切身感受。</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── STRUCTURAL NOTE ────────────────────────────────── -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 12.5 · Reading the Structure</div>
+    <h2 class="w-h2">Why 4 × 3?<span class="cn">为何是 4 × 3？</span></h2>
+    <p class="w-p">
+      <span class="en">The four scales are not a hierarchy in which Nation is more important than Individual. They are nested: the purposes of each scale create the conditions within which the scale below can pursue its own purposes. A nation's rule of law makes enterprise planning possible. Enterprise products and demand-responsiveness generate the wealth that enables individual health and happiness.</span>
+      <span class="cn">这四个尺度并非等级制度，国家并不比个人更重要。它们是嵌套的：每个尺度的宗旨，为其下方尺度追求自身宗旨创造条件。国家的法治使企业规划成为可能。企业的产品与需求响应，产生了使个人健康与快乐得以实现的财富。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The three purposes per scale are not ranked either. They are mutually supporting and mutually limiting. Each purpose keeps the other two from becoming pathological: democracy checks both rule-of-law formalism and rights absolutism; freedom checks both equality-enforced conformity and fraternity-enforced belonging; product discipline checks both pure demand-chasing and pure trend-surfing.</span>
+      <span class="cn">每个尺度的三项宗旨同样不分先后。它们相互支撑，也相互制约。每项宗旨都防止另外两项走向病态：民主制约法治形式主义与权利绝对主义；自由制约平等强制的趋同与博爱强制的归属；产品纪律制约纯粹的需求追逐与纯粹的趋势冲浪。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Twelve purposes, not twelve separate programs. They ask to be held together — which is exactly what makes organizational life hard, and worth the difficulty.</span>
+      <span class="cn">十二项宗旨，不是十二个分离的项目。它们要求被共同持守——这正是组织生活之所以艰难，也因此值得那份艰难的原因。</span>
+    </p>
+  </section>
+
+  <section class="w-section" style="text-align:center;">
+    <blockquote class="w-quote">
+      <span class="en">An organization that cannot state its purpose clearly is already drifting. One that states only one purpose is already dangerous.</span>
+      <span class="cn">一个无法清晰陈述其宗旨的组织，已经在漂流。一个只陈述单一宗旨的组织，已经在走向危险。</span>
+      <span class="w-quote-attr">The wager of the twelve · 十二项宗旨的赌注</span>
+    </blockquote>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Twelve Organizational Purposes · 十二组织宗旨 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

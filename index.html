@@ -2260,6 +2260,24 @@ section:nth-of-type(17) { --atmo: rgba(201,162,75,0.06); } /* Coda       · gold
     .top-nav a, .lang-switch button, footer a { will-change: transform; }
   }
 }
+
+/* ════════ links from each manifesto section into its standalone World ════════ */
+.world-link {
+  display: inline-flex; align-items: center; gap: 9px; margin-top: 26px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 22px; padding: 9px 18px;
+  background: rgba(201,162,75,0.04);
+  transition: background .25s, color .25s, gap .25s, border-color .25s;
+}
+.world-link:hover { background: var(--gold); color: var(--bg); gap: 14px; border-color: var(--gold); }
+.world-link span { transition: transform .25s; }
+.world-link:hover span { transform: translateX(3px); }
+.world-link.hero-cta {
+  margin-top: 38px; font-size: 12px; padding: 13px 26px; border-radius: 26px;
+  color: var(--gold-bright); border-color: var(--gold);
+}
+.world-link.hero-cta:hover { color: var(--bg); background: var(--gold-bright); }
 </style>
 <!-- SEO · GEO · psyverse -->
 <link rel="canonical" href="https://psyverse.fun/" />
@@ -4492,6 +4510,38 @@ section:nth-of-type(17) { --atmo: rgba(201,162,75,0.06); } /* Coda       · gold
   document.querySelectorAll('.lang-switch button').forEach(function(b){ magnetic(b, 0.3, 'background .25s, color .25s, box-shadow .25s'); });
   document.querySelectorAll('footer a').forEach(function(a){ magnetic(a, 0.25, 'color .3s'); });
   var brand = document.querySelector('.brand'); if(brand) magnetic(brand, 0.2, 'opacity .2s');
+})();
+</script>
+<script>
+/* ── Link each manifesto section to its standalone World (psyverse.fun/{slug}) ── */
+(function(){
+  var W = { one:'mission', two:'identity', three:'principles', four:'integrations',
+    five:'archetypes', six:'domains', seven:'deep-series', hubs:'hubs', matrix:'matrix',
+    breakthroughs:'breakthroughs', agi:'agi', purposes:'purposes', navigation:'navigation',
+    cultures:'cultures', beliefs:'beliefs', sixteen:'visions' };
+  Object.keys(W).forEach(function(id){
+    var sec = document.getElementById(id); if(!sec) return;
+    var a = document.createElement('a');
+    a.href = '/' + W[id];
+    if(id === 'one'){
+      a.className = 'world-link hero-cta';
+      a.innerHTML = '✦ Explore the Sixteen Worlds <span aria-hidden="true">→</span>';
+      var hc = sec.querySelector('.hero-center');
+      (hc || sec).appendChild(a);
+    } else {
+      a.className = 'world-link';
+      a.innerHTML = 'Enter this world <span aria-hidden="true">→</span>';
+      var intro = sec.querySelector('.section-intro');
+      if(intro) intro.insertAdjacentElement('afterend', a);
+      else sec.insertBefore(a, sec.firstChild);
+    }
+  });
+  /* add a Worlds link to the footer */
+  var foot = document.querySelector('footer');
+  if(foot){
+    var fa = foot.querySelector('a');
+    if(fa){ var w = document.createElement('a'); w.href = '/worlds'; w.textContent = 'Worlds'; fa.parentNode.insertBefore(w, fa); }
+  }
 })();
 </script>
 </body>

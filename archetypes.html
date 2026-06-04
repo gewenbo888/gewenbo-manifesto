@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Five Archetypes · 五行人格 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Five Archetypes — the Wu Xing personality system mapping Metal, Wood, Water, Fire, and Earth to five distinct ways of being in the world. A standalone world of the Psyverse manifesto." />
+<meta name="keywords" content="five archetypes, wu xing, five elements, personality, metal, wood, water, fire, earth, 五行人格, 金木水火土, 戈苏御风魂, Psyverse, Gewenbo" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/archetypes" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/archetypes" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/archetypes" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/archetypes" />
+<meta property="og:title" content="Five Archetypes · 五行人格" />
+<meta property="og:description" content="Metal cuts, Wood grows, Water flows, Fire ignites, Earth endures — five ways of meeting the world." />
+<meta property="og:url" content="https://psyverse.fun/archetypes" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Five Archetypes · 五行人格" />
+<meta name="twitter:description" content="Metal cuts, Wood grows, Water flows, Fire ignites, Earth endures — five ways of meeting the world." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Five Archetypes",
+  "about": "The Wu Xing personality system mapping Metal, Wood, Water, Fire, and Earth to five distinct archetypes — each a way of cutting, growing, flowing, igniting, or bearing the world.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* ── Wu Xing pentagon flourish ── */
+.wx-pentagon {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 36px;
+}
+.wx-pentagon svg { width: 200px; height: 200px; }
+
+/* generation-cycle pulse — gated behind prefers-reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  .wx-cycle-ring {
+    transform-origin: 100px 100px;
+    animation: wx-spin 30s linear infinite;
+  }
+  @keyframes wx-spin { to { transform: rotate(360deg); } }
+  .wx-node-glow {
+    animation: wx-pulse 3.6s ease-in-out infinite;
+  }
+  .wx-node-glow:nth-child(2) { animation-delay: .72s; }
+  .wx-node-glow:nth-child(3) { animation-delay: 1.44s; }
+  .wx-node-glow:nth-child(4) { animation-delay: 2.16s; }
+  .wx-node-glow:nth-child(5) { animation-delay: 2.88s; }
+  @keyframes wx-pulse {
+    0%, 100% { opacity: .18; r: 10; }
+    50%       { opacity: .45; r: 13; }
+  }
+}
+
+/* ── five-element card grid ── */
+.el-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+.el-card {
+  border: 1px solid rgba(201,162,75,.18);
+  border-radius: 4px;
+  padding: 28px 24px 22px;
+  position: relative;
+  background: rgba(10,9,8,.55);
+}
+.el-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  opacity: .06;
+  pointer-events: none;
+}
+/* element tints */
+.el-card[data-el="metal"]::before  { background: #c9c4b8; }
+.el-card[data-el="wood"]::before   { background: #8bb57b; }
+.el-card[data-el="water"]::before  { background: #6fa5c7; }
+.el-card[data-el="fire"]::before   { background: #d66b4a; }
+.el-card[data-el="earth"]::before  { background: #caa567; }
+
+.el-card .el-glyph {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.el-card[data-el="metal"] .el-glyph  { color: #c9c4b8; }
+.el-card[data-el="wood"]  .el-glyph  { color: #8bb57b; }
+.el-card[data-el="water"] .el-glyph  { color: #6fa5c7; }
+.el-card[data-el="fire"]  .el-glyph  { color: #d66b4a; }
+.el-card[data-el="earth"] .el-glyph  { color: #caa567; }
+
+.el-card .el-mantra {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold-bright, #e6c071);
+  margin-bottom: 2px;
+  letter-spacing: .1em;
+}
+.el-card .el-label {
+  font-family: var(--display, 'Fraunces', serif);
+  font-style: italic;
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--ivory, #ece4d3);
+  margin-bottom: 12px;
+}
+.el-card .el-sub {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ivory-faint, rgba(236,228,211,.45));
+  margin-bottom: 14px;
+}
+.el-card .el-quality {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--gold, #c9a24b);
+  margin-bottom: 6px;
+}
+.el-card .el-body { font-size: 14px; line-height: 1.75; color: var(--ivory-dim, rgba(236,228,211,.72)); }
+.el-card .el-body .cn { display: block; margin-top: 6px; font-family: var(--serif-cn, 'Noto Serif SC', serif); font-weight: 300; font-size: 13px; color: var(--ivory-faint, rgba(236,228,211,.5)); }
+
+/* ── mantra display ── */
+.mantra-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  justify-content: center;
+}
+.mantra-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 18px;
+  border: 1px solid rgba(201,162,75,.22);
+  border-radius: 3px;
+  min-width: 72px;
+  background: rgba(10,9,8,.4);
+}
+.mantra-pill .mp-char {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--gold-bright, #e6c071);
+  line-height: 1;
+}
+.mantra-pill .mp-el {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ivory-faint, rgba(236,228,211,.45));
+}
+.mantra-pill[data-el="metal"] .mp-el { color: #c9c4b8; }
+.mantra-pill[data-el="wood"]  .mp-el { color: #8bb57b; }
+.mantra-pill[data-el="water"] .mp-el { color: #6fa5c7; }
+.mantra-pill[data-el="fire"]  .mp-el { color: #d66b4a; }
+.mantra-pill[data-el="earth"] .mp-el { color: #caa567; }
+
+/* ── cycle table ── */
+.cycle-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 13.5px;
+}
+.cycle-table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-family: var(--display, 'Fraunces', serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--gold, #c9a24b);
+  border-bottom: 1px solid rgba(201,162,75,.2);
+}
+.cycle-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(201,162,75,.08);
+  color: var(--ivory-dim, rgba(236,228,211,.72));
+  vertical-align: top;
+}
+.cycle-table tr:last-child td { border-bottom: none; }
+.cycle-table .td-el { font-family: var(--serif-cn, 'Noto Serif SC', serif); font-size: 22px; font-weight: 700; width: 36px; text-align: center; }
+.cycle-table[data-col="metal"]  .td-el { color: #c9c4b8; }
+.cycle-table tr[data-el="metal"] .td-el  { color: #c9c4b8; }
+.cycle-table tr[data-el="wood"]  .td-el  { color: #8bb57b; }
+.cycle-table tr[data-el="water"] .td-el  { color: #6fa5c7; }
+.cycle-table tr[data-el="fire"]  .td-el  { color: #d66b4a; }
+.cycle-table tr[data-el="earth"] .td-el  { color: #caa567; }
+.cycle-table .td-en { color: var(--ivory, #ece4d3); }
+.cycle-table .td-cn { font-family: var(--serif-cn, 'Noto Serif SC', serif); font-weight: 300; font-size: 12px; color: var(--ivory-faint, rgba(236,228,211,.45)); margin-top: 2px; }
+</style>
+</head>
+<body data-world="archetypes">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">05 · Five Archetypes · 五 行 人 格</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <!-- Wu Xing pentagon SVG flourish -->
+  <div class="wx-pentagon" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="wx-glow" cx="50%" cy="50%">
+          <stop offset="0%" stop-color="#c9a24b" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#c9a24b" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="96" fill="url(#wx-glow)"/>
+      <!-- outer guide ring -->
+      <circle cx="100" cy="100" r="80" fill="none" stroke="#c9a24b" stroke-width="0.5" opacity="0.3"/>
+      <!-- generation cycle lines (pentagram star, gold) -->
+      <g class="wx-cycle-ring" stroke="#c9a24b" stroke-width="0.8" fill="none" opacity="0.35">
+        <!-- points at 270°, 342°, 54°, 126°, 198° (top first, clockwise) -->
+        <!-- Metal=top(100,20), Wood=top-right(176,67), Fire=bottom-right(148,163), Water=bottom-left(52,163), Earth=top-left(24,67) -->
+        <line x1="100" y1="20"  x2="148" y2="163"/>
+        <line x1="148" y1="163" x2="24"  y2="67"/>
+        <line x1="24"  y1="67"  x2="176" y2="67"/>
+        <line x1="176" y1="67"  x2="52"  y2="163"/>
+        <line x1="52"  y1="163" x2="100" y2="20"/>
+      </g>
+      <!-- pentagon edges (dimmer) -->
+      <polygon points="100,20 176,67 148,163 52,163 24,67" fill="none" stroke="#c9a24b" stroke-width="0.5" opacity="0.2"/>
+      <!-- glow halos -->
+      <circle class="wx-node-glow" cx="100" cy="20"  r="10" fill="#c9c4b8" opacity="0.18"/>
+      <circle class="wx-node-glow" cx="176" cy="67"  r="10" fill="#8bb57b" opacity="0.18"/>
+      <circle class="wx-node-glow" cx="148" cy="163" r="10" fill="#d66b4a" opacity="0.18"/>
+      <circle class="wx-node-glow" cx="52"  cy="163" r="10" fill="#6fa5c7" opacity="0.18"/>
+      <circle class="wx-node-glow" cx="24"  cy="67"  r="10" fill="#caa567" opacity="0.18"/>
+      <!-- element nodes -->
+      <g font-family="Noto Serif SC" font-weight="700" text-anchor="middle">
+        <circle cx="100" cy="20"  r="16" fill="#0a0908" stroke="#c9c4b8" stroke-width="1"/>
+        <text x="100" y="25"  font-size="16" fill="#c9c4b8">金</text>
+        <circle cx="176" cy="67"  r="16" fill="#0a0908" stroke="#8bb57b" stroke-width="1"/>
+        <text x="176" y="72"  font-size="16" fill="#8bb57b">木</text>
+        <circle cx="148" cy="163" r="16" fill="#0a0908" stroke="#d66b4a" stroke-width="1"/>
+        <text x="148" y="168" font-size="16" fill="#d66b4a">火</text>
+        <circle cx="52"  cy="163" r="16" fill="#0a0908" stroke="#6fa5c7" stroke-width="1"/>
+        <text x="52"  y="168" font-size="16" fill="#6fa5c7">水</text>
+        <circle cx="24"  cy="67"  r="16" fill="#0a0908" stroke="#caa567" stroke-width="1"/>
+        <text x="24"  y="72"  font-size="16" fill="#caa567">土</text>
+      </g>
+      <!-- centre dot -->
+      <circle cx="100" cy="100" r="3" fill="#c9a24b"/>
+      <text x="100" y="116" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="8" fill="#ece4d3" opacity="0.45">wu xing</text>
+    </svg>
+  </div>
+  <div class="eyebrow">Psyverse · World 05 / 16</div>
+  <div class="w-num">05</div>
+  <h1>Five <em>Archetypes</em><span class="cn">五 行 人 格</span></h1>
+  <p class="tagline">
+    <span class="en">Metal cuts. Wood grows. Water flows. Fire ignites. Earth endures. Five ways of meeting the world — one mantra to hold them all.</span>
+    <span class="cn">金锋锐，木觉醒，水流动，火点燃，土承载。五种与世界相遇的方式——一息五字，各持一行。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <!-- § 05.1 The System -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 05.1 · The System</div>
+    <h2 class="w-h2">
+      <span class="en">Wu Xing as personality grammar</span><span class="cn">五行作为人格语法</span>
+    </h2>
+    <p class="w-lead">
+      <span class="en">Wu Xing (五行) is not a zodiac. It is a grammar — five verbs the world uses to do its work, and five ways a person can embody those verbs. Metal cuts through to the point. Wood reaches toward the light. Water finds the path of least resistance and rides it. Fire leaps and changes what it touches. Earth holds still and carries everything else.</span>
+      <span class="cn">五行不是占星。它是一套语法——世界以五个动词运转，人则以五种方式将这些动词体现于自身。金能斩断，直至核心；木向光伸展；水寻最顺之道并乘势而行；火腾跃，改变所触；土静止，承载一切。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">Every real person is a blend. But each has a dominant note — a default mode that shapes their first instinct, their signature move, and the way their energy wants to spend itself. Recognising your note does not confine you; it names what you already are, so you can use it with more precision.</span>
+      <span class="cn">每个真实的人都是混合体。但每人都有一个主音——一种默认模式，塑造着本能反应、标志性动作，以及能量倾向于如何消耗自身。认出自己的主音不是限制，而是为你本已存在之物命名，让你得以更精准地运用它。</span>
+    </p>
+  </section>
+
+  <!-- § 05.2 The Mantra -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 05.2 · The Mantra · 五字之号</div>
+    <h2 class="w-h2">
+      <span class="en">戈 苏 御 风 魂 — five characters, one breath</span><span class="cn">戈苏御风魂——五字一息</span>
+    </h2>
+    <p class="w-p">
+      <span class="en">The five-character mantra 戈苏御风魂 is a personal signature that encodes all five archetypes in a single utterance — one character per element, in the traditional Wu Xing sequence beginning with Metal.</span>
+      <span class="cn">五字之号「戈苏御风魂」是一枚个人印记，将五种原型凝于一息——每字对应一行，依金木水火土之序展开。</span>
+    </p>
+    <div class="mantra-row" aria-label="Five-character mantra">
+      <div class="mantra-pill" data-el="metal">
+        <div class="mp-char">戈</div>
+        <div class="mp-el">金 · Metal</div>
+      </div>
+      <div class="mantra-pill" data-el="wood">
+        <div class="mp-char">苏</div>
+        <div class="mp-el">木 · Wood</div>
+      </div>
+      <div class="mantra-pill" data-el="water">
+        <div class="mp-char">御</div>
+        <div class="mp-el">水 · Water</div>
+      </div>
+      <div class="mantra-pill" data-el="fire">
+        <div class="mp-char">风</div>
+        <div class="mp-el">火 · Fire</div>
+      </div>
+      <div class="mantra-pill" data-el="earth">
+        <div class="mp-char">魂</div>
+        <div class="mp-el">土 · Earth</div>
+      </div>
+    </div>
+    <p class="w-p" style="margin-top:20px;">
+      <span class="en"><strong>戈</strong> (gē) — the dagger-axe, the cutting edge of Metal. <strong>苏</strong> (sū) — revival, the sudden greening of Wood. <strong>御</strong> (yù) — to ride and govern, the controlling poise of Water. <strong>风</strong> (fēng) — wind, the unbound kinetic quality that Fire sets loose. <strong>魂</strong> (hún) — the spiritual soul, the deep-rooted bearing of Earth.</span>
+      <span class="cn"><strong>戈</strong>，兵器之锋，金之切割；<strong>苏</strong>，复苏生长，木之觉醒；<strong>御</strong>，驾驭掌控，水之流动；<strong>风</strong>，疾行不羁，火之点燃；<strong>魂</strong>，精神根基，土之承载。</span>
+    </p>
+  </section>
+
+  <!-- § 05.3 The Five Archetypes -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 05.3 · The Five Archetypes · 五种原型</div>
+    <h2 class="w-h2">
+      <span class="en">One element, one archetype, one way of moving through the world</span><span class="cn">一行，一格，一种穿越世界的方式</span>
+    </h2>
+    <div class="el-grid">
+
+      <!-- METAL -->
+      <div class="el-card" data-el="metal">
+        <div class="el-glyph">金</div>
+        <div class="el-mantra">戈</div>
+        <div class="el-label">Blade — the Cutter</div>
+        <div class="el-sub">Metal · Jīn · 金</div>
+        <div class="el-quality">Sharpness &amp; Rules · 锋芒与规则</div>
+        <div class="el-body">
+          <span class="en">Metal archetypes cut to the essential. They see where others hesitate — the principle underneath the noise, the rule that makes the system coherent. Precision is not a technique for them; it is a value. They would rather say the uncomfortable true thing than the comfortable approximate one. Their signature move is reduction: taking everything away until only what matters remains.</span>
+          <span class="cn">金型者善于斩断冗余，直抵本质。他们在他人犹豫处看见核心——噪声之下的原则，使系统自洽的规律。精准对他们而言不是技巧，而是价值取向。他们宁说令人不适的真话，也不说圆滑的近似。其标志动作是「减法」：去除一切，直到只剩要紧之物。</span>
+        </div>
+      </div>
+
+      <!-- WOOD -->
+      <div class="el-card" data-el="wood">
+        <div class="el-glyph">木</div>
+        <div class="el-mantra">苏</div>
+        <div class="el-label">Awakening — the Grower</div>
+        <div class="el-sub">Wood · Mù · 木</div>
+        <div class="el-quality">Growth &amp; Understanding · 觉醒与生长</div>
+        <div class="el-body">
+          <span class="en">Wood archetypes reach toward the light of understanding. They do not accept the world as fixed; they feel in it an unfinished becoming, and their instinct is to grow into the gap. Curiosity is their fuel — not curiosity as a polite interest, but as a compulsion to update the model until it matches reality. Their signature move is revision: they keep thinking until the picture sharpens.</span>
+          <span class="cn">木型者向理解之光伸展。他们不接受世界是固定的；他们感知其中未竟的生成，本能是向那道缺口生长。好奇是他们的燃料——不是礼貌性的兴趣，而是一种强迫：持续更新模型，直至它与现实吻合。其标志动作是「修订」：不断思考，直到图景清晰。</span>
+        </div>
+      </div>
+
+      <!-- WATER -->
+      <div class="el-card" data-el="water">
+        <div class="el-glyph">水</div>
+        <div class="el-mantra">御</div>
+        <div class="el-label">Flow — the Rider</div>
+        <div class="el-sub">Water · Shuǐ · 水</div>
+        <div class="el-quality">Adapting &amp; Riding the Trend · 掌控与流动</div>
+        <div class="el-body">
+          <span class="en">Water archetypes do not fight the current; they read it. They sense where force is gathering before others notice, and position themselves to move with it. This is not passivity — it is a profound intelligence about momentum. Their power comes from knowing when to yield and when the yielding itself becomes a move that cannot be countered. Their signature move is navigation: they find the channel no one else saw.</span>
+          <span class="cn">水型者不与水流对抗，而是读懂它。他们在他人察觉之前感知力量的聚集，并将自己置于顺势而行的位置。这不是被动——而是对势能的深刻智识。其力量源于知道何时退让，而那退让本身成为无法被反制的一招。其标志动作是「导航」：找到无人发现的那条通道。</span>
+        </div>
+      </div>
+
+      <!-- FIRE -->
+      <div class="el-card" data-el="fire">
+        <div class="el-glyph">火</div>
+        <div class="el-mantra">风</div>
+        <div class="el-label">Wind — the Igniter</div>
+        <div class="el-sub">Fire · Huǒ · 火</div>
+        <div class="el-quality">Rebellion &amp; Activation · 不羁与点燃</div>
+        <div class="el-body">
+          <span class="en">Fire archetypes do not stay in one place long enough to be categorised. Their energy is activation — they show up and things begin to move. They are not primarily thinkers or planners; they are starters. What they carry is irreverence toward whatever has become rigid and a genuine delight in the unpredictable. The world gets warmer and less certain in their presence. Their signature move is ignition: they make something happen that would not have happened without them.</span>
+          <span class="cn">火型者不在任何一处停留足够久以被归类。他们的能量是激活——他们一出现，事情便开始流动。他们首先不是思考者或规划者，而是启动者。他们携带的是对一切僵化之物的不敬，以及对不可预知之事的真实喜悦。在他们身边，世界变得更温暖，也更不确定。其标志动作是「点火」：让某件没有他们就不会发生的事情发生。</span>
+        </div>
+      </div>
+
+      <!-- EARTH -->
+      <div class="el-card" data-el="earth">
+        <div class="el-glyph">土</div>
+        <div class="el-mantra">魂</div>
+        <div class="el-label">Soul — the Bearer</div>
+        <div class="el-sub">Earth · Tǔ · 土</div>
+        <div class="el-quality">Stability &amp; Transcendence · 稳定与承载</div>
+        <div class="el-body">
+          <span class="en">Earth archetypes do not need to move in order to matter. Their quality is gravitas — a settled presence that other people organise themselves around. They hold memory, maintain continuity, and provide the ground that makes all the other elements possible. In the end, what they offer is the deepest thing: the sense that something is real and will endure. Their signature move is bearing: they carry what others cannot carry and still remain themselves.</span>
+          <span class="cn">土型者无需移动便能产生意义。他们的气质是重量感——一种沉稳的存在，他人以其为中心自行组织。他们保存记忆，维持连续，提供使其他一切成为可能的基底。最终，他们所给予的是最深刻的东西：某物是真实的、将会持续的那种感觉。其标志动作是「承载」：担起他人无法承担之物，而仍是自己。</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- § 05.4 Generation Cycle -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 05.4 · The Generation Cycle · 相生之序</div>
+    <h2 class="w-h2">
+      <span class="en">How the archetypes feed each other</span><span class="cn">五种原型如何彼此滋养</span>
+    </h2>
+    <p class="w-p">
+      <span class="en">In classical Wu Xing, each element generates the next: Metal collects water (condensation), Water nourishes wood (rain feeds roots), Wood feeds fire (fuel), Fire produces earth (ash becomes soil), Earth bears metal (ore forms in stone). The same logic holds for the archetypes: each mode of being creates the condition in which the next becomes possible.</span>
+      <span class="cn">在传统五行中，每一行生养下一行：金生水（凝结成露），水生木（雨润根系），木生火（薪燃为火），火生土（灰成沃壤），土生金（矿藏于石）。同样的逻辑适用于人格原型：每一种存在方式为下一种的出现创造条件。</span>
+    </p>
+    <table class="cycle-table" aria-label="Wu Xing generation cycle">
+      <thead>
+        <tr>
+          <th>元素</th>
+          <th>Archetype</th>
+          <th>Generates</th>
+          <th>Because</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-el="metal">
+          <td class="td-el">金</td>
+          <td><span class="td-en">Blade · Metal</span><div class="td-cn">刀锋 · 金</div></td>
+          <td><span class="td-en">→ Water</span><div class="td-cn">生水</div></td>
+          <td><span class="td-en">Precision creates clarity; clarity creates space for flow.</span><div class="td-cn">精准产生清晰；清晰为流动腾出空间。</div></td>
+        </tr>
+        <tr data-el="water">
+          <td class="td-el">水</td>
+          <td><span class="td-en">Flow · Water</span><div class="td-cn">流动 · 水</div></td>
+          <td><span class="td-en">→ Wood</span><div class="td-cn">生木</div></td>
+          <td><span class="td-en">Adaptability nourishes curiosity; riding trends opens questions.</span><div class="td-cn">适应力滋养好奇；顺势而行开启追问。</div></td>
+        </tr>
+        <tr data-el="wood">
+          <td class="td-el">木</td>
+          <td><span class="td-en">Awakening · Wood</span><div class="td-cn">觉醒 · 木</div></td>
+          <td><span class="td-en">→ Fire</span><div class="td-cn">生火</div></td>
+          <td><span class="td-en">Understanding builds the charge that ignites action.</span><div class="td-cn">理解积蓄点火的能量。</div></td>
+        </tr>
+        <tr data-el="fire">
+          <td class="td-el">火</td>
+          <td><span class="td-en">Wind · Fire</span><div class="td-cn">烈风 · 火</div></td>
+          <td><span class="td-en">→ Earth</span><div class="td-cn">生土</div></td>
+          <td><span class="td-en">After ignition, what endures becomes ground.</span><div class="td-cn">点燃之后，留存之物成为基底。</div></td>
+        </tr>
+        <tr data-el="earth">
+          <td class="td-el">土</td>
+          <td><span class="td-en">Soul · Earth</span><div class="td-cn">灵魂 · 土</div></td>
+          <td><span class="td-en">→ Metal</span><div class="td-cn">生金</div></td>
+          <td><span class="td-en">Stability and depth are the ore from which sharpness is forged.</span><div class="td-cn">稳定与深度是锻造锋芒的矿石。</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- § 05.5 The Wager -->
+  <section class="w-section" style="text-align:center;">
+    <blockquote class="w-quote">
+      <span class="en">"You do not choose your element. You recognise it — in the moment you notice you have been doing it all along."</span>
+      <span class="cn">「你不是选择自己的行，而是认出它——在你发觉自己一直如此的那一刻。」</span>
+      <span class="w-quote-attr">The logic of the archetypes · 人格原型的逻辑</span>
+    </blockquote>
+  </section>
+
+  <!-- § 05.6 From Archetypes to Worlds -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 05.5 · From Archetypes to Worlds</div>
+    <p class="w-lead">
+      <span class="en">The five archetypes are not a taxonomy of people. They are a map of modes — and every world in this Psyverse draws on all five, in different proportions. The mission (World 01) asks for Metal's clarity and Wood's reach. The domains ask for Water's navigation. The vision asks for Earth's long horizon. And running through all of it — the irreducible spark — is Fire.</span>
+      <span class="cn">五种原型不是人的分类，而是模式的地图——心域中的每一重世界都以不同比例调用全部五种。使命（第01世界）需要金的清晰与木的伸展；领域需要水的导航；愿景需要土的长远地平；而贯穿其中、不可化约的那点火星——正是火。</span>
+    </p>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Five Archetypes · 五行人格 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Sixteen Worlds · 十六世界 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="The Sixteen Worlds of the Psyverse — Mission, Identity, Principles, Integrations, Archetypes, Domains, Deep Series, Hubs, Matrix, Breakthroughs, AGI, Purposes, Navigation, Cultures, Beliefs, Visions. Each a standalone world you can enter directly." />
+<meta name="keywords" content="Psyverse, sixteen worlds, manifesto, mission, principles, archetypes, AGI, visions, 十六世界" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/worlds" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/worlds" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/worlds" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/worlds" />
+<meta property="og:title" content="The Sixteen Worlds · 十六世界" />
+<meta property="og:description" content="Sixteen standalone worlds, one mission. Enter any of them directly." />
+<meta property="og:url" content="https://psyverse.fun/worlds" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Sixteen Worlds · 十六世界" />
+<meta name="twitter:description" content="Sixteen standalone worlds, one mission. Enter any of them directly." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "The Sixteen Worlds",
+  "description": "The sixteen standalone worlds of the Psyverse manifesto.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+.worlds-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; margin-top: 56px; padding-bottom: 30px; }
+.world-tile {
+  position: relative; display: block; text-decoration: none;
+  padding: 26px 24px 24px; border: 1px solid var(--line); border-radius: 5px;
+  background: rgba(255,255,255,0.012); overflow: hidden;
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s;
+}
+.world-tile:hover { transform: translateY(-4px); background: var(--bg-2);
+  box-shadow: 0 18px 46px -16px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.3), 0 0 36px -10px rgba(201,162,75,0.22); }
+.world-tile .wt-num { font-family: var(--display); font-style: italic; font-weight: 200; font-size: 46px; line-height: 1; color: var(--accent); font-variation-settings: "opsz" 120; }
+.world-tile .wt-en { font-family: var(--display); font-size: 24px; font-weight: 400; color: var(--ivory); margin-top: 10px; }
+.world-tile:hover .wt-en { color: var(--gold-bright); }
+.world-tile .wt-cn { font-family: var(--cjk); font-size: 14px; font-weight: 500; color: var(--accent); margin-top: 2px; letter-spacing: 0.1em; }
+.world-tile .wt-desc { font-size: 13.5px; line-height: 1.6; color: var(--ivory-dim); margin-top: 13px; }
+.world-tile .wt-desc .cn { display: block; font-family: var(--cjk); font-size: 0.92em; margin-top: 6px; color: var(--ivory-faint); }
+.world-tile .wt-go { position: absolute; top: 22px; right: 22px; font-family: var(--mono); font-size: 14px; color: var(--gold-deep); transition: transform .3s, color .3s; }
+.world-tile:hover .wt-go { color: var(--accent); transform: translateX(3px); }
+.worlds-lead { max-width: 760px; }
+</style>
+</head>
+<body data-world="worlds">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">✦ The Sixteen Worlds · 十 六 世 界</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="https://psyverse.fun/">← Manifesto</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <div class="eyebrow">Psyverse · The Atlas of Worlds</div>
+  <div class="w-num">✦</div>
+  <h1>Sixteen <em>Worlds</em><span class="cn">十 六 世 界</span></h1>
+  <p class="tagline">
+    <span class="en">One mission, refracted into sixteen worlds. Each is a standalone place you can enter directly — together they form the whole of the Psyverse.</span>
+    <span class="cn">一条使命，折射为十六个世界。每一个都是可以直接进入的独立之地——它们合起来，便是心域的全部。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+  <section class="w-section" style="border-bottom:none; padding-bottom:0;">
+    <p class="w-lead worlds-lead">
+      <span class="en">Choose a world to enter.</span>
+      <span class="cn">选择一个世界进入。</span>
+    </p>
+
+    <div class="worlds-index">
+      <a class="world-tile" href="/mission"><div class="wt-go">→</div><div class="wt-num">01</div><div class="wt-en">Mission</div><div class="wt-cn">一 使命</div><div class="wt-desc"><span class="en">Science, technology, and engineering, turned toward real problems.</span><span class="cn">用科学、技术与工程，对准真实的问题。</span></div></a>
+      <a class="world-tile" href="/identity"><div class="wt-go">→</div><div class="wt-num">02</div><div class="wt-en">Identity</div><div class="wt-cn">二 重身份</div><div class="wt-desc"><span class="en">Creator and Seeker — the two selves held at once.</span><span class="cn">创造者与求索者——同时持有的两个自我。</span></div></a>
+      <a class="world-tile" href="/principles"><div class="wt-go">→</div><div class="wt-num">03</div><div class="wt-en">Principles</div><div class="wt-cn">三 大原则</div><div class="wt-desc"><span class="en">Truth, Goodness, Beauty — 真 · 善 · 美.</span><span class="cn">真、善、美——衡量一切的三条标尺。</span></div></a>
+      <a class="world-tile" href="/integrations"><div class="wt-go">→</div><div class="wt-num">04</div><div class="wt-en">Integrations</div><div class="wt-cn">四 大融合</div><div class="wt-desc"><span class="en">Four opposed pairs, each resolved into one.</span><span class="cn">四对看似对立者，各自融合为一。</span></div></a>
+      <a class="world-tile" href="/archetypes"><div class="wt-go">→</div><div class="wt-num">05</div><div class="wt-en">Archetypes</div><div class="wt-cn">五 行人格</div><div class="wt-desc"><span class="en">The Five Elements as character — 金木水火土.</span><span class="cn">五行作为人格——金木水火土。</span></div></a>
+      <a class="world-tile" href="/domains"><div class="wt-go">→</div><div class="wt-num">06</div><div class="wt-en">Domains</div><div class="wt-cn">六 大领域</div><div class="wt-desc"><span class="en">The six territories where the work is done.</span><span class="cn">工作展开的六片疆域。</span></div></a>
+      <a class="world-tile" href="/deep-series"><div class="wt-go">→</div><div class="wt-num">07</div><div class="wt-en">Deep Series</div><div class="wt-cn">深 度系列</div><div class="wt-desc"><span class="en">A cognitive ladder, from learning to action.</span><span class="cn">一道认知阶梯，从学习直到行动。</span></div></a>
+      <a class="world-tile" href="/hubs"><div class="wt-go">→</div><div class="wt-num">08</div><div class="wt-en">Hubs</div><div class="wt-cn">八 大枢纽</div><div class="wt-desc"><span class="en">Eight cities of operation across the globe.</span><span class="cn">遍布全球的八座运作枢纽。</span></div></a>
+      <a class="world-tile" href="/matrix"><div class="wt-go">→</div><div class="wt-num">09</div><div class="wt-en">Matrix</div><div class="wt-cn">存在之矩阵</div><div class="wt-desc"><span class="en">A 3×3 map of matter, information, and energy.</span><span class="cn">物质、信息、能量的 3×3 之图。</span></div></a>
+      <a class="world-tile" href="/breakthroughs"><div class="wt-go">→</div><div class="wt-num">10</div><div class="wt-en">Breakthroughs</div><div class="wt-cn">十 大突破</div><div class="wt-desc"><span class="en">Ten frontiers, each climbing Levels 1 → 5.</span><span class="cn">十大前沿，各自攀越一至五级。</span></div></a>
+      <a class="world-tile" href="/agi"><div class="wt-go">→</div><div class="wt-num">11</div><div class="wt-en">AGI</div><div class="wt-cn">通往通用智能</div><div class="wt-desc"><span class="en">Eleven approaches to general intelligence.</span><span class="cn">通往通用人工智能的十一条路径。</span></div></a>
+      <a class="world-tile" href="/purposes"><div class="wt-go">→</div><div class="wt-num">12</div><div class="wt-en">Purposes</div><div class="wt-cn">十二组织宗旨</div><div class="wt-desc"><span class="en">Four scales × three purposes of organization.</span><span class="cn">四种尺度 × 三重宗旨。</span></div></a>
+      <a class="world-tile" href="/navigation"><div class="wt-go">→</div><div class="wt-num">13</div><div class="wt-en">Navigation</div><div class="wt-cn">十三步导航</div><div class="wt-desc"><span class="en">Thirteen steps, four phases, one closed loop.</span><span class="cn">十三步、四阶段，构成一个闭环。</span></div></a>
+      <a class="world-tile" href="/cultures"><div class="wt-go">→</div><div class="wt-num">14</div><div class="wt-en">Cultures</div><div class="wt-cn">十四文化观</div><div class="wt-desc"><span class="en">Fourteen untranslatable concepts of the world.</span><span class="cn">十四个无法翻译的世界文化观念。</span></div></a>
+      <a class="world-tile" href="/beliefs"><div class="wt-go">→</div><div class="wt-num">15</div><div class="wt-en">Beliefs</div><div class="wt-cn">十五信仰集合</div><div class="wt-desc"><span class="en">Supreme deities and ultimate principles, compared.</span><span class="cn">至高神祇与终极原则的并观。</span></div></a>
+      <a class="world-tile" href="/visions"><div class="wt-go">→</div><div class="wt-num">16</div><div class="wt-en">Visions</div><div class="wt-cn">十六愿景</div><div class="wt-desc"><span class="en">The ladder and the axes — the long horizon.</span><span class="cn">阶梯与轴线——那道漫长的地平线。</span></div></a>
+    </div>
+  </section>
+</main>
+
+<footer class="w-foot">
+  <div class="sig">The Sixteen Worlds · 十六世界 — the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+    <a href="https://github.com/gewenbo888/gewenbo-manifesto">GitHub</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>

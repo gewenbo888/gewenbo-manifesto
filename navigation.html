@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thirteen-Step Navigation · 十三步导航 | Psyverse</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="Thirteen-Step Navigation — a closed-loop operating system for a life of purpose: four phases, thirteen steps, one self-renewing cycle. A standalone world of the Psyverse manifesto." />
+<meta name="keywords" content="thirteen-step navigation, life navigation, closed loop, mission, positioning, first principles, flow, adversity, Psyverse, 十三步导航" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://psyverse.fun/navigation" />
+<link rel="alternate" hreflang="en" href="https://psyverse.fun/navigation" />
+<link rel="alternate" hreflang="zh-CN" href="https://psyverse.fun/navigation" />
+<link rel="alternate" hreflang="x-default" href="https://psyverse.fun/navigation" />
+<meta property="og:title" content="Thirteen-Step Navigation · 十三步导航" />
+<meta property="og:description" content="Four phases, thirteen steps, one self-renewing cycle — a closed-loop operating system for a life aimed at meaning." />
+<meta property="og:url" content="https://psyverse.fun/navigation" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Thirteen-Step Navigation · 十三步导航" />
+<meta name="twitter:description" content="Four phases, thirteen steps, one self-renewing cycle — a closed-loop operating system for a life aimed at meaning." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0908" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Thirteen-Step Navigation",
+  "about": "A closed-loop navigational system for purposeful life: four phases moving from inner-world construction through real-world interaction, influence amplification, and adversity-forged rebirth — then cycling back to a new beginning.",
+  "inLanguage": ["en", "zh-CN"],
+  "isPartOf": { "@type": "WebSite", "name": "Psyverse", "url": "https://psyverse.fun/" },
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" }
+}
+</script>
+<!-- /SEO -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/worlds.css" />
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+
+<style>
+/* page-local flourish: the navigation orbit */
+.nav-orbit {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 8px 0 34px;
+}
+.nav-orbit .ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+}
+.nav-orbit .ring:nth-child(1) { opacity: .28; }
+.nav-orbit .ring:nth-child(2) { opacity: .14; transform: scale(1.35); }
+.nav-orbit .ring:nth-child(3) { opacity: .07; transform: scale(1.7); }
+.nav-orbit .hub {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 14px; height: 14px;
+  margin: -7px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 32px var(--gold);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nav-orbit .dot {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 6px; height: 6px;
+    margin: -3px;
+    border-radius: 50%;
+    background: var(--gold-bright);
+    box-shadow: 0 0 8px var(--gold);
+    animation: nav-spin 10s linear infinite;
+  }
+  .nav-orbit .dot:nth-child(4) { animation-delay: 0s;    transform-origin: -63px 0; }
+  .nav-orbit .dot:nth-child(5) { animation-delay: -3.3s; transform-origin: -63px 0; background: var(--ivory-faint); box-shadow: none; width: 4px; height: 4px; }
+  .nav-orbit .dot:nth-child(6) { animation-delay: -6.6s; transform-origin: -63px 0; background: var(--ivory-faint); box-shadow: none; width: 4px; height: 4px; }
+  @keyframes nav-spin {
+    from { transform: rotate(0deg) translateX(63px); }
+    to   { transform: rotate(360deg) translateX(63px); }
+  }
+  .ring:nth-child(1) { animation: ring-pulse 6s ease-in-out infinite; }
+  @keyframes ring-pulse {
+    0%,100% { opacity: .28; }
+    50%      { opacity: .14; }
+  }
+}
+
+/* phase strip */
+.phase-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: color-mix(in srgb, var(--gold) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 32px;
+}
+.phase-col {
+  background: var(--bg);
+  padding: 22px 20px 20px;
+}
+.phase-col .ph-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: .7;
+  margin-bottom: 6px;
+}
+.phase-col .ph-name {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: var(--ivory);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.phase-col .ph-cn {
+  font-family: var(--serif-cn);
+  font-size: 12px;
+  color: var(--ivory-faint);
+  letter-spacing: .06em;
+}
+.phase-col .ph-range {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gold);
+  opacity: .5;
+}
+
+/* step table */
+.step-table {
+  display: grid;
+  gap: 2px;
+  margin-top: 20px;
+}
+.step-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 1fr;
+  align-items: start;
+  gap: 12px;
+  padding: 12px 10px;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 10%, transparent);
+  transition: background .15s;
+}
+.step-row:last-child { border-bottom: none; }
+.step-row:hover { background: color-mix(in srgb, var(--gold) 5%, transparent); }
+.step-row .s-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: var(--gold);
+  opacity: .6;
+  padding-top: 2px;
+}
+.step-row .s-name {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(15px, 1.8vw, 19px);
+  color: var(--ivory);
+  line-height: 1.3;
+}
+.step-row .s-name small {
+  display: block;
+  font-family: var(--serif-cn);
+  font-style: normal;
+  font-size: 12px;
+  color: var(--ivory-faint);
+  margin-top: 2px;
+  letter-spacing: .06em;
+}
+.step-row .s-fn {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  opacity: .75;
+  padding-top: 3px;
+  line-height: 1.5;
+}
+.step-row .s-fn small {
+  display: block;
+  font-family: var(--serif-cn);
+  font-size: 11px;
+  color: var(--ivory-faint);
+  opacity: .7;
+  letter-spacing: .04em;
+  margin-top: 1px;
+}
+.step-row.loop-step .s-name { color: var(--gold-bright); }
+.step-row.loop-step .s-num  { opacity: 1; }
+
+/* loop note inline */
+.loop-note {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  margin-top: 24px;
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--gold) 4%, transparent);
+}
+.loop-note .loop-glyph {
+  font-size: 30px;
+  color: var(--gold-bright);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.loop-note p { margin: 0; }
+</style>
+</head>
+<body data-world="navigation">
+
+<header class="w-bar">
+  <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
+  <div class="bar-mid">13 · Thirteen-Step Navigation · 十 三 步 导 航</div>
+  <div class="bar-right">
+    <a class="to-worlds" href="/worlds">✦ Worlds</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-setlang="both">双语</button>
+      <button type="button" data-setlang="zh">中</button>
+      <button type="button" data-setlang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="w-hero">
+  <div class="nav-orbit" aria-hidden="true">
+    <span class="ring"></span>
+    <span class="ring"></span>
+    <span class="ring"></span>
+    <span class="hub"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+  <div class="eyebrow">Psyverse · World 13 / 16</div>
+  <div class="w-num">13</div>
+  <h1>Thirteen-Step <em>Navigation</em><span class="cn">十 三 步 导 航</span></h1>
+  <p class="tagline">
+    <span class="en">Four phases. Thirteen steps. One closed loop — not a checklist to complete but a cycle to inhabit, again and again, as the destination grows.</span>
+    <span class="cn">四个阶段，十三个步骤，一个封闭的循环——不是一份待完成的清单，而是一个随目的地成长、一再居住其中的轨道。</span>
+  </p>
+</section>
+
+<main class="w-wrap">
+
+  <!-- §13.0 Overview -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 13.0 · A Map That Moves</div>
+    <p class="w-lead">
+      <span class="en">Most maps are static — they show where you are and where you might go. This one is different. The Thirteen-Step Navigation is a living operating system: a sequence of moves that, once completed, starts again at a higher elevation. Step 13 does not end the journey. It hands you back to Step 2, with new ground under your feet.</span>
+      <span class="cn">大多数地图是静止的——它们展示你在哪里、可能去往哪里。这张不同。「十三步导航」是一个活的操作系统：一套一旦走完便在更高处重新启动的行动序列。第十三步并非旅程的终点，它把你交还给第二步，而你的脚下已换了新的土地。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The thirteen steps are gathered into four phases, each with its own character and demand. Phase I builds the inner world that makes everything else coherent. Phase II puts that inner world into contact with reality. Phase III shapes and multiplies whatever real work has emerged. Phase IV forges the whole through adversity and rebirths it as a new beginning.</span>
+      <span class="cn">十三步聚合为四个阶段，每个阶段都有其性格与要求。第一阶段构筑内在世界，让其余一切得以连贯。第二阶段让内在世界与现实接触。第三阶段塑造并放大真实劳动所结出的果实。第四阶段将全部淬炼于逆境，以重生开启新的起点。</span>
+    </p>
+
+    <!-- phase overview strip -->
+    <div class="phase-strip" aria-label="Four phases overview">
+      <div class="phase-col">
+        <div class="ph-label">Phase Ⅰ</div>
+        <div class="ph-name">Construction of the Inner World</div>
+        <div class="ph-cn">内在世界之构筑</div>
+        <div class="ph-range">Steps 01 – 03</div>
+      </div>
+      <div class="phase-col">
+        <div class="ph-label">Phase Ⅱ</div>
+        <div class="ph-name">Interaction with the Real World</div>
+        <div class="ph-cn">与现实世界互动</div>
+        <div class="ph-range">Steps 04 – 08</div>
+      </div>
+      <div class="phase-col">
+        <div class="ph-label">Phase Ⅲ</div>
+        <div class="ph-name">Shaping &amp; Amplifying Influence</div>
+        <div class="ph-cn">塑造并放大影响力</div>
+        <div class="ph-range">Steps 09 – 11</div>
+      </div>
+      <div class="phase-col">
+        <div class="ph-label">Phase Ⅳ</div>
+        <div class="ph-name">Refinement &amp; Rebirth</div>
+        <div class="ph-cn">淬炼与重生</div>
+        <div class="ph-range">Steps 12 – 13</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phase I -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 13.1 · Phase Ⅰ — Construction of the Inner World · 内在世界之构筑</div>
+    <h2 class="w-h2">Where navigation begins<span class="cn">导航从何处开始</span></h2>
+    <p class="w-p">
+      <span class="en">Before you can move well through the world, you need something inside that holds — a destination you actually believe in, an honest account of where you stand, and the internal climate that makes sustained effort possible. Phase I is not preparation for the real work. It is the foundation that makes everything else non-arbitrary.</span>
+      <span class="cn">在你能在世界中行动之前，你需要内部有一些能够支撑的东西——一个你真正相信的目的地、一份关于自身所处位置的诚实说明，以及让持续努力成为可能的内在气候。第一阶段不是真正工作的准备，而是让其余一切变得非任意的地基。</span>
+    </p>
+
+    <div class="step-table">
+      <div class="step-row">
+        <div class="s-num">13 · 01</div>
+        <div class="s-name">Mission<small>使命</small></div>
+        <div class="s-fn">Destination<small>终点</small></div>
+      </div>
+      <div class="step-row">
+        <div class="s-num">13 · 02</div>
+        <div class="s-name">Positioning<small>定位</small></div>
+        <div class="s-fn">Starting Point<small>起点</small></div>
+      </div>
+      <div class="step-row">
+        <div class="s-num">13 · 03</div>
+        <div class="s-name">Self-Suggestion<small>自我暗示</small></div>
+        <div class="s-fn">Turbocharger<small>加速器</small></div>
+      </div>
+    </div>
+
+    <h3 class="w-h3">
+      <span class="en">01 · Mission — the Destination</span>
+      <span class="cn">01 · 使命——终点</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">A mission is the answer to a question most people never stop to ask: what is the end point I am moving toward? Not a goal, which can be crossed off. Not a preference, which shifts with mood. A mission is the direction that organizes everything else — the point on the horizon that makes each step meaningful rather than merely busy. Without a declared destination, effort disperses. With one, even detours become legible.</span>
+      <span class="cn">使命是对大多数人从未停下来追问的一个问题的回答：我正在移向的终点是什么？它不是目标——目标可以被划掉；也不是偏好——偏好随情绪漂移。使命是组织其余一切的方向——地平线上那个让每一步变得有意义而非仅仅繁忙的点。没有宣明的目的地，努力便会消散；有了它，连弯路都变得可读。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">02 · Positioning — the Starting Point</span>
+      <span class="cn">02 · 定位——起点</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">Navigation requires two coordinates: the destination and the current location. Positioning is the honest, unsentimental work of determining where you actually are — not where you wish you were, not where you once were. What capacities do you genuinely have? What gaps must be crossed? What conditions, relationships, and resources actually surround you? Accurate positioning is uncomfortable but it is also the only thing that makes a true course possible. Flattery of the self produces beautiful plans that go nowhere.</span>
+      <span class="cn">导航需要两个坐标：目的地与当前位置。定位是诚实、不带感情色彩地确定你实际所在位置的工作——不是你希望所在之处，也不是你曾经所在之处。你真正拥有哪些能力？必须跨越哪些差距？哪些条件、关系与资源实际围绕着你？准确定位令人不适，但它也是使真正航线成为可能的唯一条件。对自我的奉承只会产出走向虚空的美丽计划。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">03 · Self-Suggestion — the Turbocharger</span>
+      <span class="cn">03 · 自我暗示——加速器</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">Knowing your destination and your location is not enough to move. The inner climate — the running commentary, the default interpretation of setbacks, the felt sense of whether you belong in the territory you are entering — shapes what you actually do. Self-suggestion is the deliberate shaping of that climate: rehearsing the identity that fits the mission, interrupting corrosive narratives early, building the internal conditions under which sustained effort feels natural rather than heroic. It is not positive thinking in the shallow sense. It is the quiet, ongoing engineering of the self that you are becoming.</span>
+      <span class="cn">知道目的地与当前位置还不足以启动。内在气候——持续运行的内心独白、面对挫折时的默认诠释方式、进入新领域时那种「自己是否属于这里」的感受——决定了你实际会做什么。自我暗示就是对这种气候的刻意塑造：排演与使命相符的身份，在腐蚀性叙事早期就予以打断，构建让持续努力感觉自然而非英雄主义的内部条件。它不是浅薄意义上的积极思维，而是你正在成为的那个自我的静默、持续的工程。</span>
+    </p>
+  </section>
+
+  <!-- Phase II -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 13.2 · Phase Ⅱ — Interaction with the Real World · 与现实世界互动</div>
+    <h2 class="w-h2">Where maps meet terrain<span class="cn">地图与地形相遇之处</span></h2>
+    <p class="w-p">
+      <span class="en">An inner world, however well constructed, cannot validate itself. Phase II is the contact layer — the five steps through which intention meets resistance, learns from it, and deepens into something the real world cannot easily dislodge. The arc here is Action → Feedback → Re-action → Flow: a tightening spiral from tentative first moves to absorbed mastery.</span>
+      <span class="cn">内在世界无论构筑得多好，都无法自我验证。第二阶段是接触层——意图在这五步中遭遇阻力、从中学习，并深化为现实世界难以撼动的东西。这里的弧线是行动→反馈→再行动→心流：从试探性的第一步骤到沉浸式掌握的不断收紧的螺旋。</span>
+    </p>
+
+    <div class="step-table">
+      <div class="step-row">
+        <div class="s-num">13 · 04</div>
+        <div class="s-name">First Principles Thinking<small>第一性原理</small></div>
+        <div class="s-fn">Methodology<small>方法论</small></div>
+      </div>
+      <div class="step-row">
+        <div class="s-num">13 · 05</div>
+        <div class="s-name">Action<small>行动</small></div>
+        <div class="s-fn">Practice<small>实践</small></div>
+      </div>
+      <div class="step-row">
+        <div class="s-num">13 · 06</div>
+        <div class="s-name">Feedback<small>反馈</small></div>
+        <div class="s-fn">Correction<small>校正</small></div>
+      </div>
+      <div class="step-row">
+        <div class="s-num">13 · 07</div>
+        <div class="s-name">Re-action<small>再行动</small></div>
+        <div class="s-fn">Practice Again<small>再实践</small></div>
+      </div>
+      <div class="step-row">
+        <div class="s-num">13 · 08</div>
+        <div class="s-name">Flow<small>心流</small></div>
+        <div class="s-fn">Focus<small>专注</small></div>
+      </div>
+    </div>
+
+    <h3 class="w-h3">
+      <span class="en">04 · First Principles Thinking — the Methodology</span>
+      <span class="cn">04 · 第一性原理——方法论</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">Before acting, establish the reasoning. First-principles thinking is the refusal to accept inherited convention as its own justification. It asks: what is actually true here, stripped of analogy and assumption? What would we do if we were building this situation from scratch, knowing only what is verifiably real? This is the methodology that prevents the action of Phase II from merely reproducing what has been done before. It is how a new direction is kept genuinely new rather than covertly old.</span>
+      <span class="cn">行动之前，先确立推理。第一性原理思维是拒绝将继承而来的惯例当作自我辩护的理由。它追问：剥去类比与假设，这里真正为真的是什么？如果我们从零开始构建这个情境，只知道可以核实的事实，我们会怎么做？这是防止第二阶段的行动仅仅复制过往之事的方法论。它是让一个新方向保持真正新颖而非暗中守旧的方式。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">05 · Action — Practice</span>
+      <span class="cn">05 · 行动——实践</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">The step that converts everything before it from theory into evidence. Action is not mere movement — it is the committed entry into a situation that can push back. Only in that encounter do you learn what your mission actually costs, what your positioning actually missed, and what your first-principles reasoning actually predicted correctly. No plan survives contact with reality intact, and that is not a failure of planning — it is the point of acting.</span>
+      <span class="cn">这一步将之前的一切从理论转化为证据。行动不是单纯的运动——而是对一个能够反推的处境的坚定进入。只有在那种相遇中，你才能了解使命实际的代价、定位实际遗漏了什么，以及第一性原理推理实际预测正确的内容。没有任何计划完好无损地通过与现实的接触，这不是规划的失败——这正是行动的意义所在。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">06 · Feedback — Correction</span>
+      <span class="cn">06 · 反馈——校正</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">Feedback is what reality says back. It is the most honest data available — more honest than any plan, any forecast, or any self-assessment. But feedback does not interpret itself. The step is not passive reception; it is active correction — the disciplined willingness to update your model of the situation based on what has actually happened. This requires distinguishing noise from signal, holding the mission steady while adjusting the course, and resisting the temptation to dismiss unwelcome data as anomaly.</span>
+      <span class="cn">反馈是现实的回应。它是可获得的最诚实的数据——比任何计划、预测或自我评估都更诚实。但反馈不会自我诠释。这一步不是被动接受，而是主动校正——根据实际发生的事情来更新处境模型的自律意愿。这需要区分噪声与信号，在调整航线的同时保持使命稳定，并抵制把不受欢迎的数据视为异常而加以驳斥的诱惑。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">07 · Re-action — Practice Again</span>
+      <span class="cn">07 · 再行动——再实践</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">The distinction between Step 5 and Step 7 is everything. Re-action is not repetition — it is informed repetition, practice that carries the correction of Step 6 into the field. This is where the loop between feedback and action becomes a flywheel: each cycle slightly more calibrated than the last, each attempt slightly less naive, each contact with the real world slightly more productive. The person who moves from Action to Feedback to Re-action is not the same person who took Step 5.</span>
+      <span class="cn">第五步与第七步之间的差异就是全部。再行动不是重复——而是有据可依的重复，是将第六步的校正带入实践的练习。这是反馈与行动之间的循环成为飞轮的地方：每一次循环都比上一次略微精准，每一次尝试都略微少了些天真，每一次与现实世界的接触都略微更有成效。从行动走到反馈再走到再行动的人，已不再是踏出第五步时的那个人。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">08 · Flow — Focus</span>
+      <span class="cn">08 · 心流——专注</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">Flow is the reward that Phase II builds toward — the state in which skill meets challenge at the right ratio, effort becomes effortless, and time reorganizes around the work rather than the clock. It is not something that can be forced or scheduled on demand. It is the emergent condition of deep practice: the natural yield of Steps 4 through 7 when they are pursued with enough sustained attention. Flow is also the clearest signal that you are working at the right edge of your current ability — neither bored by tasks too easy nor paralyzed by tasks too hard.</span>
+      <span class="cn">心流是第二阶段努力构建的奖赏——技能与挑战以恰当比例相遇、努力变得毫不费力、时间围绕工作而非钟表重新组织的状态。它无法被强迫或随需预约，而是深度实践的涌现条件：当第四步至第七步以足够持续的专注追求时，自然产生的收益。心流也是最清晰的信号，表明你正在当前能力的正确边缘上工作——既不因任务过易而感到无聊，也不因任务过难而陷入瘫痪。</span>
+    </p>
+  </section>
+
+  <!-- Phase III -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 13.3 · Phase Ⅲ — Shaping &amp; Amplifying Influence · 塑造并放大影响力</div>
+    <h2 class="w-h2">Where work becomes world<span class="cn">工作成为世界之处</span></h2>
+    <p class="w-p">
+      <span class="en">Real work done well is not enough if it remains invisible, unconnected, and uncompounded. Phase III is the phase of multiplication — the three steps through which a competent practitioner becomes a transformative force. Innovation turns accumulated learning into something new. Narrative binds individuals into communities of shared belief. Leverage makes the effort of one person radiate through systems much larger than any one person.</span>
+      <span class="cn">做得好的真实工作，如果始终不可见、孤立无援、未能复利，便仍然不够。第三阶段是倍增阶段——三个步骤将一个称职的实践者转化为变革性力量。创新将积累的学习转化为新事物。叙事将个体凝聚成共同信仰的社群。杠杆让一个人的努力在远大于任何单个人的系统中辐射传导。</span>
+    </p>
+
+    <div class="step-table">
+      <div class="step-row">
+        <div class="s-num">13 · 09</div>
+        <div class="s-name">Innovation<small>创新</small></div>
+        <div class="s-fn">Transformation<small>转化</small></div>
+      </div>
+      <div class="step-row">
+        <div class="s-num">13 · 10</div>
+        <div class="s-name">Narrative<small>叙事</small></div>
+        <div class="s-fn">Community of Belief<small>信仰社群</small></div>
+      </div>
+      <div class="step-row">
+        <div class="s-num">13 · 11</div>
+        <div class="s-name">Leverage<small>杠杆</small></div>
+        <div class="s-fn">Compound Effect<small>复利</small></div>
+      </div>
+    </div>
+
+    <h3 class="w-h3">
+      <span class="en">09 · Innovation — Transformation</span>
+      <span class="cn">09 · 创新——转化</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">Innovation is not invention for its own sake. It is transformation — the conversion of what has been learned through Phases I and II into something that opens new territory. True innovation is born from accumulated, corrected practice, not from novelty-seeking. The practitioner who has moved through Steps 1 through 8 with enough depth and honesty does not need to chase innovation; they begin to produce it as a natural consequence of real engagement with real problems. The innovation that lasts is the one rooted in a genuine understanding of a genuine need.</span>
+      <span class="cn">创新不是为了创新而创新，而是转化——将第一、二阶段所学转化为开辟新领域的东西。真正的创新诞生于积累的、经过校正的实践，而非对新奇事物的追逐。以足够的深度和诚实走过第一至第八步的实践者，不需要追逐创新；他们开始将其作为与真实问题真实接触的自然结果而产出。持久的创新是扎根于对真实需求真实理解的那种。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">10 · Narrative — Community of Belief</span>
+      <span class="cn">10 · 叙事——信仰社群</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">A person working alone hits the ceiling of one mind. Narrative is the technology that recruits others into a shared project. It is not propaganda or manipulation — it is the honest articulation of what is true, what is at stake, and why this particular path is worth walking together. A well-built narrative creates a community of belief: people who have internalized not just the output but the reasoning, and who will therefore continue to build even when the original narrator is not present. The mission becomes collective.</span>
+      <span class="cn">一个人独自工作会触及单个思维的天花板。叙事是将他人招募进共同项目的技术。它不是宣传或操纵——而是对何为真实、何为关键、以及为何这条特定路径值得共同走下去的诚实表达。构筑良好的叙事创造出一个信仰社群：那些不仅内化了输出、更内化了推理的人——因此即便最初的叙述者不在场，他们也将继续建造。使命由此变得集体性。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">11 · Leverage — the Compound Effect</span>
+      <span class="cn">11 · 杠杆——复利</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">Leverage is the structural amplifier — the arrangement of tools, systems, people, and positions such that each unit of effort yields returns greater than one. Code that runs without supervision. Organizations that produce without constant direction. Relationships that open doors beyond your immediate reach. Platforms that distribute your work to people you will never meet. Leverage does not shortcut the work of the earlier steps; it multiplies its fruits. The compound effect is what separates those who accumulate results from those who merely accumulate effort.</span>
+      <span class="cn">杠杆是结构性放大器——工具、系统、人员与位置的安排，使每一单位的努力产出大于一的回报。无需监督便能运行的代码，无需持续指令便能产出的组织，在你直接触及范围之外开启门户的关系，将你的工作传播给你永远不会遇见的人的平台。杠杆不会绕过前几步工作的功夫；它倍增其果实。复利效应正是将积累结果者与仅仅积累努力者区分开来的东西。</span>
+    </p>
+  </section>
+
+  <!-- Phase IV -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 13.4 · Phase Ⅳ — Refinement &amp; Rebirth · 淬炼与重生</div>
+    <h2 class="w-h2">Where the loop closes — and opens again<span class="cn">循环关闭之处，亦是再度开启之处</span></h2>
+    <p class="w-p">
+      <span class="en">Every cycle eventually meets its test. Phase IV is the forge: the two steps through which the accumulated work of the first three phases is either broken apart or made into something stronger. Adversity is not the interruption of the navigation — it is the necessary pressure that determines whether what was built can hold. And New Positioning is not defeat; it is the step that names the new ground you now stand on, and passes the navigation back to Step 2 — elevated, tested, and ready for a new cycle.</span>
+      <span class="cn">每一轮循环终究都会遇到它的考验。第四阶段是熔炉：前三个阶段积累的工作，在这两步中或被打碎，或被炼成更坚固的东西。逆境不是导航的中断——而是决定所建之物能否承受的必要压力。新定位也不是失败；它是为你如今所站的新土地命名的那一步，将导航交还给第二步——已经升高、经过检验，准备好迎接新的循环。</span>
+    </p>
+
+    <div class="step-table">
+      <div class="step-row">
+        <div class="s-num">13 · 12</div>
+        <div class="s-name">Adversity<small>逆境</small></div>
+        <div class="s-fn">Overcoming<small>穿越</small></div>
+      </div>
+      <div class="step-row loop-step">
+        <div class="s-num">13 · 13</div>
+        <div class="s-name">↻ New Positioning<small>新定位</small></div>
+        <div class="s-fn">New Destination<small>新目的</small></div>
+      </div>
+    </div>
+
+    <h3 class="w-h3">
+      <span class="en">12 · Adversity — Overcoming</span>
+      <span class="cn">12 · 逆境——穿越</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">Adversity is the phase that cannot be skipped or simulated. It arrives not as a sign that the navigation has failed but as confirmation that it is real — that you have moved far enough into the territory of the mission to encounter its actual costs. The function of this step is not to survive adversity but to pass through it: to extract from failure and resistance the specific knowledge that only pressure can reveal. What you believed about your own capacities, your mission's viability, your relationships, and your reasoning — adversity tests all of it. The practitioner who emerges is never identical to the one who entered.</span>
+      <span class="cn">逆境是无法跳过或模拟的阶段。它的到来不是导航失败的迹象，而是其真实性的确认——你已经深入使命领域足够远，遭遇了它的真实代价。这一步的功能不是熬过逆境，而是穿越它：从失败与阻力中提取只有压力才能揭示的特定知识。你对自己能力的信念、使命可行性的信念、关系的信念、推理的信念——逆境检验这一切。从中走出的实践者永远不会与走入时的那个人相同。</span>
+    </p>
+
+    <h3 class="w-h3">
+      <span class="en">13 · New Positioning — the Loop Closes</span>
+      <span class="cn">13 · 新定位——循环关闭</span>
+    </h3>
+    <p class="w-p">
+      <span class="en">The final step of one cycle is the first real act of the next. New Positioning is the honest reckoning after the forge: where are you now? What has been proven, revised, discarded, or newly discovered about your mission, your capacities, and the terrain? This is not Step 2 repeated — it is Step 2 revisited from a higher vantage. The destination may have sharpened or shifted. The available resources have changed. The self that does the positioning is not the self that stood at the start. Step 13 returns to Step 2, and the navigation cycles — not in a closed circle, but in an ascending spiral.</span>
+      <span class="cn">一个循环的最后一步，也是下一个循环的第一个真实行动。新定位是熔炉之后的诚实清算：你现在在哪里？关于你的使命、你的能力与所处地形，什么已被证明、修正、丢弃，或新近发现？这不是第二步的重复——而是从更高视角重访第二步。目的地可能已经更加清晰或发生了偏移。可用资源已经改变。做定位的自我，不再是起点时站立的那个自我。第十三步归于第二步，导航循环——不是在封闭的圆圈中，而是在上升的螺旋中。</span>
+    </p>
+
+    <div class="loop-note">
+      <div class="loop-glyph" aria-hidden="true">↻</div>
+      <p>
+        <span class="en">Step 13 returns to Step 2. The navigation is a cycle, not a finish line. Each completed loop raises the elevation of the starting point — the destination stays ahead, the practitioner keeps moving, the spiral keeps climbing.</span>
+        <span class="cn">第十三步归于第二步。此乃循环，非终点。每一轮完成的循环都提升了起点的海拔——目的地始终在前方，实践者持续前行，螺旋持续攀升。</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Closing reflection -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 13.5 · Why a Loop, Not a Line</div>
+    <p class="w-lead">
+      <span class="en">Linear models of progress promise arrival. The Thirteen-Step Navigation does not. It promises orientation — the ongoing capacity to know where you are, where you are heading, and how to keep moving even when the ground shifts.</span>
+      <span class="cn">线性的进步模式承诺抵达。「十三步导航」不作这种承诺。它承诺的是定向力——持续知晓自己在哪里、朝向何方，以及即便大地移位也能继续前行的能力。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">A closed loop is not a trap. It is a renewable resource. Each revolution of the cycle deposits knowledge, skill, relationship, and reach that the next revolution can draw on. The navigator does not return to the same place. They return to the same structure, carrying more than they carried before. That is the difference between a life of repetition and a life of development.</span>
+      <span class="cn">封闭的循环不是陷阱，而是可再生资源。循环的每一圈都沉积下知识、技能、关系与触及范围，供下一圈提取。导航者不会回到同一个地方，他们回到同一个结构，携带的比之前更多。这正是重复的一生与发展的一生之间的差异。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The mission stays. The positioning updates. The inner climate is continuously tended. The engagement with reality deepens. Influence compounds. Adversity is met and passed through. And the navigator, again and again, takes stock of the new ground, states the new coordinates, and steps back onto the path — not back to the beginning, but forward to the next elevation of the same essential journey.</span>
+      <span class="cn">使命长存。定位持续更新。内在气候被持续照料。与现实的接触不断加深。影响力复利增长。逆境被迎面接受并得以穿越。导航者一次又一次地丈量新的土地，陈述新的坐标，重新踏上路途——不是回到起点，而是向同一本质旅程的下一个高度前行。</span>
+    </p>
+
+    <blockquote class="w-quote" style="margin-top:36px;">
+      <span class="en">The navigation is complete when you realize it is never complete — only ever elevated.</span>
+      <span class="cn">当你意识到导航永远不会完成——只会不断升高——那一刻，导航才真正完整。</span>
+      <span class="w-quote-attr">The wager of World 13 · 第十三重世界的赌注</span>
+    </blockquote>
+  </section>
+
+</main>
+
+<nav class="w-nav" aria-label="Worlds navigation"></nav>
+
+<footer class="w-foot">
+  <div class="sig">Thirteen-Step Navigation · 十三步导航 — a world of the Psyverse</div>
+  <div class="links">
+    <a href="https://psyverse.fun/">← Manifesto</a>
+    <a href="/worlds">All Worlds</a>
+    <a href="https://psyverse.fun/atlas">Atlas</a>
+  </div>
+</footer>
+
+<script src="/worlds.js" defer></script>
+</body>
+</html>
