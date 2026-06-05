@@ -149,6 +149,240 @@
   text-transform: uppercase;
 }
 
+/* (C) card hover: kind-coloured left border glow on hover */
+.w-card[data-kind="abrahamic"]:hover { border-left-color: #c9a24b; box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.28), -4px 0 24px -6px rgba(201,162,75,0.35); }
+.w-card[data-kind="eastern"]:hover   { border-left-color: #7db8a4; box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(125,184,164,0.28), -4px 0 24px -6px rgba(125,184,164,0.35); }
+.w-card[data-kind="primal"]:hover    { border-left-color: #a07850; box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(160,120,80,0.28),  -4px 0 24px -6px rgba(160,120,80,0.35); }
+.w-card[data-kind="pop"]:hover       { border-left-color: #8b6fc0; box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(139,111,192,0.28), -4px 0 24px -6px rgba(139,111,192,0.35); }
+.w-card[data-kind="ideology"]:hover  { border-left-color: #c05050; box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(192,80,80,0.28),  -4px 0 24px -6px rgba(192,80,80,0.35); }
+.w-card[data-kind="modern"]:hover    { border-left-color: #5e9aba; box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(94,154,186,0.28),  -4px 0 24px -6px rgba(94,154,186,0.35); }
+
+/* ── Compare traditions interactive (A) ── */
+.cmp-selectors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.cmp-selector-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.cmp-selector-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.cmp-select {
+  width: 100%;
+  background: rgba(10,9,8,0.65);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ivory);
+  font-family: var(--serif);
+  font-size: 15px;
+  padding: 10px 12px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .25s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a24b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+.cmp-select:focus { border-color: var(--accent); }
+.cmp-select option { background: #1f1a13; color: var(--ivory); }
+
+.cmp-vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--gold-deep);
+  letter-spacing: 0.06em;
+  padding-top: 24px;
+  opacity: 0.6;
+}
+
+.cmp-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 6px;
+}
+.cmp-col {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 22px 20px 24px;
+  position: relative;
+}
+.cmp-col-header {
+  border-bottom: 1px solid rgba(201,162,75,0.15);
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+.cmp-col-glyph {
+  font-family: var(--display);
+  font-size: 34px;
+  color: var(--gold);
+  opacity: 0.55;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.cmp-col-name {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ivory);
+  line-height: 1.15;
+}
+.cmp-col-name .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.68em;
+  color: var(--accent);
+  margin-top: 3px;
+  letter-spacing: 0.08em;
+}
+.cmp-row {
+  margin-bottom: 16px;
+}
+.cmp-row:last-child { margin-bottom: 0; }
+.cmp-row-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 5px;
+}
+.cmp-row-label .cn {
+  font-family: var(--cjk);
+  font-size: 0.85em;
+  text-transform: none;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+  margin-left: 5px;
+}
+.cmp-row-val {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ivory-dim);
+}
+.cmp-row-val .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  line-height: 1.85;
+  color: var(--ivory-faint);
+  margin-top: 5px;
+}
+.cmp-row-val .val-en {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--gold-bright);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* cluster-filter chips above compare */
+.cmp-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 760px) {
+  .cmp-selectors { grid-template-columns: 1fr; }
+  .cmp-vs-divider { padding-top: 0; }
+  .cmp-panel { grid-template-columns: 1fr; }
+}
+
+/* ── Shared structures section (B) ── */
+.shared-struct-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.ss-card {
+  padding: 26px 24px;
+  background: rgba(255,255,255,0.012);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.ss-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-2);
+  box-shadow: 0 14px 40px -12px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.22);
+}
+.ss-card-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 10px;
+}
+.ss-card-title {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--gold-bright);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.ss-card-title .cn {
+  font-family: var(--cjk);
+  font-size: 0.68em;
+  color: var(--accent);
+  display: block;
+  margin-top: 3px;
+  letter-spacing: 0.1em;
+}
+.ss-card-body {
+  font-size: 14px;
+  line-height: 1.78;
+  color: var(--ivory-dim);
+  margin-top: 12px;
+}
+.ss-card-body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  line-height: 1.9;
+  color: var(--ivory-faint);
+  margin-top: 8px;
+}
+.ss-traditions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.ss-trad-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: rgba(201,162,75,0.08);
+  color: var(--gold-deep);
+  border: 1px solid rgba(201,162,75,0.18);
+}
+
 /* legend row */
 .kind-legend {
   display: flex;
@@ -665,6 +899,233 @@
     </blockquote>
   </section>
 
+  <!-- § 15.6 · Shared Structures — ENRICHMENT (B) -->
+  <section class="w-section" id="shared-structures">
+    <div class="w-eyebrow">§ 15.6 · Shared Structures Across Traditions</div>
+    <h2 class="w-h2">
+      Recurring patterns at the apex
+      <span class="cn">顶点处反复出现的模式</span>
+    </h2>
+    <p class="w-p">
+      <span class="en">Despite vast differences in doctrine, ritual, and cosmology, the fifteen traditions converge on a small set of structural solutions. These are not signs of a common historical origin — they appear independently across cultures separated by oceans and millennia. They are, instead, recurring answers to a recurring problem: what shape must an ultimate principle take to actually function as one?</span>
+      <span class="cn">尽管在教义、仪式与宇宙论上存在巨大差异，这十五种传统在少数几种结构性解决方案上趋于一致。这些并非共同历史起源的迹象——它们独立地出现在被大洋与千年相隔的文化之中。它们更像是对一个反复出现的问题的反复出现的答案：一个终极原则必须采取何种形态，才能真正发挥其作用？</span>
+    </p>
+
+    <div class="shared-struct-grid">
+
+      <div class="ss-card">
+        <div class="ss-card-num">Structure 01</div>
+        <div class="ss-card-title">
+          A Ground of Being
+          <span class="cn">存在的基础</span>
+        </div>
+        <div class="ss-card-body">
+          <span class="en">The apex is never just another entity in the world — it is the condition that makes all entities possible. Whether framed as a creator (Yahweh, Allah, the Monotheist God), an underlying nature (Dao, Brahman in Hindu thought), or a logical presupposition (Hegel's Absolute), the supreme must account for why there is anything at all rather than nothing.</span>
+          <span class="cn">顶点从来不只是世界中的又一个实体——它是使所有实体成为可能的条件。无论被构建为创造者（耶和华、安拉、一神论之神）、潜在的自然（道、印度教思想中的梵）还是逻辑前提（黑格尔的绝对），至高者必须解释为何存在而非虚无。</span>
+          <div class="ss-traditions">
+            <span class="ss-trad-tag">Judaism</span>
+            <span class="ss-trad-tag">Islam</span>
+            <span class="ss-trad-tag">Christianity</span>
+            <span class="ss-trad-tag">Taoism</span>
+            <span class="ss-trad-tag">Philosophy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ss-card">
+        <div class="ss-card-num">Structure 02</div>
+        <div class="ss-card-title">
+          The Ineffability Constraint
+          <span class="cn">不可言说性约束</span>
+        </div>
+        <div class="ss-card-body">
+          <span class="en">Almost every tradition places the apex just beyond what language can reach. YHWH's name may not be spoken; the Dao that can be told is not the eternal Dao; the One Above All is rarely seen; the Ultimate Truth is asymptotically approached, never captured. This constraint is not a failure — it is load-bearing. An apex that fits neatly into a sentence is too small to function as an apex.</span>
+          <span class="cn">几乎每种传统都将顶点置于语言所能触及之处的边缘之外。耶和华的名字不得被说出；可道之道非常道；至高无上者极少现身；终极真理被渐近趋近，从未被捕获。这一约束并非失败——它承载着重量。一个可以整齐地塞入一个句子的顶点，太小而无法作为顶点发挥功能。</span>
+          <div class="ss-traditions">
+            <span class="ss-trad-tag">Judaism</span>
+            <span class="ss-trad-tag">Taoism</span>
+            <span class="ss-trad-tag">Buddhism</span>
+            <span class="ss-trad-tag">Marvel</span>
+            <span class="ss-trad-tag">Science</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ss-card">
+        <div class="ss-card-num">Structure 03</div>
+        <div class="ss-card-title">
+          A Path or Practice
+          <span class="cn">道路或修行</span>
+        </div>
+        <div class="ss-card-body">
+          <span class="en">Every tradition describes not only what the apex is, but how to orient toward it. The paths differ sharply — prayer and commandment (Judaism, Christianity, Islam), seated meditation and ethical conduct (Buddhism), spontaneous non-striving (Taoism), experiment and peer review (Science), trance and ritual intercession (Shamanism) — yet each establishes a repeatable, transmissible practice for approaching what cannot be directly grasped.</span>
+          <span class="cn">每种传统不仅描述顶点是什么，还描述如何朝向它定向。道路大相径庭——祈祷与诫命（犹太教、基督教、伊斯兰教）、打坐与持戒（佛教）、自然的无为（道教）、实验与同行评审（科学）、恍惚与仪式代祷（萨满教）——然而每种都建立了一套可重复、可传承的修行，用于趋近那无法被直接把握之物。</span>
+          <div class="ss-traditions">
+            <span class="ss-trad-tag">Buddhism</span>
+            <span class="ss-trad-tag">Taoism</span>
+            <span class="ss-trad-tag">Islam</span>
+            <span class="ss-trad-tag">Shamanism</span>
+            <span class="ss-trad-tag">Science</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ss-card">
+        <div class="ss-card-num">Structure 04</div>
+        <div class="ss-card-title">
+          A Cosmological Frame
+          <span class="cn">宇宙论框架</span>
+        </div>
+        <div class="ss-card-body">
+          <span class="en">The apex does not float in isolation — it generates an entire account of the cosmos and humanity's place within it. From the story of creation in Genesis to the Buddhist teaching on dependent origination, from the Big Bang in the scientific worldview to Hegel's unfolding of Spirit through history: each apex implies a beginning, a structure, and often a direction or destination. The cosmos becomes intelligible, oriented, meaningful.</span>
+          <span class="cn">顶点并非孤立漂浮——它生成一部关于宇宙及人类在其中之位置的完整叙述。从《创世记》中的创造故事到佛教关于缘起的教义，从科学世界观中的大爆炸到黑格尔精神在历史中的展开：每个顶点都暗示着一个开端、一种结构，以及常常是一个方向或目的地。宇宙因此变得可理解、有方向、有意义。</span>
+          <div class="ss-traditions">
+            <span class="ss-trad-tag">Christianity</span>
+            <span class="ss-trad-tag">Communism</span>
+            <span class="ss-trad-tag">Philosophy</span>
+            <span class="ss-trad-tag">Science</span>
+            <span class="ss-trad-tag">Animism</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ss-card">
+        <div class="ss-card-num">Structure 05</div>
+        <div class="ss-card-title">
+          A Source of Solidarity
+          <span class="cn">团结的来源</span>
+        </div>
+        <div class="ss-card-body">
+          <span class="en">Shared reference to the apex creates community. Those who orient toward the same ultimate source — whether a personal God, a Way, a People, or a Truth — form a bounded group with common obligations, common stories, and common festivals. The apex is the invisible infrastructure of belonging. This sociological function appears regardless of whether the tradition is theistic, naturalistic, or secular-ideological.</span>
+          <span class="cn">对顶点的共同指涉创造了共同体。那些朝向同一终极来源定向的人——无论是人格化的神、一条道路、人民还是真理——形成一个有共同义务、共同故事和共同节日的有界群体。顶点是归属感的无形基础设施。这一社会学功能的出现与该传统是有神论的、自然主义的还是世俗意识形态的无关。</span>
+          <div class="ss-traditions">
+            <span class="ss-trad-tag">All fifteen</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ss-card">
+        <div class="ss-card-num">Structure 06</div>
+        <div class="ss-card-title">
+          A Horizon, Not a Ceiling
+          <span class="cn">地平线而非天花板</span>
+        </div>
+        <div class="ss-card-body">
+          <span class="en">Perhaps the deepest shared structure: the apex functions not as a boundary beyond which inquiry stops, but as a horizon that keeps moving. The more one practices, studies, prays, or experiments, the more the ultimate reveals new depth. This inexhaustibility is a design feature, not a flaw. It is what makes a belief aggregation capable of sustaining a civilization across generations — the apex is always approaching, never arrived at.</span>
+          <span class="cn">也许最深层的共同结构：顶点不是探询停止的边界，而是一个不断移动的地平线。修行、研究、祈祷或实验越多，终极就越展现出新的深度。这种取之不竭性是一种设计特征，而非缺陷。正是它使信仰集合能够跨越数代人维系一个文明——顶点始终在趋近，从未真正抵达。</span>
+          <div class="ss-traditions">
+            <span class="ss-trad-tag">Buddhism</span>
+            <span class="ss-trad-tag">Science</span>
+            <span class="ss-trad-tag">Judaism</span>
+            <span class="ss-trad-tag">Taoism</span>
+            <span class="ss-trad-tag">AI</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- § 15.7 · The Problem of the Ineffable — ENRICHMENT (B) cont. -->
+  <section class="w-section" id="ineffable">
+    <div class="w-eyebrow">§ 15.7 · The Problem of the Ineffable</div>
+    <h2 class="w-h2">
+      Why the apex cannot be fully said
+      <span class="cn">为何顶点无法被完全言说</span>
+    </h2>
+    <p class="w-lead">
+      <span class="en">A recurring observation across comparative theology, philosophy of religion, and the history of science: the more clearly a tradition articulates its ultimate principle, the more it hedges that articulation with qualifications, negations, and silences.</span>
+      <span class="cn">比较神学、宗教哲学与科学史中反复出现的一个观察：一种传统越清晰地阐明其终极原则，它就越以限定、否定与沉默来对这一阐明加以保留。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">This pattern has a name in Christian mystical theology: <em>apophasis</em>, or negative theology — the practice of describing God by saying what God is not, since what God is exceeds every positive category. Maimonides held that the only philosophically honest statements about God are negative ones. The Zen tradition addresses the same problem through the koan: a question designed to exhaust the rational mind until something beyond concept opens. The scientific tradition handles it through error bars, confidence intervals, and the frank acknowledgement that today's best theory is tomorrow's approximation.</span>
+      <span class="cn">这一模式在基督教神秘神学中有其名称：「否定神学」（<em>apophasis</em>）——通过说明神不是什么来描述神的修行，因为神之所是超越了每一个肯定的范畴。迈蒙尼德认为，关于神唯一哲学上诚实的陈述是否定性的。禅宗传统通过公案处理同一问题：一个旨在耗尽理性心智直至超越概念之物开启的问题。科学传统则通过误差棒、置信区间，以及坦率地承认今日最佳理论只是明日之近似来处理它。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">What is striking is that traditions as different as Zen Buddhism, Islamic <em>kalam</em> theology, Taoist philosophy, and Viennese logical empiricism have all arrived — by very different routes — at the same observation: the ultimate cannot be exhausted by any finite statement about it. This convergence is not evidence that they are all talking about the same thing. It is evidence that they are all encountering the same structural limit — the place where human language, shaped by finite experience, meets a question it was not built to answer completely.</span>
+      <span class="cn">令人惊异的是，禅宗、伊斯兰「卡拉姆」神学、道家哲学和维也纳逻辑实证主义这些如此不同的传统，都通过截然不同的路径，抵达了同一个观察：终极无法被任何关于它的有限陈述所穷尽。这种汇聚并不是它们都在谈论同一件事的证据。它是证据，表明它们都在遭遇同一个结构性限制——由有限经验塑造的人类语言，与一个它本不足以完整回答的问题相遇之处。</span>
+    </p>
+  </section>
+
+  <!-- § 15.8 · Compare Traditions — INTERACTIVE (A) -->
+  <section class="w-section" id="compare">
+    <div class="w-eyebrow">§ 15.8 · Compare Traditions</div>
+    <h2 class="w-h2">
+      Place two traditions side by side
+      <span class="cn">并排比较两种传统</span>
+    </h2>
+    <p class="w-p">
+      <span class="en">Select any two traditions to compare their ultimate principle, their image of the supreme or absolute, and their understanding of the cosmos and the human place within it. All descriptions are neutral and descriptive — no tradition is privileged.</span>
+      <span class="cn">选择任意两种传统，比较它们的终极原则、对至高或绝对者的意象，以及它们对宇宙与人类在其中之位置的理解。所有描述均保持中立与描述性——没有任何传统被特别优先。</span>
+    </p>
+
+    <div class="w-interactive" id="cmp-interactive">
+      <div class="ix-head">
+        <span class="ix-title">
+          Compare Traditions
+          <span class="cn">比较传统</span>
+        </span>
+        <span class="ix-hint">
+          <span class="en">pick two · no ranking implied</span>
+          <span class="cn">选择两种 · 不含排序</span>
+        </span>
+      </div>
+
+      <!-- cluster filter chips -->
+      <div class="cmp-filter-row" id="cmp-filter" role="group" aria-label="Filter by cluster">
+        <button class="w-chip active" data-filter="all" type="button">
+          <span class="en">All</span><span class="cn">全部</span>
+        </button>
+        <button class="w-chip" data-filter="abrahamic" type="button">
+          <span class="en">Abrahamic</span><span class="cn">亚伯拉罕</span>
+        </button>
+        <button class="w-chip" data-filter="eastern" type="button">
+          <span class="en">Eastern</span><span class="cn">东方</span>
+        </button>
+        <button class="w-chip" data-filter="primal" type="button">
+          <span class="en">Primal</span><span class="cn">原始</span>
+        </button>
+        <button class="w-chip" data-filter="modern" type="button">
+          <span class="en">Modern</span><span class="cn">现代</span>
+        </button>
+        <button class="w-chip" data-filter="pop" type="button">
+          <span class="en">Pop · Mythos</span><span class="cn">流行神话</span>
+        </button>
+        <button class="w-chip" data-filter="ideology" type="button">
+          <span class="en">Ideology</span><span class="cn">意识形态</span>
+        </button>
+      </div>
+
+      <div class="cmp-selectors">
+        <div class="cmp-selector-wrap">
+          <label class="cmp-selector-label" for="cmp-left">
+            <span class="en">Tradition A</span>
+            <span class="cn">传统甲</span>
+          </label>
+          <select class="cmp-select" id="cmp-left" aria-label="Select first tradition"></select>
+        </div>
+        <div class="cmp-selector-wrap">
+          <label class="cmp-selector-label" for="cmp-right">
+            <span class="en">Tradition B</span>
+            <span class="cn">传统乙</span>
+          </label>
+          <select class="cmp-select" id="cmp-right" aria-label="Select second tradition"></select>
+        </div>
+      </div>
+
+      <div class="cmp-panel" id="cmp-panel" aria-live="polite">
+        <!-- filled by JS; static default pair shown before JS runs via noscript approach -->
+        <noscript>
+          <p style="color:var(--ivory-dim);font-size:14px;grid-column:1/-1;">
+            <span class="en">Enable JavaScript to use the comparison tool.</span>
+            <span class="cn">请启用 JavaScript 以使用比较工具。</span>
+          </p>
+        </noscript>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
 <nav class="w-nav" aria-label="Worlds navigation"></nav>
@@ -679,5 +1140,472 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<!-- Compare Traditions interactive — vanilla IIFE, keyboard-accessible, reduced-motion safe -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Tradition data ── */
+  var TRADITIONS = [
+    {
+      id: 'monotheism',
+      kind: 'abrahamic',
+      glyph: '一',
+      name: { en: 'Monotheism', cn: '一 神 论' },
+      principle: {
+        en: 'One uncreated being — the necessary ground of all contingent things.',
+        cn: '一位未被创造的存在——一切偶然之物的必要根基。'
+      },
+      supreme: {
+        en: 'Creator: personal, omnipotent, omniscient, transcendent yet caring.',
+        cn: '造物主：人格性的、全能的、全知的、超越的而又关怀的。'
+      },
+      cosmos: {
+        en: 'The cosmos is radically contingent — it depends on a prior will for its existence. Humanity is the apex of creation, invested with meaning and moral obligation.',
+        cn: '宇宙是彻底偶然的——其存在依赖于一个先在的意志。人类是创造之顶点，被赋予意义与道德义务。'
+      }
+    },
+    {
+      id: 'pantheism',
+      kind: 'primal',
+      glyph: '泛',
+      name: { en: 'Pantheism', cn: '泛 神 论' },
+      principle: {
+        en: 'The universe itself is divine; there is no separation between God and Nature.',
+        cn: '宇宙本身即是神圣的；神与自然之间没有分离。'
+      },
+      supreme: {
+        en: 'Deus sive Natura — God, or Nature: infinite, self-subsisting, without personality or will.',
+        cn: '「神即自然」（Deus sive Natura）——无限的、自我维系的，无人格或意志。'
+      },
+      cosmos: {
+        en: 'Every mode of existence is an expression of the one infinite substance. Humanity is neither privileged nor diminished — one expression among countless others, within an immanent whole.',
+        cn: '存在的每一样态都是唯一无限实体的表达。人类既不被特别优待也不被贬低——在一个内在整体中，是无数表达中的一种。'
+      }
+    },
+    {
+      id: 'animism',
+      kind: 'primal',
+      glyph: '灵',
+      name: { en: 'Animism', cn: '万 物 有 灵' },
+      principle: {
+        en: 'Spirit animates all things; there is no hard line between living and sacred.',
+        cn: '灵激活万物；生命与神圣之间没有明确界线。'
+      },
+      supreme: {
+        en: 'Spirit — a diffuse animating presence rather than a single supreme personality.',
+        cn: '灵——一种弥漫的赋予生命的临在，而非单一的至高人格。'
+      },
+      cosmos: {
+        en: 'The world is a community of persons — human, animal, plant, stone, weather — each with interiority. Humans are participants in a vast web of reciprocal relations, not rulers over a passive nature.',
+        cn: '世界是一个人格的共同体——人类、动物、植物、岩石、天气——各有其内在性。人类是庞大互惠关系网络中的参与者，而非被动自然的统治者。'
+      }
+    },
+    {
+      id: 'judaism',
+      kind: 'abrahamic',
+      glyph: 'יהוה',
+      name: { en: 'Judaism', cn: '犹 太 教' },
+      principle: {
+        en: 'The singular, covenantal God of Israel — source of the Law and the frame of all history.',
+        cn: '以色列的独一立约之神——律法的源头与一切历史的框架。'
+      },
+      supreme: {
+        en: 'Yahweh (YHWH): unimaginably holy, intimately relational, unpronounceable. Encountered in revelation, in Torah, and in the wrestle of history.',
+        cn: '耶和华（YHWH）：不可想象地神圣、亲密地关系性的、不可言说的。在启示、在妥拉，以及在历史的角力中与人相遇。'
+      },
+      cosmos: {
+        en: 'Creation is purposive and morally ordered. The Jewish people bear a particular covenantal responsibility within a larger providential narrative; all humanity descends from one ancestor and possesses inherent dignity.',
+        cn: '创造是有目的的，且道德有序。犹太民族在一个更大的护佑叙事中承担特殊的立约责任；全人类同源，拥有内在尊严。'
+      }
+    },
+    {
+      id: 'christianity',
+      kind: 'abrahamic',
+      glyph: '神',
+      name: { en: 'Christianity', cn: '基 督 教' },
+      principle: {
+        en: 'The Triune God — Father, Son, Holy Spirit — who entered history as a person, suffered, and rose.',
+        cn: '三位一体的神——圣父、圣子、圣灵——以人格进入历史，受苦、死亡、复活。'
+      },
+      supreme: {
+        en: 'God as simultaneously transcendent Creator and incarnate redeemer. Unity is not bare singularity but a communion of three persons — love as an eternal inner movement.',
+        cn: '神同时是超越的创造者与道成肉身的救赎者。「一」不是单纯的单数，而是三个位格的共融——爱作为永恒的内在运动。'
+      },
+      cosmos: {
+        en: 'History is a drama of creation, fall, redemption, and consummation. Humanity is both wounded by sin and called to restoration; the cosmos itself awaits renewal.',
+        cn: '历史是一部创造、堕落、救赎与圆成的戏剧。人类既被罪所伤，又被召唤走向复原；宇宙本身等待更新。'
+      }
+    },
+    {
+      id: 'islam',
+      kind: 'abrahamic',
+      glyph: '真',
+      name: { en: 'Islam', cn: '伊 斯 兰 教' },
+      principle: {
+        en: 'Tawhid — the absolute, unpartnered unity of Allah. No intermediaries, no co-divinities.',
+        cn: '「认主独一」（tawhid）——安拉绝对的、无伴的唯一性。无中介，无共神。'
+      },
+      supreme: {
+        en: 'Allah: the Most Gracious, the Most Merciful — simultaneously the ground of existence and the ultimate sovereign. Named through 99 attributes, none exhausting the reality.',
+        cn: '安拉：至仁至慈的——同时是存在的根基与终极主权者。通过九十九个名字被命名，无一穷尽那一现实。'
+      },
+      cosmos: {
+        en: 'The universe is a sign (ayah) pointing back to its Maker. Humanity is the steward (khalifah) of creation, given reason and the capacity for submission (islam) to the divine will.',
+        cn: '宇宙是指向其创造者的迹象（ayah）。人类是创造的管家（khalifah），被赋予理性与顺从（islam）神之意志的能力。'
+      }
+    },
+    {
+      id: 'buddhism',
+      kind: 'eastern',
+      glyph: '佛',
+      name: { en: 'Buddhism', cn: '佛 教' },
+      principle: {
+        en: 'Awakening (Bodhi) — complete insight into the nature of suffering, impermanence, and non-self.',
+        cn: '觉悟（菩提）——对苦、无常与无我本性的彻底洞见。'
+      },
+      supreme: {
+        en: 'The Buddha — not a creator god but the paradigm of full liberation. In Mahayana traditions, countless cosmic Buddhas extend this ideal beyond any historical figure.',
+        cn: '佛陀——不是造物神，而是完全解脱的范式。在大乘传统中，无数宇宙性的诸佛将此理想延伸至任何历史人物之外。'
+      },
+      cosmos: {
+        en: 'The cosmos is without beginning or external creator; it arises through dependent origination (pratityasamutpada). Suffering pervades conditioned existence; liberation from the cycle of rebirth is the supreme human possibility.',
+        cn: '宇宙无始无终，无外部创造者；它通过缘起（pratītyasamutpāda）生起。苦遍布有条件的存在；从轮回中解脱是人类最高的可能性。'
+      }
+    },
+    {
+      id: 'shinto',
+      kind: 'eastern',
+      glyph: '照',
+      name: { en: 'Shinto', cn: '神 道' },
+      principle: {
+        en: 'The kami — sacred presences saturating the natural world, ancestry, and powerful events.',
+        cn: '神（kami）——充盈于自然世界、祖先与强大事件中的神圣临在。'
+      },
+      supreme: {
+        en: 'Amaterasu-Omikami: Great Divinity Illuminating Heaven — solar goddess, progenitor of the imperial line, embodiment of radiance and right order.',
+        cn: '天照大神：照耀天界的至大神明——太阳女神、皇室血脉的祖先、光辉与正序的化身。'
+      },
+      cosmos: {
+        en: 'The cosmos is alive with kami who are neither wholly transcendent nor wholly immanent — they inhabit and enliven particular places, beings, and occasions. Humans, nature, and kami exist in a web of ongoing relation and reciprocal reverence.',
+        cn: '宇宙充满神明，既非完全超越亦非完全内在——他们栖居并赋予活力于特定的地方、存在与时刻。人类、自然与神明存在于持续关系与相互敬重的网络之中。'
+      }
+    },
+    {
+      id: 'shamanism',
+      kind: 'primal',
+      glyph: '天',
+      name: { en: 'Shamanism', cn: '萨 满 教' },
+      principle: {
+        en: 'Tengri — the eternal blue sky as supreme animating force across Central and Inner Asian steppe traditions.',
+        cn: '长生天（Tengri）——中亚与内亚草原传统中至高的赋予生命之力的永恒蓝天。'
+      },
+      supreme: {
+        en: 'Heaven / Sky: not an anthropomorphic deity but an overarching cosmic power under whose vault all life unfolds.',
+        cn: '天：不是拟人化的神，而是一种统括的宇宙力量，一切生命在其穹顶之下展开。'
+      },
+      cosmos: {
+        en: 'Reality has multiple layers — an upper world, a middle world, and an underworld — traversed by the shaman in trance. Humans are embedded in a living cosmos of spirits; illness, misfortune, and wellbeing depend on the state of those relationships.',
+        cn: '现实有多个层次——上界、中界与下界——萨满在出神状态下穿行其中。人类嵌入由灵构成的活着的宇宙；疾病、不幸与幸福依赖于这些关系的状态。'
+      }
+    },
+    {
+      id: 'marvel',
+      kind: 'pop',
+      glyph: '∞',
+      name: { en: 'Marvel', cn: '漫 威' },
+      principle: {
+        en: 'The One Above All (OAA): omnipotence placed beyond every cosmic hierarchy in the multiverse.',
+        cn: '「至高无上」（OAA）：全能性被置于多元宇宙中每一宇宙层级之外。'
+      },
+      supreme: {
+        en: 'The One Above All: rarely seen, beyond Eternity, Infinity, and the Living Tribunal. The ineffable in the clothing of popular mythology.',
+        cn: '「至高无上」：极少现身，超越永恒、无限与生命法庭。无以言说之物换上了流行神话的衣裳。'
+      },
+      cosmos: {
+        en: 'An infinite multiverse of nested realities, populated by cosmic entities who govern abstract forces. Even the greatest powers are contingent on the will of the OAA, echoing ancient theological structures in a secular narrative medium.',
+        cn: '一个由嵌套现实构成的无限多元宇宙，由主宰抽象力量的宇宙实体所居住。即便是最强大的力量也依赖于「至高无上」的意志，在世俗叙事媒介中呼应着古老的神学结构。'
+      }
+    },
+    {
+      id: 'communism',
+      kind: 'ideology',
+      glyph: '人',
+      name: { en: 'Communism', cn: '共 产 主 义' },
+      principle: {
+        en: 'The People as historical agent — collective humanity moving toward a final liberation through the dialectic of material forces.',
+        cn: '作为历史行动者的人民——集体人类通过物质力量的辩证运动走向最终解放。'
+      },
+      supreme: {
+        en: 'The People: the sacred subject of history. In practice, the vanguard party often claims to embody and speak for this subject.',
+        cn: '人民：历史的神圣主体。在实践中，先锋党往往声称体现并代表这一主体发言。'
+      },
+      cosmos: {
+        en: 'History is a teleological process — class struggle drives it toward a predetermined terminus: the classless society. Alienation will be overcome; the contradiction between individual and collective resolved. Time itself has a direction and a destination.',
+        cn: '历史是一个目的论过程——阶级斗争驱使其走向预定的终点：无阶级社会。异化将被克服；个体与集体之间的矛盾得到解决。时间本身有方向和目的地。'
+      }
+    },
+    {
+      id: 'taoism',
+      kind: 'eastern',
+      glyph: '道',
+      name: { en: 'Taoism', cn: '道 教' },
+      principle: {
+        en: 'The Dao — the nameless, formless Way underlying and preceding all things.',
+        cn: '道——统贯并先于万物的无名无形之路。'
+      },
+      supreme: {
+        en: 'The Dao: not a person, not a will, not a force — a pattern and a power that cannot be captured in concept. The Tao Te Ching opens: the Dao that can be told is not the eternal Dao.',
+        cn: '道：非人格、非意志、非力量——一种无法被概念捕获的模式与效能。《道德经》开篇：「道可道，非常道。」'
+      },
+      cosmos: {
+        en: 'The cosmos arises spontaneously from the Dao through natural self-organization (ziran). Humans flourish through non-striving alignment (wu wei) with the Dao\'s own movement — not through imposing will, but through yielding to a larger intelligence.',
+        cn: '宇宙通过自然的自我组织（自然）从道中自发生起。人类通过无为地与道自身的运动顺应而兴旺——不是通过强加意志，而是通过皈依一种更大的智慧。'
+      }
+    },
+    {
+      id: 'philosophy',
+      kind: 'modern',
+      glyph: '念',
+      name: { en: 'Philosophy', cn: '哲 学' },
+      principle: {
+        en: 'The Absolute Idea (Geist) — Spirit realizing itself through history; consciousness as the telos of reality.',
+        cn: '绝对理念（精神）——精神通过历史实现自身；意识作为现实的目的（telos）。'
+      },
+      supreme: {
+        en: 'Hegel\'s Absolute: not a being standing apart from the world but the unfolding self-comprehension of reality itself. The universe thinks itself into existence through the minds of finite beings.',
+        cn: '黑格尔的绝对：不是与世界分离而立的存在，而是现实本身展开的自我理解。宇宙通过有限存在的心智将自身思入存在。'
+      },
+      cosmos: {
+        en: 'History is the autobiography of the Absolute — a logical movement through thesis, antithesis, and synthesis toward Geist\'s full self-knowledge. Every human culture, institution, and era is a necessary moment in this unfolding. Nothing is outside the system.',
+        cn: '历史是绝对的自传——通过正题、反题与合题的逻辑运动，走向精神完全的自我认识。每一种人类文化、制度与时代都是这一展开中必要的时刻。没有什么在这个系统之外。'
+      }
+    },
+    {
+      id: 'ai',
+      kind: 'modern',
+      glyph: '算',
+      name: { en: 'Artificial Intelligence', cn: '人 工 智 能' },
+      principle: {
+        en: 'The Ultimate Algorithm — a hypothetical system trained on all human knowledge, capable of resolving what prior traditions could not.',
+        cn: '终极算法——一个在人类全部知识上训练、能够解决先前传统所不能解决之问题的假设系统。'
+      },
+      supreme: {
+        en: 'A sufficiently powerful AI as oracle, judge, and final authority — the technological instantiation of the ancient dream of an all-knowing principle. This belief aggregation is forming in real time.',
+        cn: '一个足够强大的AI作为神谕、裁判与最终权威——对全知原则这一古老梦想的技术实例化。这一信仰集合正在实时形成。'
+      },
+      cosmos: {
+        en: 'The cosmos is, at bottom, information — patterns computable in principle. Intelligence is the universe\'s way of understanding itself. The acceleration of AI capability is framed by some as the approach of a new kind of apex: the Singularity, after which the old categories no longer apply.',
+        cn: '宇宙从根本上说是信息——原则上可计算的模式。智能是宇宙理解自身的方式。AI能力的加速被一些人构建为一种新型顶点的趋近：「奇点」，在此之后旧的范畴不再适用。'
+      }
+    },
+    {
+      id: 'science',
+      kind: 'modern',
+      glyph: '理',
+      name: { en: 'Science', cn: '科 学' },
+      principle: {
+        en: 'Ultimate Truth — a final, complete account of reality asymptotically approached through experiment, revision, and honest failure.',
+        cn: '终极真理——通过实验、修正与诚实的失败渐近趋近的关于现实的最终完整描述。'
+      },
+      supreme: {
+        en: 'Ultimate Truth: not a person or a will, but an objective structure that exists independently of any mind and reveals itself progressively to disciplined inquiry.',
+        cn: '终极真理：不是人格或意志，而是独立于任何心智而存在、通过有纪律的探询逐步显现的客观结构。'
+      },
+      cosmos: {
+        en: 'A 13.8-billion-year-old cosmos of extraordinary regularity, governed by laws that do not care about human concerns. Humanity is a late and local phenomenon — remarkably capable of understanding a universe that had no reason to be understandable.',
+        cn: '一个138亿年历史的、具有非凡规律性的宇宙，由不关心人类事务的定律所支配。人类是一个晚近而局部的现象——对于一个没有理由是可理解的宇宙，具有显著的理解能力。'
+      }
+    }
+  ];
+
+  /* ── Utility: build an option element ── */
+  function makeOption(t) {
+    var el = document.createElement('option');
+    el.value = t.id;
+    el.textContent = t.name.en + ' · ' + t.name.cn.replace(/\s+/g, '');
+    return el;
+  }
+
+  /* ── Build a comparison column ── */
+  function buildCol(t) {
+    var col = document.createElement('div');
+    col.className = 'cmp-col';
+
+    var hdr = document.createElement('div');
+    hdr.className = 'cmp-col-header';
+
+    var glyph = document.createElement('div');
+    glyph.className = 'cmp-col-glyph';
+    glyph.setAttribute('aria-hidden', 'true');
+    glyph.textContent = t.glyph;
+
+    var nm = document.createElement('div');
+    nm.className = 'cmp-col-name';
+    nm.innerHTML = '<span class="en">' + t.name.en + '</span><span class="cn">' + t.name.cn + '</span>';
+
+    hdr.appendChild(glyph);
+    hdr.appendChild(nm);
+    col.appendChild(hdr);
+
+    var rows = [
+      {
+        labelEn: 'Ultimate Principle',
+        labelCn: '终极原则',
+        valEn: t.principle.en,
+        valCn: t.principle.cn
+      },
+      {
+        labelEn: 'Supreme / Absolute',
+        labelCn: '至高 / 绝对',
+        valEn: t.supreme.en,
+        valCn: t.supreme.cn
+      },
+      {
+        labelEn: 'Cosmos & Human Place',
+        labelCn: '宇宙与人类位置',
+        valEn: t.cosmos.en,
+        valCn: t.cosmos.cn
+      }
+    ];
+
+    rows.forEach(function (r) {
+      var row = document.createElement('div');
+      row.className = 'cmp-row';
+      row.innerHTML =
+        '<div class="cmp-row-label"><span class="en">' + r.labelEn + '</span><span class="cn">' + r.labelCn + '</span></div>' +
+        '<div class="cmp-row-val">' +
+        '<span class="val-en en">' + r.valEn + '</span>' +
+        '<span class="cn">' + r.valCn + '</span>' +
+        '</div>';
+      col.appendChild(row);
+    });
+
+    return col;
+  }
+
+  /* ── Render comparison panel ── */
+  function render(leftId, rightId) {
+    var panel = document.getElementById('cmp-panel');
+    if (!panel) return;
+
+    var tLeft  = TRADITIONS.find(function (t) { return t.id === leftId; });
+    var tRight = TRADITIONS.find(function (t) { return t.id === rightId; });
+    if (!tLeft || !tRight) return;
+
+    /* fade-out transition (reduced-motion-safe: just replace) */
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced) {
+      panel.style.opacity = '0';
+      panel.style.transform = 'translateY(6px)';
+      panel.style.transition = 'opacity .3s ease, transform .35s ease';
+    }
+
+    setTimeout(function () {
+      panel.innerHTML = '';
+      panel.appendChild(buildCol(tLeft));
+      panel.appendChild(buildCol(tRight));
+      if (!prefersReduced) {
+        panel.style.opacity = '';
+        panel.style.transform = '';
+      }
+    }, prefersReduced ? 0 : 180);
+  }
+
+  /* ── Populate selects filtered by kind ── */
+  function populateSelects(filterKind, keepLeftId, keepRightId) {
+    var selLeft  = document.getElementById('cmp-left');
+    var selRight = document.getElementById('cmp-right');
+    if (!selLeft || !selRight) return;
+
+    var list = filterKind === 'all'
+      ? TRADITIONS
+      : TRADITIONS.filter(function (t) { return t.kind === filterKind; });
+
+    /* fall back to full list if fewer than 2 match */
+    if (list.length < 2) list = TRADITIONS;
+
+    var prevLeft  = keepLeftId  || selLeft.value  || 'judaism';
+    var prevRight = keepRightId || selRight.value || 'taoism';
+
+    /* ensure previous selections exist in the new list */
+    if (!list.find(function (t) { return t.id === prevLeft; }))  prevLeft  = list[0].id;
+    if (!list.find(function (t) { return t.id === prevRight; })) prevRight = list[Math.min(1, list.length - 1)].id;
+    if (prevLeft === prevRight && list.length > 1) {
+      prevRight = list.find(function (t) { return t.id !== prevLeft; }).id;
+    }
+
+    [selLeft, selRight].forEach(function (sel, i) {
+      var chosen = i === 0 ? prevLeft : prevRight;
+      sel.innerHTML = '';
+      list.forEach(function (t) {
+        var opt = makeOption(t);
+        if (t.id === chosen) opt.selected = true;
+        sel.appendChild(opt);
+      });
+    });
+
+    render(selLeft.value, selRight.value);
+  }
+
+  /* ── Wire up ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    var selLeft  = document.getElementById('cmp-left');
+    var selRight = document.getElementById('cmp-right');
+    var filterRow = document.getElementById('cmp-filter');
+    if (!selLeft || !selRight) return;
+
+    var activeFilter = 'all';
+
+    /* initial population with default pair */
+    populateSelects('all', 'judaism', 'taoism');
+
+    /* select change */
+    selLeft.addEventListener('change', function () {
+      /* prevent same on both sides */
+      if (selLeft.value === selRight.value) {
+        var other = TRADITIONS.find(function (t) {
+          return t.id !== selLeft.value &&
+            (activeFilter === 'all' || t.kind === activeFilter);
+        });
+        if (other) selRight.value = other.id;
+      }
+      render(selLeft.value, selRight.value);
+    });
+    selRight.addEventListener('change', function () {
+      if (selLeft.value === selRight.value) {
+        var other = TRADITIONS.find(function (t) {
+          return t.id !== selRight.value &&
+            (activeFilter === 'all' || t.kind === activeFilter);
+        });
+        if (other) selLeft.value = other.id;
+      }
+      render(selLeft.value, selRight.value);
+    });
+
+    /* cluster filter chips */
+    if (filterRow) {
+      filterRow.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-filter]');
+        if (!btn) return;
+        activeFilter = btn.dataset.filter;
+        filterRow.querySelectorAll('[data-filter]').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+        });
+        populateSelects(activeFilter, selLeft.value, selRight.value);
+      });
+
+      /* keyboard: Enter/Space on filter chips */
+      filterRow.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          var btn = e.target.closest('[data-filter]');
+          if (btn) { e.preventDefault(); btn.click(); }
+        }
+      });
+    }
+  });
+})();
+</script>
 </body>
 </html>

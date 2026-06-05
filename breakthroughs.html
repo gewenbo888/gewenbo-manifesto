@@ -168,6 +168,216 @@
 }
 .level-row[data-l="5"] .lv-text .cn { color: color-mix(in srgb, var(--ivory-faint) 90%, transparent); }
 
+/* frontier-card hover polish */
+.frontier-card {
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.frontier-card:hover {
+  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--gold) 7%, var(--bg-2));
+  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.32), 0 0 32px -8px rgba(201,162,75,0.18);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+/* level-simulator grid */
+.lsim-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin-top: 26px;
+}
+.lsim-card {
+  border: 1px solid color-mix(in srgb, var(--gold) 16%, transparent);
+  border-radius: 5px;
+  padding: 16px 18px 18px;
+  background: color-mix(in srgb, var(--gold) 3%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color .35s, background .35s;
+}
+.lsim-card:hover {
+  border-color: color-mix(in srgb, var(--gold) 30%, transparent);
+  background: color-mix(in srgb, var(--gold) 6%, var(--bg-2));
+}
+.lsim-card .lsim-idx {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: color-mix(in srgb, var(--gold) 50%, transparent);
+}
+.lsim-card .lsim-name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(13px, 1.4vw, 15px);
+  color: var(--gold-bright);
+  line-height: 1.2;
+}
+.lsim-card .lsim-name .cn {
+  display: block;
+  font-family: var(--serif-cn);
+  font-weight: 400;
+  font-size: 0.8em;
+  color: var(--ivory-faint);
+  margin-top: 2px;
+  letter-spacing: .05em;
+}
+.lsim-card .lsim-desc {
+  font-size: 12.5px;
+  color: var(--ivory-dim);
+  line-height: 1.55;
+}
+.lsim-card .lsim-desc .cn {
+  display: block;
+  font-family: var(--serif-cn);
+  font-size: 11.5px;
+  color: color-mix(in srgb, var(--ivory-faint) 75%, transparent);
+  margin-top: 3px;
+  line-height: 1.6;
+}
+.lsim-bar-wrap {
+  height: 3px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  margin-top: 4px;
+  overflow: hidden;
+}
+.lsim-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--gold);
+  transition: width .4s cubic-bezier(.2,.7,.2,1), opacity .4s;
+}
+
+/* level-meaning table */
+.lmean-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-top: 36px;
+}
+.lmean-card {
+  border: 1px solid color-mix(in srgb, var(--gold) 15%, transparent);
+  border-radius: 5px;
+  padding: 20px 18px 22px;
+  background: color-mix(in srgb, var(--gold) 3%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: background .3s, border-color .3s, transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.lmean-card:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--gold) 6%, var(--bg-2));
+  border-color: color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.lmean-lv {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  color: var(--gold-bright);
+}
+.lmean-name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ivory);
+}
+.lmean-cn {
+  font-family: var(--serif-cn);
+  font-size: 12px;
+  color: var(--ivory-faint);
+  letter-spacing: .04em;
+  margin-bottom: 4px;
+}
+.lmean-body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ivory-dim);
+}
+.lmean-body .cn {
+  display: block;
+  font-family: var(--serif-cn);
+  font-size: 12px;
+  color: color-mix(in srgb, var(--ivory-faint) 75%, transparent);
+  margin-top: 6px;
+  line-height: 1.7;
+}
+.lmean-bar {
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+  margin-top: 10px;
+}
+.lmean-card:nth-child(1) .lmean-bar { opacity: 0.18; }
+.lmean-card:nth-child(2) .lmean-bar { opacity: 0.35; }
+.lmean-card:nth-child(3) .lmean-bar { opacity: 0.55; }
+.lmean-card:nth-child(4) .lmean-bar { opacity: 0.75; }
+.lmean-card:nth-child(5) .lmean-bar { opacity: 1; box-shadow: 0 0 8px color-mix(in srgb, var(--gold) 50%, transparent); }
+
+/* convergence compound pairs */
+.compound-pair {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--gold) 14%, transparent);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--gold) 3%, transparent);
+  margin-top: 14px;
+  transition: background .3s, border-color .3s, transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.compound-pair:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--gold) 6%, var(--bg-2));
+  border-color: color-mix(in srgb, var(--gold) 28%, transparent);
+}
+.compound-node {
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ivory);
+  line-height: 1.3;
+}
+.compound-node .cn {
+  display: block;
+  font-family: var(--serif-cn);
+  font-size: 12px;
+  color: var(--ivory-faint);
+  margin-top: 2px;
+}
+.compound-arrow {
+  font-family: var(--mono);
+  font-size: 16px;
+  color: var(--gold);
+  text-align: center;
+  flex-shrink: 0;
+}
+.compound-result {
+  font-size: 13px;
+  color: var(--ivory-dim);
+  line-height: 1.6;
+}
+.compound-result .cn {
+  display: block;
+  font-family: var(--serif-cn);
+  font-size: 12px;
+  color: color-mix(in srgb, var(--ivory-faint) 75%, transparent);
+  margin-top: 4px;
+}
+
+@media (max-width: 760px) {
+  .lsim-grid { grid-template-columns: 1fr; }
+  .lmean-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .compound-pair {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .compound-arrow { text-align: left; font-size: 14px; }
+}
+
 /* level-legend strip */
 .level-legend {
   display: grid;
@@ -543,13 +753,182 @@
 
   <hr class="w-rule" />
 
+  <!-- § 10.4 — Level Simulator (Enhancement A) -->
+  <section class="w-section" id="level-sim">
+    <div class="w-eyebrow">§ 10.4 · Level Simulator</div>
+    <h2 class="w-h2">All ten frontiers at one level<span class="cn">同一层级下的十条前沿</span></h2>
+    <p class="w-lead">
+      <span class="en">Drag the slider to a level and see every frontier as it stands at that stage of development — a snapshot across the entire map at once.</span>
+      <span class="cn">拖动滑块选择层级，即可同时查看每条前沿在该发展阶段的状态——一次性纵览整张地图的横截面。</span>
+    </p>
+
+    <div class="w-interactive" role="group" aria-label="Level simulator">
+      <div class="ix-head">
+        <span class="ix-title">Level Simulator<span class="cn">层级模拟器</span></span>
+        <span class="ix-hint" id="lsim-readout">L1 · Foundation · 基础奠定</span>
+      </div>
+
+      <label for="lsim-slider" class="w-readout" style="display:block; margin-bottom:6px;">
+        <span class="en">Drag to select level:</span>
+        <span class="cn">拖动以选择层级：</span>
+      </label>
+      <input
+        id="lsim-slider"
+        class="w-range"
+        type="range"
+        min="1" max="5" step="1" value="1"
+        aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"
+        aria-label="Breakthrough level 1 to 5"
+      />
+
+      <div class="lsim-grid" id="lsim-grid" aria-live="polite" aria-atomic="true">
+        <!-- populated by JS; static fallback shown below -->
+      </div>
+
+      <noscript>
+        <p class="w-p" style="margin-top:16px;">
+          <span class="en">JavaScript is required for the interactive simulator. The full Level 1–5 ladders for each frontier appear in the Ten Frontiers section above.</span>
+          <span class="cn">交互式模拟器需要 JavaScript。每条前沿的完整第1至5级梯子请参阅上方「十条技术前沿」部分。</span>
+        </p>
+      </noscript>
+    </div>
+  </section>
+
+  <hr class="w-rule" />
+
+  <!-- § 10.5 — What a Level Means (Enhancement B) -->
+  <section class="w-section" id="level-meaning">
+    <div class="w-eyebrow">§ 10.5 · What a Level Means</div>
+    <h2 class="w-h2">The character of each level across all ten<span class="cn">每个层级在十条前沿中的共同特征</span></h2>
+    <p class="w-lead">
+      <span class="en">The same level number recurs across every frontier — but what does it feel like? Each level has a characteristic texture that repeats whether you are talking about energy, longevity, or autonomous driving.</span>
+      <span class="cn">同一层级编号在每条前沿中反复出现——但它的质感是什么？每个层级都有一种反复出现的特征纹理，无论你谈论的是能源、长生不老，还是自动驾驶。</span>
+    </p>
+    <div class="lmean-grid">
+      <div class="lmean-card">
+        <div class="lmean-lv">L1</div>
+        <div class="lmean-name">Foundation</div>
+        <div class="lmean-cn">基础奠定</div>
+        <div class="lmean-body">
+          <span class="en">The first proof of concept exists. The underlying science is settled enough to build on. Progress is possible but expensive, fragile, and limited to specialists. The gap between what exists and what is promised is vast.</span>
+          <span class="cn">首个概念验证已经存在。底层科学已足够稳固，可以在此基础上构建。进展是可能的，但代价高昂、脆弱，且仅限于专家领域。现实与愿景之间的距离依然辽阔。</span>
+        </div>
+        <div class="lmean-bar"></div>
+      </div>
+      <div class="lmean-card">
+        <div class="lmean-lv">L2</div>
+        <div class="lmean-name">Assisted</div>
+        <div class="lmean-cn">辅助增强</div>
+        <div class="lmean-body">
+          <span class="en">The technology works reliably within a narrow, well-defined scope. It augments human capability rather than replacing it. Failures are contained and recoverable. The human remains firmly in the loop as operator or overseer.</span>
+          <span class="cn">技术在狭窄且明确界定的范围内可靠运行。它增强人类能力，而非取而代之。失败是可被控制和恢复的。人类仍牢牢处于回路之中，担任操作者或监督者。</span>
+        </div>
+        <div class="lmean-bar"></div>
+      </div>
+      <div class="lmean-card">
+        <div class="lmean-lv">L3</div>
+        <div class="lmean-name">Conditional</div>
+        <div class="lmean-cn">条件自主</div>
+        <div class="lmean-body">
+          <span class="en">The system performs well under defined conditions without requiring constant human intervention — but it fails in novel or edge-case situations. The boundary of the envelope is known; operating near it requires care. Most current frontiers cluster here.</span>
+          <span class="cn">系统在明确条件下表现良好，无需持续人工干预——但在新颖或边缘场景下仍会失效。「运行包络」的边界是已知的；在其边缘附近操作需要谨慎。当前大多数前沿都集中在这一层级。</span>
+        </div>
+        <div class="lmean-bar"></div>
+      </div>
+      <div class="lmean-card">
+        <div class="lmean-lv">L4</div>
+        <div class="lmean-name">Advanced</div>
+        <div class="lmean-cn">高度进阶</div>
+        <div class="lmean-body">
+          <span class="en">The envelope is wide enough that human intervention becomes the exception, not the rule. The technology handles genuine complexity and adapts to unexpected situations. Economic value is large and broadly distributed. The L3-to-L4 gap is almost always the hardest transition.</span>
+          <span class="cn">运行包络已足够宽阔，人工干预成为例外而非常规。技术能处理真实的复杂性，并适应意外情况。经济价值巨大且广泛分布。第三级到第四级的跨越，几乎始终是最艰难的转变。</span>
+        </div>
+        <div class="lmean-bar"></div>
+      </div>
+      <div class="lmean-card">
+        <div class="lmean-lv">L5</div>
+        <div class="lmean-name">Mastery</div>
+        <div class="lmean-cn">精通极致</div>
+        <div class="lmean-body">
+          <span class="en">The envelope disappears. The technology is reliable across essentially all conditions; its failure modes are rare and understood. It has become infrastructure — invisible, assumed, load-bearing. L5 changes what the next frontier can even attempt.</span>
+          <span class="cn">包络消失了。技术在几乎所有条件下都可靠；其失效模式罕见且已被理解。它已成为基础设施——无形、默认存在、承载一切。第五级改变了下一条前沿所能尝试的边界。</span>
+        </div>
+        <div class="lmean-bar"></div>
+      </div>
+    </div>
+
+    <p class="w-p" style="margin-top:36px;">
+      <span class="en">Notice that the L3-to-L4 transition is the pivot in nearly every frontier. It is where conditional success becomes robust success — and where the problems shift from scientific to systemic. Autonomous driving has been stuck near that boundary for years; so has controlled nuclear fusion. Understanding why these transitions take longer than expected is as important as understanding the technology itself.</span>
+      <span class="cn">几乎在每条前沿中，第三级到第四级的跨越都是关键转折。正是在这里，「条件性成功」变为「稳健性成功」——问题的性质也从科学问题转向系统性问题。自动驾驶在这道边界附近滞留多年，可控核聚变亦然。理解这些跨越为何比预期更漫长，与理解技术本身同等重要。</span>
+    </p>
+
+    <blockquote class="w-quote" style="margin-top:44px;">
+      <span class="en">"At Level 5, a technology stops being a technology. It becomes the new ground on which the next generation builds."</span>
+      <span class="cn">「抵达第五级时，一项技术便不再是技术。它成为下一代赖以构建的新地基。」</span>
+      <span class="w-quote-attr">On level 5 mastery · 关于第五级精通的说明</span>
+    </blockquote>
+  </section>
+
+  <hr class="w-rule" />
+
   <section class="w-section">
-    <div class="w-eyebrow">§ 10.4 · From Frontiers to Convergence</div>
+    <div class="w-eyebrow">§ 10.6 · From Frontiers to Convergence</div>
     <h2 class="w-h2">When frontiers intersect<span class="cn">当前沿彼此相遇</span></h2>
     <p class="w-lead">
-      <span class="en">The ten frontiers are not independent. They converge, accelerate, and in some cases require each other. The most powerful dynamics happen at intersections.</span>
-      <span class="cn">这十条前沿并非相互独立。它们交汇、相互加速，在某些情况下彼此依存。最强大的动力，往往在交叉点上迸发。</span>
+      <span class="en">The ten frontiers are not independent. They converge, accelerate, and in some cases require each other. The most powerful dynamics happen at intersections — when a level gain on one frontier removes a hard constraint from another.</span>
+      <span class="cn">这十条前沿并非相互独立。它们交汇、相互加速，在某些情况下彼此依存。最强大的动力往往在交叉点上迸发——当某条前沿的层级提升，消解了另一条前沿的关键约束时。</span>
     </p>
+
+    <div style="margin-top: 28px;">
+      <div class="compound-pair">
+        <div class="compound-node">Longevity × Space Travel<span class="cn">长生不老 × 空间移动</span></div>
+        <div class="compound-arrow">⟶</div>
+        <div class="compound-result">
+          <span class="en">Interstellar missions become biologically viable. Crew survival across decades of travel requires both fields at L4+.</span>
+          <span class="cn">星际任务在生物学上成为可行。跨越数十年航程的船员存活，需要两个领域同时达到第四级以上。</span>
+        </div>
+      </div>
+      <div class="compound-pair">
+        <div class="compound-node">Large Models × BCI<span class="cn">大模型 × 脑机接口</span></div>
+        <div class="compound-arrow">⟶</div>
+        <div class="compound-result">
+          <span class="en">Human-AI collaboration moves faster than language. At L4×L4 the cognitive feedback loop closes before a sentence is formed.</span>
+          <span class="cn">人机协作速度超越语言。在「第四级×第四级」时，认知反馈回路在句子成形之前就已闭合。</span>
+        </div>
+      </div>
+      <div class="compound-pair">
+        <div class="compound-node">Materials × Energy<span class="cn">物质科学 × 能源</span></div>
+        <div class="compound-arrow">⟶</div>
+        <div class="compound-result">
+          <span class="en">Every energy frontier is a materials problem in disguise. Fusion plasma containment and Dyson sphere construction alike demand materials not yet synthesized.</span>
+          <span class="cn">每一个能源前沿本质上都是一个材料问题。聚变等离子体约束和戴森球建造，同样依赖尚未合成的材料。</span>
+        </div>
+      </div>
+      <div class="compound-pair">
+        <div class="compound-node">Humanoid Robots × VR<span class="cn">人形机器人 × 虚拟现实</span></div>
+        <div class="compound-arrow">⟶</div>
+        <div class="compound-result">
+          <span class="en">Physical and virtual presence collapse into one. A body anywhere, a mind everywhere — when both reach L4–L5.</span>
+          <span class="cn">物理临场与虚拟临场融为一体。身体可在任何地方，心智却无处不在——当两者都达到第四至第五级时。</span>
+        </div>
+      </div>
+      <div class="compound-pair">
+        <div class="compound-node">Web3 × Large Models<span class="cn">Web3 × 大模型</span></div>
+        <div class="compound-arrow">⟶</div>
+        <div class="compound-result">
+          <span class="en">DAOs and on-chain governance gain genuine intelligence. AI agents that can hold wallets, vote, and enforce contracts become autonomous economic actors.</span>
+          <span class="cn">去中心化自治组织与链上治理获得真实的智能。能够持有钱包、投票、执行合约的AI智能体成为自主的经济行为者。</span>
+        </div>
+      </div>
+      <div class="compound-pair">
+        <div class="compound-node">Autonomous Driving × Humanoid Robots<span class="cn">自动驾驶 × 人形机器人</span></div>
+        <div class="compound-arrow">⟶</div>
+        <div class="compound-result">
+          <span class="en">The perception and planning stacks are deeply related. Advances in one field have repeatedly transferred to the other — both solve the same core problem of navigating a dynamic world.</span>
+          <span class="cn">两者的感知与规划技术栈高度相关。一个领域的进展反复迁移到另一个领域——两者解决的是同一核心问题：在动态世界中导航。</span>
+        </div>
+      </div>
+    </div>
     <div class="w-grid">
       <div class="w-card">
         <div class="idx">Materials × Energy</div>
@@ -604,5 +983,172 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+/* Level Simulator — vanilla IIFE, degrades gracefully */
+(function () {
+  'use strict';
+
+  /* ── per-frontier per-level descriptors (drawn from existing L1→L5 content) ── */
+  var FRONTIERS = [
+    {
+      idx: '10 · 01', en: 'Materials', cn: '物质科学',
+      levels: [
+        { en: 'Smelting — extracting metals from ore', cn: '冶炼——从矿石中提取金属' },
+        { en: 'Precision machining — shaping matter to micron tolerances', cn: '精密加工——以微米级公差塑形材料' },
+        { en: '3D printing — layer-by-layer, any geometry', cn: '3D打印——逐层累积，任意形体' },
+        { en: 'Nanotechnology — engineering properties at atomic scale', cn: '纳米技术——在原子尺度设计物质属性' },
+        { en: 'Nano 3D synthesis — building any 3-D structure atom by atom', cn: '纳米3D合成——在原子分辨率上逐层构建任意三维结构' }
+      ]
+    },
+    {
+      idx: '10 · 02', en: 'Virtual Reality', cn: '虚拟现实',
+      levels: [
+        { en: 'Video games — rule-driven closed interactive worlds', cn: '电子游戏——规则驱动的封闭互动世界' },
+        { en: 'Games with economic ecosystems — virtual goods hold real value', cn: '带经济生态的电子游戏——虚拟物品具备真实价值' },
+        { en: 'Open world games — player-shaped narrative', cn: '开放世界游戏——玩家自由塑造叙事走向' },
+        { en: 'Self-running open worlds — AI inhabitants evolve autonomously', cn: '自运行的开放世界——AI居民自主演化，无需脚本' },
+        { en: 'Metaverse — persistent cross-platform digital reality', cn: '元宇宙——持久的、跨平台的、与物理世界等权的数字现实' }
+      ]
+    },
+    {
+      idx: '10 · 03', en: 'Energy', cn: '能源',
+      levels: [
+        { en: 'Fossil fuels — finite, high-carbon', cn: '化石燃料——有限储量，高碳排放' },
+        { en: 'Solar energy — renewable but day/latitude limited', cn: '太阳能——可再生，但受昼夜与纬度制约' },
+        { en: 'Nuclear fission — high density, but waste and proliferation risk', cn: '核裂变——高密度，但有核废料与扩散风险' },
+        { en: 'Controlled nuclear fusion — near-limitless clean energy', cn: '可控核聚变——近乎无限的洁净能源，工程挑战巨大' },
+        { en: 'Dyson sphere — capturing a star\'s full radiative output', cn: '戴森球——直接捕获恒星全部辐射输出' }
+      ]
+    },
+    {
+      idx: '10 · 04', en: 'Longevity', cn: '长生不老',
+      levels: [
+        { en: 'Health optimisation — lifestyle and mild reversible interventions', cn: '健康优化——延缓衰老的生活方式与轻度可逆干预' },
+        { en: 'Organ & system-level repair — engineered healthspan extension', cn: '器官与系统层级的修复维护——「延寿工程化」' },
+        { en: 'Cellular / molecular periodic reset — partial reversible ageing', cn: '细胞与分子层面的周期性重置——部分可逆老化' },
+        { en: 'Continuous damage clearing & modular replacement — practical extreme lifespan', cn: '持续净清零损伤与模块化替换——实用级极限延寿' },
+        { en: 'Autonomous maintenance · transferable continuity — technical immortality', cn: '自主维持与可迁移的个体连续性——强意义上的技术性不老' }
+      ]
+    },
+    {
+      idx: '10 · 05', en: 'Space Travel', cn: '空间移动',
+      levels: [
+        { en: 'Automobiles — ground transport, ~100 km/h', cn: '汽车级——地面交通，百公里时速' },
+        { en: 'Aircraft — within the atmosphere, transoceanic', cn: '飞机级——大气层内，跨洋飞行' },
+        { en: 'Rockets — escape atmosphere, reach low Earth orbit', cn: '火箭级——突破大气，进入近地轨道' },
+        { en: 'Space elevator — routine orbital return, interplanetary travel', cn: '飞船级——轨道常态往返，行星际航行' },
+        { en: 'Curvature drive — beyond light-speed limits, interstellar travel', cn: '曲率引擎——突破光速限制，恒星际旅行' }
+      ]
+    },
+    {
+      idx: '10 · 06', en: 'Large Models', cn: '大模型',
+      levels: [
+        { en: 'Chat — Q&A and dialogue, fluid knowledge retrieval', cn: '聊天——问答与对话，知识检索的流畅界面' },
+        { en: 'Reasoning — multi-step logic, math, and code generation', cn: '推理——多步逻辑、数学与代码生成' },
+        { en: 'Intelligent Agent — autonomous planning across tools', cn: '智能体——自主规划与执行跨工具的复杂任务' },
+        { en: 'Innovation — generating hypotheses humans haven\'t considered', cn: '创新——产生人类尚未想到的新假设与方案' },
+        { en: 'Organiser — coordinating large-scale human-AI collaboration', cn: '组织者——协调大规模人机协作，重塑社会结构' }
+      ]
+    },
+    {
+      idx: '10 · 07', en: 'Brain–Computer Interface', cn: '脑机接口',
+      levels: [
+        { en: 'Basic signal acquisition & decoding — research stage', cn: '基础信号采集与解码——科研实验阶段' },
+        { en: 'Simple one-way control — cursor or prosthetic arm', cn: '简单单向控制——移动光标、操控机械臂' },
+        { en: 'Two-way interaction — read signals and deliver feedback', cn: '双向交互——既能读取脑信号，也能通过刺激反馈' },
+        { en: 'Partial clinical applications — ALS and spinal-injury comms', cn: '部分临床应用——渐冻症与脊髓损伤患者的辅助沟通' },
+        { en: 'High-bandwidth natural human-machine symbiosis', cn: '高带宽、自然化的人机共生——思维与数字世界无缝互联' }
+      ]
+    },
+    {
+      idx: '10 · 08', en: 'Humanoid Robots', cn: '人形机器人',
+      levels: [
+        { en: 'Basic operation assistance — preset simple movements', cn: '基础操作辅助——执行预设的简单动作' },
+        { en: 'Environmental perception & simple interaction', cn: '环境感知与简单交互——识别障碍与人物' },
+        { en: 'Conditional autonomy & situational understanding', cn: '条件自主与情境理解——在结构化环境中独立完成任务' },
+        { en: 'Highly autonomous complex task execution', cn: '高度自主与复杂任务执行——无监督跨域操作' },
+        { en: 'Fully autonomous, human-like intelligence in open environments', cn: '完全自主与类人智能——开放环境中自主学习与判断' }
+      ]
+    },
+    {
+      idx: '10 · 09', en: 'Autonomous Driving', cn: '自动驾驶',
+      levels: [
+        { en: 'Driver assistance — lane-keep, auto-brake, single features', cn: '驾驶员辅助——车道保持、自动刹车等单一功能' },
+        { en: 'Partial autonomous driving — combined features, driver monitors', cn: '部分自动驾驶——组合功能，但驾驶员须持续监控' },
+        { en: 'Conditional autonomous driving — no intervention in defined scenarios', cn: '有条件自动驾驶——特定场景下无需介入，但须随时准备接管' },
+        { en: 'Highly autonomous driving — minimal driver intervention needed', cn: '高度自动驾驶——大多数条件下无需驾驶员干预' },
+        { en: 'Fully autonomous driving — any road, any weather, no steering wheel', cn: '完全自动驾驶——任意道路、任意天气、无需方向盘' }
+      ]
+    },
+    {
+      idx: '10 · 10', en: 'Web3', cn: 'Web3',
+      levels: [
+        { en: 'Decentralised ledger — immutable transaction record', cn: '去中心化账本——不可篡改的交易记录' },
+        { en: 'Smart contracts — self-executing on-chain agreements', cn: '智能合约——自动执行的链上协议' },
+        { en: 'DAO — code-governed collective decision-making', cn: '去中心化自治组织——代码治理的集体决策' },
+        { en: 'Metaverse — digital property and economy running in virtual worlds', cn: '元宇宙——数字产权与经济在虚拟世界中自洽运行' },
+        { en: 'Automated nation — political community founded on protocol, not territory', cn: '自动化的国家——以协议而非领土为基础的政治共同体' }
+      ]
+    }
+  ];
+
+  var LEVEL_NAMES = [
+    '', /* index 0 unused */
+    'Foundation · 基础奠定',
+    'Assisted · 辅助增强',
+    'Conditional · 条件自主',
+    'Advanced · 高度进阶',
+    'Mastery · 精通极致'
+  ];
+
+  var slider = document.getElementById('lsim-slider');
+  var grid   = document.getElementById('lsim-grid');
+  var readout = document.getElementById('lsim-readout');
+
+  if (!slider || !grid) return; /* element not found, bail */
+
+  function buildCard(f, lv) {
+    var desc = f.levels[lv - 1];
+    var pct  = (lv / 5) * 100;
+    var card = document.createElement('div');
+    card.className = 'lsim-card';
+    card.innerHTML =
+      '<div class="lsim-idx">' + f.idx + '</div>' +
+      '<div class="lsim-name">' + f.en + '<span class="cn">' + f.cn + '</span></div>' +
+      '<div class="lsim-desc">' + desc.en + '<span class="cn">' + desc.cn + '</span></div>' +
+      '<div class="lsim-bar-wrap"><div class="lsim-bar-fill" style="width:' + pct + '%;opacity:' + (0.18 + 0.82 * (lv - 1) / 4).toFixed(2) + '"></div></div>';
+    return card;
+  }
+
+  function render(lv) {
+    /* update readout */
+    readout.textContent = 'L' + lv + ' · ' + LEVEL_NAMES[lv];
+    slider.setAttribute('aria-valuenow', lv);
+    /* repopulate grid */
+    var frag = document.createDocumentFragment();
+    FRONTIERS.forEach(function (f) { frag.appendChild(buildCard(f, lv)); });
+    grid.innerHTML = '';
+    grid.appendChild(frag);
+  }
+
+  /* initial render */
+  render(parseInt(slider.value, 10));
+
+  /* input event fires continuously during drag — preferred */
+  slider.addEventListener('input', function () {
+    render(parseInt(this.value, 10));
+  });
+
+  /* respect reduced-motion: skip CSS transition on bar fill */
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq && mq.matches) {
+    /* remove transitions added by the stylesheet for lsim-bar-fill */
+    var style = document.createElement('style');
+    style.textContent = '.lsim-bar-fill { transition: none !important; }';
+    document.head.appendChild(style);
+  }
+}());
+</script>
 </body>
 </html>

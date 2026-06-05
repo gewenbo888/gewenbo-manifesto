@@ -75,6 +75,290 @@
   }
 }
 
+/* ── Wu Xing interactive explorer ── */
+.wxe-layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-top: 24px;
+}
+@media (max-width: 760px) {
+  .wxe-layout { grid-template-columns: 1fr; }
+  .wxe-svg-wrap { display: flex; justify-content: center; }
+}
+
+.wxe-svg-wrap { flex-shrink: 0; }
+.wxe-svg-wrap svg {
+  width: 260px;
+  height: 260px;
+  display: block;
+}
+@media (max-width: 480px) {
+  .wxe-svg-wrap svg { width: 200px; height: 200px; }
+}
+
+/* SVG interactive node highlight */
+.wxe-vertex { cursor: pointer; transition: opacity .2s; }
+.wxe-vertex circle.node-ring {
+  transition: stroke-width .2s, r .2s;
+}
+.wxe-vertex.active circle.node-ring {
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+.wxe-vertex.dim { opacity: .28; }
+.wxe-edge-gen { transition: opacity .3s, stroke-width .2s; }
+.wxe-edge-over { transition: opacity .3s, stroke-width .2s; }
+
+/* chip row */
+.wxe-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.wxe-chip {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 13px;
+  letter-spacing: .06em;
+  border: 1px solid rgba(201,162,75,.25);
+  border-radius: 20px;
+  padding: 7px 16px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--ivory-dim, rgba(236,228,211,.65));
+  transition: background .2s, color .2s, border-color .2s, transform .1s, box-shadow .2s;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.wxe-chip:hover { color: var(--ivory, #ece4d3); border-color: var(--gold, #c9a24b); }
+.wxe-chip:active { transform: scale(.95); }
+.wxe-chip.active { color: var(--bg, #0a0908); border-color: transparent; }
+.wxe-chip[data-el="metal"].active  { background: #c9c4b8; box-shadow: 0 0 14px rgba(201,196,184,.35); }
+.wxe-chip[data-el="wood"].active   { background: #8bb57b; box-shadow: 0 0 14px rgba(139,181,123,.35); }
+.wxe-chip[data-el="water"].active  { background: #6fa5c7; box-shadow: 0 0 14px rgba(111,165,199,.35); }
+.wxe-chip[data-el="fire"].active   { background: #d66b4a; box-shadow: 0 0 14px rgba(214,107,74,.35); }
+.wxe-chip[data-el="earth"].active  { background: #caa567; box-shadow: 0 0 14px rgba(202,165,103,.35); }
+.wxe-chip .chip-glyph {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* panel */
+.wxe-panel {
+  border: 1px solid rgba(201,162,75,.18);
+  border-radius: 4px;
+  background: rgba(10,9,8,.5);
+  padding: 22px 24px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.wxe-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .05;
+  pointer-events: none;
+  border-radius: 4px;
+}
+.wxe-panel[data-el="metal"]::before { background: #c9c4b8; }
+.wxe-panel[data-el="wood"]::before  { background: #8bb57b; }
+.wxe-panel[data-el="water"]::before { background: #6fa5c7; }
+.wxe-panel[data-el="fire"]::before  { background: #d66b4a; }
+.wxe-panel[data-el="earth"]::before { background: #caa567; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .wxe-panel { animation: wfade .35s ease; }
+  @keyframes wfade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+.wxe-panel-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.wxe-big-glyph {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+}
+.wxe-panel[data-el="metal"] .wxe-big-glyph { color: #c9c4b8; }
+.wxe-panel[data-el="wood"]  .wxe-big-glyph { color: #8bb57b; }
+.wxe-panel[data-el="water"] .wxe-big-glyph { color: #6fa5c7; }
+.wxe-panel[data-el="fire"]  .wxe-big-glyph { color: #d66b4a; }
+.wxe-panel[data-el="earth"] .wxe-big-glyph { color: #caa567; }
+
+.wxe-panel-title { display: flex; flex-direction: column; gap: 2px; }
+.wxe-panel-en {
+  font-family: var(--display, 'Fraunces', serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--gold-bright, #e6c071);
+}
+.wxe-panel-sub {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-deep, #a07e34);
+}
+.wxe-mantra-char {
+  margin-left: auto;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: 34px;
+  color: var(--gold-bright, #e6c071);
+  letter-spacing: .06em;
+  align-self: center;
+}
+
+.wxe-rows { display: flex; flex-direction: column; gap: 10px; }
+.wxe-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 8px 12px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.wxe-row-label {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a24b);
+  padding-top: 2px;
+}
+.wxe-row-val { color: var(--ivory-dim, rgba(236,228,211,.65)); }
+.wxe-row-val .en { display: block; }
+.wxe-row-val .cn {
+  display: block;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: .9em;
+  color: var(--ivory-faint, rgba(236,228,211,.45));
+  margin-top: 2px;
+}
+.wxe-cycle-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.wxe-cycle-badge {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(201,162,75,.2);
+  color: var(--ivory-dim, rgba(236,228,211,.65));
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  letter-spacing: .1em;
+}
+.wxe-badge-gen { border-color: rgba(139,195,74,.3); color: #8fc87b; }
+.wxe-badge-over { border-color: rgba(214,107,74,.3); color: #d66b4a; }
+
+/* ── Overcoming (克) cycle table ── */
+.overcome-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 13.5px;
+}
+.overcome-table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-family: var(--display, 'Fraunces', serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--gold, #c9a24b);
+  border-bottom: 1px solid rgba(201,162,75,.2);
+}
+.overcome-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(201,162,75,.08);
+  color: var(--ivory-dim, rgba(236,228,211,.72));
+  vertical-align: top;
+}
+.overcome-table tr:last-child td { border-bottom: none; }
+.overcome-table .td-el {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  width: 36px;
+  text-align: center;
+}
+.overcome-table tr[data-el="metal"] .td-el { color: #c9c4b8; }
+.overcome-table tr[data-el="wood"]  .td-el { color: #8bb57b; }
+.overcome-table tr[data-el="water"] .td-el { color: #6fa5c7; }
+.overcome-table tr[data-el="fire"]  .td-el { color: #d66b4a; }
+.overcome-table tr[data-el="earth"] .td-el { color: #caa567; }
+.overcome-table .td-en { color: var(--ivory, #ece4d3); }
+.overcome-table .td-cn {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--ivory-faint, rgba(236,228,211,.45));
+  margin-top: 2px;
+}
+
+/* ── five-in-one reading section ── */
+.fio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.fio-card {
+  border: 1px solid rgba(201,162,75,.14);
+  border-radius: 4px;
+  padding: 22px 20px;
+  background: rgba(10,9,8,.4);
+  transition: border-color .25s, background .25s, transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;
+}
+.fio-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-2, #14110d);
+  border-color: rgba(201,162,75,.32);
+  box-shadow: 0 14px 36px -12px rgba(0,0,0,.65), 0 0 24px -8px rgba(201,162,75,.15);
+}
+.fio-card .fio-tag {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-deep, #a07e34);
+  margin-bottom: 10px;
+}
+.fio-card .fio-title {
+  font-family: var(--display, 'Fraunces', serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--gold-bright, #e6c071);
+  margin-bottom: 8px;
+}
+.fio-card .fio-body {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--ivory-dim, rgba(236,228,211,.65));
+}
+.fio-card .fio-body .cn {
+  display: block;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: .88em;
+  color: var(--ivory-faint, rgba(236,228,211,.45));
+  margin-top: 6px;
+}
+
 /* ── five-element card grid ── */
 .el-grid {
   display: grid;
@@ -429,9 +713,320 @@
     </div>
   </section>
 
-  <!-- § 05.4 Generation Cycle -->
+  <!-- § 05.X Wu Xing Explorer (interactive) -->
+  <section class="w-section" id="wx-explorer">
+    <div class="w-eyebrow">§ 05.4 · Wu Xing Explorer · 五行探索器</div>
+    <h2 class="w-h2">
+      <span class="en">Select an element — see its archetype, cycles, and shadow</span><span class="cn">选择一行——查看其原型、生克关系与过度倾向</span>
+    </h2>
+    <p class="w-p">
+      <span class="en">The pentagon shows both cycles at once: the outer rim is the generating sequence (生, clockwise), the inner star is the overcoming sequence (克). Select any vertex or chip below to explore that element's archetype in depth.</span>
+      <span class="cn">五边形同时呈现两种关系：外圈为相生之序（顺时针），内星为相克之序。点击顶点或下方标签，深入探索该行的原型。</span>
+    </p>
+
+    <div class="w-interactive" id="wxe-root">
+      <div class="ix-head">
+        <span class="ix-title">Wu Xing Explorer <span class="cn">五行探索器</span></span>
+        <span class="ix-hint">click a chip · 点击标签</span>
+      </div>
+
+      <!-- chip buttons -->
+      <div class="wxe-chips" role="tablist" aria-label="Wu Xing elements">
+        <button class="wxe-chip active" data-el="metal" role="tab" aria-selected="true"  aria-controls="wxe-panel-metal">
+          <span class="chip-glyph">金</span> Metal
+        </button>
+        <button class="wxe-chip" data-el="wood"  role="tab" aria-selected="false" aria-controls="wxe-panel-wood">
+          <span class="chip-glyph">木</span> Wood
+        </button>
+        <button class="wxe-chip" data-el="water" role="tab" aria-selected="false" aria-controls="wxe-panel-water">
+          <span class="chip-glyph">水</span> Water
+        </button>
+        <button class="wxe-chip" data-el="fire"  role="tab" aria-selected="false" aria-controls="wxe-panel-fire">
+          <span class="chip-glyph">火</span> Fire
+        </button>
+        <button class="wxe-chip" data-el="earth" role="tab" aria-selected="false" aria-controls="wxe-panel-earth">
+          <span class="chip-glyph">土</span> Earth
+        </button>
+      </div>
+
+      <div class="wxe-layout">
+
+        <!-- SVG pentagon (interactive) -->
+        <div class="wxe-svg-wrap" aria-hidden="true">
+          <svg id="wxe-svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="wxe-bg" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#c9a24b" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#c9a24b" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="130" cy="130" r="120" fill="url(#wxe-bg)"/>
+
+            <!-- generation cycle — pentagon perimeter, clockwise: Metal→Water→Wood→Fire→Earth→Metal -->
+            <!-- vertices: Metal(130,22) Wood(228,89) Fire(192,210) Water(68,210) Earth(32,89) -->
+            <g id="wxe-gen-edges" fill="none" stroke="#c9a24b" stroke-width="1" opacity="0.28">
+              <line class="wxe-edge-gen" data-from="metal" data-to="water" x1="130" y1="22"  x2="68"  y2="210"/>
+              <line class="wxe-edge-gen" data-from="water" data-to="wood"  x1="68"  y1="210" x2="228" y2="89"/>
+              <line class="wxe-edge-gen" data-from="wood"  data-to="fire"  x1="228" y1="89"  x2="192" y2="210"/>
+              <line class="wxe-edge-gen" data-from="fire"  data-to="earth" x1="192" y1="210" x2="32"  y2="89"/>
+              <line class="wxe-edge-gen" data-from="earth" data-to="metal" x1="32"  y1="89"  x2="130" y2="22"/>
+            </g>
+
+            <!-- overcoming cycle — pentagram chords: Metal→Wood, Wood→Earth, Earth→Water, Water→Fire, Fire→Metal -->
+            <g id="wxe-over-edges" fill="none" stroke="#d66b4a" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.22">
+              <line class="wxe-edge-over" data-from="metal" data-to="wood"  x1="130" y1="22"  x2="228" y2="89"/>
+              <line class="wxe-edge-over" data-from="wood"  data-to="earth" x1="228" y1="89"  x2="32"  y2="89"/>
+              <line class="wxe-edge-over" data-from="earth" data-to="water" x1="32"  y1="89"  x2="68"  y2="210"/>
+              <line class="wxe-edge-over" data-from="water" data-to="fire"  x1="68"  y1="210" x2="192" y2="210"/>
+              <line class="wxe-edge-over" data-from="fire"  data-to="metal" x1="192" y1="210" x2="130" y2="22"/>
+            </g>
+
+            <!-- pentagon outline -->
+            <polygon points="130,22 228,89 192,210 68,210 32,89"
+                     fill="none" stroke="#c9a24b" stroke-width="0.6" opacity="0.18"/>
+
+            <!-- vertices -->
+            <g font-family="Noto Serif SC" font-weight="700" text-anchor="middle">
+
+              <!-- Metal (top) -->
+              <g class="wxe-vertex active" data-el="metal" tabindex="0" role="button" aria-label="Metal 金">
+                <circle cx="130" cy="22" r="20" fill="#0a0908" stroke="#c9c4b8" class="node-ring" stroke-width="1.2"/>
+                <text x="130" y="28" font-size="17" fill="#c9c4b8">金</text>
+              </g>
+
+              <!-- Wood (upper-right) -->
+              <g class="wxe-vertex" data-el="wood" tabindex="0" role="button" aria-label="Wood 木">
+                <circle cx="228" cy="89" r="20" fill="#0a0908" stroke="#8bb57b" class="node-ring" stroke-width="1.2"/>
+                <text x="228" y="95" font-size="17" fill="#8bb57b">木</text>
+              </g>
+
+              <!-- Fire (lower-right) -->
+              <g class="wxe-vertex" data-el="fire" tabindex="0" role="button" aria-label="Fire 火">
+                <circle cx="192" cy="210" r="20" fill="#0a0908" stroke="#d66b4a" class="node-ring" stroke-width="1.2"/>
+                <text x="192" y="216" font-size="17" fill="#d66b4a">火</text>
+              </g>
+
+              <!-- Water (lower-left) -->
+              <g class="wxe-vertex" data-el="water" tabindex="0" role="button" aria-label="Water 水">
+                <circle cx="68" cy="210" r="20" fill="#0a0908" stroke="#6fa5c7" class="node-ring" stroke-width="1.2"/>
+                <text x="68" y="216" font-size="17" fill="#6fa5c7">水</text>
+              </g>
+
+              <!-- Earth (upper-left) -->
+              <g class="wxe-vertex" data-el="earth" tabindex="0" role="button" aria-label="Earth 土">
+                <circle cx="32" cy="89" r="20" fill="#0a0908" stroke="#caa567" class="node-ring" stroke-width="1.2"/>
+                <text x="32" y="95" font-size="17" fill="#caa567">土</text>
+              </g>
+            </g>
+
+            <!-- centre -->
+            <circle cx="130" cy="130" r="3.5" fill="#c9a24b"/>
+            <text x="130" y="148" text-anchor="middle" font-family="Fraunces" font-style="italic"
+                  font-size="9" fill="#ece4d3" opacity="0.4">wu xing</text>
+          </svg>
+        </div>
+
+        <!-- panels (one per element, first visible by default) -->
+        <div id="wxe-panels">
+
+          <div class="wxe-panel" id="wxe-panel-metal" data-el="metal" role="tabpanel">
+            <div class="wxe-panel-header">
+              <div class="wxe-big-glyph">金</div>
+              <div class="wxe-panel-title">
+                <div class="wxe-panel-en">Blade · the Cutter</div>
+                <div class="wxe-panel-sub">Metal · Jīn</div>
+              </div>
+              <div class="wxe-mantra-char">戈</div>
+            </div>
+            <div class="wxe-rows">
+              <div class="wxe-row">
+                <div class="wxe-row-label">Core trait</div>
+                <div class="wxe-row-val">
+                  <span class="en">Precision — cutting to the essential, removing what doesn't belong.</span>
+                  <span class="cn">精准——斩断冗余，直抵本质。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Strength</div>
+                <div class="wxe-row-val">
+                  <span class="en">Clarity of judgment; the courage to say the uncomfortable true thing.</span>
+                  <span class="cn">判断的清晰；说出令人不适的真相的勇气。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Shadow / excess</div>
+                <div class="wxe-row-val">
+                  <span class="en">Rigidity; cutting so much away that warmth and nuance disappear.</span>
+                  <span class="cn">僵化；削减过度，温度与层次随之消失。</span>
+                </div>
+              </div>
+            </div>
+            <div class="wxe-cycle-row">
+              <span class="wxe-cycle-badge wxe-badge-gen">生 Generates → Water 水</span>
+              <span class="wxe-cycle-badge wxe-badge-over">克 Overcomes → Wood 木</span>
+            </div>
+          </div>
+
+          <div class="wxe-panel" id="wxe-panel-wood" data-el="wood" role="tabpanel" hidden>
+            <div class="wxe-panel-header">
+              <div class="wxe-big-glyph">木</div>
+              <div class="wxe-panel-title">
+                <div class="wxe-panel-en">Awakening · the Grower</div>
+                <div class="wxe-panel-sub">Wood · Mù</div>
+              </div>
+              <div class="wxe-mantra-char">苏</div>
+            </div>
+            <div class="wxe-rows">
+              <div class="wxe-row">
+                <div class="wxe-row-label">Core trait</div>
+                <div class="wxe-row-val">
+                  <span class="en">Curiosity — persistent model-updating until the picture sharpens.</span>
+                  <span class="cn">好奇——持续修订模型，直到图景清晰。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Strength</div>
+                <div class="wxe-row-val">
+                  <span class="en">Intellectual reach; the capacity to grow into gaps others leave unfilled.</span>
+                  <span class="cn">思维的延伸；向他人留下的空白生长的能力。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Shadow / excess</div>
+                <div class="wxe-row-val">
+                  <span class="en">Perpetual revision without decision; accumulating understanding but never landing.</span>
+                  <span class="cn">无休止的修订而缺乏决断；积累理解却永远无法落地。</span>
+                </div>
+              </div>
+            </div>
+            <div class="wxe-cycle-row">
+              <span class="wxe-cycle-badge wxe-badge-gen">生 Generates → Fire 火</span>
+              <span class="wxe-cycle-badge wxe-badge-over">克 Overcomes → Earth 土</span>
+            </div>
+          </div>
+
+          <div class="wxe-panel" id="wxe-panel-water" data-el="water" role="tabpanel" hidden>
+            <div class="wxe-panel-header">
+              <div class="wxe-big-glyph">水</div>
+              <div class="wxe-panel-title">
+                <div class="wxe-panel-en">Flow · the Rider</div>
+                <div class="wxe-panel-sub">Water · Shuǐ</div>
+              </div>
+              <div class="wxe-mantra-char">御</div>
+            </div>
+            <div class="wxe-rows">
+              <div class="wxe-row">
+                <div class="wxe-row-label">Core trait</div>
+                <div class="wxe-row-val">
+                  <span class="en">Navigation — reading momentum before others feel it, finding the unseen channel.</span>
+                  <span class="cn">导航——在他人察觉之前感知势能，找到无人发现的通道。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Strength</div>
+                <div class="wxe-row-val">
+                  <span class="en">Adaptive intelligence; knowing when yielding is the most powerful move.</span>
+                  <span class="cn">适应性智识；知道何时退让才是最有力的一招。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Shadow / excess</div>
+                <div class="wxe-row-val">
+                  <span class="en">Shapelessness; becoming so fluid that others can't locate where you stand.</span>
+                  <span class="cn">无形；过于流动，令他人无法找到你所站立之处。</span>
+                </div>
+              </div>
+            </div>
+            <div class="wxe-cycle-row">
+              <span class="wxe-cycle-badge wxe-badge-gen">生 Generates → Wood 木</span>
+              <span class="wxe-cycle-badge wxe-badge-over">克 Overcomes → Fire 火</span>
+            </div>
+          </div>
+
+          <div class="wxe-panel" id="wxe-panel-fire" data-el="fire" role="tabpanel" hidden>
+            <div class="wxe-panel-header">
+              <div class="wxe-big-glyph">火</div>
+              <div class="wxe-panel-title">
+                <div class="wxe-panel-en">Wind · the Igniter</div>
+                <div class="wxe-panel-sub">Fire · Huǒ</div>
+              </div>
+              <div class="wxe-mantra-char">风</div>
+            </div>
+            <div class="wxe-rows">
+              <div class="wxe-row">
+                <div class="wxe-row-label">Core trait</div>
+                <div class="wxe-row-val">
+                  <span class="en">Ignition — making things happen that wouldn't have happened without them.</span>
+                  <span class="cn">点火——让没有他们就不会发生的事情发生。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Strength</div>
+                <div class="wxe-row-val">
+                  <span class="en">Irreverence and activation energy; genuine delight in the unpredictable.</span>
+                  <span class="cn">不敬与激活能量；对不可预知之事的真实喜悦。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Shadow / excess</div>
+                <div class="wxe-row-val">
+                  <span class="en">Burning through without building; igniting so much that nothing cools into form.</span>
+                  <span class="cn">燃烧而不建造；点燃太多，无一冷却成形。</span>
+                </div>
+              </div>
+            </div>
+            <div class="wxe-cycle-row">
+              <span class="wxe-cycle-badge wxe-badge-gen">生 Generates → Earth 土</span>
+              <span class="wxe-cycle-badge wxe-badge-over">克 Overcomes → Metal 金</span>
+            </div>
+          </div>
+
+          <div class="wxe-panel" id="wxe-panel-earth" data-el="earth" role="tabpanel" hidden>
+            <div class="wxe-panel-header">
+              <div class="wxe-big-glyph">土</div>
+              <div class="wxe-panel-title">
+                <div class="wxe-panel-en">Soul · the Bearer</div>
+                <div class="wxe-panel-sub">Earth · Tǔ</div>
+              </div>
+              <div class="wxe-mantra-char">魂</div>
+            </div>
+            <div class="wxe-rows">
+              <div class="wxe-row">
+                <div class="wxe-row-label">Core trait</div>
+                <div class="wxe-row-val">
+                  <span class="en">Bearing — carrying what others cannot, maintaining continuity, providing ground.</span>
+                  <span class="cn">承载——担起他人无法承担之物，维持连续，提供基底。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Strength</div>
+                <div class="wxe-row-val">
+                  <span class="en">Gravitas; a settled presence that other people organise themselves around.</span>
+                  <span class="cn">重量感；沉稳的存在，他人以其为中心自行组织。</span>
+                </div>
+              </div>
+              <div class="wxe-row">
+                <div class="wxe-row-label">Shadow / excess</div>
+                <div class="wxe-row-val">
+                  <span class="en">Inertia; bearing so much for so long that the self calcifies into pure function.</span>
+                  <span class="cn">惰性；长久承载过多，自我固化为纯粹的功能。</span>
+                </div>
+              </div>
+            </div>
+            <div class="wxe-cycle-row">
+              <span class="wxe-cycle-badge wxe-badge-gen">生 Generates → Metal 金</span>
+              <span class="wxe-cycle-badge wxe-badge-over">克 Overcomes → Water 水</span>
+            </div>
+          </div>
+
+        </div><!-- /wxe-panels -->
+      </div><!-- /wxe-layout -->
+    </div><!-- /w-interactive -->
+  </section>
+
+  <!-- § 05.5 Generation Cycle -->
   <section class="w-section">
-    <div class="w-eyebrow">§ 05.4 · The Generation Cycle · 相生之序</div>
+    <div class="w-eyebrow">§ 05.5 · The Generation Cycle · 相生之序</div>
     <h2 class="w-h2">
       <span class="en">How the archetypes feed each other</span><span class="cn">五种原型如何彼此滋养</span>
     </h2>
@@ -483,7 +1078,109 @@
     </table>
   </section>
 
-  <!-- § 05.5 The Wager -->
+  <!-- § 05.6 The Overcoming Cycle -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 05.6 · The Overcoming Cycle · 相克之序</div>
+    <h2 class="w-h2">
+      <span class="en">How the archetypes check each other</span><span class="cn">五种原型如何相互制衡</span>
+    </h2>
+    <p class="w-p">
+      <span class="en">If the generating cycle is about nourishment, the overcoming cycle is about regulation. In classical Wu Xing: Metal chops Wood, Wood parts Earth, Earth absorbs Water, Water douses Fire, Fire melts Metal. These are not violent oppositions but necessary correctives — each element supplies the friction that keeps the next from excess. The same logic translates directly to personality: the archetype that checks you is not your enemy, but the counterforce that keeps your signature move from becoming a compulsion.</span>
+      <span class="cn">相生之序关乎滋养，相克之序关乎调节。传统五行：金克木，木克土，土克水，水克火，火克金。这不是激烈的对抗，而是必要的校正——每一行提供摩擦力，使下一行免于过度。同样的逻辑直接适用于人格：制约你的那种原型不是你的对手，而是防止你的标志动作变成强迫症的反向力量。</span>
+    </p>
+    <table class="overcome-table" aria-label="Wu Xing overcoming cycle">
+      <thead>
+        <tr>
+          <th>元素</th>
+          <th>Archetype overcomes</th>
+          <th>Because</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-el="metal">
+          <td class="td-el">金</td>
+          <td><span class="td-en">Metal overcomes Wood</span><div class="td-cn">金克木</div></td>
+          <td><span class="td-en">Precision prunes uncontrolled growth; cutting stops the grower from expanding into everything indiscriminately.</span><div class="td-cn">精准修剪无节制的生长；切割阻止木型者无差别地扩张至所有方向。</div></td>
+        </tr>
+        <tr data-el="wood">
+          <td class="td-el">木</td>
+          <td><span class="td-en">Wood overcomes Earth</span><div class="td-cn">木克土</div></td>
+          <td><span class="td-en">Curiosity and revision disturb settled inertia; the grower's questions crack the ground the bearer rests on.</span><div class="td-cn">好奇与修订扰动沉稳的惰性；木型者的追问裂开土型者所依赖的地基。</div></td>
+        </tr>
+        <tr data-el="earth">
+          <td class="td-el">土</td>
+          <td><span class="td-en">Earth overcomes Water</span><div class="td-cn">土克水</div></td>
+          <td><span class="td-en">Gravitas and rootedness contain pure flow; the bearer's presence gives the rider banks to travel within.</span><div class="td-cn">重量感与根植性约束纯粹的流动；土型者的存在给御者划定了流淌的边界。</div></td>
+        </tr>
+        <tr data-el="water">
+          <td class="td-el">水</td>
+          <td><span class="td-en">Water overcomes Fire</span><div class="td-cn">水克火</div></td>
+          <td><span class="td-en">Adaptive patience cools reckless activation; the rider knows when the igniter's fire will exhaust itself before it builds.</span><div class="td-cn">适应性的耐心冷却鲁莽的激活；御者知道点火者的火焰将在成形之前耗尽。</div></td>
+        </tr>
+        <tr data-el="fire">
+          <td class="td-el">火</td>
+          <td><span class="td-en">Fire overcomes Metal</span><div class="td-cn">火克金</div></td>
+          <td><span class="td-en">Irreverence softens rigid rules; the igniter's warmth melts the blade's insistence on a single correct answer.</span><div class="td-cn">不敬软化僵化的规则；点火者的热度融化刀锋对唯一正确答案的执念。</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- § 05.7 Reading Yourself Across All Five -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 05.7 · Reading Yourself Across All Five · 在五行中读自己</div>
+    <h2 class="w-h2">
+      <span class="en">You are not one element — you are a proportion</span><span class="cn">你不只是一行——你是一种比例</span>
+    </h2>
+    <p class="w-lead">
+      <span class="en">The five archetypes are not boxes. They are axes of a single space, and every person occupies a point within it. Finding your dominant element is the beginning, not the end.</span>
+      <span class="cn">五种原型不是格子，而是同一空间的五条轴线，每个人都占据其中某一点。找到主导行是开始，而非终结。</span>
+    </p>
+    <div class="fio-grid">
+      <div class="fio-card">
+        <div class="fio-tag">Your dominant element</div>
+        <div class="fio-title">What you default to under pressure</div>
+        <div class="fio-body">
+          <span class="en">The element that shows up most reliably when you're under load is likely your dominant one. Metal sharpens; Wood researches; Water adapts; Fire acts; Earth steadies. Notice what you reach for when there's no time to think.</span>
+          <span class="cn">在压力下最稳定出现的那种行，很可能就是你的主导行。金会锐化，木会研究，水会适应，火会行动，土会稳定。注意在没有时间思考时你伸手拿的是什么。</span>
+        </div>
+      </div>
+      <div class="fio-card">
+        <div class="fio-tag">Your generating neighbour</div>
+        <div class="fio-title">Where your energy comes from</div>
+        <div class="fio-body">
+          <span class="en">The element that generates yours is the one whose presence refills you. If you are primarily Fire, being around Wood — people with depth and accumulating understanding — gives you fuel. If you are Water, Metal's clarity opens space for your navigation.</span>
+          <span class="cn">生养你的那一行，是其存在能为你充电的行。如果你主要是火型，接触木型者——有深度、持续积累理解的人——会给你燃料。如果你是水型，金型者的清晰为你的导航开辟空间。</span>
+        </div>
+      </div>
+      <div class="fio-card">
+        <div class="fio-tag">Your overcoming neighbour</div>
+        <div class="fio-title">Your most useful friction</div>
+        <div class="fio-body">
+          <span class="en">The element that overcomes yours is the one that will regularly frustrate you — and that frustration is information. If you are Metal, Wood's endless revision challenges your instinct to conclude. That challenge is not a threat; it is a corrective you need.</span>
+          <span class="cn">克制你的那一行会定期令你沮丧——而那种沮丧正是信息。如果你是金型，木型者无休止的修订挑战你急于结论的本能。那种挑战不是威胁，而是你需要的校正力量。</span>
+        </div>
+      </div>
+      <div class="fio-card">
+        <div class="fio-tag">Your least-used element</div>
+        <div class="fio-title">The capacity you actively develop</div>
+        <div class="fio-body">
+          <span class="en">The element furthest from your default is rarely absent — it is underdeveloped. Deliberate practice with your least-used archetype does not change who you are; it expands the range of situations in which who you are remains effective.</span>
+          <span class="cn">距你默认模式最远的那一行很少完全缺席——它只是欠发达。刻意练习最少使用的原型，不会改变你是谁；它扩展了你保持有效的情境范围。</span>
+        </div>
+      </div>
+      <div class="fio-card">
+        <div class="fio-tag">The whole pentagon</div>
+        <div class="fio-title">What all five look like integrated</div>
+        <div class="fio-body">
+          <span class="en">Full integration is not having no dominant element — it is knowing which element the situation calls for and being able to step into it. Metal for a decision that needs finality. Wood for a problem that needs reframing. Water for a current that needs riding. Fire for a room that needs starting. Earth for a relationship that needs holding.</span>
+          <span class="cn">完全整合不是没有主导行——而是知道情境呼唤哪一行，并能走入其中。需要最终决定时用金，需要重构问题时用木，需要顺势而行时用水，需要启动时用火，需要承载关系时用土。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 05.8 The Wager -->
   <section class="w-section" style="text-align:center;">
     <blockquote class="w-quote">
       <span class="en">"You do not choose your element. You recognise it — in the moment you notice you have been doing it all along."</span>
@@ -492,9 +1189,9 @@
     </blockquote>
   </section>
 
-  <!-- § 05.6 From Archetypes to Worlds -->
+  <!-- § 05.9 From Archetypes to Worlds -->
   <section class="w-section">
-    <div class="w-eyebrow">§ 05.5 · From Archetypes to Worlds</div>
+    <div class="w-eyebrow">§ 05.9 · From Archetypes to Worlds</div>
     <p class="w-lead">
       <span class="en">The five archetypes are not a taxonomy of people. They are a map of modes — and every world in this Psyverse draws on all five, in different proportions. The mission (World 01) asks for Metal's clarity and Wood's reach. The domains ask for Water's navigation. The vision asks for Earth's long horizon. And running through all of it — the irreducible spark — is Fire.</span>
       <span class="cn">五种原型不是人的分类，而是模式的地图——心域中的每一重世界都以不同比例调用全部五种。使命（第01世界）需要金的清晰与木的伸展；领域需要水的导航；愿景需要土的长远地平；而贯穿其中、不可化约的那点火星——正是火。</span>
@@ -515,5 +1212,98 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+/* Wu Xing Explorer — vanilla IIFE, keyboard-usable, reduced-motion-safe */
+(function () {
+  'use strict';
+
+  var ELEMENTS = ['metal', 'wood', 'water', 'fire', 'earth'];
+
+  var chips    = document.querySelectorAll('.wxe-chip');
+  var panels   = document.querySelectorAll('.wxe-panel');
+  var vertices = document.querySelectorAll('.wxe-vertex');
+  var genEdges  = document.querySelectorAll('.wxe-edge-gen');
+  var overEdges = document.querySelectorAll('.wxe-edge-over');
+
+  if (!chips.length) return; // graceful: no-op if DOM not found
+
+  function activate(el) {
+    /* chips */
+    chips.forEach(function (c) {
+      var isActive = c.dataset.el === el;
+      c.classList.toggle('active', isActive);
+      c.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    /* panels */
+    panels.forEach(function (p) {
+      var show = p.dataset.el === el;
+      if (show) {
+        p.removeAttribute('hidden');
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+
+    /* SVG vertices */
+    vertices.forEach(function (v) {
+      var isActive = v.dataset.el === el;
+      v.classList.toggle('active', isActive);
+      v.classList.toggle('dim', !isActive);
+      v.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    /* SVG edges — highlight edges connected to the active element */
+    genEdges.forEach(function (e) {
+      var connected = e.dataset.from === el || e.dataset.to === el;
+      e.style.opacity  = connected ? '0.75' : '0.14';
+      e.style.strokeWidth = connected ? '2' : '1';
+    });
+    overEdges.forEach(function (e) {
+      var connected = e.dataset.from === el || e.dataset.to === el;
+      e.style.opacity  = connected ? '0.65' : '0.08';
+      e.style.strokeWidth = connected ? '1.6' : '0.8';
+    });
+  }
+
+  /* chip click */
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      activate(chip.dataset.el);
+    });
+  });
+
+  /* SVG vertex click + keyboard */
+  vertices.forEach(function (v) {
+    v.addEventListener('click', function () {
+      activate(v.dataset.el);
+    });
+    v.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate(v.dataset.el);
+      }
+    });
+  });
+
+  /* keyboard navigation between chips (left/right arrows) */
+  chips.forEach(function (chip, i) {
+    chip.addEventListener('keydown', function (e) {
+      var dir = 0;
+      if (e.key === 'ArrowRight') dir = 1;
+      if (e.key === 'ArrowLeft')  dir = -1;
+      if (!dir) return;
+      e.preventDefault();
+      var next = chips[(i + dir + chips.length) % chips.length];
+      next.focus();
+      activate(next.dataset.el);
+    });
+  });
+
+  /* initialise — activate Metal by default */
+  activate('metal');
+}());
+</script>
 </body>
 </html>

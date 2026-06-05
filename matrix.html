@@ -198,6 +198,296 @@
     margin-bottom: 4px;
   }
 }
+
+/* ── Table cell hover polish ── */
+.om-matrix td {
+  transition: background .25s, box-shadow .25s;
+  cursor: default;
+}
+.om-matrix td:hover {
+  background: color-mix(in srgb, var(--gold) 5%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+.om-matrix th.row-head:hover {
+  background: color-mix(in srgb, var(--gold) 7%, transparent);
+  transition: background .25s;
+}
+.om-matrix thead th {
+  transition: background .25s;
+}
+
+/* ── Interactive Matrix Explorer ── */
+.om-explorer {
+  margin-top: 44px;
+}
+.om-ix-grid {
+  display: grid;
+  grid-template-columns: 90px repeat(3, 1fr);
+  grid-template-rows: auto repeat(3, auto);
+  gap: 6px;
+  margin-bottom: 28px;
+}
+.om-ix-corner { /* empty top-left */ }
+.om-ix-col-head {
+  padding: 10px 14px;
+  text-align: center;
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  background: color-mix(in srgb, var(--gold) 6%, transparent);
+}
+.om-ix-col-head .ch-en { color: var(--gold-bright); display: block; }
+.om-ix-col-head .ch-cn { font-family: var(--cjk); font-size: 11px; color: var(--ivory-faint); margin-top: 3px; display: block; }
+.om-ix-col-head.col-matter { border-bottom-color: #c9a24b; }
+.om-ix-col-head.col-info   { border-bottom-color: #4baa7a; }
+.om-ix-col-head.col-energy { border-bottom-color: #c45a5a; }
+.om-ix-row-head {
+  padding: 10px 10px 10px 6px;
+  text-align: right;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ivory-faint);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+.om-ix-row-head .rh-en { color: var(--ivory-faint); }
+.om-ix-row-head .rh-cn { font-family: var(--cjk); font-style: normal; font-size: 11px; color: var(--gold-deep); }
+.om-ix-cell {
+  position: relative;
+  padding: 14px 16px;
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.012);
+  cursor: pointer;
+  transition: background .22s, box-shadow .28s, border-color .22s, transform .18s cubic-bezier(.2,.7,.2,1);
+  text-align: left;
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ivory);
+  min-height: 72px;
+}
+.om-ix-cell:hover {
+  background: var(--bg-2);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  box-shadow: 0 6px 20px -8px rgba(0,0,0,0.6), 0 0 0 1px color-mix(in srgb, var(--gold) 22%, transparent);
+  transform: translateY(-2px);
+}
+.om-ix-cell:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.om-ix-cell[aria-selected="true"] {
+  background: color-mix(in srgb, var(--gold) 10%, var(--bg-2));
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 35%, transparent), 0 8px 28px -10px rgba(201,162,75,0.35);
+}
+/* axis highlight when a cell is selected */
+.om-ix-grid[data-active-col="0"] .om-ix-col-head.col-matter,
+.om-ix-grid[data-active-col="1"] .om-ix-col-head.col-info,
+.om-ix-grid[data-active-col="2"] .om-ix-col-head.col-energy {
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+  border-color: var(--gold);
+}
+.om-ix-grid[data-active-row="0"] .om-ix-row-head:nth-of-type(2),
+.om-ix-grid[data-active-row="1"] .om-ix-row-head:nth-of-type(3),
+.om-ix-grid[data-active-row="2"] .om-ix-row-head:nth-of-type(4) {
+  color: var(--gold);
+}
+.om-ix-grid[data-active-row="0"] .om-ix-row-head:nth-of-type(2) .rh-en,
+.om-ix-grid[data-active-row="1"] .om-ix-row-head:nth-of-type(3) .rh-en,
+.om-ix-grid[data-active-row="2"] .om-ix-row-head:nth-of-type(4) .rh-en { color: var(--gold-bright); }
+.om-ix-cell .ixc-idx {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--gold-deep);
+  margin-bottom: 5px;
+  display: block;
+}
+.om-ix-cell .ixc-name-en { display: block; color: var(--ivory); }
+.om-ix-cell .ixc-name-cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 12px;
+  color: var(--gold);
+  margin-top: 3px;
+  opacity: 0.8;
+}
+.om-ix-cell.col-matter { border-top: 2px solid color-mix(in srgb, #c9a24b 45%, transparent); }
+.om-ix-cell.col-info   { border-top: 2px solid color-mix(in srgb, #4baa7a 45%, transparent); }
+.om-ix-cell.col-energy { border-top: 2px solid color-mix(in srgb, #c45a5a 45%, transparent); }
+
+/* faded cells that are not in the active row/column */
+.om-ix-cell.ix-fade {
+  opacity: 0.38;
+  filter: grayscale(0.5);
+  transform: none;
+}
+/* panel container */
+.om-ix-panel {
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: var(--bg-2);
+  padding: 28px 30px 32px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 18%, transparent), 0 16px 48px -16px rgba(0,0,0,0.7);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .om-ix-panel { animation: wfade .35s ease; }
+}
+.om-ix-panel .pnl-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 12px;
+}
+.om-ix-panel .pnl-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 400;
+  color: var(--gold-bright);
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+.om-ix-panel .pnl-title .pnl-cn {
+  font-family: var(--cjk);
+  font-size: 0.6em;
+  color: var(--accent);
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.om-ix-panel .pnl-body {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--ivory-dim);
+  max-width: 740px;
+}
+.om-ix-panel .pnl-body .en { display: block; }
+.om-ix-panel .pnl-body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.91em;
+  line-height: 1.9;
+  color: var(--ivory-faint);
+  margin-top: 12px;
+}
+.om-ix-panel .pnl-example {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 4%, transparent);
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
+  color: var(--ivory-faint);
+}
+.om-ix-panel .pnl-example .ex-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  display: block;
+  margin-bottom: 6px;
+}
+.om-ix-panel .pnl-example .en { display: block; }
+.om-ix-panel .pnl-example .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  color: var(--ivory-faint);
+  margin-top: 6px;
+}
+
+/* responsive explorer */
+@media (max-width: 760px) {
+  .om-ix-grid {
+    grid-template-columns: 60px repeat(3, 1fr);
+    gap: 4px;
+  }
+  .om-ix-col-head { padding: 8px 8px; font-size: 12px; }
+  .om-ix-col-head .ch-cn { display: none; }
+  .om-ix-row-head { font-size: 11px; padding: 8px 6px 8px 2px; }
+  .om-ix-row-head .rh-cn { display: none; }
+  .om-ix-cell { padding: 10px 10px; font-size: 13px; min-height: 58px; }
+  .om-ix-cell .ixc-name-cn { display: none; }
+  .om-ix-panel { padding: 20px 18px 24px; }
+}
+
+/* ── Row-reading section cards ── */
+.om-row-reading {
+  margin-top: 44px;
+}
+.om-row-card {
+  padding: 28px 30px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.012);
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.om-row-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-2);
+  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.28);
+}
+.om-row-card + .om-row-card { margin-top: 18px; }
+.om-row-card .rc-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 10px;
+}
+.om-row-card .rc-title {
+  font-family: var(--display);
+  font-size: clamp(19px, 2.2vw, 26px);
+  font-weight: 400;
+  color: var(--ivory);
+  margin-bottom: 14px;
+  line-height: 1.15;
+}
+.om-row-card .rc-title .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.65em;
+  color: var(--accent);
+  margin-top: 5px;
+}
+.om-row-card .rc-body {
+  font-size: 15px;
+  line-height: 1.82;
+  color: var(--ivory-dim);
+}
+.om-row-card .rc-body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.92em;
+  margin-top: 10px;
+  color: var(--ivory-faint);
+}
+.om-row-card .rc-cells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.om-row-card .rc-cell-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  color: var(--ivory-dim);
+}
 </style>
 </head>
 <body data-world="matrix">
@@ -375,6 +665,114 @@
     </table>
   </section>
 
+  <!-- ══ INTERACTIVE EXPLORER ══ -->
+  <section class="w-section" id="explorer">
+    <div class="w-eyebrow">§ 09.2b · Explore the Matrix</div>
+    <h2 class="w-h2">Explore each intersection<span class="cn">探索每一个交叉点</span></h2>
+    <p class="w-p">
+      <span class="en">Select any cell to open a description of what that column — Matter, Information, or Energy — means when viewed through that row's question: What is it? How does it hold? How does it behave?</span>
+      <span class="cn">点击任意格，打开对该列——物质、信息或能量——在该行问题视角下的描述：它是什么？它如何成形？它如何表现？</span>
+    </p>
+
+    <div class="w-interactive om-explorer" role="region" aria-label="Interactive matrix explorer">
+      <div class="ix-head">
+        <span class="ix-title">
+          <span class="en">Matrix Explorer</span>
+          <span class="cn">矩阵探索器</span>
+        </span>
+        <span class="ix-hint">
+          <span class="en">Click or use arrow keys</span>
+          <span class="cn">点击或使用方向键</span>
+        </span>
+      </div>
+
+      <!-- 4-col grid: corner + 3 col-heads, then 3 rows of (row-head + 3 cells) -->
+      <div class="om-ix-grid" id="om-ix-grid" role="grid" aria-label="3 by 3 ontological matrix">
+        <!-- Row 0: headers -->
+        <div class="om-ix-corner" role="presentation"></div>
+        <div class="om-ix-col-head col-matter" role="columnheader">
+          <span class="ch-en">Matter</span>
+          <span class="ch-cn">物质</span>
+        </div>
+        <div class="om-ix-col-head col-info" role="columnheader">
+          <span class="ch-en">Information</span>
+          <span class="ch-cn">信息</span>
+        </div>
+        <div class="om-ix-col-head col-energy" role="columnheader">
+          <span class="ch-en">Energy</span>
+          <span class="ch-cn">能量</span>
+        </div>
+
+        <!-- Row 1: Existence -->
+        <div class="om-ix-row-head" role="rowheader">
+          <span class="rh-en">Existence</span>
+          <span class="rh-cn">存在</span>
+        </div>
+        <button type="button" class="om-ix-cell col-matter" data-row="0" data-col="0" role="gridcell" aria-selected="true" aria-label="Matter × Existence: Matter">
+          <span class="ixc-idx">01·01</span>
+          <span class="ixc-name-en">Matter</span>
+          <span class="ixc-name-cn">物质</span>
+        </button>
+        <button type="button" class="om-ix-cell col-info" data-row="0" data-col="1" role="gridcell" aria-selected="false" aria-label="Information × Existence: Information">
+          <span class="ixc-idx">01·02</span>
+          <span class="ixc-name-en">Information</span>
+          <span class="ixc-name-cn">信息</span>
+        </button>
+        <button type="button" class="om-ix-cell col-energy" data-row="0" data-col="2" role="gridcell" aria-selected="false" aria-label="Energy × Existence: Energy">
+          <span class="ixc-idx">01·03</span>
+          <span class="ixc-name-en">Energy</span>
+          <span class="ixc-name-cn">能量</span>
+        </button>
+
+        <!-- Row 2: Structure -->
+        <div class="om-ix-row-head" role="rowheader">
+          <span class="rh-en">Structure</span>
+          <span class="rh-cn">结构</span>
+        </div>
+        <button type="button" class="om-ix-cell col-matter" data-row="1" data-col="0" role="gridcell" aria-selected="false" aria-label="Matter × Structure: Gravity">
+          <span class="ixc-idx">02·01</span>
+          <span class="ixc-name-en">Gravity</span>
+          <span class="ixc-name-cn">引力</span>
+        </button>
+        <button type="button" class="om-ix-cell col-info" data-row="1" data-col="1" role="gridcell" aria-selected="false" aria-label="Information × Structure: Space">
+          <span class="ixc-idx">02·02</span>
+          <span class="ixc-name-en">Space</span>
+          <span class="ixc-name-cn">空间</span>
+        </button>
+        <button type="button" class="om-ix-cell col-energy" data-row="1" data-col="2" role="gridcell" aria-selected="false" aria-label="Energy × Structure: Time">
+          <span class="ixc-idx">02·03</span>
+          <span class="ixc-name-en">Time</span>
+          <span class="ixc-name-cn">时间</span>
+        </button>
+
+        <!-- Row 3: Property -->
+        <div class="om-ix-row-head" role="rowheader">
+          <span class="rh-en">Property</span>
+          <span class="rh-cn">性质</span>
+        </div>
+        <button type="button" class="om-ix-cell col-matter" data-row="2" data-col="0" role="gridcell" aria-selected="false" aria-label="Matter × Property: Quantum">
+          <span class="ixc-idx">03·01</span>
+          <span class="ixc-name-en">Quantum</span>
+          <span class="ixc-name-cn">量子</span>
+        </button>
+        <button type="button" class="om-ix-cell col-info" data-row="2" data-col="1" role="gridcell" aria-selected="false" aria-label="Information × Property: Dimension">
+          <span class="ixc-idx">03·02</span>
+          <span class="ixc-name-en">Dimension</span>
+          <span class="ixc-name-cn">维度</span>
+        </button>
+        <button type="button" class="om-ix-cell col-energy" data-row="2" data-col="2" role="gridcell" aria-selected="false" aria-label="Energy × Property: Entropy">
+          <span class="ixc-idx">03·03</span>
+          <span class="ixc-name-en">Entropy</span>
+          <span class="ixc-name-cn">熵</span>
+        </button>
+      </div><!-- /om-ix-grid -->
+
+      <!-- Panel rendered by JS; fallback shows nothing extra (all text already in the table above) -->
+      <div id="om-ix-panel" class="om-ix-panel" role="region" aria-live="polite" aria-atomic="true"></div>
+    </div>
+  </section>
+  <!-- /INTERACTIVE EXPLORER -->
+
   <section class="w-section">
     <div class="w-eyebrow">§ 09.3 · The Three Columns</div>
     <h2 class="w-h2">Matter · Information · Energy<span class="cn">物质 · 信息 · 能量</span></h2>
@@ -445,6 +843,73 @@
     </div>
   </section>
 
+  <!-- ══ NEW SECTION: READING THE ROWS ══ -->
+  <section class="w-section" id="reading-rows">
+    <div class="w-eyebrow">§ 09.4b · Reading the Rows</div>
+    <h2 class="w-h2">What each row reveals across all three columns<span class="cn">每一行横贯三列所揭示的</span></h2>
+    <p class="w-p">
+      <span class="en">Reading horizontally — across an entire row — uncovers a different kind of insight from reading a single cell. Each row poses a question that cuts through all three columns simultaneously, and the three answers together form a coherent layer of understanding about reality.</span>
+      <span class="cn">横向阅读——贯穿整行——揭示的洞见不同于阅读单个格。每一行提出的问题同时穿越三列，而三个答案合在一起，形成关于现实的一个连贯理解层。</span>
+    </p>
+
+    <div class="om-row-reading">
+      <!-- Row 1: Existence -->
+      <div class="om-row-card">
+        <div class="rc-label">Row 01 · Existence 存在</div>
+        <div class="rc-title">
+          <span class="en">Matter · Information · Energy — the three basic currencies</span>
+          <span class="cn">物质 · 信息 · 能量——三种基本货币</span>
+        </div>
+        <div class="rc-body">
+          <span class="en">Reading the first row answers the most primitive ontological question: what is simply there? The answer is threefold and irreducible. Matter names what occupies space and has mass. Information names what differs from something else — a distinction held. Energy names what enables change — the capacity that makes transitions possible. None of the three can be fully reduced to the others: mass-energy equivalence (E = mc²) links two of them in a deep way, yet information remains a third axis that neither mass nor energy alone can account for. Every thing in the universe is a mixture of all three, but the existence row insists we name them separately before we can mix them honestly.</span>
+          <span class="cn">阅读第一行，回答了最原始的本体论问题：就在那里的是什么？答案是三重且不可化约的。物质命名占据空间且有质量之物。信息命名与他物相异之物——一个被保持的区分。能量命名使改变成为可能之物——令转变得以发生的能力。这三者中，任何一个都无法完全还原为另外两个：质能等价（E=mc²）将其中两者以深刻的方式相连，然而信息依然是第三条轴线，质量与能量单独都无法解释它。宇宙中的每一事物都是三者的混合，但存在行坚持要求我们在诚实地混合之前，先将它们分别命名。</span>
+        </div>
+        <div class="rc-cells">
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c9a24b 35%,transparent);color:#c9a24b;">Matter 物质</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#4baa7a 35%,transparent);color:#4baa7a;">Information 信息</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c45a5a 35%,transparent);color:#c45a5a;">Energy 能量</span>
+        </div>
+      </div>
+
+      <!-- Row 2: Structure -->
+      <div class="om-row-card">
+        <div class="rc-label">Row 02 · Structure 结构</div>
+        <div class="rc-title">
+          <span class="en">Gravity · Space · Time — the scaffolding of existence</span>
+          <span class="cn">引力 · 空间 · 时间——存在的脚手架</span>
+        </div>
+        <div class="rc-body">
+          <span class="en">Reading the second row reveals that structure is not one thing but three simultaneously operating scaffolds. Gravity is the structural principle of matter: left to itself, matter does not disperse uniformly — it clumps, coheres, and builds. Space is the structural principle of information: without an address system, no distinction can be located or retrieved. Time is the structural principle of energy: causation requires a direction — a before that becomes an after. What is remarkable about this row is that all three structures are, in modern physics, deeply entangled. Einsteinian general relativity shows that matter's gravity curves both space and time; quantum gravity proposals suggest that spacetime itself may emerge from the entanglement structure of quantum information. The second row points toward the unity underneath apparent separateness.</span>
+          <span class="cn">阅读第二行揭示：结构不是一种事物，而是三种同时运作的脚手架。引力是物质的结构原则：任其自然，物质不会均匀扩散——它聚集、凝合、建造。空间是信息的结构原则：没有地址系统，任何区分都无法被定位或检索。时间是能量的结构原则：因果关系需要方向——一个「之前」变成「之后」。这一行令人瞩目之处在于，在现代物理学中，三种结构深度纠缠。爱因斯坦广义相对论表明，物质的引力同时弯曲空间与时间；量子引力的提议暗示，时空本身可能从量子信息的纠缠结构中涌现。第二行指向表象分离之下的统一。</span>
+        </div>
+        <div class="rc-cells">
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c9a24b 35%,transparent);color:#c9a24b;">Gravity 引力</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#4baa7a 35%,transparent);color:#4baa7a;">Space 空间</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c45a5a 35%,transparent);color:#c45a5a;">Time 时间</span>
+        </div>
+      </div>
+
+      <!-- Row 3: Property -->
+      <div class="om-row-card">
+        <div class="rc-label">Row 03 · Property 性质</div>
+        <div class="rc-title">
+          <span class="en">Quantum · Dimension · Entropy — where the deep rules show through</span>
+          <span class="cn">量子 · 维度 · 熵——深层规律显露之处</span>
+        </div>
+        <div class="rc-body">
+          <span class="en">Reading the third row shows what happens when you push each column to its limit — to the scale, the boundary, the extremum where ordinary intuition breaks. Quantum behaviour is what matter does when it is small enough that discrete, probabilistic, entangled existence can no longer be approximated away. Dimensionality is what information becomes when you count the independent axes along which it can vary — and the answer turns out to determine the complexity of everything from protein folding to consciousness. Entropy is what energy becomes when you count the number of equally valid microscopic arrangements that produce the same macroscopic state — and it only ever grows. Crucially, all three cells in this row share a secret: they are all, at their core, matters of counting. Quantum mechanics counts amplitudes. Dimensions count degrees of freedom. Entropy counts microstates. The property row is the row where mathematics most directly governs physics.</span>
+          <span class="cn">阅读第三行展示了将每列推向极限时会发生什么——推向尺度的边界、普通直觉在那里失效的极端。量子行为是物质在小到离散的、概率性的、纠缠的存在不再能被近似忽略时的表现。维度性是当你计算信息可以沿之变化的独立轴数目时，信息所呈现的面貌——而这个答案最终决定了从蛋白质折叠到意识等一切事物的复杂度。熵是当你计算产生相同宏观状态的等价微观排列数目时，能量所呈现的面貌——且这个数目只增不减。关键在于，这一行的三个格共享一个秘密：在其核心，它们都是关于计数的事务。量子力学计数振幅。维度计数自由度。熵计数微观状态。性质行是数学最直接支配物理学的那一行。</span>
+        </div>
+        <div class="rc-cells">
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c9a24b 35%,transparent);color:#c9a24b;">Quantum 量子</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#4baa7a 35%,transparent);color:#4baa7a;">Dimension 维度</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c45a5a 35%,transparent);color:#c45a5a;">Entropy 熵</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /READING THE ROWS -->
+
   <section class="w-section" style="text-align:center;">
     <blockquote class="w-quote">
       <span class="en">"The universe is not made of things; it is made of events, relations, and the differences between states. The matrix is a map of those differences."</span>
@@ -469,7 +934,7 @@
     </p>
   </section>
 
-  <section class="w-section">
+  <section class="w-section" id="diagonals">
     <div class="w-eyebrow">§ 09.6 · Reading the Diagonals</div>
     <h2 class="w-h2">Where cells intersect in unexpected ways<span class="cn">格与格之间出人意料的交汇</span></h2>
     <p class="w-p">
@@ -522,5 +987,201 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+/* ──────────────────────────────────────────────────────────────────────
+   Ontological Matrix · Interactive Explorer
+   Vanilla IIFE · degrades gracefully (all content in static table above)
+   ────────────────────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  /* ── Cell data: 9 entries, indexed [row][col] ── */
+  var CELLS = [
+    /* Row 0 · Existence */
+    [
+      {
+        idx: '01 · 01',
+        titleEn: 'Matter — Existence',
+        titleCn: '物质——存在',
+        bodyEn: 'Matter at the level of existence is simply the brute fact of presence: mass that is there, that occupies volume, that resists being elsewhere. This is not yet a question of how matter organises itself (that is gravity, row two) or how it behaves at the quantum scale (row three). Here we only ask: what is the irreducible fact of material existence? The answer is inertia — the tendency of mass to persist in its state. Matter exists, and by existing it demands an account of everything else.',
+        bodyCn: '存在层面的物质，是「在场」这一纯粹事实：在那里的质量，占据体积，抗拒移位。这还不是物质如何自我组织的问题（那是引力，第二行），也不是它在量子尺度如何表现的问题（第三行）。在这里，我们只问：物质存在的不可化约事实是什么？答案是惯性——质量保持其状态的倾向。物质存在，而通过存在，它要求对其他一切作出交代。',
+        exampleEn: 'Example: A hydrogen atom — one proton, one electron. It has mass, it occupies a region of space, and it exists independently of whether anything is observing or measuring it.',
+        exampleCn: '例：一个氢原子——一个质子，一个电子。它有质量，占据空间的某个区域，且独立于任何观察或测量而存在。'
+      },
+      {
+        idx: '01 · 02',
+        titleEn: 'Information — Existence',
+        titleCn: '信息——存在',
+        bodyEn: 'Information at the level of existence is the minimal act of distinction: a difference that is held. Before information can do anything — before it can be structured in space or obey statistical laws — it must first simply be. A distinction must be made and retained. Shannon showed that the bit — the binary choice between two possibilities — is the atom of information. But the existence of a bit does not require any particular physical substrate: a coin, a voltage, a spin, a gene. Information exists wherever a distinction persists.',
+        bodyCn: '存在层面的信息，是区分的最小行为：一个被保持的差异。在信息能做任何事之前——在它能被空间结构化或遵守统计规律之前——它必须首先简单地「存在」。一个区分必须被作出并保留。香农表明，比特——两种可能性之间的二元选择——是信息的原子。但一个比特的存在不需要任何特定的物理基底：一枚硬币、一个电压、一个自旋、一个基因。凡有区分存续之处，信息便存在。',
+        exampleEn: 'Example: The sequence of base pairs in a strand of DNA. It exists as information — a pattern of distinctions — independently of whether any ribosome is currently reading it.',
+        exampleCn: '例：一段DNA链中的碱基对序列。它作为信息——一种区分的模式——存在，独立于是否有核糖体正在读取它。'
+      },
+      {
+        idx: '01 · 03',
+        titleEn: 'Energy — Existence',
+        titleCn: '能量——存在',
+        bodyEn: 'Energy at the level of existence is the conserved capacity for change. Before energy flows, converts, or degrades, it simply is — a quantity that the universe accounts for with perfect precision. Noether\'s theorem shows that the conservation of energy is a consequence of the time-symmetry of physical laws: because the laws do not change from moment to moment, energy is conserved. To say energy exists is to say that the universe has a bookkeeping system that never loses track of its ledger.',
+        bodyCn: '存在层面的能量，是对改变的守恒能力。在能量流动、转化或降级之前，它简单地「存在」——宇宙以完美精度核算的一个量。诺特定理表明，能量守恒是物理规律时间对称性的推论：因为规律不随时间变化，能量便守恒。说能量存在，就是说宇宙有一套从不丢失账目的记账系统。',
+        exampleEn: 'Example: The total energy of an isolated system — kinetic + potential + rest-mass energy — is a fixed number that holds even as matter and information transform continuously.',
+        exampleCn: '例：一个孤立系统的总能量——动能加势能加静质量能——是一个固定的数，即便物质与信息不断转化，它仍保持不变。'
+      }
+    ],
+    /* Row 1 · Structure */
+    [
+      {
+        idx: '02 · 01',
+        titleEn: 'Gravity — Structure of Matter',
+        titleCn: '引力——物质的结构',
+        bodyEn: 'Gravity is what matter does when left alone over time: it attracts itself. This self-attraction is the structure-forming principle of the material universe. Without gravity, the matter released after the Big Bang would have dispersed into a cold, featureless soup. With it, overdensities grew, collapsed, and became stars, galaxies, planets, and the cosmic web. Gravity does not act on matter from the outside — it is the structural tendency that matter has by virtue of having mass. Einstein\'s genius was to see gravity not as a force but as the curvature of spacetime produced by that mass.',
+        bodyCn: '引力是物质随时间自然运作时所做的事：它吸引自身。这种自吸引是物质宇宙形成结构的原则。没有引力，大爆炸后释放的物质将消散成冷而无特征的汤。有了引力，过密区域增长、坍缩，成为恒星、星系、行星与宇宙网络。引力不从外部作用于物质——它是物质凭借具有质量而拥有的结构性倾向。爱因斯坦的天才在于，将引力视为不是一种力，而是该质量产生的时空曲率。',
+        exampleEn: 'Example: A molecular cloud of gas and dust, initially diffuse, collapses under its own gravity over millions of years into a protostar — matter structuring itself through its own presence.',
+        exampleCn: '例：一团初始弥散的气体与尘埃分子云，在数百万年间因自身引力坍缩成原恒星——物质通过自身在场而自我构建结构。'
+      },
+      {
+        idx: '02 · 02',
+        titleEn: 'Space — Structure of Information',
+        titleCn: '空间——信息的结构',
+        bodyEn: 'Space is the relational scaffold that gives information its address. A distinction — a bit — does not exist in isolation; it exists somewhere, adjacent to other distinctions, separated from yet others by measurable distances. Space is what makes information localised rather than omnipresent. It allows the same pattern to mean different things depending on location, enables proximity (correlation) and distance (independence), and provides the geometry within which all information is embedded. Wheeler\'s intuition that 「it from bit」 runs in the reverse direction here: bit needs it — information needs space to be anywhere at all.',
+        bodyCn: '空间是赋予信息地址的关系支架。一个区分——一个比特——不孤立存在；它存在于某处，与其他区分相邻，通过可测量的距离与另一些区分相隔。空间使信息局部化而非无处不在。它允许相同的模式因位置不同而具有不同含义，使邻近（相关）与距离（独立）成为可能，并提供了一切信息嵌入其中的几何。惠勒「万物源于比特」的直觉在此处逆向运行：比特需要「它」——信息需要空间才能存在于任何地方。',
+        exampleEn: 'Example: A digital image. The same pixel value (information) means entirely different things depending on its spatial position in the image — location is what gives the information its meaning.',
+        exampleCn: '例：一张数字图像。相同的像素值（信息）因其在图像中的空间位置不同而具有完全不同的含义——位置赋予信息以意义。'
+      },
+      {
+        idx: '02 · 03',
+        titleEn: 'Time — Structure of Energy',
+        titleCn: '时间——能量的结构',
+        bodyEn: 'Time is the dimension along which energy does its work. Energy without time is static potential — a wound spring that never unwinds, a charge that never discharges, a gradient that never equalises. Time gives energy its directionality: a before and an after, a cause and its effect. This is also why thermodynamics and the arrow of time are so deeply linked: entropy — the measure of how energy has spread — only increases with time, which means time is not neutral with respect to energy. It has a preferred direction, and that direction is the direction in which energy disperses.',
+        bodyCn: '时间是能量完成其工作的维度。没有时间的能量是静态的潜能——一根永不松弛的发条，一个永不放电的电荷，一个永不均衡的梯度。时间赋予能量以方向性：一个「之前」与「之后」，一个原因及其结果。这也是热力学与时间之箭如此深刻关联的原因：熵——能量扩散程度的度量——只随时间增加，这意味着时间对能量并非中立。它有一个首选方向，那个方向就是能量消散的方向。',
+        exampleEn: 'Example: A hot cup of coffee cooling in a room. The energy (heat) flows from the coffee to the air, entropy increases, and this process defines a temporal direction: you cannot watch the video in reverse and believe it is natural.',
+        exampleCn: '例：一杯热咖啡在室内冷却。能量（热）从咖啡流向空气，熵增加，这一过程定义了一个时间方向：你无法倒放这段视频并相信它是自然的。'
+      }
+    ],
+    /* Row 2 · Property */
+    [
+      {
+        idx: '03 · 01',
+        titleEn: 'Quantum — Property of Matter',
+        titleCn: '量子——物质的性质',
+        bodyEn: 'The quantum is what matter is when you stop averaging over large numbers. At the scale of individual particles, matter does not behave like a small billiard ball with a definite position and momentum. Instead, it exists in superposition — a cloud of possible states, each with an amplitude. It entangles with other particles, meaning their states cannot be described independently. It tunnels through barriers that classical physics forbids it to cross. These are not edge-case curiosities; they are the fundamental properties of matter that the classical description merely approximates when the numbers get large enough.',
+        bodyCn: '量子是你停止对大量粒子取平均时物质所呈现的面貌。在单个粒子的尺度上，物质的行为不像一个具有确定位置和动量的微型台球。相反，它以叠加态存在——可能状态的云，每种都有一个振幅。它与其他粒子纠缠，意味着它们的状态无法被独立描述。它穿越经典物理学禁止其穿越的势垒。这些不是边缘案例的奇珍异事；它们是物质的基本性质，经典描述只是在数量足够大时对这些性质的近似。',
+        exampleEn: 'Example: The double-slit experiment. A single electron passes through both slits simultaneously (superposition), and interference fringes appear on the detector screen — the quantum nature of matter made visible.',
+        exampleCn: '例：双缝实验。单个电子同时穿越两条缝（叠加态），干涉条纹出现在探测器屏幕上——物质量子本性的可见呈现。'
+      },
+      {
+        idx: '03 · 02',
+        titleEn: 'Dimension — Property of Information',
+        titleCn: '维度——信息的性质',
+        bodyEn: 'Dimensionality is how much information can be said, independently. Each dimension is a degree of freedom — an axis along which variation is possible that is not determined by any other axis. A point has zero dimensions: no independent variation is possible. A line is one-dimensional: position along it varies freely. A plane adds a second axis. In information theory, the effective dimensionality of a dataset determines how many independent things it is capable of encoding — its capacity. In physics, the dimensionality of spacetime (3+1) determines which physical laws are possible. In cognition, the dimensionality of a concept determines how richly it can be distinguished from others.',
+        bodyCn: '维度性是可以独立表达多少信息。每个维度是一个自由度——沿之可以变化且不由任何其他轴决定的轴线。一个点是零维的：不可能有独立变化。一条线是一维的：沿线位置可以自由变化。一个平面增加了第二条轴。在信息论中，数据集的有效维度决定了它能编码多少独立事物——它的容量。在物理学中，时空的维度（3+1）决定了哪些物理规律是可能的。在认知中，一个概念的维度决定了它可以与其他概念区别得多么丰富。',
+        exampleEn: 'Example: Principal component analysis in machine learning reduces a high-dimensional dataset to its most informative dimensions — revealing that apparent complexity often lives in a much smaller dimensional subspace.',
+        exampleCn: '例：机器学习中的主成分分析将高维数据集简化为其最具信息量的维度——揭示出表面上的复杂性往往存在于一个小得多的维度子空间中。'
+      },
+      {
+        idx: '03 · 03',
+        titleEn: 'Entropy — Property of Energy',
+        titleCn: '熵——能量的性质',
+        bodyEn: 'Entropy is the statistical property of energy: the number of distinct microscopic arrangements that would produce the same macroscopic state. A glass of ice water has low entropy — only a narrow range of atomic configurations produce that state. A glass of warm water has much higher entropy — vastly more atomic configurations are consistent with it. The Second Law of Thermodynamics states that entropy never decreases in a closed system. This is not a mysterious force but a consequence of counting: there are simply far more high-entropy arrangements than low-entropy ones, so any random evolution is overwhelmingly likely to increase entropy. Life, order, and complexity exist only in the local pockets where energy flows from low-entropy sources to high-entropy sinks.',
+        bodyCn: '熵是能量的统计性质：产生相同宏观状态的不同微观排列的数目。一杯冰水熵值低——只有很窄范围的原子构型能产生那种状态。一杯温水熵值高得多——与之相符的原子构型数量极为庞大。热力学第二定律指出，在封闭系统中熵永不减少。这不是一种神秘的力，而是计数的推论：高熵排列比低熵排列多得多，因此任何随机演化都极有可能增大熵。生命、秩序与复杂性只存在于局部口袋中——在那里，能量从低熵源流向高熵汇。',
+        exampleEn: 'Example: A living cell maintains low internal entropy by continuously consuming ordered energy (food/sunlight) and exporting disorder (heat/waste) to the environment — exploiting entropy\'s gradient rather than fighting it.',
+        exampleCn: '例：活细胞通过持续消耗有序能量（食物/阳光）并向环境输出无序（热/废物）来维持内部低熵——利用熵的梯度，而非对抗它。'
+      }
+    ]
+  ];
+
+  /* ── DOM refs ── */
+  var grid = document.getElementById('om-ix-grid');
+  var panel = document.getElementById('om-ix-panel');
+  if (!grid || !panel) return;
+
+  var allCells = Array.from(grid.querySelectorAll('.om-ix-cell'));
+  var currentRow = 0;
+  var currentCol = 0;
+
+  function getLang() {
+    return document.documentElement.getAttribute('data-lang') || 'both';
+  }
+
+  function renderPanel(row, col) {
+    var d = CELLS[row][col];
+    var lang = getLang();
+    var showEn = (lang !== 'zh');
+    var showCn = (lang !== 'en');
+    var html = '<div class="pnl-eyebrow">' + d.idx + '</div>';
+    html += '<div class="pnl-title">';
+    if (showEn) html += '<span class="en">' + d.titleEn + '</span>';
+    if (showCn) html += '<span class="pnl-cn cn">' + d.titleCn + '</span>';
+    html += '</div>';
+    html += '<div class="pnl-body">';
+    if (showEn) html += '<span class="en">' + d.bodyEn + '</span>';
+    if (showCn) html += '<span class="cn">' + d.bodyCn + '</span>';
+    html += '</div>';
+    html += '<div class="pnl-example">';
+    html += '<span class="ex-label">Example · 例</span>';
+    if (showEn) html += '<span class="en">' + d.exampleEn + '</span>';
+    if (showCn) html += '<span class="cn">' + d.exampleCn + '</span>';
+    html += '</div>';
+    panel.innerHTML = html;
+  }
+
+  function selectCell(row, col) {
+    currentRow = row;
+    currentCol = col;
+    /* update aria-selected on all cells */
+    allCells.forEach(function (btn) {
+      var r = parseInt(btn.getAttribute('data-row'), 10);
+      var c = parseInt(btn.getAttribute('data-col'), 10);
+      var isActive = (r === row && c === col);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      /* fade cells not in same row or col */
+      if (isActive || r === row || c === col) {
+        btn.classList.remove('ix-fade');
+      } else {
+        btn.classList.add('ix-fade');
+      }
+    });
+    /* update axis highlight via data attrs */
+    grid.setAttribute('data-active-row', String(row));
+    grid.setAttribute('data-active-col', String(col));
+    renderPanel(row, col);
+  }
+
+  /* click handler */
+  allCells.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var r = parseInt(btn.getAttribute('data-row'), 10);
+      var c = parseInt(btn.getAttribute('data-col'), 10);
+      selectCell(r, c);
+    });
+  });
+
+  /* keyboard navigation: arrow keys within the grid */
+  grid.addEventListener('keydown', function (e) {
+    var r = currentRow;
+    var c = currentCol;
+    if (e.key === 'ArrowRight')  { c = (c + 1) % 3; }
+    else if (e.key === 'ArrowLeft') { c = (c + 2) % 3; }
+    else if (e.key === 'ArrowDown')  { r = (r + 1) % 3; }
+    else if (e.key === 'ArrowUp')    { r = (r + 2) % 3; }
+    else return;
+    e.preventDefault();
+    var target = allCells.find(function (b) {
+      return parseInt(b.getAttribute('data-row'), 10) === r &&
+             parseInt(b.getAttribute('data-col'), 10) === c;
+    });
+    if (target) { target.focus(); selectCell(r, c); }
+  });
+
+  /* re-render panel text when language changes */
+  var observer = new MutationObserver(function () {
+    renderPanel(currentRow, currentCol);
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
+
+  /* initial render */
+  selectCell(0, 0);
+}());
+</script>
 </body>
 </html>

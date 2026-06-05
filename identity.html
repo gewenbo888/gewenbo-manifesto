@@ -110,6 +110,270 @@
   }
 }
 
+/* screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── balance interactive ── */
+.balance-viz {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 10px;
+  margin: 18px 0 6px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+}
+.balance-bar {
+  height: 100%;
+  transition: width 0.25s cubic-bezier(.2,.7,.2,1);
+  will-change: width;
+}
+.balance-bar.creator { background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright)); }
+.balance-bar.seeker  { background: linear-gradient(90deg, var(--jade), rgba(90,143,115,0.5)); }
+.balance-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+  margin-bottom: 6px;
+}
+.balance-panel {
+  margin-top: 22px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.012);
+}
+.balance-panel .bp-state {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+}
+.balance-panel .bp-state .cn {
+  font-family: var(--cjk);
+  font-size: 0.65em;
+  color: var(--accent);
+  margin-left: 8px;
+}
+.balance-panel .bp-desc {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--ivory-dim);
+}
+.balance-panel .bp-desc .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.91em;
+  margin-top: 8px;
+  color: var(--ivory-dim);
+}
+.balance-panel .bp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.balance-panel .bp-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  color: var(--ivory-faint);
+}
+.balance-panel .bp-tag.strength { border-color: rgba(201,162,75,0.4); color: var(--gold); }
+.balance-panel .bp-tag.failure  { border-color: rgba(177,77,66,0.4); color: #c96a60; }
+
+/* profile tabs panel */
+.profile-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.profile-row {
+  padding: 16px 18px;
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.012);
+}
+.profile-row .pr-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 6px;
+}
+.profile-row .pr-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ivory-dim);
+}
+.profile-row .pr-text .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  margin-top: 6px;
+}
+
+/* out-of-balance section ── tension signals */
+.tension-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+  margin-top: 38px;
+}
+.tension-card {
+  padding: 28px 26px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.01);
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.tension-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-2);
+  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.22);
+}
+.tension-card .tc-dir {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.tension-card.creator-heavy .tc-dir { color: var(--gold); }
+.tension-card.seeker-heavy  .tc-dir { color: var(--jade); }
+.tension-card .tc-title {
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--ivory);
+  margin-bottom: 6px;
+}
+.tension-card .tc-title .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.6em;
+  color: var(--accent);
+  margin-top: 4px;
+  letter-spacing: 0.1em;
+}
+.tension-card .tc-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ivory-dim);
+}
+.tension-card .tc-body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  margin-top: 8px;
+}
+.tension-card .tc-signal {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid currentColor;
+  opacity: 0.7;
+}
+.tension-card.creator-heavy .tc-signal { color: var(--gold); }
+.tension-card.seeker-heavy  .tc-signal { color: var(--jade); }
+
+/* why one person needs both */
+.both-list {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.both-item {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--line-soft);
+  transition: background .25s;
+}
+.both-item:last-child { border-bottom: none; }
+.both-item:hover { background: var(--bg-2); }
+.both-num {
+  flex-shrink: 0;
+  width: 56px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 22px 0 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 200;
+  color: var(--gold);
+  opacity: 0.55;
+  border-right: 1px solid var(--line-soft);
+}
+.both-body {
+  padding: 20px 24px;
+}
+.both-body .bb-title {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ivory);
+  margin-bottom: 8px;
+}
+.both-body .bb-title .cn {
+  font-family: var(--cjk);
+  font-size: 0.7em;
+  color: var(--accent);
+  margin-left: 8px;
+}
+.both-body .bb-text {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ivory-dim);
+}
+.both-body .bb-text .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.91em;
+  margin-top: 6px;
+}
+
+@media (max-width: 760px) {
+  .axis-row { flex-direction: column; }
+  .axis-sep { padding: 10px 0; border-left: none !important; border-top: 1px solid rgba(201,162,75,0.18); border-bottom: 1px solid rgba(201,162,75,0.18); background: transparent; }
+  .balance-panel .bp-tags { gap: 6px; }
+  .profile-content { grid-template-columns: 1fr; }
+  .tension-grid { grid-template-columns: 1fr; }
+  .w-interactive { padding: 18px 16px 22px; }
+  .both-num { width: 44px; font-size: 22px; }
+}
+
 /* axis label used in the duality section */
 .axis-row {
   display: flex;
@@ -310,6 +574,233 @@
     </div>
   </section>
 
+  <!-- ═══ INTERACTIVE: Creator ⇄ Seeker Balance (§ 02.3b) ═══ -->
+  <section class="w-section" id="balance-section">
+    <div class="w-eyebrow">§ 02.3b · The Balance Dial</div>
+    <h2 class="w-h2">Find your blend<span class="cn">找到你的配比</span></h2>
+    <p class="w-lead">
+      <span class="en">Neither pure Creator nor pure Seeker is the goal. The dial is always somewhere in between — and knowing where you are is the first act of self-knowledge.</span>
+      <span class="cn">纯粹的创造者或纯粹的求道者都不是目标。指针始终落在两者之间某处——知道自己在哪里，是自我认知的第一步。</span>
+    </p>
+
+    <div class="w-interactive" id="balance-widget">
+      <div class="ix-head">
+        <span class="ix-title">Creator ⇄ Seeker<span class="cn">创造者 ⇄ 求道者</span></span>
+        <span class="ix-hint" id="balance-readout">50 · Balanced tension · 均衡张力</span>
+      </div>
+
+      <div class="balance-labels">
+        <span>Pure Seeker · 纯粹求道者</span>
+        <span>Pure Creator · 纯粹创造者</span>
+      </div>
+
+      <div class="balance-viz" aria-hidden="true">
+        <div class="balance-bar seeker"  id="bar-seeker"  style="width:50%"></div>
+        <div class="balance-bar creator" id="bar-creator" style="width:50%"></div>
+      </div>
+
+      <label for="balance-slider" class="sr-only">Creator–Seeker balance: 0 = pure Seeker, 100 = pure Creator</label>
+      <input
+        type="range"
+        id="balance-slider"
+        class="w-range"
+        min="0" max="100" value="50" step="5"
+        aria-label="Creator–Seeker balance"
+      />
+
+      <!-- blend description panel (updated by JS; static default for no-JS) -->
+      <div class="balance-panel" id="balance-panel">
+        <div class="bp-state" id="bp-state">
+          <span class="en">Balanced Tension</span>
+          <span class="cn">均衡张力</span>
+        </div>
+        <div class="bp-desc" id="bp-desc">
+          <span class="en">The two orientations hold each other in check. The Creator proposes; the Seeker interrogates. Neither wins outright, and the productive friction between them is where the best work is made.</span>
+          <span class="cn">两种取向彼此制衡。创造者提出，求道者追问。没有一方完全主导，而两者之间富有成效的摩擦，正是最好的作品诞生的地方。</span>
+        </div>
+        <div class="bp-tags" id="bp-tags">
+          <span class="bp-tag strength">Strength · 优势: Sustainable momentum · 可持续的动力</span>
+          <span class="bp-tag failure">Watch · 警惕: Paralysis when tension peaks · 张力顶点时的瘫痪</span>
+        </div>
+      </div>
+
+      <!-- Profile tabs -->
+      <div style="margin-top:28px;">
+        <div class="w-tabs" role="tablist" aria-label="Identity profiles">
+          <button class="w-tab active" role="tab" data-tab="creator-profile" aria-selected="true" aria-controls="creator-profile">Creator · 创造者</button>
+          <button class="w-tab" role="tab" data-tab="seeker-profile" aria-selected="false" aria-controls="seeker-profile">Seeker · 求道者</button>
+        </div>
+
+        <div class="w-panel" id="creator-profile" role="tabpanel">
+          <div class="profile-content">
+            <div class="profile-row">
+              <div class="pr-label">Drive · 驱动力</div>
+              <div class="pr-text">
+                <span class="en">The compulsion to make things real — to turn possibility into a system that outlasts the original act of building.</span>
+                <span class="cn">将可能性变为现实的强迫——让系统超越最初建造行为而持续存在。</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="pr-label">Mode of work · 工作模式</div>
+              <div class="pr-text">
+                <span class="en">Iterative execution under uncertainty. Ships early; learns from resistance; treats failure as data.</span>
+                <span class="cn">在不确定性下迭代执行。早期交付，从阻力中学习，把失败当作数据。</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="pr-label">What it fears · 所惧</div>
+              <div class="pr-text">
+                <span class="en">Irrelevance. The work disappearing into the noise without having mattered. Time passing without tangible output.</span>
+                <span class="cn">无足轻重。劳作消失于噪音而毫无意义。时间流逝却无有形产出。</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="pr-label">What it produces · 所生产</div>
+              <div class="pr-text">
+                <span class="en">Leverage — businesses, systems, institutions, and tools that persist and compound. The outer world made different.</span>
+                <span class="cn">杠杆——持续生长、复利运转的企业、系统、机构与工具。被改变的外在世界。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-panel" id="seeker-profile" role="tabpanel" hidden>
+          <div class="profile-content">
+            <div class="profile-row">
+              <div class="pr-label">Drive · 驱动力</div>
+              <div class="pr-text">
+                <span class="en">The compulsion to understand — to trace a question past its comfortable surface until something true is standing underneath.</span>
+                <span class="cn">理解的强迫——追溯问题至其舒适表面之下，直到某种真实之物矗立其下。</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="pr-label">Mode of work · 工作模式</div>
+              <div class="pr-text">
+                <span class="en">Patient inquiry. Holds questions without forcing resolution. Revises beliefs when evidence demands it, even uncomfortably.</span>
+                <span class="cn">耐心追问。持守问题而不强行收结。即便令人不适，也在证据要求时修正信念。</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="pr-label">What it fears · 所惧</div>
+              <div class="pr-text">
+                <span class="en">Self-deception. Mistaking a comfortable story for a true one. Arriving at old age without ever having looked hard at the foundations.</span>
+                <span class="cn">自我欺骗。把一个舒适的故事错当真实。在暮年未曾认真审视过根基。</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="pr-label">What it produces · 所生产</div>
+              <div class="pr-text">
+                <span class="en">Clarity — the slow, earned kind that cannot be purchased or rushed. The inner world made more honest.</span>
+                <span class="cn">清明——那种缓慢积累而来、无法购买或催促的清明。被变得更诚实的内在世界。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ § 02.4b · When the Two Fall Out of Balance ═══ -->
+  <section class="w-section" id="imbalance-section">
+    <div class="w-eyebrow">§ 02.4b · When the Two Fall Out of Balance</div>
+    <h2 class="w-h2">The failure modes, named<span class="cn">失衡的失败模式，命名之</span></h2>
+    <p class="w-lead">
+      <span class="en">The two identities strengthen each other only when both are present. When one dominates for too long, something specific breaks — and it breaks in recognisable ways.</span>
+      <span class="cn">只有当两者同在，这两重身份才能彼此增益。当其中一方主导太久，某些特定的东西会断裂——而且断裂方式可以被辨认。</span>
+    </p>
+    <div class="tension-grid">
+      <div class="tension-card creator-heavy">
+        <div class="tc-dir">Too much Creator · 创造者过重</div>
+        <div class="tc-title">The hollow empire<span class="cn">空洞的帝国</span></div>
+        <div class="tc-body">
+          <span class="en">When the Creator runs too long without the Seeker's interrogation, the machinery keeps moving but the original purpose silently hollows out. More output, faster execution, larger teams — and a creeping inability to answer the question: what is all this actually for? The empire grows; the person inside it shrinks.</span>
+          <span class="cn">当创造者运转太久而缺乏求道者的追问，机器继续运转，但最初的目的悄然掏空。更多产出、更快执行、更大团队——伴随着一种愈发无法回答的问题：这一切究竟是为了什么？帝国在扩张，而身处其中的那个人在萎缩。</span>
+        </div>
+        <span class="tc-signal">Signal · 信号: can't articulate why · 无法说清缘由</span>
+      </div>
+      <div class="tension-card seeker-heavy">
+        <div class="tc-dir">Too much Seeker · 求道者过重</div>
+        <div class="tc-title">The gilded paralysis<span class="cn">镀金的瘫痪</span></div>
+        <div class="tc-body">
+          <span class="en">When the Seeker runs too long without the Creator's friction, inquiry becomes a private pleasure rather than a force that changes anything. The questions grow more refined; the insights more elaborate; the output more absent. This is not depth — it is avoidance wearing the costume of depth. Stillness that never returns to action is not wisdom; it is stasis.</span>
+          <span class="cn">当求道者运转太久而缺乏创造者的摩擦，追问变成私人消遣，而非改变任何事物的力量。问题愈发精炼，洞见愈发繁复，产出愈发缺席。这不是深度——而是穿着深度外衣的回避。永不回归行动的静观不是智慧，而是停滞。</span>
+        </div>
+        <span class="tc-signal">Signal · 信号: insights loop, nothing ships · 洞见循环，无物交付</span>
+      </div>
+      <div class="tension-card" style="border-color: rgba(201,162,75,0.28);">
+        <div class="tc-dir" style="color: var(--gold);">Rebalancing · 重新平衡</div>
+        <div class="tc-title" style="color:var(--ivory);">The return move<span class="cn" style="color:var(--accent);">回归之举</span></div>
+        <div class="tc-body">
+          <span class="en">Noticing the imbalance is already half the move. The Creator who pauses and asks "is this worth building?" is performing the Seeker's function. The Seeker who ships something — even something small, even something imperfect — is performing the Creator's function. The identities teach each other when you let them.</span>
+          <span class="cn">察觉到失衡本身就已是一半的行动。停下来问「这值得建造吗？」的创造者，正在履行求道者的职能。交付某物的求道者——哪怕很小、哪怕不完美——正在履行创造者的职能。当你允许时，这两重身份会彼此教导。</span>
+        </div>
+        <span class="tc-signal" style="color:var(--gold); border-color:rgba(201,162,75,0.4);">Practice · 实践: notice → switch → return · 察觉→切换→回归</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ § 02.4c · Why One Person Needs Both ═══ -->
+  <section class="w-section" id="both-section">
+    <div class="w-eyebrow">§ 02.4c · Why One Person Needs Both</div>
+    <h2 class="w-h2">The case for duality<span class="cn">双重性的理由</span></h2>
+    <p class="w-lead">
+      <span class="en">Splitting these two orientations across two people — one who builds, one who thinks — sounds efficient. It rarely is. The coherence only comes when both live inside the same person.</span>
+      <span class="cn">将这两种取向分配给两个人——一人建造，一人思考——听起来很高效。实则很少如此。只有当两者居于同一个人内部，完整性才会出现。</span>
+    </p>
+    <div class="both-list">
+      <div class="both-item">
+        <div class="both-num">1</div>
+        <div class="both-body">
+          <div class="bb-title">Speed of integration<span class="cn">整合的速度</span></div>
+          <div class="bb-text">
+            <span class="en">When Creator and Seeker share a skull, the interrogation happens in real time. The question "is this worth it?" can arise mid-execution and redirect without convening a committee. Two people in a partnership can achieve this — but the latency is longer, and much depends on trust.</span>
+            <span class="cn">当创造者与求道者共居同一颅骨，追问在实时发生。「这值得吗？」这个问题可以在执行中途升起，无需召开委员会便能重新定向。两人合作也能做到——但延迟更长，且很大程度上依赖信任。</span>
+          </div>
+        </div>
+      </div>
+      <div class="both-item">
+        <div class="both-num">2</div>
+        <div class="both-body">
+          <div class="bb-title">Honest feedback loops<span class="cn">诚实的反馈回路</span></div>
+          <div class="bb-text">
+            <span class="en">The Seeker inside the Creator cannot be flattered or fired. It has access to every private doubt, every skipped step, every rationalisation — and it does not need to protect a partnership to speak. The inner critic is harsher than any external one, but it is also more accurate.</span>
+            <span class="cn">创造者内部的求道者无法被奉承，也无法被解雇。它能接触到每一个私密的疑虑、每一个省略的步骤、每一次合理化辩解——而且无需保护任何合伙关系就能开口。内在批评者比任何外部批评者都更严苛，却也更准确。</span>
+          </div>
+        </div>
+      </div>
+      <div class="both-item">
+        <div class="both-num">3</div>
+        <div class="both-body">
+          <div class="bb-title">Continuity across loss<span class="cn">跨越失去的连续性</span></div>
+          <div class="bb-text">
+            <span class="en">Companies fail. Markets turn. Beliefs get overturned by evidence. When an orientation — not a role, not an outcome — is who you are, losing a particular company does not destroy you as a Creator. Revising a belief does not destroy you as a Seeker. The identity is portable because it lives in practice, not in any single instantiation of that practice.</span>
+            <span class="cn">公司会失败。市场会转向。信念会被证据推翻。当一种取向——而非角色，而非结果——是你本身时，失去某家公司不会摧毁你作为创造者。修正一个信念不会摧毁你作为求道者。身份可以携带，因为它活在实践中，而非活在该实践的任何单一具体形式里。</span>
+          </div>
+        </div>
+      </div>
+      <div class="both-item">
+        <div class="both-num">4</div>
+        <div class="both-body">
+          <div class="bb-title">The question only action can generate<span class="cn">只有行动才能生发的问题</span></div>
+          <div class="bb-text">
+            <span class="en">Some questions cannot be reached by thinking alone. They can only be reached by having built something and watched it interact with the world — by having been proven wrong in a way that pure contemplation cannot simulate. The Creator produces the raw material the Seeker needs most: real friction with reality.</span>
+            <span class="cn">有些问题单靠思考无法触达。它们只能通过建造了某物、并目睹它与世界互动之后才能触及——通过以一种纯粹冥想无法模拟的方式被证明错误。创造者提供求道者最需要的原材料：与现实的真实摩擦。</span>
+          </div>
+        </div>
+      </div>
+      <div class="both-item">
+        <div class="both-num">5</div>
+        <div class="both-body">
+          <div class="bb-title">The question only stillness can generate<span class="cn">只有静观才能生发的问题</span></div>
+          <div class="bb-text">
+            <span class="en">And some questions cannot be reached by action alone. Speed obscures them. Momentum suppresses them. They surface only in the gap between building and the next build — in the silence that the Seeker deliberately holds open. Without that gap, even a relentless Creator eventually loses the thread of why.</span>
+            <span class="cn">而有些问题单靠行动同样无法触达。速度遮蔽了它们。动量压制了它们。它们只在建造与下一次建造之间的间隙中浮现——在求道者刻意保持开放的寂静里。没有这个间隙，即便最无情的创造者，也终将失去那条「为何」的线索。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="w-section">
     <div class="w-eyebrow">§ 02.4 · How They Feed Each Other</div>
     <h2 class="w-h2">The mutual reinforcement<span class="cn">相互增益</span></h2>
@@ -413,5 +904,168 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+/* ── Creator ⇄ Seeker Balance widget ──────────────────────────────── */
+(function () {
+  "use strict";
+
+  /* blend definitions: each entry covers a range [min, max] inclusive */
+  var BLENDS = [
+    {
+      min: 0, max: 10,
+      stateEN: "Pure Seeker",
+      stateCN: "纯粹求道者",
+      descEN: "Orientation is entirely inward. Questions are the substance of life; making things real is left to others. This depth is genuine and produces rare clarity — but without any outward friction, the questions begin to orbit themselves. Understanding that never touches action risks becoming an elaborate avoidance.",
+      descCN: "取向完全朝内。问题是生命的实质；让事物成真的工作留给别人。这种深度是真实的，能产生罕见的清明——但若没有任何外在摩擦，问题开始绕自身运转。永不触及行动的理解，有变成精心回避的风险。",
+      strength: "Rare depth · 罕见的深度",
+      failure: "Permanent abstraction · 永久的抽象"
+    },
+    {
+      min: 15, max: 30,
+      stateEN: "Seeker-dominant",
+      stateCN: "求道者主导",
+      descEN: "The Seeker sets the pace; the Creator operates in its service. Most energy goes into understanding — why this, whether this, what this really means. The Creator still ships things, but they emerge from a long process of internal clarification rather than urgency. The risk is that external momentum stalls while internal work continues indefinitely.",
+      descCN: "求道者定节奏，创造者为其服务。大部分能量用于理解——为何如此、是否如此、这究竟意味着什么。创造者仍然交付，但它们出自漫长的内在澄清过程，而非紧迫感。风险在于，内在工作无限期进行，而外在动力停滞。",
+      strength: "Mission clarity · 使命清明",
+      failure: "Execution lag · 执行滞后"
+    },
+    {
+      min: 35, max: 45,
+      stateEN: "Seeker-leaning balance",
+      stateCN: "偏求道的均衡",
+      descEN: "Slightly more inward than outward. Inquiry leads and execution follows, but both are active. The questioning habit protects the work from drift. Some speed is traded for purpose. This is a stable and thoughtful configuration — one that tends to produce lasting work rather than fast work.",
+      descCN: "略偏朝内而非朝外。追问领先，执行跟随，但两者都在运转。追问习惯保护工作不偏离。以部分速度换取目的性。这是一种稳定而深思熟虑的配置——倾向于产生持久的作品，而非快速的作品。",
+      strength: "Purpose-led output · 目的驱动的产出",
+      failure: "Modest velocity · 速度偏低"
+    },
+    {
+      min: 50, max: 50,
+      stateEN: "Balanced Tension",
+      stateCN: "均衡张力",
+      descEN: "The two orientations hold each other in check. The Creator proposes; the Seeker interrogates. Neither wins outright, and the productive friction between them is where the best work is made. This is an unstable equilibrium — it requires active maintenance — but it is also the most potent configuration when held.",
+      descCN: "两种取向彼此制衡。创造者提出，求道者追问。没有一方完全主导，而两者之间富有成效的摩擦，正是最好的作品诞生的地方。这是一种不稳定的均衡——需要主动维护——但若能持守，也是最有力量的配置。",
+      strength: "Sustainable momentum · 可持续的动力",
+      failure: "Paralysis when tension peaks · 张力顶点时的瘫痪"
+    },
+    {
+      min: 55, max: 65,
+      stateEN: "Creator-leaning balance",
+      stateCN: "偏创造的均衡",
+      descEN: "Slightly more outward than inward. Execution leads and reflection follows, but the Seeker is still present enough to redirect when needed. This is the configuration of most productive builders who still ask hard questions. Speed is high; integrity is mostly maintained. The risk is that the questioning voice gets drowned out during crunch.",
+      descCN: "略偏朝外而非朝内。执行领先，反思跟随，但求道者仍足够在场，在需要时可以重新定向。这是大多数仍会提出艰难问题的高产建造者的配置。速度很高，完整性大体维持。风险在于追问的声音在高压时段被淹没。",
+      strength: "High velocity · 高速度",
+      failure: "Integrity under pressure · 高压下的完整性"
+    },
+    {
+      min: 70, max: 85,
+      stateEN: "Creator-dominant",
+      stateCN: "创造者主导",
+      descEN: "The Creator sets the pace; the Seeker operates in its service. Most energy goes into making things real — executing, iterating, accumulating. The Seeker still questions, but from the passenger seat. The work is fast and real, but the risk of mission drift is elevated. Periodic, deliberate pauses for reflection become critical maintenance.",
+      descCN: "创造者定节奏，求道者为其服务。大部分能量用于让事物成真——执行、迭代、积累。求道者仍在追问，但从副驾驶位置。工作快速而真实，但使命偏离的风险升高。定期有意识地停下反思，成为关键的维护工作。",
+      strength: "Execution strength · 执行力",
+      failure: "Mission drift · 使命漂移"
+    },
+    {
+      min: 90, max: 100,
+      stateEN: "Pure Creator",
+      stateCN: "纯粹创造者",
+      descEN: "Orientation is entirely outward. Building is the substance of life; questions about whether to build, or for what, are treated as obstacles. This intensity is real and can produce extraordinary output — but without any inward check, the machinery builds ever faster toward whatever target was set earliest. The empire grows; the question of what it is for disappears.",
+      descCN: "取向完全朝外。建造是生命的实质；关于是否建造、为何而建的问题被视为障碍。这种强度是真实的，能产生非凡的产出——但若没有任何内在制衡，机器越来越快地朝最早设定的任何目标建造。帝国扩张，「它为何而存在」这个问题消失。",
+      strength: "Extraordinary output · 非凡产出",
+      failure: "Hollow empire · 空洞的帝国"
+    }
+  ];
+
+  function getBlend(val) {
+    for (var i = 0; i < BLENDS.length; i++) {
+      if (val >= BLENDS[i].min && val <= BLENDS[i].max) return BLENDS[i];
+    }
+    /* nearest fallback */
+    var nearest = BLENDS[0], dist = Math.abs(val - 50);
+    for (var j = 0; j < BLENDS.length; j++) {
+      var mid = (BLENDS[j].min + BLENDS[j].max) / 2;
+      if (Math.abs(val - mid) < dist) { dist = Math.abs(val - mid); nearest = BLENDS[j]; }
+    }
+    return nearest;
+  }
+
+  function update(val) {
+    var blend = getBlend(val);
+    var creatorPct = val;
+    var seekerPct  = 100 - val;
+    var barC = document.getElementById("bar-creator");
+    var barS = document.getElementById("bar-seeker");
+    if (barC) barC.style.width = creatorPct + "%";
+    if (barS) barS.style.width = seekerPct  + "%";
+
+    var readout = document.getElementById("balance-readout");
+    if (readout) readout.textContent = val + " · " + blend.stateEN + " · " + blend.stateCN;
+
+    var stateEl = document.getElementById("bp-state");
+    if (stateEl) {
+      var enSpan = stateEl.querySelector(".en");
+      var cnSpan = stateEl.querySelector(".cn");
+      if (enSpan) enSpan.textContent = blend.stateEN;
+      if (cnSpan) cnSpan.textContent = blend.stateCN;
+    }
+
+    var descEl = document.getElementById("bp-desc");
+    if (descEl) {
+      var enD = descEl.querySelector(".en");
+      var cnD = descEl.querySelector(".cn");
+      if (enD) enD.textContent = blend.descEN;
+      if (cnD) cnD.textContent = blend.descCN;
+    }
+
+    var tagsEl = document.getElementById("bp-tags");
+    if (tagsEl) {
+      tagsEl.innerHTML =
+        '<span class="bp-tag strength">Strength · 优势: ' + blend.strength + "</span>" +
+        '<span class="bp-tag failure">Watch · 警惕: ' + blend.failure + "</span>";
+    }
+  }
+
+  function initSlider() {
+    var slider = document.getElementById("balance-slider");
+    if (!slider) return;
+    slider.addEventListener("input", function () { update(parseInt(this.value, 10)); });
+    slider.addEventListener("change", function () { update(parseInt(this.value, 10)); });
+    update(parseInt(slider.value, 10));
+  }
+
+  /* tab switching */
+  function initTabs() {
+    var tabs = document.querySelectorAll("[role='tab']");
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var group = this.closest("[role='tablist']") || this.parentElement;
+        group.querySelectorAll("[role='tab']").forEach(function (t) {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
+        this.classList.add("active");
+        this.setAttribute("aria-selected", "true");
+        var targetId = this.getAttribute("data-tab");
+        /* hide sibling panels */
+        var widget = document.getElementById("balance-widget");
+        if (widget) {
+          widget.querySelectorAll("[role='tabpanel']").forEach(function (p) {
+            p.hidden = true;
+          });
+          var target = document.getElementById(targetId);
+          if (target) target.hidden = false;
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () { initSlider(); initTabs(); });
+  } else {
+    initSlider(); initTabs();
+  }
+})();
+</script>
 </body>
 </html>

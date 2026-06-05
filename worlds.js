@@ -90,4 +90,54 @@
       [].slice.call(sec.children).forEach(function (k, i) { rv(k, Math.min(i, 8) * 70); });
     });
   })();
+
+  /* ── reading-progress bar + back-to-top ── */
+  (function () {
+    var bar = document.createElement('div'); bar.className = 'w-progress'; document.body.appendChild(bar);
+    var top = document.createElement('button'); top.className = 'w-top';
+    top.setAttribute('aria-label', 'Back to top'); top.innerHTML = '↑';
+    document.body.appendChild(top);
+    top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    function on() {
+      var h = document.documentElement.scrollHeight - window.innerHeight, y = window.pageYOffset;
+      bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+      top.classList.toggle('show', y > 600);
+    }
+    window.addEventListener('scroll', on, { passive: true });
+    window.addEventListener('resize', on, { passive: true });
+    on();
+  })();
+
+  /* ── in-page section rail (built from the page's own .w-section blocks) ── */
+  (function () {
+    var secs = [].slice.call(document.querySelectorAll('main.w-wrap .w-section'));
+    if (secs.length < 2) return;
+    var rail = document.createElement('nav'); rail.className = 'w-secrail';
+    rail.setAttribute('aria-label', 'On this page');
+    var map = [];
+    secs.forEach(function (sec, i) {
+      if (!sec.id) sec.id = 'wsec-' + (i + 1);
+      var label = '';
+      var eb = sec.querySelector('.w-eyebrow');
+      if (eb) { var parts = eb.textContent.trim().split('·'); label = (parts[parts.length - 1] || '').trim(); }
+      if (!label) { var h = sec.querySelector('.w-h2, .w-h3'); label = h ? h.textContent.trim().slice(0, 30) : ('Section ' + (i + 1)); }
+      var a = document.createElement('a'); a.href = '#' + sec.id;
+      a.setAttribute('aria-label', label);
+      var sp = document.createElement('span'); sp.className = 'lbl'; sp.textContent = label;
+      a.appendChild(sp); rail.appendChild(a); map.push({ sec: sec, a: a });
+    });
+    document.body.appendChild(rail);
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var m = null; for (var i = 0; i < map.length; i++) if (map[i].sec === e.target) m = map[i];
+          if (!m) return;
+          map.forEach(function (x) { x.a.classList.remove('active'); });
+          m.a.classList.add('active');
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+      map.forEach(function (m) { io.observe(m.sec); });
+    }
+  })();
 })();

@@ -61,6 +61,153 @@
 .triad { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
 .triad b { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(26px,3vw,40px); color: var(--gold-bright); }
 .triad i { font-style: normal; color: var(--ivory-faint); font-size: 22px; align-self: center; }
+
+/* ── The Instrument interactive ── */
+.instrument-chain {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0;
+  margin: 20px 0 24px; padding: 18px 22px;
+  background: rgba(201,162,75,0.04); border: 1px solid var(--line); border-radius: 4px;
+}
+.instrument-chain .ic-node {
+  font-family: var(--display); font-style: italic; font-weight: 300;
+  font-size: clamp(15px,1.6vw,19px); color: var(--ivory-faint);
+  padding: 4px 2px; cursor: default; transition: color .25s;
+}
+.instrument-chain .ic-node.ic-active { color: var(--gold-bright); }
+.instrument-chain .ic-arrow {
+  font-size: 12px; color: var(--gold-deep); margin: 0 10px; flex-shrink: 0;
+}
+
+.instrument-panel-inner { padding: 22px 0 6px; }
+.instrument-panel-inner .ip-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--gold-deep); margin-bottom: 6px;
+}
+.instrument-panel-inner .ip-name {
+  font-family: var(--display); font-weight: 300;
+  font-size: clamp(24px,2.8vw,36px); color: var(--ivory);
+  margin-bottom: 18px; letter-spacing: -0.015em;
+}
+.instrument-panel-inner .ip-name .cn {
+  display: block; font-family: var(--cjk); font-size: 0.55em;
+  color: var(--accent); margin-top: 4px; letter-spacing: 0.12em;
+}
+.ip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 4px; }
+.ip-cell {
+  padding: 18px 20px; border: 1px solid var(--line); border-radius: 4px;
+  background: rgba(255,255,255,0.010);
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.ip-cell:hover {
+  transform: translateY(-2px);
+  background: var(--bg-2);
+  box-shadow: 0 12px 30px -10px rgba(0,0,0,0.65), 0 0 0 1px rgba(201,162,75,0.22);
+}
+.ip-cell .ipc-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--gold-deep); margin-bottom: 8px;
+}
+.ip-cell .ipc-body { font-size: 14px; line-height: 1.72; color: var(--ivory-dim); }
+.ip-cell .ipc-body .cn {
+  display: block; font-family: var(--cjk); font-size: 0.91em;
+  margin-top: 7px; color: var(--ivory-dim); line-height: 1.85;
+}
+.ip-cell.ipc-fail .ipc-label { color: var(--rouge); }
+.ip-cell.ipc-fail { border-color: rgba(177,77,66,0.22); }
+
+/* problem-domain chips row */
+.problem-answer {
+  margin-top: 22px; padding: 16px 20px;
+  border: 1px solid var(--line); border-radius: 4px;
+  background: rgba(201,162,75,0.03);
+  min-height: 64px;
+}
+.problem-answer .pa-prompt {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold-deep); margin-bottom: 8px;
+}
+.problem-answer .pa-text {
+  font-size: 14.5px; line-height: 1.75; color: var(--ivory-dim);
+}
+.problem-answer .pa-text .cn {
+  display: block; font-family: var(--cjk); font-size: 0.91em;
+  margin-top: 7px; color: var(--ivory-dim); line-height: 1.85;
+}
+.problem-answer.pa-empty { opacity: 0.45; }
+
+/* failure modes section cards */
+.refusal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; margin-top: 44px; }
+.refusal-card {
+  position: relative; padding: 28px 26px;
+  border: 1px solid rgba(177,77,66,0.25); border-radius: 4px;
+  background: rgba(177,77,66,0.03);
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.refusal-card:hover {
+  transform: translateY(-3px);
+  background: rgba(177,77,66,0.06);
+  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(177,77,66,0.3);
+}
+.refusal-card .rf-idx {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+  color: rgba(177,77,66,0.7); margin-bottom: 10px;
+}
+.refusal-card .rf-ttl {
+  font-family: var(--display); font-weight: 400; font-size: 21px;
+  color: var(--ivory); margin-bottom: 12px;
+}
+.refusal-card .rf-ttl .cn {
+  display: block; font-family: var(--cjk); font-size: 0.68em;
+  color: rgba(201,162,75,0.65); margin-top: 4px;
+}
+.refusal-card .rf-body { font-size: 14px; line-height: 1.75; color: var(--ivory-dim); }
+.refusal-card .rf-body .cn {
+  display: block; font-family: var(--cjk); font-size: 0.91em;
+  margin-top: 7px; color: var(--ivory-dim); line-height: 1.85;
+}
+
+/* compounding section */
+.compound-steps { counter-reset: compound; list-style: none; margin-top: 38px; max-width: 760px; }
+.compound-steps li {
+  counter-increment: compound; position: relative;
+  padding: 0 0 32px 54px; border-left: 1px solid var(--line);
+}
+.compound-steps li:last-child { border-left: 1px solid transparent; padding-bottom: 0; }
+.compound-steps li::before {
+  content: counter(compound, decimal-leading-zero);
+  position: absolute; left: -1px; top: 0;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  color: var(--gold); background: var(--bg);
+  padding: 0 10px 0 0; line-height: 1;
+}
+.compound-steps li::after {
+  content: "";
+  position: absolute; left: -5px; top: 2px;
+  width: 9px; height: 9px; border-radius: 50%;
+  border: 1px solid var(--accent); background: var(--bg);
+}
+.compound-steps li .cs-head {
+  font-family: var(--display); font-weight: 400; font-size: 20px;
+  color: var(--ivory); margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.compound-steps li .cs-head .cn {
+  font-family: var(--cjk); font-size: 0.68em;
+  color: var(--accent); margin-left: 10px;
+}
+.compound-steps li .cs-body { font-size: 14.5px; line-height: 1.78; color: var(--ivory-dim); }
+.compound-steps li .cs-body .cn {
+  display: block; font-family: var(--cjk); font-size: 0.91em;
+  margin-top: 7px; color: var(--ivory-dim); line-height: 1.85;
+}
+
+/* mobile tightening */
+@media (max-width: 760px) {
+  .ip-grid { grid-template-columns: 1fr; }
+  .refusal-grid { grid-template-columns: 1fr; }
+  .instrument-chain { padding: 14px 16px; gap: 0; }
+  .w-interactive { padding: 20px 18px 24px; }
+  .problem-answer { padding: 14px 16px; }
+}
 </style>
 </head>
 <body data-world="mission">
@@ -95,7 +242,7 @@
     <div class="w-eyebrow">§ 01.1 · The Mission, Stated</div>
     <p class="w-lead">
       <span class="en">A mission is not a wish. It is a direction held long enough to bend a life around it — a standing answer to the question "what is worth my effort?"</span>
-      <span class="cn">使命不是愿望。它是一种被坚持得足够久、足以让一生围绕其弯折的方向——是对"什么值得我投入"这一问题的长久回答。</span>
+      <span class="cn">使命不是愿望。它是一种被坚持得足够久、足以让一生围绕其弯折的方向——是对「什么值得我投入」这一问题的长久回答。</span>
     </p>
     <p class="w-p">
       <span class="en">This one is deliberately plain. Not to dominate, not to be remembered, not to win — but to take the most reliable tools humanity has ever built (science to understand, technology to extend, engineering to make real) and aim them at problems that actually press on people's lives.</span>
@@ -116,7 +263,7 @@
         <div class="ttl">Solve real problems<span class="cn">解决真实的问题</span></div>
         <div class="body">
           <span class="en">"Real" is the load-bearing word. Not problems invented to sell a solution — problems that would still hurt if no one were watching. Health, energy, knowledge, coordination, loneliness.</span>
-          <span class="cn">"真实"是承重的词。不是为了兜售方案而虚构的问题——而是即便无人注视也依然作痛的问题：健康、能源、知识、协作、孤独。</span>
+          <span class="cn">「真实」是承重的词。不是为了兜售方案而虚构的问题——而是即便无人注视也依然作痛的问题：健康、能源、知识、协作、孤独。</span>
         </div>
       </div>
       <div class="w-card">
@@ -124,7 +271,7 @@
         <div class="ttl">Meet human needs<span class="cn">满足人们的需求</span></div>
         <div class="body">
           <span class="en">A solution no one can reach is a paper. Meeting a need means delivery, affordability, dignity — the unglamorous last mile where most good ideas quietly die.</span>
-          <span class="cn">无人能触及的方案只是一篇论文。满足需求意味着送达、可负担、有尊严——正是这最不光鲜的"最后一公里"，让大多数好想法悄然夭折。</span>
+          <span class="cn">无人能触及的方案只是一篇论文。满足需求意味着送达、可负担、有尊严——正是这最不光鲜的「最后一公里」，让大多数好想法悄然夭折。</span>
         </div>
       </div>
       <div class="w-card">
@@ -156,21 +303,288 @@
       <span class="en">Understanding without building is commentary. Building without understanding is luck. The mission insists on both, in order.</span>
       <span class="cn">只理解而不建造，是评论；只建造而不理解，是侥幸。使命坚持二者兼备，并讲求次序。</span>
     </p>
+
+    <!-- ── Interactive: The Instrument Explorer ── -->
+    <div class="w-interactive" id="instrument-explorer" aria-label="The Instrument Explorer">
+      <div class="ix-head">
+        <span class="ix-title">The Instrument Explorer<span class="cn">工具探索器</span></span>
+        <span class="ix-hint">Select a faculty · 选择一项</span>
+      </div>
+
+      <!-- Tab buttons -->
+      <div class="w-tabs" role="tablist" aria-label="Science, Technology, Engineering">
+        <button class="w-tab active" role="tab" aria-selected="true"  aria-controls="ip-science"     id="tab-science">Science · 科学</button>
+        <button class="w-tab"        role="tab" aria-selected="false" aria-controls="ip-technology"  id="tab-technology">Technology · 技术</button>
+        <button class="w-tab"        role="tab" aria-selected="false" aria-controls="ip-engineering" id="tab-engineering">Engineering · 工程</button>
+      </div>
+
+      <!-- Chain indicator -->
+      <div class="instrument-chain" aria-hidden="true">
+        <span class="ic-node ic-active" data-for="science">Science</span>
+        <span class="ic-arrow">→</span>
+        <span class="ic-node" data-for="technology">Technology</span>
+        <span class="ic-arrow">→</span>
+        <span class="ic-node" data-for="engineering">Engineering</span>
+      </div>
+
+      <!-- Panel: Science -->
+      <div class="w-panel" id="ip-science" role="tabpanel" aria-labelledby="tab-science">
+        <div class="instrument-panel-inner">
+          <div class="ip-label">Faculty 01 of 03</div>
+          <div class="ip-name">Science<span class="cn">科学</span></div>
+          <div class="ip-grid">
+            <div class="ip-cell">
+              <div class="ipc-label">What it is</div>
+              <div class="ipc-body">
+                <span class="en">Science is the systematic enterprise of building falsifiable models of reality. Its currency is not discovery but <em>prediction</em> — a model earns its keep by forecasting what you have not yet seen.</span>
+                <span class="cn">科学是建立可证伪的现实模型的系统性事业。它的通货不是发现，而是<em>预测</em>——一个模型的价值在于它能预见你尚未看到的事物。</span>
+              </div>
+            </div>
+            <div class="ip-cell">
+              <div class="ipc-label">Its gift to the chain</div>
+              <div class="ipc-body">
+                <span class="en">Science hands the chain a <em>reliable map</em>: causal structure, quantified relationships, known limits. Without this map, every downstream intervention is a guess wearing a plan's clothing.</span>
+                <span class="cn">科学向整条链递出一份<em>可信的地图</em>：因果结构、量化关系、已知边界。没有这张地图，所有下游干预都只是换了一件计划外衣的猜测。</span>
+              </div>
+            </div>
+            <div class="ip-cell ipc-fail">
+              <div class="ipc-label">Failure mode alone</div>
+              <div class="ipc-body">
+                <span class="en">Science without engineering stays in the journal. It accumulates understanding but delivers nothing. The world's libraries are full of true results that never left the page.</span>
+                <span class="cn">没有工程的科学只能停留在期刊里。它积累理解，却什么也不交付。世界上的图书馆里满是从未离开过纸面的真实成果。</span>
+              </div>
+            </div>
+            <div class="ip-cell">
+              <div class="ipc-label">Concrete example</div>
+              <div class="ipc-body">
+                <span class="en">mRNA biology: decades of basic research on messenger RNA mechanics, cellular uptake, and immune interaction — none of it "useful" until a pandemic made the chain urgent.</span>
+                <span class="cn">mRNA生物学：数十年对信使RNA机制、细胞摄取与免疫反应的基础研究——在一场疫情令整条链变得迫切之前，这一切都「没有用」。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: Technology -->
+      <div class="w-panel" id="ip-technology" role="tabpanel" aria-labelledby="tab-technology" hidden>
+        <div class="instrument-panel-inner">
+          <div class="ip-label">Faculty 02 of 03</div>
+          <div class="ip-name">Technology<span class="cn">技术</span></div>
+          <div class="ip-grid">
+            <div class="ip-cell">
+              <div class="ipc-label">What it is</div>
+              <div class="ipc-body">
+                <span class="en">Technology is the conversion of a scientific understanding into a repeatable <em>capability</em>: a technique, a process, a device that a practitioner can invoke. It is science made portable.</span>
+                <span class="cn">技术是将科学认知转化为可重复<em>能力</em>的过程：一种技法、一套流程、一件装置——从业者可以随时调用。它是被移植的科学。</span>
+              </div>
+            </div>
+            <div class="ip-cell">
+              <div class="ipc-label">Its gift to the chain</div>
+              <div class="ipc-body">
+                <span class="en">Technology is the <em>lever</em>: it multiplies human effort. A surgeon with germ theory is more powerful than a surgeon without it. A programmer with a compiler is more powerful than one without. Capabilities stack.</span>
+                <span class="cn">技术是<em>杠杆</em>：它成倍放大人的努力。掌握细菌理论的外科医生强过没有它的；使用编译器的程序员强过没有它的。能力是可以叠加的。</span>
+              </div>
+            </div>
+            <div class="ip-cell ipc-fail">
+              <div class="ipc-label">Failure mode alone</div>
+              <div class="ipc-body">
+                <span class="en">Technology without engineering is a prototype that never ships, a capability that stays in the lab. The gap between "it works in principle" and "it works in ten million homes" is entirely an engineering problem.</span>
+                <span class="cn">没有工程的技术是永远无法量产的原型、停留在实验室里的能力。从「原则上可行」到「在一千万户家庭中运行」之间的鸿沟，完全是一个工程问题。</span>
+              </div>
+            </div>
+            <div class="ip-cell">
+              <div class="ipc-label">Concrete example</div>
+              <div class="ipc-body">
+                <span class="en">Lithium-ion chemistry: known since the 1970s, but the <em>technique</em> of safely charging and cycling a lithium cell had to be figured out before any engineer could put one in a phone.</span>
+                <span class="cn">锂离子化学：自20世纪70年代已为人所知，但安全充放电的<em>技术</em>必须先被攻克，工程师才能将电池装进手机。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: Engineering -->
+      <div class="w-panel" id="ip-engineering" role="tabpanel" aria-labelledby="tab-engineering" hidden>
+        <div class="instrument-panel-inner">
+          <div class="ip-label">Faculty 03 of 03</div>
+          <div class="ip-name">Engineering<span class="cn">工程</span></div>
+          <div class="ip-grid">
+            <div class="ip-cell">
+              <div class="ipc-label">What it is</div>
+              <div class="ipc-body">
+                <span class="en">Engineering is the art of achieving a specified outcome under real-world constraints: cost, time, materials, safety, scale, and maintenance. Where science asks <em>why</em> and technology asks <em>how</em>, engineering asks <em>how, reliably, at cost X, by date Y</em>.</span>
+                <span class="cn">工程是在真实约束下——成本、时间、材料、安全、规模与维护——达成特定目标的艺术。科学问<em>为什么</em>，技术问<em>怎么做</em>，工程问<em>如何在成本X、期限Y内可靠地做到</em>。</span>
+              </div>
+            </div>
+            <div class="ip-cell">
+              <div class="ipc-label">Its gift to the chain</div>
+              <div class="ipc-body">
+                <span class="en">Engineering delivers the <em>last mile</em>: the thing that reaches people. Without it, science and technology remain possibilities; with it, they become reality. The mission is completed only here.</span>
+                <span class="cn">工程交付<em>最后一公里</em>：那件真正抵达人们手中的东西。没有它，科学与技术只是可能性；有了它，它们成为现实。使命只在这里才得以完成。</span>
+              </div>
+            </div>
+            <div class="ip-cell ipc-fail">
+              <div class="ipc-label">Failure mode alone</div>
+              <div class="ipc-body">
+                <span class="en">Engineering without science is cargo-cult building: copying forms without grasping causes. It ships products that break in unexpected ways, because the team never modeled why the thing works in the first place.</span>
+                <span class="cn">没有科学的工程是「货物崇拜式建造」：复制形式却不理解原因。它交付以意想不到的方式损坏的产品，因为团队从未建立过关于「为什么这东西能运转」的模型。</span>
+              </div>
+            </div>
+            <div class="ip-cell">
+              <div class="ipc-label">Concrete example</div>
+              <div class="ipc-body">
+                <span class="en">The Apollo guidance computer: transistor physics (science) + logic gate design (technology) + thermal management, fault tolerance, and weight budgets under a launch deadline (engineering).</span>
+                <span class="cn">阿波罗制导计算机：晶体管物理（科学）+ 逻辑门设计（技术）+ 在发射截止日期下的热管理、容错与重量配额（工程）。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem-domain chips -->
+      <div style="margin-top: 26px; border-top: 1px solid var(--line-soft); padding-top: 22px;">
+        <div class="ix-hint" style="margin-bottom: 12px;">How would the triad attack … · 三位一体如何应对……</div>
+        <div class="w-chips" role="group" aria-label="Problem domains">
+          <button class="w-chip" type="button" data-domain="health">Health · 健康</button>
+          <button class="w-chip" type="button" data-domain="energy">Energy · 能源</button>
+          <button class="w-chip" type="button" data-domain="knowledge">Knowledge · 知识</button>
+          <button class="w-chip" type="button" data-domain="loneliness">Loneliness · 孤独</button>
+          <button class="w-chip" type="button" data-domain="food">Food · 食物</button>
+        </div>
+
+        <div class="problem-answer pa-empty" id="problem-answer" aria-live="polite">
+          <div class="pa-prompt">Triad response · 三元回应</div>
+          <div class="pa-text" id="pa-text">
+            <span class="en">Select a problem domain above to see how science, technology, and engineering work together on it.</span>
+            <span class="cn">选择上方的问题领域，看三种官能如何协同应对。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /interactive -->
+
   </section>
 
   <section class="w-section" style="text-align:center;">
     <blockquote class="w-quote">
       <span class="en">"The best way to predict the future is to build the parts of it that ought to exist."</span>
-      <span class="cn">"预测未来最好的方式，是亲手建造其中那些理应存在的部分。"</span>
+      <span class="cn">「预测未来最好的方式，是亲手建造其中那些理应存在的部分。」</span>
       <span class="w-quote-attr">The wager of the mission · 使命的赌注</span>
     </blockquote>
   </section>
 
+  <!-- ── NEW § 01.4: What This Mission Refuses ── -->
   <section class="w-section">
-    <div class="w-eyebrow">§ 01.4 · From Mission to Worlds</div>
+    <div class="w-eyebrow">§ 01.4 · What This Mission Refuses</div>
+    <h2 class="w-h2">Common failure modes<span class="cn">常见的失败模式</span></h2>
+    <p class="w-p">
+      <span class="en">A mission gains half its precision from what it refuses. These are the attractors that drain effort without producing it — patterns easy to slide into, hard to name from inside.</span>
+      <span class="cn">一条使命有一半的精确性来自它所拒绝的事物。以下是那些消耗努力却不产出成果的吸引子——从内部难以命名、却极易滑入的模式。</span>
+    </p>
+    <div class="refusal-grid">
+      <div class="refusal-card">
+        <div class="rf-idx">Refusal 01</div>
+        <div class="rf-ttl">Prestige without delivery<span class="cn">无交付的声誉</span></div>
+        <div class="rf-body">
+          <span class="en">Work that optimises for being seen as smart rather than for actually solving anything. The metric is citations, awards, attention — not whether a problem got smaller. Science used as status game rather than map-making.</span>
+          <span class="cn">以「看起来聪明」为优化目标，而非真正解决问题。衡量标准是引用量、奖项、关注度——而不是问题是否变小了。将科学用作地位游戏，而非制图工具。</span>
+        </div>
+      </div>
+      <div class="refusal-card">
+        <div class="rf-idx">Refusal 02</div>
+        <div class="rf-ttl">Solutions to problems no one has<span class="cn">无人存在的问题的解决方案</span></div>
+        <div class="rf-body">
+          <span class="en">Technology built from capability outward rather than need inward. "We can do X, therefore we will find a market for X." Capability is real; the problem it solves is invented. The effort is real; the impact is not.</span>
+          <span class="cn">从能力向外延伸而非从需求向内聚焦所建造的技术。「我们能做X，因此我们要为X找到市场。」能力是真实的；它所解决的问题是虚构的。努力是真实的；影响不是。</span>
+        </div>
+      </div>
+      <div class="refusal-card">
+        <div class="rf-idx">Refusal 03</div>
+        <div class="rf-ttl">The last-mile skip<span class="cn">跳过最后一公里</span></div>
+        <div class="rf-body">
+          <span class="en">Treating delivery as someone else's problem. A breakthrough that stays in the lab, a medication priced out of reach, software that only experts can use — these count as partial missions. They solve on paper; they do not meet.</span>
+          <span class="cn">把交付视为别人的问题。停留在实验室的突破、无人负担得起的药物、只有专家才会用的软件——这些都只算半条使命。它们在纸面上解决了问题；却没有真正满足需求。</span>
+        </div>
+      </div>
+      <div class="refusal-card">
+        <div class="rf-idx">Refusal 04</div>
+        <div class="rf-ttl">Novelty as the goal<span class="cn">以新奇为目标</span></div>
+        <div class="rf-body">
+          <span class="en">Chasing the new because it is new. The best next step is often boring: better maintenance, wider access, lower cost, sharper documentation. The mission does not require original ideas — it requires effective ones.</span>
+          <span class="cn">追逐新事物只因其新。最好的下一步往往是乏味的：更好的维护、更广的普及、更低的成本、更清晰的文档。使命不要求原创的想法——它要求有效的想法。</span>
+        </div>
+      </div>
+      <div class="refusal-card">
+        <div class="rf-idx">Refusal 05</div>
+        <div class="rf-ttl">Mission creep toward power<span class="cn">向权力蔓延的使命膨胀</span></div>
+        <div class="rf-body">
+          <span class="en">Letting a well-funded, well-positioned project slide from "solve this problem" to "control this domain." The mission is satisfied by problems getting smaller, not by the solver getting larger. Scale is a means, not the aim.</span>
+          <span class="cn">让一个资金充裕、位置有利的项目从「解决这个问题」滑向「掌控这个领域」。使命由问题的缩小来衡量，而非解决者的扩张。规模是手段，不是目标。</span>
+        </div>
+      </div>
+      <div class="refusal-card">
+        <div class="rf-idx">Refusal 06</div>
+        <div class="rf-ttl">Waiting for certainty<span class="cn">等待确定性</span></div>
+        <div class="rf-body">
+          <span class="en">Science gives models; it does not give guarantees. Acting only when all uncertainty is resolved means acting never. The mission asks for the best available model, an honest error bar, and the courage to proceed on incomplete information.</span>
+          <span class="cn">科学给出模型，而非保证。只在所有不确定性消除后才行动，意味着永远不行动。使命要求的是最佳可用模型、诚实的误差范围，以及在信息不完整时仍能前行的勇气。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NEW § 01.5: How a Mission Compounds ── -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 01.5 · How a Mission Compounds</div>
+    <h2 class="w-h2">The compounding logic of directed effort<span class="cn">定向努力的复利逻辑</span></h2>
+    <p class="w-p">
+      <span class="en">A mission is not a to-do list. It is a recurring filter applied at every decision point. Over time, decisions made through the same filter accumulate into something qualitatively different from their individual parts.</span>
+      <span class="cn">使命不是待办清单。它是在每个决策节点反复应用的过滤器。随着时间推移，经由同一过滤器做出的决策积累在一起，形成在性质上超越各部分之和的东西。</span>
+    </p>
+    <ol class="compound-steps">
+      <li>
+        <div class="cs-head">Decisions align<span class="cn">决策趋于一致</span></div>
+        <div class="cs-body">
+          <span class="en">A clear mission makes choices faster and cheaper. When two paths diverge, "which one moves closer to the problem?" resolves most dilemmas. Alignment is not agreement — it is convergence on a criterion.</span>
+          <span class="cn">清晰的使命让选择更快、更省力。当两条路分叉时，「哪条更接近问题？」能化解大多数困境。一致性不是意见相同——而是在标准上的收敛。</span>
+        </div>
+      </li>
+      <li>
+        <div class="cs-head">Skills stack<span class="cn">技能叠加</span></div>
+        <div class="cs-body">
+          <span class="en">Work done in service of one problem teaches things that transfer to the next. A scientist who solves a nutrition problem understands cellular metabolism; that understanding is immediately available when the next problem touches the same substrate. Domain knowledge is not wasted — it is invested.</span>
+          <span class="cn">为解决一个问题所做的工作，能教会你迁移到下一个问题的东西。解决过营养问题的科学家懂得细胞代谢；当下一个问题触及同一底层时，这种理解立刻可用。领域知识不会被浪费——它是被投资的。</span>
+        </div>
+      </li>
+      <li>
+        <div class="cs-head">Trust accretes<span class="cn">信任积累</span></div>
+        <div class="cs-body">
+          <span class="en">Consistently serving real problems — not pivoting to whatever is fundable — builds a reputation that is specific and hard to fake. People who need that kind of help seek you out. Collaboration becomes possible without lengthy convincing.</span>
+          <span class="cn">持续服务于真实问题——而非转向任何可以获得资助的方向——会建立一种具体且难以伪造的声誉。需要这类帮助的人会主动寻来。合作得以在无需长篇劝说的情况下发生。</span>
+        </div>
+      </li>
+      <li>
+        <div class="cs-head">Feedback tightens the model<span class="cn">反馈收紧模型</span></div>
+        <div class="cs-body">
+          <span class="en">Because the mission insists on delivery, there is always a real-world signal: did the problem get smaller? That signal is the most honest diagnostic available. Over time, it corrects not just strategy but the understanding of the problem itself.</span>
+          <span class="cn">由于使命坚持交付，总会有一个现实世界的信号：问题缩小了吗？这个信号是最诚实的诊断工具。随着时间推移，它不仅修正策略，还修正对问题本身的理解。</span>
+        </div>
+      </li>
+      <li>
+        <div class="cs-head">Scope expands naturally<span class="cn">范围自然扩展</span></div>
+        <div class="cs-body">
+          <span class="en">Solving a real problem often reveals the next one — not by ambition but by adjacency. The person who fixed the diagnosis bottleneck now sees the treatment access bottleneck clearly. Compound effort does not require an expanding ego; it requires a steady compass.</span>
+          <span class="cn">解决一个真实问题往往会揭示下一个——不是出于野心，而是因为相邻性。修复了诊断瓶颈的人，如今能清晰地看见治疗可及性的瓶颈。复利式的努力不需要膨胀的自我；它需要一个稳定的罗盘。</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 01.6 · From Mission to Worlds</div>
     <p class="w-lead">
       <span class="en">If this is the why, the rest of the Psyverse is the how. Sixteen worlds unfold the single mission into identities, principles, domains, and the long horizon.</span>
-      <span class="cn">若这是"为何"，心域的其余便是"如何"。十六重世界，将这一条使命展开为身份、原则、领域，与那道漫长的地平线。</span>
+      <span class="cn">若这是「为何」，心域的其余便是「如何」。十六重世界，将这一条使命展开为身份、原则、领域，与那道漫长的地平线。</span>
     </p>
   </section>
 
@@ -188,5 +602,109 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Problem-domain answers ── */
+  var DOMAINS = {
+    health: {
+      en: "Science maps the biology of disease — cellular mechanisms, genetic risk factors, epidemiological patterns. Technology converts that map into diagnostics and therapeutics that practitioners can deploy. Engineering makes those tools manufacturable at scale, affordable, and usable by non-specialists — so the intervention actually reaches the patient.",
+      cn: "科学绘制疾病的生物学地图——细胞机制、遗传风险因素、流行病学规律。技术将这张地图转化为从业者可以部署的诊断工具和治疗手段。工程使这些工具可以大规模制造、价格可负担、非专家也能使用——从而让干预真正抵达患者。"
+    },
+    energy: {
+      en: "Science explains how electrons move through photovoltaic materials and how chemical bonds store and release energy. Technology turns those principles into cells, batteries, and grids. Engineering then sizes and integrates them: a solar farm that survives thirty years of wind and rain, a grid that balances supply and demand in real time across a continent.",
+      cn: "科学解释电子如何在光伏材料中移动，以及化学键如何储存和释放能量。技术将这些原理转化为电池、储能装置和电网。工程随后进行规模化与整合：一座能在三十年风吹日晒中存活的太阳能农场，一张能实时平衡大陆范围内供需的电网。"
+    },
+    knowledge: {
+      en: "Science studies how humans learn — memory encoding, retrieval, cognitive load. Technology builds tools from those models: search engines, recommendation systems, adaptive tutoring. Engineering brings reliability, latency, and equity — so that a student in a low-bandwidth village gets the same quality of access as one in a research university.",
+      cn: "科学研究人类如何学习——记忆编码、提取、认知负荷。技术从这些模型中构建工具：搜索引擎、推荐系统、自适应辅导。工程带来可靠性、低延迟与公平性——让带宽匮乏的村庄里的学生，能获得与研究型大学学生同等质量的访问体验。"
+    },
+    loneliness: {
+      en: "Science illuminates the neurological and social mechanics of connection and isolation — what sustains belonging and what erodes it. Technology opens new channels: asynchronous communication, virtual spaces, matching systems. Engineering determines whether those channels are resilient enough to carry real relationships — or just frictionless enough to simulate them.",
+      cn: "科学阐明连接与孤立的神经学和社会学机制——什么维持归属感，什么腐蚀它。技术开辟新的渠道：异步通信、虚拟空间、匹配系统。工程决定这些渠道是否足够坚固，能承载真实的关系——还是仅仅足够顺滑，以至于只是在模拟关系。"
+    },
+    food: {
+      en: "Science traces the biochemistry of plant growth, soil microbiomes, and caloric conversion. Technology produces precision fermentation, vertical-farm lighting spectra, and disease-resistant cultivars. Engineering figures out water recycling, logistics, cold-chain integrity, and unit economics — closing the gap between a controlled-environment crop and a family that needs it.",
+      cn: "科学追踪植物生长、土壤微生物组和热量转化的生物化学。技术产出精准发酵、垂直农场光照谱和抗病品种。工程解决水循环、物流、冷链完整性和单位经济效益——弥合受控环境作物与需要它的家庭之间的差距。"
+    }
+  };
+
+  var explorer = document.getElementById('instrument-explorer');
+  if (!explorer) return;
+
+  /* ── Tab switching ── */
+  var tabs   = Array.prototype.slice.call(explorer.querySelectorAll('.w-tab[role="tab"]'));
+  var panels = Array.prototype.slice.call(explorer.querySelectorAll('.w-panel[role="tabpanel"]'));
+  var chainNodes = Array.prototype.slice.call(explorer.querySelectorAll('.ic-node'));
+
+  function activateTab(tabEl) {
+    tabs.forEach(function (t) {
+      var active = t === tabEl;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    var targetId = tabEl.getAttribute('aria-controls');
+    panels.forEach(function (p) {
+      if (p.id === targetId) {
+        p.removeAttribute('hidden');
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    var forKey = tabEl.getAttribute('aria-controls').replace('ip-', '');
+    chainNodes.forEach(function (n) {
+      n.classList.toggle('ic-active', n.getAttribute('data-for') === forKey);
+    });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { activateTab(tab); });
+    tab.addEventListener('keydown', function (e) {
+      var idx = tabs.indexOf(tab);
+      if (e.key === 'ArrowRight') { activateTab(tabs[(idx + 1) % tabs.length]); tabs[(idx + 1) % tabs.length].focus(); e.preventDefault(); }
+      if (e.key === 'ArrowLeft')  { activateTab(tabs[(idx + tabs.length - 1) % tabs.length]); tabs[(idx + tabs.length - 1) % tabs.length].focus(); e.preventDefault(); }
+      if (e.key === 'Home') { activateTab(tabs[0]); tabs[0].focus(); e.preventDefault(); }
+      if (e.key === 'End')  { activateTab(tabs[tabs.length - 1]); tabs[tabs.length - 1].focus(); e.preventDefault(); }
+    });
+  });
+
+  /* ── Chip / problem-domain switching ── */
+  var chips    = Array.prototype.slice.call(explorer.querySelectorAll('.w-chip[data-domain]'));
+  var answerEl = document.getElementById('problem-answer');
+  var paText   = document.getElementById('pa-text');
+
+  function activateChip(chipEl) {
+    var domain = chipEl.getAttribute('data-domain');
+    var data   = DOMAINS[domain];
+    if (!data) return;
+
+    chips.forEach(function (c) { c.classList.toggle('active', c === chipEl); });
+    answerEl.classList.remove('pa-empty');
+
+    paText.innerHTML =
+      '<span class="en">' + data.en + '</span>' +
+      '<span class="cn">' + data.cn + '</span>';
+
+    /* re-apply language visibility if worlds.js already set a lang */
+    var lang = document.documentElement.getAttribute('data-lang');
+    if (lang === 'en') {
+      paText.querySelectorAll('.cn').forEach(function (el) { el.style.display = 'none'; });
+      paText.querySelectorAll('.en').forEach(function (el) { el.style.display = ''; });
+    } else if (lang === 'zh') {
+      paText.querySelectorAll('.en').forEach(function (el) { el.style.display = 'none'; });
+      paText.querySelectorAll('.cn').forEach(function (el) { el.style.display = ''; });
+    }
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () { activateChip(chip); });
+  });
+
+  /* ── Ensure first panel is visible without JS (already set via HTML; this is a no-op guard) ── */
+  if (!panels[0].hasAttribute('hidden')) { /* already visible */ }
+
+}());
+</script>
 </body>
 </html>

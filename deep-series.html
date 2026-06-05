@@ -90,6 +90,306 @@
   }
   @keyframes dlascend { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -100; } }
 }
+
+/* ── Cognitive Ladder stepper ── */
+.cl-wrap {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+/* SVG ladder */
+.cl-ladder-svg {
+  flex-shrink: 0;
+  width: 72px;
+  min-width: 60px;
+}
+.cl-rung-hit {
+  cursor: pointer;
+  outline: none;
+}
+.cl-rung-hit:focus-visible .cl-rung-bg {
+  stroke: var(--gold-bright);
+  stroke-width: 1;
+  stroke-opacity: 1;
+}
+.cl-rung-bg {
+  fill: rgba(201,162,75,0.06);
+  rx: 3;
+  stroke: var(--line);
+  stroke-width: 0.5;
+  transition: fill 0.25s;
+}
+.cl-rung-hit[aria-selected="true"] .cl-rung-bg {
+  fill: rgba(201,162,75,0.22);
+  stroke: var(--gold);
+  stroke-width: 1;
+}
+.cl-rung-num {
+  font-family: var(--mono, monospace);
+  font-size: 7px;
+  fill: var(--gold-deep, #a07e34);
+  letter-spacing: 0.1em;
+}
+.cl-rung-hit[aria-selected="true"] .cl-rung-num {
+  fill: var(--gold-bright, #e6c071);
+}
+.cl-rung-label {
+  font-size: 7.5px;
+  fill: rgba(236,228,211,0.55);
+  letter-spacing: 0.04em;
+}
+.cl-rung-hit[aria-selected="true"] .cl-rung-label {
+  fill: var(--ivory, #ece4d3);
+}
+.cl-rung-dot {
+  fill: var(--gold-deep, #a07e34);
+  transition: fill 0.25s, r 0.2s;
+}
+.cl-rung-hit[aria-selected="true"] .cl-rung-dot {
+  fill: var(--gold-bright, #e6c071);
+}
+/* pulse glow on active dot — reduced-motion-safe */
+@media (prefers-reduced-motion: no-preference) {
+  .cl-rung-hit[aria-selected="true"] .cl-rung-dot {
+    filter: drop-shadow(0 0 3px rgba(230,192,113,0.8));
+    animation: clpop 0.28s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes clpop {
+    0%   { r: 3; }
+    60%  { r: 5; }
+    100% { r: 4; }
+  }
+}
+/* panel area */
+.cl-panel-area {
+  flex: 1;
+  min-width: 0;
+}
+.cl-controls {
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.cl-step-label {
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep, #a07e34);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cl-panel {
+  border: 1px solid var(--line, rgba(201,162,75,0.2));
+  border-radius: 4px;
+  background: rgba(255,255,255,0.014);
+  padding: 22px 22px 24px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cl-panel.cl-entering {
+    animation: wfade .32s ease;
+  }
+}
+.cl-panel-eyebrow {
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-deep, #a07e34);
+  margin-bottom: 12px;
+}
+.cl-panel-title {
+  font-family: var(--display, "Fraunces", serif);
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 400;
+  color: var(--gold-bright, #e6c071);
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+.cl-panel-title .cn {
+  display: block;
+  font-family: var(--cjk, "Noto Serif SC", serif);
+  font-size: 0.68em;
+  color: var(--accent, #c9a24b);
+  margin-top: 5px;
+  letter-spacing: 0.12em;
+}
+.cl-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+@media (max-width: 600px) {
+  .cl-fields { grid-template-columns: 1fr; }
+}
+.cl-field {
+  background: rgba(201,162,75,0.04);
+  border: 1px solid rgba(201,162,75,0.12);
+  border-radius: 3px;
+  padding: 12px 14px;
+}
+.cl-field-lbl {
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep, #a07e34);
+  margin-bottom: 7px;
+}
+.cl-field-val {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ivory-dim, rgba(236,228,211,0.65));
+}
+.cl-field-val .cn {
+  display: block;
+  font-family: var(--cjk, "Noto Serif SC", serif);
+  font-size: 0.88em;
+  line-height: 1.8;
+  color: var(--ivory-dim, rgba(236,228,211,0.65));
+  margin-top: 5px;
+}
+.cl-field-val .lk {
+  color: var(--gold, #c9a24b);
+  font-style: italic;
+}
+/* bridge row — depends on / unlocks */
+.cl-bridge {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 14px;
+}
+@media (max-width: 600px) {
+  .cl-bridge { flex-direction: column; }
+}
+.cl-bridge .cl-field { flex: 1; }
+/* responsive layout for the whole stepper */
+@media (max-width: 760px) {
+  .cl-wrap {
+    flex-direction: column;
+    gap: 22px;
+  }
+  .cl-ladder-svg {
+    width: 100%;
+    /* horizontal layout on mobile */
+  }
+}
+
+/* ── Compound / Skip-Rungs sections ── */
+.ds-compound-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 36px;
+}
+.ds-compound-card {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.012);
+  padding: 24px 22px;
+  transition: background .3s, box-shadow .3s, transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.ds-compound-card:hover {
+  background: var(--bg-2);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,162,75,0.22);
+}
+.ds-compound-card .ds-cc-mark {
+  font-family: var(--mono);
+  font-size: 18px;
+  color: var(--gold-bright);
+  margin-bottom: 12px;
+}
+.ds-compound-card .ds-cc-head {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ivory);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.ds-compound-card .ds-cc-head .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.75em;
+  color: var(--accent);
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+}
+.ds-compound-card .ds-cc-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ivory-dim);
+}
+.ds-compound-card .ds-cc-body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  line-height: 1.9;
+  margin-top: 7px;
+  color: var(--ivory-dim);
+}
+/* skip-failure table */
+.ds-skip-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 36px;
+  font-size: 14.5px;
+}
+.ds-skip-table th {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  padding: 10px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.ds-skip-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--ivory-dim);
+  line-height: 1.65;
+  vertical-align: top;
+}
+.ds-skip-table td.ds-skip-step {
+  font-family: var(--display);
+  font-size: 16px;
+  color: var(--gold-bright);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.ds-skip-table td .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.88em;
+  color: var(--ivory-dim);
+  margin-top: 4px;
+  line-height: 1.85;
+}
+.ds-skip-table tr:last-child td { border-bottom: none; }
+@media (max-width: 600px) {
+  .ds-skip-table thead { display: none; }
+  .ds-skip-table, .ds-skip-table tbody, .ds-skip-table tr, .ds-skip-table td {
+    display: block; width: 100%;
+  }
+  .ds-skip-table tr { border-bottom: 1px solid var(--line-soft); padding: 12px 0; }
+  .ds-skip-table td { border: none; padding: 6px 0; }
+  .ds-skip-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 4px;
+  }
+}
 </style>
 </head>
 <body data-world="deep-series">
@@ -309,6 +609,134 @@
     </div>
   </section>
 
+  <!-- ═══ § 07.INT — Interactive: Climb the cognitive ladder ═══ -->
+  <section class="w-section" id="sec-ladder-climb">
+    <div class="w-eyebrow">§ 07.INT · Interactive · 互动</div>
+    <h2 class="w-h2">Climb the cognitive ladder<span class="cn">攀登认知之梯</span></h2>
+    <p class="w-p">
+      <span class="en">Step through each rung — click a rung directly or use the ◀ ▶ buttons (arrow keys also work). Each panel shows what this step unlocks, what it depends on below, and what awaits above.</span>
+      <span class="cn">逐级攀登——直接点击某一级，或使用 ◀ ▶ 按钮（方向键同样有效）。每个面板展示该步骤解锁了什么、依赖下方的什么，以及上方等待着什么。</span>
+    </p>
+
+    <div class="w-interactive" id="ladder-interactive">
+      <div class="ix-head">
+        <span class="ix-title">Cognitive Ladder <span class="cn">认知之梯</span></span>
+        <span class="ix-hint">Click rung · Arrow keys · ◀ ▶</span>
+      </div>
+
+      <div class="cl-wrap">
+        <!-- SVG Ladder — 7 rungs, vertical, bottom = step 1, top = step 7 -->
+        <svg class="cl-ladder-svg" viewBox="0 0 72 320" xmlns="http://www.w3.org/2000/svg"
+             role="listbox" aria-label="Cognitive ladder rungs" aria-orientation="vertical"
+             id="cl-ladder-svg" tabindex="0">
+          <!-- Left rail -->
+          <line x1="16" y1="14" x2="16" y2="306" stroke="rgba(201,162,75,0.25)" stroke-width="1.5"/>
+          <!-- Right rail -->
+          <line x1="56" y1="14" x2="56" y2="306" stroke="rgba(201,162,75,0.25)" stroke-width="1.5"/>
+          <!-- Rungs: step 1 at bottom (y≈292), step 7 at top (y≈18) -->
+          <!-- Step 1: DeepLearning — y center 292 -->
+          <g class="cl-rung-hit" role="option" aria-selected="true" data-step="0" tabindex="-1">
+            <rect class="cl-rung-bg" x="4" y="280" width="64" height="24" rx="3"/>
+            <text class="cl-rung-num" x="10" y="290">01</text>
+            <circle class="cl-rung-dot" cx="36" cy="292" r="3.5"/>
+            <text class="cl-rung-label" x="10" y="301">Learning</text>
+          </g>
+          <!-- Step 2: DeepBlue — y center 246 -->
+          <g class="cl-rung-hit" role="option" aria-selected="false" data-step="1" tabindex="-1">
+            <rect class="cl-rung-bg" x="4" y="234" width="64" height="24" rx="3"/>
+            <text class="cl-rung-num" x="10" y="244">02</text>
+            <circle class="cl-rung-dot" cx="36" cy="246" r="3.5"/>
+            <text class="cl-rung-label" x="10" y="255">Compute</text>
+          </g>
+          <!-- Step 3: DeepMind — y center 200 -->
+          <g class="cl-rung-hit" role="option" aria-selected="false" data-step="2" tabindex="-1">
+            <rect class="cl-rung-bg" x="4" y="188" width="64" height="24" rx="3"/>
+            <text class="cl-rung-num" x="10" y="198">03</text>
+            <circle class="cl-rung-dot" cx="36" cy="200" r="3.5"/>
+            <text class="cl-rung-label" x="10" y="209">Think</text>
+          </g>
+          <!-- Step 4: DeepSeek — y center 154 -->
+          <g class="cl-rung-hit" role="option" aria-selected="false" data-step="3" tabindex="-1">
+            <rect class="cl-rung-bg" x="4" y="142" width="64" height="24" rx="3"/>
+            <text class="cl-rung-num" x="10" y="152">04</text>
+            <circle class="cl-rung-dot" cx="36" cy="154" r="3.5"/>
+            <text class="cl-rung-label" x="10" y="163">Seek</text>
+          </g>
+          <!-- Step 5: DeepDo — y center 108 -->
+          <g class="cl-rung-hit" role="option" aria-selected="false" data-step="4" tabindex="-1">
+            <rect class="cl-rung-bg" x="4" y="96" width="64" height="24" rx="3"/>
+            <text class="cl-rung-num" x="10" y="106">05</text>
+            <circle class="cl-rung-dot" cx="36" cy="108" r="3.5"/>
+            <text class="cl-rung-label" x="10" y="117">Do</text>
+          </g>
+          <!-- Step 6: DeepMake — y center 62 -->
+          <g class="cl-rung-hit" role="option" aria-selected="false" data-step="5" tabindex="-1">
+            <rect class="cl-rung-bg" x="4" y="50" width="64" height="24" rx="3"/>
+            <text class="cl-rung-num" x="10" y="60">06</text>
+            <circle class="cl-rung-dot" cx="36" cy="62" r="3.5"/>
+            <text class="cl-rung-label" x="10" y="71">Make</text>
+          </g>
+          <!-- Step 7: DeepLead — y center 18 -->
+          <g class="cl-rung-hit" role="option" aria-selected="false" data-step="6" tabindex="-1">
+            <rect class="cl-rung-bg" x="4" y="6" width="64" height="24" rx="3"/>
+            <text class="cl-rung-num" x="10" y="16">07</text>
+            <circle class="cl-rung-dot" cx="36" cy="18" r="3.5"/>
+            <text class="cl-rung-label" x="10" y="27">Lead</text>
+          </g>
+        </svg>
+
+        <!-- Panel area -->
+        <div class="cl-panel-area">
+          <div class="cl-controls w-stepper">
+            <button id="cl-prev" type="button" aria-label="Previous step">&#9664;</button>
+            <span class="cl-step-label" id="cl-step-label" aria-live="polite" aria-atomic="true">Step 1 / 7</span>
+            <button id="cl-next" type="button" aria-label="Next step">&#9654;</button>
+          </div>
+          <div class="cl-panel" id="cl-panel" role="region" aria-live="polite" aria-atomic="true">
+            <!-- Populated by JS; static fallback = step 1 -->
+            <div class="cl-panel-eyebrow" id="cl-panel-eyebrow">§ 07.1 · DeepLearning</div>
+            <div class="cl-panel-title" id="cl-panel-title">
+              Learning
+              <span class="cn" id="cl-panel-title-cn">深 度 学 习</span>
+            </div>
+            <div class="cl-fields">
+              <div class="cl-field">
+                <div class="cl-field-lbl">Capability unlocked</div>
+                <div class="cl-field-val" id="cl-capability">
+                  <span class="en">Transferable abstraction — the ability to extract a principle from one domain and dissolve a hard problem in another.</span>
+                  <span class="cn">可迁移的抽象——从一个领域提炼原则，化解另一个领域难题的能力。</span>
+                </div>
+              </div>
+              <div class="cl-field">
+                <div class="cl-field-lbl">What it unlocks above</div>
+                <div class="cl-field-val" id="cl-unlocks">
+                  <span class="en"><span class="lk">DeepBlue:</span> the map that makes precise computation possible — without it, computation runs blind.</span>
+                  <span class="cn"><span class="lk">深度计算：</span>为精确推演提供地图——没有它，计算便是盲目奔跑。</span>
+                </div>
+              </div>
+              <div class="cl-bridge">
+                <div class="cl-field">
+                  <div class="cl-field-lbl">Depends on below</div>
+                  <div class="cl-field-val" id="cl-depends">
+                    <span class="en">This is the foundation. No prior rung required — only the commitment to absorb rather than skim.</span>
+                    <span class="cn">这是地基。无需任何前序阶梯——只需「吸收而非浏览」的承诺。</span>
+                  </div>
+                </div>
+                <div class="cl-field">
+                  <div class="cl-field-lbl">Next step awaiting</div>
+                  <div class="cl-field-val" id="cl-next-hint">
+                    <span class="en"><span class="lk">DeepBlue — Computation:</span> sharpen the models learning built into chains of exact consequence.</span>
+                    <span class="cn"><span class="lk">深度计算：</span>把学习建立的模型磨砺为精确推论之链。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.cl-wrap -->
+    </div><!-- /.w-interactive -->
+  </section>
+
   <section class="w-section" style="text-align:center;">
     <blockquote class="w-quote">
       <span class="en">"The depth of a person is not the weight of their knowledge but the altitude from which they can act — and the breadth of what their action can set in motion."</span>
@@ -329,6 +757,153 @@
     </p>
   </section>
 
+  <!-- ═══ § 07.A — NEW: Why Depth Compounds ═══ -->
+  <section class="w-section" id="sec-compound">
+    <div class="w-eyebrow">§ 07.A · Why Depth Compounds</div>
+    <h2 class="w-h2">Each rung multiplies what came before<span class="cn">每一级，都在放大之前的所有</span></h2>
+    <p class="w-lead">
+      <span class="en">The seven steps do not merely add. They multiply. Execution without learning is blind effort; learning without execution is untested theory. But learning that feeds computation, which sharpens thinking, which guides exploration, which grounds execution, which fuels creation, which elevates leadership — that is a compounding loop, not a sum.</span>
+      <span class="cn">七个步骤不只是相加，而是相乘。没有学习的行动是盲目的努力；没有行动的学习是未经检验的理论。但当学习滋养计算、计算磨砺思维、思维引导求索、求索夯实行动、行动激发创造、创造提升领导——那便是一个复利的回路，而非一道加法题。</span>
+    </p>
+    <div class="ds-compound-grid">
+      <div class="ds-compound-card">
+        <div class="ds-cc-mark">×</div>
+        <div class="ds-cc-head">Breadth × Precision<span class="cn">广度 × 精度</span></div>
+        <div class="ds-cc-body">
+          <span class="en">Learning supplies the map; computation enforces precision on it. Wide knowledge without rigour produces plausible errors. Rigour without breadth produces local optima. Together they define the viable space of solutions.</span>
+          <span class="cn">学习提供地图；计算在地图上强制执行精度。缺乏严谨的广博知识产生「貌似合理的错误」；缺乏广度的严谨则产生局部最优。两者合力，才划定了可行解的空间。</span>
+        </div>
+      </div>
+      <div class="ds-compound-card">
+        <div class="ds-cc-mark">×</div>
+        <div class="ds-cc-head">Precision × Perspective<span class="cn">精度 × 视角</span></div>
+        <div class="ds-cc-body">
+          <span class="en">Computation finds the best move in a given frame; thinking can question whether the frame is right. Without computational rigour, abstract thinking untethers into speculation. Without thinking, computation optimises the wrong objective with perfect accuracy.</span>
+          <span class="cn">计算在给定框架中找到最优一步；思维可以质疑这个框架本身是否正确。没有计算严谨性，抽象思维就会飘离为空谈。没有思维，计算则以完美的精度优化了错误的目标。</span>
+        </div>
+      </div>
+      <div class="ds-compound-card">
+        <div class="ds-cc-mark">×</div>
+        <div class="ds-cc-head">Insight × Discovery<span class="cn">洞见 × 发现</span></div>
+        <div class="ds-cc-body">
+          <span class="en">Thinking restructures known space; exploration pushes beyond it. A thinker without the explorer's tolerance for not-knowing will rediscover the same terrain. An explorer without thinking's capacity for restructuring will wander without accumulating knowledge.</span>
+          <span class="cn">思维重构已知空间；求索则将其向外推进。没有探索者「耐受未知」能力的思考者，会不断重新发现同一片地形。没有思维「重构」能力的探索者，则会漫无目的地游荡，而无法积累知识。</span>
+        </div>
+      </div>
+      <div class="ds-compound-card">
+        <div class="ds-cc-mark">×</div>
+        <div class="ds-cc-head">Discovery × Consequence<span class="cn">发现 × 后果</span></div>
+        <div class="ds-cc-body">
+          <span class="en">Exploration reveals what is possible; execution converts it into what is real. Untested discovery remains hypothesis. Execution without the explorer's appetite for the new becomes routine labour. The conjunction produces things that previously could not exist.</span>
+          <span class="cn">求索揭示什么是可能的；行动将其转化为真实存在之物。未经检验的发现停留于假设。没有探索者对新事物渴望的执行，变成常规劳动。两者的结合，产生之前不可能存在的东西。</span>
+        </div>
+      </div>
+      <div class="ds-compound-card">
+        <div class="ds-cc-mark">×</div>
+        <div class="ds-cc-head">Action × Invention<span class="cn">行动 × 发明</span></div>
+        <div class="ds-cc-body">
+          <span class="en">Execution proves what works; creation uses that proof as a launching-pad rather than a ceiling. The creator who has not executed at depth does not know which constraints are real and which are assumed. Deep execution acquaints you with the grain of reality — and creation is the art of working with that grain in unexpected directions.</span>
+          <span class="cn">行动证明什么有效；创造将这个证明作为起跳台而非上限。没有深度执行的创造者，不知道哪些约束是真实的、哪些是假设的。深度行动让你熟悉现实的纹理——创造则是以出人意料的方向顺应这种纹理的艺术。</span>
+        </div>
+      </div>
+      <div class="ds-compound-card">
+        <div class="ds-cc-mark">×</div>
+        <div class="ds-cc-head">Creation × Stewardship<span class="cn">创造 × 守护</span></div>
+        <div class="ds-cc-body">
+          <span class="en">Creation opens a new basin of possibility; leadership ensures that possibility is navigated rather than squandered. Every novel structure introduces new failure modes. The leader who has also created understands what was fragile in the making — and where the system will need the most careful tending.</span>
+          <span class="cn">创造打开一个新的可能性盆地；领导确保这种可能性被善加驾驭而非挥霍。每一个新颖结构都引入新的失效模式。同时也是创造者的领导者，知道在制造过程中何处最为脆弱——以及系统在哪里最需要细心维护。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ § 07.B — NEW: Skipping Rungs Fails ═══ -->
+  <section class="w-section" id="sec-skip">
+    <div class="w-eyebrow">§ 07.B · Skipping Rungs Fails</div>
+    <h2 class="w-h2">The load-bearing structure of the sequence<span class="cn">次序的承重结构</span></h2>
+    <p class="w-lead">
+      <span class="en">The ladder is not a suggestion. Each step depends on structural capabilities developed below it. What follows is an honest accounting of what happens when a step is attempted without its foundations — patterns that recur across disciplines, institutions, and careers.</span>
+      <span class="cn">这道梯子不是建议。每一步都依赖于其下方已建立的结构性能力。以下是对「跳过某一步强行攀爬」后果的诚实盘点——这些模式在各学科、机构与职业生涯中反复出现。</span>
+    </p>
+    <table class="ds-skip-table" aria-label="Consequences of skipping rungs">
+      <thead>
+        <tr>
+          <th><span class="en">Step attempted</span><span class="cn">强行攀爬的阶</span></th>
+          <th><span class="en">What is missing below</span><span class="cn">下方缺失之物</span></th>
+          <th><span class="en">Characteristic failure mode</span><span class="cn">典型失效模式</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ds-skip-step" data-label="Step">DeepBlue · Computation<span class="cn">深度计算</span></td>
+          <td data-label="Missing below">
+            <span class="en">Foundational models from DeepLearning</span>
+            <span class="cn">深度学习所建立的基础模型</span>
+          </td>
+          <td data-label="Failure mode">
+            <span class="en">Reasoning proceeds in circles. Without a rich internal model, each new computation rediscovers what a week of reading would have supplied. The mind runs fast across shallow ground.</span>
+            <span class="cn">推理在循环中打转。没有丰富的内部模型，每一次新的计算都在重新发现阅读一周就能获得的东西。心智在浅薄的地面上疾驰。</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="ds-skip-step" data-label="Step">DeepMind · Thinking<span class="cn">深度思维</span></td>
+          <td data-label="Missing below">
+            <span class="en">Computational rigour from DeepBlue</span>
+            <span class="cn">深度计算所建立的推理严谨性</span>
+          </td>
+          <td data-label="Failure mode">
+            <span class="en">Thinking becomes impressionism. Abstract frameworks are built on unverified premises. The thinker is eloquent about structure but cannot price the structure's consequences. Elegant theory, wrong answer.</span>
+            <span class="cn">思维变成印象主义。抽象框架建立在未经验证的前提之上。思考者能够雄辩地谈论结构，却无法为结构的后果定价。理论优雅，答案错误。</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="ds-skip-step" data-label="Step">DeepSeek · Exploration<span class="cn">深度求索</span></td>
+          <td data-label="Missing below">
+            <span class="en">Reframing capacity from DeepMind</span>
+            <span class="cn">深度思维所建立的重构框架的能力</span>
+          </td>
+          <td data-label="Failure mode">
+            <span class="en">Exploration becomes random walk. Without thinking's ability to reframe, the explorer cannot distinguish productive uncertainty from mere confusion. Energy is spent on questions whose answers would not change anything.</span>
+            <span class="cn">求索变成随机游走。没有思维重构框架的能力，探索者无法区分富有成效的不确定性与单纯的困惑。精力被耗费在「即使知道答案也不会改变任何事」的问题上。</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="ds-skip-step" data-label="Step">DeepDo · Execution<span class="cn">深度行动</span></td>
+          <td data-label="Missing below">
+            <span class="en">Epistemic courage from DeepSeek</span>
+            <span class="cn">深度求索所培养的认识论勇气</span>
+          </td>
+          <td data-label="Failure mode">
+            <span class="en">Execution collapses into busyness. Without the explorer's learned tolerance for operating in the unknown, the executor fills all available time with activity that feels productive but avoids the irreducible difficulty at the center of the task.</span>
+            <span class="cn">行动坍缩为忙碌。没有探索者在未知中操作的习得性耐受，执行者用「感觉高效但实际上在回避任务核心不可化约之难」的活动填满所有时间。</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="ds-skip-step" data-label="Step">DeepMake · Creation<span class="cn">深度创世</span></td>
+          <td data-label="Missing below">
+            <span class="en">Ground-truth from DeepDo</span>
+            <span class="cn">深度行动所提供的现实基底</span>
+          </td>
+          <td data-label="Failure mode">
+            <span class="en">Creation produces objects that cannot survive contact with the world. The unrealised executor does not know where theory breaks down against material resistance, so they cannot design around the failures. The result is beautiful and non-functional, or innovative but impossible to sustain.</span>
+            <span class="cn">创造出的东西无法在与世界的接触中存活。未经行动磨砺的执行者不知道理论在哪里被物质阻力击碎，因此无法在设计中绕开失效点。结果要么美丽而无法运转，要么富有创新却无法持续。</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="ds-skip-step" data-label="Step">DeepLead · Leadership<span class="cn">深度主宰</span></td>
+          <td data-label="Missing below">
+            <span class="en">Generative power from DeepMake</span>
+            <span class="cn">深度创世所积累的创生之力</span>
+          </td>
+          <td data-label="Failure mode">
+            <span class="en">Leadership becomes administration. Without having created, the leader cannot distinguish between managing a living system and preserving a legacy arrangement. They optimise what exists rather than shaping what could exist. Coordination without generativity is institutional decay dressed in competence.</span>
+            <span class="cn">领导变成行政管理。没有创造的经历，领导者无法区分「管理一个有生命的系统」与「维持一种遗留安排」之间的差别。他们优化现有之物，而非塑造可能存在之物。没有创生力的协调，是披着「称职」外衣的机构衰退。</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
 </main>
 
 <nav class="w-nav" aria-label="Worlds navigation"></nav>
@@ -343,5 +918,278 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   Deep Series — Cognitive Ladder Stepper
+   Vanilla IIFE · no dependencies · keyboard + click accessible
+   Degrades gracefully: step 0 is pre-rendered in HTML
+   ═══════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  /* ── data ── */
+  var STEPS = [
+    {
+      eyebrow: '§ 07.1 · DeepLearning',
+      title: 'Learning',
+      titleCn: '深 度 学 习',
+      capability: {
+        en: 'Transferable abstraction — the ability to extract a principle from one domain and dissolve a hard problem in another.',
+        cn: '可迁移的抽象——从一个领域提炼原则，化解另一个领域难题的能力。'
+      },
+      unlocks: {
+        en: '<span class="lk">DeepBlue:</span> the map that makes precise computation possible — without it, computation runs blind.',
+        cn: '<span class="lk">深度计算：</span>为精确推演提供地图——没有它，计算便是盲目奔跑。'
+      },
+      depends: {
+        en: 'This is the foundation. No prior rung required — only the commitment to absorb rather than skim.',
+        cn: '这是地基。无需任何前序阶梯——只需「吸收而非浏览」的承诺。'
+      },
+      nextHint: {
+        en: '<span class="lk">DeepBlue — Computation:</span> sharpen the models learning built into chains of exact consequence.',
+        cn: '<span class="lk">深度计算：</span>把学习建立的模型磨砂为精确推论之链。'
+      }
+    },
+    {
+      eyebrow: '§ 07.2 · DeepBlue',
+      title: 'Computation',
+      titleCn: '深 度 计 算',
+      capability: {
+        en: 'Consequence discipline — following a chain of implications to its end without flinching, refusing premature closure.',
+        cn: '「承担后果」的训练——把一条推论链追至终点而不退缩，拒绝过早收敛。'
+      },
+      unlocks: {
+        en: '<span class="lk">DeepMind:</span> a verified map to reason against — without it, thinking builds on unexamined ground.',
+        cn: '<span class="lk">深度思维：</span>一张可供推理的验证地图——没有它，思维就建立在未经审查的土地上。'
+      },
+      depends: {
+        en: '<span class="lk">DeepLearning:</span> the internal model that gives computation something real to run on.',
+        cn: '<span class="lk">深度学习：</span>为计算提供真实可运行之上的内部模型。'
+      },
+      nextHint: {
+        en: '<span class="lk">DeepMind — Thinking:</span> question the frame, not just the positions within it.',
+        cn: '<span class="lk">深度思维：</span>质疑框架本身，而不只是其中的位置。'
+      }
+    },
+    {
+      eyebrow: '§ 07.3 · DeepMind',
+      title: 'Thinking',
+      titleCn: '深 度 思 维',
+      capability: {
+        en: 'Frame dissolution — the power to redefine the problem itself rather than solve the problem as given.',
+        cn: '框架溶解——重新定义问题本身的力量，而非按给定条件解题。'
+      },
+      unlocks: {
+        en: '<span class="lk">DeepSeek:</span> productive unknowns to pursue — without thinking, exploration wanders without accumulating.',
+        cn: '<span class="lk">深度求索：</span>富有成效的未知领域——没有思维，探索只是漫无目的地游荡。'
+      },
+      depends: {
+        en: '<span class="lk">DeepBlue:</span> verified premises to reason against — without rigour, abstraction becomes speculation.',
+        cn: '<span class="lk">深度计算：</span>可供推理的已验证前提——没有严谨性，抽象就会漂离为空谈。'
+      },
+      nextHint: {
+        en: '<span class="lk">DeepSeek — Exploration:</span> carry the reframed question into genuinely uncharted territory.',
+        cn: '<span class="lk">深度求索：</span>将重新框架后的问题带入真正未知的领地。'
+      }
+    },
+    {
+      eyebrow: '§ 07.4 · DeepSeek',
+      title: 'Exploration',
+      titleCn: '深 度 求 索',
+      capability: {
+        en: 'Productive not-knowing — tolerating open questions long enough to find answers others abandoned too soon.',
+        cn: '富有成效的「不知」——容忍开放的问题，待足够久，长到找到別人过早放弃的答案。'
+      },
+      unlocks: {
+        en: '<span class="lk">DeepDo:</span> a frontier worth crossing — without discovery, execution rehearses the already-known.',
+        cn: '<span class="lk">深度行动：</span>一个将必穿越的前线——没有发现，行动只是在排练已知的事物。'
+      },
+      depends: {
+        en: '<span class="lk">DeepMind:</span> the framing capacity that tells productive unknowns from mere confusion.',
+        cn: '<span class="lk">深度思维：</span>区分「富有成效的未知」与「单纯的困惑」的框架能力。'
+      },
+      nextHint: {
+        en: '<span class="lk">DeepDo — Execution:</span> convert discovered possibility into irreversible consequence.',
+        cn: '<span class="lk">深度行动：</span>将发现的可能性转化为不可逆的后果。'
+      }
+    },
+    {
+      eyebrow: '§ 07.5 · DeepDo',
+      title: 'Execution',
+      titleCn: '深 度 行 动',
+      capability: {
+        en: 'Sustained alignment under friction — keeping action aligned with intention across material resistance, time, and other people.',
+        cn: '摩擦中的持续对齐——在物质阻力、时间与他人之间，保持行动与意图的对齐。'
+      },
+      unlocks: {
+        en: '<span class="lk">DeepMake:</span> knowledge of which constraints are real, enabling creation that can survive contact with the world.',
+        cn: '<span class="lk">深度创世：</span>知道哪些约束是真实的，使创造能够与现实接触后存活。'
+      },
+      depends: {
+        en: '<span class="lk">DeepSeek:</span> epistemic courage — the learned tolerance for operating inside the unknown that prevents execution from collapsing into mere busyness.',
+        cn: '<span class="lk">深度求索：</span>认识论勇气——所习得的在未知中操作的耐受力，防止行动崩溃为单纯的忙碌。'
+      },
+      nextHint: {
+        en: '<span class="lk">DeepMake — Creation:</span> use reality’s grain as a launching-pad rather than a ceiling.',
+        cn: '<span class="lk">深度创世：</span>将现实的纹理作为起跳台而非上限。'
+      }
+    },
+    {
+      eyebrow: '§ 07.6 · DeepMake',
+      title: 'Creation',
+      titleCn: '深 度 创 世',
+      capability: {
+        en: 'Category introduction — producing structures that change what people think is possible, thereby changing what people try.',
+        cn: '引入新范畴——生产改变「人们认为可能的边界」的结构，进而改变人们尝试的方向。'
+      },
+      unlocks: {
+        en: '<span class="lk">DeepLead:</span> the generative understanding of a living system that separates governance from administration.',
+        cn: '<span class="lk">深度主宰：</span>对一个有生命系统的创生性理解，将治理与行政管理区分开来。'
+      },
+      depends: {
+        en: '<span class="lk">DeepDo:</span> ground-truth about real constraints — without it, creation produces objects that cannot survive contact with the world.',
+        cn: '<span class="lk">深度行动：</span>关于真实约束的现实基底——没有它，创造出的东西无法在与现实接触后存活。'
+      },
+      nextHint: {
+        en: '<span class="lk">DeepLead — Leadership:</span> steward the basin of possibility creation opened, ensuring it is navigated rather than squandered.',
+        cn: '<span class="lk">深度主宰：</span>守护创造所开辟的可能性盆地，确保其被善加驾驭而非挥霍。'
+      }
+    },
+    {
+      eyebrow: '§ 07.7 · DeepLead',
+      title: 'Leadership',
+      titleCn: '深 度 主 宰',
+      capability: {
+        en: 'Coherence at scale — holding a complex system in sufficient alignment for it to pursue a purpose larger than any single part can see.',
+        cn: '规模化的连贯性——将一个复杂系统保持在足够的对齐中，使其能够追求任何单一部分都无法看见的更大目的。'
+      },
+      unlocks: {
+        en: 'The condition in which all six prior faculties can compound together — leadership configures the environment so each rung amplifies the others.',
+        cn: '所有六种先行官能得以共同复利的条件——领导配置环境，使每一级放大其他各级。'
+      },
+      depends: {
+        en: '<span class="lk">All six below:</span> Learning, Computation, Thinking, Exploration, Execution, Creation — each missing rung is a specific, predictable failure mode.',
+        cn: '<span class="lk">以下全部六级：</span>学习、计算、思维、求索、行动、创造——每一个缺少的阶梯都是一种具体的、可预测的失效模式。'
+      },
+      nextHint: {
+        en: 'This is the apex. The ladder does not end here — it cycles: the deepest leaders are also perpetual learners.',
+        cn: '这是顶点。梯子并不在此终结——它循环：最深层的领导者也是永恒的学习者。'
+      }
+    }
+  ];
+
+  /* ── elements ── */
+  var svg       = document.getElementById('cl-ladder-svg');
+  var panel     = document.getElementById('cl-panel');
+  var prevBtn   = document.getElementById('cl-prev');
+  var nextBtn   = document.getElementById('cl-next');
+  var stepLabel = document.getElementById('cl-step-label');
+  var rungs     = svg ? Array.prototype.slice.call(svg.querySelectorAll('.cl-rung-hit')) : [];
+
+  if (!svg || !panel || !prevBtn || !nextBtn || rungs.length === 0) return; /* graceful degrade */
+
+  var current = 0;
+
+  function setText(el, data) {
+    if (!el) return;
+    /* supports bilingual {en, cn} or plain string */
+    if (typeof data === 'string') {
+      el.innerHTML = data;
+    } else {
+      var enEl  = el.querySelector('.en');
+      var cnEl  = el.querySelector('.cn');
+      var lkFix = function(s) { return s; }; /* already contains HTML spans */
+      if (enEl) enEl.innerHTML = data.en || '';
+      if (cnEl) cnEl.innerHTML = data.cn || '';
+    }
+  }
+
+  function go(idx) {
+    if (idx < 0 || idx >= STEPS.length) return;
+
+    /* update rung aria-selected */
+    rungs.forEach(function(r, i) {
+      r.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+
+    var s = STEPS[idx];
+
+    /* animate panel */
+    panel.classList.remove('cl-entering');
+    void panel.offsetWidth; /* reflow */
+    panel.classList.add('cl-entering');
+
+    /* update fields */
+    setText(document.getElementById('cl-panel-eyebrow'), s.eyebrow);
+
+    var titleEl = document.getElementById('cl-panel-title');
+    if (titleEl) {
+      /* keep the .cn child, replace the text node before it */
+      var cnChild = titleEl.querySelector('.cn');
+      titleEl.childNodes[0].nodeValue = s.title + '\n              ';
+      if (cnChild) cnChild.textContent = s.titleCn;
+    }
+
+    setText(document.getElementById('cl-capability'), s.capability);
+    setText(document.getElementById('cl-unlocks'), s.unlocks);
+    setText(document.getElementById('cl-depends'), s.depends);
+    setText(document.getElementById('cl-next-hint'), s.nextHint);
+
+    stepLabel.textContent = 'Step ' + (idx + 1) + ' / ' + STEPS.length;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === STEPS.length - 1;
+
+    current = idx;
+  }
+
+  /* ── wire up rung clicks ── */
+  rungs.forEach(function(r) {
+    r.addEventListener('click', function() {
+      go(parseInt(r.getAttribute('data-step'), 10));
+    });
+    r.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        go(parseInt(r.getAttribute('data-step'), 10));
+      }
+    });
+  });
+
+  /* ── stepper buttons ── */
+  prevBtn.addEventListener('click', function() { go(current - 1); });
+  nextBtn.addEventListener('click', function() { go(current + 1); });
+
+  /* ── keyboard on SVG container ── */
+  svg.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      go(current + 1);
+    } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      go(current - 1);
+    }
+  });
+
+  /* ── keyboard anywhere in the section ── */
+  var section = document.getElementById('sec-ladder-climb');
+  if (section) {
+    section.addEventListener('keydown', function(e) {
+      var tag = document.activeElement ? document.activeElement.tagName : '';
+      if (tag === 'BUTTON') return; /* let button handle it */
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+        e.preventDefault(); go(current + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+        e.preventDefault(); go(current - 1);
+      }
+    });
+  }
+
+  /* ── initial render ── */
+  go(0);
+  prevBtn.disabled = true;
+
+}());
+</script>
 </body>
 </html>

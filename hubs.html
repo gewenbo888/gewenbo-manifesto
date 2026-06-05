@@ -143,6 +143,335 @@
   padding: 3px 10px;
   opacity: 0.7;
 }
+
+/* ── hub network interactive map ── */
+#hub-map-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 6px;
+}
+#hub-map-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+}
+.hm-land {
+  fill: rgba(255,255,255,0.04);
+  stroke: rgba(201,162,75,0.12);
+  stroke-width: 0.6;
+}
+.hm-grid-line {
+  stroke: rgba(201,162,75,0.07);
+  stroke-width: 0.4;
+}
+.hm-conn {
+  stroke: var(--gold);
+  stroke-width: 1;
+  opacity: 0;
+  transition: opacity .35s ease, stroke-width .25s;
+  pointer-events: none;
+}
+.hm-conn.visible { opacity: 0.22; }
+.hm-node-ring {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.2;
+  opacity: 0;
+  r: 0;
+  transition: opacity .3s, r .3s;
+}
+.hm-node-dot {
+  fill: var(--gold-bright);
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity .25s, r .25s, fill .25s;
+}
+.hm-node-dot:hover,
+.hm-node-dot.active {
+  opacity: 1;
+  fill: var(--gold-bright);
+  filter: drop-shadow(0 0 7px var(--gold));
+}
+.hm-node-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  fill: var(--ivory-faint);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity .25s, fill .25s;
+}
+.hm-node-label.active,
+.hm-node-group:hover .hm-node-label {
+  opacity: 1;
+  fill: var(--gold-bright);
+}
+/* hub detail panel */
+#hub-detail {
+  margin-top: 22px;
+  min-height: 148px;
+}
+.hub-detail-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px 26px;
+  padding: 22px 26px;
+  background: var(--bg-2);
+  border: 1px solid rgba(201,162,75,0.3);
+  border-radius: 4px;
+  box-shadow: 0 0 32px -12px rgba(201,162,75,0.25);
+}
+.hub-detail-card .hdc-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding-top: 3px;
+}
+.hub-detail-card .hdc-num {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 42px;
+  font-weight: 200;
+  line-height: 1;
+  color: var(--gold-bright);
+  letter-spacing: -0.04em;
+}
+.hub-detail-card .hdc-tz {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hub-detail-card .hdc-body { min-width: 0; }
+.hub-detail-card .hdc-name {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ivory);
+  line-height: 1.1;
+}
+.hub-detail-card .hdc-name .cn {
+  font-family: var(--cjk);
+  font-size: 0.68em;
+  color: var(--accent);
+  margin-left: 9px;
+}
+.hub-detail-card .hdc-role {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-top: 5px;
+}
+.hub-detail-card .hdc-desc {
+  font-size: 14px;
+  line-height: 1.72;
+  color: var(--ivory-dim);
+  margin-top: 10px;
+}
+.hub-detail-card .hdc-desc .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.91em;
+  margin-top: 7px;
+  color: var(--ivory-dim);
+}
+.hub-detail-card .hdc-strength {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+}
+.hdc-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,162,75,0.3);
+  border-radius: 2px;
+  padding: 2px 8px;
+}
+
+/* chip fallback row */
+.hub-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+/* follow-the-sun timeline */
+.sun-timeline {
+  position: relative;
+  margin-top: 38px;
+  padding-bottom: 10px;
+}
+.sun-track {
+  position: relative;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright) 50%, var(--gold-deep));
+  border-radius: 2px;
+  margin: 32px 0 56px;
+  overflow: visible;
+}
+.sun-city {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.sun-city .sc-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 8px rgba(201,162,75,0.6);
+  flex-shrink: 0;
+}
+.sun-city .sc-label-top {
+  position: absolute;
+  bottom: calc(100% + 11px);
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  transform: translateX(-50%);
+  left: 50%;
+}
+.sun-city .sc-label-bot {
+  position: absolute;
+  top: calc(100% + 11px);
+  white-space: nowrap;
+  font-family: var(--cjk);
+  font-size: 9px;
+  color: var(--ivory-faint);
+  transform: translateX(-50%);
+  left: 50%;
+}
+.sun-city .sc-time {
+  position: absolute;
+  bottom: calc(100% + 28px);
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+  transform: translateX(-50%);
+  left: 50%;
+}
+.sun-orbit {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ivory-faint);
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+/* 24-hour label strip */
+.sun-hours {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.sun-hours span {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--gold-deep);
+  opacity: 0.55;
+}
+
+/* why-eight grid */
+.why-eight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 38px;
+}
+.we-card {
+  padding: 22px 22px;
+  background: rgba(255,255,255,0.012);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: background .3s, border-color .3s;
+}
+.we-card:hover {
+  background: var(--bg-2);
+  border-color: rgba(201,162,75,0.28);
+}
+.we-card .we-icon {
+  font-size: 19px;
+  margin-bottom: 10px;
+  opacity: 0.75;
+}
+.we-card .we-title {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ivory);
+  line-height: 1.2;
+}
+.we-card .we-title .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.72em;
+  color: var(--accent);
+  margin-top: 3px;
+}
+.we-card .we-body {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ivory-dim);
+  margin-top: 10px;
+}
+.we-card .we-body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.91em;
+  margin-top: 7px;
+  color: var(--ivory-dim);
+}
+
+/* mobile responsive adjustments */
+@media (max-width: 760px) {
+  .hub-detail-card {
+    grid-template-columns: 1fr;
+  }
+  .hub-detail-card .hdc-badge {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+  }
+  #hub-map-svg {
+    max-height: 200px;
+  }
+  .hm-node-label {
+    display: none;
+  }
+  .sun-track {
+    margin-bottom: 70px;
+  }
+  .sun-city .sc-label-top {
+    font-size: 8px;
+  }
+}
 </style>
 </head>
 <body data-world="hubs">
@@ -386,7 +715,276 @@
   </section>
 
   <section class="w-section">
-    <div class="w-eyebrow">§ 08.5 · From Hubs to the Whole</div>
+    <div class="w-eyebrow">§ 08.5 · The Hub Network</div>
+    <h2 class="w-h2">An interactive geography<span class="cn">互动地理图谱</span></h2>
+    <p class="w-p">
+      <span class="en">Select a city to explore its role, strengths, and connections in the network. Each node is a distinct operating environment; the lines between them are flows of capital, talent, knowledge, and product.</span>
+      <span class="cn">选择一座城市，探索其在网络中的角色、优势与连结。每个节点都是独特的运营环境；节点之间的连线，是资本、人才、知识与产品的流动。</span>
+    </p>
+
+    <div class="w-interactive" role="region" aria-label="Hub network explorer">
+      <div class="ix-head">
+        <span class="ix-title">Hub Network <span class="cn">枢纽网络</span></span>
+        <span class="ix-hint">Click a city node or button below · 点击城市节点或下方按钮</span>
+      </div>
+
+      <!-- SVG abstract world map -->
+      <div id="hub-map-wrap" aria-hidden="true">
+        <svg id="hub-map-svg" viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <!-- latitude grid lines -->
+          <line class="hm-grid-line" x1="0" y1="70"  x2="900" y2="70"  />
+          <line class="hm-grid-line" x1="0" y1="130" x2="900" y2="130" />
+          <line class="hm-grid-line" x1="0" y1="190" x2="900" y2="190" />
+          <line class="hm-grid-line" x1="0" y1="250" x2="900" y2="250" />
+          <!-- longitude grid lines -->
+          <line class="hm-grid-line" x1="120" y1="0"  x2="120" y2="340" />
+          <line class="hm-grid-line" x1="270" y1="0"  x2="270" y2="340" />
+          <line class="hm-grid-line" x1="420" y1="0"  x2="420" y2="340" />
+          <line class="hm-grid-line" x1="570" y1="0"  x2="570" y2="340" />
+          <line class="hm-grid-line" x1="720" y1="0"  x2="720" y2="340" />
+
+          <!-- stylised land masses (abstract polygons only) -->
+          <!-- Eurasia blob -->
+          <path class="hm-land" d="M 270 60 Q 320 45 420 55 Q 520 50 580 70 Q 640 80 660 110 Q 650 140 600 155 Q 550 165 490 158 Q 440 152 390 160 Q 350 165 310 150 Q 275 138 265 115 Q 258 90 270 60 Z" />
+          <!-- Africa blob -->
+          <path class="hm-land" d="M 375 160 Q 420 155 450 175 Q 475 200 470 235 Q 462 265 440 280 Q 415 290 395 278 Q 372 262 360 235 Q 348 205 358 180 Q 364 165 375 160 Z" />
+          <!-- North America blob -->
+          <path class="hm-land" d="M 70 60 Q 130 50 180 65 Q 210 78 215 105 Q 212 130 195 148 Q 175 162 150 165 Q 120 165 95 148 Q 68 128 60 100 Q 55 78 70 60 Z" />
+          <!-- South America blob -->
+          <path class="hm-land" d="M 165 175 Q 195 168 210 185 Q 222 205 218 235 Q 212 265 198 278 Q 182 288 165 280 Q 148 268 142 245 Q 136 218 143 196 Q 151 180 165 175 Z" />
+          <!-- Australia blob -->
+          <path class="hm-land" d="M 680 195 Q 730 185 760 200 Q 785 215 780 240 Q 772 260 748 268 Q 718 272 696 258 Q 672 242 670 220 Q 668 205 680 195 Z" />
+          <!-- East Asia / Japan blob -->
+          <path class="hm-land" d="M 670 80 Q 695 72 715 82 Q 728 94 720 112 Q 710 124 695 120 Q 678 114 672 100 Q 668 88 670 80 Z" />
+
+          <!-- CONNECTION LINES (drawn by JS; prebuilt as hidden paths) -->
+          <g id="hm-connections"></g>
+
+          <!-- CITY NODES (positions = approximate Mercator lon/lat projection onto 900×340) -->
+          <!-- Shenzhen  22.5N 114.1E  → x≈660 y≈185 -->
+          <!-- Beijing   39.9N 116.4E  → x≈668 y≈144 -->
+          <!-- Singapore  1.3N 103.8E  → x≈636 y≈225 -->
+          <!-- Dubai     25.2N  55.3E  → x≈488 y≈177 -->
+          <!-- London    51.5N   0.1W  → x≈316 y≈122 -->
+          <!-- Paris     48.9N   2.3E  → x≈322 y≈127 -->
+          <!-- New York  40.7N  74.0W  → x≈148 y≈142 -->
+          <!-- Silicon V 37.4N 122.1W  → x≈82  y≈151 -->
+
+          <g id="hm-nodes">
+            <g class="hm-node-group" data-hub="0" tabindex="0" role="button" aria-label="Shenzhen">
+              <circle class="hm-node-ring" cx="660" cy="185" r="0" />
+              <circle class="hm-node-dot"  cx="660" cy="185" r="6" />
+              <text   class="hm-node-label" x="668" y="180" text-anchor="start">SZX</text>
+            </g>
+            <g class="hm-node-group" data-hub="1" tabindex="0" role="button" aria-label="Beijing">
+              <circle class="hm-node-ring" cx="668" cy="144" r="0" />
+              <circle class="hm-node-dot"  cx="668" cy="144" r="6" />
+              <text   class="hm-node-label" x="676" y="139" text-anchor="start">BJS</text>
+            </g>
+            <g class="hm-node-group" data-hub="2" tabindex="0" role="button" aria-label="Singapore">
+              <circle class="hm-node-ring" cx="636" cy="225" r="0" />
+              <circle class="hm-node-dot"  cx="636" cy="225" r="6" />
+              <text   class="hm-node-label" x="644" y="220" text-anchor="start">SIN</text>
+            </g>
+            <g class="hm-node-group" data-hub="3" tabindex="0" role="button" aria-label="Dubai">
+              <circle class="hm-node-ring" cx="488" cy="177" r="0" />
+              <circle class="hm-node-dot"  cx="488" cy="177" r="6" />
+              <text   class="hm-node-label" x="496" y="172" text-anchor="start">DXB</text>
+            </g>
+            <g class="hm-node-group" data-hub="4" tabindex="0" role="button" aria-label="London">
+              <circle class="hm-node-ring" cx="316" cy="122" r="0" />
+              <circle class="hm-node-dot"  cx="316" cy="122" r="6" />
+              <text   class="hm-node-label" x="324" y="117" text-anchor="start">LHR</text>
+            </g>
+            <g class="hm-node-group" data-hub="5" tabindex="0" role="button" aria-label="Paris">
+              <circle class="hm-node-ring" cx="328" cy="132" r="0" />
+              <circle class="hm-node-dot"  cx="328" cy="132" r="6" />
+              <text   class="hm-node-label" x="316" y="147" text-anchor="end">CDG</text>
+            </g>
+            <g class="hm-node-group" data-hub="6" tabindex="0" role="button" aria-label="New York">
+              <circle class="hm-node-ring" cx="148" cy="142" r="0" />
+              <circle class="hm-node-dot"  cx="148" cy="142" r="6" />
+              <text   class="hm-node-label" x="156" y="137" text-anchor="start">JFK</text>
+            </g>
+            <g class="hm-node-group" data-hub="7" tabindex="0" role="button" aria-label="Silicon Valley">
+              <circle class="hm-node-ring" cx="82"  cy="151" r="0" />
+              <circle class="hm-node-dot"  cx="82"  cy="151" r="6" />
+              <text   class="hm-node-label" x="90"  y="146" text-anchor="start">SJC</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- chip fallback / alternate selector (always visible) -->
+      <div class="hub-chip-row w-chips" role="group" aria-label="Select a hub city">
+        <button class="w-chip" data-hub="0" type="button">Shenzhen · 深圳</button>
+        <button class="w-chip" data-hub="1" type="button">Beijing · 北京</button>
+        <button class="w-chip" data-hub="2" type="button">Singapore · 新加坡</button>
+        <button class="w-chip" data-hub="3" type="button">Dubai · 迪拜</button>
+        <button class="w-chip" data-hub="4" type="button">London · 伦敦</button>
+        <button class="w-chip" data-hub="5" type="button">Paris · 巴黎</button>
+        <button class="w-chip" data-hub="6" type="button">New York · 纽约</button>
+        <button class="w-chip" data-hub="7" type="button">Silicon Valley · 硅谷</button>
+      </div>
+
+      <!-- detail panel — first city shown as no-JS fallback (no hidden attr) -->
+      <div id="hub-detail" aria-live="polite" aria-atomic="true">
+        <div class="hub-detail-card" id="hub-detail-card">
+          <div class="hdc-badge">
+            <div class="hdc-num" id="hdc-num">01</div>
+            <div class="hdc-tz" id="hdc-tz">UTC+8</div>
+          </div>
+          <div class="hdc-body">
+            <div class="hdc-name" id="hdc-name">Shenzhen <span class="cn">深圳</span></div>
+            <div class="hdc-role" id="hdc-role">Hardware &amp; Maker Capital</div>
+            <div class="hdc-desc" id="hdc-desc">
+              <span class="en" id="hdc-desc-en">Where ideas become prototypes overnight and supply chains are measured in city blocks. The indispensable first stop for anything that must become physical.</span>
+              <span class="cn" id="hdc-desc-cn">想法一夜之间变成原型，供应链以街区为单位丈量。任何需要「物化」之物不可或缺的第一站。</span>
+            </div>
+          </div>
+          <div class="hub-detail-card .hdc-strength" id="hdc-tags"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 08.6 · Why These Eight</div>
+    <h2 class="w-h2">The selection logic<span class="cn">遴选逻辑</span></h2>
+    <p class="w-p">
+      <span class="en">The hubs were not chosen because they are famous. Every large city has a Wikipedia page. These eight were chosen because each one is the highest-expression node for a distinct capability that the mission requires — and no other city performs that function at the same level.</span>
+      <span class="cn">这些枢纽之所以入选，并非因为它们声名显赫。每座大城市都有自己的词条。这八座城市的入选，是因为每一座都是使命所需的某种独特能力的最高表达节点——没有其他城市能在同一层面上承担这一功能。</span>
+    </p>
+    <div class="why-eight-grid">
+      <div class="we-card">
+        <div class="we-icon">⚡</div>
+        <div class="we-title">Speed of execution<span class="cn">执行速度</span></div>
+        <div class="we-body">
+          <span class="en">Shenzhen and Silicon Valley share one trait across very different domains: both compress the time from concept to tangible output more aggressively than anywhere else on earth. Speed is a capability, not a virtue — and it must be located in a place that has built infrastructure around it.</span>
+          <span class="cn">深圳与硅谷在截然不同的领域共享同一特质：两地都比世界上任何地方更激进地压缩从概念到有形产出的时间。速度是一种能力，而非美德——它必须根植于专为此目的构建基础设施的地方。</span>
+        </div>
+      </div>
+      <div class="we-card">
+        <div class="we-icon">⚖</div>
+        <div class="we-title">Institutional depth<span class="cn">制度深度</span></div>
+        <div class="we-body">
+          <span class="en">Beijing and London hold something rare: the accumulated legitimacy to write rules that others follow. Regulatory frameworks, contract precedents, research funding architectures — these are not things you build from scratch. You operate where they already exist.</span>
+          <span class="cn">北京与伦敦拥有一种稀缺品：足以让他人遵循的积淀性合法权威。监管框架、合同先例、研究资助体系——这些都不是可以从零构建的。你必须在它们已经存在的地方运营。</span>
+        </div>
+      </div>
+      <div class="we-card">
+        <div class="we-icon">◎</div>
+        <div class="we-title">Neutral ground<span class="cn">中立之地</span></div>
+        <div class="we-body">
+          <span class="en">Singapore and Dubai occupy positions that neither East nor West fully owns. In a world of rising bloc-logic, neutral jurisdiction is an asset with no substitute. When the counterparties are on opposite sides of a geopolitical fault line, the deal happens in Singapore or Dubai — or it does not happen.</span>
+          <span class="cn">新加坡与迪拜占据着东方与西方都未能完全主导的位置。在集团逻辑日益强化的世界中，中立司法管辖权是一种无可替代的资产。当交易双方分处地缘政治断层线的两侧，协议要么在新加坡或迪拜达成，要么根本无从达成。</span>
+        </div>
+      </div>
+      <div class="we-card">
+        <div class="we-icon">◈</div>
+        <div class="we-title">Meaning and narrative<span class="cn">意义与叙事</span></div>
+        <div class="we-body">
+          <span class="en">Paris and New York are the two cities where the cultural meaning of things is most actively contested and assigned. A product can be well-engineered and still fail because it has no story. These two cities are where stories acquire the credibility that makes them spread.</span>
+          <span class="cn">巴黎与纽约是两座对事物文化意义争夺与赋予最为活跃的城市。一件产品可以工程精良，却因缺乏故事而失败。这两座城市，是故事获得足以传播的公信力的地方。</span>
+        </div>
+      </div>
+      <div class="we-card">
+        <div class="we-icon">◉</div>
+        <div class="we-title">Capital formation<span class="cn">资本形成</span></div>
+        <div class="we-body">
+          <span class="en">New York and Singapore together cover both the largest pools of institutional capital (equity markets, debt markets, funds-of-funds) and the most flexible emerging-market deployment corridors. Capital without a geography is a spreadsheet. These hubs give it direction.</span>
+          <span class="cn">纽约与新加坡共同覆盖了最大规模的机构资本池（股票市场、债务市场、母基金），以及最灵活的新兴市场配置通道。没有地理支撑的资本只是一张电子表格。这些枢纽赋予它方向。</span>
+        </div>
+      </div>
+      <div class="we-card">
+        <div class="we-icon">✦</div>
+        <div class="we-title">Research frontier<span class="cn">研究前沿</span></div>
+        <div class="we-body">
+          <span class="en">Beijing and Silicon Valley contain the two highest concentrations of AI and deep-science researchers operating at the frontier today. Long-horizon bets require proximity to the places where the frontier is being moved — not just reading about it from a distance.</span>
+          <span class="cn">北京与硅谷拥有当今世界最密集的两支前沿人工智能与深度科学研究力量。长远押注需要与推动前沿的地方保持近身接触——而不仅仅是从远处阅读相关报告。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 08.7 · Follow the Sun</div>
+    <h2 class="w-h2">A 24-hour operating architecture<span class="cn">全天候运营架构</span></h2>
+    <p class="w-p">
+      <span class="en">The eight hubs span roughly eighteen hours of active timezone coverage. When Silicon Valley closes its laptops, Singapore is already mid-morning. When London finishes its afternoon calls, Beijing is starting its day. The network does not sleep — not because of any romantic notion of hustle, but because the problems worth solving do not respect a single timezone.</span>
+      <span class="cn">这八大枢纽横跨约十八小时的活跃时区覆盖范围。当硅谷合上笔记本，新加坡已是上午正忙；当伦敦结束下午的通话，北京正刚刚开始新的一天。这个网络从不停歇——不是出于某种浪漫的「拼搏」情结，而是因为值得解决的问题，从不会只顾及一个时区。</span>
+    </p>
+
+    <!-- Follow-the-sun visual timeline -->
+    <div class="sun-timeline" aria-label="Follow-the-sun timezone overview" role="img">
+      <!-- UTC offsets used: SJC -7, JFK -4, LHR +1, CDG +2, DXB +4, SIN +8, BJS +8, SZX +8 -->
+      <!-- Map each city's UTC offset to a position: (offset+7)/(18)*100% across a notional 18-hr span (UTC-7 to UTC+11) -->
+      <!-- Using: 0%=UTC-7(SJC), ~16.7%=UTC-4(JFK), ~44.4%=UTC+1(LHR), ~50%=UTC+2(CDG), ~61.1%=UTC+4(DXB), ~83.3%=UTC+8(Asia three) -->
+      <div class="sun-hours">
+        <span>UTC−7</span>
+        <span>UTC−4</span>
+        <span>UTC+1</span>
+        <span>UTC+4</span>
+        <span>UTC+8</span>
+      </div>
+      <div class="sun-track">
+        <!-- Silicon Valley UTC-7 → 0% -->
+        <div class="sun-city" style="left: 0%">
+          <div class="sc-time">UTC −7</div>
+          <div class="sc-label-top">Silicon Valley</div>
+          <div class="sc-dot"></div>
+          <div class="sc-label-bot">硅谷</div>
+        </div>
+        <!-- New York UTC-4 → 16.7% -->
+        <div class="sun-city" style="left: 16.7%">
+          <div class="sc-time">UTC −4</div>
+          <div class="sc-label-top">New York</div>
+          <div class="sc-dot"></div>
+          <div class="sc-label-bot">纽约</div>
+        </div>
+        <!-- London UTC+1 → 44.4% -->
+        <div class="sun-city" style="left: 44.4%">
+          <div class="sc-time">UTC +1</div>
+          <div class="sc-label-top">London</div>
+          <div class="sc-dot"></div>
+          <div class="sc-label-bot">伦敦</div>
+        </div>
+        <!-- Paris UTC+2 → 50% -->
+        <div class="sun-city" style="left: 50%">
+          <div class="sc-time">UTC +2</div>
+          <div class="sc-label-top" style="top: auto; bottom: calc(100% + 44px)">Paris</div>
+          <div class="sc-dot"></div>
+          <div class="sc-label-bot" style="top: calc(100% + 28px)">巴黎</div>
+        </div>
+        <!-- Dubai UTC+4 → 61.1% -->
+        <div class="sun-city" style="left: 61.1%">
+          <div class="sc-time">UTC +4</div>
+          <div class="sc-label-top">Dubai</div>
+          <div class="sc-dot"></div>
+          <div class="sc-label-bot">迪拜</div>
+        </div>
+        <!-- Beijing / Shenzhen / Singapore UTC+8 → 83.3% (cluster) -->
+        <div class="sun-city" style="left: 83.3%">
+          <div class="sc-time">UTC +8</div>
+          <div class="sc-label-top">Beijing · Shenzhen · Singapore</div>
+          <div class="sc-dot" style="width:14px;height:14px;"></div>
+          <div class="sc-label-bot">北京 · 深圳 · 新加坡</div>
+        </div>
+      </div>
+      <p class="sun-orbit">
+        <span class="en">Three Asian hubs share UTC+8 · the network covers ~18 active timezone hours · no region is ever more than one working day from any other</span>
+        <span class="cn">三大亚洲枢纽共享UTC+8时区 · 网络覆盖约18个活跃时区小时 · 任何区域与另一区域相差不超过一个工作日</span>
+      </p>
+    </div>
+
+    <p class="w-p" style="margin-top: 32px">
+      <span class="en">The overlap windows are the most productive hours of the network. London and Dubai share a two-hour window each morning. New York and London share an afternoon. Singapore and Dubai share a brief window across the Indian Ocean. These overlaps are not accidents — they are the architecture of a working day that extends around the globe.</span>
+      <span class="cn">重叠时段是整个网络效率最高的时刻。伦敦与迪拜每天早晨共享两小时的交汇窗口。纽约与伦敦共享一段下午时光。新加坡与迪拜则在印度洋两岸短暂交汇。这些重叠并非偶然——它们是一个环绕全球的工作日的架构设计。</span>
+    </p>
+  </section>
+
+  <section class="w-section">
+    <div class="w-eyebrow">§ 08.8 · From Hubs to the Whole</div>
     <p class="w-lead">
       <span class="en">The eight hubs are the spatial expression of the mission. Every other world in this Psyverse — the principles, the domains, the vision — must eventually touch ground in one of these eight places. Geography is not a constraint on ambition; it is the test of whether ambition is real.</span>
       <span class="cn">八大枢纽是使命的空间表达。这片心域中的其他每一重世界——原则、领域、愿景——最终都必须在这八处落地。地理不是对野心的约束，而是检验野心是否真实的试金石。</span>
@@ -407,5 +1005,255 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Hub data ── */
+  var HUB_DATA = [
+    {
+      num: '01',
+      iata: 'SZX',
+      name: 'Shenzhen',
+      nameCn: '深圳',
+      role: 'Hardware & Maker Capital',
+      tz: 'UTC+8 · Asia/Shanghai',
+      region: 'Asia · Greater Bay',
+      descEn: 'Where ideas become prototypes overnight and supply chains are measured in city blocks. The indispensable first stop for anything that must become physical.',
+      descCn: '想法一夜之间变成原型，供应链以街区为单位丈量。任何需要「物化」之物不可或缺的第一站。',
+      strengths: ['Prototyping', 'Supply Chain', 'Electronics', 'Manufacturing Speed']
+    },
+    {
+      num: '02',
+      iata: 'BJS',
+      name: 'Beijing',
+      nameCn: '北京',
+      role: 'Policy & Research',
+      tz: 'UTC+8 · Asia/Shanghai',
+      region: 'Asia · PRC',
+      descEn: 'The capital that sets the rules and produces the researchers who push the frontier. Beijing holds the densest concentration of national laboratories, top universities, and regulatory bodies in China.',
+      descCn: '这座首都既制定规则，又培养推动前沿的研究者。北京汇聚了中国最密集的国家实验室、顶尖高校与监管机构。',
+      strengths: ['National Labs', 'Regulatory Access', 'AI Research', 'Institutional Depth']
+    },
+    {
+      num: '03',
+      iata: 'SIN',
+      name: 'Singapore',
+      nameCn: '新加坡',
+      role: 'Trade & Capital Gateway',
+      tz: 'UTC+8 · Asia/Singapore',
+      region: 'Asia · SEA',
+      descEn: 'Rule-of-law infrastructure, deep capital markets, neutral jurisdiction, and a polyglot talent base fluent in both East and West. The gateway that neither side of the world closes.',
+      descCn: '法治基础设施完善、资本市场深厚、司法管辖中立，多语人才兼通东西。世界两侧都不会关闭的那扇大门。',
+      strengths: ['Neutral Jurisdiction', 'Capital Markets', 'Regional Gateway', 'Rule of Law']
+    },
+    {
+      num: '04',
+      iata: 'DXB',
+      name: 'Dubai',
+      nameCn: '迪拜',
+      role: 'Crossroads of Continents',
+      tz: 'UTC+4 · Asia/Dubai',
+      region: 'MENA · UAE',
+      descEn: 'Sitting at the intersection of Africa, Asia, and Europe. Free zones, sovereign capital, and a government willing to run experiments that other cities call impossible.',
+      descCn: '地处非洲、亚洲与欧洲的交叉点。自由区、主权资本，以及一个愿意尝试其他城市称之为「不可能」的实验的政府。',
+      strengths: ['Free Zones', 'Sovereign Capital', '3-Continent Bridge', 'Infrastructure Bets']
+    },
+    {
+      num: '05',
+      iata: 'LHR',
+      name: 'London',
+      nameCn: '伦敦',
+      role: 'Finance & Law',
+      tz: 'UTC+1 · Europe/London',
+      region: 'Europe · UK',
+      descEn: 'Centuries of commercial law, a global reserve currency of contract language, and the deepest pools of institutional capital outside New York. Where deals are structured and global standards written into binding form.',
+      descCn: '几个世纪的商业法积累、全球通用的合同语言，以及纽约之外最深厚的机构资本池。交易被结构化、全球标准被写入具有约束力文本的地方。',
+      strengths: ['Commercial Law', 'Institutional Capital', 'Contract Precedent', 'Global Standards']
+    },
+    {
+      num: '06',
+      iata: 'CDG',
+      name: 'Paris',
+      nameCn: '巴黎',
+      role: 'Culture & Design',
+      tz: 'UTC+2 · Europe/Paris',
+      region: 'Europe · France',
+      descEn: 'The city that taught the world that aesthetics are argument — that form shapes perception, and perception shapes demand. Where the meaning layer of products is tested and European creative talent concentrates.',
+      descCn: '这座城市向世界证明，美学是论点——形式塑造感知，感知塑造需求。产品意义层被检验、欧洲创意人才聚集的地方。',
+      strengths: ['Aesthetic Authority', 'Luxury Grammar', 'Creative Talent', 'Cultural Meaning']
+    },
+    {
+      num: '07',
+      iata: 'JFK',
+      name: 'New York',
+      nameCn: '纽约',
+      role: 'Capital & Media',
+      tz: 'UTC−4 · America/New_York',
+      region: 'Americas · US East',
+      descEn: 'Where money, narrative, and ambition collide at the highest density on earth. New York sets prices — of equities, of ideas, of reputations — and amplifies signal across every industry simultaneously.',
+      descCn: '地球上金钱、叙事与野心碰撞密度最高之处。纽约为一切定价——股票、想法、声誉——并同时向每个行业放大信号。',
+      strengths: ['Equity Markets', 'Media Amplification', 'Price Discovery', 'Narrative Power']
+    },
+    {
+      num: '08',
+      iata: 'SJC',
+      name: 'Silicon Valley',
+      nameCn: '硅谷',
+      role: 'Frontier Technology',
+      tz: 'UTC−7 · America/Los_Angeles',
+      region: 'Americas · US West',
+      descEn: 'The densest concentration of people who believe software can eat the world — and have the track record to back it. Highest tolerance for audacity, shortest feedback loops from idea to capital.',
+      descCn: '地球上相信「软件可以吞噬世界」的人密度最高之处。对大胆的容忍度最高，从想法到资本的反馈循环最短。',
+      strengths: ['Frontier AI', 'Venture Capital', 'Exponential Culture', 'Speed to Scale']
+    }
+  ];
+
+  /* SVG node cx/cy coordinates matching the markup above */
+  var NODE_XY = [
+    [660, 185], // 0 Shenzhen
+    [668, 144], // 1 Beijing
+    [636, 225], // 2 Singapore
+    [488, 177], // 3 Dubai
+    [316, 122], // 4 London
+    [328, 132], // 5 Paris
+    [148, 142], // 6 New York
+    [82,  151]  // 7 Silicon Valley
+  ];
+
+  /* ── Build connection lines into SVG ── */
+  function buildConnections() {
+    var g = document.getElementById('hm-connections');
+    if (!g) return;
+    var lines = [];
+    for (var i = 0; i < NODE_XY.length; i++) {
+      for (var j = i + 1; j < NODE_XY.length; j++) {
+        var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', NODE_XY[i][0]);
+        line.setAttribute('y1', NODE_XY[i][1]);
+        line.setAttribute('x2', NODE_XY[j][0]);
+        line.setAttribute('y2', NODE_XY[j][1]);
+        line.setAttribute('class', 'hm-conn');
+        line.dataset.a = i;
+        line.dataset.b = j;
+        g.appendChild(line);
+        lines.push(line);
+      }
+    }
+    return lines;
+  }
+
+  /* ── Render detail panel ── */
+  function renderDetail(idx) {
+    var h = HUB_DATA[idx];
+    var numEl   = document.getElementById('hdc-num');
+    var tzEl    = document.getElementById('hdc-tz');
+    var nameEl  = document.getElementById('hdc-name');
+    var roleEl  = document.getElementById('hdc-role');
+    var descEnEl = document.getElementById('hdc-desc-en');
+    var descCnEl = document.getElementById('hdc-desc-cn');
+    var tagsEl  = document.getElementById('hdc-tags');
+    if (!numEl) return;
+
+    numEl.textContent  = h.num;
+    tzEl.textContent   = h.tz;
+    nameEl.innerHTML   = h.name + ' <span class="cn">' + h.nameCn + '</span>';
+    roleEl.textContent = h.role;
+    descEnEl.textContent = h.descEn;
+    descCnEl.textContent = h.descCn;
+
+    /* tags */
+    tagsEl.innerHTML = '';
+    h.strengths.forEach(function (s) {
+      var span = document.createElement('span');
+      span.className = 'hdc-tag';
+      span.textContent = s;
+      tagsEl.appendChild(span);
+    });
+    tagsEl.className = 'hub-detail-card .hdc-strength';
+  }
+
+  /* ── Activate a hub (map node + chip + detail) ── */
+  var currentHub = 0;
+  var allConnLines = [];
+
+  function activateHub(idx) {
+    currentHub = idx;
+
+    /* update SVG nodes */
+    var nodeGroups = document.querySelectorAll('.hm-node-group');
+    nodeGroups.forEach(function (g, i) {
+      var dot  = g.querySelector('.hm-node-dot');
+      var ring = g.querySelector('.hm-node-ring');
+      var lbl  = g.querySelector('.hm-node-label');
+      if (i === idx) {
+        if (dot)  { dot.setAttribute('r', '8'); dot.classList.add('active'); }
+        if (ring) { ring.setAttribute('r', '13'); ring.style.opacity = '0.6'; }
+        if (lbl)  { lbl.classList.add('active'); }
+      } else {
+        if (dot)  { dot.setAttribute('r', '6'); dot.classList.remove('active'); }
+        if (ring) { ring.setAttribute('r', '0'); ring.style.opacity = '0'; }
+        if (lbl)  { lbl.classList.remove('active'); }
+      }
+    });
+
+    /* update connection line visibility */
+    allConnLines.forEach(function (line) {
+      var a = parseInt(line.dataset.a, 10);
+      var b = parseInt(line.dataset.b, 10);
+      if (a === idx || b === idx) {
+        line.classList.add('visible');
+      } else {
+        line.classList.remove('visible');
+      }
+    });
+
+    /* update chips */
+    var chips = document.querySelectorAll('[data-hub]');
+    chips.forEach(function (chip) {
+      if (parseInt(chip.dataset.hub, 10) === idx) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
+
+    /* render panel */
+    renderDetail(idx);
+  }
+
+  /* ── Wire up interactivity after DOM ready ── */
+  function init() {
+    allConnLines = buildConnections() || [];
+
+    /* SVG node groups */
+    var nodeGroups = document.querySelectorAll('.hm-node-group');
+    nodeGroups.forEach(function (g) {
+      var idx = parseInt(g.dataset.hub, 10);
+      g.addEventListener('click', function () { activateHub(idx); });
+      g.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateHub(idx); }
+      });
+    });
+
+    /* chip buttons */
+    var chips = document.querySelectorAll('.hub-chip-row [data-hub]');
+    chips.forEach(function (chip) {
+      var idx = parseInt(chip.dataset.hub, 10);
+      chip.addEventListener('click', function () { activateHub(idx); });
+    });
+
+    /* show first city by default */
+    activateHub(0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 </body>
 </html>

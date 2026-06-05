@@ -109,6 +109,83 @@
   opacity: 0.7;
   margin: 0 0.3em;
 }
+
+/* ── Dissolve widget ─────────────────────────────────────────── */
+.diss-tabs { margin-bottom: 26px; }
+.diss-track {
+  position: relative; margin: 28px 0 10px;
+  background: var(--line); border-radius: 2px; height: 2px;
+}
+.diss-fill {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright));
+  border-radius: 2px; width: 50%;
+  transition: width .18s ease;
+}
+.diss-poles {
+  display: flex; justify-content: space-between;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold-deep); margin-top: 6px;
+}
+.diss-readout {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  color: var(--gold); text-align: center; margin-bottom: 20px;
+  min-height: 1.4em;
+}
+.diss-zone {
+  border-radius: 4px; padding: 24px 22px;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.012);
+  min-height: 180px;
+}
+.diss-zone .dz-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.28em;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.diss-zone[data-dz="a"] { border-color: rgba(201,162,75,0.22); }
+.diss-zone[data-dz="a"] .dz-label { color: var(--gold-deep); }
+.diss-zone[data-dz="s"] {
+  border-color: rgba(90,143,115,0.4);
+  background: rgba(90,143,115,0.04);
+}
+.diss-zone[data-dz="s"] .dz-label { color: var(--jade); }
+.diss-zone[data-dz="b"] { border-color: rgba(177,77,66,0.3); }
+.diss-zone[data-dz="b"] .dz-label { color: var(--rouge); }
+.diss-zone .dz-strength {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(16px, 1.9vw, 20px); color: var(--ivory);
+  margin-bottom: 8px; line-height: 1.3;
+}
+.diss-zone .dz-strength .cn { display: block; font-family: var(--cjk); font-size: 0.78em; color: var(--accent); margin-top: 4px; }
+.diss-zone .dz-blind {
+  font-size: 14px; line-height: 1.7; color: var(--ivory-dim); margin-top: 10px;
+}
+.diss-zone .dz-blind .cn { display: block; font-family: var(--cjk); font-size: 0.9em; margin-top: 6px; }
+.diss-zone .dz-contrib { font-size: 14px; line-height: 1.75; color: var(--ivory-dim); }
+.diss-zone .dz-contrib .cn { display: block; font-family: var(--cjk); font-size: 0.9em; margin-top: 6px; }
+@media (max-width: 760px) {
+  .diss-zone { padding: 18px 16px; min-height: auto; }
+}
+
+/* ── Pattern section cards ───────────────────────────────────── */
+.pattern-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 38px; }
+.pattern-card {
+  padding: 26px 24px; border: 1px solid var(--line); border-radius: 4px;
+  background: rgba(255,255,255,0.012);
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.pattern-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-2);
+  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.22), 0 0 28px -10px rgba(201,162,75,0.15);
+}
+.pattern-card .pc-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--gold-deep); }
+.pattern-card .pc-title {
+  font-family: var(--display); font-weight: 400; font-size: 19px; color: var(--ivory);
+  margin-top: 10px; line-height: 1.25;
+}
+.pattern-card .pc-title .cn { display: block; font-family: var(--cjk); font-size: 0.72em; color: var(--accent); margin-top: 4px; }
+.pattern-card .pc-body { font-size: 13.5px; line-height: 1.75; color: var(--ivory-dim); margin-top: 12px; }
+.pattern-card .pc-body .cn { display: block; font-family: var(--cjk); font-size: 0.9em; margin-top: 7px; }
 </style>
 </head>
 <body data-world="integrations">
@@ -327,8 +404,175 @@
     </blockquote>
   </section>
 
-  <section class="w-section">
-    <div class="w-eyebrow">§ 04.5 · The Pattern Beneath All Four</div>
+  <!-- § 04.5 — Dissolve the dichotomy (interactive) -->
+  <section class="w-section" id="sec-dissolve">
+    <div class="w-eyebrow">§ 04.5 · Dissolve the Dichotomy</div>
+    <h2 class="w-h2">
+      <span class="en">Explore each pairing</span>
+      <span class="cn">探索每一对张力</span>
+      <span class="cn" style="display:block;font-family:var(--cjk);font-weight:500;font-size:0.5em;color:var(--accent);margin-top:8px;letter-spacing:0.14em;">溶解二元对立</span>
+    </h2>
+    <p class="w-lead">
+      <span class="en">Choose a pairing and slide between the poles. Each zone reveals what that position gets right — and what it goes blind to. The synthesis at centre is not a compromise; it is what neither extreme can see from where it stands.</span>
+      <span class="cn">选择一对张力，在两极之间移动滑块。每个区域揭示那个位置的洞见——以及它的盲点。中心的融合并非妥协；它是两极各自所处之地都看不到的东西。</span>
+    </p>
+
+    <div class="w-interactive" role="region" aria-label="Dissolve the dichotomy interactive">
+      <div class="ix-head">
+        <span class="ix-title">
+          <span class="en">Dissolve the Dichotomy</span>
+          <span class="cn ix-title" style="font-family:var(--cjk);font-size:0.7em;color:var(--accent);margin-left:8px;">溶解二元</span>
+        </span>
+        <span class="ix-hint" aria-live="polite" id="diss-hint">
+          <span class="en">Pick a pairing · drag the slider</span>
+          <span class="cn">选择配对 · 拖动滑块</span>
+        </span>
+      </div>
+
+      <!-- Tab selector -->
+      <div class="w-tabs diss-tabs" role="tablist" aria-label="Choose a pairing">
+        <button class="w-tab active" role="tab" aria-selected="true"  aria-controls="diss-panel" data-pair="0" type="button">
+          <span class="en">Capitalism × Socialism</span><span class="cn">资本 × 社会</span>
+        </button>
+        <button class="w-tab" role="tab" aria-selected="false" aria-controls="diss-panel" data-pair="1" type="button">
+          <span class="en">AI × Human</span><span class="cn">机器 × 人类</span>
+        </button>
+        <button class="w-tab" role="tab" aria-selected="false" aria-controls="diss-panel" data-pair="2" type="button">
+          <span class="en">Quantum × Relativity</span><span class="cn">量子 × 相对论</span>
+        </button>
+        <button class="w-tab" role="tab" aria-selected="false" aria-controls="diss-panel" data-pair="3" type="button">
+          <span class="en">Digital × Physical</span><span class="cn">数字 × 物理</span>
+        </button>
+      </div>
+
+      <!-- Slider track -->
+      <div class="diss-track" aria-hidden="true"><div class="diss-fill" id="diss-fill"></div></div>
+      <input class="w-range" id="diss-slider" type="range" min="0" max="100" value="50"
+        aria-label="Slide between poles (0 = Pole A, 50 = Synthesis, 100 = Pole B)"
+        aria-valuetext="Synthesis — centre" />
+      <div class="diss-poles">
+        <span id="diss-label-a" class="en">Capitalism</span>
+        <span id="diss-label-b" class="en">Socialism</span>
+      </div>
+      <div class="diss-readout w-readout" id="diss-readout" aria-live="polite">
+        <span class="en">Synthesis — 50</span><span class="cn">融合 — 50</span>
+      </div>
+
+      <!-- Content panel — three zones; synthesis shown by default (no-JS graceful) -->
+      <div id="diss-panel" role="tabpanel">
+        <!-- Zone A (Pole A dominant) -->
+        <div class="diss-zone" data-dz="a" id="diss-zone-a" hidden>
+          <div class="dz-label en">Pole A dominant · 主导：A极</div>
+          <div class="dz-strength" id="dz-a-strength"></div>
+          <div class="dz-blind" id="dz-a-blind"></div>
+        </div>
+        <!-- Zone Synthesis -->
+        <div class="diss-zone" data-dz="s" id="diss-zone-s">
+          <div class="dz-label">
+            <span class="en">Synthesis · the integration</span>
+            <span class="cn">融合之处</span>
+          </div>
+          <div class="dz-strength" id="dz-s-strength"></div>
+          <div class="dz-contrib" id="dz-s-contrib"></div>
+        </div>
+        <!-- Zone B (Pole B dominant) -->
+        <div class="diss-zone" data-dz="b" id="diss-zone-b" hidden>
+          <div class="dz-label en">Pole B dominant · 主导：B极</div>
+          <div class="dz-strength" id="dz-b-strength"></div>
+          <div class="dz-blind" id="dz-b-blind"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 04.6 — Why false binaries form -->
+  <section class="w-section" id="sec-binaries">
+    <div class="w-eyebrow">§ 04.6 · Why False Binaries Form</div>
+    <h2 class="w-h2">The anatomy of a frozen polarity<span class="cn">僵化对立的解剖</span></h2>
+    <p class="w-lead">
+      <span class="en">A false binary is not an error — it is a success that has outlasted its conditions. Understanding how polarities freeze is the first step toward dissolving them without losing what each pole genuinely got right.</span>
+      <span class="cn">虚假的二元对立并非错误——它是一种已经超越其适用条件的成功。理解对立如何僵化，是在不失去每一极真正正确之物的情况下溶解它们的第一步。</span>
+    </p>
+
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <div class="pc-num">01</div>
+        <div class="pc-title">
+          <span class="en">Genuine insight at each pole</span>
+          <span class="cn">每一极都有真实洞见</span>
+        </div>
+        <div class="pc-body">
+          <span class="en">Every durable polarity began as a real discovery. The market really does aggregate distributed information better than any committee. Quantum mechanics really is incompatible with continuous spacetime. The polarity forms because each insight is so powerful that its carriers start to treat it as the whole truth.</span>
+          <span class="cn">每一个持久的对立，最初都源于真实的发现。市场确实比任何委员会都更好地整合了分散信息。量子力学确实与连续时空不相容。对立之所以形成，是因为每种洞见如此有力，以至于其持有者开始将其视为全部真理。</span>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <div class="pc-num">02</div>
+        <div class="pc-title">
+          <span class="en">Institutional memory hardens the claim</span>
+          <span class="cn">制度记忆使主张固化</span>
+        </div>
+        <div class="pc-body">
+          <span class="en">Insights become identities. Communities form around them. Curricula, careers, and coalitions align to one pole. Challenging the pole then feels like betrayal rather than progress. The debate shifts from «what does evidence support?» to «which team are you on?» — and the binary freezes into an ideology.</span>
+          <span class="cn">洞见变为身份认同。围绕它们形成共同体。课程、职业、联盟都向一极靠拢。质疑这一极，于是感觉像背叛而非进步。争论从「证据支持什么？」转变为「你站哪一队？」——对立由此冻结为意识形态。</span>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <div class="pc-num">03</div>
+        <div class="pc-title">
+          <span class="en">Each side defines itself against the other</span>
+          <span class="cn">双方各自以对方来定义自身</span>
+        </div>
+        <div class="pc-body">
+          <span class="en">Once two poles have hardened into camps, each draws its coherence from opposition. What the other side says becomes the signal to disbelieve; what they distrust becomes evidence of one's own correctness. The binary is now self-sustaining — it no longer needs the original insights to survive. It only needs an enemy.</span>
+          <span class="cn">一旦两极固化为阵营，每一方都从对立中汲取自身的连贯性。对方所说的，成了不信任的信号；对方所怀疑的，成了自身正确的证据。二元对立于是自我维持——它不再需要原初的洞见来存活。它只需要一个敌人。</span>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <div class="pc-num">04</div>
+        <div class="pc-title">
+          <span class="en">Synthesis requires a new vocabulary</span>
+          <span class="cn">融合需要新的词汇表</span>
+        </div>
+        <div class="pc-body">
+          <span class="en">The reason integration is hard is not intellectual laziness on either side. It is that the very language each pole uses was built to defend its own territory. A genuine synthesis cannot be expressed in either side's vocabulary without sounding like a betrayal. New concepts must be coined — not as a compromise between the old ones, but as a frame in which both become special cases.</span>
+          <span class="cn">融合之所以困难，并非任何一方的智识懒惰，而是每一极所使用的语言，本身就是为捍卫自身领地而建造的。真正的融合无法用任何一方的词汇表达，而不显得像背叛。新的概念必须被创造出来——不是作为旧概念之间的妥协，而是作为一个使两者都成为特殊情形的框架。</span>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <div class="pc-num">05</div>
+        <div class="pc-title">
+          <span class="en">Synthesis is not the midpoint</span>
+          <span class="cn">融合不是中间点</span>
+        </div>
+        <div class="pc-body">
+          <span class="en">The most persistent confusion about integration is that it means splitting the difference — 50% of each pole, averaged into a grey mush. Real synthesis goes somewhere new. It moves orthogonally: upward in abstraction to a level where the apparent conflict dissolves because the question that generated it is no longer the right question. Neither pole is right at that altitude. Both are special cases of something better.</span>
+          <span class="cn">关于融合最持久的误解，是认为它意味着折中取半——两极各占50%，平均成一团灰色。真正的融合走向某个全新之处。它正交地移动：向上抽象至某个层次，在那里表面的冲突消融，因为产生它的问题不再是正确的问题。在那个高度，两极都不正确。两者都是某种更好之物的特殊情形。</span>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <div class="pc-num">06</div>
+        <div class="pc-title">
+          <span class="en">The new frame inherits both blind spots</span>
+          <span class="cn">新框架继承了两种盲点</span>
+        </div>
+        <div class="pc-body">
+          <span class="en">Every synthesis that succeeds eventually becomes the next frozen polarity for a future generation to dissolve. Newtonian mechanics was a synthesis of observation and mathematics; it became one pole in the quantum-relativity tension. This is not a reason for despair — it is the structure of intellectual progress. Each integration is genuinely better than what came before. And each carries the seeds of the next necessary contradiction.</span>
+          <span class="cn">每一次成功的融合，最终都会成为下一代人需要溶解的下一个僵化对立。牛顿力学是观察与数学的融合；它后来成为量子-相对论张力中的一极。这不是绝望的理由——这是智识进步的结构。每一次融合都真实地优于它之前的东西。而每一次，都携带着下一个必要矛盾的种子。</span>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="w-quote" style="margin-top:60px;">
+      <span class="en">The task is not to win the argument. The task is to find the frame in which both sides of the argument were asking the wrong question.</span>
+      <span class="cn">任务不是赢得争论。任务是找到那个框架——在其中，争论的双方都在问错误的问题。</span>
+      <span class="w-quote-attr">On the logic of integration · 论融合的逻辑</span>
+    </blockquote>
+  </section>
+
+  <!-- § 04.7 — original closing section (renumbered) -->
+  <section class="w-section" id="sec-requires">
+    <div class="w-eyebrow">§ 04.7 · The Pattern Beneath All Four</div>
     <h2 class="w-h2">What integration actually requires<span class="cn">融合真正需要什么</span></h2>
     <p class="w-lead">
       <span class="en">A common structure runs through all four pairings. Each involves two systems with different scales, different speeds, or different failure modes — and each false resolution collapses one side into the other, losing what made the suppressed view irreplaceable.</span>
@@ -381,5 +625,218 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+/* ── Dissolve-the-Dichotomy IIFE ─────────────────────────────────
+   Data-driven: 4 pairings × 3 zones (A-dominant / synthesis / B-dominant).
+   Each zone: { strength_en, strength_cn, detail_en, detail_cn }
+   Degrades gracefully: synthesis zone shown by default in HTML (no hidden attr).
+──────────────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  /* ── DATA ──────────────────────────────────────────────────── */
+  var PAIRS = [
+    /* 0: Capitalism × Socialism */
+    {
+      labelA_en: 'Capitalism',
+      labelA_cn: '资本主义',
+      labelB_en: 'Socialism',
+      labelB_cn: '社会主义',
+      a: {
+        strength_en: 'Distributed incentives, price signals, competitive discovery',
+        strength_cn: '分散激励、价格信号、竞争性发现',
+        detail_en: 'The market aggregates dispersed information that no planner can hold. Competition surfaces failure fast. On balance, market economies have lifted more people from poverty than any system tried at scale. <em>Blind spot:</em> markets systematically underprovide public goods — health, education, clean air — and concentrate loss on the most vulnerable.',
+        detail_cn: '市场整合了任何计划者都无法掌握的分散信息。竞争快速暴露失败。总体上，市场经济让更多人脱贫。<em>盲点：</em>市场系统性地供给不足公共品——健康、教育、清洁空气——并将损失集中于最脆弱者。'
+      },
+      s: {
+        strength_en: 'Markets for competitive goods · commons for foundational goods',
+        strength_cn: '竞争性商品用市场，根本性善物用公共品',
+        detail_en: 'Capitalism contributes: price discovery, distributed incentives, innovation through competition. Socialism contributes: shared risk, protection of public goods, dignity floors that markets cannot price. The synthesis is not a fixed ratio — it is an ongoing negotiation, redrawn each generation, about which goods belong to which logic.',
+        detail_cn: '资本主义贡献：价格发现、分散激励、竞争驱动的创新。社会主义贡献：共担风险、保护公共品、市场无法定价的尊严底线。融合并非固定比例——它是每一代人重新谈判的持续协商：哪些善物属于哪种逻辑。'
+      },
+      b: {
+        strength_en: 'Shared risk, public goods, dignity that markets cannot price',
+        strength_cn: '共担风险、公共品、市场无法定价的尊严',
+        detail_en: 'Solidarity holds the commons that markets undervalue — healthcare, education, basic security. It distributes risk across the community. <em>Blind spot:</em> without price signals, central planning cannot aggregate dispersed knowledge; incentive structures weaken; the information needed to allocate resources efficiently is lost.',
+        detail_cn: '团结守护市场低估的公共地基——医疗、教育、基本安全。它在社群间分散风险。<em>盲点：</em>缺乏价格信号，中央计划无法整合分散知识；激励结构弱化；高效分配资源所需的信息就此消失。'
+      }
+    },
+    /* 1: AI × Human Consciousness */
+    {
+      labelA_en: 'Machine Mind',
+      labelA_cn: '机器意识',
+      labelB_en: 'Human Mind',
+      labelB_cn: '人类意识',
+      a: {
+        strength_en: 'Tireless pattern recognition at vast scale without fatigue',
+        strength_cn: '在巨大规模上不知疲倦的模式识别',
+        detail_en: 'AI holds a million cases in view simultaneously, surfaces regularities no single lifetime could accumulate, and does not anchor on yesterday\'s answer. <em>Blind spot:</em> optimisation without telos — hitting targets while the targets drift away from what actually matters; no embodied sense of what is at stake.',
+        detail_cn: '机器意识同时纵观百万案例，浮现任何单一人生都无法积累的规律，不锚定于昨日答案。<em>盲点：</em>无目的论的优化——越来越擅长命中目标，而目标却悄悄偏离了真正重要之事；缺乏对风险的具身感知。'
+      },
+      s: {
+        strength_en: 'Extended cognition: AI scales perception · humans supply meaning',
+        strength_cn: '延伸认知：机器扩展感知，人类提供意义',
+        detail_en: 'The machine contributes: tireless attention, scale, pattern-finding beyond human bandwidth. The human contributes: embodied judgment, moral weight-bearing, the ability to mean something by what one says. Together: AI corrects cognitive overload and bias accumulation; humans correct optimisation drift. The loop matters — the human must be genuinely in it, not as a rubber stamp.',
+        detail_cn: '机器贡献：不知疲倦的注意力、规模、超越人类带宽的模式发现。人类贡献：具身判断、承担道德重量、对自己所说之话赋予意义的能力。合而：机器纠正认知过载与偏见积累；人类纠正优化漂移。回路至关重要——人类必须真正在其中，而非作为橡皮图章。'
+      },
+      b: {
+        strength_en: 'Embodied judgment, moral weight, the ability to be changed',
+        strength_cn: '具身判断、道德重量、被改变的能力',
+        detail_en: 'Human consciousness knows what it feels like to grieve, to be cold, to be delighted. It bears genuine responsibility, can be harmed, and cares for reasons beyond any target. <em>Blind spot:</em> cognitive overload and bias accumulation at scale; attention exhausts under complexity; one lifetime cannot hold the patterns needed for systemic understanding.',
+        detail_cn: '人类意识知道悲恸、寒冷、被欣喜是何感受。它承担真正的责任，可以受到伤害，因超出任何目标的理由而在意结果。<em>盲点：</em>规模上的认知过载与偏见积累；注意力在复杂性面前耗竭；一生无法容纳系统性理解所需的规律。'
+      }
+    },
+    /* 2: Quantum Mechanics × Relativity */
+    {
+      labelA_en: 'Quantum Mechanics',
+      labelA_cn: '量子力学',
+      labelB_en: 'Relativity',
+      labelB_cn: '相对论',
+      a: {
+        strength_en: 'Probabilistic, non-local, discretely quantised — the most tested theory in history',
+        strength_cn: '概率性、非定域性、离散量子化——史上最精确检验的理论',
+        detail_en: 'At the scale of electrons and photons, reality is probabilistic and observer-entangled. Quantum entanglement links distant objects in ways classical physics forbids. The theory is the most precisely tested in all of science. <em>Blind spot:</em> it has no consistent description of spacetime geometry; its probabilistic formalism flatly refuses to coexist with the smooth curved manifold of general relativity.',
+        detail_cn: '在电子与光子的尺度上，实在是概率性的、与观测者纠缠的。量子纠缠以经典物理所禁止的方式连接远距离对象。该理论是科学史上最精确检验的。<em>盲点：</em>它对时空几何没有一致的描述；其概率性形式主义拒绝与广义相对论光滑弯曲的流形共存。'
+      },
+      s: {
+        strength_en: 'A single framework where geometry and quanta are both limiting cases',
+        strength_cn: '一个统一框架，使几何与量子都成为极限情形',
+        detail_en: 'Quantum mechanics contributes: the discrete, probabilistic, non-local structure of matter at small scales. General relativity contributes: the continuous, geometric description of gravity and spacetime at large scales. The synthesis — still unachieved — requires abandoning concepts both theories take for granted: perhaps a smooth background spacetime, perhaps the definition of a quantum state itself. The difficulty is not a gap in data; it is a question about the shape of the real.',
+        detail_cn: '量子力学贡献：小尺度物质的离散、概率性、非定域结构。广义相对论贡献：大尺度引力与时空的连续几何描述。融合——至今未完成——要求放弃两种理论都视为当然的概念：也许是光滑的背景时空，也许是量子态本身的定义。困难不在于数据缺口；它是一个关于实在形状的问题。'
+      },
+      b: {
+        strength_en: 'Continuous, geometric, extraordinarily precise — predicts black holes and gravitational waves',
+        strength_cn: '连续、几何、非凡精确——预测黑洞与引力波',
+        detail_en: 'At the scale of stars and galaxies, gravity is the geometry of spacetime — a smooth field that curves in the presence of mass. General relativity predicts black holes, gravitational waves, and the expanding universe with extraordinary precision. <em>Blind spot:</em> its language is continuous differential geometry; it flatly refuses to be quantised by any method tried so far.',
+        detail_cn: '在恒星与星系的尺度上，引力是时空的几何——一个在质量存在下弯曲的光滑场。广义相对论以非凡精度预测黑洞、引力波与膨胀的宇宙。<em>盲点：</em>其语言是连续的微分几何；它拒绝被迄今尝试过的任何方法量子化。'
+      }
+    },
+    /* 3: Digital × Physical */
+    {
+      labelA_en: 'Digital World',
+      labelA_cn: '数字世界',
+      labelB_en: 'Physical World',
+      labelB_cn: '物理世界',
+      a: {
+        strength_en: 'Near-zero marginal cost, global instant distribution, network effects',
+        strength_cn: '近乎零的边际成本、全球即时分发、网络效应',
+        detail_en: 'Information does not deplete when shared. Digital goods have near-zero marginal cost, instant global distribution, and network effects that reward scale. The digital world reduces coordination cost by orders of magnitude. <em>Blind spot:</em> brittle against physical disruption; simulation and reality diverge in ways measured in lives; digital abundance coexists with material scarcity it cannot resolve.',
+        detail_cn: '信息分享时不会耗尽。数字商品近乎零边际成本、即时全球分发、奖励规模的网络效应。数字世界将协调成本降低数个数量级。<em>盲点：</em>在物理扰动面前脆弱；模拟与现实的偏离以生命为代价；数字丰裕与它无法解决的物质稀缺并存。'
+      },
+      s: {
+        strength_en: 'The designed entanglement — code that moves matter, matter that becomes data',
+        strength_cn: '有意设计的纠缠——移动物质的代码，化为数据的物质',
+        detail_en: 'Digital contributes: near-zero marginal cost, coordination at scale, information abundance. Physical contributes: enforcement of accountability (things either work or they don\'t), embodied experience, and the ultimate ground truth that all systems must eventually respect. The integration — sensors, actuators, digital twins, programmable matter — is already underway. Its success depends on designers who understand both logics deeply enough to avoid each side\'s characteristic failure mode.',
+        detail_cn: '数字贡献：近乎零的边际成本、规模协调、信息丰裕。物理贡献：施加问责（事物要么有效要么无效）、具身经验，以及所有系统最终必须尊重的终极基准真相。融合——传感器、执行器、数字孪生、可编程物质——已然在进行。其成功取决于对两种逻辑都理解得足够深入、能够规避双方特有失败模式的设计者。'
+      },
+      b: {
+        strength_en: 'Matter enforces accountability — the gap between simulation and reality is measured in lives',
+        strength_cn: '物质施加问责——模拟与现实之间的差距以生命为单位衡量',
+        detail_en: 'Matter is stubborn: it takes time to move, energy to transform, space to store. Physical goods depreciate; supply chains break; bodies get sick. These constraints are not failures of imagination — they are the conditions under which all biological life has ever operated. <em>Blind spot:</em> rigid against informational change; high friction, slow iteration, and coordination costs that the digital world has already learned to dissolve.',
+        detail_cn: '物质是顽固的：移动需要时间，转化需要能量，储存需要空间。实物折旧；供应链断裂；身体生病。这些约束不是想象力的失败——它们是所有生物生命曾经运作于其中的条件。<em>盲点：</em>在信息变化面前僵硬；高摩擦、慢迭代、以及数字世界已经学会消解的协调成本。'
+      }
+    }
+  ];
+
+  /* ── DOM refs ──────────────────────────────────────────────── */
+  var slider   = document.getElementById('diss-slider');
+  var fill     = document.getElementById('diss-fill');
+  var readout  = document.getElementById('diss-readout');
+  var labelA   = document.getElementById('diss-label-a');
+  var labelB   = document.getElementById('diss-label-b');
+  var zoneA    = document.getElementById('diss-zone-a');
+  var zoneS    = document.getElementById('diss-zone-s');
+  var zoneB    = document.getElementById('diss-zone-b');
+  var tabs     = document.querySelectorAll('.diss-tabs .w-tab');
+
+  if (!slider || !zoneA || !zoneS || !zoneB) return; /* graceful exit */
+
+  var currentPair = 0;
+
+  /* ── helpers ───────────────────────────────────────────────── */
+  function setInner(id, htmlEn, htmlCn) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML =
+      '<span class="en">' + htmlEn + '</span>' +
+      '<span class="cn">' + htmlCn + '</span>';
+  }
+
+  function loadPair(idx) {
+    var p = PAIRS[idx];
+    /* pole labels */
+    labelA.innerHTML = '<span class="en">' + p.labelA_en + '</span><span class="cn">' + p.labelA_cn + '</span>';
+    labelB.innerHTML = '<span class="en">' + p.labelB_en + '</span><span class="cn">' + p.labelB_cn + '</span>';
+    /* pre-fill content for all three zones */
+    setInner('dz-a-strength', p.a.strength_en, p.a.strength_cn);
+    setInner('dz-a-blind',    p.a.detail_en,   p.a.detail_cn);
+    setInner('dz-s-strength', p.s.strength_en, p.s.strength_cn);
+    setInner('dz-s-contrib',  p.s.detail_en,   p.s.detail_cn);
+    setInner('dz-b-strength', p.b.strength_en, p.b.strength_cn);
+    setInner('dz-b-blind',    p.b.detail_en,   p.b.detail_cn);
+    /* reset slider to centre */
+    slider.value = 50;
+    update();
+  }
+
+  function zone(val) {
+    if (val < 33)  return 'a';
+    if (val > 67)  return 'b';
+    return 's';
+  }
+
+  function update() {
+    var val = parseInt(slider.value, 10);
+    var p   = PAIRS[currentPair];
+    var z   = zone(val);
+    /* fill bar */
+    fill.style.width = val + '%';
+    /* readout */
+    var zoneLabel = z === 'a'
+      ? (p.labelA_en + ' 主导 · ' + val)
+      : z === 'b'
+        ? (p.labelB_en + ' 主导 · ' + val)
+        : ('Synthesis 融合 · ' + val);
+    readout.textContent = zoneLabel;
+    slider.setAttribute('aria-valuetext', zoneLabel);
+    /* show/hide zones */
+    zoneA.hidden = (z !== 'a');
+    zoneS.hidden = (z !== 's');
+    zoneB.hidden = (z !== 'b');
+  }
+
+  /* ── event wiring ──────────────────────────────────────────── */
+  slider.addEventListener('input', update);
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      currentPair = parseInt(tab.getAttribute('data-pair'), 10);
+      loadPair(currentPair);
+    });
+    /* keyboard navigation: arrow keys move between tabs */
+    tab.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        var next = tabs[(i + 1) % tabs.length];
+        next.click(); next.focus();
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        var prev = tabs[(i - 1 + tabs.length) % tabs.length];
+        prev.click(); prev.focus();
+      }
+    });
+  });
+
+  /* ── initialise ────────────────────────────────────────────── */
+  loadPair(0);
+}());
+</script>
 </body>
 </html>

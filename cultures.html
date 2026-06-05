@@ -132,6 +132,44 @@
   opacity: 0.28;
   margin: 6px auto 0;
 }
+
+/* theme word pills */
+.theme-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 18px;
+}
+.theme-word {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--gold, #c9a24b);
+  border: 1px solid rgba(201, 162, 75, 0.3);
+  border-radius: 20px;
+  padding: 4px 11px;
+}
+
+/* cx-card hidden state */
+.cx-card[hidden] {
+  display: none !important;
+}
+
+/* screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* search widget mobile */
+@media (max-width: 760px) {
+  .w-interactive { padding: 18px 14px 22px; }
+  #cx-grid.w-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body data-world="cultures">
@@ -440,6 +478,377 @@
     </p>
   </section>
 
+  <!-- § 14.7 ─ What the Gaps Reveal -->
+  <section class="w-section" id="sec-gaps">
+    <div class="w-eyebrow">§ 14.7 · What the Gaps Reveal</div>
+    <h2 class="w-h2">
+      <span class="en">When a language lacks the word</span>
+      <span class="cn">当一门语言缺少这个词</span>
+    </h2>
+    <p class="w-lead">
+      <span class="en">Absence is as eloquent as presence. The languages that do not have a word for a concept are not impoverished — they have simply made different bets about what deserves to be named.</span>
+      <span class="cn">缺失与存在同样雄辩。没有某个概念词汇的语言并非贫乏——它们只是在「什么值得被命名」这件事上做出了不同的押注。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">English has no single word for <em>Hygge</em>, yet the British concept of a «cosy evening in» gestures toward the same territory. The gap between the two reveals something: Danish culture has decided that the precise quality of unhurried, agenda-free togetherness is load-bearing enough to name, while English culture has left it unnamed — implying that it is either obvious (and needs no marker) or not yet recognised as a distinct form of good.</span>
+      <span class="cn">英语没有「Hygge」这个词，但英国文化中「待在家里的温馨夜晚」已在同一领土上徘徊。两者之间的空缺揭示了一些东西：丹麦文化认为，那种不慌不忙、没有议程的共处质量足够重要，值得命名；而英语文化将其留在无名之中——暗示它要么是显而易见的（无需标记），要么尚未被认识为一种独特的善的形式。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The inverse also teaches. The Bantu languages of sub-Saharan Africa have no dominant word for «privacy» in the sense of solitude-as-right — not because Bantu speakers lack solitude, but because the cultural architecture built around <em>Ubuntu</em> foregrounds the relational self so strongly that private self-enclosure has not historically been coded as a basic need to name and protect. Neither tradition is wrong; they have built different rooms in the house of the human.</span>
+      <span class="cn">反向的情形同样富有教益。撒哈拉以南非洲的班图语系中没有「隐私」（作为权利的独处）的主流词汇——并非班图语使用者不知独处为何物，而是围绕「众我」构建的文化建筑如此强调关系性自我，以至于私人的自我封闭在历史上从未被编码为一种需要命名和保护的基本需求。两种传统都没有错；它们只是在人类之屋中建造了不同的房间。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">This asymmetry has a practical consequence for anyone who moves between cultures: you carry your language's gaps with you, as blind spots. A culture that lacks a word for <em>Lagom</em> may find it harder to notice the social pressure toward excess; a culture without a word for <em>Jeong</em> may find it harder to articulate why some long-term relationships feel irreplaceable even when they are not, strictly speaking, chosen. The untranslatable is a diagnostic instrument — it shows you what your own culture has not yet seen clearly enough to name.</span>
+      <span class="cn">这种不对称对任何在文化之间移动的人都有实际后果：你将语言的空缺随身携带，作为盲点。一种没有「适度」（Lagom）这个词的文化，可能更难注意到朝向过剩的社会压力；一种没有「情」（Jeong）这个词的文化，可能更难阐明为何某些长期关系即使在严格意义上并非被选择的情况下，依然感觉不可替代。难以翻译的词是一种诊断工具——它向你展示你自己的文化尚未清晰到足以命名的东西。</span>
+    </p>
+  </section>
+
+  <!-- § 14.8 ─ Fourteen by Theme -->
+  <section class="w-section" id="sec-themes">
+    <div class="w-eyebrow">§ 14.8 · Fourteen by Theme</div>
+    <h2 class="w-h2">
+      <span class="en">Four families, fourteen words</span>
+      <span class="cn">四个家族，十四个词</span>
+    </h2>
+    <p class="w-p">
+      <span class="en">Placed side by side, the fourteen fall naturally into four recurring human questions: how to hold oneself under pressure; how to find and protect delight; how to live with others without destroying one another; and how to get things done against the odds. No word belongs to only one family — but each has a centre of gravity.</span>
+      <span class="cn">并列放置时，这十四个词自然地落入了四个人类反复追问的问题：如何在压力下持守自我；如何寻找并护卫喜悦；如何与他人共处而不相互损毁；以及如何在逆境中完成事情。没有一个词只属于一个家族——但每个词都有自己的重心所在。</span>
+    </p>
+
+    <div class="w-grid cols-2" style="margin-top:44px">
+
+      <div class="w-card">
+        <div class="idx">Theme A · 主题甲</div>
+        <div class="ttl">
+          <span class="en">Resilience &amp; Self-Mastery</span>
+          <span class="cn">韧劲与自我掌控</span>
+        </div>
+        <div class="body">
+          <span class="en">Three cultures have poured their hardest-won wisdom into words about how to endure. <strong>Stiff upper lip</strong> (UK) says: suffer quietly, maintain form. <strong>Sisu</strong> (Finland) says: move anyway, no matter what. <strong>Chutzpah</strong> (Jewish world) says: act boldly where permission has not been granted. All three answer the same question — how does a person or community continue when conditions argue against it? — yet with entirely different prescriptions. Stiff upper lip demands restraint; Sisu demands continuation; Chutzpah demands initiative.</span>
+          <span class="cn">三种文化将他们最艰难赢得的智慧浓缩为关于如何忍耐的词语。「沉着坚忍」（英国）说：静静承受，保持形态。「西苏」（芬兰）说：无论如何，继续前行。「放胆」（犹太世界）说：在尚未获得许可之处大胆行动。三者都回答同一个问题——当环境与之为敌时，一个人或共同体如何继续？——却给出了截然不同的处方。「沉着坚忍」要求克制；「西苏」要求延续；「放胆」要求主动。</span>
+        </div>
+        <div class="theme-words" aria-label="Words in this theme">
+          <span class="theme-word">Stiff upper lip</span>
+          <span class="theme-word">Sisu</span>
+          <span class="theme-word">Chutzpah</span>
+        </div>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">Theme B · 主题乙</div>
+        <div class="ttl">
+          <span class="en">Delight &amp; the Good Life</span>
+          <span class="cn">愉悦与美好生活</span>
+        </div>
+        <div class="body">
+          <span class="en">Four European cultures have each found their own answer to where pleasure rightfully lives. <strong>Joie de vivre</strong> (France) locates it in the radiance of existence itself. <strong>Dolce Vita</strong> (Italy) locates it in slowing time until beauty becomes a mode of being. <strong>Hygge</strong> (Denmark) locates it in warm, purposeless togetherness. <strong>Freedom</strong> (USA) locates it not in pleasure at all, but in the open frontier — the right to pursue. The family shares a concern for what makes life good, yet each prescribes a different address for goodness.</span>
+          <span class="cn">四种欧洲文化各自找到了愉悦正当栖居之处的答案。「生活之乐」（法国）将其定位于存在本身的光芒中。「甜蜜生活」（意大利）将其定位于放慢时间直至美成为一种存在方式。「温馨」（丹麦）将其定位于温暖的、无目的的共处中。「自由」（美国）根本不将其定位于愉悦，而是在开放的边疆——追求的权利之中。这个家族共同关心是什么使生命美好，然而每个词都为善开出了不同的地址。</span>
+        </div>
+        <div class="theme-words" aria-label="Words in this theme">
+          <span class="theme-word">Joie de vivre</span>
+          <span class="theme-word">Dolce Vita</span>
+          <span class="theme-word">Hygge</span>
+          <span class="theme-word">Freedom</span>
+        </div>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">Theme C · 主题丙</div>
+        <div class="ttl">
+          <span class="en">Harmony &amp; Relation</span>
+          <span class="cn">和谐与关系</span>
+        </div>
+        <div class="body">
+          <span class="en">Four concepts address the perennial difficulty of living alongside others. <strong>Hé 和</strong> (China) finds value in the productive tension of difference. <strong>Wa 和</strong> (Japan) values the smoothing of that tension into ensemble coherence. <strong>Jeong 정</strong> (Korea) attends to the slow, sedimentary accumulation of attachment through shared time. <strong>Ubuntu</strong> (Africa) goes furthest: it does not merely describe how individuals relate — it proposes that the individual self is constituted by relation. From productive tension to smoothed ensemble to slow bond to constitutive community: four answers along the same axis.</span>
+          <span class="cn">四个概念回应了与他人共处这一永恒的难题。「和」（中国）在差异的富有成效的张力中发现价值。「和」（日本）珍视将这种张力平滑为合奏凝聚力。「情」（韩国）关注通过共同时间缓慢、沉积式地积累的依恋。「众我」（非洲）走得最远：它不仅仅描述个体如何相互关联——它提出个体自我是由关系构成的。从富有成效的张力，到平滑的合奏，到缓慢的纽带，再到构成性的共同体：沿同一轴线的四种答案。</span>
+        </div>
+        <div class="theme-words" aria-label="Words in this theme">
+          <span class="theme-word">和 Hé</span>
+          <span class="theme-word">Wa 和</span>
+          <span class="theme-word">Jeong 정</span>
+          <span class="theme-word">Ubuntu</span>
+        </div>
+      </div>
+
+      <div class="w-card">
+        <div class="idx">Theme D · 主题丁</div>
+        <div class="ttl">
+          <span class="en">Structure &amp; Craft</span>
+          <span class="cn">秩序与创造</span>
+        </div>
+        <div class="body">
+          <span class="en">Three concepts address not the inner life but the world as a thing to be made, arranged, or navigated. <strong>Ordnung</strong> (Germany) insists the world can and should be brought into order — that arrangement is a moral act. <strong>Lagom</strong> (Sweden) insists the right amount is a social as much as an aesthetic category — that sufficiency is a form of care for the collective. <strong>Jugaad</strong> (India) insists that constraint itself is a design parameter — that working with what you have is not a compromise but a form of intelligence. All three are craftsperson's words: they describe not a feeling but a discipline.</span>
+          <span class="cn">三个概念关注的不是内心生活，而是作为有待制造、安排或驾驭之物的世界。「秩序」（德国）坚持认为世界能够也应该被带入秩序——安排是一种道德行为。「适度」（瑞典）坚持认为「恰好的量」与其说是审美范畴，不如说是社会范畴——适量是对集体的一种关怀形式。「权变」（印度）坚持认为约束本身就是一种设计参数——用你拥有的东西来工作不是妥协，而是一种智慧形式。三者都是工匠的词：它们描述的不是一种感受，而是一种纪律。</span>
+        </div>
+        <div class="theme-words" aria-label="Words in this theme">
+          <span class="theme-word">Ordnung</span>
+          <span class="theme-word">Lagom</span>
+          <span class="theme-word">Jugaad</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- § 14.9 ─ Search the Untranslatables (interactive) -->
+  <section class="w-section" id="sec-search">
+    <div class="w-eyebrow">§ 14.9 · Search the Untranslatables</div>
+    <h2 class="w-h2">
+      <span class="en">Find your word</span>
+      <span class="cn">找到你的词</span>
+    </h2>
+    <p class="w-p">
+      <span class="en">Filter all fourteen concepts by region or by searching any word — in English or Chinese.</span>
+      <span class="cn">按地区筛选，或用英文、中文搜索，探索这十四个概念。</span>
+    </p>
+
+    <div class="w-interactive" id="concept-explorer" role="region" aria-label="Search and filter cultural concepts">
+      <div class="ix-head">
+        <span class="ix-title">
+          <span class="en">Concept Explorer</span>
+          <span class="cn">概念探索器</span>
+        </span>
+        <span class="w-readout" id="cx-count" aria-live="polite" aria-atomic="true">14 / 14</span>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <label for="cx-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+          <span class="en">Search concepts</span><span class="cn">搜索概念</span>
+        </label>
+        <input
+          id="cx-input"
+          type="search"
+          class="w-search"
+          placeholder="Search · 搜索 — e.g. hygge, 温馨, harmony, 坚忍 …"
+          autocomplete="off"
+          spellcheck="false"
+          aria-controls="cx-grid"
+        />
+      </div>
+
+      <div class="w-chips" id="cx-chips" role="group" aria-label="Filter by region">
+        <button type="button" class="w-chip active" data-region="all" aria-pressed="true">
+          <span class="en">All regions</span><span class="cn">所有地区</span>
+        </button>
+        <button type="button" class="w-chip" data-region="W · Europe" aria-pressed="false">W · Europe</button>
+        <button type="button" class="w-chip" data-region="Nordic" aria-pressed="false">Nordic</button>
+        <button type="button" class="w-chip" data-region="Americas" aria-pressed="false">Americas</button>
+        <button type="button" class="w-chip" data-region="East Asia" aria-pressed="false">East Asia</button>
+        <button type="button" class="w-chip" data-region="South Asia" aria-pressed="false">South Asia</button>
+        <button type="button" class="w-chip" data-region="Diaspora" aria-pressed="false">Diaspora</button>
+        <button type="button" class="w-chip" data-region="Africa" aria-pressed="false">Africa</button>
+      </div>
+
+      <div class="w-grid cultures-grid" id="cx-grid" style="margin-top:32px" aria-live="polite" aria-atomic="false">
+
+        <div class="w-card cx-card"
+          data-word="Stiff upper lip"
+          data-cn="沉着坚忍 英国 坚忍 克制 承受"
+          data-en="composure duress stoicism quiet endurance britain uk"
+          data-region="W · Europe">
+          <div class="idx">01 · United Kingdom · 英国</div>
+          <div class="ttl">Stiff upper lip<span class="cn">沉着坚忍</span></div>
+          <div class="body">
+            <span class="en">Composure under duress; suffering kept private; emotional restraint as strength.</span>
+            <span class="cn">身处逆境，不动声色；将痛苦藏于内心；情感克制即是力量。</span>
+          </div>
+          <span class="region-tag">W · Europe</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Joie de vivre"
+          data-cn="生活之乐 法国 喜悦 愉悦 存在"
+          data-en="joy life radiance france pleasure existence productivity"
+          data-region="W · Europe">
+          <div class="idx">02 · France · 法国</div>
+          <div class="ttl">Joie de vivre<span class="cn">生活之乐</span></div>
+          <div class="body">
+            <span class="en">The joy of simply being alive — pleasure native to existence, untied from achievement.</span>
+            <span class="cn">纯粹活着的喜悦——存在本身所携带的愉悦，与成就无关。</span>
+          </div>
+          <span class="region-tag">W · Europe</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Ordnung"
+          data-cn="秩序 德国 整洁 道德 安排"
+          data-en="order germany tidiness moral architecture arrangement trust"
+          data-region="W · Europe">
+          <div class="idx">03 · Germany · 德国</div>
+          <div class="ttl">Ordnung<span class="cn">秩序</span></div>
+          <div class="body">
+            <span class="en">Order as moral architecture — the duty to arrange the world so that trust and coordination become reliable.</span>
+            <span class="cn">秩序作为道德建筑——安排世界的责任，使信任与协作变得可靠。</span>
+          </div>
+          <span class="region-tag">W · Europe</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Dolce Vita"
+          data-cn="甜蜜生活 意大利 美 愉悦 美好 缓慢"
+          data-en="sweet life italy beauty pleasure unhurried aesthetic warm afternoon"
+          data-region="W · Europe">
+          <div class="idx">04 · Italy · 意大利</div>
+          <div class="ttl">Dolce Vita<span class="cn">甜蜜生活</span></div>
+          <div class="body">
+            <span class="en">The sweet, unhurried life — pleasure slowed until beauty becomes a way of being.</span>
+            <span class="cn">甜蜜的、不慌不忙的生活——愉悦被放慢，直至美成为一种存在方式。</span>
+          </div>
+          <span class="region-tag">W · Europe</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Freedom"
+          data-cn="自由 美国 个人 主权 边疆"
+          data-en="freedom liberty usa america individual sovereign frontier future open"
+          data-region="Americas">
+          <div class="idx">05 · United States · 美国</div>
+          <div class="ttl">Freedom<span class="cn">自由</span></div>
+          <div class="body">
+            <span class="en">Personal liberty as founding myth — the self as sovereign, the frontier always open.</span>
+            <span class="cn">以个人自由为建国神话——自我是主权者，边疆永远敞开。</span>
+          </div>
+          <span class="region-tag">Americas</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Sisu"
+          data-cn="坚毅 西苏 芬兰 韧劲 继续 希望"
+          data-en="sisu grit finland perseverance resilience duress continue gut"
+          data-region="Nordic">
+          <div class="idx">06 · Finland · 芬兰</div>
+          <div class="ttl">Sisu<span class="cn">坚毅 · 西苏</span></div>
+          <div class="body">
+            <span class="en">Persevering grit when hope has run out — the gut decision to continue anyway.</span>
+            <span class="cn">希望耗尽时仍坚持的韧劲——在内脏中做出的「无论如何，继续」的决定。</span>
+          </div>
+          <span class="region-tag">Nordic</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Lagom"
+          data-cn="适度 恰好 瑞典 平等 公平 足够"
+          data-en="lagom just right amount sweden egalitarian fair enough collective share"
+          data-region="Nordic">
+          <div class="idx">07 · Sweden · 瑞典</div>
+          <div class="ttl">Lagom<span class="cn">适度 · 恰好</span></div>
+          <div class="body">
+            <span class="en">Just the right amount — a social contract disguised as aesthetic preference; sufficiency as care for the collective.</span>
+            <span class="cn">恰到好处——伪装成审美偏好的社会契约；适量是对集体的关怀。</span>
+          </div>
+          <span class="region-tag">Nordic</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Hygge"
+          data-cn="温馨 舒适 丹麦 同在 归属"
+          data-en="hygge cosy convivial denmark togetherness candle warm belonging wellbeing"
+          data-region="Nordic">
+          <div class="idx">08 · Denmark · 丹麦</div>
+          <div class="ttl">Hygge<span class="cn">舒适 · 温馨</span></div>
+          <div class="body">
+            <span class="en">Cosy, convivial contentment — warm togetherness with no agenda, belonging as wellbeing.</span>
+            <span class="cn">舒适温馨的同在感——温暖的、没有议程的共处；归属感即是幸福。</span>
+          </div>
+          <span class="region-tag">Nordic</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="和 · Hé"
+          data-cn="和 和谐 中国 差异 关系 共同体"
+          data-en="he harmony china difference relationship collective music productive"
+          data-region="East Asia">
+          <div class="idx">09 · China · 中国</div>
+          <div class="ttl">和 · Hé<span class="cn">和 · 和谐</span></div>
+          <div class="body">
+            <span class="en">Harmony of difference in productive relation — many notes making music, many voices making society.</span>
+            <span class="cn">差异在富有成效的关系中形成的和谐——众多音符构成音乐，众多声音构成社会。</span>
+          </div>
+          <span class="region-tag">East Asia</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Wa · 和"
+          data-cn="和 同心 日本 群体 合奏 摩擦"
+          data-en="wa harmony japan group ensemble smooth friction social fabric"
+          data-region="East Asia">
+          <div class="idx">10 · Japan · 日本</div>
+          <div class="ttl">Wa · 和<span class="cn">和 · 同心</span></div>
+          <div class="body">
+            <span class="en">Social harmony as the highest good — the discipline of the ensemble, each voice shaped by the need for the whole to cohere.</span>
+            <span class="cn">以社会和谐为最高善——合奏的纪律，每个声部都因整体需要凝聚而塑形。</span>
+          </div>
+          <span class="region-tag">East Asia</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Jeong · 정"
+          data-cn="情 情义 韩国 积累 纽带 时间 依恋"
+          data-en="jeong affection korea bond accumulated time proximity sediment irreplaceable"
+          data-region="East Asia">
+          <div class="idx">11 · South Korea · 韩国</div>
+          <div class="ttl">Jeong · 정<span class="cn">情 · 情义</span></div>
+          <div class="body">
+            <span class="en">Deep, accumulated affection — love that sediments through shared life, meals, and difficulty over years.</span>
+            <span class="cn">深厚、累积的情义——在多年共同生活、饮食与艰辛中沉积下来的爱。</span>
+          </div>
+          <span class="region-tag">East Asia</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Jugaad"
+          data-cn="权变 巧 因陋就简 印度 创造 约束"
+          data-en="jugaad frugal inventive workaround india constraint design resourceful elegant"
+          data-region="South Asia">
+          <div class="idx">12 · India · 印度</div>
+          <div class="ttl">Jugaad<span class="cn">巧 · 权变</span></div>
+          <div class="body">
+            <span class="en">Frugal, inventive workaround — solving problems with what you have; constraint as design parameter.</span>
+            <span class="cn">节俭而富有创造力的变通——用你实际拥有的解决问题；约束作为设计参数。</span>
+          </div>
+          <span class="region-tag">South Asia</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Chutzpah"
+          data-cn="胆识 放胆 犹太 胆量 权威 许可"
+          data-en="chutzpah audacity jewish bold nerve permission hierarchy survival question"
+          data-region="Diaspora">
+          <div class="idx">13 · Jewish World · 犹太</div>
+          <div class="ttl">Chutzpah<span class="cn">胆识 · 放胆</span></div>
+          <div class="body">
+            <span class="en">Brazen audacity — the refusal to let hierarchy determine what is possible; bold questions as survival tools.</span>
+            <span class="cn">厚颜的胆识——拒绝让等级决定什么是可能的；大胆的问题是生存工具。</span>
+          </div>
+          <span class="region-tag">Diaspora</span>
+        </div>
+
+        <div class="w-card cx-card"
+          data-word="Ubuntu"
+          data-cn="众我 人之为人 非洲 共同体 关系 自我"
+          data-en="ubuntu africa community self constituted relation bantu i am because we are"
+          data-region="Africa">
+          <div class="idx">14 · Africa · 非洲</div>
+          <div class="ttl">Ubuntu<span class="cn">人之为人 · 众我</span></div>
+          <div class="body">
+            <span class="en">I am because we are — the self constituted by community; selfhood as society's gift to the person.</span>
+            <span class="cn">我在，因为我们在——自我由共同体构成；自我性是社会赐予个人的礼物。</span>
+          </div>
+          <span class="region-tag">Africa</span>
+        </div>
+
+      </div>
+
+      <div id="cx-empty" hidden style="text-align:center;padding:48px 0">
+        <p style="font-family:var(--mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-deep)">
+          <span class="en">No concepts match — try a different word or region</span>
+          <span class="cn">没有匹配的概念——请尝试其他词语或地区</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
 <nav class="w-nav" aria-label="Worlds navigation"></nav>
@@ -454,5 +863,108 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Concept Explorer: search + chip filter ── */
+
+  var input   = document.getElementById('cx-input');
+  var chipsEl = document.getElementById('cx-chips');
+  var grid    = document.getElementById('cx-grid');
+  var countEl = document.getElementById('cx-count');
+  var emptyEl = document.getElementById('cx-empty');
+
+  if (!input || !chipsEl || !grid) { return; } // degrade gracefully
+
+  var cards       = Array.prototype.slice.call(grid.querySelectorAll('.cx-card'));
+  var chips       = Array.prototype.slice.call(chipsEl.querySelectorAll('.w-chip'));
+  var activeRegion = 'all';
+  var searchQ      = '';
+
+  function normalise(str) {
+    return (str || '').toLowerCase().trim();
+  }
+
+  function matches(card) {
+    var region = card.getAttribute('data-region') || '';
+    var word   = normalise(card.getAttribute('data-word') || '');
+    var en     = normalise(card.getAttribute('data-en')   || '');
+    var cn     = normalise(card.getAttribute('data-cn')   || '');
+
+    // region filter
+    if (activeRegion !== 'all' && region !== activeRegion) { return false; }
+
+    // text search
+    if (searchQ !== '') {
+      var q = normalise(searchQ);
+      if (
+        word.indexOf(q) === -1 &&
+        en.indexOf(q)   === -1 &&
+        cn.indexOf(q)   === -1
+      ) { return false; }
+    }
+
+    return true;
+  }
+
+  function render() {
+    var visible = 0;
+    cards.forEach(function (card) {
+      var show = matches(card);
+      if (show) {
+        card.removeAttribute('hidden');
+        visible++;
+      } else {
+        card.setAttribute('hidden', '');
+      }
+    });
+
+    countEl.textContent = visible + ' / ' + cards.length;
+    if (visible === 0) {
+      emptyEl.removeAttribute('hidden');
+    } else {
+      emptyEl.setAttribute('hidden', '');
+    }
+  }
+
+  // search input
+  input.addEventListener('input', function () {
+    searchQ = this.value;
+    render();
+  });
+
+  // chip buttons
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      activeRegion = this.getAttribute('data-region');
+      chips.forEach(function (c) {
+        var isActive = c === chip;
+        if (isActive) {
+          c.classList.add('active');
+          c.setAttribute('aria-pressed', 'true');
+        } else {
+          c.classList.remove('active');
+          c.setAttribute('aria-pressed', 'false');
+        }
+      });
+      render();
+    });
+
+    // keyboard: Space / Enter already handled natively for buttons
+  });
+
+  // clear search when user presses Escape inside the input
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      this.value = '';
+      searchQ = '';
+      render();
+    }
+  });
+
+})();
+</script>
 </body>
 </html>

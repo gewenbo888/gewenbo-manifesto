@@ -47,7 +47,179 @@
 <script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
 
 <style>
-/* page-local flourish: the trinitas triad */
+/* ── page-local: selector interactive ── */
+.tri-selector-wrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+.tri-selector-wrap .w-tabs { flex: 1 1 auto; }
+.tri-svg-wrap { flex-shrink: 0; width: 72px; height: 72px; }
+.tri-svg-wrap svg { width: 100%; height: 100%; overflow: visible; }
+.tri-selector-wrap .w-tabs { flex-wrap: wrap; }
+
+.pnl-field {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.pnl-cell {
+  background: rgba(255,255,255,0.018);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 18px 18px 16px;
+}
+.pnl-cell-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 9px;
+}
+.pnl-cell .body {
+  font-size: 14px;
+  line-height: 1.72;
+  color: var(--ivory-dim);
+}
+.pnl-cell .body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.91em;
+  line-height: 1.9;
+  margin-top: 7px;
+  color: var(--ivory-dim);
+}
+.pnl-cell.pnl-absence {
+  border-color: rgba(177, 77, 66, 0.28);
+}
+.pnl-cell.pnl-example {
+  border-color: rgba(90, 143, 115, 0.28);
+}
+
+/* ── conflict section cards ── */
+.conflict-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 38px;
+}
+.conflict-card {
+  position: relative;
+  padding: 28px 26px;
+  background: rgba(255,255,255,0.012);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.conflict-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-2);
+  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.22), 0 0 28px -8px rgba(201,162,75,0.16);
+}
+.conflict-card .cc-pair {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--gold-bright);
+  letter-spacing: -0.01em;
+}
+.conflict-card .cc-pair .cn {
+  font-family: var(--cjk);
+  font-size: 0.68em;
+  color: var(--accent);
+  margin-left: 8px;
+}
+.conflict-card .cc-tension {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+.conflict-card .cc-body {
+  font-size: 14.5px;
+  line-height: 1.78;
+  color: var(--ivory-dim);
+}
+.conflict-card .cc-body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.92em;
+  line-height: 1.92;
+  margin-top: 9px;
+  color: var(--ivory-dim);
+}
+.conflict-card .cc-resolve {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ivory-faint);
+  font-family: var(--display);
+  font-weight: 300;
+}
+.conflict-card .cc-resolve .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-style: normal;
+  font-size: 0.9em;
+  margin-top: 6px;
+}
+
+/* adjudication table */
+.adj-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 32px;
+  font-size: 14px;
+}
+.adj-table th {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.adj-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--ivory-dim);
+  vertical-align: top;
+  line-height: 1.7;
+}
+.adj-table td:first-child {
+  font-family: var(--display);
+  font-size: 16px;
+  color: var(--gold-bright);
+  white-space: nowrap;
+  width: 24%;
+}
+.adj-table td .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.88em;
+  margin-top: 4px;
+  color: var(--ivory-faint);
+}
+.adj-table tr:last-child td { border-bottom: none; }
+@media (max-width: 760px) {
+  .adj-table { font-size: 13px; }
+  .adj-table td, .adj-table th { padding: 10px 10px; }
+  .tri-svg-wrap { width: 56px; height: 56px; }
+}
+
+/* ── page-local flourish: the trinitas triad ── */
 .trinitas {
   position: relative;
   width: 148px;
@@ -200,6 +372,160 @@
     </div>
   </section>
 
+  <!-- ═══ INTERACTIVE: 真·善·美 Selector ═══ -->
+  <section class="w-section" id="sec-selector" aria-label="真·善·美 selector">
+    <div class="w-eyebrow">§ 03.2b · Interactive Explorer</div>
+    <h2 class="w-h2">Examine each principle<span class="cn">逐一审视每条原则</span></h2>
+
+    <div class="w-interactive">
+      <div class="ix-head">
+        <span class="ix-title">
+          <span class="en">真 · 善 · 美 Selector</span>
+          <span class="cn">原则探索器</span>
+        </span>
+        <span class="ix-hint">
+          <span class="en">select a principle</span>
+          <span class="cn">选择一条原则</span>
+        </span>
+      </div>
+
+      <div class="tri-selector-wrap">
+        <!-- Tab buttons -->
+        <div class="w-tabs" role="tablist" id="princ-tabs" aria-label="Principle selector">
+          <button class="w-tab active" role="tab" aria-selected="true"  aria-controls="pnl-truth"    id="tab-truth"    data-vertex="0" type="button">
+            <span class="en">01 · Truth</span><span class="cn">真</span>
+          </button>
+          <button class="w-tab"        role="tab" aria-selected="false" aria-controls="pnl-goodness" id="tab-goodness" data-vertex="1" type="button">
+            <span class="en">02 · Goodness</span><span class="cn">善</span>
+          </button>
+          <button class="w-tab"        role="tab" aria-selected="false" aria-controls="pnl-beauty"   id="tab-beauty"   data-vertex="2" type="button">
+            <span class="en">03 · Beauty</span><span class="cn">美</span>
+          </button>
+        </div>
+
+        <!-- Inline SVG triangle indicator (equilateral, 72×72 viewBox) -->
+        <div class="tri-svg-wrap" aria-hidden="true">
+          <svg viewBox="0 0 72 72" id="tri-indicator">
+            <!-- Triangle edges -->
+            <polygon points="36,4 67,58 5,58"
+                     fill="none" stroke="rgba(201,162,75,0.22)" stroke-width="1.2" stroke-linejoin="round"/>
+            <!-- Vertex circles: top=Truth(0), bottom-right=Goodness(1), bottom-left=Beauty(2) -->
+            <circle id="tri-v0" cx="36" cy="4"  r="5" fill="#c9a24b" opacity="0.25" stroke="#c9a24b" stroke-width="0.8"/>
+            <circle id="tri-v1" cx="67" cy="58" r="5" fill="#c9a24b" opacity="0.25" stroke="#c9a24b" stroke-width="0.8"/>
+            <circle id="tri-v2" cx="5"  cy="58" r="5" fill="#c9a24b" opacity="0.25" stroke="#c9a24b" stroke-width="0.8"/>
+            <!-- Labels -->
+            <text x="36" y="-3"  text-anchor="middle" font-family="Noto Serif SC,serif" font-size="8" fill="rgba(201,162,75,0.5)">真</text>
+            <text x="74" y="63"  text-anchor="middle" font-family="Noto Serif SC,serif" font-size="8" fill="rgba(201,162,75,0.5)">善</text>
+            <text x="-2" y="63"  text-anchor="middle" font-family="Noto Serif SC,serif" font-size="8" fill="rgba(201,162,75,0.5)">美</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Panel: Truth -->
+      <div class="w-panel" id="pnl-truth" role="tabpanel" aria-labelledby="tab-truth">
+        <div class="pnl-field">
+          <div class="pnl-cell">
+            <div class="pnl-cell-label"><span class="en">Definition</span><span class="cn">定义</span></div>
+            <div class="body">
+              <span class="en">Truth is correspondence: a belief or statement that maps accurately onto the way things actually are, independent of what is convenient, comfortable, or socially rewarded. It is not merely factual correctness but the disposition to keep revising your model of reality as evidence changes.</span>
+              <span class="cn">真是对应：一种信念或陈述准确地映射于事物实际所是，而不依赖于什么方便、舒适或受到社会奖励。它不仅是事实上的正确，更是一种随着证据变化而不断修正对现实模型的倾向。</span>
+            </div>
+          </div>
+          <div class="pnl-cell">
+            <div class="pnl-cell-label"><span class="en">How to test for it</span><span class="cn">如何检验</span></div>
+            <div class="body">
+              <span class="en">Ask: would I still hold this belief if it cost me something — status, comfort, a cherished self-image? Can I name the evidence that would change my mind? Am I willing to say this publicly, not just privately? If yes to all three, the belief is likely tracking truth rather than interest.</span>
+              <span class="cn">问自己：如果这个信念让我付出代价——地位、舒适感、珍视的自我形象——我还会持有它吗？我能说出什么证据会改变我的想法吗？我愿意公开说出这一点，而不只是私下认同吗？若三者皆是，这个信念很可能在追踪真实而非利益。</span>
+            </div>
+          </div>
+          <div class="pnl-cell pnl-absence">
+            <div class="pnl-cell-label"><span class="en">What its absence looks like</span><span class="cn">缺失时的样子</span></div>
+            <div class="body">
+              <span class="en">Managed narratives. Beliefs held for tribal solidarity rather than evidence. Arguments that shift to preserve a conclusion. A persistent gap between what is said in public and what is thought in private. Fluency in the language of truth with no genuine exposure to being wrong.</span>
+              <span class="cn">管理过的叙事。为部落团结而持有的信念，而非来自证据。为维护结论而不断转移的论证。公开所说与私下所想之间长期存在的落差。流利地使用真的语言，却从未真正经历过被证伪的体验。</span>
+            </div>
+          </div>
+          <div class="pnl-cell pnl-example">
+            <div class="pnl-cell-label"><span class="en">Concrete example</span><span class="cn">具体示例</span></div>
+            <div class="body">
+              <span class="en">A researcher who publishes a finding that contradicts their own earlier work — and does so clearly, without hedging — is practicing truth. The act is costly (reputation, embarrassment) and voluntary. That combination is the signature of the principle in action.</span>
+              <span class="cn">一位发表结论与自身早期研究相悖的研究者——并且清晰地呈现，没有模糊处理——正在实践真。这个行动有代价（声誉、难堪），且出于自愿。这种组合，正是这条原则付诸行动的印记。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: Goodness -->
+      <div class="w-panel" id="pnl-goodness" role="tabpanel" aria-labelledby="tab-goodness" hidden>
+        <div class="pnl-field">
+          <div class="pnl-cell">
+            <div class="pnl-cell-label"><span class="en">Definition</span><span class="cn">定义</span></div>
+            <div class="body">
+              <span class="en">Goodness is the extension of moral concern beyond the boundary of immediate self-interest. It is not sentiment or warmth alone; it is the structural willingness to bear costs on behalf of those who cannot repay you — strangers, future generations, other species, the systems that sustain life.</span>
+              <span class="cn">善是将道德关怀延伸至直接自身利益边界之外的举动。它不仅仅是情感或温情；而是一种结构性的意愿：愿意为那些无法回报你的人承担代价——陌生人、未来世代、其他物种、维系生命的系统。</span>
+            </div>
+          </div>
+          <div class="pnl-cell">
+            <div class="pnl-cell-label"><span class="en">How to test for it</span><span class="cn">如何检验</span></div>
+            <div class="body">
+              <span class="en">Ask: whose wellbeing am I considering in this decision, and does that list extend beyond people who can benefit me in return? Would I make the same choice if it were anonymous — if no one would ever know? Does the cost I am accepting fall on me, or have I found a way to pass it to someone less visible?</span>
+              <span class="cn">问自己：在这个决定中我考虑了谁的福祉，这份名单是否延伸到了无法回报我的人？如果这是匿名的——没有人会知道——我还会做同样的选择吗？我承受的代价落在我自己身上，还是我找到了一种方式将其转嫁给不那么显眼的人？</span>
+            </div>
+          </div>
+          <div class="pnl-cell pnl-absence">
+            <div class="pnl-cell-label"><span class="en">What its absence looks like</span><span class="cn">缺失时的样子</span></div>
+            <div class="body">
+              <span class="en">Moral concern that stops precisely at the boundary of those who can hurt or help you. Charity performed for visibility. Rules followed to the letter while their spirit is circumvented. Indifference to harms that are real but distant, diffuse, or borne by those without voice.</span>
+              <span class="cn">道德关怀恰好止步于那些能伤害或帮助你的人的边界处。为了被人看见而行善。遵守规则的字面，同时规避其精神。对那些真实但遥远、弥散或由没有话语权的人承担的伤害漠然置之。</span>
+            </div>
+          </div>
+          <div class="pnl-cell pnl-example">
+            <div class="pnl-cell-label"><span class="en">Concrete example</span><span class="cn">具体示例</span></div>
+            <div class="body">
+              <span class="en">An engineer who flags a safety flaw in a product already approved for launch, knowing it will delay release and draw anger from their team, is practicing goodness. The people protected are users they will never meet. The cost is personal and immediate. The benefit is diffuse and future.</span>
+              <span class="cn">一位工程师在已批准上线的产品中发现安全缺陷并如实上报——明知这会延误发布并引来团队的不满——正在实践善。被保护的人是他们永远不会见到的用户。代价是个人的、即时的。收益是弥散的、未来的。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: Beauty -->
+      <div class="w-panel" id="pnl-beauty" role="tabpanel" aria-labelledby="tab-beauty" hidden>
+        <div class="pnl-field">
+          <div class="pnl-cell">
+            <div class="pnl-cell-label"><span class="en">Definition</span><span class="cn">定义</span></div>
+            <div class="body">
+              <span class="en">Beauty is the quality achieved when form, structure, and purpose align so completely that nothing is superfluous and nothing is missing. It is not decoration added after the work is done; it is a property of work done so well that the unnecessary has been stripped away, and what remains has the character of rightness.</span>
+              <span class="cn">美是当形式、结构与目的完全契合——以至于没有任何多余之物，也没有任何缺失——所达到的品质。它不是工作完成后再添加的装饰；而是工作做得足够好的属性，多余之物已被剥去，剩下的具有一种「正确」的特质。</span>
+            </div>
+          </div>
+          <div class="pnl-cell">
+            <div class="pnl-cell-label"><span class="en">How to test for it</span><span class="cn">如何检验</span></div>
+            <div class="body">
+              <span class="en">Ask: could anything be removed without loss? Does the form serve the function, or is the form concealing a weak function? Does the thing look different from every angle, and is that difference consistent or arbitrary? Does encountering it produce a sense of inevitability — the feeling that it could not have been otherwise?</span>
+              <span class="cn">问自己：是否可以去掉什么而不带来损失？形式是在服务功能，还是在掩盖一个薄弱的功能？从不同角度看这个东西有何不同，这种差异是一致的还是任意的？接触它是否产生一种必然感——觉得它不可能是另一种样子？</span>
+            </div>
+          </div>
+          <div class="pnl-cell pnl-absence">
+            <div class="pnl-cell-label"><span class="en">What its absence looks like</span><span class="cn">缺失时的样子</span></div>
+            <div class="body">
+              <span class="en">Ugliness that goes unnoticed because the threshold for acceptable has been set to merely functional. Prose that conveys information but produces no image. Interfaces that work but create friction. Arguments that are technically valid but laborious to follow. The sense that something is finished but not done.</span>
+              <span class="cn">丑陋无人察觉，因为「可接受」的门槛已被设定为「仅能运作」。传递信息但不产生任何意象的文字。功能正常但制造摩擦的界面。技术上有效但令人费力追踪的论证。某件事感觉已经完成，但尚未「做好」的感觉。</span>
+            </div>
+          </div>
+          <div class="pnl-cell pnl-example">
+            <div class="pnl-cell-label"><span class="en">Concrete example</span><span class="cn">具体示例</span></div>
+            <div class="body">
+              <span class="en">Euler's identity — e<sup>iπ</sup> + 1 = 0 — unites five fundamental constants in a single equation with no spare parts. Mathematicians describe it as beautiful not as a compliment but as a diagnosis: the elegance signals that something structurally deep has been captured, not merely derived.</span>
+              <span class="cn">欧拉恒等式——e<sup>iπ</sup> + 1 = 0——将五个基本常数统一在一个没有任何多余部分的等式中。数学家称其为美丽，不是恭维，而是一种诊断：这份优雅表明某种结构上的深层之物已被捕捉，而非仅仅被推导出来。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.w-interactive -->
+  </section>
+  <!-- ═══ /INTERACTIVE ═══ -->
+
   <section class="w-section">
     <div class="w-eyebrow">§ 03.3 · Truth — The First Obligation</div>
     <h2 class="w-h2">Seek what is real, not what is reassuring<span class="cn">追求真实，而非安慰</span></h2>
@@ -267,6 +593,131 @@
     </blockquote>
   </section>
 
+  <!-- ═══ NEW § 03.6a — When the Three Conflict ═══ -->
+  <section class="w-section" id="sec-conflict">
+    <div class="w-eyebrow">§ 03.6a · When the Three Conflict</div>
+    <h2 class="w-h2">Truth vs Kindness vs Elegance<span class="cn">真与善、美之间的冲突</span></h2>
+    <p class="w-lead">
+      <span class="en">The three principles are not always allies. Each can, in context, demand something the other two forbid. These conflicts are not edge cases — they are daily life. Knowing how each collision tends to unfold is the beginning of adjudicating it well.</span>
+      <span class="cn">三条原则并非总是盟友。在特定情境下，每一条都可能要求另外两条所禁止的事。这些冲突不是边角情形——它们就是日常生活。了解每种碰撞通常如何展开，是妥善裁决它的起点。</span>
+    </p>
+
+    <div class="conflict-grid">
+
+      <div class="conflict-card">
+        <div class="cc-pair">Truth × Goodness<span class="cn">真 × 善</span></div>
+        <div class="cc-tension">The honest wound</div>
+        <div class="cc-body">
+          <span class="en">The true thing and the kind thing are not the same thing often enough to treat them as automatically aligned. A doctor who gives a patient accurate prognosis data that the patient cannot yet process; a friend whose honest assessment of a plan arrives before the person has the resources to act on it — truth here is technically correct and temporarily cruel.</span>
+          <span class="cn">真实之事与善意之举足够频繁地不是同一回事，无法将二者视为自然一致。一位医生向尚无法消化的患者提供准确的预后数据；一位朋友在对方尚无资源付诸行动之前就给出了对计划的诚实评价——在这里，真在技术上是正确的，在暂时意义上是残酷的。</span>
+        </div>
+        <div class="cc-resolve">
+          <span class="en">Adjudication: truth earns priority when withholding it would produce a worse outcome than delivering it. The test is whether the person can act on the truth, not whether they will be comfortable receiving it. Timing and form are Goodness's contribution; the content belongs to Truth.</span>
+          <span class="cn">裁决：当隐瞒真相比传递它会产生更糟糕的结果时，真获得优先权。判断标准是当事人能否对真相采取行动，而非他们接受时是否会感到舒适。时机与方式是善的贡献；内容属于真。</span>
+        </div>
+      </div>
+
+      <div class="conflict-card">
+        <div class="cc-pair">Goodness × Beauty<span class="cn">善 × 美</span></div>
+        <div class="cc-tension">The useful and the well-made</div>
+        <div class="cc-body">
+          <span class="en">A crudely built shelter that houses people in a crisis is good. A beautifully designed shelter that takes three times as long to build and houses fewer people is beautiful. When resources are scarce and time is short, Goodness and Beauty pull in different directions: more people helped sooner, or a form that does not insult the people it helps.</span>
+          <span class="cn">一个粗糙建造的避难所在危机中庇护了人们，它是善的。一个设计精美但需要三倍时间建造且容纳人数更少的避难所，它是美的。当资源匮乏、时间紧迫，善与美向不同方向拉扯：更快帮助更多人，还是一种不侮辱被帮助者的形式。</span>
+        </div>
+        <div class="cc-resolve">
+          <span class="en">Adjudication: when stakes are life-and-death urgent, Goodness leads. When they are not, the choice for ugly-but-effective is often a lazy default rather than a genuine trade-off. Most decisions in ordinary life have enough slack to accommodate both; the conflict is real primarily at extremes.</span>
+          <span class="cn">裁决：当赌注是生死攸关的紧急情况时，善领先。当不是这种情况时，选择「丑但有效」往往是懒惰的默认选项，而非真正的权衡取舍。日常生活中的大多数决策有足够的余地同时容纳二者；这种冲突主要在极端情况下才是真实的。</span>
+        </div>
+      </div>
+
+      <div class="conflict-card">
+        <div class="cc-pair">Beauty × Truth<span class="cn">美 × 真</span></div>
+        <div class="cc-tension">The elegant wrong answer</div>
+        <div class="cc-body">
+          <span class="en">A beautiful theory, a clean narrative, a satisfying explanation — all of these have a pull that can survive the evidence against them. Keats thought beauty and truth were identical. They are not. Phlogiston was an elegant theory. The steady-state universe was a beautiful model. Elegance is a useful prior, not a proof.</span>
+          <span class="cn">一个美丽的理论、一个干净的叙事、一个令人满足的解释——所有这些都有一种吸引力，能够在反驳证据面前存活。济慈认为美与真是同一的。它们不是。燃素说是一个优雅的理论。稳态宇宙是一个美丽的模型。优雅是一个有用的先验，而非证明。</span>
+        </div>
+        <div class="cc-resolve">
+          <span class="en">Adjudication: when empirical evidence and elegant theory diverge, truth wins. The appropriate response to a beautiful-but-wrong theory is to mourn it briefly and then revise. The mourning is appropriate; the revision is mandatory.</span>
+          <span class="cn">裁决：当经验证据与优雅理论相悖时，真获胜。对于一个美丽但错误的理论，适当的回应是短暂地惋惜，然后修正。惋惜是恰当的；修正是必须的。</span>
+        </div>
+      </div>
+
+    </div><!-- /.conflict-grid -->
+  </section>
+
+  <!-- ═══ NEW § 03.6b — How to Adjudicate ═══ -->
+  <section class="w-section" id="sec-adjudicate">
+    <div class="w-eyebrow">§ 03.6b · How to Adjudicate</div>
+    <h2 class="w-h2">Working rules for genuine conflicts<span class="cn">面对真实冲突时的运作规则</span></h2>
+    <p class="w-p">
+      <span class="en">No algorithm resolves every collision between the three principles. But certain heuristics have proven robust across many contexts. They do not eliminate difficulty; they make it navigable.</span>
+      <span class="cn">没有任何算法能解决三条原则之间的每一次碰撞。但某些启发式规则已在许多情境下被证明是稳健的。它们不能消除困难；它们使困难变得可以驾驭。</span>
+    </p>
+
+    <table class="adj-table" aria-label="Adjudication heuristics">
+      <thead>
+        <tr>
+          <th><span class="en">Situation</span><span class="cn">情境</span></th>
+          <th><span class="en">Working rule</span><span class="cn">运作规则</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="en">High stakes, irreversible</span>
+            <span class="cn">高风险、不可逆</span>
+          </td>
+          <td>
+            <span class="en">Truth first. The cost of acting on a false belief under irreversible conditions exceeds the social cost of delivering the truth. Do not defer truth to preserve comfort when you cannot later undo the decision.</span>
+            <span class="cn">真优先。在不可逆条件下基于错误信念行动的代价，超过传递真相的社会代价。当你事后无法撤销决定时，不要为了维护舒适而推迟真相。</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="en">Scarce resources, competing needs</span>
+            <span class="cn">资源稀缺、需求竞争</span>
+          </td>
+          <td>
+            <span class="en">Goodness sets the floor. Before optimising for elegance or accuracy, ask who is not being served. Efficiency gains that come at the price of excluding the most vulnerable are not net gains under this framework.</span>
+            <span class="cn">善设定底线。在为优雅或精确性优化之前，先问谁没有被服务到。以排斥最脆弱者为代价换来的效率提升，在这一框架下不是净收益。</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="en">Elegant theory vs awkward data</span>
+            <span class="cn">优雅理论 vs 尴尬数据</span>
+          </td>
+          <td>
+            <span class="en">Data wins, but the loss is worth noting. When evidence defeats a beautiful model, the appropriate register is mild grief — the theory was doing real cognitive work and its loss is real. Pretending otherwise is not truth, it is indifference dressed as rationality.</span>
+            <span class="cn">数据获胜，但损失值得记录。当证据打败一个美丽的模型时，恰当的回应是轻微的惋惜——这个理论曾做过真正的认知工作，其损失是真实的。假装不是这样，不是真，而是用理性面具掩盖的冷漠。</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="en">Truth that harms the vulnerable</span>
+            <span class="cn">伤害脆弱者的真相</span>
+          </td>
+          <td>
+            <span class="en">Deliver truth, but choose its form with care. Goodness does not license concealment; it licenses attention to timing, framing, and the recipient's capacity to receive. The goal is a true thing that lands — not a true thing deployed as a weapon, and not a false thing deployed as comfort.</span>
+            <span class="cn">传递真相，但谨慎选择其形式。善不授权隐瞒；它授权关注时机、措辞框架和接受者的承受能力。目标是一个能落地的真实之物——而非被当作武器的真实之物，也非被当作安慰的虚假之物。</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="en">All three can coexist</span>
+            <span class="cn">三者可以共存</span>
+          </td>
+          <td>
+            <span class="en">Most of the time, the conflict is not as stark as it appears. A message can be true, kind in its framing, and clear in its form simultaneously. The discipline is to look for that solution before accepting that a genuine trade-off is required — because genuine trade-offs are rarer than they seem.</span>
+            <span class="cn">大多数时候，冲突并不像看上去那么尖锐。一条信息可以同时是真实的、措辞上善意的、形式上清晰的。这里的纪律是在接受真正的权衡取舍是必要的之前，先寻找那个解决方案——因为真正的权衡取舍比看上去的更罕见。</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <!-- ═══ /NEW SECTIONS ═══ -->
+
   <section class="w-section">
     <div class="w-eyebrow">§ 03.6 · The Tension and the Unity</div>
     <h2 class="w-h2">Three pulls, one direction<span class="cn">三股张力，一个方向</span></h2>
@@ -303,5 +754,102 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<!-- ═══ Principle Selector: vanilla IIFE, keyboard-usable, degrades gracefully ═══ -->
+<script>
+(function () {
+  'use strict';
+
+  /* Vertex indices: 0=Truth(top), 1=Goodness(bottom-right), 2=Beauty(bottom-left) */
+  var VERTEX_IDS = ['tri-v0', 'tri-v1', 'tri-v2'];
+  var GOLD_LIT   = '#e6c071';
+  var GOLD_DIM   = '#c9a24b';
+
+  function setVertex(idx) {
+    VERTEX_IDS.forEach(function (id, i) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (i === idx) {
+        el.setAttribute('fill', GOLD_LIT);
+        el.setAttribute('opacity', '1');
+        el.setAttribute('r', '6');
+        /* reduced-motion-safe glow pulse via filter */
+        el.style.filter = 'drop-shadow(0 0 5px ' + GOLD_LIT + ')';
+      } else {
+        el.setAttribute('fill', GOLD_DIM);
+        el.setAttribute('opacity', '0.22');
+        el.setAttribute('r', '5');
+        el.style.filter = '';
+      }
+    });
+  }
+
+  function activateTab(btn, allTabs, allPanels) {
+    var targetId = btn.getAttribute('aria-controls');
+    var vertexIdx = parseInt(btn.getAttribute('data-vertex'), 10);
+
+    allTabs.forEach(function (t) {
+      var isActive = (t === btn);
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      t.setAttribute('tabindex', isActive ? '0' : '-1');
+    });
+
+    allPanels.forEach(function (p) {
+      if (p.id === targetId) {
+        p.removeAttribute('hidden');
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+
+    if (!isNaN(vertexIdx)) setVertex(vertexIdx);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var tablist = document.getElementById('princ-tabs');
+    if (!tablist) return;
+
+    var tabs   = Array.prototype.slice.call(tablist.querySelectorAll('.w-tab'));
+    var panels = tabs.map(function (t) {
+      return document.getElementById(t.getAttribute('aria-controls'));
+    }).filter(Boolean);
+
+    /* Initial state: first tab active, first vertex lit */
+    setVertex(0);
+    tabs.forEach(function (t, i) {
+      t.setAttribute('tabindex', i === 0 ? '0' : '-1');
+    });
+
+    /* Click */
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activateTab(btn, tabs, panels);
+      });
+    });
+
+    /* Arrow-key keyboard navigation (ARIA tabs pattern) */
+    tablist.addEventListener('keydown', function (e) {
+      var idx = tabs.indexOf(document.activeElement);
+      if (idx === -1) return;
+      var next = -1;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        next = (idx + 1) % tabs.length;
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        next = (idx - 1 + tabs.length) % tabs.length;
+      } else if (e.key === 'Home') {
+        next = 0;
+      } else if (e.key === 'End') {
+        next = tabs.length - 1;
+      }
+      if (next !== -1) {
+        e.preventDefault();
+        tabs[next].focus();
+        activateTab(tabs[next], tabs, panels);
+      }
+    });
+  });
+}());
+</script>
 </body>
 </html>

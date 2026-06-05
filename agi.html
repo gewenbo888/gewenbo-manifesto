@@ -214,6 +214,260 @@
     grid-column: 1 / -1;
   }
 }
+
+/* ── Filter Grid (§ 11.8) ── */
+.agi-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.agi-fcard {
+  background: color-mix(in srgb, var(--gold) 3%, var(--void));
+  border: 1px solid color-mix(in srgb, var(--gold) 14%, transparent);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem 1.1rem;
+  transition: opacity .3s ease, filter .3s ease, background .3s ease,
+              box-shadow .35s cubic-bezier(.2,.7,.2,1), transform .35s cubic-bezier(.2,.7,.2,1),
+              border-color .35s ease;
+}
+.agi-fcard:hover {
+  transform: translateY(-3px);
+  background: var(--bg-2);
+  box-shadow: 0 14px 38px -12px rgba(0,0,0,0.7),
+              0 0 0 1px rgba(201,162,75,0.28),
+              0 0 28px -8px rgba(201,162,75,0.18);
+  border-color: color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.agi-fcard.w-fade-out {
+  pointer-events: none;
+}
+.agi-fc-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.65rem;
+}
+.agi-fc-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.agi-fc-name {
+  font-family: var(--display);
+  font-size: clamp(14px, 1.6vw, 17px);
+  font-weight: 500;
+  color: var(--ivory);
+  line-height: 1.2;
+}
+.agi-fc-name .cn {
+  display: block;
+  font-size: 0.78em;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+.agi-fc-domain {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
+  margin-bottom: 0.6rem;
+}
+.agi-fc-bet {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ivory-faint);
+  margin-bottom: 0.55rem;
+}
+.agi-fc-bet .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  color: color-mix(in srgb, var(--ivory-faint) 75%, transparent);
+  margin-top: 3px;
+  letter-spacing: 0.04em;
+}
+.agi-fc-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 9%, transparent);
+}
+.agi-fc-meta-item {}
+.agi-fc-meta-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 50%, transparent);
+  margin-bottom: 3px;
+}
+.agi-fc-meta-val {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ivory-faint);
+}
+.agi-fc-meta-val .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--ivory-faint) 70%, transparent);
+}
+.agi-fc-frontier {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--gold) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-left: 0.4rem;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.agi-filter-status {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--gold-deep);
+  margin-top: 18px;
+  min-height: 1.4em;
+}
+
+/* ── Combination + Open Problems sections ── */
+.agi-combo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+.agi-combo-card {
+  background: color-mix(in srgb, var(--gold) 2.5%, var(--void));
+  border: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.agi-combo-card:hover {
+  transform: translateY(-2px);
+  background: var(--bg-2);
+  box-shadow: 0 12px 32px -10px rgba(0,0,0,0.65),
+              0 0 0 1px rgba(201,162,75,0.22);
+}
+.agi-combo-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
+  margin-bottom: 0.5rem;
+}
+.agi-combo-title {
+  font-family: var(--display);
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 500;
+  color: var(--ivory);
+  line-height: 1.25;
+  margin-bottom: 0.55rem;
+}
+.agi-combo-title .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.82em;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 3px;
+}
+.agi-combo-body {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ivory-faint);
+}
+.agi-combo-body .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  margin-top: 5px;
+  color: color-mix(in srgb, var(--ivory-faint) 75%, transparent);
+  letter-spacing: 0.04em;
+}
+.agi-open-list {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.agi-open-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.8rem 1rem;
+  align-items: start;
+  padding: 1.1rem 1.3rem;
+  background: color-mix(in srgb, var(--gold) 2%, var(--void));
+  border: 1px solid color-mix(in srgb, var(--gold) 10%, transparent);
+  border-radius: 6px;
+}
+.agi-open-icon {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 22px;
+  color: color-mix(in srgb, var(--gold) 45%, transparent);
+  text-align: center;
+  padding-top: 2px;
+}
+.agi-open-body {}
+.agi-open-q {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--ivory);
+  margin-bottom: 0.35rem;
+}
+.agi-open-q .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.82em;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+.agi-open-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ivory-faint);
+}
+.agi-open-desc .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-size: 0.9em;
+  margin-top: 4px;
+  color: color-mix(in srgb, var(--ivory-faint) 72%, transparent);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 760px) {
+  .agi-filter-grid {
+    grid-template-columns: 1fr;
+  }
+  .agi-combo-grid {
+    grid-template-columns: 1fr;
+  }
+  .w-chips {
+    gap: 6px;
+  }
+  .w-chip {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}
 </style>
 </head>
 <body data-world="agi">
@@ -303,6 +557,502 @@
         <div class="body"><span class="en">7 approaches · 2 missing</span><span class="cn">7条路径 · 2条尚缺</span></div>
       </div>
     </div>
+  </section>
+
+  <!-- § 11.8 — Filter the approaches (interactive) -->
+  <section class="w-section" id="agi-filter-section">
+    <div class="w-eyebrow">§ 11.8 · Filter the Approaches · 筛选路径</div>
+    <h2 class="w-h2">Eleven approaches at a glance<span class="cn">十一条路径一览</span></h2>
+    <p class="w-lead">
+      <span class="en">Select a domain to focus on. Each card states the approach's core bet, what it explains well, and where it currently falls short.</span>
+      <span class="cn">选择一个领域以聚焦。每张卡片阐述该路径的核心押注、其擅长解释的内容，以及当前的局限所在。</span>
+    </p>
+
+    <div class="w-interactive" id="agi-filter-widget">
+      <div class="ix-head">
+        <span class="ix-title">Filter<span class="cn">筛选</span></span>
+        <span class="ix-hint">select a domain</span>
+      </div>
+      <div class="w-chips" role="group" aria-label="Filter approaches by domain">
+        <button type="button" class="w-chip active" data-filter="all" aria-pressed="true">
+          <span class="en">All (11)</span><span class="cn">全部 (11)</span>
+        </button>
+        <button type="button" class="w-chip" data-filter="mathematics" aria-pressed="false">
+          <span class="en">Mathematics</span><span class="cn">数学</span>
+        </button>
+        <button type="button" class="w-chip" data-filter="physics" aria-pressed="false">
+          <span class="en">Physics</span><span class="cn">物理</span>
+        </button>
+        <button type="button" class="w-chip" data-filter="biology" aria-pressed="false">
+          <span class="en">Biology</span><span class="cn">生物学</span>
+        </button>
+        <button type="button" class="w-chip" data-filter="brain-structure" aria-pressed="false">
+          <span class="en">Brain Structure</span><span class="cn">脑结构</span>
+        </button>
+        <button type="button" class="w-chip" data-filter="brain-thinking" aria-pressed="false">
+          <span class="en">Brain Thinking Methods</span><span class="cn">脑思维方法</span>
+        </button>
+        <button type="button" class="w-chip" data-filter="open-frontier" aria-pressed="false">
+          <span class="en">Open Frontiers</span><span class="cn">开放前沿</span>
+        </button>
+      </div>
+      <div class="agi-filter-status" aria-live="polite" aria-atomic="true" id="agi-filter-status"></div>
+
+      <div class="agi-filter-grid" id="agi-filter-grid">
+
+        <!-- Card 01: Fractal Geometry -->
+        <div class="agi-fcard" data-domain="mathematics">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·01</span>
+            <div class="agi-fc-name">
+              <span class="en">Fractal Geometry</span>
+              <span class="cn">分形几何</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain I — Mathematics</span>
+            <span class="cn">领域 I · 数学</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: a short description can encode vast complexity. Self-similar recursive rules generate arbitrarily rich structures — what intelligence needs to compress and generalise.</span>
+            <span class="cn">押注：一段简短的描述能够编码巨大的复杂性。自相似的递归规则可生成任意丰富的结构——这正是智能的压缩与泛化所需。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Compact description of complex structure; hierarchical self-similarity</span>
+                <span class="cn">复杂结构的紧凑描述；层级自相似性</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Difficult to learn the rules from data; limited scalability</span>
+                <span class="cn">难以从数据中学习规则；可扩展性有限</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 02: Diffusion / Boltzmann -->
+        <div class="agi-fcard" data-domain="physics">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·02</span>
+            <div class="agi-fc-name">
+              <span class="en">Entropy Increase</span>
+              <span class="cn">熵增</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain II — Physics · Diffusion Models &amp; Boltzmann Machines</span>
+            <span class="cn">领域 II · 物理 · 扩散模型与玻尔兹曼机</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: corruption and reversal as intelligence. Add noise, learn to undo it. The thermodynamic path from disorder to order is learnable.</span>
+            <span class="cn">押注：破坏与反转即为智能。添加噪声，学会撤销它。从无序走向秩序的热力学路径是可学的。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">High-fidelity generation of images, audio, molecules</span>
+                <span class="cn">图像、音频、分子的高保真生成</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Slow inference; struggles with compositional reasoning</span>
+                <span class="cn">推理速度慢；组合性推理能力薄弱</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 03: Genetic Algorithms -->
+        <div class="agi-fcard" data-domain="biology">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·03</span>
+            <div class="agi-fc-name">
+              <span class="en">Evolution</span>
+              <span class="cn">进化</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain III — Biology · Genetic Algorithms</span>
+            <span class="cn">领域 III · 生物学 · 遗传算法</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: the mechanism that produced general intelligence once is substrate-independent. Variation plus selection plus inheritance can be run in silicon.</span>
+            <span class="cn">押注：曾经产生通用智能的机制与基底无关。变异加选择加遗传，可以在硅上运行。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Optimisation without knowing the landscape; open-ended adaptation</span>
+                <span class="cn">无需知晓地景的优化；开放性适应</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Computationally expensive; convergence to general intelligence unproven</span>
+                <span class="cn">计算代价高；能否收敛至通用智能尚未证明</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 04: Neural Networks -->
+        <div class="agi-fcard" data-domain="brain-structure">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·04</span>
+            <div class="agi-fc-name">
+              <span class="en">Neural Networks</span>
+              <span class="cn">神经网络</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain IV — Brain Structure</span>
+            <span class="cn">领域 IV · 脑结构</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: imitate the organisation of the brain — layers, weights, activations — and useful representations will emerge from learning, not from hand-crafting.</span>
+            <span class="cn">押注：模仿大脑的组织结构——层、权重、激活——有用的表征将从学习中涌现，而非手工打造。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Perception, pattern-matching, feature hierarchies across modalities</span>
+                <span class="cn">感知、模式匹配、跨模态特征层级</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Data-hungry; brittle to distribution shift; interpretability is hard</span>
+                <span class="cn">数据依赖强；分布偏移下脆弱；可解释性困难</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 05: Empiricism — Historical Knowledge -->
+        <div class="agi-fcard" data-domain="brain-thinking">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·05</span>
+            <div class="agi-fc-name">
+              <span class="en">Empiricism — Historical Knowledge</span>
+              <span class="cn">经验主义 · 历史知识</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain V — Brain Thinking Methods · Pre-training / Fine-tuning / CoT</span>
+            <span class="cn">领域 V · 脑思维方法 · 预训练 / 微调 / 思维链</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: compress the regularities of all recorded human knowledge into model weights via self-supervised learning, then steer the result.</span>
+            <span class="cn">押注：通过自监督学习将人类所有记录知识的规律压缩进模型权重，再对结果进行引导。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Broad language understanding; few-shot generalisation; knowledge retrieval</span>
+                <span class="cn">广泛的语言理解；少样本泛化；知识检索</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Hallucination; limited causal reasoning; knowledge is frozen at training time</span>
+                <span class="cn">幻觉问题；因果推理能力有限；知识在训练时冻结</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 06: Reinforcement Learning -->
+        <div class="agi-fcard" data-domain="brain-thinking">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·06</span>
+            <div class="agi-fc-name">
+              <span class="en">Empiricism — Reward &amp; Punishment</span>
+              <span class="cn">经验主义 · 奖惩</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain V — Brain Thinking Methods · Reinforcement Learning</span>
+            <span class="cn">领域 V · 脑思维方法 · 强化学习</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: intelligence is the product of action and consequence. An agent that maximises cumulative reward across interactions can learn almost any skill.</span>
+            <span class="cn">押注：智能是行动与后果的产物。能在交互中最大化累积奖励的智能体，几乎可以习得任何技能。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Superhuman performance in bounded games; alignment via RLHF</span>
+                <span class="cn">有界游戏中的超人类性能；通过RLHF实现对齐</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Sample-inefficient; reward hacking; brittle transfer to open environments</span>
+                <span class="cn">样本效率低；奖励黑客问题；向开放环境的迁移脆弱</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 07: Symbolic Reasoning -->
+        <div class="agi-fcard" data-domain="brain-thinking">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·07</span>
+            <div class="agi-fc-name">
+              <span class="en">Rationalist Symbolic School</span>
+              <span class="cn">理性主义 · 符号学派</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain V — Brain Thinking Methods · Reasoning</span>
+            <span class="cn">领域 V · 脑思维方法 · 推理</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: intelligence is explicit symbol manipulation. A finite rule set can generate infinite well-formed structures — compositionality is the fingerprint of mind.</span>
+            <span class="cn">押注：智能即显式符号操作。有限的规则集可以生成无限合法结构——组合性是心智的指纹。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Formal verification; logical deduction; auditability of reasoning chains</span>
+                <span class="cn">形式验证；逻辑演绎；推理链的可审计性</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Brittle under noise and ambiguity; knowledge-engineering bottleneck</span>
+                <span class="cn">在噪声和歧义下脆弱；知识工程瓶颈</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 08: Transformer / Analogy -->
+        <div class="agi-fcard" data-domain="brain-thinking">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·08</span>
+            <div class="agi-fc-name">
+              <span class="en">Analogical School</span>
+              <span class="cn">类比学派</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain V — Brain Thinking Methods · Transformer</span>
+            <span class="cn">领域 V · 脑思维方法 · 变换器</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: recognising structural similarity across superficially unlike situations is the core of intelligence. Self-attention is a computational analogy engine.</span>
+            <span class="cn">押注：识别表面不同的情境之间的结构相似性，是智能的核心。自注意力是一个计算类比引擎。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Long-range dependencies; cross-modal transfer; current state of the art</span>
+                <span class="cn">长程依赖；跨模态迁移；当前最先进水平</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Quadratic complexity; shallow causal models; opaque weights</span>
+                <span class="cn">二次方复杂度；浅层因果模型；权重不透明</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 09: Bayesian -->
+        <div class="agi-fcard" data-domain="brain-thinking">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·09</span>
+            <div class="agi-fc-name">
+              <span class="en">Bayesian Method</span>
+              <span class="cn">贝叶斯方法</span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain V — Brain Thinking Methods · Probabilistic Prediction</span>
+            <span class="cn">领域 V · 脑思维方法 · 概率预测</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: all knowledge is a probability distribution over hypotheses, updated by evidence. The ideal Bayesian agent is the cleanest mathematical definition of a rational reasoner.</span>
+            <span class="cn">押注：所有知识都是关于假设的概率分布，随证据积累而更新。理想贝叶斯智能体是对理性推理者最简洁的数学定义。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Principled uncertainty; generalisation from few examples; calibrated confidence</span>
+                <span class="cn">原则性不确定性；少样本泛化；校准置信度</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Intractable at scale without approximations; prior choice is hard</span>
+                <span class="cn">规模化时计算不可处理；先验选择困难</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 10: Einsteinian Thinking (open frontier) -->
+        <div class="agi-fcard" data-domain="open-frontier">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·10</span>
+            <div class="agi-fc-name">
+              <span class="en">Einsteinian Thinking<span class="agi-fc-frontier">open frontier</span></span>
+              <span class="cn">爱因斯坦式思维<span class="agi-fc-frontier">开放前沿</span></span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain V — Open Frontier · method: missing</span>
+            <span class="cn">领域 V · 开放前沿 · 方法：尚缺</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: complex predictive theories can be reached by sustained imagination and thought experiment — not by processing more data. No current paradigm captures this.</span>
+            <span class="cn">押注：通过持续的想象与思想实验，而非处理更多数据，可以抵达复杂的预测性理论。目前没有任何范式能够捕捉这一点。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Theoretical leaps from contradiction; paradigm-shifting discovery</span>
+                <span class="cn">从矛盾中实现理论跃迁；范式转移式发现</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">No computational account exists; cannot yet be named, let alone instantiated</span>
+                <span class="cn">尚无计算性解释；无法命名，更遑论实例化</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 11: Emotion (open frontier) -->
+        <div class="agi-fcard" data-domain="open-frontier">
+          <div class="agi-fc-head">
+            <span class="agi-fc-num">11·11</span>
+            <div class="agi-fc-name">
+              <span class="en">Emotion<span class="agi-fc-frontier">open frontier</span></span>
+              <span class="cn">情感<span class="agi-fc-frontier">开放前沿</span></span>
+            </div>
+          </div>
+          <div class="agi-fc-domain">
+            <span class="en">Domain V — Open Frontier · method: missing</span>
+            <span class="cn">领域 V · 开放前沿 · 方法：尚缺</span>
+          </div>
+          <div class="agi-fc-bet">
+            <span class="en">The bet: emotion is not a module layered on cognition — it is woven through every level of perception, memory, and decision. Without it, salience assignment and caring about outcomes are unsolved.</span>
+            <span class="cn">押注：情感不是叠加在认知之上的模块——它交织于感知、记忆和决策的每一层。没有它，显著性赋予与关心结果的能力都无法解决。</span>
+          </div>
+          <div class="agi-fc-meta">
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Explains well</span>
+                <span class="cn">擅长解释</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">Motivation; sustained commitment; adaptive salience; long-horizon values</span>
+                <span class="cn">动机；持续承诺；自适应显著性；长远价值观</span>
+              </div>
+            </div>
+            <div class="agi-fc-meta-item">
+              <div class="agi-fc-meta-label">
+                <span class="en">Current limit</span>
+                <span class="cn">当前局限</span>
+              </div>
+              <div class="agi-fc-meta-val">
+                <span class="en">No rigorous computational definition; simulation of affect ≠ having it</span>
+                <span class="cn">缺乏严格的计算定义；模拟情感 ≠ 拥有情感</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.agi-filter-grid -->
+    </div><!-- /.w-interactive -->
   </section>
 
   <!-- § 11.1 — Domain I: Mathematics -->
@@ -612,6 +1362,175 @@
     </blockquote>
   </section>
 
+  <!-- § 11.9 — How the Approaches Might Combine -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.9 · Combining the Approaches · 路径的汇合</div>
+    <h2 class="w-h2">No single approach is enough<span class="cn">没有哪条路径单独就够</span></h2>
+    <p class="w-lead">
+      <span class="en">The most capable systems today already combine several approaches. The question is not which paradigm will win, but which integrations are coherent — and what is still missing from all of them together.</span>
+      <span class="cn">今天最强大的系统已经综合了多种路径。问题不是哪个范式会胜出，而是哪些整合是连贯的——以及所有这些路径合在一起仍然缺少什么。</span>
+    </p>
+
+    <div class="agi-combo-grid">
+
+      <div class="agi-combo-card">
+        <div class="agi-combo-tag">
+          <span class="en">Integration · Brain Structure + Brain Thinking Methods</span>
+          <span class="cn">整合 · 脑结构 + 脑思维方法</span>
+        </div>
+        <div class="agi-combo-title">
+          <span class="en">Neural Networks + Transformers + RL</span>
+          <span class="cn">神经网络 + 变换器 + 强化学习</span>
+        </div>
+        <div class="agi-combo-body">
+          <span class="en">The current frontier: large pre-trained transformers (Approaches 4, 5, 8) shaped by reinforcement learning from human feedback (Approach 6). This combination captures perceptual breadth, analogical reasoning, and value alignment simultaneously — and it is the design of every leading model in 2025. It does not solve compositionality, causal reasoning, or the open frontiers.</span>
+          <span class="cn">当前前沿：由人类反馈强化学习（路径6）塑造的大型预训练变换器（路径4、5、8）。这一组合同时捕捉感知广度、类比推理与价值对齐——这也是2025年所有领先模型的设计。它尚未解决组合性、因果推理或开放前沿的问题。</span>
+        </div>
+      </div>
+
+      <div class="agi-combo-card">
+        <div class="agi-combo-tag">
+          <span class="en">Integration · Brain Thinking Methods — Symbolic + Neural</span>
+          <span class="cn">整合 · 脑思维方法 · 符号 + 神经</span>
+        </div>
+        <div class="agi-combo-title">
+          <span class="en">Neuro-Symbolic Hybrids</span>
+          <span class="cn">神经符号混合体</span>
+        </div>
+        <div class="agi-combo-body">
+          <span class="en">Combining the pattern-matching power of neural networks (Approach 4, 8) with the compositionality and auditability of formal reasoning (Approach 7). Research programs like AlphaProof demonstrate the promise: a neural model generates candidate proof steps; a symbolic verifier checks them. Neither alone achieves formal mathematical reasoning at research level; the combination approaches it. Still brittle outside narrow domains.</span>
+          <span class="cn">将神经网络的模式匹配能力（路径4、8）与形式推理的组合性和可审计性（路径7）相结合。AlphaProof等研究项目展示了其潜力：神经模型生成候选证明步骤，符号验证器加以核验。两者单独都无法达到研究级数学推理水平；组合后则接近。在狭窄领域之外仍然脆弱。</span>
+        </div>
+      </div>
+
+      <div class="agi-combo-card">
+        <div class="agi-combo-tag">
+          <span class="en">Integration · Physics + Biology</span>
+          <span class="cn">整合 · 物理 + 生物学</span>
+        </div>
+        <div class="agi-combo-title">
+          <span class="en">Diffusion + Evolutionary Search</span>
+          <span class="cn">扩散 + 进化搜索</span>
+        </div>
+        <div class="agi-combo-body">
+          <span class="en">Applying evolutionary fitness pressure to the latent spaces and generation processes of diffusion models — searching for structures that are not just coherent but useful. Used in protein design, drug discovery, and materials science. The physical generation process of diffusion provides the variation; evolutionary selection provides the fitness signal. Promising in highly structured scientific domains; not yet a path to general intelligence.</span>
+          <span class="cn">对扩散模型的潜在空间和生成过程施加进化适应度压力——搜索不只是连贯而且有用的结构。已应用于蛋白质设计、药物发现和材料科学。扩散的物理生成过程提供变异，进化选择提供适应度信号。在高度结构化的科学领域前景可期；尚未成为通往通用智能的路径。</span>
+        </div>
+      </div>
+
+      <div class="agi-combo-card">
+        <div class="agi-combo-tag">
+          <span class="en">Integration · Bayesian + Neural</span>
+          <span class="cn">整合 · 贝叶斯 + 神经</span>
+        </div>
+        <div class="agi-combo-title">
+          <span class="en">Bayesian Deep Learning</span>
+          <span class="cn">贝叶斯深度学习</span>
+        </div>
+        <div class="agi-combo-body">
+          <span class="en">Injecting principled uncertainty quantification (Approach 9) into neural architectures (Approach 4, 8) — instead of producing a single output, the model produces a distribution over outputs with calibrated confidence. Useful for high-stakes decisions where 「I don't know」 is more valuable than a confident hallucination. Technically challenging at scale; active research area.</span>
+          <span class="cn">将原则性的不确定性量化（路径9）注入神经网络架构（路径4、8）——模型不输出单一结果，而是生成带有校准置信度的输出分布。在「我不知道」比自信的幻觉更有价值的高风险决策场景中尤为有用。规模化时技术挑战大；是活跃的研究领域。</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="w-p" style="margin-top:2rem;">
+      <span class="en">Notice what all four integrations share: they combine the nine implemented approaches in various ways, but none touches the two open frontiers. The gap between the nine and the eleven is not a gap that more compute or more data will close — it is a gap in our conceptual vocabulary for what intelligence fundamentally is.</span>
+      <span class="cn">注意这四种整合的共同之处：它们以不同方式组合九条已实现的路径，但没有一种触及两条开放前沿。九与十一之间的差距，不是更多算力或更多数据能够填补的——那是我们对智能究竟是什么的概念词汇表中的缺口。</span>
+    </p>
+  </section>
+
+  <!-- § 11.10 — What No Single Approach Has: the Open Problems -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 11.10 · What No Single Approach Has · 所有路径共同缺失的</div>
+    <h2 class="w-h2">The honest ledger<span class="cn">诚实的账簿</span></h2>
+    <p class="w-lead">
+      <span class="en">These are not predictions about AGI timelines. They are open problems that the field acknowledges and has not solved — problems that remain open regardless of how the nine implemented approaches are combined or scaled.</span>
+      <span class="cn">这不是关于AGI时间表的预测，而是该领域承认但尚未解决的开放问题——无论九条已实现路径如何组合或扩展，这些问题仍然悬而未决。</span>
+    </p>
+
+    <div class="agi-open-list">
+
+      <div class="agi-open-item">
+        <div class="agi-open-icon">①</div>
+        <div class="agi-open-body">
+          <div class="agi-open-q">
+            <span class="en">Systematic generalisation beyond the training distribution</span>
+            <span class="cn">训练分布之外的系统性泛化</span>
+          </div>
+          <div class="agi-open-desc">
+            <span class="en">Every implemented approach learns patterns that hold in the training distribution and generalises imperfectly outside it. Humans routinely apply knowledge in genuinely novel contexts — outside any distribution they were exposed to. No current approach has a principled mechanism for this. Scaling has improved it empirically, but has not explained it, and improvements appear to plateau.</span>
+            <span class="cn">每一条已实现的路径都学习在训练分布中成立的模式，在其之外则泛化不完整。人类则能常规性地在真正新颖的情境中应用知识——超出任何曾暴露的分布范围。目前没有任何路径对此有原则性机制。规模扩大在实证上改善了这一点，但未能解释它，且改善似乎趋于平台。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agi-open-item">
+        <div class="agi-open-icon">②</div>
+        <div class="agi-open-body">
+          <div class="agi-open-q">
+            <span class="en">Causal reasoning and intervention</span>
+            <span class="cn">因果推理与干预</span>
+          </div>
+          <div class="agi-open-desc">
+            <span class="en">Current systems model correlation; causal structure — which variable, if changed, would change which outcome — requires a different kind of representation that statistical learning does not provide automatically. Judea Pearl's work formalises the gap: the ability to ask 「what would happen if I did X?」 (intervention) and 「what if X had been different?」 (counterfactual) requires going beyond pattern matching. Progress is being made, but it remains largely an open research frontier.</span>
+            <span class="cn">当前系统建模的是相关性；因果结构——改变哪个变量会改变哪个结果——需要一种统计学习不能自动提供的不同表征方式。Judea Pearl的工作将这一差距形式化：「如果我做X会发生什么？」（干预）和「如果X曾经不同会怎样？」（反事实）这两种问法都需要超越模式匹配。研究正在推进，但这在很大程度上仍是开放的研究前沿。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agi-open-item">
+        <div class="agi-open-icon">③</div>
+        <div class="agi-open-body">
+          <div class="agi-open-q">
+            <span class="en">Continual learning without catastrophic forgetting</span>
+            <span class="cn">无灾难性遗忘的持续学习</span>
+          </div>
+          <div class="agi-open-desc">
+            <span class="en">Most current systems are trained once on a fixed dataset and then frozen, or retrained from scratch when the world changes. A system that learns continuously — updating on new experience without overwriting what it learned before — is a prerequisite for genuine agency in a changing world. This is the catastrophic forgetting problem, and it does not have a satisfying solution at the scale of general intelligence. Humans are not trained once and frozen; that asymmetry matters.</span>
+            <span class="cn">大多数当前系统在固定数据集上训练一次后被冻结，或在世界变化时从头重训。一个能持续学习的系统——在新经验上更新却不覆盖之前所学——是在变化世界中真正具有自主性的先决条件。这就是灾难性遗忘问题，在通用智能的规模上尚无令人满意的解决方案。人类并非被训练一次后冻结；这种不对称性至关重要。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agi-open-item">
+        <div class="agi-open-icon">④</div>
+        <div class="agi-open-body">
+          <div class="agi-open-q">
+            <span class="en">World models and common sense physics</span>
+            <span class="cn">世界模型与常识物理</span>
+          </div>
+          <div class="agi-open-desc">
+            <span class="en">Infants develop intuitive physics — a model of objects, continuity, gravity, and causation — before they can speak. This grounding allows rapid, robust reasoning about novel physical situations. Language models that have never embodied a physical world can replicate many of its descriptions but fail systematically on physical inference tasks that any toddler handles confidently. Whether a disembodied model can acquire genuine physical common sense through text and video alone is genuinely unknown.</span>
+            <span class="cn">婴儿在会说话之前就发展出了直觉物理——一种关于物体、连续性、重力和因果关系的模型。这种基础使人类能够快速、稳健地推理新颖的物理情境。从未具身于物理世界的语言模型可以复现其中许多描述，但在任何学步儿童都能自信应对的物理推理任务上系统性失败。一个非具身模型是否能单凭文本和视频获得真正的物理常识，目前确实未知。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agi-open-item">
+        <div class="agi-open-icon">⑤</div>
+        <div class="agi-open-body">
+          <div class="agi-open-q">
+            <span class="en">Goal stability and coherent long-horizon agency</span>
+            <span class="cn">目标稳定性与连贯的长远自主性</span>
+          </div>
+          <div class="agi-open-desc">
+            <span class="en">Current systems are reactive: given a prompt, they produce a response. Genuine agency requires maintaining coherent goals across time, resisting distractions, adapting means without abandoning ends, and knowing when to abandon a goal because circumstances have changed. No current paradigm has a rigorous account of how to build this. It is related to, but distinct from, the alignment problem — and it is a prerequisite for it.</span>
+            <span class="cn">当前系统是反应式的：给定一个提示，它们产生一个回应。真正的自主性需要在时间跨度内维持连贯的目标，抵御干扰，在不放弃目的的前提下调整手段，并知道何时因情境变化而放弃目标。目前没有任何范式对如何构建这一点有严格解释。这与对齐问题相关但有所区分——而且是对齐问题的先决条件。</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <blockquote class="w-quote" style="margin-top: 3rem;">
+      <span class="en">"Listing what we do not have is not pessimism — it is the most reliable map of where the work actually is."</span>
+      <span class="cn">「列出我们尚未拥有的，不是悲观——而是对真正工作所在之处最可靠的描绘。」</span>
+      <span class="w-quote-attr">§ 11.10 · The honest ledger · 诚实的账簿</span>
+    </blockquote>
+  </section>
+
 </main>
 
 <nav class="w-nav" aria-label="Worlds navigation"></nav>
@@ -626,5 +1545,84 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+/* ── AGI Filter Widget ── IIFE, vanilla JS, degrades gracefully ── */
+(function () {
+  var widget = document.getElementById('agi-filter-widget');
+  if (!widget) return;
+
+  var grid    = document.getElementById('agi-filter-grid');
+  var status  = document.getElementById('agi-filter-status');
+  var chips   = widget.querySelectorAll('.w-chip[data-filter]');
+  var cards   = grid ? grid.querySelectorAll('.agi-fcard') : [];
+
+  if (!chips.length || !cards.length) return;
+
+  /* language-aware status text */
+  function getLang() {
+    return document.documentElement.getAttribute('data-lang') || 'both';
+  }
+
+  function buildStatus(filter, visibleCount) {
+    var lang = getLang();
+    if (filter === 'all') {
+      if (lang === 'zh') return '显示全部 11 条路径';
+      if (lang === 'en') return 'Showing all 11 approaches';
+      return 'Showing all 11 approaches · 显示全部 11 条路径';
+    }
+    var labelEn = widget.querySelector('.w-chip[data-filter="' + filter + '"] .en');
+    var labelZh = widget.querySelector('.w-chip[data-filter="' + filter + '"] .cn');
+    var en = labelEn ? labelEn.textContent.trim() : filter;
+    var zh = labelZh ? labelZh.textContent.trim() : filter;
+    if (lang === 'zh') return zh + ' · ' + visibleCount + ' 条路径';
+    if (lang === 'en') return en + ' — ' + visibleCount + ' approach' + (visibleCount !== 1 ? 'es' : '');
+    return en + ' — ' + visibleCount + ' approach' + (visibleCount !== 1 ? 'es' : '') + ' · ' + zh + ' · ' + visibleCount + ' 条';
+  }
+
+  function applyFilter(filter) {
+    var visible = 0;
+    cards.forEach(function (card) {
+      var match = filter === 'all' || card.getAttribute('data-domain') === filter;
+      if (match) {
+        card.classList.remove('w-fade-out');
+        card.removeAttribute('aria-hidden');
+        visible++;
+      } else {
+        card.classList.add('w-fade-out');
+        card.setAttribute('aria-hidden', 'true');
+      }
+    });
+    if (status) status.textContent = buildStatus(filter, visible);
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var filter = this.getAttribute('data-filter');
+
+      /* update aria-pressed + active class */
+      chips.forEach(function (c) {
+        c.setAttribute('aria-pressed', 'false');
+        c.classList.remove('active');
+      });
+      this.setAttribute('aria-pressed', 'true');
+      this.classList.add('active');
+
+      applyFilter(filter);
+    });
+
+    /* keyboard: Space / Enter already fire click on <button>; no extra needed */
+  });
+
+  /* initialise status bar */
+  applyFilter('all');
+
+  /* re-render status when lang changes (worlds.js fires a custom event) */
+  document.documentElement.addEventListener('langchange', function () {
+    var active = widget.querySelector('.w-chip[aria-pressed="true"]');
+    if (active) applyFilter(active.getAttribute('data-filter'));
+  });
+}());
+</script>
 </body>
 </html>

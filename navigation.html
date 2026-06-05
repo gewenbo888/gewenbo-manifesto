@@ -204,6 +204,170 @@
 .step-row.loop-step .s-name { color: var(--gold-bright); }
 .step-row.loop-step .s-num  { opacity: 1; }
 
+/* ── phase colour tokens ── */
+:root {
+  --ph1: #5a8f73;   /* jade  · Phase I  */
+  --ph2: #c9a24b;   /* gold  · Phase II */
+  --ph3: #b17fd4;   /* violet · Phase III */
+  --ph4: #b14d42;   /* rouge · Phase IV */
+}
+
+/* ── Walk-the-loop interactive ── */
+.loop-ring-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin: 28px 0 6px;
+}
+.loop-ring-svg {
+  width: min(420px, 100%);
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+/* node circles */
+.lnode {
+  cursor: pointer;
+  outline: none;
+}
+.lnode circle.lbg {
+  fill: var(--bg-3);
+  stroke-width: 1.5;
+  transition: r .2s, fill .2s, stroke .2s, filter .2s;
+}
+.lnode:focus-visible circle.lbg { stroke: var(--gold-bright); stroke-width: 2.5; }
+.lnode text.lnum {
+  font-family: var(--mono, monospace);
+  font-size: 7.5px;
+  letter-spacing: .04em;
+  fill: var(--ivory-faint, rgba(236,228,211,.55));
+  pointer-events: none;
+  user-select: none;
+}
+/* active node glow */
+.lnode.active circle.lbg {
+  r: 14;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+.lnode.active text.lnum { fill: var(--bg); font-weight: 700; }
+
+/* loop-back arrow dashed line */
+.loop-back-line {
+  stroke: var(--gold);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  fill: none;
+  opacity: .55;
+  transition: opacity .3s;
+}
+.loop-back-line.visible { opacity: 1; }
+
+/* stepper row */
+.loop-stepper-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.loop-counter {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--gold);
+  min-width: 52px;
+  text-align: center;
+}
+
+/* step detail panel */
+.loop-detail {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px 22px;
+  background: rgba(255,255,255,.015);
+  min-height: 108px;
+  transition: background .25s;
+}
+.loop-detail .ld-phase {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.loop-detail .ld-name {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 24px);
+  color: var(--ivory);
+  line-height: 1.2;
+}
+.loop-detail .ld-cn {
+  font-family: var(--serif-cn, "Noto Serif SC", serif);
+  font-size: 13px;
+  color: var(--ivory-faint);
+  letter-spacing: .06em;
+  margin-top: 3px;
+}
+.loop-detail .ld-fn {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  color: var(--gold);
+  opacity: .8;
+  margin-top: 10px;
+}
+.loop-detail .ld-fn small {
+  font-family: var(--cjk, "Noto Serif SC", serif);
+  font-style: normal;
+  font-size: 10px;
+  color: var(--ivory-faint);
+  margin-left: 6px;
+  letter-spacing: .04em;
+}
+.loop-detail .ld-loop-note {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--gold) 5%, transparent);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: var(--gold-bright);
+  display: none;
+}
+.loop-detail .ld-loop-note.show { display: block; }
+.loop-detail .ld-loop-note .cn {
+  display: block;
+  font-family: var(--cjk, "Noto Serif SC", serif);
+  font-size: 11px;
+  color: var(--ivory-faint);
+  letter-spacing: .05em;
+  margin-top: 5px;
+}
+
+/* no-js fallback: show step 1 text */
+noscript .loop-noscript {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ivory-faint);
+  padding: 10px 0;
+}
+
+/* phase strip hover */
+.phase-col {
+  transition: background .2s;
+}
+.phase-col:hover {
+  background: var(--bg-2);
+}
+
+/* step-row hover shimmer */
+.step-row:hover .s-num { opacity: 1; color: var(--gold-bright); }
+
 /* loop note inline */
 .loop-note {
   display: flex;
@@ -271,6 +435,65 @@
       <span class="en">The thirteen steps are gathered into four phases, each with its own character and demand. Phase I builds the inner world that makes everything else coherent. Phase II puts that inner world into contact with reality. Phase III shapes and multiplies whatever real work has emerged. Phase IV forges the whole through adversity and rebirths it as a new beginning.</span>
       <span class="cn">十三步聚合为四个阶段，每个阶段都有其性格与要求。第一阶段构筑内在世界，让其余一切得以连贯。第二阶段让内在世界与现实接触。第三阶段塑造并放大真实劳动所结出的果实。第四阶段将全部淬炼于逆境，以重生开启新的起点。</span>
     </p>
+
+    <!-- Walk the loop interactive -->
+    <div class="w-interactive" id="walk-the-loop" aria-label="Walk the loop interactive">
+      <div class="ix-head">
+        <span class="ix-title">
+          <span class="en">Walk the Loop</span>
+          <span class="cn" aria-hidden="true">走过循环</span>
+        </span>
+        <span class="ix-hint">
+          <span class="en">click a node or use ◀ ▶</span>
+          <span class="cn">点击节点或使用 ◀ ▶</span>
+        </span>
+      </div>
+
+      <noscript>
+        <p class="loop-noscript">
+          <span class="en">Step 1 · Mission — Destination. Enable JavaScript to walk all 13 steps interactively.</span>
+          <span class="cn">第一步 · 使命——终点。启用 JavaScript 可互动遍历全部十三步。</span>
+        </p>
+      </noscript>
+
+      <div class="loop-ring-wrap" aria-live="polite" aria-atomic="true">
+
+        <!-- SVG ring of 13 nodes -->
+        <svg class="loop-ring-svg" viewBox="-10 -10 220 220" role="group" aria-label="Thirteen-step ring" id="loop-svg">
+          <!-- track circle -->
+          <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(201,162,75,.14)" stroke-width="1"/>
+
+          <!-- dashed loop-back arc from node 13 to node 2 -->
+          <path id="loop-back-path" class="loop-back-line" d=""/>
+          <polygon id="loop-back-arrow" fill="var(--gold)" opacity=".55" points="0,0 0,0 0,0"/>
+
+          <!-- nodes injected by JS; fallback static group for no-JS -->
+          <g id="loop-nodes"></g>
+        </svg>
+
+        <!-- stepper controls -->
+        <div class="loop-stepper-row">
+          <div class="w-stepper">
+            <button type="button" id="loop-prev" aria-label="Previous step">◀</button>
+            <span class="loop-counter" id="loop-counter" aria-live="polite">01 / 13</span>
+            <button type="button" id="loop-next" aria-label="Next step">▶</button>
+          </div>
+        </div>
+
+        <!-- step detail panel -->
+        <div class="loop-detail" id="loop-detail" role="region" aria-label="Step details">
+          <div class="ld-phase" id="ld-phase"></div>
+          <div class="ld-name" id="ld-name"></div>
+          <div class="ld-cn"   id="ld-cn"></div>
+          <div class="ld-fn"   id="ld-fn"></div>
+          <div class="ld-loop-note" id="ld-loop-note">
+            <span class="en">↻ Step 13 returns to Step 2 — not a repetition, but an ascent. The new positioning carries everything learned from the completed cycle.</span>
+            <span class="cn">↻ 第十三步归于第二步——不是重复，而是上升。新定位承载着从这一轮完整循环中习得的一切。</span>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /walk-the-loop -->
 
     <!-- phase overview strip -->
     <div class="phase-strip" aria-label="Four phases overview">
@@ -566,6 +789,105 @@
     </blockquote>
   </section>
 
+  <!-- §13.6 The Four Phases as a Rhythm -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 13.6 · The Four Phases as a Rhythm · 四个阶段是一种节律</div>
+    <h2 class="w-h2">
+      <span class="en">Construction, Contact, Multiplication, Forge</span>
+      <span class="cn">构筑·接触·倍增·熔炉</span>
+    </h2>
+    <p class="w-lead">
+      <span class="en">The four phases are not arbitrary groupings. They follow a natural tempo — the same rhythm that appears in any sustained act of creation: an inward preparation, an outward engagement, an expansion of what has been built, and a pressure-test that separates what holds from what does not.</span>
+      <span class="cn">四个阶段并非任意的分组，它们遵循一种自然的节拍——出现在任何持续创造行为中的相同节律：向内的准备，向外的接触，对已建之物的扩展，以及一次将能承受者与不能承受者分开的压力测试。</span>
+    </p>
+
+    <div class="w-grid cols-4" style="margin-top:36px;" role="list">
+      <div class="w-card" role="listitem">
+        <div class="idx" style="color:var(--ph1);">Phase Ⅰ · 第一阶段</div>
+        <div class="ttl" style="color:var(--ph1);">
+          Construction
+          <span class="cn">构筑</span>
+        </div>
+        <div class="body">
+          <span class="en">Like sleep before a long run — the inner world must be built before it can be tested. Mission gives direction; positioning gives ground truth; self-suggestion builds the climate in which sustained effort becomes the default, not the exception.</span>
+          <span class="cn">如同长跑前的睡眠——内在世界必须先被构筑，才能经受检验。使命给予方向；定位给予事实基础；自我暗示构建让持续努力成为默认而非例外的内在气候。</span>
+        </div>
+      </div>
+      <div class="w-card" role="listitem">
+        <div class="idx" style="color:var(--ph2);">Phase Ⅱ · 第二阶段</div>
+        <div class="ttl" style="color:var(--ph2);">
+          Contact
+          <span class="cn">接触</span>
+        </div>
+        <div class="body">
+          <span class="en">Reality is the only honest teacher. The five steps of Phase II form a tightening feedback loop — think clearly, act, receive correction, act again, reach flow. Each iteration slightly sharpens the gap between who you are and who the mission requires.</span>
+          <span class="cn">现实是唯一诚实的老师。第二阶段五步形成一个不断收紧的反馈循环——清晰思考、行动、接受校正、再行动、抵达心流。每一次迭代都略微收窄你是谁与使命所需之间的差距。</span>
+        </div>
+      </div>
+      <div class="w-card" role="listitem">
+        <div class="idx" style="color:var(--ph3);">Phase Ⅲ · 第三阶段</div>
+        <div class="ttl" style="color:var(--ph3);">
+          Multiplication
+          <span class="cn">倍增</span>
+        </div>
+        <div class="body">
+          <span class="en">Work done in isolation hits natural ceilings. Innovation, narrative, and leverage are the three mechanisms by which a single practitioner's effort propagates beyond a single lifetime. The rhythm asks: what can outlast your direct attention?</span>
+          <span class="cn">孤立完成的工作触及自然天花板。创新、叙事与杠杆是让单个实践者的努力传播到超越单一人生的三种机制。这个节律在问：什么能超越你的直接关注而长存？</span>
+        </div>
+      </div>
+      <div class="w-card" role="listitem">
+        <div class="idx" style="color:var(--ph4);">Phase Ⅳ · 第四阶段</div>
+        <div class="ttl" style="color:var(--ph4);">
+          Forge
+          <span class="cn">熔炉</span>
+        </div>
+        <div class="body">
+          <span class="en">No cycle completes without pressure. Adversity is not a detour — it is the final examiner of the whole structure. What survives the forge is not what was planned, but what was real. New positioning is the honest acknowledgment of the new elevation.</span>
+          <span class="cn">没有压力，任何循环都不会真正完成。逆境不是弯路——它是对整个结构的最终检验。从熔炉中走出的，不是被计划的东西，而是真实的东西。新定位是对新高度的诚实承认。</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="w-p" style="margin-top:36px;">
+      <span class="en">What makes this rhythm generative rather than exhausting is that Phase IV does not terminate the cycle — it prepares the ground for a better Phase I. The adversity-forged practitioner who enters New Positioning carries more accurate self-knowledge, more calibrated mission-framing, and a richer inner climate than the one who began the previous cycle. The rhythm accelerates the practitioner's development precisely because it never promises rest — only elevation.</span>
+      <span class="cn">使这个节律产生而非消耗的原因在于：第四阶段并不终止循环——它为更好的第一阶段准备土壤。经由逆境淬炼而进入「新定位」的实践者，携带着比上一轮开始时更准确的自我认知、更精确校准的使命框架，以及更丰厚的内在气候。这个节律之所以能加速实践者的成长，恰恰是因为它从不承诺休息——只承诺高度。</span>
+    </p>
+  </section>
+
+  <!-- §13.7 The Spiral vs the Circle -->
+  <section class="w-section">
+    <div class="w-eyebrow">§ 13.7 · The Spiral, Not the Circle · 螺旋，而非圆圈</div>
+    <h2 class="w-h2">
+      <span class="en">Why the loop returns — and why it <em>never</em> truly repeats</span>
+      <span class="cn">为何循环归返——又为何从不真正重复</span>
+    </h2>
+    <p class="w-lead">
+      <span class="en">A circle closes at the same elevation. A spiral closes at a higher one. The Thirteen-Step Navigation is a spiral: Step 13 returns you to Step 2, but the you who arrives is not the you who left. The structure recurs; the practitioner does not.</span>
+      <span class="cn">圆圈在同一高度闭合。螺旋在更高处闭合。「十三步导航」是一个螺旋：第十三步将你带回第二步，但抵达的你，已不是离开的你。结构在重现；实践者却不是。</span>
+    </p>
+
+    <p class="w-p">
+      <span class="en">The difference between a circle and a spiral is what accumulates between revolutions. In a circle, nothing accumulates — each pass erases the last. In a spiral, everything deposits: the knowledge gained from feedback, the refined understanding of the mission, the relationships and leverage built in Phase III, the scar-tissue wisdom of Phase IV. None of these are lost when Step 13 hands the navigation back to Step 2. They are the new ground that makes the next positioning higher than the last.</span>
+      <span class="cn">圆圈与螺旋的差异，在于两次环绕之间积累了什么。在圆圈中，什么都不积累——每一圈都抹去上一圈。在螺旋中，一切都沉积：从反馈中获得的知识，对使命更精炼的理解，第三阶段构建的关系与杠杆，第四阶段形成的伤疤智慧。当第十三步将导航交还给第二步时，这些都不会消失。它们是让下一次定位高于上一次的新土地。</span>
+    </p>
+
+    <p class="w-p">
+      <span class="en">This is also why Step 1 — Mission — is not revisited in the same way as Step 2. The destination stays ahead; only the starting point moves. A mission worth having should survive the arc of many loops: it is large enough that you cannot exhaust it in one cycle, precise enough that it remains recognizable across all of them. If after several loops the mission no longer fits, that is not failure — it is data, and it is the raw material for a deeper articulation of what the mission was always pointing toward.</span>
+      <span class="cn">这也是为什么第一步——使命——不像第二步那样被重访。目的地保持在前方；只有起点在移动。一个值得拥有的使命，应能在许多轮循环的弧线中存活：它足够宏大，一轮无法耗尽它；又足够精准，在所有循环中仍保持可辨认。如果经过几轮循环后，使命不再合身，这不是失败——这是数据，是对使命始终指向何处的更深阐明的原材料。</span>
+    </p>
+
+    <p class="w-p">
+      <span class="en">What sustains a navigator through many loops is not belief that each cycle will be easier — later cycles often are not easier; they simply engage more difficult terrain with more refined tools. What sustains is the recognition that the spiral has direction: each revolution is further from origin and closer to the horizon the mission names. The practitioner does not loop because they are stuck. They loop because the loop is the mechanism of the ascent.</span>
+      <span class="cn">支撑导航者走过许多循环的，不是相信每一轮会更容易——后来的循环往往并不更容易；只不过是用更精良的工具去接触更艰难的地形。支撑它的是对螺旋方向的认知：每一圈都距起源更远，距使命所命名的地平线更近。实践者不是因为困于原地而循环，而是因为循环本身就是上升的机制。</span>
+    </p>
+
+    <blockquote class="w-quote" style="margin-top:44px;">
+      <span class="en">You do not return to the start. You return to the same question — from a higher floor.</span>
+      <span class="cn">你并不回到起点，你回到同一个问题——但身处更高的楼层。</span>
+      <span class="w-quote-attr">World 13 · Navigation · 第十三重世界 · 导航</span>
+    </blockquote>
+  </section>
+
 </main>
 
 <nav class="w-nav" aria-label="Worlds navigation"></nav>
@@ -580,5 +902,199 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Data ── */
+  var PHASES = [
+    { id: 1, enLabel: 'Phase Ⅰ', zhLabel: '第一阶段', enName: 'Construction of the Inner World', color: '#5a8f73' },
+    { id: 2, enLabel: 'Phase Ⅱ', zhLabel: '第二阶段', enName: 'Interaction with the Real World', color: '#c9a24b' },
+    { id: 3, enLabel: 'Phase Ⅲ', zhLabel: '第三阶段', enName: 'Shaping & Amplifying Influence',  color: '#b17fd4' },
+    { id: 4, enLabel: 'Phase Ⅳ', zhLabel: '第四阶段', enName: 'Refinement & Rebirth',            color: '#b14d42' }
+  ];
+
+  var STEPS = [
+    { n:  1, en: 'Mission',                 cn: '使命',    fnEn: 'Destination',        fnCn: '终点',    phase: 1 },
+    { n:  2, en: 'Positioning',             cn: '定位',    fnEn: 'Starting Point',     fnCn: '起点',    phase: 1 },
+    { n:  3, en: 'Self-Suggestion',         cn: '自我暗示', fnEn: 'Turbocharger',       fnCn: '加速器',  phase: 1 },
+    { n:  4, en: 'First Principles Thinking',cn: '第一性原理',fnEn: 'Methodology',     fnCn: '方法论',  phase: 2 },
+    { n:  5, en: 'Action',                  cn: '行动',    fnEn: 'Practice',           fnCn: '实践',    phase: 2 },
+    { n:  6, en: 'Feedback',                cn: '反馈',    fnEn: 'Correction',         fnCn: '校正',    phase: 2 },
+    { n:  7, en: 'Re-action',               cn: '再行动',   fnEn: 'Practice Again',    fnCn: '再实践',  phase: 2 },
+    { n:  8, en: 'Flow',                    cn: '心流',    fnEn: 'Focus',              fnCn: '专注',    phase: 2 },
+    { n:  9, en: 'Innovation',              cn: '创新',    fnEn: 'Transformation',     fnCn: '转化',    phase: 3 },
+    { n: 10, en: 'Narrative',               cn: '叙事',    fnEn: 'Community of Belief',fnCn: '信仰社群', phase: 3 },
+    { n: 11, en: 'Leverage',                cn: '杠杆',    fnEn: 'Compound Effect',    fnCn: '复利',    phase: 3 },
+    { n: 12, en: 'Adversity',               cn: '逆境',    fnEn: 'Overcoming',         fnCn: '穿越',    phase: 4 },
+    { n: 13, en: 'New Positioning',         cn: '新定位',   fnEn: 'New Destination / loops to Step 2', fnCn: '新目的 / 归于第二步', phase: 4 }
+  ];
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var CX = 100, CY = 100, R = 86;
+  var N = 13;
+
+  /* ── Compute node positions (clockwise from top) ── */
+  function nodePos(i) {
+    /* i is 0-based; 0 = top (Step 1), going clockwise */
+    var angle = (Math.PI * 2 * i / N) - Math.PI / 2;
+    return {
+      x: Math.round((CX + R * Math.cos(angle)) * 100) / 100,
+      y: Math.round((CY + R * Math.sin(angle)) * 100) / 100
+    };
+  }
+
+  /* ── Build SVG nodes ── */
+  var svg  = document.getElementById('loop-svg');
+  var grp  = document.getElementById('loop-nodes');
+  var nodeEls = [];
+
+  STEPS.forEach(function (step, i) {
+    var ph = PHASES[step.phase - 1];
+    var pos = nodePos(i);
+
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'lnode');
+    g.setAttribute('role', 'button');
+    g.setAttribute('tabindex', '0');
+    g.setAttribute('aria-label', 'Step ' + step.n + ': ' + step.en + ' (' + step.cn + ')');
+    g.setAttribute('data-idx', String(i));
+    g.setAttribute('transform', 'translate(' + pos.x + ',' + pos.y + ')');
+
+    var circle = document.createElementNS(NS, 'circle');
+    circle.setAttribute('class', 'lbg');
+    circle.setAttribute('r', '11');
+    circle.setAttribute('stroke', ph.color);
+
+    var txt = document.createElementNS(NS, 'text');
+    txt.setAttribute('class', 'lnum');
+    txt.setAttribute('text-anchor', 'middle');
+    txt.setAttribute('dominant-baseline', 'central');
+    txt.textContent = (step.n < 10 ? '0' : '') + step.n;
+
+    g.appendChild(circle);
+    g.appendChild(txt);
+    grp.appendChild(g);
+    nodeEls.push(g);
+
+    /* click */
+    g.addEventListener('click', function () { goTo(i); });
+    /* keyboard */
+    g.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(i); }
+    });
+  });
+
+  /* ── Loop-back dashed arc (node 12 → node 1, i.e. step 13 → step 2) ── */
+  var loopPath  = document.getElementById('loop-back-path');
+  var loopArrow = document.getElementById('loop-back-arrow');
+
+  var p13 = nodePos(12); /* step 13 */
+  var p2  = nodePos(1);  /* step  2 */
+  /* Draw a small-radius arc inside the ring from step 13 to step 2 */
+  var arcR = 40;
+  var d = 'M ' + p13.x.toFixed(2) + ' ' + p13.y.toFixed(2) +
+          ' A ' + arcR + ' ' + arcR + ' 0 0 0 ' +
+          p2.x.toFixed(2) + ' ' + p2.y.toFixed(2);
+  loopPath.setAttribute('d', d);
+
+  /* small arrowhead near step 2 */
+  (function () {
+    /* tangent direction at end of arc — approximate with a nearby point */
+    var tAngle = (Math.PI * 2 * 1 / N) - Math.PI / 2; /* step 2 angle */
+    /* point slightly before step 2 along arc */
+    var prev = nodePos(1.18); /* approximate */
+    var dx = p2.x - prev.x, dy = p2.y - prev.y;
+    var len = Math.sqrt(dx*dx + dy*dy) || 1;
+    var nx = dx/len, ny = dy/len;
+    var px = -ny, py = nx; /* perpendicular */
+    var tip = { x: p2.x - nx*12, y: p2.y - ny*12 };
+    loopArrow.setAttribute('points',
+      (p2.x).toFixed(2) + ',' + (p2.y).toFixed(2) + ' ' +
+      (tip.x + px*4).toFixed(2) + ',' + (tip.y + py*4).toFixed(2) + ' ' +
+      (tip.x - px*4).toFixed(2) + ',' + (tip.y - py*4).toFixed(2)
+    );
+    loopArrow.setAttribute('fill', '#c9a24b');
+  })();
+
+  /* ── Detail elements ── */
+  var elPhase   = document.getElementById('ld-phase');
+  var elName    = document.getElementById('ld-name');
+  var elCn      = document.getElementById('ld-cn');
+  var elFn      = document.getElementById('ld-fn');
+  var elLoopNote= document.getElementById('ld-loop-note');
+  var elCounter = document.getElementById('loop-counter');
+  var btnPrev   = document.getElementById('loop-prev');
+  var btnNext   = document.getElementById('loop-next');
+
+  var current = 0;
+
+  function goTo(idx) {
+    /* clamp */
+    idx = ((idx % N) + N) % N;
+    current = idx;
+    render();
+  }
+
+  function render() {
+    var step = STEPS[current];
+    var ph   = PHASES[step.phase - 1];
+
+    /* update node visuals */
+    nodeEls.forEach(function (g, i) {
+      if (i === current) {
+        g.classList.add('active');
+        g.querySelector('circle').style.fill = ph.color;
+        g.querySelector('text').style.fill   = '#0a0908';
+      } else {
+        g.classList.remove('active');
+        g.querySelector('circle').style.fill = '';
+        g.querySelector('text').style.fill   = '';
+      }
+    });
+
+    /* loop-back arc: always visible but stronger when on step 13 */
+    if (current === 12) {
+      loopPath.classList.add('visible');
+      loopArrow.style.opacity = '1';
+    } else {
+      loopPath.classList.remove('visible');
+      loopArrow.style.opacity = '.35';
+    }
+
+    /* detail panel */
+    elPhase.textContent = ph.enLabel + ' · ' + ph.zhLabel;
+    elPhase.style.color  = ph.color;
+    elName.textContent   = step.en;
+    elCn.textContent     = step.cn;
+    elFn.innerHTML = step.fnEn + '<small>' + step.fnCn + '</small>';
+    elCounter.textContent = (step.n < 10 ? '0' : '') + step.n + ' / 13';
+
+    /* loop-back note */
+    if (current === 12) {
+      elLoopNote.classList.add('show');
+    } else {
+      elLoopNote.classList.remove('show');
+    }
+
+    /* scroll step 13 label into view if deep in page */
+  }
+
+  btnPrev.addEventListener('click', function () { goTo(current - 1); });
+  btnNext.addEventListener('click', function () { goTo(current + 1); });
+
+  /* keyboard on the container */
+  document.getElementById('walk-the-loop').addEventListener('keydown', function (e) {
+    if (e.target === btnPrev || e.target === btnNext) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+  });
+
+  /* init */
+  render();
+
+})();
+</script>
 </body>
 </html>

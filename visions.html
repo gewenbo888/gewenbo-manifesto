@@ -298,6 +298,237 @@
     50% { opacity: 1; transform: translateY(-4px); }
   }
 }
+
+/* ── §16.E  Climb the Ladder — interactive component ── */
+
+/* Container for the stepper + ladder visual */
+.clmb-stepper-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.clmb-tier-label {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(18px,2vw,24px);
+  color: var(--gold-bright);
+  min-width: 16ch;
+}
+.clmb-tier-label .cn-lbl {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 13px;
+  letter-spacing: .16em;
+  color: var(--ivory-faint);
+  margin-left: 8px;
+  font-style: normal;
+}
+
+/* Visual mini-ladder track */
+.clmb-track {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 44px;
+  margin-bottom: 20px;
+}
+.clmb-rung {
+  flex: 1;
+  border-radius: 2px;
+  background: rgba(201,162,75,.18);
+  border: 1px solid rgba(201,162,75,.22);
+  cursor: pointer;
+  transition: background .25s, transform .2s, box-shadow .25s;
+  position: relative;
+}
+.clmb-rung:hover { background: rgba(201,162,75,.42); transform: scaleY(1.08); }
+.clmb-rung.active {
+  background: var(--gold-bright);
+  box-shadow: 0 0 14px rgba(201,162,75,.5);
+  border-color: var(--gold-bright);
+}
+.clmb-rung.tier-active {
+  background: rgba(201,162,75,.55);
+  border-color: var(--gold);
+}
+.clmb-rung[aria-label] { outline: none; }
+.clmb-rung:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+
+/* Axis-chip filter row */
+.clmb-axis-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+/* Card grid inside the panel */
+.clmb-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.clmb-card {
+  background: rgba(201,162,75,.04);
+  border: 1px solid rgba(201,162,75,.14);
+  border-radius: 6px;
+  padding: 14px 16px 12px;
+  position: relative;
+  transition: background .25s, box-shadow .25s, transform .25s cubic-bezier(.2,.7,.2,1), border-color .25s;
+}
+.clmb-card:hover {
+  background: var(--bg-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px -10px rgba(0,0,0,.6), 0 0 0 1px rgba(201,162,75,.28);
+}
+.clmb-card .c-lvl {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 9px;
+  color: var(--gold);
+  opacity: .5;
+  letter-spacing: .06em;
+  margin-bottom: 6px;
+}
+.clmb-card .c-basis {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(17px,1.8vw,20px);
+  color: var(--gold-bright);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.clmb-card .c-basis .cn { font-size: 12px; font-style: normal; letter-spacing: .14em; margin-left: 6px; color: var(--ivory-faint); }
+.clmb-card .c-tech { font-size: 13px; color: var(--ivory); }
+.clmb-card .c-tech .cn { font-family: var(--serif-cn, 'Noto Serif SC', serif); font-size: 11px; letter-spacing: .1em; color: var(--ivory-faint); margin-left: 5px; }
+.clmb-card .c-axes {
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(201,162,75,.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.clmb-card .c-axis-tag {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 9px;
+  letter-spacing: .06em;
+  color: var(--gold);
+  border: 1px solid rgba(201,162,75,.3);
+  border-radius: 3px;
+  padding: 1px 5px;
+  opacity: .7;
+}
+/* Axis highlight — when an axis chip is active, non-matching cards fade */
+.clmb-card.axis-dim { opacity: .22; filter: grayscale(.5); }
+.clmb-card.axis-lit { border-color: rgba(201,162,75,.5); box-shadow: 0 0 10px -4px rgba(201,162,75,.35); }
+
+/* Mobile tweaks */
+@media (max-width: 760px) {
+  .clmb-cards { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .clmb-track { height: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clmb-card { transition: none; }
+  .clmb-rung { transition: none; }
+}
+
+/* ── §16.F  Axes × Ladder cross-reading section ── */
+.axes-cross-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  font-size: 13.5px;
+}
+.axes-cross-table th {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 9.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(201,162,75,.22);
+}
+.axes-cross-table td {
+  vertical-align: top;
+  padding: 11px 12px;
+  border-bottom: 1px solid rgba(201,162,75,.07);
+  color: var(--ivory-dim);
+  line-height: 1.65;
+}
+.axes-cross-table td.tier-cell {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--gold-bright);
+  white-space: nowrap;
+  padding-right: 16px;
+}
+.axes-cross-table td.tier-cell .cn {
+  display: block;
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: .14em;
+  color: var(--ivory-faint);
+  margin-top: 3px;
+}
+.axes-cross-table tr:last-child td { border-bottom: none; }
+.axes-cross-table td .cn-row {
+  display: block;
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 11.5px;
+  letter-spacing: .06em;
+  color: var(--ivory-faint);
+  margin-top: 4px;
+}
+@media (max-width: 760px) {
+  .axes-cross-table { display: none; }
+  .axes-cross-mobile { display: block; }
+}
+@media (min-width: 761px) {
+  .axes-cross-mobile { display: none; }
+}
+.axes-cross-mobile .acm-tier {
+  margin-bottom: 28px;
+  border: 1px solid rgba(201,162,75,.13);
+  border-radius: 6px;
+  padding: 16px 18px;
+}
+.axes-cross-mobile .acm-tier-head {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold-bright);
+  margin-bottom: 14px;
+}
+.axes-cross-mobile .acm-tier-head .cn {
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 12px;
+  font-style: normal;
+  letter-spacing: .14em;
+  color: var(--ivory-faint);
+  margin-left: 8px;
+}
+.acm-row { margin-bottom: 12px; }
+.acm-row .acm-ax {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 3px;
+}
+.acm-row .acm-body { font-size: 13.5px; color: var(--ivory-dim); line-height: 1.6; }
+.acm-row .acm-body .cn {
+  display: block;
+  font-family: var(--serif-cn, 'Noto Serif SC', serif);
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: var(--ivory-faint);
+  margin-top: 3px;
+}
 </style>
 </head>
 <body data-world="visions">
@@ -751,6 +982,418 @@
     </div>
   </section>
 
+  <!-- §16.E · Climb the Ladder — interactive -->
+  <section class="w-section" id="climb-section">
+    <div class="w-eyebrow">§ 16.E · Climb the Ladder · 攀登天梯</div>
+    <h2 class="w-h2">Explore each tier interactively<span class="cn">逐层探索 · 交互天梯</span></h2>
+    <p class="w-p">
+      <span class="en">Click any rung on the track below — or use the stepper — to reveal the visions on that tier. Then filter by axis to see which visions serve Truth-Seeking, Benevolence, Beauty-Creation, or World Utility across the whole ladder.</span>
+      <span class="cn">点击下方轨道上的任意一级——或使用步进按钮——展开该层的愿景。再通过轴向筛选，查看整条天梯上哪些愿景服务于求真、行善、造美或致用。</span>
+    </p>
+
+    <div class="w-interactive" id="clmb-widget" role="region" aria-label="Climb the ladder interactive">
+      <div class="ix-head">
+        <span class="ix-title">
+          <span class="en">Climb the Ladder</span>
+          <span class="cn">攀 登 天 梯</span>
+        </span>
+        <span class="ix-hint" aria-live="polite" id="clmb-hint">
+          <span class="en">Select a tier to begin</span>
+          <span class="cn">选择一层开始</span>
+        </span>
+      </div>
+
+      <!-- Visual rung track -->
+      <div class="clmb-track" id="clmb-track" aria-hidden="true"></div>
+
+      <!-- Stepper + tier label -->
+      <div class="clmb-stepper-row">
+        <div class="w-stepper" role="group" aria-label="Tier navigation">
+          <button type="button" id="clmb-prev" aria-label="Previous tier">&#8592;</button>
+          <span class="clmb-tier-label" id="clmb-tier-label" aria-live="polite">
+            <span class="en" id="clmb-tier-en">Tier I</span>
+            <span class="cn-lbl" id="clmb-tier-cn">第一层</span>
+          </span>
+          <button type="button" id="clmb-next" aria-label="Next tier">&#8594;</button>
+        </div>
+      </div>
+
+      <!-- Axis filter chips -->
+      <div class="clmb-axis-row w-chips" role="group" aria-label="Filter by axis">
+        <button type="button" class="w-chip active" data-axis="all">
+          <span class="en">All Axes</span>
+          <span class="cn">全部</span>
+        </button>
+        <button type="button" class="w-chip" data-axis="truth">
+          <span class="en">Truth-Seeking</span>
+          <span class="cn">求 真</span>
+        </button>
+        <button type="button" class="w-chip" data-axis="good">
+          <span class="en">Benevolence</span>
+          <span class="cn">行 善</span>
+        </button>
+        <button type="button" class="w-chip" data-axis="beauty">
+          <span class="en">Beauty-Creation</span>
+          <span class="cn">造 美</span>
+        </button>
+        <button type="button" class="w-chip" data-axis="utility">
+          <span class="en">World Utility</span>
+          <span class="cn">致 用</span>
+        </button>
+      </div>
+
+      <!-- Panels — one per tier, hidden by default -->
+      <div class="w-panel" id="clmb-panel-1" hidden>
+        <div class="clmb-cards">
+          <div class="clmb-card" data-axes="truth utility">
+            <div class="c-lvl">16 · 01</div>
+            <div class="c-basis"><span class="en">Dimension</span><span class="cn">维 度</span></div>
+            <div class="c-tech"><span class="en">Dimensional traversal</span><span class="cn">维度穿梭</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Truth</span><span class="cn">求真</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="truth utility beauty">
+            <div class="c-lvl">16 · 02</div>
+            <div class="c-basis"><span class="en">Space</span><span class="cn">空 间</span></div>
+            <div class="c-tech"><span class="en">Space migration</span><span class="cn">太空移民</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Truth</span><span class="cn">求真</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+              <span class="c-axis-tag"><span class="en">Beauty</span><span class="cn">造美</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="truth beauty">
+            <div class="c-lvl">16 · 03</div>
+            <div class="c-basis"><span class="en">Time</span><span class="cn">时 间</span></div>
+            <div class="c-tech"><span class="en">Time travel</span><span class="cn">时间旅行</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Truth</span><span class="cn">求真</span></span>
+              <span class="c-axis-tag"><span class="en">Beauty</span><span class="cn">造美</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="good utility">
+            <div class="c-lvl">16 · 04</div>
+            <div class="c-basis"><span class="en">Entropy</span><span class="cn">熵</span></div>
+            <div class="c-tech"><span class="en">Longevity &amp; anti-aging</span><span class="cn">长生不老</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Good</span><span class="cn">行善</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="truth utility">
+            <div class="c-lvl">16 · 05</div>
+            <div class="c-basis"><span class="en">Graviton</span><span class="cn">引力子</span></div>
+            <div class="c-tech"><span class="en">Curvature engine</span><span class="cn">曲率引擎</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Truth</span><span class="cn">求真</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="truth utility">
+            <div class="c-lvl">16 · 06</div>
+            <div class="c-basis"><span class="en">Quantum</span><span class="cn">量 子</span></div>
+            <div class="c-tech"><span class="en">Quantum computing</span><span class="cn">量子计算</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Truth</span><span class="cn">求真</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-panel" id="clmb-panel-2" hidden>
+        <div class="clmb-cards">
+          <div class="clmb-card" data-axes="good utility">
+            <div class="c-lvl">16 · 07</div>
+            <div class="c-basis"><span class="en">Photon</span><span class="cn">光 子</span></div>
+            <div class="c-tech"><span class="en">Solar energy</span><span class="cn">太阳能</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Good</span><span class="cn">行善</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="truth utility">
+            <div class="c-lvl">16 · 08</div>
+            <div class="c-basis"><span class="en">Electron</span><span class="cn">电 子</span></div>
+            <div class="c-tech"><span class="en">Chip technology</span><span class="cn">芯片</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Truth</span><span class="cn">求真</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="good utility">
+            <div class="c-lvl">16 · 09</div>
+            <div class="c-basis"><span class="en">Atomic Nucleus</span><span class="cn">原子核</span></div>
+            <div class="c-tech"><span class="en">Controlled nuclear fusion</span><span class="cn">可控核聚变</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Good</span><span class="cn">行善</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="utility">
+            <div class="c-lvl">16 · 10</div>
+            <div class="c-basis"><span class="en">Atom</span><span class="cn">原 子</span></div>
+            <div class="c-tech"><span class="en">Nanotechnology</span><span class="cn">纳米技术</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="good utility">
+            <div class="c-lvl">16 · 11</div>
+            <div class="c-basis"><span class="en">Molecule</span><span class="cn">分 子</span></div>
+            <div class="c-tech"><span class="en">Gene editing</span><span class="cn">基因编辑</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Good</span><span class="cn">行善</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="truth good utility">
+            <div class="c-lvl">16 · 12</div>
+            <div class="c-basis"><span class="en">Neuron</span><span class="cn">神经元</span></div>
+            <div class="c-tech"><span class="en">Artificial intelligence</span><span class="cn">人工智能</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Truth</span><span class="cn">求真</span></span>
+              <span class="c-axis-tag"><span class="en">Good</span><span class="cn">行善</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="truth beauty">
+            <div class="c-lvl">16 · 13</div>
+            <div class="c-basis"><span class="en">Brain</span><span class="cn">大 脑</span></div>
+            <div class="c-tech"><span class="en">Brain–computer interface</span><span class="cn">脑机接口</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Truth</span><span class="cn">求真</span></span>
+              <span class="c-axis-tag"><span class="en">Beauty</span><span class="cn">造美</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-panel" id="clmb-panel-3" hidden>
+        <div class="clmb-cards">
+          <div class="clmb-card" data-axes="utility good">
+            <div class="c-lvl">16 · 14</div>
+            <div class="c-basis"><span class="en">Finance</span><span class="cn">金 融</span></div>
+            <div class="c-tech"><span class="en">Digital currency</span><span class="cn">数字货币</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Good</span><span class="cn">行善</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="beauty good">
+            <div class="c-lvl">16 · 15</div>
+            <div class="c-basis"><span class="en">Culture</span><span class="cn">文 化</span></div>
+            <div class="c-tech"><span class="en">Virtual reality</span><span class="cn">虚拟现实</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Beauty</span><span class="cn">造美</span></span>
+              <span class="c-axis-tag"><span class="en">Good</span><span class="cn">行善</span></span>
+            </div>
+          </div>
+          <div class="clmb-card" data-axes="beauty utility">
+            <div class="c-lvl">16 · 16</div>
+            <div class="c-basis"><span class="en">Design</span><span class="cn">设 计</span></div>
+            <div class="c-tech"><span class="en">3D printing</span><span class="cn">3D 打印</span></div>
+            <div class="c-axes">
+              <span class="c-axis-tag"><span class="en">Beauty</span><span class="cn">造美</span></span>
+              <span class="c-axis-tag"><span class="en">Utility</span><span class="cn">致用</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /w-interactive -->
+  </section>
+
+  <!-- §16.F · How the Axes Cross the Ladder -->
+  <section class="w-section" id="axes-cross-section">
+    <div class="w-eyebrow">§ 16.F · The Axes Across the Ladder · 四轴横贯天梯</div>
+    <h2 class="w-h2">Every tier read through all four axes<span class="cn">每一层，以四轴重读</span></h2>
+    <p class="w-p">
+      <span class="en">The ladder orders technologies by ontological depth; the axes ask what each tier is ultimately for. Reading the two maps together reveals that the same physical layer can serve entirely different purposes depending on which axis you bring. No tier belongs to a single axis — every rung is multipurpose by nature.</span>
+      <span class="cn">天梯按存在论深度排列技术；四轴追问每一层究竟为了什么。将两张地图合并阅读，揭示出同一物理层可以服务于截然不同的目的——取决于你所携带的是哪条轴。没有任何一层属于单一轴向——每一级天然具有多重目的。</span>
+    </p>
+
+    <!-- Desktop: table -->
+    <table class="axes-cross-table" aria-label="Axes across ladder tiers">
+      <thead>
+        <tr>
+          <th><span class="en">Tier</span><span class="cn">层</span></th>
+          <th><span class="en">Truth-Seeking · 求真</span></th>
+          <th><span class="en">Benevolence · 行善</span></th>
+          <th><span class="en">Beauty-Creation · 造美</span></th>
+          <th><span class="en">World Utility · 致用</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tier-cell">
+            <span class="en">Tier I</span>
+            <span class="cn">宇宙属性</span>
+          </td>
+          <td>
+            <span class="en">Quantum logic and dimensional structure reveal the grammar of reality — truth at its most fundamental.</span>
+            <span class="cn-row">量子逻辑与维度结构，揭示现实最基本的语法——最本原的真理。</span>
+          </td>
+          <td>
+            <span class="en">Longevity from entropy mastery, and clean power from gravitational and quantum sources, directly reduce suffering at civilisational scale.</span>
+            <span class="cn-row">掌握熵而获得的长寿，以及来自引力与量子来源的清洁能量，在文明尺度上直接减少苦难。</span>
+          </td>
+          <td>
+            <span class="en">Space as horizon and time as narrative — the cosmos is the grandest aesthetic stage; travel across it is the ultimate act of creating history.</span>
+            <span class="cn-row">宇宙空间作为视野，时间作为叙事——宇宙是最宏大的美学舞台；穿越其间，是创造历史的终极行为。</span>
+          </td>
+          <td>
+            <span class="en">A curvature engine converts gravitational physics into transit infrastructure; quantum computers convert information physics into computation at every scale.</span>
+            <span class="cn-row">曲率引擎将引力物理转化为运输基础设施；量子计算机将信息物理转化为全尺度的计算能力。</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="tier-cell">
+            <span class="en">Tier II</span>
+            <span class="cn">物质层级</span>
+          </td>
+          <td>
+            <span class="en">AI and BCI together constitute the greatest truth-seeking machine humanity has ever assembled — accelerating discovery from molecular to cosmological scale.</span>
+            <span class="cn-row">人工智能与脑机接口合力，构成人类有史以来最强大的求真机器——从分子到宇宙尺度加速发现。</span>
+          </td>
+          <td>
+            <span class="en">Solar energy, nuclear fusion, and gene editing are the three most immediate benevolence technologies: clean power, abundant energy, and the end of hereditary disease.</span>
+            <span class="cn-row">太阳能、核聚变与基因编辑，是最直接的三项行善技术：清洁电力、丰沛能量，以及终结遗传疾病。</span>
+          </td>
+          <td>
+            <span class="en">The BCI opens the inner theatre of mind to art and philosophy; chip technology makes culture computable, storable, and transmissible across time.</span>
+            <span class="cn-row">脑机接口向艺术与哲学开放心灵的内在剧场；芯片技术使文化可计算、可存储、可跨越时间传递。</span>
+          </td>
+          <td>
+            <span class="en">Nanotechnology and AI are the two great utility engines of Tier II: nanotechnology rebuilds matter from the atom up; AI rebuilds work from the neuron down.</span>
+            <span class="cn-row">纳米技术与人工智能，是第二层的两大致用引擎：纳米技术从原子向上重建物质；人工智能从神经元向下重建工作。</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="tier-cell">
+            <span class="en">Tier III</span>
+            <span class="cn">脑力产物</span>
+          </td>
+          <td>
+            <span class="en">Finance as a legible record of value; design as formalised knowledge of what works — both are disciplines that force rigour upon intuition.</span>
+            <span class="cn-row">金融作为价值的可读记录；设计作为「什么有效」的形式化知识——两者都是迫使直觉走向严谨的学科。</span>
+          </td>
+          <td>
+            <span class="en">Digital currency can bank the unbanked and reach those whom every prior financial infrastructure excluded. VR can make empathy experiential rather than theoretical.</span>
+            <span class="cn-row">数字货币可以为无银行账户者提供金融服务，触及此前每一套金融基础设施都排斥在外的人群。虚拟现实可以使共情成为体验性的，而非理论性的。</span>
+          </td>
+          <td>
+            <span class="en">Culture, VR, and design are the most direct beauty technologies — making the world not only more capable but more worth inhabiting. At Tier III, utility and beauty converge.</span>
+            <span class="cn-row">文化、虚拟现实与设计，是最直接的造美技术——使世界不仅更有能力，也更值得居住。在第三层，致用与造美汇合。</span>
+          </td>
+          <td>
+            <span class="en">3D printing democratises production: any design becomes manufacturable anywhere. Digital currency democratises exchange: any value can flow to anyone. Together they rewrite who can make and who can trade.</span>
+            <span class="cn-row">3D打印使生产民主化：任何设计都可以在任何地方制造。数字货币使交换民主化：任何价值都可以流向任何人。两者合力，重写了谁能制造、谁能交易。</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile: stacked cards -->
+    <div class="axes-cross-mobile">
+      <div class="acm-tier">
+        <div class="acm-tier-head"><span class="en">Tier I — Universe Attributes</span><span class="cn">宇宙属性</span></div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Truth-Seeking · 求真</span></div>
+          <div class="acm-body">
+            <span class="en">Quantum and dimensional structures reveal reality's grammar.</span>
+            <span class="cn">量子与维度结构，揭示现实的语法。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Benevolence · 行善</span></div>
+          <div class="acm-body">
+            <span class="en">Longevity from entropy mastery, clean power from quantum sources.</span>
+            <span class="cn">掌握熵而获得的长寿，来自量子来源的清洁能量。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Beauty-Creation · 造美</span></div>
+          <div class="acm-body">
+            <span class="en">Space as horizon, time as narrative — the cosmos is the grandest aesthetic stage.</span>
+            <span class="cn">宇宙空间作为视野，时间作为叙事——宇宙是最宏大的美学舞台。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">World Utility · 致用</span></div>
+          <div class="acm-body">
+            <span class="en">Curvature engines become transit; quantum computers become universal computation.</span>
+            <span class="cn">曲率引擎成为运输；量子计算机成为通用计算。</span>
+          </div>
+        </div>
+      </div>
+      <div class="acm-tier">
+        <div class="acm-tier-head"><span class="en">Tier II — Matter</span><span class="cn">物质层级</span></div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Truth-Seeking · 求真</span></div>
+          <div class="acm-body">
+            <span class="en">AI and BCI form the greatest truth-seeking machine humanity has ever assembled.</span>
+            <span class="cn">人工智能与脑机接口，构成人类有史以来最强大的求真机器。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Benevolence · 行善</span></div>
+          <div class="acm-body">
+            <span class="en">Solar energy, nuclear fusion, and gene editing are the three most direct benevolence technologies.</span>
+            <span class="cn">太阳能、核聚变与基因编辑，是最直接的三项行善技术。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Beauty-Creation · 造美</span></div>
+          <div class="acm-body">
+            <span class="en">BCI opens the inner theatre of mind to art; chips make culture computable and transmissible.</span>
+            <span class="cn">脑机接口向艺术开放心灵的内在剧场；芯片使文化可计算、可传递。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">World Utility · 致用</span></div>
+          <div class="acm-body">
+            <span class="en">Nanotechnology rebuilds matter from the atom up; AI rebuilds work from the neuron down.</span>
+            <span class="cn">纳米技术从原子向上重建物质；人工智能从神经元向下重建工作。</span>
+          </div>
+        </div>
+      </div>
+      <div class="acm-tier">
+        <div class="acm-tier-head"><span class="en">Tier III — Brain Products</span><span class="cn">脑力产物</span></div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Truth-Seeking · 求真</span></div>
+          <div class="acm-body">
+            <span class="en">Finance and design both force rigour upon intuition, making tacit knowledge explicit.</span>
+            <span class="cn">金融与设计，都迫使直觉走向严谨，使隐性知识显性化。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Benevolence · 行善</span></div>
+          <div class="acm-body">
+            <span class="en">Digital currency banks the unbanked; VR makes empathy experiential.</span>
+            <span class="cn">数字货币为无银行账户者服务；虚拟现实使共情成为体验。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">Beauty-Creation · 造美</span></div>
+          <div class="acm-body">
+            <span class="en">Culture, VR, and design are the most direct beauty technologies. At Tier III, utility and beauty converge.</span>
+            <span class="cn">文化、虚拟现实与设计是最直接的造美技术。在第三层，致用与造美汇合。</span>
+          </div>
+        </div>
+        <div class="acm-row">
+          <div class="acm-ax"><span class="en">World Utility · 致用</span></div>
+          <div class="acm-body">
+            <span class="en">3D printing democratises production; digital currency democratises exchange. Together they rewrite who can make and who can trade.</span>
+            <span class="cn">3D打印使生产民主化；数字货币使交换民主化。两者合力，重写了谁能制造、谁能交易。</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /axes-cross-mobile -->
+  </section>
+
   <!-- §16.D · The Closing -->
   <section class="w-section">
     <div class="w-eyebrow">§ 16.D · From World 16 Back to World 01</div>
@@ -784,5 +1427,172 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Data ─────────────────────────────────────────── */
+  var TIERS = [
+    {
+      id: 1,
+      enLabel: 'Tier I — Universe Attributes',
+      cnLabel: '第一层 · 宇宙属性',
+      levels: [1, 2, 3, 4, 5, 6]
+    },
+    {
+      id: 2,
+      enLabel: 'Tier II — Matter',
+      cnLabel: '第二层 · 物质层级',
+      levels: [7, 8, 9, 10, 11, 12, 13]
+    },
+    {
+      id: 3,
+      enLabel: 'Tier III — Brain Products',
+      cnLabel: '第三层 · 脑力产物',
+      levels: [14, 15, 16]
+    }
+  ];
+
+  /* axis key → data-axes values it matches */
+  var AXIS_MAP = {
+    all: null,
+    truth: 'truth',
+    good: 'good',
+    beauty: 'beauty',
+    utility: 'utility'
+  };
+
+  /* ── State ─────────────────────────────────────────── */
+  var activeTier = 1;   /* 1-based */
+  var activeAxis = 'all';
+
+  /* ── DOM refs ──────────────────────────────────────── */
+  var track      = document.getElementById('clmb-track');
+  var prevBtn    = document.getElementById('clmb-prev');
+  var nextBtn    = document.getElementById('clmb-next');
+  var tierEnEl   = document.getElementById('clmb-tier-en');
+  var tierCnEl   = document.getElementById('clmb-tier-cn');
+  var hintEl     = document.getElementById('clmb-hint');
+  var axisChips  = document.querySelectorAll('[data-axis]');
+
+  if (!track || !prevBtn) return; /* guard: JS not available */
+
+  /* ── Build rung track ──────────────────────────────── */
+  /* Heights: 16 rungs ascending */
+  var HEIGHTS = [14, 17, 21, 25, 28, 32, 26, 29, 33, 36, 28, 31, 36, 38, 32, 37];
+
+  for (var i = 0; i < 16; i++) {
+    var r = document.createElement('button');
+    r.type = 'button';
+    r.className = 'clmb-rung';
+    r.style.height = HEIGHTS[i] + 'px';
+    var tier = i < 6 ? 1 : i < 13 ? 2 : 3;
+    r.setAttribute('data-tier', tier);
+    r.setAttribute('data-rung', i + 1);
+    r.setAttribute('aria-label', 'Level ' + (i + 1) + ', Tier ' + tier);
+    r.setAttribute('tabindex', '0');
+    (function (t) {
+      r.addEventListener('click', function () { setTier(t); });
+      r.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setTier(t); }
+      });
+    }(tier));
+    track.appendChild(r);
+  }
+
+  /* ── Show tier ─────────────────────────────────────── */
+  function setTier(t) {
+    activeTier = t;
+    applyState();
+  }
+
+  function applyState() {
+    /* Update panels */
+    for (var j = 1; j <= 3; j++) {
+      var p = document.getElementById('clmb-panel-' + j);
+      if (p) {
+        if (j === activeTier) { p.removeAttribute('hidden'); }
+        else { p.setAttribute('hidden', ''); }
+      }
+    }
+
+    /* Update tier label */
+    var td = TIERS[activeTier - 1];
+    if (tierEnEl) tierEnEl.textContent = td.enLabel;
+    if (tierCnEl) tierCnEl.textContent = td.cnLabel;
+
+    /* Update stepper buttons */
+    prevBtn.disabled = activeTier <= 1;
+    nextBtn.disabled = activeTier >= 3;
+
+    /* Update rung highlights */
+    var rungs = track.querySelectorAll('.clmb-rung');
+    rungs.forEach(function (r) {
+      var rt = parseInt(r.getAttribute('data-tier'), 10);
+      r.classList.toggle('tier-active', rt === activeTier);
+    });
+
+    /* Update hint */
+    if (hintEl) {
+      var lvStart = td.levels[0];
+      var lvEnd   = td.levels[td.levels.length - 1];
+      var enHint  = hintEl.querySelector('.en');
+      var cnHint  = hintEl.querySelector('.cn');
+      if (enHint) enHint.textContent = 'Levels ' + lvStart + ' — ' + lvEnd;
+      if (cnHint) cnHint.textContent = '第 ' + lvStart + ' — ' + lvEnd + ' 级';
+    }
+
+    /* Reapply axis filter to newly shown panel */
+    applyAxisFilter();
+  }
+
+  /* ── Axis filter ───────────────────────────────────── */
+  function applyAxisFilter() {
+    var panel = document.getElementById('clmb-panel-' + activeTier);
+    if (!panel) return;
+    var cards = panel.querySelectorAll('.clmb-card');
+    cards.forEach(function (c) {
+      var axes = (c.getAttribute('data-axes') || '').split(' ');
+      if (activeAxis === 'all') {
+        c.classList.remove('axis-dim', 'axis-lit');
+      } else if (axes.indexOf(activeAxis) !== -1) {
+        c.classList.remove('axis-dim');
+        c.classList.add('axis-lit');
+      } else {
+        c.classList.remove('axis-lit');
+        c.classList.add('axis-dim');
+      }
+    });
+  }
+
+  /* ── Axis chip listeners ───────────────────────────── */
+  axisChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      activeAxis = chip.getAttribute('data-axis') || 'all';
+      axisChips.forEach(function (c) { c.classList.toggle('active', c === chip); });
+      applyAxisFilter();
+    });
+  });
+
+  /* ── Stepper listeners ─────────────────────────────── */
+  prevBtn.addEventListener('click', function () {
+    if (activeTier > 1) setTier(activeTier - 1);
+  });
+  nextBtn.addEventListener('click', function () {
+    if (activeTier < 3) setTier(activeTier + 1);
+  });
+
+  /* ── Keyboard: left / right arrows when widget is focused ── */
+  document.getElementById('clmb-widget').addEventListener('keydown', function (e) {
+    if (e.target.closest('.clmb-rung')) return; /* rungs handle own keys */
+    if (e.key === 'ArrowLeft' && activeTier > 1) { setTier(activeTier - 1); }
+    if (e.key === 'ArrowRight' && activeTier < 3) { setTier(activeTier + 1); }
+  });
+
+  /* ── Init: show tier 1 ─────────────────────────────── */
+  applyState();
+
+}());
+</script>
 </body>
 </html>

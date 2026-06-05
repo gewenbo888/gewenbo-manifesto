@@ -47,6 +47,361 @@
 <script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
 
 <style>
+/* ── purpose-card hover polish ── */
+.purpose-card {
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s;
+}
+.purpose-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,.055);
+  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px var(--pc-accent, var(--gold)), 0 0 28px -8px rgba(201,162,75,0.18);
+  border-color: var(--pc-accent, var(--gold));
+}
+
+/* ── interactive matrix ── */
+.pm-matrix {
+  margin-top: 26px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.pm-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.pm-table th,
+.pm-table td {
+  border: 1px solid rgba(201,162,75,.14);
+  text-align: center;
+  vertical-align: middle;
+}
+.pm-table th {
+  padding: 12px 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: rgba(201,162,75,.05);
+}
+.pm-col-head {
+  color: var(--gold-bright);
+  font-weight: 400;
+}
+.pm-row-head {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--sh-row-color, var(--gold-bright));
+  letter-spacing: .02em;
+  padding-left: 14px;
+  text-align: left;
+}
+.pm-cell {
+  all: unset;
+  display: block;
+  width: 100%;
+  padding: 14px 10px;
+  cursor: pointer;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ivory-dim);
+  line-height: 1.35;
+  transition: background .2s, color .2s, box-shadow .2s;
+  border-radius: 3px;
+}
+.pm-cell .pm-en { display: block; }
+.pm-cell .pm-cn {
+  display: block;
+  font-family: "Noto Serif SC", serif;
+  font-size: .8em;
+  color: var(--ivory-faint);
+  margin-top: 3px;
+  opacity: .75;
+}
+.pm-cell:hover {
+  background: rgba(201,162,75,.09);
+  color: var(--ivory);
+}
+.pm-cell.active,
+.pm-cell[aria-selected="true"] {
+  background: rgba(201,162,75,.14);
+  color: var(--gold-bright);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+.pm-row-highlight .pm-cell {
+  background: rgba(201,162,75,.06);
+}
+.pm-col-highlight {
+  background: rgba(201,162,75,.03);
+}
+.pm-col-highlight .pm-cell {
+  background: rgba(201,162,75,.06);
+}
+/* detail panel */
+.pm-detail {
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--pm-accent, var(--gold));
+  border-radius: 6px;
+  padding: 24px 26px 22px;
+  background: rgba(255,255,255,.022);
+  position: relative;
+}
+.pm-detail[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .pm-detail:not([hidden]) { animation: wfade .38s ease; }
+}
+.pm-detail-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.pm-detail-scale {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--pm-accent, var(--gold));
+  opacity: .8;
+}
+.pm-detail-title {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.1vw, 24px);
+  font-weight: 400;
+  color: var(--pm-accent, var(--gold-bright));
+}
+.pm-detail-title .cn {
+  font-family: "Noto Serif SC", serif;
+  font-size: .72em;
+  color: var(--ivory-faint);
+  margin-left: 8px;
+}
+.pm-detail-body {
+  font-size: 14.5px;
+  line-height: 1.82;
+  color: var(--ivory-dim);
+}
+.pm-detail-body .cn {
+  display: block;
+  margin-top: 9px;
+  font-family: "Noto Serif SC", serif;
+  font-size: .94em;
+  opacity: .72;
+}
+.pm-detail-example {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-left: 2px solid var(--pm-accent, var(--gold));
+  background: rgba(201,162,75,.04);
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--ivory-faint);
+}
+.pm-detail-example .cn {
+  display: block;
+  font-family: "Noto Serif SC", serif;
+  margin-top: 7px;
+  font-size: .93em;
+  opacity: .7;
+}
+.pm-detail-close {
+  all: unset;
+  position: absolute;
+  top: 14px; right: 18px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  color: var(--ivory-faint);
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity .2s;
+}
+.pm-detail-close:hover { opacity: 1; }
+/* mobile list fallback ≤760px */
+@media (max-width: 760px) {
+  .pm-table-wrap { display: none; }
+  .pm-mobile-list { display: block; }
+}
+@media (min-width: 761px) {
+  .pm-mobile-list { display: none; }
+}
+.pm-mobile-list details {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: rgba(255,255,255,.015);
+}
+.pm-mobile-list summary {
+  list-style: none;
+  padding: 13px 16px;
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ivory-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pm-mobile-list summary::-webkit-details-marker { display: none; }
+.pm-mobile-list summary .ms-scale {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pm-row, var(--gold));
+  border: 1px solid var(--pm-row, var(--gold));
+  border-radius: 3px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+}
+.pm-mobile-list summary .ms-purp { flex: 1; color: var(--ivory); }
+.pm-mobile-list summary .ms-purp-cn {
+  font-family: "Noto Serif SC", serif;
+  font-size: .8em;
+  color: var(--accent);
+  margin-left: 6px;
+}
+.pm-mobile-list details[open] summary { color: var(--gold-bright); }
+.pm-mobile-inner {
+  padding: 0 16px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ivory-dim);
+}
+.pm-mobile-inner .cn {
+  display: block;
+  font-family: "Noto Serif SC", serif;
+  margin-top: 8px;
+  font-size: .93em;
+  opacity: .72;
+}
+.pm-mobile-example {
+  margin-top: 11px;
+  padding: 10px 14px;
+  border-left: 2px solid var(--pm-row, var(--gold));
+  background: rgba(201,162,75,.04);
+  font-size: 13px;
+  color: var(--ivory-faint);
+}
+.pm-mobile-example .cn {
+  display: block;
+  font-family: "Noto Serif SC", serif;
+  margin-top: 6px;
+  font-size: .92em;
+  opacity: .7;
+}
+
+/* ── nesting diagram ── */
+.nest-diagram {
+  margin: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 640px;
+}
+.nest-ring {
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 16px 20px 16px 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.nest-ring:nth-child(1) { border-color: rgba(177,77,66,.45); margin: 0; }
+.nest-ring:nth-child(2) { border-color: rgba(230,192,113,.35); margin: 12px 18px 0; }
+.nest-ring:nth-child(3) { border-color: rgba(90,143,115,.35); margin: 12px 36px 0; }
+.nest-ring:nth-child(4) { border-color: rgba(111,165,199,.35); margin: 12px 54px 0 54px; }
+.nest-ring-name {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+}
+.nest-ring-cn {
+  font-family: "Noto Serif SC", serif;
+  font-size: 12px;
+  letter-spacing: .1em;
+  opacity: .65;
+}
+.nest-ring-desc {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: var(--ivory-faint);
+  opacity: .7;
+  flex-basis: 100%;
+  margin-top: 4px;
+}
+
+/* conflict table */
+.conflict-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.conflict-card {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 20px 20px 18px;
+  background: rgba(255,255,255,.015);
+  transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.conflict-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 12px 32px -10px rgba(0,0,0,.6);
+}
+.conflict-pair {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+}
+.conflict-pair .cn {
+  font-family: "Noto Serif SC", serif;
+  font-size: .75em;
+  color: var(--accent);
+  margin-left: 8px;
+}
+.conflict-body {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ivory-dim);
+}
+.conflict-body .cn {
+  display: block;
+  font-family: "Noto Serif SC", serif;
+  font-size: .93em;
+  margin-top: 8px;
+  opacity: .7;
+}
+.conflict-resolution {
+  margin-top: 12px;
+  font-size: 12.5px;
+  font-family: var(--mono);
+  letter-spacing: .06em;
+  color: var(--gold-deep);
+  border-top: 1px solid var(--line-soft);
+  padding-top: 10px;
+}
+.conflict-resolution .cn {
+  display: block;
+  font-family: "Noto Serif SC", serif;
+  font-size: .95em;
+  letter-spacing: 0;
+  margin-top: 5px;
+  color: var(--ivory-faint);
+  opacity: .65;
+}
+
 /* page-local flourish: concentric rings of scale */
 .purpose-rings {
   position: relative;
@@ -413,9 +768,214 @@
     </div>
   </section>
 
+  <!-- ── INTERACTIVE MATRIX ──────────────────────────────── -->
+  <section class="w-section" id="sec-matrix">
+    <div class="w-eyebrow">§ 12.4 · Interactive Matrix / 交互矩阵</div>
+    <h2 class="w-h2">Scale × Purpose<span class="cn">尺度 × 宗旨</span></h2>
+    <p class="w-p">
+      <span class="en">Select any cell to read how that purpose plays out at that scale — concretely, with an example. Select a row or column header to highlight that line and read its theme.</span>
+      <span class="cn">点击任意单元格，了解该宗旨在该尺度下的具体展现——并附有实例。点击行或列标题，高亮整行或整列，循其主题而读。</span>
+    </p>
+
+    <div class="w-interactive">
+      <div class="ix-head">
+        <span class="ix-title">4 Scales · 3 Purposes <span class="cn">四尺度 · 三宗旨</span></span>
+        <span class="ix-hint">Click any cell · 点击单元格</span>
+      </div>
+
+      <!-- desktop table -->
+      <div class="pm-matrix pm-table-wrap" role="region" aria-label="Scale and purpose matrix">
+        <table class="pm-table" role="grid">
+          <thead>
+            <tr>
+              <th scope="col" style="width:15%"></th>
+              <th scope="col" class="pm-col-head" id="col-gov" style="width:28.33%">
+                <button type="button" class="pm-col-head-btn" data-col="0" aria-label="Highlight Governing Purpose column">
+                  <span class="en">Governing</span><br>
+                  <span style="font-family:'Noto Serif SC',serif;font-size:.85em;color:var(--ivory-faint);letter-spacing:.05em">治 理 原 则</span>
+                </button>
+              </th>
+              <th scope="col" class="pm-col-head" id="col-rel" style="width:28.33%">
+                <button type="button" class="pm-col-head-btn" data-col="1" aria-label="Highlight Relational Purpose column">
+                  <span class="en">Relational</span><br>
+                  <span style="font-family:'Noto Serif SC',serif;font-size:.85em;color:var(--ivory-faint);letter-spacing:.05em">关 系 原 则</span>
+                </button>
+              </th>
+              <th scope="col" class="pm-col-head" id="col-dis" style="width:28.33%">
+                <button type="button" class="pm-col-head-btn" data-col="2" aria-label="Highlight Distributive Purpose column">
+                  <span class="en">Distributive</span><br>
+                  <span style="font-family:'Noto Serif SC',serif;font-size:.85em;color:var(--ivory-faint);letter-spacing:.05em">分 配 原 则</span>
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="pm-tbody">
+            <!-- rows injected by script -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- detail panel -->
+      <div class="pm-detail" id="pm-detail" hidden role="region" aria-live="polite" aria-label="Cell detail">
+        <button type="button" class="pm-detail-close" id="pm-close" aria-label="Close detail">✕ close</button>
+        <div class="pm-detail-head">
+          <span class="pm-detail-scale" id="pm-d-scale"></span>
+          <span class="pm-detail-title" id="pm-d-title"></span>
+        </div>
+        <div class="pm-detail-body" id="pm-d-body"></div>
+        <div class="pm-detail-example" id="pm-d-example"></div>
+      </div>
+
+      <!-- mobile accordion list -->
+      <div class="pm-mobile-list" id="pm-mobile-list" aria-label="Scale and purpose list">
+        <!-- injected by script -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW SCALES NEST ───────────────────────────────── -->
+  <section class="w-section" id="sec-nesting">
+    <div class="w-eyebrow">§ 12.5 · How the Scales Nest / 尺度如何嵌套</div>
+    <h2 class="w-h2">Individual inside Enterprise inside Society inside Nation<span class="cn">个人嵌于企业，企业嵌于社会，社会嵌于国家</span></h2>
+    <p class="w-p">
+      <span class="en">The four scales are not parallel layers of equal standing — they nest. Each outer scale creates the enabling conditions within which the next inner scale can pursue its own purposes. The relationship runs in both directions: the outer depends on the inner to remain vital, and the inner depends on the outer for the rules and freedoms that make its purposes achievable at all.</span>
+      <span class="cn">这四个尺度并非平行并列、地位相等——它们彼此嵌套。每个外层尺度为内层尺度追求自身宗旨创造使能条件。这种关系双向运行：外层需要内层保持活力，内层需要外层提供规则与自由，使其宗旨的实现成为可能。</span>
+    </p>
+
+    <div class="nest-diagram" aria-label="Nesting diagram: Nation contains Society contains Enterprise contains Individual">
+      <div class="nest-ring" style="border-color:rgba(177,77,66,.45);">
+        <span class="nest-ring-name" style="color:#b14d42;">Nation</span>
+        <span class="nest-ring-cn" style="color:rgba(177,77,66,.8);">国 家</span>
+        <span class="nest-ring-desc">
+          <span class="en">Sets the frame: rule of law, rights, accountability</span>
+          <span class="cn">设定框架：法治、权利、问责</span>
+        </span>
+      </div>
+      <div class="nest-ring" style="border-color:rgba(230,192,113,.35);">
+        <span class="nest-ring-name" style="color:#e6c071;">Society</span>
+        <span class="nest-ring-cn" style="color:rgba(230,192,113,.75);">社 会</span>
+        <span class="nest-ring-desc">
+          <span class="en">Fills the frame with norms and trust: freedom, equality, solidarity</span>
+          <span class="cn">以规范与信任充实框架：自由、平等、团结</span>
+        </span>
+      </div>
+      <div class="nest-ring" style="border-color:rgba(90,143,115,.35);">
+        <span class="nest-ring-name" style="color:#5a8f73;">Enterprise</span>
+        <span class="nest-ring-cn" style="color:rgba(90,143,115,.75);">企 业</span>
+        <span class="nest-ring-desc">
+          <span class="en">Converts norms into value: product, demand, trend</span>
+          <span class="cn">将规范转化为价值：产品、需求、趋势</span>
+        </span>
+      </div>
+      <div class="nest-ring" style="border-color:rgba(111,165,199,.35);">
+        <span class="nest-ring-name" style="color:#6fa5c7;">Individual</span>
+        <span class="nest-ring-cn" style="color:rgba(111,165,199,.75);">个 人</span>
+        <span class="nest-ring-desc">
+          <span class="en">Where all purposes land and are finally tested: wealth, health, happiness</span>
+          <span class="cn">所有宗旨落地并接受最终检验之处：财富、健康、快乐</span>
+        </span>
+      </div>
+    </div>
+
+    <p class="w-p">
+      <span class="en">The nesting is asymmetric in time: outer scales change slowly (constitutions, legal traditions, cultural norms) while inner scales adapt quickly (enterprises pivot in months; individuals reroute in days). This mismatch is generative — the stability of the outer creates the freedom for the inner to experiment — but it can also become a trap when outer scale institutions calcify and stop serving the purposes that justify them.</span>
+      <span class="cn">这种嵌套在时间上是不对称的：外层尺度变化缓慢（宪法、法律传统、文化规范），而内层尺度适应迅速（企业数月内转型，个人数日内改道）。这种错位是有生产力的——外层的稳定为内层的试验提供自由——但当外层制度僵化、不再服务于使其合法的宗旨时，也可能变成一种陷阱。</span>
+    </p>
+    <p class="w-p">
+      <span class="en">The upward direction also matters: individual agency aggregates into enterprise capability, enterprise capability shapes social norms, and social norms ultimately reform national institutions. The nesting is not a one-way broadcast from nation downward — it is a living system with feedback in both directions at every boundary.</span>
+      <span class="cn">向上的方向同样重要：个人能动性汇聚为企业能力，企业能力塑造社会规范，社会规范最终改革国家制度。嵌套并非从国家单向向下广播——而是一个在每个边界都有双向反馈的活系统。</span>
+    </p>
+  </section>
+
+  <!-- ── WHEN PURPOSES CONFLICT ─────────────────────────── -->
+  <section class="w-section" id="sec-conflict">
+    <div class="w-eyebrow">§ 12.6 · When Purposes Conflict / 宗旨相冲突时</div>
+    <h2 class="w-h2">Tensions within and across scales<span class="cn">尺度内部与跨尺度的张力</span></h2>
+    <p class="w-p">
+      <span class="en">The twelve purposes do not always pull in the same direction. Some of the most consequential disagreements in politics, business, and personal life are not about whether a purpose is good, but about which purpose takes priority when two of them clash. Recognizing the pattern of conflict is the first step to navigating it without collapsing one purpose entirely.</span>
+      <span class="cn">这十二项宗旨并不总是指向同一方向。政治、商业与个人生活中许多最重要的分歧，并不在于某项宗旨是否合理，而在于当两项宗旨发生冲突时，哪项优先。识别冲突的模式，是在不彻底牺牲某项宗旨的前提下加以应对的第一步。</span>
+    </p>
+
+    <div class="conflict-grid">
+
+      <div class="conflict-card">
+        <div class="conflict-pair">Democracy vs. Rule of Law <span class="cn">民主 vs. 法治</span></div>
+        <div class="conflict-body">
+          <span class="en">Majorities sometimes vote for outcomes that undermine the very rules that protect minorities. The conflict arises because democracy grounds legitimacy in consent while rule of law grounds it in procedure.</span>
+          <span class="cn">多数有时会投票支持那些破坏少数保护规则的结果。这一冲突源于：民主将合法性奠基于同意，法治将合法性奠基于程序。</span>
+        </div>
+        <div class="conflict-resolution">
+          Resolution pattern: constitutionalize the floor — some rules require super-majorities to change.
+          <span class="cn">应对模式：宪法化底线——某些规则的修改需要超级多数。</span>
+        </div>
+      </div>
+
+      <div class="conflict-card">
+        <div class="conflict-pair">Freedom vs. Equality <span class="cn">自由 vs. 平等</span></div>
+        <div class="conflict-body">
+          <span class="en">Unconstrained freedom of action compounds advantages across generations; redistributive equality constrains some freedoms to expand others. Neither purpose can be absolutized without destroying the other.</span>
+          <span class="cn">不受约束的行动自由会跨代复利优势；再分配式平等以限制部分自由为代价扩展另一些。两项宗旨都无法绝对化，否则会摧毁另一项。</span>
+        </div>
+        <div class="conflict-resolution">
+          Resolution pattern: distinguish starting-position equality from outcome equality; protect the former more firmly.
+          <span class="cn">应对模式：区分起点平等与结果平等，更坚定地保护前者。</span>
+        </div>
+      </div>
+
+      <div class="conflict-card">
+        <div class="conflict-pair">Product vs. Demand <span class="cn">产品 vs. 需求</span></div>
+        <div class="conflict-body">
+          <span class="en">Demand-following builds what people ask for; product vision builds what people will want once they experience it. Enterprises that only follow demand become reactive; enterprises that only follow vision become unmoored.</span>
+          <span class="cn">需求追随创造人们所要求的；产品愿景创造人们一旦体验就想拥有的。只追随需求的企业变得被动；只追随愿景的企业则会失去根基。</span>
+        </div>
+        <div class="conflict-resolution">
+          Resolution pattern: validate demand first, then push the vision further than demand alone would go.
+          <span class="cn">应对模式：先验证需求，再将愿景推向需求单独无法抵达的地方。</span>
+        </div>
+      </div>
+
+      <div class="conflict-card">
+        <div class="conflict-pair">Wealth vs. Health <span class="cn">财富 vs. 健康</span></div>
+        <div class="conflict-body">
+          <span class="en">The effort required to build wealth — long hours, sustained stress, deferred rest — often degrades the health that wealth is supposed to enable. The trade-off is real, not rhetorical, and it sharpens at life transitions.</span>
+          <span class="cn">积累财富所需的努力——长时工作、持续压力、推迟休息——往往损耗了财富本应使能的健康。这种权衡是真实的，而非修辞性的，在人生转折点尤为尖锐。</span>
+        </div>
+        <div class="conflict-resolution">
+          Resolution pattern: treat health as a constraint, not a variable — define a floor beneath which no wealth goal justifies going.
+          <span class="cn">应对模式：将健康视为约束条件而非变量——划定底线，没有任何财富目标值得逾越。</span>
+        </div>
+      </div>
+
+      <div class="conflict-card">
+        <div class="conflict-pair">Nation vs. Individual (across scales) <span class="cn">国家 vs. 个人（跨尺度）</span></div>
+        <div class="conflict-body">
+          <span class="en">National security or public health emergencies can justify temporary suspensions of individual freedoms. The across-scale conflict is particularly dangerous because the outer scale can always claim a higher-order justification for overriding the inner.</span>
+          <span class="cn">国家安全或公共卫生紧急状态有时足以为暂时限制个人自由提供理由。跨尺度冲突尤为危险，因为外层尺度总能援引更高阶的理由来凌驾内层。</span>
+        </div>
+        <div class="conflict-resolution">
+          Resolution pattern: time-limit and sunset any outer-scale override; require proportionality and review.
+          <span class="cn">应对模式：对任何外层凌驾设定期限与到期失效；要求相称性与审查程序。</span>
+        </div>
+      </div>
+
+      <div class="conflict-card">
+        <div class="conflict-pair">Enterprise Trend vs. Society Fraternity (across scales) <span class="cn">企业趋势 vs. 社会博爱（跨尺度）</span></div>
+        <div class="conflict-body">
+          <span class="en">Platforms that exploit trend-mechanics for engagement can systematically undermine the social bonds — trust, solidarity, shared reality — that fraternity depends on. The enterprise is profitable precisely because it is eroding what society needs.</span>
+          <span class="cn">利用趋势机制追求参与度的平台，可能系统性地侵蚀博爱所依赖的社会纽带——信任、团结、共同现实。企业之所以盈利，恰恰是因为它在侵蚀社会所需之物。</span>
+        </div>
+        <div class="conflict-resolution">
+          Resolution pattern: internalize cross-scale costs via regulation or platform design choices that sacrifice some engagement metrics.
+          <span class="cn">应对模式：通过监管或牺牲部分参与度指标的平台设计，将跨尺度成本内化。</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── STRUCTURAL NOTE ────────────────────────────────── -->
   <section class="w-section">
-    <div class="w-eyebrow">§ 12.5 · Reading the Structure</div>
+    <div class="w-eyebrow">§ 12.7 · Reading the Structure</div>
     <h2 class="w-h2">Why 4 × 3?<span class="cn">为何是 4 × 3？</span></h2>
     <p class="w-p">
       <span class="en">The four scales are not a hierarchy in which Nation is more important than Individual. They are nested: the purposes of each scale create the conditions within which the scale below can pursue its own purposes. A nation's rule of law makes enterprise planning possible. Enterprise products and demand-responsiveness generate the wealth that enables individual health and happiness.</span>
@@ -453,5 +1013,322 @@
 </footer>
 
 <script src="/worlds.js" defer></script>
+<script>
+(function () {
+  /* ── Matrix data: 4 rows × 3 cols ── */
+  var SCALES = [
+    { name: 'Nation', cn: '国家', color: '#b14d42', num: 'I' },
+    { name: 'Society', cn: '社会', color: '#e6c071', num: 'II' },
+    { name: 'Enterprise', cn: '企业', color: '#5a8f73', num: 'III' },
+    { name: 'Individual', cn: '个人', color: '#6fa5c7', num: 'IV' }
+  ];
+  var PURPOSES = [
+    { name: 'Democracy', cn: '民主', role: 'Governing', roleCn: '治理', col: 0 },
+    { name: 'Rule of Law', cn: '法治', role: 'Governing', roleCn: '治理', col: 0 },
+    { name: 'Human Rights', cn: '人权', role: 'Distributive', roleCn: '分配', col: 2 },
+    { name: 'Freedom', cn: '自由', role: 'Governing', roleCn: '治理', col: 0 },
+    { name: 'Equality', cn: '平等', role: 'Relational', roleCn: '关系', col: 1 },
+    { name: 'Fraternity', cn: '博爱', role: 'Distributive', roleCn: '分配', col: 2 },
+    { name: 'Product', cn: '产品', role: 'Governing', roleCn: '治理', col: 0 },
+    { name: 'Demand', cn: '需求', role: 'Relational', roleCn: '关系', col: 1 },
+    { name: 'Trend', cn: '趋势', role: 'Distributive', roleCn: '分配', col: 2 },
+    { name: 'Wealth', cn: '财富', role: 'Governing', roleCn: '治理', col: 0 },
+    { name: 'Health', cn: '健康', role: 'Relational', roleCn: '关系', col: 1 },
+    { name: 'Happiness', cn: '快乐', role: 'Distributive', roleCn: '分配', col: 2 }
+  ];
+  /* 4×3 array indexed [row][col] */
+  var CELLS = [
+    [ /* Nation row */
+      {
+        en: 'Democracy at the national scale is the architecture through which power is made answerable. It encompasses not just periodic elections but independent courts, a free press, civilian oversight of the military, and opposition parties with real room to operate.',
+        cn: '国家尺度上的民主，是使权力可被问责的架构。它不仅包含定期选举，还涵盖独立司法、自由新闻、文官对军队的监督，以及拥有真实活动空间的反对党。',
+        exEn: 'Example: A constitutional court striking down legislation passed by a supermajority parliament because it violates guaranteed rights — democracy checking its own excesses.',
+        exCn: '例证：宪法法院以违反保障权利为由推翻超级多数议会通过的立法——民主对自身过激行为的制约。'
+      },
+      {
+        en: 'Rule of law at the national scale means that the same written rules bind citizens, officials, corporations, and the government itself — and that enforcement is not selective. It is the precondition for any stable long-term planning.',
+        cn: '国家尺度上的法治意味着：同一套成文规则约束公民、官员、企业与政府自身——且执法不具选择性。这是任何稳定长期规划的前提条件。',
+        exEn: 'Example: A president being successfully prosecuted for conduct committed while in office — the legal system demonstrating that office does not confer immunity.',
+        exCn: '例证：一位总统因在任期间的行为被成功起诉——法律体系证明官职不赋予豁免权。'
+      },
+      {
+        en: 'Human rights at the national scale are the floor beneath every law and every emergency. They exist not because the state grants them but because persons possess them — and the state\'s legitimacy partly depends on treating them as prior to its own authority.',
+        cn: '国家尺度上的人权，是所有法律与所有紧急状态之下的底线。它们的存在并非因为国家赋予，而是因为人本就拥有——而国家的合法性，部分取决于将其视为先于自身权威的存在。',
+        exEn: 'Example: International human rights tribunals ruling against states whose domestic laws permit practices that cross the floor — establishing rights as cross-border commitments.',
+        exCn: '例证：国际人权法庭裁定某些国内法许可但逾越底线的做法违规——将权利确立为跨越国界的承诺。'
+      }
+    ],
+    [ /* Society row */
+      {
+        en: 'Freedom at the social scale is not merely legal permission but the lived experience of being able to think differently, associate with whom one chooses, build sub-cultures, and dissent without informal social penalty as well as legal penalty.',
+        cn: '社会尺度上的自由，不仅是法律许可，更是能够以不同方式思考、与自己选择的人结社、构建亚文化、以及在不承受非正式社会惩罚（而非仅仅法律惩罚）的情况下表达异见的切实体验。',
+        exEn: 'Example: A minority religious community freely operating schools, publishing in its own language, and holding festivals — social pluralism as the living content of freedom.',
+        exCn: '例证：一个少数宗教社群自由开办学校、以本族语言出版、举办节日庆典——社会多元主义作为自由的活的内容。'
+      },
+      {
+        en: 'Equality at the social scale is about the informal hierarchies and exclusions that persist even when law is formally neutral. Social equality requires that background, accent, gender, or ancestry do not determine access to networks, mentorship, and opportunities before formal rules even apply.',
+        cn: '社会尺度上的平等，关乎即便法律形式中立仍然持续存在的非正式等级制与排斥。社会平等要求：在正式规则尚未适用之前，出身、口音、性别或血统不应决定对人际网络、指导资源和机遇的获取。',
+        exEn: 'Example: Organizations that make mentorship networks equally accessible to newcomers regardless of which school they attended — dismantling informal gatekeeping.',
+        exCn: '例证：将辅导网络向所有新人平等开放、无论其就读院校的组织——拆除非正式守门机制。'
+      },
+      {
+        en: 'Fraternity at the social scale is the recognition of mutual stakes — the sense that a stranger\'s misfortune is not merely their own problem. It is what makes people support social insurance, public goods, and collective action on shared risks they personally might never face.',
+        cn: '社会尺度上的博爱，是对共同利益的承认——陌生人的不幸并非仅仅是他个人的问题这一感受。正是它使人们愿意支持社会保险、公共物品，以及针对他们个人可能永远不会面临的共同风险的集体行动。',
+        exEn: 'Example: Broad public support for universal healthcare funded by those who need it least — solidarity as the operative mechanism of social cohesion.',
+        exCn: '例证：由最不需要它的人资助的全民医疗保障获得广泛公众支持——团结作为社会凝聚的运作机制。'
+      }
+    ],
+    [ /* Enterprise row */
+      {
+        en: 'Product at the enterprise scale is the discipline of crystallizing purpose into something usable by someone who does not know how it was made. A strong product culture means every decision traces back to the question: does this make the tool better in the user\'s hands?',
+        cn: '企业尺度上的产品，是将目的凝固为某个不知道它如何被制造的人可以使用之物的纪律。强大的产品文化意味着每个决策都可以追溯到这一问题：这是否让工具在用户手中变得更好？',
+        exEn: 'Example: Apple\'s insistence on removing the headphone jack — a product decision that trading short-term user frustration for a longer-term capability shift (wireless audio).',
+        exCn: '例证：苹果坚持移除耳机接口——一个以短期用户不满换取长期能力转变（无线音频）的产品决策。'
+      },
+      {
+        en: 'Demand at the enterprise scale is not what customers say they want but the gap they are actually motivated to close. Reading demand correctly means observing behavior more than listening to stated preferences — the complaint about a product is often not about the product but about the gap the product fails to bridge.',
+        cn: '企业尺度上的需求，不是顾客说他们想要什么，而是他们实际上有动力去弥合的落差。正确读懂需求意味着观察行为多于倾听陈述偏好——对产品的抱怨往往不是关于产品本身，而是关于产品未能弥合的那道鸿沟。',
+        exEn: 'Example: Airbnb recognizing that travelers did not just want cheaper rooms but local authenticity — a demand that existing hotel products structurally could not fulfill.',
+        exCn: '例证：Airbnb认识到旅行者想要的不只是更便宜的房间，而是本地真实感——一种现有酒店产品在结构上无法满足的需求。'
+      },
+      {
+        en: 'Trend at the enterprise scale is about reading self-reinforcing directional forces — behaviors, technologies, or values that gain adoption and do not reverse. An enterprise aligned with a genuine trend does not need to fight for attention; it is carried by the same current it has built for.',
+        cn: '企业尺度上的趋势，是关于解读自我强化的方向性力量——那些持续获得采纳且不会逆转的行为、技术或价值。与真实趋势对齐的企业不需要争夺注意力；它被自己所建立的同一股潮流所承载。',
+        exEn: 'Example: Stripe building payment infrastructure precisely as the internet economy was becoming a dominant channel — not predicting the trend but reading it early and positioning inside it.',
+        exCn: '例证：Stripe在互联网经济成为主导渠道之际构建支付基础设施——不是预测趋势，而是早早读懂并在其中定位。'
+      }
+    ],
+    [ /* Individual row */
+      {
+        en: 'Wealth at the individual scale is the material floor beneath which options collapse. Below it, a person\'s time and choices are not really their own — they belong to whoever holds the debt or employs the hour. Above it, the question becomes what wealth is being accumulated for.',
+        cn: '个人尺度上的财富，是低于它选项便会崩塌的物质底线。在它之下，一个人的时间与选择并不真正属于自己——它们属于持有债务或雇用时间的人。在它之上，问题便转变为：积累财富是为了什么。',
+        exEn: 'Example: An emergency fund of three to six months\' expenses — the wealth threshold below which a single unexpected event (illness, job loss) becomes a cascade rather than a setback.',
+        exCn: '例证：三到六个月支出的应急储蓄——低于这一财富门槛，单一意外事件（疾病、失业）便会从挫折演变为连锁危机。'
+      },
+      {
+        en: 'Health at the individual scale is the dynamic system that enables everything else. It includes physical capacity, cognitive function, emotional regulation, and the ability to recover — not just from illness but from stress, grief, and overextension. It is the one purpose that, once lost past a threshold, cannot be purchased back.',
+        cn: '个人尺度上的健康，是使其他一切成为可能的动态系统。它包括身体能力、认知功能、情绪调节，以及从疾病、压力、悲伤与过度透支中恢复的能力。这是唯一一项一旦超过某个门槛便无法用金钱买回的宗旨。',
+        exEn: 'Example: An athlete\'s deliberate recovery protocol — treating sleep, movement, and nutrition as system maintenance rather than optional extras — as the health floor that makes performance possible.',
+        exCn: '例证：运动员刻意设计的恢复方案——将睡眠、运动与营养视为系统维护而非可选附加项——作为使表现成为可能的健康底线。'
+      },
+      {
+        en: 'Happiness at the individual scale is the integrated signal that the other eleven purposes are working. It is not the same as pleasure (which can coexist with a bad life) or the absence of suffering (which can coexist with emptiness). It is the felt coherence of a life aimed at something real.',
+        cn: '个人尺度上的快乐，是其他十一项宗旨正在奏效的综合信号。它不等同于愉悦（愉悦可以与糟糕的生活共存），也不等同于苦难的消失（消失可以与空虚共存）。它是一种指向某个真实之物的生命的切身连贯感。',
+        exEn: 'Example: A person who declines a higher-paying role to preserve work that feels meaningful — prioritizing the deep signal over the proximate reward.',
+        exCn: '例证：一个拒绝薪酬更高的职位以保留有意义工作的人——将深层信号置于眼前奖励之上。'
+      }
+    ]
+  ];
+
+  var activeRow = -1;
+  var activeCol = -1;
+  var activeCell = null; /* {r, c} */
+
+  function getColor(row) { return SCALES[row].color; }
+
+  /* ── Build desktop table tbody ── */
+  var tbody = document.getElementById('pm-tbody');
+  if (tbody) {
+    SCALES.forEach(function (scale, r) {
+      var tr = document.createElement('tr');
+      tr.id = 'pm-row-' + r;
+
+      /* row header */
+      var th = document.createElement('th');
+      th.scope = 'row';
+      th.className = 'pm-row-head';
+      th.style.setProperty('--sh-row-color', scale.color);
+      th.innerHTML =
+        '<button type="button" class="pm-row-head-btn" data-row="' + r + '" aria-label="Highlight ' + scale.name + ' row" style="all:unset;cursor:pointer;color:' + scale.color + ';font-family:var(--display);font-style:italic;font-size:13px;display:block;width:100%;padding:8px 4px;">' +
+        '<span class="en">' + scale.name + '</span> ' +
+        '<span style="font-family:\'Noto Serif SC\',serif;font-size:.82em;color:var(--ivory-faint);letter-spacing:.06em;">' + scale.cn + '</span>' +
+        '</button>';
+      tr.appendChild(th);
+
+      /* 3 cells */
+      for (var c = 0; c < 3; c++) {
+        var td = document.createElement('td');
+        td.id = 'pm-cell-' + r + '-' + c;
+        td.className = 'pm-cell-td';
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pm-cell';
+        btn.setAttribute('data-row', r);
+        btn.setAttribute('data-col', c);
+        btn.setAttribute('role', 'gridcell');
+        btn.setAttribute('aria-selected', 'false');
+        btn.setAttribute('aria-label', SCALES[r].name + ' — ' + PURPOSES[r * 3 + c].name);
+        btn.innerHTML =
+          '<span class="pm-en en">' + PURPOSES[r * 3 + c].name + '</span>' +
+          '<span class="pm-cn cn">' + PURPOSES[r * 3 + c].cn + '</span>';
+        td.appendChild(btn);
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    });
+  }
+
+  /* ── Build mobile list ── */
+  var mobileList = document.getElementById('pm-mobile-list');
+  if (mobileList) {
+    SCALES.forEach(function (scale, r) {
+      for (var c = 0; c < 3; c++) {
+        var p = PURPOSES[r * 3 + c];
+        var cell = CELLS[r][c];
+        var det = document.createElement('details');
+        det.style.setProperty('--pm-row', scale.color);
+        det.innerHTML =
+          '<summary>' +
+          '<span class="ms-scale en">' + scale.name + '</span>' +
+          '<span class="ms-scale cn" style="display:none;">' + scale.cn + '</span>' +
+          '<span class="ms-purp">' +
+          '<span class="en">' + p.name + '</span>' +
+          '<span class="ms-purp-cn cn">' + p.cn + '</span>' +
+          '</span>' +
+          '</summary>' +
+          '<div class="pm-mobile-inner">' +
+          '<span class="en">' + cell.en + '</span>' +
+          '<span class="cn">' + cell.cn + '</span>' +
+          '<div class="pm-mobile-example">' +
+          '<span class="en">' + cell.exEn + '</span>' +
+          '<span class="cn">' + cell.exCn + '</span>' +
+          '</div>' +
+          '</div>';
+        mobileList.appendChild(det);
+      }
+    });
+  }
+
+  /* ── Highlight helpers ── */
+  function clearHighlights() {
+    document.querySelectorAll('.pm-row-' + activeRow).forEach(function (el) { el.classList.remove('pm-row-highlight'); });
+    document.querySelectorAll('.pm-col-highlight').forEach(function (el) { el.classList.remove('pm-col-highlight'); });
+    document.querySelectorAll('.pm-cell[aria-selected="true"]').forEach(function (el) { el.setAttribute('aria-selected', 'false'); el.classList.remove('active'); });
+    activeRow = -1; activeCol = -1;
+  }
+
+  function highlightRow(r) {
+    clearHighlights();
+    activeRow = r;
+    var row = document.getElementById('pm-row-' + r);
+    if (row) row.classList.add('pm-row-highlight');
+  }
+
+  function highlightCol(c) {
+    clearHighlights();
+    activeCol = c;
+    document.querySelectorAll('[data-col="' + c + '"].pm-cell, td.pm-cell-td:nth-child(' + (c + 2) + ')').forEach(function (el) { el.classList.add('pm-col-highlight'); });
+    /* simpler: mark each cell in col */
+    SCALES.forEach(function (_, r) {
+      var td = document.getElementById('pm-cell-' + r + '-' + c);
+      if (td) td.classList.add('pm-col-highlight');
+    });
+  }
+
+  /* ── Open detail panel ── */
+  function openDetail(r, c) {
+    var scale = SCALES[r];
+    var purp = PURPOSES[r * 3 + c];
+    var cell = CELLS[r][c];
+    var detail = document.getElementById('pm-detail');
+    if (!detail) return;
+    detail.style.setProperty('--pm-accent', scale.color);
+
+    document.getElementById('pm-d-scale').textContent = scale.name + ' · ' + scale.cn + ' — ' + purp.role + ' / ' + purp.roleCn;
+    var titleEl = document.getElementById('pm-d-title');
+    titleEl.innerHTML = '<span class="en">' + purp.name + '</span><span class="cn">' + purp.cn + '</span>';
+    var bodyEl = document.getElementById('pm-d-body');
+    bodyEl.innerHTML = '<span class="en">' + cell.en + '</span><span class="cn">' + cell.cn + '</span>';
+    var exEl = document.getElementById('pm-d-example');
+    exEl.innerHTML = '<span class="en">' + cell.exEn + '</span><span class="cn">' + cell.exCn + '</span>';
+
+    detail.hidden = false;
+    activeCell = {r: r, c: c};
+
+    /* mark active cell */
+    document.querySelectorAll('.pm-cell[aria-selected="true"]').forEach(function (el) { el.setAttribute('aria-selected', 'false'); el.classList.remove('active'); });
+    var btn = document.querySelector('.pm-cell[data-row="' + r + '"][data-col="' + c + '"]');
+    if (btn) { btn.setAttribute('aria-selected', 'true'); btn.classList.add('active'); }
+
+    /* scroll into view smoothly */
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  /* ── Event delegation ── */
+  var matrixEl = document.querySelector('.pm-matrix');
+  if (matrixEl) {
+    matrixEl.addEventListener('click', function (e) {
+      var cellBtn = e.target.closest('.pm-cell[data-row]');
+      if (cellBtn) {
+        var r = parseInt(cellBtn.getAttribute('data-row'), 10);
+        var c = parseInt(cellBtn.getAttribute('data-col'), 10);
+        clearHighlights();
+        openDetail(r, c);
+        return;
+      }
+      var rowBtn = e.target.closest('.pm-row-head-btn[data-row]');
+      if (rowBtn) {
+        var ri = parseInt(rowBtn.getAttribute('data-row'), 10);
+        var detail2 = document.getElementById('pm-detail');
+        if (detail2) detail2.hidden = true;
+        highlightRow(ri);
+        return;
+      }
+      var colBtn = e.target.closest('.pm-col-head-btn[data-col]');
+      if (colBtn) {
+        var ci = parseInt(colBtn.getAttribute('data-col'), 10);
+        var detail3 = document.getElementById('pm-detail');
+        if (detail3) detail3.hidden = true;
+        highlightCol(ci);
+      }
+    });
+
+    /* keyboard navigation within grid */
+    matrixEl.addEventListener('keydown', function (e) {
+      var btn = e.target.closest('.pm-cell[data-row]');
+      if (!btn) return;
+      var r = parseInt(btn.getAttribute('data-row'), 10);
+      var c = parseInt(btn.getAttribute('data-col'), 10);
+      var nextR = r, nextC = c;
+      if (e.key === 'ArrowRight') { nextC = (c + 1) % 3; }
+      else if (e.key === 'ArrowLeft') { nextC = (c + 2) % 3; }
+      else if (e.key === 'ArrowDown') { nextR = (r + 1) % 4; }
+      else if (e.key === 'ArrowUp') { nextR = (r + 3) % 4; }
+      else { return; }
+      e.preventDefault();
+      var target = document.querySelector('.pm-cell[data-row="' + nextR + '"][data-col="' + nextC + '"]');
+      if (target) target.focus();
+    });
+  }
+
+  /* close button */
+  var closeBtn = document.getElementById('pm-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      var detail = document.getElementById('pm-detail');
+      if (detail) detail.hidden = true;
+      clearHighlights();
+      activeCell = null;
+    });
+  }
+
+  /* ── Default: open cell [0][0] after DOM settles ── */
+  setTimeout(function () {
+    openDetail(0, 0);
+  }, 120);
+
+  /* ── col-head-btn styles (not in external CSS to avoid file edits) ── */
+  var s = document.createElement('style');
+  s.textContent =
+    '.pm-col-head-btn{all:unset;cursor:pointer;display:block;width:100%;padding:8px 6px;color:var(--gold-bright);transition:color .2s;}' +
+    '.pm-col-head-btn:hover{color:var(--ivory);}' +
+    '.pm-col-head-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:2px;}' +
+    '.pm-row-head-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:2px;}';
+  document.head.appendChild(s);
+
+}());
+</script>
 </body>
 </html>
