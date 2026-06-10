@@ -2088,6 +2088,18 @@ body::after {
     from { transform: rotate(0deg)   translateX(108px); }
     to   { transform: rotate(360deg) translateX(108px); }
   }
+  /* a second, tighter body counter-orbiting the core — a small living system */
+  .hero-dot::before {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 3px; height: 3px; margin: -1.5px; border-radius: 50%;
+    background: var(--gold); opacity: 0.7;
+    box-shadow: 0 0 8px var(--gold-bright), 0 0 16px rgba(201,162,75,0.4);
+    animation: orbit2 11s linear infinite;
+  }
+  @keyframes orbit2 {
+    from { transform: rotate(360deg) translateX(63px); }
+    to   { transform: rotate(0deg)   translateX(63px); }
+  }
 
   /* slow gold shimmer sweeping across "Mission" */
   @supports ((-webkit-background-clip: text) or (background-clip: text)) {
