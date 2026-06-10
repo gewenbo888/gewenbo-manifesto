@@ -2285,6 +2285,19 @@ section:nth-of-type(17) { --atmo: rgba(201,162,75,0.06); } /* Coda       · gold
   color: var(--gold-bright); border-color: var(--gold);
 }
 .world-link.hero-cta:hover { color: var(--bg); background: var(--gold-bright); }
+
+/* §05 → live Five Elements assessment CTA */
+.five-cta { text-align: center; margin-top: 52px; }
+.five-cta-line {
+  font-family: var(--display); font-style: italic; font-weight: 300;
+  font-size: clamp(17px, 2vw, 23px); color: var(--ivory-dim);
+  line-height: 1.5; margin-bottom: 22px;
+}
+.five-cta-line .cn { font-family: var(--cjk); font-style: normal; letter-spacing: 0.06em; }
+.world-link.five-assess {
+  background: rgba(201,162,75,0.12); border-color: rgba(201,162,75,0.42); color: var(--gold-bright);
+}
+.world-link.five-assess:hover { background: var(--gold); color: var(--bg); border-color: var(--gold); }
 </style>
 <!-- SEO · GEO · psyverse -->
 <link rel="canonical" href="https://psyverse.fun/" />
@@ -2672,6 +2685,15 @@ section:nth-of-type(17) { --atmo: rgba(201,162,75,0.06); } /* Coda       · gold
         <div class="el-figures">老子 <span class="mid">×</span> 尼采</div>
       </div>
     </div>
+  </div>
+  <div class="five-cta">
+    <p class="five-cta-line">
+      <span class="en">Which of the five moves through you most strongly?</span>
+      <span class="cn">五行之中，哪一种在你身上流动得最强？</span>
+    </p>
+    <a class="world-link five-assess" href="https://five-elements.psyverse.fun/" target="_blank" rel="noopener">
+      Take the Five Elements assessment <span aria-hidden="true">→</span>
+    </a>
   </div>
 </section>
 
