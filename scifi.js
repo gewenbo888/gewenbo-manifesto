@@ -150,6 +150,7 @@
     'ψ · PSYVERSE NET<br>' +
     '<span class="en">NODE</span><span class="cn">节点</span> · <span class="v">' + label + '</span><br>' +
     '<span class="en">SECTOR</span><span class="cn">区段</span> · <span class="v">0x' + sector + '</span><br>' +
+    '<span class="en">SEC</span><span class="cn">章节</span> · <span class="v" id="scifi-sec">--/--</span><br>' +
     '<span class="en">SYS</span><span class="cn">系统</span> · <span class="v">ONLINE</span>');
   var hudBR = el("scifi-hud br",
     '<span class="en">LINK</span><span class="cn">链接</span> · <span class="v" id="scifi-lk">000</span><br>' +
@@ -172,7 +173,36 @@
     }
     buildReticle();
     buildPing();
+    initSecLocator();
     start();
+  }
+
+  /* ── HUD section locator (updates on scroll) ────────────────────── */
+  var secEl = null, secList = null;
+  function initSecLocator() {
+    secEl = document.getElementById("scifi-sec");
+    secList = [].slice.call(document.querySelectorAll(".w-section"));
+    if (!secEl) return;
+    if (secList.length < 2) { secEl.textContent = "--/--"; return; }
+    updateSec();
+    window.addEventListener("scroll", throttle(updateSec, 120), { passive: true });
+  }
+  function updateSec() {
+    if (!secEl || !secList || secList.length < 2) return;
+    var mid = window.scrollY + window.innerHeight * 0.42, idx = 0;
+    for (var i = 0; i < secList.length; i++) {
+      if (secList[i].offsetTop <= mid) idx = i;
+    }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) idx = secList.length - 1;
+    secEl.textContent = String(idx + 1).padStart(2, "0") + "/" + String(secList.length).padStart(2, "0");
+  }
+  function throttle(fn, ms) {
+    var last = 0, t;
+    return function () {
+      var now = Date.now();
+      if (now - last >= ms) { last = now; fn(); }
+      else { clearTimeout(t); t = setTimeout(function () { last = Date.now(); fn(); }, ms); }
+    };
   }
 
   /* ── sonar-ping ripple on click ─────────────────────────────────── */
