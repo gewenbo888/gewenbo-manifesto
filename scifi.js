@@ -254,6 +254,7 @@
   var meteors = [];           // rare shooting-star / data-trail streaks
   var px = 0, py = 0, tpx = 0, tpy = 0;  // eased parallax offset
   var reticle = null, rx = 0, ry = 0, trx = 0, trY = 0;  // eased HUD reticle
+  var cmx = -1e6, cmy = -1e6;  // cursor in canvas pixels (offscreen until moved)
 
   function seedStars() {
     var area = (W * H) / (dpr * dpr);
@@ -319,6 +320,32 @@
       ctx.fillStyle = "rgba(" + s.hue + "," + (0.5 * tw).toFixed(3) + ")";
       ctx.shadowBlur = 6 * dpr; ctx.shadowColor = "rgba(" + s.hue + ",0.5)";
       ctx.fill();
+    }
+    // cursor ignition: the nearest few stars brighten and link to the cursor,
+    // forming a small constellation that follows it through the dark.
+    if (!reduce && cmx > -1e5) {
+      var cgx = cmx - px, cgy = cmy - py, cMax = 260 * dpr;
+      var near = [];
+      for (var ci = 0; ci < stars.length; ci++) {
+        var cs = stars[ci];
+        var cd = Math.hypot(cs.x - cgx, cs.y - cgy);
+        if (cd < cMax) near.push({ s: cs, d: cd });
+      }
+      near.sort(function (a, b) { return a.d - b.d; });
+      for (var ni = 0; ni < Math.min(5, near.length); ni++) {
+        var nd = near[ni], co = Math.max(0, Math.min(1, 1 - nd.d / cMax));
+        ctx.strokeStyle = "rgba(" + GOLD_BRIGHT + "," + (co * 0.3).toFixed(3) + ")";
+        ctx.lineWidth = 0.7 * dpr;
+        ctx.beginPath(); ctx.moveTo(nd.s.x, nd.s.y); ctx.lineTo(cgx, cgy); ctx.stroke();
+        ctx.beginPath(); ctx.arc(nd.s.x, nd.s.y, nd.s.r * (1 + co * 1.3), 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(" + GOLD_BRIGHT + "," + (co * 0.7).toFixed(3) + ")";
+        ctx.shadowBlur = 9 * dpr; ctx.shadowColor = "rgba(" + GOLD_BRIGHT + ",0.7)";
+        ctx.fill();
+      }
+      // faint focus dot at the cursor itself
+      ctx.beginPath(); ctx.arc(cgx, cgy, 1.3 * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(" + GOLD_BRIGHT + ",0.5)"; ctx.fill();
+      ctx.shadowBlur = 0;
     }
     // data packets
     for (var pI = packets.length - 1; pI >= 0; pI--) {
@@ -407,6 +434,7 @@
       window.addEventListener("mousemove", function (e) {
         mX = e.clientX / window.innerWidth;
         mY = e.clientY / window.innerHeight;
+        cmx = e.clientX * dpr; cmy = e.clientY * dpr;
         applyParallax();
       }, { passive: true });
       window.addEventListener("scroll", applyParallax, { passive: true });
