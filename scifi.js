@@ -83,12 +83,24 @@
 
   // page label from <title> — first token before a separator
   var label = (document.title || "PSYVERSE").split(/[—·|]/)[0].trim().toUpperCase().slice(0, 22);
+  // deterministic per-page worldbuilding ids derived from the label
+  function hash(s) {
+    var h = 2166136261;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  var hv = hash(label);
+  var sector = (hv % 256).toString(16).toUpperCase();
+  if (sector.length < 2) sector = "0" + sector;
+  var freq = (108 + (hv % 8000) / 100).toFixed(2);
   var hudTL = el("scifi-hud tl",
     'ψ · PSYVERSE NET<br>' +
     '<span class="en">NODE</span><span class="cn">节点</span> · <span class="v">' + label + '</span><br>' +
+    '<span class="en">SECTOR</span><span class="cn">区段</span> · <span class="v">0x' + sector + '</span><br>' +
     '<span class="en">SYS</span><span class="cn">系统</span> · <span class="v">ONLINE</span>');
   var hudBR = el("scifi-hud br",
     '<span class="en">LINK</span><span class="cn">链接</span> · <span class="v" id="scifi-lk">000</span><br>' +
+    '<span class="en">FREQ</span><span class="cn">频率</span> · <span class="v">' + freq + '</span><br>' +
     'LAT <span class="v" id="scifi-lat">00.000</span><br>' +
     'LON <span class="v" id="scifi-lon">000.000</span><br>' +
     'T+<span class="v" id="scifi-up">0000</span>');
@@ -112,6 +124,8 @@
   var ctx = canvas.getContext("2d");
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
   var W = 0, H = 0, stars = [], LINK = 118;
+  var packets = [];           // data pulses traveling along constellation links
+  var px = 0, py = 0, tpx = 0, tpy = 0;  // eased parallax offset
 
   function seedStars() {
     var area = (W * H) / (dpr * dpr);
@@ -140,6 +154,8 @@
   var t0 = Date.now(), linkCount = 0;
   function draw(now) {
     ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    ctx.translate(px, py);
     var maxD = LINK * dpr, links = 0;
     // constellation links
     for (var i = 0; i < stars.length; i++) {
@@ -153,6 +169,10 @@
           ctx.lineWidth = 0.6 * dpr;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
           links++;
+          // occasionally transmit a data packet along this link
+          if (!reduce && packets.length < 16 && Math.random() < 0.0016) {
+            packets.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, t: 0, sp: rand(0.012, 0.03) });
+          }
         }
       }
     }
@@ -172,7 +192,21 @@
       ctx.shadowBlur = 6 * dpr; ctx.shadowColor = "rgba(" + s.hue + ",0.5)";
       ctx.fill();
     }
+    // data packets
+    for (var pI = packets.length - 1; pI >= 0; pI--) {
+      var pk = packets[pI];
+      pk.t += pk.sp;
+      if (pk.t >= 1) { packets.splice(pI, 1); continue; }
+      var x = pk.ax + (pk.bx - pk.ax) * pk.t, y = pk.ay + (pk.by - pk.ay) * pk.t;
+      var fade = Math.sin(pk.t * Math.PI);
+      ctx.beginPath();
+      ctx.arc(x, y, 1.5 * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(" + GOLD_BRIGHT + "," + (0.85 * fade).toFixed(3) + ")";
+      ctx.shadowBlur = 9 * dpr; ctx.shadowColor = "rgba(" + GOLD_BRIGHT + ",0.85)";
+      ctx.fill();
+    }
     ctx.shadowBlur = 0;
+    ctx.restore();
   }
 
   /* ── telemetry readout ──────────────────────────────────────────── */
@@ -192,6 +226,7 @@
   var raf = 0, running = false, lastTel = 0;
   function frame(now) {
     if (!running) return;
+    px += (tpx - px) * 0.05; py += (tpy - py) * 0.05;
     draw(now);
     if (now - lastTel > 500) { telemetry(); lastTel = now; }
     if (!reduce) raf = requestAnimationFrame(frame);
@@ -202,6 +237,21 @@
     if (reduce) { draw(performance.now()); telemetry(); }
     else raf = requestAnimationFrame(frame);
     window.addEventListener("resize", debounce(resize, 200));
+    if (!reduce) {
+      var mY = 0.5;
+      function applyParallax() {
+        var scrollShift = -(window.scrollY || 0) * 0.012 * dpr;
+        tpx = (mX - 0.5) * 22 * dpr;
+        tpy = (mY - 0.5) * 22 * dpr + scrollShift;
+      }
+      var mX = 0.5;
+      window.addEventListener("mousemove", function (e) {
+        mX = e.clientX / window.innerWidth;
+        mY = e.clientY / window.innerHeight;
+        applyParallax();
+      }, { passive: true });
+      window.addEventListener("scroll", applyParallax, { passive: true });
+    }
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) { running = false; cancelAnimationFrame(raf); }
       else if (!reduce) { running = true; raf = requestAnimationFrame(frame); }
