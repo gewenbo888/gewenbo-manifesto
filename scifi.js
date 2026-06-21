@@ -81,6 +81,16 @@
     margin-top:7px;font-family:"JetBrains Mono",monospace;font-size:8px;
     letter-spacing:.16em;color:rgba(${GOLD},.7);white-space:nowrap;}
   @media (pointer:coarse){.scifi-reticle{display:none!important;}}
+  .w-card::before,.w-card::after{content:"";position:absolute;width:9px;height:9px;
+    pointer-events:none;border:1px solid transparent;
+    transition:border-color .35s,width .35s,height .35s;}
+  .w-card::before{top:7px;left:7px;
+    border-top-color:rgba(${GOLD},.28);border-left-color:rgba(${GOLD},.28);}
+  .w-card::after{bottom:7px;right:7px;
+    border-bottom-color:rgba(${GOLD},.28);border-right-color:rgba(${GOLD},.28);}
+  .w-card:hover::before,.w-card:hover::after{width:13px;height:13px;}
+  .w-card:hover::before{border-top-color:rgba(${GOLD_BRIGHT},.85);border-left-color:rgba(${GOLD_BRIGHT},.85);}
+  .w-card:hover::after{border-bottom-color:rgba(${GOLD_BRIGHT},.85);border-right-color:rgba(${GOLD_BRIGHT},.85);}
   @media (max-width:680px){.scifi-hud{font-size:8px;}.scifi-overlay{opacity:.4;}}
   @media (prefers-reduced-motion: reduce){
     .scifi-overlay{opacity:.32;}.scifi-scan{display:none;}}
