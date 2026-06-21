@@ -181,9 +181,12 @@
   var secEl = null, secList = null;
   function initSecLocator() {
     secEl = document.getElementById("scifi-sec");
-    secList = [].slice.call(document.querySelectorAll(".w-section"));
     if (!secEl) return;
+    // destination pages use .w-section; the homepage uses <section id="…"> chapters
+    secList = [].slice.call(document.querySelectorAll(".w-section"));
+    if (secList.length < 2) secList = [].slice.call(document.querySelectorAll("section[id]"));
     if (secList.length < 2) { secEl.textContent = "--/--"; return; }
+    secList.sort(function (a, b) { return a.offsetTop - b.offsetTop; });
     updateSec();
     window.addEventListener("scroll", throttle(updateSec, 120), { passive: true });
   }
