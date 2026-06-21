@@ -106,7 +106,7 @@
   ${cHov}{width:13px;height:13px;}
   ${cHovBefore}{border-top-color:rgba(${GOLD_BRIGHT},.85);border-left-color:rgba(${GOLD_BRIGHT},.85);}
   ${cHovAfter}{border-bottom-color:rgba(${GOLD_BRIGHT},.85);border-right-color:rgba(${GOLD_BRIGHT},.85);}
-  @media (max-width:680px){.scifi-hud{font-size:8px;}.scifi-overlay{opacity:.4;}}
+  @media (max-width:680px){.scifi-hud{font-size:8px;opacity:.66;}.scifi-overlay{opacity:.34;}}
   @media (prefers-reduced-motion: reduce){
     .scifi-overlay{opacity:.32;}.scifi-scan{display:none;}}
   `;
