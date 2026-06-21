@@ -57,6 +57,9 @@
     animation:scifiBoot 1.7s cubic-bezier(.4,0,.2,1) forwards;}
   @keyframes scifiBoot{0%{transform:translateY(0);opacity:0;}
     8%{opacity:1;}92%{opacity:1;}100%{transform:translateY(100vh);opacity:0;}}
+  .w-h2.scifi-decrypting{color:rgba(${GOLD_BRIGHT},.92)!important;
+    text-shadow:0 0 12px rgba(${GOLD},.35);}
+  .w-h2.scifi-decrypting>.cn{opacity:.35;}
   @media (max-width:680px){.scifi-hud{font-size:8px;}.scifi-overlay{opacity:.4;}}
   @media (prefers-reduced-motion: reduce){
     .scifi-overlay{opacity:.32;}.scifi-scan{display:none;}}
@@ -261,7 +264,54 @@
     var id; return function () { clearTimeout(id); id = setTimeout(fn, ms); };
   }
 
+  /* ── decrypt-on-reveal for section headings ─────────────────────── */
+  // Scrambles ONLY the leading text node of each .w-h2 through sci-fi
+  // glyphs, resolving left-to-right when the heading scrolls into view.
+  // Length and whitespace are preserved so layout never reflows; the
+  // bilingual <span> children are never touched.
+  var GLYPHS = "ABCDEFGHJKLMNPRSTUVWXYZ0123456789#%&*<>/\\|=+:░▒▓キミラサヲンΨψ";
+  function decryptReveal() {
+    if (reduce || !("IntersectionObserver" in window)) return;
+    var heads = document.querySelectorAll(".w-h2");
+    if (!heads.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        scramble(en.target);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.2 });
+    heads.forEach(function (h) {
+      var node = h.firstChild;
+      if (!node || node.nodeType !== 3 || !node.nodeValue.trim()) return;
+      io.observe(h);
+    });
+  }
+  function scramble(h) {
+    var node = h.firstChild;
+    if (!node || node.nodeType !== 3) return;
+    var orig = node.nodeValue;
+    var chars = Array.prototype.slice.call(orig);
+    var revealAt = chars.map(function (c, i) {
+      return c.trim() === "" ? 0 : i * 0.9 + Math.random() * 7;
+    });
+    var maxF = Math.max.apply(null, revealAt) + 3, f = 0;
+    h.classList.add("scifi-decrypting");
+    function step() {
+      var out = "";
+      for (var i = 0; i < chars.length; i++) {
+        if (chars[i].trim() === "" || f >= revealAt[i]) out += chars[i];
+        else out += GLYPHS.charAt((Math.random() * GLYPHS.length) | 0);
+      }
+      node.nodeValue = out;
+      f++;
+      if (f <= maxF) requestAnimationFrame(step);
+      else { node.nodeValue = orig; h.classList.remove("scifi-decrypting"); }
+    }
+    requestAnimationFrame(step);
+  }
+
   if (document.readyState === "loading")
-    document.addEventListener("DOMContentLoaded", mount);
-  else mount();
+    document.addEventListener("DOMContentLoaded", function () { mount(); decryptReveal(); });
+  else { mount(); decryptReveal(); }
 })();
