@@ -60,6 +60,27 @@
   .w-h2.scifi-decrypting{color:rgba(${GOLD_BRIGHT},.92)!important;
     text-shadow:0 0 12px rgba(${GOLD},.35);}
   .w-h2.scifi-decrypting>.cn{opacity:.35;}
+  .scifi-reticle{position:fixed;top:0;left:0;z-index:5;pointer-events:none;
+    width:44px;height:44px;margin:-22px 0 0 -22px;opacity:0;will-change:transform;
+    transition:opacity .3s,width .16s ease,height .16s ease,margin .16s ease;}
+  .scifi-reticle.on{opacity:.5;}
+  .scifi-reticle .ring{position:absolute;inset:0;border-radius:50%;
+    border:1px solid rgba(${GOLD},.55);box-shadow:inset 0 0 8px rgba(${GOLD},.2);
+    transition:border-color .16s;}
+  .scifi-reticle .dot{position:absolute;left:50%;top:50%;width:2px;height:2px;
+    margin:-1px 0 0 -1px;border-radius:50%;background:rgba(${GOLD_BRIGHT},.85);}
+  .scifi-reticle .tick{position:absolute;background:rgba(${GOLD_BRIGHT},.8);}
+  .scifi-reticle .tick.t,.scifi-reticle .tick.b{left:50%;width:1px;height:6px;margin-left:-.5px;}
+  .scifi-reticle .tick.l,.scifi-reticle .tick.r{top:50%;height:1px;width:6px;margin-top:-.5px;}
+  .scifi-reticle .tick.t{top:-3px;}.scifi-reticle .tick.b{bottom:-3px;}
+  .scifi-reticle .tick.l{left:-3px;}.scifi-reticle .tick.r{right:-3px;}
+  .scifi-reticle.lock{width:62px;height:62px;margin:-31px 0 0 -31px;opacity:.85;}
+  .scifi-reticle.lock .ring{border-color:rgba(${GOLD_BRIGHT},.85);
+    box-shadow:inset 0 0 10px rgba(${GOLD},.3),0 0 10px rgba(${GOLD},.25);}
+  .scifi-reticle .xy{position:absolute;left:50%;top:100%;transform:translateX(-50%);
+    margin-top:7px;font-family:"JetBrains Mono",monospace;font-size:8px;
+    letter-spacing:.16em;color:rgba(${GOLD},.7);white-space:nowrap;}
+  @media (pointer:coarse){.scifi-reticle{display:none!important;}}
   @media (max-width:680px){.scifi-hud{font-size:8px;}.scifi-overlay{opacity:.4;}}
   @media (prefers-reduced-motion: reduce){
     .scifi-overlay{opacity:.32;}.scifi-scan{display:none;}}
@@ -120,8 +141,35 @@
       b.appendChild(scan);
       scan.addEventListener("animationend", function () { scan.remove(); });
     }
+    buildReticle();
     start();
   }
+
+  /* ── cursor-following HUD reticle ───────────────────────────────── */
+  function buildReticle() {
+    if (reduce || !window.matchMedia ||
+        !window.matchMedia("(pointer:fine)").matches) return;
+    reticle = el("scifi-reticle",
+      '<span class="ring"></span><span class="dot"></span>' +
+      '<i class="tick t"></i><i class="tick r"></i>' +
+      '<i class="tick b"></i><i class="tick l"></i>' +
+      '<span class="xy" id="scifi-xy"></span>');
+    document.body.appendChild(reticle);
+    var xy = reticle.querySelector("#scifi-xy");
+    var lockSel = "a,button,summary,input,select,textarea,label," +
+      "[role=button],[onclick],[tabindex],.w-tab,.w-tabs *,.w-back";
+    window.addEventListener("mousemove", function (e) {
+      trx = e.clientX; trY = e.clientY;
+      if (!reticle.classList.contains("on")) reticle.classList.add("on");
+      var hit = e.target && e.target.closest && e.target.closest(lockSel);
+      reticle.classList.toggle("lock", !!hit);
+      if (xy) xy.textContent = "X" + pad4(e.clientX) + " Y" + pad4(e.clientY);
+    }, { passive: true });
+    document.addEventListener("mouseleave", function () {
+      reticle.classList.remove("on");
+    });
+  }
+  function pad4(n) { return String(n).padStart(4, "0"); }
 
   /* ── starfield ──────────────────────────────────────────────────── */
   var ctx = canvas.getContext("2d");
@@ -129,6 +177,7 @@
   var W = 0, H = 0, stars = [], LINK = 118;
   var packets = [];           // data pulses traveling along constellation links
   var px = 0, py = 0, tpx = 0, tpy = 0;  // eased parallax offset
+  var reticle = null, rx = 0, ry = 0, trx = 0, trY = 0;  // eased HUD reticle
 
   function seedStars() {
     var area = (W * H) / (dpr * dpr);
@@ -230,6 +279,10 @@
   function frame(now) {
     if (!running) return;
     px += (tpx - px) * 0.05; py += (tpy - py) * 0.05;
+    if (reticle) {
+      rx += (trx - rx) * 0.22; ry += (trY - ry) * 0.22;
+      reticle.style.transform = "translate(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px)";
+    }
     draw(now);
     if (now - lastTel > 500) { telemetry(); lastTel = now; }
     if (!reduce) raf = requestAnimationFrame(frame);
