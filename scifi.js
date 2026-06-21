@@ -18,6 +18,20 @@
   var reduce = window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // content cards that receive HUD corner brackets. Curated to card/panel/
+  // tile-sized blocks with no existing ::before/::after; tiny cells, list
+  // items, and graph nodes are excluded to avoid clutter and reanchoring of
+  // absolutely-positioned descendants.
+  var CARDS = ["w-card", "dom-panel", "ss-card", "vision-cell", "world-tile",
+    "clmb-card", "cx-card", "purpose-card", "approach-card", "frontier-card",
+    "conflict-card", "compound-card", "pattern-card", "refusal-card", "we-card"];
+  var cSel = CARDS.map(function (c) { return "." + c; }).join(",");
+  var cBefore = CARDS.map(function (c) { return "." + c + "::before"; }).join(",");
+  var cAfter = CARDS.map(function (c) { return "." + c + "::after"; }).join(",");
+  var cHovBefore = CARDS.map(function (c) { return "." + c + ":hover::before"; }).join(",");
+  var cHovAfter = CARDS.map(function (c) { return "." + c + ":hover::after"; }).join(",");
+  var cHov = CARDS.map(function (c) { return "." + c + ":hover::before,." + c + ":hover::after"; }).join(",");
+
   /* ── styles ─────────────────────────────────────────────────────── */
   var css = `
   #scifi-stars{position:fixed;inset:0;z-index:-1;pointer-events:none;}
@@ -81,16 +95,17 @@
     margin-top:7px;font-family:"JetBrains Mono",monospace;font-size:8px;
     letter-spacing:.16em;color:rgba(${GOLD},.7);white-space:nowrap;}
   @media (pointer:coarse){.scifi-reticle{display:none!important;}}
-  .w-card::before,.w-card::after{content:"";position:absolute;width:9px;height:9px;
+  ${cSel}{position:relative;}
+  ${cBefore},${cAfter}{content:"";position:absolute;width:9px;height:9px;
     pointer-events:none;border:1px solid transparent;
     transition:border-color .35s,width .35s,height .35s;}
-  .w-card::before{top:7px;left:7px;
+  ${cBefore}{top:7px;left:7px;
     border-top-color:rgba(${GOLD},.28);border-left-color:rgba(${GOLD},.28);}
-  .w-card::after{bottom:7px;right:7px;
+  ${cAfter}{bottom:7px;right:7px;
     border-bottom-color:rgba(${GOLD},.28);border-right-color:rgba(${GOLD},.28);}
-  .w-card:hover::before,.w-card:hover::after{width:13px;height:13px;}
-  .w-card:hover::before{border-top-color:rgba(${GOLD_BRIGHT},.85);border-left-color:rgba(${GOLD_BRIGHT},.85);}
-  .w-card:hover::after{border-bottom-color:rgba(${GOLD_BRIGHT},.85);border-right-color:rgba(${GOLD_BRIGHT},.85);}
+  ${cHov}{width:13px;height:13px;}
+  ${cHovBefore}{border-top-color:rgba(${GOLD_BRIGHT},.85);border-left-color:rgba(${GOLD_BRIGHT},.85);}
+  ${cHovAfter}{border-bottom-color:rgba(${GOLD_BRIGHT},.85);border-right-color:rgba(${GOLD_BRIGHT},.85);}
   @media (max-width:680px){.scifi-hud{font-size:8px;}.scifi-overlay{opacity:.4;}}
   @media (prefers-reduced-motion: reduce){
     .scifi-overlay{opacity:.32;}.scifi-scan{display:none;}}
