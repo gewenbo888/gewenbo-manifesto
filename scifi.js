@@ -106,6 +106,10 @@
   ${cHov}{width:13px;height:13px;}
   ${cHovBefore}{border-top-color:rgba(${GOLD_BRIGHT},.85);border-left-color:rgba(${GOLD_BRIGHT},.85);}
   ${cHovAfter}{border-bottom-color:rgba(${GOLD_BRIGHT},.85);border-right-color:rgba(${GOLD_BRIGHT},.85);}
+  .scifi-ping{position:fixed;z-index:4;pointer-events:none;width:10px;height:10px;
+    margin:-5px 0 0 -5px;border-radius:50%;border:1px solid rgba(${GOLD_BRIGHT},.85);
+    box-shadow:0 0 8px rgba(${GOLD},.4);animation:scifiPing .6s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes scifiPing{0%{transform:scale(.25);opacity:.85;}100%{transform:scale(7);opacity:0;}}
   @media (max-width:680px){.scifi-hud{font-size:8px;opacity:.66;}.scifi-overlay{opacity:.34;}}
   @media (prefers-reduced-motion: reduce){
     .scifi-overlay{opacity:.32;}.scifi-scan{display:none;}}
@@ -167,7 +171,20 @@
       scan.addEventListener("animationend", function () { scan.remove(); });
     }
     buildReticle();
+    buildPing();
     start();
+  }
+
+  /* ── sonar-ping ripple on click ─────────────────────────────────── */
+  function buildPing() {
+    if (reduce) return;
+    document.addEventListener("click", function (e) {
+      var p = el("scifi-ping");
+      p.style.left = e.clientX + "px";
+      p.style.top = e.clientY + "px";
+      document.body.appendChild(p);
+      p.addEventListener("animationend", function () { p.remove(); });
+    }, true);
   }
 
   /* ── cursor-following HUD reticle ───────────────────────────────── */
