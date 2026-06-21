@@ -201,6 +201,7 @@
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
   var W = 0, H = 0, stars = [], LINK = 118;
   var packets = [];           // data pulses traveling along constellation links
+  var meteors = [];           // rare shooting-star / data-trail streaks
   var px = 0, py = 0, tpx = 0, tpy = 0;  // eased parallax offset
   var reticle = null, rx = 0, ry = 0, trx = 0, trY = 0;  // eased HUD reticle
 
@@ -282,6 +283,33 @@
       ctx.shadowBlur = 9 * dpr; ctx.shadowColor = "rgba(" + GOLD_BRIGHT + ",0.85)";
       ctx.fill();
     }
+    // rare meteor streaks
+    if (!reduce && meteors.length < 2 && Math.random() < 0.0012) {
+      var fromLeft = Math.random() < 0.5;
+      var sx = fromLeft ? rand(-0.1 * W, 0.3 * W) : rand(0.7 * W, 1.1 * W);
+      var sy = rand(-0.05 * H, 0.4 * H);
+      var ang = fromLeft ? rand(0.25, 0.5) : rand(Math.PI - 0.5, Math.PI - 0.25);
+      var spd = rand(7, 12) * dpr;
+      meteors.push({ x: sx, y: sy, vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd,
+        life: 0, max: rand(60, 110), hue: Math.random() < 0.5 ? GOLD_BRIGHT : JADE });
+    }
+    for (var mI = meteors.length - 1; mI >= 0; mI--) {
+      var m = meteors[mI];
+      m.x += m.vx; m.y += m.vy; m.life++;
+      if (m.life > m.max || m.x < -0.25 * W || m.x > 1.25 * W || m.y > 1.25 * H) { meteors.splice(mI, 1); continue; }
+      var mf = Math.max(0, Math.min(1, Math.min(m.life / 10, (m.max - m.life) / 22)));
+      var msp = Math.hypot(m.vx, m.vy) || 1, ux = m.vx / msp, uy = m.vy / msp;
+      var tx = m.x - ux * 84 * dpr, ty = m.y - uy * 84 * dpr;
+      var grad = ctx.createLinearGradient(m.x, m.y, tx, ty);
+      grad.addColorStop(0, "rgba(" + m.hue + "," + (0.9 * mf).toFixed(3) + ")");
+      grad.addColorStop(1, "rgba(" + m.hue + ",0)");
+      ctx.strokeStyle = grad; ctx.lineWidth = 1.4 * dpr; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(m.x, m.y); ctx.lineTo(tx, ty); ctx.stroke();
+      ctx.beginPath(); ctx.arc(m.x, m.y, 1.6 * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(" + m.hue + "," + (0.95 * mf).toFixed(3) + ")";
+      ctx.shadowBlur = 10 * dpr; ctx.shadowColor = "rgba(" + m.hue + ",0.8)"; ctx.fill();
+    }
+    ctx.lineCap = "butt";
     ctx.shadowBlur = 0;
     ctx.restore();
   }
