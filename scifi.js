@@ -71,9 +71,9 @@
     animation:scifiBoot 1.7s cubic-bezier(.4,0,.2,1) forwards;}
   @keyframes scifiBoot{0%{transform:translateY(0);opacity:0;}
     8%{opacity:1;}92%{opacity:1;}100%{transform:translateY(100vh);opacity:0;}}
-  .w-h2.scifi-decrypting{color:rgba(${GOLD_BRIGHT},.92)!important;
+  .w-h2.scifi-decrypting,.section-title.scifi-decrypting{color:rgba(${GOLD_BRIGHT},.92)!important;
     text-shadow:0 0 12px rgba(${GOLD},.35);}
-  .w-h2.scifi-decrypting>.cn{opacity:.35;}
+  .w-h2.scifi-decrypting>.cn,.section-title.scifi-decrypting>.cn{opacity:.35;}
   .scifi-reticle{position:fixed;top:0;left:0;z-index:5;pointer-events:none;
     width:44px;height:44px;margin:-22px 0 0 -22px;opacity:0;will-change:transform;
     transition:opacity .3s,width .16s ease,height .16s ease,margin .16s ease;}
@@ -425,7 +425,7 @@
   var GLYPHS = "ABCDEFGHJKLMNPRSTUVWXYZ0123456789#%&*<>/\\|=+:░▒▓キミラサヲンΨψ";
   function decryptReveal() {
     if (reduce || !("IntersectionObserver" in window)) return;
-    var heads = document.querySelectorAll(".w-h2");
+    var heads = document.querySelectorAll(".w-h2, .section-title");
     if (!heads.length) return;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -435,14 +435,22 @@
       });
     }, { rootMargin: "0px 0px -12% 0px", threshold: 0.2 });
     heads.forEach(function (h) {
-      var node = h.firstChild;
-      if (!node || node.nodeType !== 3 || !node.nodeValue.trim()) return;
+      if (!titleTextNode(h)) return;
       io.observe(h);
     });
   }
+  // primary English text node of a heading: a direct text node, or the text
+  // inside an .auto-en / .en wrapper (the homepage wraps its EN title in a span).
+  function titleTextNode(h) {
+    var fc = h.firstChild;
+    if (fc && fc.nodeType === 3 && fc.nodeValue.trim()) return fc;
+    var en = h.querySelector(".auto-en, .en");
+    if (en && en.firstChild && en.firstChild.nodeType === 3 && en.firstChild.nodeValue.trim()) return en.firstChild;
+    return null;
+  }
   function scramble(h) {
-    var node = h.firstChild;
-    if (!node || node.nodeType !== 3) return;
+    var node = titleTextNode(h);
+    if (!node) return;
     var orig = node.nodeValue;
     var chars = Array.prototype.slice.call(orig);
     var revealAt = chars.map(function (c, i) {
