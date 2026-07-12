@@ -217,10 +217,20 @@ section {
   color: var(--ivory-faint);
 }
 .hero-top .site-title {
-  display: flex; flex-direction: column; gap: 6px;
+  display: flex; flex-direction: column; gap: 10px;
+  color: var(--ivory);
 }
 .hero-top .site-title .cn {
-  font-family: var(--cjk); letter-spacing: 0.22em;
+  font-family: var(--cjk);
+  font-size: clamp(20px, 3vw, 28px);
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+}
+.hero-top .site-title .en {
+  font-size: clamp(13px, 1.5vw, 16px);
+  letter-spacing: 0.2em;
+  line-height: 1.6;
+  color: var(--ivory-dim);
 }
 .hero-center {
   display: flex; flex-direction: column;
