@@ -538,6 +538,8 @@ footer a:hover { color: var(--gold); }
 // ═══════ subdomain ↔ canonical key map (from analytics-dashboard collect.js) ═══════
 const SUBDOMAIN_BY_KEY = {};
 const PSYVERSE_MAP = {
+  'grand-unification.psyverse.fun': 'grand-unification',
+  'protocol.psyverse.fun': 'hypothesis-protocol',
   'minds-eye.psyverse.fun': 'minds-eye',
   'critical-path-of-reality.psyverse.fun': 'critical-path-of-reality',
   'the-future-has-begun.psyverse.fun': 'the-future-has-begun',
@@ -800,6 +802,7 @@ function groupOf(key) {
 
 // ═══════ title humanization ═══════
 const TITLE_OVERRIDES = {
+  'hypothesis-protocol': 'Experimental Protocol Generator · 实验方案生成器',
   'minds-eye': 'The Mind’s Eye · 心灵之眼',
   'critical-path-of-reality': 'The Critical Path of Reality · 宇宙关键路径',
   'the-future-has-begun': 'AEON · 纪元 — The Future Has Already Begun',
