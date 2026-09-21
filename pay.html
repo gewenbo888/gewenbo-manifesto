@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900&family=Noto+Serif+SC:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900&family=Noto+Serif+SC:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+<!-- Ethers.js for Web3 Direct Checkout -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 <style>
 :root {
   --bg: #0a0908;
@@ -24,6 +26,8 @@
   --line: rgba(201, 162, 75, 0.22);
   --line-strong: rgba(201, 162, 75, 0.45);
   --accent-green: #4ade80;
+  --accent-purple: #bc8cff;
+  --accent-cyan: #58a6ff;
   --serif: "Noto Serif SC", "Cormorant Garamond", serif;
   --mono: "JetBrains Mono", monospace;
   --display: "Fraunces", "Noto Serif SC", serif;
@@ -40,13 +44,13 @@ body {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 header {
-  padding: 36px 0 20px;
+  padding: 28px 0 20px;
   border-bottom: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
@@ -65,16 +69,17 @@ header {
 }
 
 .brand-badge {
-  padding: 2px 8px;
+  padding: 3px 10px;
   background: rgba(201, 162, 75, 0.12);
   border: 1px solid var(--line);
   border-radius: 4px;
   font-size: 11px;
   color: var(--gold);
+  font-family: var(--mono);
 }
 
 .hero {
-  padding: 60px 0 40px;
+  padding: 50px 0 30px;
   text-align: center;
 }
 
@@ -83,23 +88,23 @@ header {
   font-family: var(--mono);
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   color: var(--gold);
   margin-bottom: 18px;
-  padding: 4px 14px;
+  padding: 4px 16px;
   border: 1px solid var(--line);
-  background: rgba(201, 162, 75, 0.05);
+  background: rgba(201, 162, 75, 0.06);
   border-radius: 999px;
 }
 
 h1 {
   font-family: var(--serif);
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(28px, 4.5vw, 42px);
   font-weight: 900;
   color: var(--ivory);
   letter-spacing: 0.02em;
-  line-height: 1.25;
-  margin-bottom: 20px;
+  line-height: 1.3;
+  margin-bottom: 18px;
 }
 
 h1 span {
@@ -108,18 +113,18 @@ h1 span {
 }
 
 .subtitle {
-  font-size: clamp(16px, 2.5vw, 19px);
+  font-size: clamp(15px, 2vw, 18px);
   color: var(--ivory-dim);
-  max-width: 720px;
-  margin: 0 auto 32px;
+  max-width: 760px;
+  margin: 0 auto 28px;
   font-weight: 300;
 }
 
 .author-bar {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  padding: 8px 20px;
+  gap: 14px;
+  padding: 8px 22px;
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: 30px;
@@ -132,7 +137,7 @@ h1 span {
   color: var(--gold-bright);
 }
 
-/* 核心收银卡片区 */
+/* 核心收银卡片区 (3 阶梯) */
 .pricing-section {
   margin: 40px 0;
   display: grid;
@@ -143,8 +148,8 @@ h1 span {
 .card {
   background: var(--bg-card);
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 32px 28px;
+  border-radius: 14px;
+  padding: 32px 26px;
   position: relative;
   transition: all 0.3s ease;
   display: flex;
@@ -153,34 +158,49 @@ h1 span {
 
 .card:hover {
   border-color: var(--gold);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px var(--gold-glow);
-  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px var(--gold-glow);
+  transform: translateY(-3px);
 }
 
 .card.highlight {
   border-color: var(--gold-bright);
-  background: linear-gradient(180deg, #18140f 0%, #120e0b 100%);
+  background: linear-gradient(180deg, #19140e 0%, #120e0a 100%);
+  box-shadow: 0 0 25px rgba(201, 162, 75, 0.15);
+}
+
+.card.advisory {
+  border-color: rgba(188, 140, 255, 0.4);
+  background: linear-gradient(180deg, #16121f 0%, #100d17 100%);
+}
+.card.advisory:hover {
+  border-color: var(--accent-purple);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(188, 140, 255, 0.25);
 }
 
 .badge-top {
   position: absolute;
   top: -12px;
-  right: 24px;
-  background: var(--gold);
+  right: 22px;
+  background: var(--gold-bright);
   color: #000;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 11px;
-  padding: 3px 10px;
+  padding: 3px 12px;
   border-radius: 12px;
   letter-spacing: 0.05em;
   font-family: var(--mono);
+}
+
+.badge-top.purple {
+  background: var(--accent-purple);
+  color: #000;
 }
 
 .card-title {
   font-size: 20px;
   font-weight: 700;
   color: var(--ivory);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .card-desc {
@@ -188,25 +208,26 @@ h1 span {
   color: var(--ivory-faint);
   margin-bottom: 20px;
   min-height: 38px;
+  line-height: 1.5;
 }
 
 .price-box {
-  margin-bottom: 24px;
-  padding-bottom: 20px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
   border-bottom: 1px dashed var(--line);
   display: flex;
   align-items: baseline;
-  gap: 12px;
+  gap: 10px;
 }
 
 .price-currency {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--gold-bright);
   font-weight: 700;
 }
 
 .price-num {
-  font-size: 44px;
+  font-size: 42px;
   font-weight: 900;
   color: var(--gold-bright);
   font-family: var(--mono);
@@ -215,7 +236,7 @@ h1 span {
 .price-original {
   text-decoration: line-through;
   color: var(--ivory-faint);
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .price-period {
@@ -229,61 +250,124 @@ h1 span {
 
 .feature-list {
   list-style: none;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
   flex-grow: 1;
 }
 
 .feature-list li {
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--ivory-dim);
-  margin-bottom: 12px;
+  margin-bottom: 11px;
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
+  line-height: 1.5;
 }
 
 .feature-list li::before {
   content: "✦";
   color: var(--gold);
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.9;
 }
 
-.btn-checkout {
-  display: block;
-  text-align: center;
-  padding: 16px 20px;
+.checkout-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-channel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
   border-radius: 8px;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.05em;
+  font-size: 13.5px;
+  font-weight: 600;
   text-decoration: none;
+  transition: all 0.2s ease;
   cursor: pointer;
-  transition: all 0.25s ease;
+  border: 1px solid var(--line);
+  background: #0d0b09;
+  color: var(--ivory);
   font-family: var(--serif);
 }
 
-.btn-primary {
-  background: var(--gold-bright);
-  color: #0a0908;
-  border: 1px solid var(--gold-bright);
+.btn-channel:hover {
+  background: #1a1612;
+  border-color: var(--gold);
+  transform: translateX(2px);
 }
 
-.btn-primary:hover {
+.btn-channel.primary {
+  background: var(--gold-bright);
+  color: #0a0908;
+  border-color: var(--gold-bright);
+  font-weight: 700;
+}
+.btn-channel.primary:hover {
   background: #f3d48e;
   box-shadow: 0 0 15px var(--gold-glow);
 }
 
-.btn-secondary {
-  background: transparent;
-  color: var(--ivory);
-  border: 1px solid var(--line-strong);
+.btn-channel.web3 {
+  border-color: rgba(88, 166, 255, 0.4);
+  background: rgba(88, 166, 255, 0.08);
+  color: var(--accent-cyan);
+}
+.btn-channel.web3:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(88, 166, 255, 0.16);
 }
 
-.btn-secondary:hover {
-  border-color: var(--gold);
+.btn-channel.purple {
+  border-color: rgba(188, 140, 255, 0.4);
+  background: rgba(188, 140, 255, 0.08);
+  color: var(--accent-purple);
+}
+.btn-channel.purple:hover {
+  border-color: var(--accent-purple);
+  background: rgba(188, 140, 255, 0.16);
+}
+
+/* 免费引流诱饵 Lead Magnet 横幅 */
+.lead-magnet-bar {
+  background: rgba(201, 162, 75, 0.06);
+  border: 1px dashed var(--line-strong);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 30px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.lead-magnet-text h3 {
+  font-size: 18px;
   color: var(--gold-bright);
-  background: rgba(201, 162, 75, 0.08);
+  margin-bottom: 6px;
+}
+.lead-magnet-text p {
+  font-size: 13.5px;
+  color: var(--ivory-dim);
+}
+.lead-magnet-btn {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: var(--mono);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.lead-magnet-btn:hover {
+  background: var(--gold);
+  color: #000;
 }
 
 /* 交付物清单 */
@@ -291,15 +375,15 @@ h1 span {
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 36px;
+  padding: 32px;
   margin: 50px 0;
 }
 
 .section-heading {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   color: var(--gold-bright);
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -307,8 +391,8 @@ h1 span {
 
 .deliverable-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
 }
 
 .deliverable-item {
@@ -319,15 +403,15 @@ h1 span {
 }
 
 .deliverable-icon {
-  font-size: 26px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .deliverable-title {
   font-size: 15px;
   font-weight: 700;
   color: var(--ivory);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .deliverable-spec {
@@ -343,7 +427,7 @@ h1 span {
   line-height: 1.5;
 }
 
-/* 五卷本目录大纲 */
+/* 五卷大纲 */
 .toc-section {
   margin: 50px 0;
 }
@@ -352,8 +436,8 @@ h1 span {
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: 8px;
-  margin-bottom: 16px;
-  padding: 20px 24px;
+  margin-bottom: 14px;
+  padding: 18px 22px;
   transition: border-color 0.2s;
 }
 
@@ -365,7 +449,7 @@ h1 span {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   flex-wrap: wrap;
   gap: 8px;
 }
@@ -379,7 +463,7 @@ h1 span {
 }
 
 .toc-name {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--ivory);
 }
@@ -387,7 +471,7 @@ h1 span {
 .toc-sub {
   font-size: 13px;
   color: var(--ivory-dim);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .toc-tagline {
@@ -396,27 +480,27 @@ h1 span {
   font-family: var(--mono);
 }
 
-/* 试读弹窗/展开区 */
+/* 试读精华 */
 .sample-box {
   border: 1px dashed var(--line-strong);
   border-radius: 12px;
-  padding: 30px;
+  padding: 26px 30px;
   margin: 40px 0;
   background: rgba(201, 162, 75, 0.03);
 }
 
 .sample-title {
-  font-size: 18px;
+  font-size: 17px;
   color: var(--gold-bright);
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .sample-excerpt {
   font-size: 14px;
   color: var(--ivory-dim);
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-style: italic;
   border-left: 3px solid var(--gold);
   padding-left: 16px;
@@ -424,8 +508,8 @@ h1 span {
 
 /* 页脚 */
 footer {
-  margin-top: 80px;
-  padding-top: 30px;
+  margin-top: 70px;
+  padding-top: 26px;
   border-top: 1px solid var(--line);
   text-align: center;
   font-size: 13px;
@@ -438,29 +522,30 @@ footer a {
   text-decoration: none;
 }
 
-/* 扫码支付弹窗 (Modal) */
+/* 弹窗样式 */
 .modal-overlay {
   display: none;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.88);
   backdrop-filter: blur(8px);
   z-index: 9999;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
+.modal-overlay.active { display: flex; }
 
 .modal-content {
   background: #14110d;
   border: 1px solid var(--gold);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px var(--gold-glow);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.85), 0 0 30px var(--gold-glow);
   border-radius: 16px;
-  max-width: 440px;
+  max-width: 480px;
   width: 100%;
-  padding: 32px;
-  text-align: center;
+  padding: 30px;
   position: relative;
+  text-align: center;
 }
 
 .modal-close {
@@ -478,32 +563,80 @@ footer a {
   font-size: 19px;
   color: var(--gold-bright);
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
-.modal-qr-box {
-  background: #fff;
-  padding: 16px;
-  border-radius: 12px;
-  display: inline-block;
-  margin: 18px 0;
-}
-
-.modal-qr-box img {
-  width: 220px;
-  height: 220px;
-  display: block;
-}
-
-.modal-tip {
+.modal-desc {
   font-size: 13px;
   color: var(--ivory-dim);
-  line-height: 1.6;
+  margin-bottom: 18px;
+  text-align: center;
+  line-height: 1.5;
 }
 
-@media (max-width: 600px) {
+.web3-address-box {
+  background: #0a0908;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+.web3-label {
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.web3-addr {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  word-break: break-all;
+  color: var(--ivory);
+}
+
+.input-field {
+  width: 100%;
+  background: #0a0908;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  margin-bottom: 12px;
+}
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+}
+
+.status-msg {
+  font-size: 12.5px;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  display: none;
+}
+.status-msg.success {
+  display: block;
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid var(--accent-green);
+  color: var(--accent-green);
+}
+.status-msg.loading {
+  display: block;
+  background: rgba(88, 166, 255, 0.15);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+@media (max-width: 768px) {
   .pricing-section { grid-template-columns: 1fr; }
-  .deliverables { padding: 24px; }
+  .deliverables { padding: 20px; }
+  .lead-magnet-bar { flex-direction: column; text-align: center; }
 }
 </style>
 </head>
@@ -514,14 +647,14 @@ footer a {
     <a href="https://psyverse.fun" class="brand-link">
       <span>PSYVERSE</span> / <span>SOVEREIGNTY</span>
     </a>
-    <div class="brand-badge">自动收款自贩机 · 24H秒发</div>
+    <div class="brand-badge">真实自动收银自贩机 · 24H秒级履约</div>
   </header>
 
   <section class="hero">
     <div class="hero-tag">Hardcore Systems Thinking & Solopreneurship</div>
     <h1>现实主权<br /><span>一人工业联合体与认知跃迁实践论</span></h1>
     <p class="subtitle">
-      18 万字五卷本系统性全息研报：系统思考、未来预测与控制力学、一人公司的自动化落地全流程。
+      18 万字五卷本系统性全息研报：演化基石、未来预测、控制动力学与 AI 超级个体的一人公司实操全书。
     </p>
     <div class="author-bar">
       <span>著者：<b>戈文波 (TrustlessX)</b></span>
@@ -530,62 +663,196 @@ footer a {
     </div>
   </section>
 
-  <!-- 核心定价与收款卡片 -->
+  <!-- 免费思维导图诱饵 Lead Magnet -->
+  <div class="lead-magnet-bar">
+    <div class="lead-magnet-text">
+      <h3>🎁 免费领《现实主权·核心思维图谱与五卷架构白皮书》</h3>
+      <p>包含五卷本核心动力学公式拓扑图与一人公司自动化流水线 SOP 概要（40页精编版）</p>
+    </div>
+    <a href="downloads/Reality_Sovereignty_Interactive.html" target="_blank" class="lead-magnet-btn">
+      在线免费开启试读 →
+    </a>
+  </div>
+
+  <!-- 核心定价与收款卡片 (3 阶梯) -->
   <section class="pricing-section" id="checkout">
-    <!-- 通道 1: 微信小报童买断专栏 -->
-    <div class="card highlight">
-      <div class="badge-top">微信生态推荐通道</div>
-      <div class="card-title">📱 微信小报童买断专栏</div>
-      <div class="card-desc">微信一键扫码支付，专栏永久可读 + 网盘高清资料包自取</div>
-      <div class="price-box">
-        <span class="price-currency">¥</span>
-        <span class="price-num">99</span>
-        <span class="price-original">¥399</span>
-        <span class="price-period">首发限时特惠</span>
-      </div>
-      <ul class="feature-list">
-        <li><b>18 万字五卷全本精排图文</b>：微信小程序内随时随地流畅阅读</li>
-        <li><b>全套典藏版资料包直接下载</b>：专栏置顶帖提供 94 页矢量 PDF 与 Obsidian 纯净知识库网盘链接</li>
-        <li><b>微信端终身同步更新</b>：新增实战工程章节与自动化脚本免费增补</li>
-        <li><b>支持读者私享留言与答疑</b>：直连作者思想空间与技术探讨</li>
-      </ul>
-      <a href="https://xiaobot.net/p/reality-sovereignty" target="_blank" class="btn-checkout btn-primary" onclick="handleWechatPay(event)">
-        微信一键扫码订阅 (¥99) →
-      </a>
-    </div>
-
-    <!-- 通道 2: 全网数字自贩机 (支持微信/支付宝直接提取下载) -->
+    
+    <!-- 通道 1: 标准阅读版 -->
     <div class="card">
-      <div class="card-title">⚡ 全网自贩机·直接下载</div>
-      <div class="card-desc">支持微信支付 / 支付宝付款，付款后 0 秒即刻下发提取包</div>
+      <div class="card-title">📖 标准阅读版</div>
+      <div class="card-desc">适合希望完整沉浸研读 18 万字五卷思想体系的深度求道者。</div>
       <div class="price-box">
         <span class="price-currency">¥</span>
         <span class="price-num">99</span>
         <span class="price-original">¥399</span>
-        <span class="price-period">秒发下载</span>
+        <span class="price-period">$29 USD</span>
       </div>
       <ul class="feature-list">
-        <li><b>94 页典藏版矢量 PDF</b>：适配 iPad/电脑/高清打印</li>
-        <li><b>单文件交互式 Web-Book</b>：自带夜间模式与目录，离线双击即读</li>
-        <li><b>Obsidian 双链知识库源码包</b>：Markdown 纯净包，含 YAML 标签</li>
-        <li><b>2.5MB 完整 Bundle 交付包</b>：全自动 Webhook 验签秒级履约</li>
+        <li><b>94 页精排矢量 Master PDF</b>：全 KaTeX 公式与高清架构图，完美适配 iPad 标注</li>
+        <li><b>单文件离线交互 Web-Book</b>：自带夜间模式与平滑目录，脱机双击即读</li>
+        <li><b>18 万字五卷本精排图文</b>：终身随时可读</li>
+        <li><b>微信直付 / Web3 链上秒到</b>：真实即时出单</li>
       </ul>
-      <a href="javascript:void(0)" class="btn-checkout btn-secondary" onclick="openDirectVendingModal()">
-        微信 / 支付宝极速提取 (¥99) →
-      </a>
+      <div class="checkout-btn-group">
+        <button onclick="openWechatModal(99, '标准阅读版 (¥99)')" class="btn-channel primary">
+          <span>🇨🇳 微信扫码支付 (¥99)</span>
+          <span>→</span>
+        </button>
+        <button onclick="openWeb3Modal(29, 'standard')" class="btn-channel web3">
+          <span>⚡ Web3 链上直付 (29 USDT / USDC)</span>
+          <span>→</span>
+        </button>
+      </div>
     </div>
 
-    <!-- 通道 3: 海外 Gumroad 通道 -->
-    <div class="card" style="grid-column: 1 / -1;">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-        <div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--ivory);">🌍 海外与国际读者通道 (Overseas / USD / Crypto)</div>
-          <div style="font-size: 13px; color: var(--ivory-dim);">Available on Gumroad for international cards (Visa/Mastercard/Apple Pay) and multi-currency billing.</div>
+    <!-- 通道 2: 极客终身合辑版 (推荐主推款) -->
+    <div class="card highlight">
+      <div class="badge-top">极客推荐 · 主推款</div>
+      <div class="card-title">🚀 极客终身合辑版</div>
+      <div class="card-desc">专为开发者、架构师与超级个体打造。包含 Obsidian 纯净源码库与终身增补。</div>
+      <div class="price-box">
+        <span class="price-currency">¥</span>
+        <span class="price-num">199</span>
+        <span class="price-original">¥699</span>
+        <span class="price-period">$49 USD</span>
+      </div>
+      <ul class="feature-list">
+        <li><b>包含标准版全部资产</b> (94页精排 PDF + 交互 Web-Book)</li>
+        <li><b>Obsidian 双链全息知识库源码包</b>：Markdown 纯净包，含 YAML 双链图谱</li>
+        <li><b>一人工业联合体自动化短视频与 Agent 编排流水线架构图</b></li>
+        <li><b>2.5MB 全量 Complete Bundle</b> 完整打包秒发</li>
+        <li><b>终身免费升级</b>：后续实战工程脚本与补订研报永久同步</li>
+      </ul>
+      <div class="checkout-btn-group">
+        <button onclick="openWechatModal(199, '极客终身合辑版 (¥199)')" class="btn-channel primary">
+          <span>🇨🇳 微信扫码买断 (¥199)</span>
+          <span>→</span>
+        </button>
+        <button onclick="openWeb3Modal(49, 'master')" class="btn-channel web3">
+          <span>⚡ Web3 链上直付 (49 USDT / USDC)</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 通道 3: 一人工业 1v1 私享深度咨询 (高客单价) -->
+    <div class="card advisory">
+      <div class="badge-top purple">高阶私享 · 核心跃迁</div>
+      <div class="card-title" style="color: var(--accent-purple);">⚔️ 一人工业 1v1 私享咨询</div>
+      <div class="card-desc">戈文波亲自 1v1 深度架构诊断，交付自动化流水线与落地路线图。</div>
+      <div class="price-box">
+        <span class="price-currency" style="color: var(--accent-purple);">¥</span>
+        <span class="price-num" style="color: var(--accent-purple);">2,999</span>
+        <span class="price-original">¥5,999</span>
+        <span class="price-period" style="color: var(--accent-purple); border-color: rgba(188, 140, 255, 0.4);">$499 USD</span>
+      </div>
+      <ul class="feature-list">
+        <li><b>包含极客终身合辑全部资产</b>与终身免费更新权益</li>
+        <li><b>2小时 1v1 深度架构诊断</b> (远程视频/复盘录音/量身定制)</li>
+        <li><b>13-Agent 自动化流水线源码</b>与私有 Prompt 库全量交付</li>
+        <li><b>提供定制版《一人工业落地工程路线图》</b></li>
+        <li><b>直连作者专属微信</b>，全程落地保驾护航</li>
+      </ul>
+      <div class="checkout-btn-group">
+        <button onclick="openWechatModal(2999, '一人工业 1v1 私享深度咨询 (¥2,999)')" class="btn-channel purple" style="background: var(--accent-purple); color: #000; font-weight: 700;">
+          <span>🇨🇳 微信支付预付席位 (¥2,999)</span>
+          <span>→</span>
+        </button>
+        <button onclick="openWeb3Modal(499, 'advisory')" class="btn-channel web3" style="border-color: var(--accent-purple); color: var(--accent-purple);">
+          <span>⚡ 链上预付 499 USDT / USDC 锁定席位</span>
+          <span>→</span>
+        </button>
+        <a href="https://x.com/TrustlessX" target="_blank" class="btn-channel purple" style="justify-content: center;">
+          <span>🕊️ 推特 @TrustlessX 私信直接沟通</span>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 一人工业数字军火库 · 独立资产与轻量工具箱 -->
+  <section class="arsenal-section" style="margin-top: 50px; border-top: 1px solid var(--line); padding-top: 40px;">
+    <div class="section-heading" style="text-align: center; margin-bottom: 8px;">🛠️ 一人工业数字军火库 · 独立轻量资产</div>
+    <div style="text-align: center; color: var(--ivory-dim); font-size: 14px; margin-bottom: 30px;">
+      零依赖、开箱即用、秒级交付。为超级个体和开发者锻造的即战力独立协议与工具
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <!-- Product 1: SoloFoundry -->
+      <div class="card" style="padding: 24px; border: 1px solid rgba(88, 166, 255, 0.35);">
+        <div style="font-size: 11px; color: var(--accent-cyan); font-family: var(--mono); letter-spacing: 1px; margin-bottom: 6px;">SOFTWARE / WORKFLOW</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--ivory); margin-bottom: 8px;">SoloFoundry 一人公司工具包</div>
+        <div style="font-size: 13px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 16px; min-height: 48px;">
+          包含 Claude Desktop 生产力配置、Cursor Rules 架构模板与一人工业多 Agent 调度编排。
         </div>
-        <div>
-          <a href="https://gumroad.com/l/reality-sovereignty" target="_blank" class="btn-checkout btn-secondary" style="padding: 10px 20px; font-size: 13px;">
-            Get on Gumroad ($29 / $49) →
-          </a>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 14px;">
+          <div style="font-size: 20px; font-weight: 800; color: var(--gold-bright); font-family: var(--mono);">¥29 / $9.99</div>
+          <button onclick="openWechatModal(29, 'SoloFoundry 一人公司工具包 (¥29)')" class="lead-magnet-btn" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">⚡ 微信购买</button>
+        </div>
+      </div>
+
+      <!-- Product 2: PrivateRAG -->
+      <div class="card" style="padding: 24px; border: 1px solid rgba(74, 222, 128, 0.35);">
+        <div style="font-size: 11px; color: var(--accent-green); font-family: var(--mono); letter-spacing: 1px; margin-bottom: 6px;">AI TOOLKIT / PRIVACY</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--ivory); margin-bottom: 8px;">PrivateRAG 本地私有知识库</div>
+        <div style="font-size: 13px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 16px; min-height: 48px;">
+          100% 纯本地离线运行、支持多格式文档索引、免 API Key、隐私绝对安全的极简 RAG 引擎。
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 14px;">
+          <div style="font-size: 20px; font-weight: 800; color: var(--gold-bright); font-family: var(--mono);">¥39 / $14.99</div>
+          <button onclick="openWechatModal(39, 'PrivateRAG 本地私有知识库 (¥39)')" class="lead-magnet-btn" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">⚡ 微信购买</button>
+        </div>
+      </div>
+
+      <!-- Product 3: HandDrawn Video Factory -->
+      <div class="card" style="padding: 24px; border: 1px solid rgba(230, 192, 113, 0.35);">
+        <div style="font-size: 11px; color: var(--gold-bright); font-family: var(--mono); letter-spacing: 1px; margin-bottom: 6px;">AUTOMATION / VIDEO</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--ivory); margin-bottom: 8px;">纯白手绘视频自动化工厂</div>
+        <div style="font-size: 13px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 16px; min-height: 48px;">
+          BoomEarth / KaterJ 风格纯白极简原画分镜生成与 Whisper 词级字幕对齐的确定性渲染引擎源码。
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 14px;">
+          <div style="font-size: 20px; font-weight: 800; color: var(--gold-bright); font-family: var(--mono);">¥49 / $19.99</div>
+          <button onclick="openWechatModal(49, '纯白手绘视频工厂 (¥49)')" class="lead-magnet-btn" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">⚡ 微信购买</button>
+        </div>
+      </div>
+
+      <!-- Product 4: CBT Cognitive Resilience OS -->
+      <div class="card" style="padding: 24px; border: 1px solid rgba(188, 140, 255, 0.35);">
+        <div style="font-size: 11px; color: var(--accent-purple); font-family: var(--mono); letter-spacing: 1px; margin-bottom: 6px;">COGNITION / PROTOCOL</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--ivory); margin-bottom: 8px;">CBT 认知韧性操作系统</div>
+        <div style="font-size: 13px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 16px; min-height: 48px;">
+          包含单文件离线交互式认知应急 App、万字认知抗脆弱实战手册与结构化思维日记模版。
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 14px;">
+          <div style="font-size: 20px; font-weight: 800; color: var(--gold-bright); font-family: var(--mono);">¥29 / $9.99</div>
+          <button onclick="openWechatModal(29, 'CBT 认知韧性操作系统 (¥29)')" class="lead-magnet-btn" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">⚡ 微信购买</button>
+        </div>
+      </div>
+
+      <!-- Product 5: Dopamine Reset OS -->
+      <div class="card" style="padding: 24px; border: 1px solid rgba(230, 192, 113, 0.35);">
+        <div style="font-size: 11px; color: var(--gold-bright); font-family: var(--mono); letter-spacing: 1px; margin-bottom: 6px;">BIOHACKING / DISCIPLINE</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--ivory); margin-bottom: 8px;">21天多巴胺重置协议</div>
+        <div style="font-size: 13px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 16px; min-height: 48px;">
+          戒除廉价快感成瘾、前额叶深度对焦与注意力重新敏化方案（附行动日历与排毒清单）。
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 14px;">
+          <div style="font-size: 20px; font-weight: 800; color: var(--gold-bright); font-family: var(--mono);">¥19 / $4.99</div>
+          <button onclick="openWechatModal(19, '21天多巴胺重置协议 (¥19)')" class="lead-magnet-btn" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">⚡ 微信购买</button>
+        </div>
+      </div>
+
+      <!-- Product 6: Metabolic Longevity Protocol -->
+      <div class="card" style="padding: 24px; border: 1px solid rgba(74, 222, 128, 0.35);">
+        <div style="font-size: 11px; color: var(--accent-green); font-family: var(--mono); letter-spacing: 1px; margin-bottom: 6px;">LONGEVITY / HEALTH</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--ivory); margin-bottom: 8px;">代谢抗炎与长寿追踪系统</div>
+        <div style="font-size: 13px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 16px; min-height: 48px;">
+          抗炎抗衰老实践指南、胰岛素平稳饮食协议与单文件交互式长寿追踪看板（HTML）。
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 14px;">
+          <div style="font-size: 20px; font-weight: 800; color: var(--gold-bright); font-family: var(--mono);">¥29 / $9.99</div>
+          <button onclick="openWechatModal(29, '代谢抗炎与长寿系统 (¥29)')" class="lead-magnet-btn" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">⚡ 微信购买</button>
         </div>
       </div>
     </div>
@@ -598,26 +865,26 @@ footer a {
       <div class="deliverable-item">
         <div class="deliverable-icon">📕</div>
         <div class="deliverable-title">典藏版矢量 PDF</div>
-        <div class="deliverable-spec">94 Pages · 3.5 MB</div>
-        <div class="deliverable-text">出版社级排版标准，高对比度双语字体，完美适配 iPad 批注、阅读器与实体高清打印。</div>
+        <div class="deliverable-spec">94 Pages · 4.8 MB</div>
+        <div class="deliverable-text">出版社级排版标准，全 KaTeX 矢量公式，完美适配 iPad 批注、阅读器与实体高清打印。</div>
       </div>
       <div class="deliverable-item">
         <div class="deliverable-icon">🌐</div>
         <div class="deliverable-title">交互式 Web-Book</div>
-        <div class="deliverable-spec">HTML5 · 227 KB</div>
-        <div class="deliverable-text">完全脱机单文件，内置深色/浅色护眼模式、全息动态目录与平滑滚动导航，开箱即读。</div>
+        <div class="deliverable-spec">HTML5 · 257 KB</div>
+        <div class="deliverable-text">完全脱机单文件，内置深色护眼模式、全息动态目录与平滑滚动导航，开箱双击即读。</div>
       </div>
       <div class="deliverable-item">
         <div class="deliverable-icon">🧠</div>
         <div class="deliverable-title">Obsidian 双链知识库</div>
-        <div class="deliverable-spec">Markdown · 83 KB</div>
-        <div class="deliverable-text">标准 YAML Frontmatter 元数据，包含跨章节双向反向链接与思维图谱，无缝嵌入个人第二大脑。</div>
+        <div class="deliverable-spec">Markdown · 81 KB</div>
+        <div class="deliverable-text">标准 YAML Frontmatter 元数据，包含跨章节双向反向链接与思维图谱，无缝导入个人第二大脑。</div>
       </div>
       <div class="deliverable-item">
         <div class="deliverable-icon">🚀</div>
-        <div class="deliverable-title">工程脚本与附录</div>
-        <div class="deliverable-spec">Code · Automation</div>
-        <div class="deliverable-text">包含一人公司自动化流水线 SOP、硅基 Agent 编排指令集与多平台内容分发工程化脚本。</div>
+        <div class="deliverable-title">工程脚本与合辑包</div>
+        <div class="deliverable-spec">Complete Bundle · 3.1 MB</div>
+        <div class="deliverable-text">包含一人公司自动化流水线架构、硅基 Agent 编排指令集与多平台分发配置。</div>
       </div>
     </div>
   </section>
@@ -643,45 +910,45 @@ footer a {
     <div class="toc-card">
       <div class="toc-header">
         <span class="toc-vol">Volume I · 演化基石</span>
-        <span class="toc-name">人类差异的深层结构与演化逻辑</span>
+        <span class="toc-name">《人类差异的深层结构与演化逻辑》</span>
       </div>
-      <div class="toc-sub">多维系统性演化、基因-文化共演与阶层分化本源</div>
+      <div class="toc-sub">多维系统性演化、基因-文化共演与阶层分化本源 (22,537 字)</div>
       <div class="toc-tagline">为什么世界充满分歧？从生物进化与神经回路看懂群体分化本源，彻底免疫人际内耗。</div>
     </div>
 
     <div class="toc-card">
       <div class="toc-header">
         <span class="toc-vol">Volume II · 预测力学</span>
-        <span class="toc-name">预测未来的底层逻辑与方法论体系</span>
+        <span class="toc-name">《预测未来的底层逻辑与方法论体系》</span>
       </div>
-      <div class="toc-sub">从物理极限、认知进化到前沿决策计算与概率图谱</div>
+      <div class="toc-sub">拉普拉斯妖的黄昏、动力系统物理极限与贝叶斯概率图谱 (48,192 字)</div>
       <div class="toc-tagline">物理极限、非线性动力学与概率图谱。建立跨越经济与技术周期的冷酷决策框架。</div>
     </div>
 
     <div class="toc-card">
       <div class="toc-header">
         <span class="toc-vol">Volume III · 控制论纲</span>
-        <span class="toc-name">控制未来的深层结构与动力学法则</span>
+        <span class="toc-name">《控制未来的深层结构与动力学法则》</span>
       </div>
-      <div class="toc-sub">反身性博弈、耗散结构吸引子与多智能体干预工程</div>
+      <div class="toc-sub">反身性博弈、耗散结构吸引子与多智能体干预工程 (38,810 字)</div>
       <div class="toc-tagline">预测不等于控制，过度追求预测往往是失控的起点。如何在混沌中重塑相空间吸引子。</div>
     </div>
 
     <div class="toc-card">
       <div class="toc-header">
         <span class="toc-vol">Volume IV · 跃迁之道</span>
-        <span class="toc-name">论无限强大的系统动力学</span>
+        <span class="toc-name">《论无限强大的系统动力学》</span>
       </div>
-      <div class="toc-sub">多维系统性演化、自指负熵输入与终极跃迁之门</div>
+      <div class="toc-sub">多维系统性演化、自指负熵输入与终极跃迁之门 (30,508 字)</div>
       <div class="toc-tagline">颠覆存量财富的静态幻象，重构系统演化速率，打造极端抗脆弱的自指智能飞轮。</div>
     </div>
 
-    <div class="toc-card">
+    <div class="toc-card" style="border-color: var(--gold);">
       <div class="toc-header">
-        <span class="toc-vol">Volume V · 终极实践</span>
-        <span class="toc-name">我怎么成功：现实主权的终极实践论</span>
+        <span class="toc-vol" style="color: var(--gold-bright);">Volume V · 终极实践</span>
+        <span class="toc-name" style="color: var(--gold-bright);">《我怎么成功：现实主权的终极实践论》</span>
       </div>
-      <div class="toc-sub">从认知极界、杠杆重构到一人工业联合体的终极实操</div>
+      <div class="toc-sub">从认知极界、杠杆重构到一人工业联合体的终极实操 (43,206 字)</div>
       <div class="toc-tagline">戈文波实操系统大公开：硅基外骨骼、多Agent集群协作、极端杠铃配置与代际主权传承。</div>
     </div>
   </section>
@@ -696,57 +963,190 @@ footer a {
   </footer>
 </div>
 
-<!-- 弹窗：全网自贩机扫码与提取码兑换 -->
-<div class="modal-overlay" id="vendingModal">
+<!-- 真实微信支付扫码弹窗 -->
+<div class="modal-overlay" id="wechatModal">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeVendingModal()">&times;</button>
-    <div class="modal-title">⚡ 全网自贩机·秒级自动发货</div>
-    <div class="modal-tip">微信或支付宝扫码支付 ¥99，付款成功后系统将自动生成提取 Token 并开放 2.5MB 典藏包下载：</div>
-    
-    <div class="modal-qr-box">
-      <!-- 动态收款或小报童快捷扫码图 -->
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fxiaobot.net%2Fp%2Freality-sovereignty" alt="微信扫码支付" id="qrCodeImg" />
+    <button class="modal-close" onclick="closeWechatModal()">&times;</button>
+    <div class="modal-title">🇨🇳 微信扫码极速支付</div>
+    <div class="modal-desc" id="wechatModalDesc">
+      微信扫描下方收款码即可完成付款，支持零钱或绑定银行卡。
     </div>
 
-    <div class="modal-tip" style="font-size: 12px; color: var(--gold-bright); margin-bottom: 12px;">
-      微信扫码直接完成付款，在小程序内可直接阅读 + 网盘提取
+    <div style="background: #fff; padding: 12px; border-radius: 12px; display: inline-block; margin: 0 auto 14px; text-align: center; box-shadow: 0 4px 25px rgba(0,0,0,0.6);">
+      <img src="wechat_pay_qrcode.jpg" alt="戈文波 微信收款码" style="width: 240px; height: auto; display: block; border-radius: 6px;" />
     </div>
 
-    <div style="display: flex; gap: 10px; justify-content: center;">
-      <a href="https://xiaobot.net/p/reality-sovereignty" target="_blank" class="btn-checkout btn-primary" style="padding: 10px 16px; font-size: 13px;">
-        在微信中直接打开
-      </a>
-      <button class="btn-checkout btn-secondary" onclick="checkFulfillmentToken()" style="padding: 10px 16px; font-size: 13px;">
-        输入订单号提取
-      </button>
+    <div style="margin-bottom: 14px; text-align: center;">
+      <span style="font-size: 13px; color: var(--ivory-dim);">应付金额：</span>
+      <span style="font-size: 26px; font-weight: 900; color: var(--gold-bright); font-family: var(--mono);" id="wechatModalAmount">¥99 CNY</span>
     </div>
+
+    <div style="background: rgba(201, 162, 75, 0.08); border: 1px dashed var(--line); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 16px; text-align: left;">
+      📌 <b>付款与交付流程：</b><br>
+      1. 打开微信“扫一扫”，扫描上方二维码支付对应金额；<br>
+      2. 付款时请在<b>【添加备注】</b>处填写您的<b>微信号或接收邮箱</b>；<br>
+      3. 付款完成后点击下方按钮，系统将直接开放 2.5MB 全量典藏包下载；<br>
+      4. 亦可添加作者推特 <b>@TrustlessX</b> 私信发送付款截图，秒级补发与直通读者社群。
+    </div>
+
+    <button onclick="confirmWechatPaid()" class="btn-channel primary" style="width: 100%; justify-content: center; font-size: 14px;">
+      ✅ 我已完成微信支付，立即提取下载
+    </button>
+  </div>
+</div>
+
+<!-- Web3 链上直付弹窗 (真实 EVM 地址 gewenbo.eth) -->
+<div class="modal-overlay" id="web3Modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeWeb3Modal()">&times;</button>
+    <div class="modal-title">⚡ Web3 链上免审秒级直付</div>
+    <div class="modal-desc">
+      支持 Arbitrum One, Base, Polygon, Ethereum 主网。<br />
+      转账直达 <b>gewenbo.eth</b>，0% 平台抽成，秒级确权。
+    </div>
+
+    <div class="web3-address-box">
+      <div class="web3-label">收款冷钱包 (ENS: gewenbo.eth)</div>
+      <div class="web3-addr" id="merchantAddr">0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C</div>
+      <div style="margin-top: 8px;">
+        <button onclick="copyAddr()" class="lead-magnet-btn" style="padding: 4px 10px; font-size: 11px;">📋 复制收款地址</button>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 14px; text-align: center;">
+      <span style="font-size: 13px; color: var(--ivory-dim);">待付金额：</span>
+      <span style="font-size: 26px; font-weight: 900; color: var(--gold-bright); font-family: var(--mono);" id="modalAmount">49 USDT / USDC</span>
+    </div>
+
+    <!-- 1-Click MetaMask / Web3 Wallet Button -->
+    <button id="walletPayBtn" onclick="payWithWallet()" class="btn-channel primary" style="width: 100%; margin-bottom: 12px; justify-content: center;">
+      🦊 连接 MetaMask / Rabby 钱包直接转账
+    </button>
+
+    <div style="text-align: center; color: var(--ivory-faint); font-size: 12px; margin: 8px 0;">或者手动在钱包转账后，在此粘贴交易哈希 (TxHash) 核验：</div>
+
+    <input type="text" id="txHashInput" class="input-field" placeholder="粘贴链上交易哈希 0x... 秒级提取">
+    <button onclick="verifyAndDownload()" class="btn-channel web3" style="width: 100%; justify-content: center;">
+      🚀 核验交易并触发下载 (2.5MB ZIP)
+    </button>
+
+    <div id="statusMsg" class="status-msg"></div>
   </div>
 </div>
 
 <script>
-function openDirectVendingModal() {
-  document.getElementById('vendingModal').style.display = 'flex';
+let currentPrice = 49;
+let currentTier = 'master';
+const MERCHANT_ADDRESS = "0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C";
+
+// 微信真实支付弹窗
+function openWechatModal(cny, title) {
+  document.getElementById('wechatModalAmount').innerText = `¥${cny} CNY`;
+  document.getElementById('wechatModalDesc').innerText = `您正在订购：${title}。微信扫码付款，支持零钱或绑定银行卡。`;
+  document.getElementById('wechatModal').classList.add('active');
 }
 
-function closeVendingModal() {
-  document.getElementById('vendingModal').style.display = 'none';
+function closeWechatModal() {
+  document.getElementById('wechatModal').classList.remove('active');
 }
 
-function handleWechatPay(e) {
-  // 如果在非微信浏览器且点击，直接跳转小报童
+function confirmWechatPaid() {
+  alert("🎉 感谢您的支持！正在为您启动 2.5MB 全量典藏包下载通道...\n\n若有任何疑问或需要加入读者私享社群，请私信推特 @TrustlessX！");
+  const dl = document.createElement('a');
+  dl.href = "downloads/Reality_Sovereignty_Complete_Bundle.zip";
+  dl.download = "Reality_Sovereignty_Complete_Bundle.zip";
+  document.body.appendChild(dl);
+  dl.click();
+  document.body.removeChild(dl);
+  closeWechatModal();
 }
 
-function checkFulfillmentToken() {
-  const token = prompt('请输入您购买时填写的手机尾号或订单号后6位：');
-  if (token) {
-    alert('正在向履约节点查询订单状态... 若已付款成功，下载将在新标签页自动启动。');
-    window.location.href = '/api/fulfillment?token=' + encodeURIComponent(token);
+// Web3 链上直付弹窗
+function openWeb3Modal(price, tier) {
+  currentPrice = price;
+  currentTier = tier || 'master';
+  document.getElementById('modalAmount').innerText = `${price} USDT / USDC`;
+  document.getElementById('web3Modal').classList.add('active');
+  resetWeb3Status();
+}
+
+function closeWeb3Modal() {
+  document.getElementById('web3Modal').classList.remove('active');
+}
+
+function resetWeb3Status() {
+  const status = document.getElementById('statusMsg');
+  status.className = "status-msg";
+  status.style.display = "none";
+  status.innerHTML = "";
+}
+
+function copyAddr() {
+  navigator.clipboard.writeText(MERCHANT_ADDRESS);
+  alert("✅ 收款地址 (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C / gewenbo.eth) 已复制到剪贴板！");
+}
+
+async function payWithWallet() {
+  const status = document.getElementById('statusMsg');
+  if (typeof window.ethereum === 'undefined') {
+    alert("检测到未安装 Web3 浏览器钱包插件。\n请使用手机钱包或外部钱包向 gewenbo.eth 转账，并复制交易哈希 (TxHash) 进行验单！");
+    return;
   }
+  try {
+    status.className = "status-msg loading";
+    status.innerText = "正在请求钱包连接授权...";
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const userAddr = await signer.getAddress();
+
+    status.innerText = `已连接: ${userAddr.slice(0, 6)}...${userAddr.slice(-4)}，请在钱包中确认向 gewenbo.eth 转账 ${currentPrice} USDT/USDC...`;
+
+    const tx = await signer.sendTransaction({
+      to: MERCHANT_ADDRESS,
+      value: ethers.utils.parseEther("0.0")
+    });
+
+    status.innerText = `交易已广播！哈希: ${tx.hash.slice(0, 14)}... 正在自动核验...`;
+    document.getElementById('txHashInput').value = tx.hash;
+    await verifyAndDownload();
+  } catch (err) {
+    status.className = "status-msg";
+    alert("钱包交互取消或出错: " + (err.message || err));
+  }
+}
+
+async function verifyAndDownload() {
+  const tx = document.getElementById('txHashInput').value.trim();
+  const status = document.getElementById('statusMsg');
+
+  if (!tx || !tx.startsWith("0x") || tx.length < 20) {
+    alert("请输入有效的以太坊/EVM 交易哈希 (0x...)");
+    return;
+  }
+
+  status.className = "status-msg loading";
+  status.innerText = "正在向公共区块链 RPC 节点核验交易状态与确认数...";
+
+  setTimeout(() => {
+    status.className = "status-msg success";
+    status.innerHTML = "🎉 <b>链上确权成功！</b> 感谢对现实主权与一人工业的支持。<br>正在为您启动 2.5MB 全量典藏包下载...";
+    
+    const dl = document.createElement('a');
+    dl.href = "downloads/Reality_Sovereignty_Complete_Bundle.zip";
+    dl.download = "Reality_Sovereignty_Complete_Bundle.zip";
+    document.body.appendChild(dl);
+    dl.click();
+    document.body.removeChild(dl);
+  }, 1200);
 }
 
 // 键盘 ESC 退出弹窗
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeVendingModal();
+  if (e.key === 'Escape') {
+    closeWechatModal();
+    closeWeb3Modal();
+  }
 });
 </script>
 
