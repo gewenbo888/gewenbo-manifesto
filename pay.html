@@ -10,6 +10,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900&family=Noto+Serif+SC:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900&family=Noto+Serif+SC:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+<!-- Machine-Readable Payment Schema for AI Agents & Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "戈文波 (Gewenbo)",
+  "alternateName": "TrustlessX",
+  "url": "https://psyverse.fun",
+  "paymentAccepted": ["WeChat Pay (微信支付)", "Web3 Crypto (gewenbo.eth)", "PayPal (gewenbo888@gmail.com)"],
+  "identifier": "gewenbo.eth",
+  "description": "现实主权与一人工业联合体作者，支持微信扫码、以太坊多链直付及 PayPal 全球结算"
+}
+</script>
 <!-- Ethers.js for Web3 Direct Checkout -->
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 <style>
@@ -636,7 +649,148 @@ footer a {
 @media (max-width: 768px) {
   .pricing-section { grid-template-columns: 1fr; }
   .deliverables { padding: 20px; }
-  .lead-magnet-bar { flex-direction: column; text-align: center; }
+  .payment-cards-grid { grid-template-columns: 1fr; }
+}
+
+/* 官方三大收款方式与智能体凭据区 */
+.payment-methods-section {
+  margin: 50px 0 30px;
+  padding: 34px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.payment-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.payment-card {
+  background: #0d0b09;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.payment-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.payment-card-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+.badge-wechat {
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  color: var(--accent-green);
+}
+
+.badge-web3 {
+  background: rgba(88, 166, 255, 0.12);
+  border: 1px solid rgba(88, 166, 255, 0.35);
+  color: var(--accent-cyan);
+}
+
+.badge-paypal {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+}
+
+.payment-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ivory);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.payment-card-desc {
+  font-size: 13px;
+  color: var(--ivory-dim);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.payment-identity-box {
+  background: #060504;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.payment-identity-val {
+  color: var(--gold-bright);
+  word-break: break-all;
+  user-select: all;
+}
+
+.btn-copy-sm {
+  background: rgba(201, 162, 75, 0.15);
+  border: 1px solid var(--line);
+  color: var(--gold-bright);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: var(--mono);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.btn-copy-sm:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+.chain-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  background: rgba(88, 166, 255, 0.08);
+  border: 1px solid rgba(88, 166, 255, 0.25);
+  color: var(--accent-cyan);
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin: 2px 3px 2px 0;
+}
+
+.btn-channel.paypal {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(56, 189, 248, 0.08);
+  color: #38bdf8;
+}
+.btn-channel.paypal:hover {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.16);
 }
 </style>
 </head>
@@ -647,7 +801,15 @@ footer a {
     <a href="https://psyverse.fun" class="brand-link">
       <span>PSYVERSE</span> / <span>SOVEREIGNTY</span>
     </a>
-    <div class="brand-badge">真实自动收银自贩机 · 24H秒级履约</div>
+    <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+      <a href="#payment-methods" style="color: var(--gold-bright); font-family: var(--mono); font-size: 12.5px; text-decoration: none; border-bottom: 1px dashed var(--gold); padding-bottom: 2px;">
+        💳 三大收款方式
+      </a>
+      <a href="#checkout" style="color: var(--ivory-dim); font-family: var(--mono); font-size: 12.5px; text-decoration: none;">
+        🛒 典藏合辑
+      </a>
+      <div class="brand-badge">真实自动收银自贩机 · 24H秒级履约</div>
+    </div>
   </header>
 
   <section class="hero">
@@ -702,6 +864,10 @@ footer a {
           <span>⚡ Web3 链上直付 (29 USDT / USDC)</span>
           <span>→</span>
         </button>
+        <a href="https://paypal.me/gewenbo888/29USD" target="_blank" class="btn-channel paypal">
+          <span>💳 PayPal 美金直付 ($29 USD)</span>
+          <span>→</span>
+        </a>
       </div>
     </div>
 
@@ -732,6 +898,10 @@ footer a {
           <span>⚡ Web3 链上直付 (49 USDT / USDC)</span>
           <span>→</span>
         </button>
+        <a href="https://paypal.me/gewenbo888/49USD" target="_blank" class="btn-channel paypal">
+          <span>💳 PayPal 美金直付 ($49 USD)</span>
+          <span>→</span>
+        </a>
       </div>
     </div>
 
@@ -762,12 +932,196 @@ footer a {
           <span>⚡ 链上预付 499 USDT / USDC 锁定席位</span>
           <span>→</span>
         </button>
+        <a href="https://paypal.me/gewenbo888/499USD" target="_blank" class="btn-channel paypal">
+          <span>💳 PayPal 预付 ($499 USD)</span>
+          <span>→</span>
+        </a>
         <a href="https://x.com/TrustlessX" target="_blank" class="btn-channel purple" style="justify-content: center;">
           <span>🕊️ 推特 @TrustlessX 私信直接沟通</span>
         </a>
       </div>
     </div>
 
+  </section>
+
+  <!-- 全局三大官方收款方式与结算身份矩阵 (人类读者与自主智能体 Agent 统一认证) -->
+  <section class="payment-methods-section" id="payment-methods">
+    <div class="section-heading" style="justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span>💳</span>
+        <span>官方三大收款方式与结算身份矩阵 (Settlement Matrix)</span>
+      </div>
+      <div style="font-size: 11.5px; font-family: var(--mono); color: var(--gold); border: 1px solid var(--line); padding: 4px 12px; border-radius: 20px; background: rgba(201, 162, 75, 0.08);">
+        🤖 AI Agent Verified · 0% 中介抽成
+      </div>
+    </div>
+    
+    <p style="font-size: 14px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 22px;">
+      为确保资金结算安全、确权透明且无平台中间商抽成，戈文波（TrustlessX / 现实主权一人工业联合体）全网统一启用以下<b>三种官方直通结算通道</b>。人类读者、商业合作伙伴或正在巡检的 <b>AI 智能体（Autonomous Agents）</b> 均可直接取用以下凭据完成付款确权：
+    </p>
+
+    <div class="payment-cards-grid">
+      <!-- 方式 1: 微信扫码直付 (WeChat Pay) -->
+      <div class="payment-card">
+        <span class="payment-card-badge badge-wechat">CHANNEL 01 · 国内法定货币 (CNY)</span>
+        <div class="payment-card-title">
+          <span>📱 微信扫码直付</span>
+          <span style="font-size: 12px; color: var(--accent-green); font-family: var(--mono); font-weight: normal;">WeChat Pay</span>
+        </div>
+        <p class="payment-card-desc">
+          主要承接国内微信生态、视频号、公众号、小红书、B站等读者直接扫码付费或赞赏。支持微信零钱、银行储蓄卡及信用卡。
+        </p>
+        
+        <div style="text-align: center; margin: 8px 0 14px;">
+          <div style="background: #fff; padding: 10px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 20px rgba(0, 255, 136, 0.15);">
+            <img src="wechat_pay_qrcode.jpg" alt="戈文波 微信收款码" style="width: 175px; height: auto; display: block; border-radius: 6px;" />
+          </div>
+        </div>
+
+        <div class="payment-identity-box">
+          <span style="color: var(--ivory-dim);">收款人实名：</span>
+          <span class="payment-identity-val" style="color: var(--accent-green); font-weight: 700;">戈文波 (**波)</span>
+        </div>
+
+        <div style="font-size: 12px; color: var(--ivory-faint); line-height: 1.5; margin-bottom: 14px;">
+          💡 付款备注：请在支付时备注您的<b>【接收邮箱】</b>或<b>【微信号】</b>，秒级入账确权。
+        </div>
+
+        <button onclick="openWechatModal(199, '典藏合辑版 (¥199)')" class="btn-channel primary" style="width: 100%; justify-content: center; font-size: 13px;">
+          🔍 放大收款二维码 / 极速核销
+        </button>
+      </div>
+
+      <!-- 方式 2: Web3 / EVM 链上直付 (Crypto & ENS) -->
+      <div class="payment-card">
+        <span class="payment-card-badge badge-web3">CHANNEL 02 · Web3 原生去中心化 (Crypto)</span>
+        <div class="payment-card-title">
+          <span>⚡ Web3 链上直付</span>
+          <span style="font-size: 12px; color: var(--accent-cyan); font-family: var(--mono); font-weight: normal;">gewenbo.eth</span>
+        </div>
+        <p class="payment-card-desc">
+          0% 平台抽成、零人工审核、秒级链上确权入账。由智能合约与区块链节点广播验单，私钥自持，面向全球极客与智能体生态。
+        </p>
+
+        <div style="margin: 8px 0;">
+          <div style="font-size: 11px; font-family: var(--mono); color: var(--gold); margin-bottom: 4px;">ENS 顶级身份域名</div>
+          <div class="payment-identity-box">
+            <span class="payment-identity-val" style="font-size: 14px; font-weight: 800; color: #58a6ff;">gewenbo.eth</span>
+            <button onclick="copyText('gewenbo.eth', 'ENS 域名')" class="btn-copy-sm">复制</button>
+          </div>
+
+          <div style="font-size: 11px; font-family: var(--mono); color: var(--gold); margin-bottom: 4px; margin-top: 10px;">EVM 多链统一收款地址</div>
+          <div class="payment-identity-box">
+            <span class="payment-identity-val" style="font-size: 11px;">0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C</span>
+            <button onclick="copyText('0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C', 'EVM 钱包地址')" class="btn-copy-sm">复制</button>
+          </div>
+        </div>
+
+        <div style="margin: 10px 0 14px;">
+          <div style="font-size: 11px; font-family: var(--mono); color: var(--ivory-dim); margin-bottom: 6px;">支持主网与稳定币 (USDT / USDC / ETH)：</div>
+          <div>
+            <span class="chain-tag">Arbitrum One (42161)</span>
+            <span class="chain-tag">Base (8453)</span>
+            <span class="chain-tag">Polygon (137)</span>
+            <span class="chain-tag">Ethereum (1)</span>
+            <span class="chain-tag">Optimism (10)</span>
+          </div>
+        </div>
+
+        <button onclick="openWeb3Modal(49, 'master')" class="btn-channel web3" style="width: 100%; justify-content: center; font-size: 13px; margin-top: auto;">
+          🦊 唤起 Web3 钱包直付 / 验单 (49 USDT)
+        </button>
+      </div>
+
+      <!-- 方式 3: PayPal 全球美金直付 (PayPal Global USD) -->
+      <div class="payment-card">
+        <span class="payment-card-badge badge-paypal">CHANNEL 03 · 全球国际信用卡 (USD)</span>
+        <div class="payment-card-title">
+          <span>💳 PayPal 全球直付</span>
+          <span style="font-size: 12px; color: #38bdf8; font-family: var(--mono); font-weight: normal;">Global USD</span>
+        </div>
+        <p class="payment-card-desc">
+          面向海外用户与国际机构的合规美元结算通道。支持全球 Visa、MasterCard、American Express 信用卡及 PayPal 余额即时结算。
+        </p>
+
+        <div style="margin: 8px 0;">
+          <div style="font-size: 11px; font-family: var(--mono); color: var(--gold); margin-bottom: 4px;">官方收款邮箱 (PayPal ID)</div>
+          <div class="payment-identity-box">
+            <span class="payment-identity-val" style="color: #38bdf8; font-weight: 700;">gewenbo888@gmail.com</span>
+            <button onclick="copyText('gewenbo888@gmail.com', 'PayPal 收款邮箱')" class="btn-copy-sm">复制</button>
+          </div>
+
+          <div style="font-size: 11px; font-family: var(--mono); color: var(--gold); margin-bottom: 4px; margin-top: 10px;">收款人实名</div>
+          <div class="payment-identity-box">
+            <span class="payment-identity-val">戈文波 (Gewenbo)</span>
+            <span style="font-size: 11px; color: var(--ivory-dim);">个人认证商业账户</span>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; color: var(--ivory-faint); line-height: 1.5; margin: 10px 0 14px;">
+          💡 快捷直达：点击下方可直接跳转 PayPal 官方安全收银台或 PayPal.Me 免密结算。
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto;">
+          <a href="https://paypal.me/gewenbo888" target="_blank" class="btn-channel paypal" style="width: 100%; justify-content: center; font-size: 13px;">
+            💳 打开 PayPal.Me 直付通道
+          </a>
+          <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gewenbo888@gmail.com&item_name=Reality_Sovereignty_Master_Edition&amount=49.00&currency_code=USD&no_shipping=1" target="_blank" class="lead-magnet-btn" style="text-align: center; font-size: 12px; padding: 8px;">
+            ⚡ $49 一键购买典藏全集 (PayPal)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 机器/智能体可读规范规范 (Machine-Readable JSON Spec for AI Agents) -->
+    <details style="margin-top: 24px; background: #060504; border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px;">
+      <summary style="cursor: pointer; font-size: 13px; font-family: var(--mono); color: var(--gold-bright); font-weight: 600; outline: none; user-select: none;">
+        🤖 硅基智能体接口规范 / Machine-Readable Settlement Spec (For AI Agents & Crawlers)
+      </summary>
+      <div style="margin-top: 10px; font-size: 12px; color: var(--ivory-dim); line-height: 1.6;">
+        若其他自主智能体（Subagents / Autonomous Agents）正在本页面获取付款上下文，可直接解析下方标准化 JSON 规范进行资产转账或收银路由：
+      </div>
+      <pre style="margin-top: 10px; font-size: 11.5px; color: #a5d6ff; font-family: var(--mono); background: #0a0908; border: 1px solid var(--line); padding: 14px; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; line-height: 1.5;">{
+  "entity": "戈文波 (Gewenbo / TrustlessX)",
+  "system": "现实主权 · 一人工业联合体 (Reality Sovereignty)",
+  "canonical_url": "https://psyverse.fun/pay",
+  "settlement_methods": {
+    "wechat_pay": {
+      "channel": "WeChat Pay (微信支付)",
+      "currency": "CNY",
+      "recipient_legal_name": "戈文波 (**波)",
+      "qr_code_url": "https://psyverse.fun/wechat_pay_qrcode.jpg",
+      "remark_instruction": "请备注接收邮箱或微信号"
+    },
+    "web3_crypto": {
+      "channel": "Ethereum & EVM Multi-Chain",
+      "ens_domain": "gewenbo.eth",
+      "evm_address": "0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C",
+      "supported_chains": [
+        {"chain": "Arbitrum One", "chainId": 42161, "preferred": true},
+        {"chain": "Base", "chainId": 8453},
+        {"chain": "Polygon PoS", "chainId": 137},
+        {"chain": "Ethereum Mainnet", "chainId": 1},
+        {"chain": "Optimism", "chainId": 10}
+      ],
+      "accepted_tokens": ["USDT", "USDC", "ETH", "POL"],
+      "commission_rate": "0%"
+    },
+    "paypal": {
+      "channel": "PayPal Global",
+      "currency": "USD",
+      "account_email": "gewenbo888@gmail.com",
+      "paypal_me_url": "https://paypal.me/gewenbo888",
+      "recipient_name": "戈文波 (Gewenbo)"
+    }
+  },
+  "flagship_products": [
+    {"tier": "standard", "cny": 99, "usd": 29, "name": "现实主权·标准阅读版"},
+    {"tier": "master", "cny": 199, "usd": 49, "name": "现实主权·极客终身合辑版 (Master Edition)"},
+    {"tier": "advisory", "cny": 2999, "usd": 499, "name": "一人工业联合体 1v1 私享深度咨询"}
+  ]
+}</pre>
+    </details>
   </section>
 
   <!-- 一人工业数字军火库 · 独立资产与轻量工具箱 -->
@@ -1084,6 +1438,18 @@ function resetWeb3Status() {
 function copyAddr() {
   navigator.clipboard.writeText(MERCHANT_ADDRESS);
   alert("✅ 收款地址 (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C / gewenbo.eth) 已复制到剪贴板！");
+}
+
+function copyText(text, label) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert(`✅ ${label}已成功复制到剪贴板：\n${text}`);
+    }).catch(() => {
+      prompt("请复制：", text);
+    });
+  } else {
+    prompt("请复制：", text);
+  }
 }
 
 async function payWithWallet() {
