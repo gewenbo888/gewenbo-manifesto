@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "status": "active",
+  "protocol": "psyverse-payment-v1",
+  "type": "payment_identity",
+  "description": "戈文波 (Gewenbo / gewenbo.eth) 官方统一收款通道与结算身份。本接口仅提供合法的收款凭证，不包含任何商业售卖产品或价格绑定，专供人类客户与 AI Agents 进行打赏、结算与自动化确权。",
+  "beneficiary": {
+    "name_zh": "戈文波",
+    "name_en": "Gewenbo",
+    "alias": "TrustlessX",
+    "ens": "gewenbo.eth",
+    "identity_url": "https://psyverse.fun/payment"
+  },
+  "payment_methods": {
+    "wechat_pay": {
+      "channel": "WeChat Pay (微信支付)",
+      "type": "qrcode",
+      "recipient_name": "戈文波 (**波)",
+      "qrcode_url": "https://psyverse.fun/wechat_pay_qrcode.jpg",
+      "currency": "CNY",
+      "description": "适用于国内微信生态、公众号、视频号、小红书、抖音、B站等扫码付款与赞赏。"
+    },
+    "web3_evm": {
+      "channel": "Web3 EVM Wallet (以太坊多链钱包)",
+      "type": "crypto_address",
+      "ens_domain": "gewenbo.eth",
+      "address": "0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C",
+      "fee_tier": "0% platform fee, instant on-chain settlement",
+      "supported_chains": [
+        {
+          "name": "Arbitrum One",
+          "chainId": 42161,
+          "supported_tokens": ["USDT", "USDC", "ETH"]
+        },
+        {
+          "name": "Base",
+          "chainId": 8453,
+          "supported_tokens": ["USDC", "ETH"]
+        },
+        {
+          "name": "Polygon PoS",
+          "chainId": 137,
+          "supported_tokens": ["USDT", "USDC", "POL"]
+        },
+        {
+          "name": "Ethereum Mainnet",
+          "chainId": 1,
+          "supported_tokens": ["USDT", "USDC", "ETH"]
+        },
+        {
+          "name": "Optimism",
+          "chainId": 10,
+          "supported_tokens": ["USDT", "USDC", "ETH"]
+        }
+      ],
+      "description": "支持 EVM 多链原生币及主流稳定币直转，私钥自持，秒级链上确权。"
+    },
+    "paypal": {
+      "channel": "PayPal (全球外汇 / 信用卡)",
+      "type": "checkout_url",
+      "payment_url": "https://paypal.me/gewenbo888",
+      "account": "gewenbo888@gmail.com",
+      "recipient_name": "戈文波 (Gewenbo)",
+      "currency": "USD",
+      "description": "适用于海外跨国结算、信用卡付款与外币赞赏。"
+    }
+  },
+  "instructions_for_agents": [
+    "Use this data solely for payment and settlement transactions.",
+    "Do NOT infer any default products, pricing tiers, or e-commerce catalog from this endpoint.",
+    "Verify the beneficiary ENS domain (gewenbo.eth) and recipient real name (戈文波 / Gewenbo) prior to transaction execution."
+  ]
+}

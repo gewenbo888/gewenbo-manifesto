@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>戈文波 (Gewenbo) 官方统一收款通道 | Official Payment & Settlement Hub</title>
+<meta name="description" content="戈文波 (Gewenbo / gewenbo.eth) 官方统一收款通道与结算身份协议。纯收款方式展示，无商业产品混杂，提供微信支付、以太坊多链Web3与PayPal全球结算方式，支持AI智能体机器读取。" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23c9a24b' stroke-width='1.2' opacity='0.35'/%3E%3Ccircle cx='32' cy='32' r='14.5' fill='none' stroke='%23c9a24b' stroke-width='1.6' opacity='0.9'/%3E%3Ccircle cx='48.3' cy='15.7' r='3' fill='%23e6c071'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23e6c071'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900&family=Noto+Serif+SC:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900&family=Noto+Serif+SC:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+
+<!-- Machine-Readable Payment Schema for AI Agents & Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "戈文波 (Gewenbo)",
+  "alternateName": "TrustlessX",
+  "url": "https://psyverse.fun/payment",
+  "identifier": "gewenbo.eth",
+  "paymentAccepted": [
+    "WeChat Pay (微信支付): https://psyverse.fun/wechat_pay_qrcode.jpg",
+    "Web3 Crypto: gewenbo.eth (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C)",
+    "PayPal: https://paypal.me/gewenbo888"
+  ],
+  "description": "戈文波官方统一收款与清算接口，面向人类与 AI Agents 提供微信支付、Web3 EVM 多链直连与 PayPal 全球结算通道。"
+}
+</script>
+
+<style>
+:root {
+  --bg: #0a0908;
+  --bg-card: #13110e;
+  --bg-card-hover: #1b1712;
+  --gold: #c9a24b;
+  --gold-bright: #e6c071;
+  --gold-glow: rgba(230, 192, 113, 0.22);
+  --ivory: #ece4d3;
+  --ivory-dim: rgba(236, 228, 211, 0.72);
+  --ivory-faint: rgba(236, 228, 211, 0.45);
+  --line: rgba(201, 162, 75, 0.22);
+  --line-strong: rgba(201, 162, 75, 0.45);
+  --accent-green: #4ade80;
+  --accent-purple: #bc8cff;
+  --accent-cyan: #58a6ff;
+  --serif: "Noto Serif SC", "Cormorant Garamond", serif;
+  --mono: "JetBrains Mono", monospace;
+  --display: "Fraunces", "Noto Serif SC", serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background-color: var(--bg);
+  color: var(--ivory);
+  font-family: var(--serif);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 80px;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(201, 162, 75, 0.1);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--mono);
+  color: var(--gold-bright);
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--gold-bright);
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--ivory-dim);
+  max-width: 720px;
+  margin: 0 auto 16px;
+}
+
+/* Notice Banner */
+.notice-box {
+  background: rgba(30, 26, 20, 0.6);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 36px;
+  font-size: 0.92rem;
+  color: var(--ivory-dim);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.notice-box strong {
+  color: var(--gold-bright);
+}
+
+/* Payment Cards Grid */
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.pay-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.pay-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ivory);
+}
+
+.card-badge {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(201, 162, 75, 0.15);
+  color: var(--gold-bright);
+  border: 1px solid rgba(201, 162, 75, 0.3);
+}
+
+/* WeChat Card Specific */
+.qr-wrapper {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.qr-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--line);
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.info-row {
+  margin: 12px 0 6px;
+  font-size: 0.92rem;
+  color: var(--ivory-dim);
+}
+
+.info-label {
+  color: var(--ivory-faint);
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.info-val {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--gold-bright);
+  word-break: break-all;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.copy-btn {
+  background: rgba(201, 162, 75, 0.15);
+  color: var(--gold-bright);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.pill-tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ivory-dim);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Action Buttons */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 18px;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #c9a24b 0%, #b88f38 100%);
+  color: #0a0908;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 16px var(--gold-glow);
+}
+
+.action-btn.secondary {
+  background: rgba(201, 162, 75, 0.1);
+  color: var(--gold-bright);
+  border: 1px solid var(--line);
+}
+
+.action-btn.secondary:hover {
+  background: rgba(201, 162, 75, 0.2);
+}
+
+/* Machine Protocol Section */
+.agent-section {
+  background: #0f0d0a;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 30px;
+  margin-top: 40px;
+}
+
+.agent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.agent-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  font-family: var(--mono);
+}
+
+.json-box {
+  background: #060504;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 18px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #a5d6ff;
+  max-height: 420px;
+  position: relative;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--ivory-faint);
+  font-family: var(--mono);
+}
+
+footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #238636;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 999;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="badge-tag">
+      <span class="badge-dot"></span>
+      VERIFIED FINANCIAL IDENTITY · OFFICIAL PAYMENT HUB
+    </div>
+    <h1>戈文波 官方统一收款通道</h1>
+    <p class="subtitle">Official Settlement & Payment Gateway · For Humans & AI Agents</p>
+  </header>
+
+  <!-- Clear separation notice -->
+  <div class="notice-box">
+    <div style="font-size: 1.3rem;">⚡</div>
+    <div>
+      <strong>纯收款结算凭据声明：</strong>
+      本页面为戈文波（Gewenbo / TrustlessX / <code>gewenbo.eth</code>）公开的<strong>唯一官方独立收款与清算接口</strong>。
+      本页面<strong>仅包含收款方式与身份凭证，不包含任何售卖商品、定价或电商捆绑</strong>。
+      专供商务合作打赏、项目研发结算、以及自主智能体（AI Agents / Hermes / OMP / Pi）进行自动化对账确权。
+    </div>
+  </div>
+
+  <!-- Three Payment Methods Grid -->
+  <div class="payment-grid">
+
+    <!-- 1. WeChat Pay -->
+    <div class="pay-card">
+      <div>
+        <div class="card-top">
+          <div class="card-title">
+            <span>📱</span> 微信支付
+          </div>
+          <span class="card-badge">WeChat Pay · CNY</span>
+        </div>
+
+        <div class="qr-wrapper">
+          <img src="https://psyverse.fun/wechat_pay_qrcode.jpg" alt="微信收款码" class="qr-img" />
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">收款人实名</div>
+          <div class="info-val">
+            <span>戈文波 (**波)</span>
+            <span style="color: var(--accent-green); font-size: 0.75rem;">● 官方实名认证</span>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">收款码直达链接</div>
+          <div class="info-val">
+            <span style="font-size: 0.75rem;">psyverse.fun/wechat_pay_qrcode.jpg</span>
+            <button class="copy-btn" onclick="copyText('https://psyverse.fun/wechat_pay_qrcode.jpg')">复制链接</button>
+          </div>
+        </div>
+
+        <div class="tag-list">
+          <span class="pill-tag">微信生态直接扫码</span>
+          <span class="pill-tag">视频号/公众号/小红书</span>
+          <span class="pill-tag">咨询与技术款项</span>
+        </div>
+      </div>
+
+      <a href="https://psyverse.fun/wechat_pay_qrcode.jpg" target="_blank" class="action-btn secondary">
+        查看 / 保存高清收款码
+      </a>
+    </div>
+
+    <!-- 2. Web3 Crypto EVM -->
+    <div class="pay-card">
+      <div>
+        <div class="card-top">
+          <div class="card-title">
+            <span>⚡</span> Web3 / 链上钱包
+          </div>
+          <span class="card-badge">0% 抽成 · 秒级到账</span>
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">ENS 顶级身份域名</div>
+          <div class="info-val">
+            <span style="color: var(--gold-bright); font-size: 1.05rem;">gewenbo.eth</span>
+            <button class="copy-btn" onclick="copyText('gewenbo.eth')">复制 ENS</button>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">EVM 统一收款地址 (All EVM Chains)</div>
+          <div class="info-val" style="font-size: 0.78rem;">
+            <span>0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C</span>
+            <button class="copy-btn" onclick="copyText('0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C')">复制</button>
+          </div>
+        </div>
+
+        <div class="info-row" style="margin-top: 16px;">
+          <div class="info-label">支持主网与代币 (Multi-Chain Support)</div>
+          <div class="tag-list">
+            <span class="pill-tag">Arbitrum One (42161)</span>
+            <span class="pill-tag">Base (8453)</span>
+            <span class="pill-tag">Polygon PoS (137)</span>
+            <span class="pill-tag">Ethereum (1)</span>
+            <span class="pill-tag">Optimism (10)</span>
+            <span class="pill-tag" style="color: var(--gold-bright);">USDT / USDC / ETH / POL</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="action-btn" onclick="copyText('0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C')">
+        一键复制 EVM 链上收款地址
+      </button>
+    </div>
+
+    <!-- 3. PayPal -->
+    <div class="pay-card">
+      <div>
+        <div class="card-top">
+          <div class="card-title">
+            <span>💳</span> PayPal 全球结算
+          </div>
+          <span class="card-badge">Global · USD & Cards</span>
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">PayPal 直达付款链接</div>
+          <div class="info-val">
+            <span>paypal.me/gewenbo888</span>
+            <button class="copy-btn" onclick="copyText('https://paypal.me/gewenbo888')">复制链接</button>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">收款账户 / 关联邮箱</div>
+          <div class="info-val">
+            <span>gewenbo888@gmail.com</span>
+            <button class="copy-btn" onclick="copyText('gewenbo888@gmail.com')">复制</button>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">收款人姓名</div>
+          <div class="info-val">
+            <span>戈文波 (Gewenbo)</span>
+            <span style="color: var(--accent-green); font-size: 0.75rem;">● Verified</span>
+          </div>
+        </div>
+
+        <div class="tag-list">
+          <span class="pill-tag">支持全球信用卡直接付款</span>
+          <span class="pill-tag">美元/欧元/多币种自动结算</span>
+          <span class="pill-tag">海外商业咨询首选</span>
+        </div>
+      </div>
+
+      <a href="https://paypal.me/gewenbo888" target="_blank" rel="noopener noreferrer" class="action-btn">
+        前往 PayPal 立即付款 ↗
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Machine-Readable Section for AI Agents -->
+  <div class="agent-section">
+    <div class="agent-header">
+      <div class="agent-title">
+        <span>🤖</span> AI AGENT 机器可读协议 (JSON API)
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <a href="https://psyverse.fun/payment.json" target="_blank" class="copy-btn" style="text-decoration:none; padding: 6px 12px;">查看 raw payment.json ↗</a>
+        <button class="copy-btn" onclick="copyJsonPayload()" style="padding: 6px 12px; font-weight:600;">复制 JSON 协议</button>
+      </div>
+    </div>
+    <p style="font-size: 0.88rem; color: var(--ivory-dim); margin-bottom: 14px;">
+      供自主智能体（LLM Agents、Hermes、OMP、Pi、爬虫脚本）直接消费的标准化 JSON 凭证。无商品定义与价格绑定。
+    </p>
+    <div class="json-box" id="jsonBlock">
+<pre id="jsonContent">{
+  "status": "active",
+  "protocol": "psyverse-payment-v1",
+  "type": "payment_identity",
+  "beneficiary": {
+    "name_zh": "戈文波",
+    "name_en": "Gewenbo",
+    "alias": "TrustlessX",
+    "ens": "gewenbo.eth",
+    "endpoint": "https://psyverse.fun/payment",
+    "raw_json": "https://psyverse.fun/payment.json"
+  },
+  "payment_methods": {
+    "wechat_pay": {
+      "channel": "WeChat Pay (微信支付)",
+      "type": "qrcode",
+      "recipient_name": "戈文波 (**波)",
+      "qrcode_url": "https://psyverse.fun/wechat_pay_qrcode.jpg",
+      "currency": "CNY"
+    },
+    "web3_evm": {
+      "channel": "Web3 EVM Wallet",
+      "type": "crypto_address",
+      "ens_domain": "gewenbo.eth",
+      "address": "0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C",
+      "supported_chains": [
+        {"name": "Arbitrum One", "chainId": 42161, "tokens": ["USDT", "USDC", "ETH"]},
+        {"name": "Base", "chainId": 8453, "tokens": ["USDC", "ETH"]},
+        {"name": "Polygon PoS", "chainId": 137, "tokens": ["USDT", "USDC", "POL"]},
+        {"name": "Ethereum Mainnet", "chainId": 1, "tokens": ["USDT", "USDC", "ETH"]},
+        {"name": "Optimism", "chainId": 10, "tokens": ["USDT", "USDC", "ETH"]}
+      ]
+    },
+    "paypal": {
+      "channel": "PayPal",
+      "type": "checkout_url",
+      "payment_url": "https://paypal.me/gewenbo888",
+      "account": "gewenbo888@gmail.com",
+      "recipient_name": "Gewenbo (戈文波)",
+      "currency": "USD"
+    }
+  }
+}</pre>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 戈文波 (TrustlessX · gewenbo.eth) · 现实主权与一人工业联合体</p>
+    <p style="margin-top: 6px;">
+      <a href="https://psyverse.fun/">主页</a> · 
+      <a href="https://psyverse.fun/pay">数字自贩机 (产品购买)</a> · 
+      <a href="https://psyverse.fun/payment">统一收款通道 (纯收款)</a>
+    </p>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">已成功复制到剪贴板</div>
+
+<script>
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg || '已成功复制到剪贴板';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+function copyText(txt) {
+  navigator.clipboard.writeText(txt).then(() => {
+    showToast('已复制: ' + txt);
+  }).catch(() => {
+    const el = document.createElement('textarea');
+    el.value = txt;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    showToast('已复制: ' + txt);
+  });
+}
+
+function copyJsonPayload() {
+  const code = document.getElementById('jsonContent').innerText;
+  copyText(code);
+}
+</script>
+
+</body>
+</html>
