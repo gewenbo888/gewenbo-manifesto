@@ -20,6 +20,14 @@
       "currency": "CNY",
       "description": "适用于国内微信生态、公众号、视频号、小红书、抖音、B站等扫码付款与赞赏。"
     },
+    "alipay": {
+      "channel": "Alipay (支付宝)",
+      "type": "qrcode",
+      "recipient_name": "文波 (**波)",
+      "qrcode_url": "https://psyverse.fun/alipay_qrcode.jpg",
+      "currency": "CNY",
+      "description": "适用于国内支付宝扫码直付、储蓄卡/余额宝付款、转账打赏与商业款项结算。"
+    },
     "web3_evm": {
       "channel": "Web3 EVM Wallet (以太坊多链钱包)",
       "type": "crypto_address",

@@ -22,10 +22,11 @@
   "identifier": "gewenbo.eth",
   "paymentAccepted": [
     "WeChat Pay (微信支付): https://psyverse.fun/wechat_pay_qrcode.jpg",
+    "Alipay (支付宝): https://psyverse.fun/alipay_qrcode.jpg",
     "Web3 Crypto: gewenbo.eth (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C)",
     "PayPal: https://paypal.me/gewenbo888"
   ],
-  "description": "戈文波官方统一收款与清算接口，面向人类与 AI Agents 提供微信支付、Web3 EVM 多链直连与 PayPal 全球结算通道。"
+  "description": "戈文波官方统一收款与清算接口，面向人类与 AI Agents 提供微信支付、支付宝、Web3 EVM 多链直连与 PayPal 全球结算通道。"
 }
 </script>
 
@@ -137,7 +138,7 @@ h1 {
 /* Payment Cards Grid */
 .payment-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   margin-bottom: 48px;
 }
@@ -187,21 +188,24 @@ h1 {
   border: 1px solid rgba(201, 162, 75, 0.3);
 }
 
-/* WeChat Card Specific */
+/* QR Code Cards Specific */
 .qr-wrapper {
   text-align: center;
   margin: 16px 0;
 }
 
 .qr-img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
   border-radius: 8px;
   border: 2px solid var(--line);
   background: #fff;
   padding: 6px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto;
 }
 
 .info-row {
@@ -410,7 +414,7 @@ footer a:hover {
     </div>
   </div>
 
-  <!-- Three Payment Methods Grid -->
+  <!-- Four Payment Methods Grid -->
   <div class="payment-grid">
 
     <!-- 1. WeChat Pay -->
@@ -455,7 +459,49 @@ footer a:hover {
       </a>
     </div>
 
-    <!-- 2. Web3 Crypto EVM -->
+    <!-- 2. Alipay -->
+    <div class="pay-card">
+      <div>
+        <div class="card-top">
+          <div class="card-title">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:#1677ff; color:#fff; border-radius:5px; font-weight:900; font-size:14px; line-height:1; font-family:sans-serif;">支</span> 支付宝
+          </div>
+          <span class="card-badge" style="background: rgba(22, 119, 255, 0.15); color: #70b0ff; border-color: rgba(22, 119, 255, 0.3);">Alipay · CNY</span>
+        </div>
+
+        <div class="qr-wrapper">
+          <img src="https://psyverse.fun/alipay_qrcode.jpg" alt="支付宝收款码" class="qr-img" />
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">收款人姓名</div>
+          <div class="info-val">
+            <span>文波 (**波)</span>
+            <span style="color: var(--accent-green); font-size: 0.75rem;">● 官方实名认证</span>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">收款码直达链接</div>
+          <div class="info-val">
+            <span style="font-size: 0.75rem;">psyverse.fun/alipay_qrcode.jpg</span>
+            <button class="copy-btn" onclick="copyText('https://psyverse.fun/alipay_qrcode.jpg')">复制链接</button>
+          </div>
+        </div>
+
+        <div class="tag-list">
+          <span class="pill-tag">支付宝扫一扫</span>
+          <span class="pill-tag">储蓄卡/余额宝/花呗</span>
+          <span class="pill-tag">商业结算与极速赞赏</span>
+        </div>
+      </div>
+
+      <a href="https://psyverse.fun/alipay_qrcode.jpg" target="_blank" class="action-btn secondary">
+        查看 / 保存高清收款码
+      </a>
+    </div>
+
+    <!-- 3. Web3 Crypto EVM -->
     <div class="pay-card">
       <div>
         <div class="card-top">
@@ -580,6 +626,13 @@ footer a:hover {
       "type": "qrcode",
       "recipient_name": "戈文波 (**波)",
       "qrcode_url": "https://psyverse.fun/wechat_pay_qrcode.jpg",
+      "currency": "CNY"
+    },
+    "alipay": {
+      "channel": "Alipay (支付宝)",
+      "type": "qrcode",
+      "recipient_name": "文波 (**波)",
+      "qrcode_url": "https://psyverse.fun/alipay_qrcode.jpg",
       "currency": "CNY"
     },
     "web3_evm": {

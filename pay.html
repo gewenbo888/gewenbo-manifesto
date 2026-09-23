@@ -961,26 +961,35 @@ footer a {
     </p>
 
     <div class="payment-cards-grid">
-      <!-- 方式 1: 微信扫码直付 (WeChat Pay) -->
+      <!-- 方式 1: 微信 & 支付宝扫码直付 (WeChat & Alipay) -->
       <div class="payment-card">
         <span class="payment-card-badge badge-wechat">CHANNEL 01 · 国内法定货币 (CNY)</span>
         <div class="payment-card-title">
-          <span>📱 微信扫码直付</span>
-          <span style="font-size: 12px; color: var(--accent-green); font-family: var(--mono); font-weight: normal;">WeChat Pay</span>
+          <span>📱 微信扫码 & 支付宝直付</span>
+          <span style="font-size: 12px; color: var(--accent-green); font-family: var(--mono); font-weight: normal;">WeChat / Alipay</span>
         </div>
         <p class="payment-card-desc">
-          主要承接国内微信生态、视频号、公众号、小红书、B站等读者直接扫码付费或赞赏。支持微信零钱、银行储蓄卡及信用卡。
+          主要承接国内微信生态与支付宝用户直接扫码付费或赞赏。支持微信零钱、支付宝余额/花呗、银行储蓄卡及信用卡。
         </p>
         
-        <div style="text-align: center; margin: 8px 0 14px;">
-          <div style="background: #fff; padding: 10px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 20px rgba(0, 255, 136, 0.15);">
-            <img src="wechat_pay_qrcode.jpg" alt="戈文波 微信收款码" style="width: 175px; height: auto; display: block; border-radius: 6px;" />
+        <div style="display: flex; justify-content: center; gap: 12px; margin: 8px 0 14px; flex-wrap: wrap;">
+          <div style="text-align: center;">
+            <div style="background: #fff; padding: 8px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 15px rgba(0, 255, 136, 0.15);">
+              <img src="wechat_pay_qrcode.jpg" alt="微信收款码" style="width: 135px; height: auto; display: block; border-radius: 4px;" />
+            </div>
+            <div style="font-size: 11px; color: var(--accent-green); margin-top: 4px; font-weight: bold;">微信支付</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="background: #fff; padding: 8px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 15px rgba(22, 119, 255, 0.15);">
+              <img src="alipay_qrcode.jpg" alt="支付宝收款码" style="width: 135px; height: auto; display: block; border-radius: 4px;" />
+            </div>
+            <div style="font-size: 11px; color: #58a6ff; margin-top: 4px; font-weight: bold;">支付宝</div>
           </div>
         </div>
 
         <div class="payment-identity-box">
           <span style="color: var(--ivory-dim);">收款人实名：</span>
-          <span class="payment-identity-val" style="color: var(--accent-green); font-weight: 700;">戈文波 (**波)</span>
+          <span class="payment-identity-val" style="color: var(--accent-green); font-weight: 700;">戈文波 / 文波 (**波)</span>
         </div>
 
         <div style="font-size: 12px; color: var(--ivory-faint); line-height: 1.5; margin-bottom: 14px;">
@@ -1091,6 +1100,13 @@ footer a {
       "currency": "CNY",
       "recipient_legal_name": "戈文波 (**波)",
       "qr_code_url": "https://psyverse.fun/wechat_pay_qrcode.jpg",
+      "remark_instruction": "请备注接收邮箱或微信号"
+    },
+    "alipay": {
+      "channel": "Alipay (支付宝)",
+      "currency": "CNY",
+      "recipient_legal_name": "文波 (**波)",
+      "qr_code_url": "https://psyverse.fun/alipay_qrcode.jpg",
       "remark_instruction": "请备注接收邮箱或微信号"
     },
     "web3_crypto": {
@@ -1317,17 +1333,29 @@ footer a {
   </footer>
 </div>
 
-<!-- 真实微信支付扫码弹窗 -->
+<!-- 真实微信 / 支付宝扫码支付弹窗 -->
 <div class="modal-overlay" id="wechatModal">
   <div class="modal-content">
     <button class="modal-close" onclick="closeWechatModal()">&times;</button>
-    <div class="modal-title">🇨🇳 微信扫码极速支付</div>
+    <div class="modal-title">🇨🇳 国内扫码极速支付</div>
+    
+    <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0 14px;">
+      <button type="button" id="tabWechatBtn" onclick="switchCnyTab('wechat')" style="padding: 6px 16px; background: rgba(0, 255, 136, 0.2); color: var(--accent-green); border: 1px solid var(--accent-green); font-size: 13px; font-weight: bold; cursor: pointer; border-radius: 6px;">📱 微信支付</button>
+      <button type="button" id="tabAlipayBtn" onclick="switchCnyTab('alipay')" style="padding: 6px 16px; background: rgba(22, 119, 255, 0.1); color: #8bbefa; border: 1px solid rgba(22, 119, 255, 0.3); font-size: 13px; font-weight: bold; cursor: pointer; border-radius: 6px;">支 支付宝</button>
+    </div>
+
     <div class="modal-desc" id="wechatModalDesc">
       微信扫描下方收款码即可完成付款，支持零钱或绑定银行卡。
     </div>
 
-    <div style="background: #fff; padding: 12px; border-radius: 12px; display: inline-block; margin: 0 auto 14px; text-align: center; box-shadow: 0 4px 25px rgba(0,0,0,0.6);">
-      <img src="wechat_pay_qrcode.jpg" alt="戈文波 微信收款码" style="width: 240px; height: auto; display: block; border-radius: 6px;" />
+    <!-- WeChat QR -->
+    <div id="wechatQrWrapper" style="background: #fff; padding: 12px; border-radius: 12px; display: inline-block; margin: 0 auto 14px; text-align: center; box-shadow: 0 4px 25px rgba(0,0,0,0.6);">
+      <img src="wechat_pay_qrcode.jpg" alt="戈文波 微信收款码" style="width: 220px; height: auto; display: block; border-radius: 6px;" />
+    </div>
+
+    <!-- Alipay QR -->
+    <div id="alipayQrWrapper" style="background: #fff; padding: 12px; border-radius: 12px; display: none; margin: 0 auto 14px; text-align: center; box-shadow: 0 4px 25px rgba(0,0,0,0.6);">
+      <img src="alipay_qrcode.jpg" alt="戈文波 支付宝收款码" style="width: 220px; height: auto; display: block; border-radius: 6px;" />
     </div>
 
     <div style="margin-bottom: 14px; text-align: center;">
@@ -1337,14 +1365,14 @@ footer a {
 
     <div style="background: rgba(201, 162, 75, 0.08); border: 1px dashed var(--line); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--ivory-dim); line-height: 1.6; margin-bottom: 16px; text-align: left;">
       📌 <b>付款与交付流程：</b><br>
-      1. 打开微信“扫一扫”，扫描上方二维码支付对应金额；<br>
+      1. 打开微信或支付宝“扫一扫”，扫描上方对应二维码支付；<br>
       2. 付款时请在<b>【添加备注】</b>处填写您的<b>微信号或接收邮箱</b>；<br>
       3. 付款完成后点击下方按钮，系统将直接开放 2.5MB 全量典藏包下载；<br>
       4. 亦可添加作者推特 <b>@TrustlessX</b> 私信发送付款截图，秒级补发与直通读者社群。
     </div>
 
     <button onclick="confirmWechatPaid()" class="btn-channel primary" style="width: 100%; justify-content: center; font-size: 14px;">
-      ✅ 我已完成微信支付，立即提取下载
+      ✅ 我已完成扫码支付，立即提取下载
     </button>
   </div>
 </div>
@@ -1393,10 +1421,38 @@ let currentPrice = 49;
 let currentTier = 'master';
 const MERCHANT_ADDRESS = "0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C";
 
-// 微信真实支付弹窗
+// 国内扫码支付弹窗 (微信 / 支付宝)
+function switchCnyTab(tab) {
+  const wechatBox = document.getElementById('wechatQrWrapper');
+  const alipayBox = document.getElementById('alipayQrWrapper');
+  const wechatBtn = document.getElementById('tabWechatBtn');
+  const alipayBtn = document.getElementById('tabAlipayBtn');
+  const desc = document.getElementById('wechatModalDesc');
+  if (tab === 'alipay') {
+    wechatBox.style.display = 'none';
+    alipayBox.style.display = 'inline-block';
+    wechatBtn.style.background = 'rgba(0, 255, 136, 0.08)';
+    wechatBtn.style.borderColor = 'rgba(0, 255, 136, 0.2)';
+    alipayBtn.style.background = 'rgba(22, 119, 255, 0.25)';
+    alipayBtn.style.borderColor = '#1677ff';
+    alipayBtn.style.color = '#58a6ff';
+    desc.innerText = '支付宝扫描下方收款码即可完成付款，支持储蓄卡/余额宝/花呗。';
+  } else {
+    alipayBox.style.display = 'none';
+    wechatBox.style.display = 'inline-block';
+    wechatBtn.style.background = 'rgba(0, 255, 136, 0.25)';
+    wechatBtn.style.borderColor = 'var(--accent-green)';
+    wechatBtn.style.color = 'var(--accent-green)';
+    alipayBtn.style.background = 'rgba(22, 119, 255, 0.08)';
+    alipayBtn.style.borderColor = 'rgba(22, 119, 255, 0.2)';
+    desc.innerText = '微信扫描下方收款码即可完成付款，支持零钱或绑定银行卡。';
+  }
+}
+
 function openWechatModal(cny, title) {
   document.getElementById('wechatModalAmount').innerText = `¥${cny} CNY`;
-  document.getElementById('wechatModalDesc').innerText = `您正在订购：${title}。微信扫码付款，支持零钱或绑定银行卡。`;
+  document.getElementById('wechatModalDesc').innerText = `您正在订购：${title}。请扫描下方收款码完成付款，支持微信支付与支付宝。`;
+  switchCnyTab('wechat');
   document.getElementById('wechatModal').classList.add('active');
 }
 
