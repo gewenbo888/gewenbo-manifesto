@@ -183,6 +183,10 @@ section {
   color: var(--gold);
   letter-spacing: -0.04em;
   font-variation-settings: "opsz" 144;
+  /* letterpress on paper: hairline emboss */
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.65),
+    0 -1px 0 rgba(110, 85, 24, 0.18);
 }
 .section-title {
   font-family: var(--display);
@@ -2228,6 +2232,16 @@ footer a:hover::after { transform: scaleX(1); }
 .hero h1, .section-title { text-wrap: balance; }
 p, .four-note, .four-note-cn, .hero-tagline { text-wrap: pretty; }
 body { hanging-punctuation: first allow-end; }
+
+/* — Editorial upgrade: optical refinements — */
+html { font-kerning: normal; text-rendering: optimizeLegibility; }
+.hero h1 em { letter-spacing: -0.015em; }
+.hero h1::after {
+  content: ""; display: block; width: 72px; height: 1px;
+  margin: 30px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+}
+.hero h1 .cn { margin-top: 26px; }
 
 /* — Visible keyboard focus (accessibility) — */
 a:focus-visible, button:focus-visible, .dot-rail a:focus-visible {
