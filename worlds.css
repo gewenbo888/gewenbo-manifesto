@@ -47,7 +47,7 @@ body {
 ::selection { background: var(--accent); color: var(--bg); }
 
 /* — Light-scheme polish: native controls, themed scrollbar, anchor clearance — */
-html { color-scheme: light; }
+html { color-scheme: light; overflow-x: clip; }
 html { scrollbar-width: thin; scrollbar-color: #cfc5ad transparent; }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -66,7 +66,8 @@ html[data-lang="zh"] .en { display: none !important; }
 .w-bar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   display: flex; justify-content: space-between; align-items: center;
-  gap: 16px; padding: 13px 26px;
+  flex-wrap: wrap;
+  gap: 8px 16px; padding: 13px 26px;
   background: rgba(246, 241, 230, 0.82);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
@@ -90,7 +91,7 @@ html[data-lang="zh"] .en { display: none !important; }
   text-transform: uppercase; color: var(--ivory-faint);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.w-bar .bar-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.w-bar .bar-right { display: flex; align-items: center; gap: 14px; flex-shrink: 1; min-width: 0; }
 .w-bar .to-worlds {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--ivory-dim); text-decoration: none;
