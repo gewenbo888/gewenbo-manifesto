@@ -307,6 +307,17 @@ section {
   font-style: italic; color: var(--gold-bright);
   font-weight: 400;
 }
+/* variable-font weight breathing: italic keyword thickens on hover */
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 em {
+    font-variation-settings: "wght" 300;
+    transition: font-variation-settings 1.4s cubic-bezier(.2,.7,.2,1), color .6s ease;
+  }
+  .hero h1:hover em {
+    font-variation-settings: "wght" 560;
+    color: var(--gold);
+  }
+}
 .hero-tagline {
   font-family: var(--display);
   font-style: italic;
@@ -4606,5 +4617,52 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
   }
 })();
 </script>
+<script>
+/* gold-dust cursor trail — paper motes stirred by the pointer (desktop, motion-safe) */
+(function(){
+  if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if(!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  var c = document.createElement('canvas');
+  c.setAttribute('aria-hidden', 'true');
+  c.style.cssText = 'position:fixed;inset:0;z-index:1;pointer-events:none;';
+  document.body.appendChild(c);
+  var x = c.getContext('2d'), W, H, motes = [], last = 0;
+  function size(){ W = c.width = innerWidth; H = c.height = innerHeight; }
+  size(); addEventListener('resize', size);
+  addEventListener('mousemove', function(e){
+    var now = performance.now();
+    if(now - last < 28) return; last = now;
+    if(motes.length < 90) motes.push({
+      x: e.clientX + (Math.random()*10 - 5),
+      y: e.clientY + (Math.random()*10 - 5),
+      vx: (Math.random() - .5) * .3, vy: -Math.random() * .45 - .1,
+      life: 1, r: Math.random() * 1.4 + .4
+    });
+  }, { passive: true });
+  (function loop(){
+    requestAnimationFrame(loop);
+    x.clearRect(0, 0, W, H);
+    for(var i = motes.length - 1; i >= 0; i--){
+      var m = motes[i];
+      m.x += m.vx; m.y += m.vy; m.life -= .016;
+      if(m.life <= 0){ motes.splice(i, 1); continue; }
+      x.globalAlpha = m.life * .5;
+      x.fillStyle = m.life > .5 ? '#c9a24b' : '#a8801f';
+      x.beginPath(); x.arc(m.x, m.y, m.r * m.life, 0, 6.2832); x.fill();
+    }
+    x.globalAlpha = 1;
+  })();
+})();
+</script>
+<style>
+/* print: the paper-and-ink manifesto is print-native */
+@media print {
+  .topbar, .dot-rail, .scroll-progress, .lang-switch, .world-link, .hero-scroll, .w-top, canvas[aria-hidden] { display: none !important; }
+  body { background: #fff !important; color: #111 !important; }
+  section { page-break-inside: avoid; }
+  a { color: #111 !important; text-decoration: none; }
+  .section-num { color: #999 !important; }
+}
+</style>
 </body>
 </html>
