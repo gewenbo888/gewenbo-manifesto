@@ -5,16 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>一人工业联合体 · 12 节点四维矩阵控制大屏</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // light-mode ramp override: slate/emerald utilities remapped to paper-and-ink
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            slate: {
+              50: '#241e13', 100: '#241e13', 200: '#3a3223', 300: '#57503f',
+              400: '#7a7263', 500: '#a89e88', 600: '#c9c0aa', 700: '#ddd4bd',
+              800: '#e9e1cd', 900: '#f6f1e6', 950: '#fbf8f0'
+            },
+            emerald: { 400: '#047857', 500: '#047857', 600: '#065f46' },
+            blue: { 400: '#1d4ed8' },
+            indigo: { 400: '#4338ca' },
+            amber: { 400: '#b45309' }
+          }
+        }
+      }
+    };
+  </script>
   <style>
+    .text-white { color: #241e13 !important; }
+    .bg-emerald-500.text-white, .bg-emerald-600.text-white { color: #ffffff !important; }
     :root {
-      --background: #090d16;
-      --card: #0f172a;
-      --border: #1e293b;
-      --foreground: #f8fafc;
-      --muted-foreground: #94a3b8;
+      --background: #f6f1e6;
+      --card: #efe8d8;
+      --border: #e9e1cd;
+      --foreground: #241e13;
+      --muted-foreground: #837b6a;
       --primary: #3b82f6;
-      --secondary: #1e293b;
-      --accent: #334155;
+      --secondary: #e9e1cd;
+      --accent: #6b6353;
     }
     body {
       background: var(--background);
