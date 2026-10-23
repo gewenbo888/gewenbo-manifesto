@@ -10,8 +10,8 @@
   if (window.__psyverseScifi) return;
   window.__psyverseScifi = true;
 
-  var GOLD = "201,162,75";
-  var GOLD_BRIGHT = "230,192,113";
+  var GOLD = "143,111,43";
+  var GOLD_BRIGHT = "184,134,11";
   var JADE = "90,143,115";
   var IVORY = "236,228,211";
 

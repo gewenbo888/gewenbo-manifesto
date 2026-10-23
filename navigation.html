@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Thirteen-Step Navigation · 十三步导航" />
 <meta name="twitter:description" content="Four phases, thirteen steps, one self-renewing cycle — a closed-loop operating system for a life aimed at meaning." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#0a0908" />
+<meta name="theme-color" content="#f6f1e6" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,7 +38,7 @@
 </script>
 <!-- /SEO -->
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23c9a24b' stroke-width='1.2' opacity='0.35'/%3E%3Ccircle cx='32' cy='32' r='14.5' fill='none' stroke='%23c9a24b' stroke-width='1.6' opacity='0.9'/%3E%3Ccircle cx='48.3' cy='15.7' r='3' fill='%23e6c071'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23e6c071'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f6f1e6'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23a8801f' stroke-width='1.2' opacity='0.35'/%3E%3Ccircle cx='32' cy='32' r='14.5' fill='none' stroke='%23a8801f' stroke-width='1.6' opacity='0.9'/%3E%3Ccircle cx='48.3' cy='15.7' r='3' fill='%23c9a24b'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23c9a24b'/%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -209,7 +209,7 @@
 /* ── phase colour tokens ── */
 :root {
   --ph1: #5a8f73;   /* jade  · Phase I  */
-  --ph2: #c9a24b;   /* gold  · Phase II */
+  --ph2: #a8801f;   /* gold  · Phase II */
   --ph3: #b17fd4;   /* violet · Phase III */
   --ph4: #b14d42;   /* rouge · Phase IV */
 }
@@ -463,7 +463,7 @@ noscript .loop-noscript {
         <!-- SVG ring of 13 nodes -->
         <svg class="loop-ring-svg" viewBox="-10 -10 220 220" role="group" aria-label="Thirteen-step ring" id="loop-svg">
           <!-- track circle -->
-          <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(201,162,75,.14)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(143, 111, 43,.14)" stroke-width="1"/>
 
           <!-- dashed loop-back arc from node 13 to node 2 -->
           <path id="loop-back-path" class="loop-back-line" d=""/>
@@ -912,7 +912,7 @@ noscript .loop-noscript {
   /* ── Data ── */
   var PHASES = [
     { id: 1, enLabel: 'Phase Ⅰ', zhLabel: '第一阶段', enName: 'Construction of the Inner World', color: '#5a8f73' },
-    { id: 2, enLabel: 'Phase Ⅱ', zhLabel: '第二阶段', enName: 'Interaction with the Real World', color: '#c9a24b' },
+    { id: 2, enLabel: 'Phase Ⅱ', zhLabel: '第二阶段', enName: 'Interaction with the Real World', color: '#a8801f' },
     { id: 3, enLabel: 'Phase Ⅲ', zhLabel: '第三阶段', enName: 'Shaping & Amplifying Influence',  color: '#b17fd4' },
     { id: 4, enLabel: 'Phase Ⅳ', zhLabel: '第四阶段', enName: 'Refinement & Rebirth',            color: '#b14d42' }
   ];
@@ -1017,7 +1017,7 @@ noscript .loop-noscript {
       (tip.x + px*4).toFixed(2) + ',' + (tip.y + py*4).toFixed(2) + ' ' +
       (tip.x - px*4).toFixed(2) + ',' + (tip.y - py*4).toFixed(2)
     );
-    loopArrow.setAttribute('fill', '#c9a24b');
+    loopArrow.setAttribute('fill', '#a8801f');
   })();
 
   /* ── Detail elements ── */
@@ -1048,7 +1048,7 @@ noscript .loop-noscript {
       if (i === current) {
         g.classList.add('active');
         g.querySelector('circle').style.fill = ph.color;
-        g.querySelector('text').style.fill   = '#0a0908';
+        g.querySelector('text').style.fill   = '#f6f1e6';
       } else {
         g.classList.remove('active');
         g.querySelector('circle').style.fill = '';

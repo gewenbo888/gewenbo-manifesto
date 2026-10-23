@@ -9,7 +9,7 @@
 <meta property="og:description" content="Every site in the Psyverse, sorted by traffic." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://psyverse.fun/og.png" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9a24b' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e6c071'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f6f1e6'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23a8801f' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23a8801f' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23a8801f' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23c9a24b'/%3E%3C/svg%3E" />
 <script defer src="https://analytics-dashboard-two-blue.vercel.app/tracker.js"></script>
 <script src="/scifi.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,19 +18,19 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=Noto+Serif+SC:wght@200;300;400;500;700&family=JetBrains+Mono:wght@300;400;500&display=swap" /></noscript>
 <style>
 :root {
-  --bg: #0a0908;
-  --bg-2: #14110d;
-  --bg-3: #1f1a13;
-  --gold: #c9a24b;
-  --gold-bright: #e6c071;
+  --bg: #f6f1e6;
+  --bg-2: #efe8d8;
+  --bg-3: #e9e1cd;
+  --gold: #a8801f;
+  --gold-bright: #b8860b;
   --gold-deep: #7c6024;
-  --ivory: #ece4d3;
-  --ivory-dim: rgba(236, 228, 211, 0.65);
-  --ivory-faint: rgba(236, 228, 211, 0.25);
+  --ivory: #241e13;
+  --ivory-dim: rgba(36, 30, 19, 0.72);
+  --ivory-faint: rgba(36, 30, 19, 0.25);
   --jade: #5a8f73;
   --rouge: #b14d42;
-  --line: rgba(201, 162, 75, 0.2);
-  --line-soft: rgba(236, 228, 211, 0.08);
+  --line: rgba(143, 111, 43, 0.2);
+  --line-soft: rgba(36, 30, 19, 0.10);
   --serif: "Cormorant Garamond", "Noto Serif SC", serif;
   --display: "Fraunces", "Noto Serif SC", serif;
   --cjk: "Noto Serif SC", "Cormorant Garamond", serif;
@@ -47,7 +47,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   background-image:
-    radial-gradient(ellipse at 50% 0%, rgba(201, 162, 75, 0.08), transparent 60%),
+    radial-gradient(ellipse at 50% 0%, rgba(143, 111, 43, 0.08), transparent 60%),
     radial-gradient(ellipse at 20% 80%, rgba(90, 143, 115, 0.04), transparent 50%),
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.82  0 0 0 0 0.64  0 0 0 0 0.29  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   background-attachment: fixed;
@@ -59,7 +59,7 @@ body {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   display: flex; justify-content: space-between; align-items: center;
   padding: 14px 28px; gap: 20px;
-  background: rgba(10, 9, 8, 0.82);
+  background: rgba(246, 241, 230, 0.82);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
@@ -103,7 +103,7 @@ body {
   font-family: var(--mono); font-size: 9.5px;
   letter-spacing: 0.1em; text-transform: uppercase;
 }
-.top-nav a:hover { color: var(--gold); background: rgba(201, 162, 75, 0.07); }
+.top-nav a:hover { color: var(--gold); background: rgba(143, 111, 43, 0.07); }
 .top-nav a.active { color: var(--gold); }
 .top-nav a + a::before {
   content: "·"; color: var(--ivory-faint);
@@ -319,7 +319,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 120px 32px 80px; }
   aspect-ratio: 16/10;
   background: var(--bg-2);
   background-image:
-    linear-gradient(135deg, rgba(201,162,75,0.04) 0%, transparent 50%, rgba(201,162,75,0.02) 100%);
+    linear-gradient(135deg, rgba(143, 111, 43,0.04) 0%, transparent 50%, rgba(143, 111, 43,0.02) 100%);
   overflow: hidden;
   border-bottom: 1px solid var(--line-soft);
 }
@@ -958,8 +958,8 @@ function sparkline(last7, w = 60, h = 22) {
   }).join(' ');
   const lastY = h - (vals[vals.length - 1] / max) * (h - 2) - 1;
   return `<svg class="card-spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-    <polyline points="${pts}" fill="none" stroke="#c9a24b" stroke-width="1.2" opacity="0.65"/>
-    <circle cx="${w}" cy="${lastY.toFixed(1)}" r="1.6" fill="#e6c071"/>
+    <polyline points="${pts}" fill="none" stroke="#a8801f" stroke-width="1.2" opacity="0.65"/>
+    <circle cx="${w}" cy="${lastY.toFixed(1)}" r="1.6" fill="#c9a24b"/>
   </svg>`;
 }
 

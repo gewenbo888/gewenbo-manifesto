@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Ontological Matrix · 存在之矩阵" />
 <meta name="twitter:description" content="A 3×3 map of reality: Matter, Information, and Energy across Existence, Structure, and Property." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#0a0908" />
+<meta name="theme-color" content="#f6f1e6" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,7 +38,7 @@
 </script>
 <!-- /SEO -->
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23c9a24b' stroke-width='1.2' opacity='0.35'/%3E%3Ccircle cx='32' cy='32' r='14.5' fill='none' stroke='%23c9a24b' stroke-width='1.6' opacity='0.9'/%3E%3Ccircle cx='48.3' cy='15.7' r='3' fill='%23e6c071'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23e6c071'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f6f1e6'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23a8801f' stroke-width='1.2' opacity='0.35'/%3E%3Ccircle cx='32' cy='32' r='14.5' fill='none' stroke='%23a8801f' stroke-width='1.6' opacity='0.9'/%3E%3Ccircle cx='48.3' cy='15.7' r='3' fill='%23c9a24b'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23c9a24b'/%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -141,8 +141,8 @@
   margin-top: 6px;
   letter-spacing: 0.04em;
 }
-.om-matrix td.matter-cell { border-top-color: color-mix(in srgb, #c9a24b 40%, transparent); }
-.om-matrix td.info-cell   { border-top-color: color-mix(in srgb, #4baa7a 40%, transparent); }
+.om-matrix td.matter-cell { border-top-color: color-mix(in srgb, #a8801f 40%, transparent); }
+.om-matrix td.info-cell   { border-top-color: color-mix(in srgb, #37855a 40%, transparent); }
 .om-matrix td.energy-cell { border-top-color: color-mix(in srgb, #c45a5a 40%, transparent); }
 
 .cell-idx-tag {
@@ -177,8 +177,8 @@
 .cell-body .cn { display: block; color: var(--ivory-faint); margin-top: 4px; font-size: 12px; opacity: 0.8; }
 
 /* column accent borders on header */
-.om-matrix thead .th-matter { border-bottom-color: #c9a24b; }
-.om-matrix thead .th-info   { border-bottom-color: #4baa7a; }
+.om-matrix thead .th-matter { border-bottom-color: #a8801f; }
+.om-matrix thead .th-info   { border-bottom-color: #37855a; }
 .om-matrix thead .th-energy { border-bottom-color: #c45a5a; }
 
 /* responsive: stack on narrow screens */
@@ -243,8 +243,8 @@
 }
 .om-ix-col-head .ch-en { color: var(--gold-bright); display: block; }
 .om-ix-col-head .ch-cn { font-family: var(--cjk); font-size: 11px; color: var(--ivory-faint); margin-top: 3px; display: block; }
-.om-ix-col-head.col-matter { border-bottom-color: #c9a24b; }
-.om-ix-col-head.col-info   { border-bottom-color: #4baa7a; }
+.om-ix-col-head.col-matter { border-bottom-color: #a8801f; }
+.om-ix-col-head.col-info   { border-bottom-color: #37855a; }
 .om-ix-col-head.col-energy { border-bottom-color: #c45a5a; }
 .om-ix-row-head {
   padding: 10px 10px 10px 6px;
@@ -288,7 +288,7 @@
 .om-ix-cell[aria-selected="true"] {
   background: color-mix(in srgb, var(--gold) 10%, var(--bg-2));
   border-color: var(--gold);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 35%, transparent), 0 8px 28px -10px rgba(201,162,75,0.35);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 35%, transparent), 0 8px 28px -10px rgba(143, 111, 43,0.35);
 }
 /* axis highlight when a cell is selected */
 .om-ix-grid[data-active-col="0"] .om-ix-col-head.col-matter,
@@ -322,8 +322,8 @@
   margin-top: 3px;
   opacity: 0.8;
 }
-.om-ix-cell.col-matter { border-top: 2px solid color-mix(in srgb, #c9a24b 45%, transparent); }
-.om-ix-cell.col-info   { border-top: 2px solid color-mix(in srgb, #4baa7a 45%, transparent); }
+.om-ix-cell.col-matter { border-top: 2px solid color-mix(in srgb, #a8801f 45%, transparent); }
+.om-ix-cell.col-info   { border-top: 2px solid color-mix(in srgb, #37855a 45%, transparent); }
 .om-ix-cell.col-energy { border-top: 2px solid color-mix(in srgb, #c45a5a 45%, transparent); }
 
 /* faded cells that are not in the active row/column */
@@ -338,7 +338,7 @@
   border-radius: 6px;
   background: var(--bg-2);
   padding: 28px 30px 32px;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 18%, transparent), 0 16px 48px -16px rgba(0,0,0,0.7);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 18%, transparent), 0 16px 48px -16px rgba(62, 48, 20, 0.20);
 }
 @media (prefers-reduced-motion: no-preference) {
   .om-ix-panel { animation: wfade .35s ease; }
@@ -437,7 +437,7 @@
 .om-row-card:hover {
   transform: translateY(-3px);
   background: var(--bg-2);
-  box-shadow: 0 16px 42px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,75,0.28);
+  box-shadow: 0 16px 42px -14px rgba(62, 48, 20, 0.20), 0 0 0 1px rgba(143, 111, 43,0.28);
 }
 .om-row-card + .om-row-card { margin-top: 18px; }
 .om-row-card .rc-label {
@@ -784,7 +784,7 @@
     </p>
     <div class="w-grid">
       <div class="w-card">
-        <div class="idx" style="color:#c9a24b;">Matter · 物质</div>
+        <div class="idx" style="color:#a8801f;">Matter · 物质</div>
         <div class="ttl">The substrate of presence<span class="cn">在场的基底</span></div>
         <div class="body">
           <span class="en">Matter is what occupies. It has mass, inertia, and extent. It can be weighed, counted, and touched. Every physical law is ultimately a statement about what matter does under which conditions. The entire periodic table is one kind of answer to the question: what kinds of matter can exist?</span>
@@ -792,7 +792,7 @@
         </div>
       </div>
       <div class="w-card">
-        <div class="idx" style="color:#4baa7a;">Information · 信息</div>
+        <div class="idx" style="color:#37855a;">Information · 信息</div>
         <div class="ttl">The substrate of distinction<span class="cn">区分的基底</span></div>
         <div class="body">
           <span class="en">Information is what differs. It requires no specific physical form — a scratch on stone, a voltage in a circuit, a gene in a cell all carry information. What they share is the making and holding of a distinction. John Wheeler's phrase 「it from bit」 suggests that even physical existence may be grounded in informational difference.</span>
@@ -867,8 +867,8 @@
           <span class="cn">阅读第一行，回答了最原始的本体论问题：就在那里的是什么？答案是三重且不可化约的。物质命名占据空间且有质量之物。信息命名与他物相异之物——一个被保持的区分。能量命名使改变成为可能之物——令转变得以发生的能力。这三者中，任何一个都无法完全还原为另外两个：质能等价（E=mc²）将其中两者以深刻的方式相连，然而信息依然是第三条轴线，质量与能量单独都无法解释它。宇宙中的每一事物都是三者的混合，但存在行坚持要求我们在诚实地混合之前，先将它们分别命名。</span>
         </div>
         <div class="rc-cells">
-          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c9a24b 35%,transparent);color:#c9a24b;">Matter 物质</span>
-          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#4baa7a 35%,transparent);color:#4baa7a;">Information 信息</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#a8801f 35%,transparent);color:#a8801f;">Matter 物质</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#37855a 35%,transparent);color:#37855a;">Information 信息</span>
           <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c45a5a 35%,transparent);color:#c45a5a;">Energy 能量</span>
         </div>
       </div>
@@ -885,8 +885,8 @@
           <span class="cn">阅读第二行揭示：结构不是一种事物，而是三种同时运作的脚手架。引力是物质的结构原则：任其自然，物质不会均匀扩散——它聚集、凝合、建造。空间是信息的结构原则：没有地址系统，任何区分都无法被定位或检索。时间是能量的结构原则：因果关系需要方向——一个「之前」变成「之后」。这一行令人瞩目之处在于，在现代物理学中，三种结构深度纠缠。爱因斯坦广义相对论表明，物质的引力同时弯曲空间与时间；量子引力的提议暗示，时空本身可能从量子信息的纠缠结构中涌现。第二行指向表象分离之下的统一。</span>
         </div>
         <div class="rc-cells">
-          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c9a24b 35%,transparent);color:#c9a24b;">Gravity 引力</span>
-          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#4baa7a 35%,transparent);color:#4baa7a;">Space 空间</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#a8801f 35%,transparent);color:#a8801f;">Gravity 引力</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#37855a 35%,transparent);color:#37855a;">Space 空间</span>
           <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c45a5a 35%,transparent);color:#c45a5a;">Time 时间</span>
         </div>
       </div>
@@ -903,8 +903,8 @@
           <span class="cn">阅读第三行展示了将每列推向极限时会发生什么——推向尺度的边界、普通直觉在那里失效的极端。量子行为是物质在小到离散的、概率性的、纠缠的存在不再能被近似忽略时的表现。维度性是当你计算信息可以沿之变化的独立轴数目时，信息所呈现的面貌——而这个答案最终决定了从蛋白质折叠到意识等一切事物的复杂度。熵是当你计算产生相同宏观状态的等价微观排列数目时，能量所呈现的面貌——且这个数目只增不减。关键在于，这一行的三个格共享一个秘密：在其核心，它们都是关于计数的事务。量子力学计数振幅。维度计数自由度。熵计数微观状态。性质行是数学最直接支配物理学的那一行。</span>
         </div>
         <div class="rc-cells">
-          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c9a24b 35%,transparent);color:#c9a24b;">Quantum 量子</span>
-          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#4baa7a 35%,transparent);color:#4baa7a;">Dimension 维度</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#a8801f 35%,transparent);color:#a8801f;">Quantum 量子</span>
+          <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#37855a 35%,transparent);color:#37855a;">Dimension 维度</span>
           <span class="rc-cell-tag" style="border-color:color-mix(in srgb,#c45a5a 35%,transparent);color:#c45a5a;">Entropy 熵</span>
         </div>
       </div>

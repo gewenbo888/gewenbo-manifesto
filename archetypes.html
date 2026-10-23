@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Five Archetypes · 五行人格" />
 <meta name="twitter:description" content="Metal cuts, Wood grows, Water flows, Fire ignites, Earth endures — five ways of meeting the world." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#0a0908" />
+<meta name="theme-color" content="#f6f1e6" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,7 +38,7 @@
 </script>
 <!-- /SEO -->
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23c9a24b' stroke-width='1.2' opacity='0.35'/%3E%3Ccircle cx='32' cy='32' r='14.5' fill='none' stroke='%23c9a24b' stroke-width='1.6' opacity='0.9'/%3E%3Ccircle cx='48.3' cy='15.7' r='3' fill='%23e6c071'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23e6c071'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f6f1e6'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23a8801f' stroke-width='1.2' opacity='0.35'/%3E%3Ccircle cx='32' cy='32' r='14.5' fill='none' stroke='%23a8801f' stroke-width='1.6' opacity='0.9'/%3E%3Ccircle cx='48.3' cy='15.7' r='3' fill='%23c9a24b'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23c9a24b'/%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -124,7 +124,7 @@
   font-family: var(--mono, 'JetBrains Mono', monospace);
   font-size: 13px;
   letter-spacing: .06em;
-  border: 1px solid rgba(201,162,75,.25);
+  border: 1px solid rgba(143, 111, 43,.25);
   border-radius: 20px;
   padding: 7px 16px;
   cursor: pointer;
@@ -136,14 +136,14 @@
   align-items: center;
   gap: 6px;
 }
-.wxe-chip:hover { color: var(--ivory, #ece4d3); border-color: var(--gold, #c9a24b); }
+.wxe-chip:hover { color: var(--ivory, #241e13); border-color: var(--gold, #a8801f); }
 .wxe-chip:active { transform: scale(.95); }
-.wxe-chip.active { color: var(--bg, #0a0908); border-color: transparent; }
-.wxe-chip[data-el="metal"].active  { background: #c9c4b8; box-shadow: 0 0 14px rgba(201,196,184,.35); }
-.wxe-chip[data-el="wood"].active   { background: #8bb57b; box-shadow: 0 0 14px rgba(139,181,123,.35); }
-.wxe-chip[data-el="water"].active  { background: #6fa5c7; box-shadow: 0 0 14px rgba(111,165,199,.35); }
+.wxe-chip.active { color: var(--bg, #f6f1e6); border-color: transparent; }
+.wxe-chip[data-el="metal"].active  { background: #837b6a; box-shadow: 0 0 14px rgba(201,196,184,.35); }
+.wxe-chip[data-el="wood"].active   { background: #67914f; box-shadow: 0 0 14px rgba(139,181,123,.35); }
+.wxe-chip[data-el="water"].active  { background: #4d81a6; box-shadow: 0 0 14px rgba(111,165,199,.35); }
 .wxe-chip[data-el="fire"].active   { background: #d66b4a; box-shadow: 0 0 14px rgba(214,107,74,.35); }
-.wxe-chip[data-el="earth"].active  { background: #caa567; box-shadow: 0 0 14px rgba(202,165,103,.35); }
+.wxe-chip[data-el="earth"].active  { background: #9a7a3c; box-shadow: 0 0 14px rgba(202,165,103,.35); }
 .wxe-chip .chip-glyph {
   font-family: 'Noto Serif SC', serif;
   font-weight: 700;
@@ -152,9 +152,9 @@
 
 /* panel */
 .wxe-panel {
-  border: 1px solid rgba(201,162,75,.18);
+  border: 1px solid rgba(143, 111, 43,.18);
   border-radius: 4px;
-  background: rgba(10,9,8,.5);
+  background: rgba(246, 241, 230,.5);
   padding: 22px 24px 24px;
   position: relative;
   overflow: hidden;
@@ -167,11 +167,11 @@
   pointer-events: none;
   border-radius: 4px;
 }
-.wxe-panel[data-el="metal"]::before { background: #c9c4b8; }
-.wxe-panel[data-el="wood"]::before  { background: #8bb57b; }
-.wxe-panel[data-el="water"]::before { background: #6fa5c7; }
+.wxe-panel[data-el="metal"]::before { background: #837b6a; }
+.wxe-panel[data-el="wood"]::before  { background: #67914f; }
+.wxe-panel[data-el="water"]::before { background: #4d81a6; }
 .wxe-panel[data-el="fire"]::before  { background: #d66b4a; }
-.wxe-panel[data-el="earth"]::before { background: #caa567; }
+.wxe-panel[data-el="earth"]::before { background: #9a7a3c; }
 
 @media (prefers-reduced-motion: no-preference) {
   .wxe-panel { animation: wfade .35s ease; }
@@ -190,11 +190,11 @@
   font-size: 48px;
   line-height: 1;
 }
-.wxe-panel[data-el="metal"] .wxe-big-glyph { color: #c9c4b8; }
-.wxe-panel[data-el="wood"]  .wxe-big-glyph { color: #8bb57b; }
-.wxe-panel[data-el="water"] .wxe-big-glyph { color: #6fa5c7; }
+.wxe-panel[data-el="metal"] .wxe-big-glyph { color: #837b6a; }
+.wxe-panel[data-el="wood"]  .wxe-big-glyph { color: #67914f; }
+.wxe-panel[data-el="water"] .wxe-big-glyph { color: #4d81a6; }
 .wxe-panel[data-el="fire"]  .wxe-big-glyph { color: #d66b4a; }
-.wxe-panel[data-el="earth"] .wxe-big-glyph { color: #caa567; }
+.wxe-panel[data-el="earth"] .wxe-big-glyph { color: #9a7a3c; }
 
 .wxe-panel-title { display: flex; flex-direction: column; gap: 2px; }
 .wxe-panel-en {
@@ -202,21 +202,21 @@
   font-style: italic;
   font-weight: 300;
   font-size: 22px;
-  color: var(--gold-bright, #e6c071);
+  color: var(--gold-bright, #c9a24b);
 }
 .wxe-panel-sub {
   font-family: var(--mono, 'JetBrains Mono', monospace);
   font-size: 10px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--gold-deep, #a07e34);
+  color: var(--gold-deep, #6e5518);
 }
 .wxe-mantra-char {
   margin-left: auto;
   font-family: 'Noto Serif SC', serif;
   font-weight: 300;
   font-size: 34px;
-  color: var(--gold-bright, #e6c071);
+  color: var(--gold-bright, #c9a24b);
   letter-spacing: .06em;
   align-self: center;
 }
@@ -234,7 +234,7 @@
   font-size: 10px;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--gold, #c9a24b);
+  color: var(--gold, #a8801f);
   padding-top: 2px;
 }
 .wxe-row-val { color: var(--ivory-dim, rgba(236,228,211,.65)); }
@@ -257,12 +257,12 @@
   font-size: 12px;
   padding: 4px 12px;
   border-radius: 20px;
-  border: 1px solid rgba(201,162,75,.2);
+  border: 1px solid rgba(143, 111, 43,.2);
   color: var(--ivory-dim, rgba(236,228,211,.65));
   font-family: var(--mono, 'JetBrains Mono', monospace);
   letter-spacing: .1em;
 }
-.wxe-badge-gen { border-color: rgba(139,195,74,.3); color: #8fc87b; }
+.wxe-badge-gen { border-color: rgba(93,143,60,.35); color: #5d8f3c; }
 .wxe-badge-over { border-color: rgba(214,107,74,.3); color: #d66b4a; }
 
 /* ── Overcoming (克) cycle table ── */
@@ -280,12 +280,12 @@
   font-weight: 300;
   font-size: 12px;
   letter-spacing: .08em;
-  color: var(--gold, #c9a24b);
-  border-bottom: 1px solid rgba(201,162,75,.2);
+  color: var(--gold, #a8801f);
+  border-bottom: 1px solid rgba(143, 111, 43,.2);
 }
 .overcome-table td {
   padding: 10px 12px;
-  border-bottom: 1px solid rgba(201,162,75,.08);
+  border-bottom: 1px solid rgba(143, 111, 43,.08);
   color: var(--ivory-dim, rgba(236,228,211,.72));
   vertical-align: top;
 }
@@ -297,12 +297,12 @@
   width: 36px;
   text-align: center;
 }
-.overcome-table tr[data-el="metal"] .td-el { color: #c9c4b8; }
-.overcome-table tr[data-el="wood"]  .td-el { color: #8bb57b; }
-.overcome-table tr[data-el="water"] .td-el { color: #6fa5c7; }
+.overcome-table tr[data-el="metal"] .td-el { color: #837b6a; }
+.overcome-table tr[data-el="wood"]  .td-el { color: #67914f; }
+.overcome-table tr[data-el="water"] .td-el { color: #4d81a6; }
 .overcome-table tr[data-el="fire"]  .td-el { color: #d66b4a; }
-.overcome-table tr[data-el="earth"] .td-el { color: #caa567; }
-.overcome-table .td-en { color: var(--ivory, #ece4d3); }
+.overcome-table tr[data-el="earth"] .td-el { color: #9a7a3c; }
+.overcome-table .td-en { color: var(--ivory, #241e13); }
 .overcome-table .td-cn {
   font-family: 'Noto Serif SC', serif;
   font-weight: 300;
@@ -319,24 +319,24 @@
   margin-top: 24px;
 }
 .fio-card {
-  border: 1px solid rgba(201,162,75,.14);
+  border: 1px solid rgba(143, 111, 43,.14);
   border-radius: 4px;
   padding: 22px 20px;
-  background: rgba(10,9,8,.4);
+  background: rgba(246, 241, 230,.4);
   transition: border-color .25s, background .25s, transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;
 }
 .fio-card:hover {
   transform: translateY(-3px);
-  background: var(--bg-2, #14110d);
-  border-color: rgba(201,162,75,.32);
-  box-shadow: 0 14px 36px -12px rgba(0,0,0,.65), 0 0 24px -8px rgba(201,162,75,.15);
+  background: var(--bg-2, #efe8d8);
+  border-color: rgba(143, 111, 43,.32);
+  box-shadow: 0 14px 36px -12px rgba(0,0,0,.65), 0 0 24px -8px rgba(143, 111, 43,.15);
 }
 .fio-card .fio-tag {
   font-family: var(--mono, 'JetBrains Mono', monospace);
   font-size: 10px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--gold-deep, #a07e34);
+  color: var(--gold-deep, #6e5518);
   margin-bottom: 10px;
 }
 .fio-card .fio-title {
@@ -344,7 +344,7 @@
   font-style: italic;
   font-weight: 300;
   font-size: 18px;
-  color: var(--gold-bright, #e6c071);
+  color: var(--gold-bright, #c9a24b);
   margin-bottom: 8px;
 }
 .fio-card .fio-body {
@@ -369,11 +369,11 @@
   margin-top: 24px;
 }
 .el-card {
-  border: 1px solid rgba(201,162,75,.18);
+  border: 1px solid rgba(143, 111, 43,.18);
   border-radius: 4px;
   padding: 28px 24px 22px;
   position: relative;
-  background: rgba(10,9,8,.55);
+  background: rgba(246, 241, 230,.55);
 }
 .el-card::before {
   content: "";
@@ -384,11 +384,11 @@
   pointer-events: none;
 }
 /* element tints */
-.el-card[data-el="metal"]::before  { background: #c9c4b8; }
-.el-card[data-el="wood"]::before   { background: #8bb57b; }
-.el-card[data-el="water"]::before  { background: #6fa5c7; }
+.el-card[data-el="metal"]::before  { background: #837b6a; }
+.el-card[data-el="wood"]::before   { background: #67914f; }
+.el-card[data-el="water"]::before  { background: #4d81a6; }
 .el-card[data-el="fire"]::before   { background: #d66b4a; }
-.el-card[data-el="earth"]::before  { background: #caa567; }
+.el-card[data-el="earth"]::before  { background: #9a7a3c; }
 
 .el-card .el-glyph {
   font-family: var(--serif-cn, 'Noto Serif SC', serif);
@@ -397,17 +397,17 @@
   line-height: 1;
   margin-bottom: 4px;
 }
-.el-card[data-el="metal"] .el-glyph  { color: #c9c4b8; }
-.el-card[data-el="wood"]  .el-glyph  { color: #8bb57b; }
-.el-card[data-el="water"] .el-glyph  { color: #6fa5c7; }
+.el-card[data-el="metal"] .el-glyph  { color: #837b6a; }
+.el-card[data-el="wood"]  .el-glyph  { color: #67914f; }
+.el-card[data-el="water"] .el-glyph  { color: #4d81a6; }
 .el-card[data-el="fire"]  .el-glyph  { color: #d66b4a; }
-.el-card[data-el="earth"] .el-glyph  { color: #caa567; }
+.el-card[data-el="earth"] .el-glyph  { color: #9a7a3c; }
 
 .el-card .el-mantra {
   font-family: var(--serif-cn, 'Noto Serif SC', serif);
   font-size: 28px;
   font-weight: 300;
-  color: var(--gold-bright, #e6c071);
+  color: var(--gold-bright, #c9a24b);
   margin-bottom: 2px;
   letter-spacing: .1em;
 }
@@ -416,7 +416,7 @@
   font-style: italic;
   font-size: 19px;
   font-weight: 300;
-  color: var(--ivory, #ece4d3);
+  color: var(--ivory, #241e13);
   margin-bottom: 12px;
 }
 .el-card .el-sub {
@@ -430,7 +430,7 @@
   font-size: 13px;
   font-weight: 500;
   letter-spacing: .04em;
-  color: var(--gold, #c9a24b);
+  color: var(--gold, #a8801f);
   margin-bottom: 6px;
 }
 .el-card .el-body { font-size: 14px; line-height: 1.75; color: var(--ivory-dim, rgba(236,228,211,.72)); }
@@ -450,16 +450,16 @@
   align-items: center;
   gap: 4px;
   padding: 14px 18px;
-  border: 1px solid rgba(201,162,75,.22);
+  border: 1px solid rgba(143, 111, 43,.22);
   border-radius: 3px;
   min-width: 72px;
-  background: rgba(10,9,8,.4);
+  background: rgba(246, 241, 230,.4);
 }
 .mantra-pill .mp-char {
   font-family: var(--serif-cn, 'Noto Serif SC', serif);
   font-size: 34px;
   font-weight: 700;
-  color: var(--gold-bright, #e6c071);
+  color: var(--gold-bright, #c9a24b);
   line-height: 1;
 }
 .mantra-pill .mp-el {
@@ -468,11 +468,11 @@
   text-transform: uppercase;
   color: var(--ivory-faint, rgba(236,228,211,.45));
 }
-.mantra-pill[data-el="metal"] .mp-el { color: #c9c4b8; }
-.mantra-pill[data-el="wood"]  .mp-el { color: #8bb57b; }
-.mantra-pill[data-el="water"] .mp-el { color: #6fa5c7; }
+.mantra-pill[data-el="metal"] .mp-el { color: #837b6a; }
+.mantra-pill[data-el="wood"]  .mp-el { color: #67914f; }
+.mantra-pill[data-el="water"] .mp-el { color: #4d81a6; }
 .mantra-pill[data-el="fire"]  .mp-el { color: #d66b4a; }
-.mantra-pill[data-el="earth"] .mp-el { color: #caa567; }
+.mantra-pill[data-el="earth"] .mp-el { color: #9a7a3c; }
 
 /* ── cycle table ── */
 .cycle-table {
@@ -489,24 +489,24 @@
   font-weight: 300;
   font-size: 12px;
   letter-spacing: .08em;
-  color: var(--gold, #c9a24b);
-  border-bottom: 1px solid rgba(201,162,75,.2);
+  color: var(--gold, #a8801f);
+  border-bottom: 1px solid rgba(143, 111, 43,.2);
 }
 .cycle-table td {
   padding: 10px 12px;
-  border-bottom: 1px solid rgba(201,162,75,.08);
+  border-bottom: 1px solid rgba(143, 111, 43,.08);
   color: var(--ivory-dim, rgba(236,228,211,.72));
   vertical-align: top;
 }
 .cycle-table tr:last-child td { border-bottom: none; }
 .cycle-table .td-el { font-family: var(--serif-cn, 'Noto Serif SC', serif); font-size: 22px; font-weight: 700; width: 36px; text-align: center; }
-.cycle-table[data-col="metal"]  .td-el { color: #c9c4b8; }
-.cycle-table tr[data-el="metal"] .td-el  { color: #c9c4b8; }
-.cycle-table tr[data-el="wood"]  .td-el  { color: #8bb57b; }
-.cycle-table tr[data-el="water"] .td-el  { color: #6fa5c7; }
+.cycle-table[data-col="metal"]  .td-el { color: #837b6a; }
+.cycle-table tr[data-el="metal"] .td-el  { color: #837b6a; }
+.cycle-table tr[data-el="wood"]  .td-el  { color: #67914f; }
+.cycle-table tr[data-el="water"] .td-el  { color: #4d81a6; }
 .cycle-table tr[data-el="fire"]  .td-el  { color: #d66b4a; }
-.cycle-table tr[data-el="earth"] .td-el  { color: #caa567; }
-.cycle-table .td-en { color: var(--ivory, #ece4d3); }
+.cycle-table tr[data-el="earth"] .td-el  { color: #9a7a3c; }
+.cycle-table .td-en { color: var(--ivory, #241e13); }
 .cycle-table .td-cn { font-family: var(--serif-cn, 'Noto Serif SC', serif); font-weight: 300; font-size: 12px; color: var(--ivory-faint, rgba(236,228,211,.45)); margin-top: 2px; }
 </style>
 </head>
@@ -531,15 +531,15 @@
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="wx-glow" cx="50%" cy="50%">
-          <stop offset="0%" stop-color="#c9a24b" stop-opacity="0.14"/>
-          <stop offset="100%" stop-color="#c9a24b" stop-opacity="0"/>
+          <stop offset="0%" stop-color="#a8801f" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#a8801f" stop-opacity="0"/>
         </radialGradient>
       </defs>
       <circle cx="100" cy="100" r="96" fill="url(#wx-glow)"/>
       <!-- outer guide ring -->
-      <circle cx="100" cy="100" r="80" fill="none" stroke="#c9a24b" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="#a8801f" stroke-width="0.5" opacity="0.3"/>
       <!-- generation cycle lines (pentagram star, gold) -->
-      <g class="wx-cycle-ring" stroke="#c9a24b" stroke-width="0.8" fill="none" opacity="0.35">
+      <g class="wx-cycle-ring" stroke="#a8801f" stroke-width="0.8" fill="none" opacity="0.35">
         <!-- points at 270°, 342°, 54°, 126°, 198° (top first, clockwise) -->
         <!-- Metal=top(100,20), Wood=top-right(176,67), Fire=bottom-right(148,163), Water=bottom-left(52,163), Earth=top-left(24,67) -->
         <line x1="100" y1="20"  x2="148" y2="163"/>
@@ -549,29 +549,29 @@
         <line x1="52"  y1="163" x2="100" y2="20"/>
       </g>
       <!-- pentagon edges (dimmer) -->
-      <polygon points="100,20 176,67 148,163 52,163 24,67" fill="none" stroke="#c9a24b" stroke-width="0.5" opacity="0.2"/>
+      <polygon points="100,20 176,67 148,163 52,163 24,67" fill="none" stroke="#a8801f" stroke-width="0.5" opacity="0.2"/>
       <!-- glow halos -->
-      <circle class="wx-node-glow" cx="100" cy="20"  r="10" fill="#c9c4b8" opacity="0.18"/>
-      <circle class="wx-node-glow" cx="176" cy="67"  r="10" fill="#8bb57b" opacity="0.18"/>
+      <circle class="wx-node-glow" cx="100" cy="20"  r="10" fill="#837b6a" opacity="0.18"/>
+      <circle class="wx-node-glow" cx="176" cy="67"  r="10" fill="#67914f" opacity="0.18"/>
       <circle class="wx-node-glow" cx="148" cy="163" r="10" fill="#d66b4a" opacity="0.18"/>
-      <circle class="wx-node-glow" cx="52"  cy="163" r="10" fill="#6fa5c7" opacity="0.18"/>
-      <circle class="wx-node-glow" cx="24"  cy="67"  r="10" fill="#caa567" opacity="0.18"/>
+      <circle class="wx-node-glow" cx="52"  cy="163" r="10" fill="#4d81a6" opacity="0.18"/>
+      <circle class="wx-node-glow" cx="24"  cy="67"  r="10" fill="#9a7a3c" opacity="0.18"/>
       <!-- element nodes -->
       <g font-family="Noto Serif SC" font-weight="700" text-anchor="middle">
-        <circle cx="100" cy="20"  r="16" fill="#0a0908" stroke="#c9c4b8" stroke-width="1"/>
-        <text x="100" y="25"  font-size="16" fill="#c9c4b8">金</text>
-        <circle cx="176" cy="67"  r="16" fill="#0a0908" stroke="#8bb57b" stroke-width="1"/>
-        <text x="176" y="72"  font-size="16" fill="#8bb57b">木</text>
-        <circle cx="148" cy="163" r="16" fill="#0a0908" stroke="#d66b4a" stroke-width="1"/>
+        <circle cx="100" cy="20"  r="16" fill="#f6f1e6" stroke="#837b6a" stroke-width="1"/>
+        <text x="100" y="25"  font-size="16" fill="#837b6a">金</text>
+        <circle cx="176" cy="67"  r="16" fill="#f6f1e6" stroke="#67914f" stroke-width="1"/>
+        <text x="176" y="72"  font-size="16" fill="#67914f">木</text>
+        <circle cx="148" cy="163" r="16" fill="#f6f1e6" stroke="#d66b4a" stroke-width="1"/>
         <text x="148" y="168" font-size="16" fill="#d66b4a">火</text>
-        <circle cx="52"  cy="163" r="16" fill="#0a0908" stroke="#6fa5c7" stroke-width="1"/>
-        <text x="52"  y="168" font-size="16" fill="#6fa5c7">水</text>
-        <circle cx="24"  cy="67"  r="16" fill="#0a0908" stroke="#caa567" stroke-width="1"/>
-        <text x="24"  y="72"  font-size="16" fill="#caa567">土</text>
+        <circle cx="52"  cy="163" r="16" fill="#f6f1e6" stroke="#4d81a6" stroke-width="1"/>
+        <text x="52"  y="168" font-size="16" fill="#4d81a6">水</text>
+        <circle cx="24"  cy="67"  r="16" fill="#f6f1e6" stroke="#9a7a3c" stroke-width="1"/>
+        <text x="24"  y="72"  font-size="16" fill="#9a7a3c">土</text>
       </g>
       <!-- centre dot -->
-      <circle cx="100" cy="100" r="3" fill="#c9a24b"/>
-      <text x="100" y="116" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="8" fill="#ece4d3" opacity="0.45">wu xing</text>
+      <circle cx="100" cy="100" r="3" fill="#a8801f"/>
+      <text x="100" y="116" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="8" fill="#241e13" opacity="0.45">wu xing</text>
     </svg>
   </div>
   <div class="eyebrow">Psyverse · World 05 / 16</div>
@@ -758,15 +758,15 @@
           <svg id="wxe-svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <radialGradient id="wxe-bg" cx="50%" cy="50%">
-                <stop offset="0%" stop-color="#c9a24b" stop-opacity="0.08"/>
-                <stop offset="100%" stop-color="#c9a24b" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#a8801f" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#a8801f" stop-opacity="0"/>
               </radialGradient>
             </defs>
             <circle cx="130" cy="130" r="120" fill="url(#wxe-bg)"/>
 
             <!-- generation cycle — pentagon perimeter, clockwise: Metal→Water→Wood→Fire→Earth→Metal -->
             <!-- vertices: Metal(130,22) Wood(228,89) Fire(192,210) Water(68,210) Earth(32,89) -->
-            <g id="wxe-gen-edges" fill="none" stroke="#c9a24b" stroke-width="1" opacity="0.28">
+            <g id="wxe-gen-edges" fill="none" stroke="#a8801f" stroke-width="1" opacity="0.28">
               <line class="wxe-edge-gen" data-from="metal" data-to="water" x1="130" y1="22"  x2="68"  y2="210"/>
               <line class="wxe-edge-gen" data-from="water" data-to="wood"  x1="68"  y1="210" x2="228" y2="89"/>
               <line class="wxe-edge-gen" data-from="wood"  data-to="fire"  x1="228" y1="89"  x2="192" y2="210"/>
@@ -785,46 +785,46 @@
 
             <!-- pentagon outline -->
             <polygon points="130,22 228,89 192,210 68,210 32,89"
-                     fill="none" stroke="#c9a24b" stroke-width="0.6" opacity="0.18"/>
+                     fill="none" stroke="#a8801f" stroke-width="0.6" opacity="0.18"/>
 
             <!-- vertices -->
             <g font-family="Noto Serif SC" font-weight="700" text-anchor="middle">
 
               <!-- Metal (top) -->
               <g class="wxe-vertex active" data-el="metal" tabindex="0" role="button" aria-label="Metal 金">
-                <circle cx="130" cy="22" r="20" fill="#0a0908" stroke="#c9c4b8" class="node-ring" stroke-width="1.2"/>
-                <text x="130" y="28" font-size="17" fill="#c9c4b8">金</text>
+                <circle cx="130" cy="22" r="20" fill="#f6f1e6" stroke="#837b6a" class="node-ring" stroke-width="1.2"/>
+                <text x="130" y="28" font-size="17" fill="#837b6a">金</text>
               </g>
 
               <!-- Wood (upper-right) -->
               <g class="wxe-vertex" data-el="wood" tabindex="0" role="button" aria-label="Wood 木">
-                <circle cx="228" cy="89" r="20" fill="#0a0908" stroke="#8bb57b" class="node-ring" stroke-width="1.2"/>
-                <text x="228" y="95" font-size="17" fill="#8bb57b">木</text>
+                <circle cx="228" cy="89" r="20" fill="#f6f1e6" stroke="#67914f" class="node-ring" stroke-width="1.2"/>
+                <text x="228" y="95" font-size="17" fill="#67914f">木</text>
               </g>
 
               <!-- Fire (lower-right) -->
               <g class="wxe-vertex" data-el="fire" tabindex="0" role="button" aria-label="Fire 火">
-                <circle cx="192" cy="210" r="20" fill="#0a0908" stroke="#d66b4a" class="node-ring" stroke-width="1.2"/>
+                <circle cx="192" cy="210" r="20" fill="#f6f1e6" stroke="#d66b4a" class="node-ring" stroke-width="1.2"/>
                 <text x="192" y="216" font-size="17" fill="#d66b4a">火</text>
               </g>
 
               <!-- Water (lower-left) -->
               <g class="wxe-vertex" data-el="water" tabindex="0" role="button" aria-label="Water 水">
-                <circle cx="68" cy="210" r="20" fill="#0a0908" stroke="#6fa5c7" class="node-ring" stroke-width="1.2"/>
-                <text x="68" y="216" font-size="17" fill="#6fa5c7">水</text>
+                <circle cx="68" cy="210" r="20" fill="#f6f1e6" stroke="#4d81a6" class="node-ring" stroke-width="1.2"/>
+                <text x="68" y="216" font-size="17" fill="#4d81a6">水</text>
               </g>
 
               <!-- Earth (upper-left) -->
               <g class="wxe-vertex" data-el="earth" tabindex="0" role="button" aria-label="Earth 土">
-                <circle cx="32" cy="89" r="20" fill="#0a0908" stroke="#caa567" class="node-ring" stroke-width="1.2"/>
-                <text x="32" y="95" font-size="17" fill="#caa567">土</text>
+                <circle cx="32" cy="89" r="20" fill="#f6f1e6" stroke="#9a7a3c" class="node-ring" stroke-width="1.2"/>
+                <text x="32" y="95" font-size="17" fill="#9a7a3c">土</text>
               </g>
             </g>
 
             <!-- centre -->
-            <circle cx="130" cy="130" r="3.5" fill="#c9a24b"/>
+            <circle cx="130" cy="130" r="3.5" fill="#a8801f"/>
             <text x="130" y="148" text-anchor="middle" font-family="Fraunces" font-style="italic"
-                  font-size="9" fill="#ece4d3" opacity="0.4">wu xing</text>
+                  font-size="9" fill="#241e13" opacity="0.4">wu xing</text>
           </svg>
         </div>
 
