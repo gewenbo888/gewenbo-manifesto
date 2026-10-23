@@ -256,6 +256,7 @@ section {
   position: relative; width: 220px; height: 220px;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 20px;
+  will-change: transform;
 }
 .hero-monad::before, .hero-monad::after {
   content: ""; position: absolute; inset: 0; border-radius: 50%;
@@ -2253,6 +2254,18 @@ html { font-kerning: normal; text-rendering: optimizeLegibility; }
   background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
 }
 .hero h1 .cn { margin-top: 26px; }
+
+/* — reading spotlight: the section currently centered in the viewport warms up — */
+@media (prefers-reduced-motion: no-preference) {
+  .section-intro { transition: filter .8s ease; }
+  .section-intro .section-num { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+  .section-intro.reading .section-num { transform: scale(1.045); }
+  .section-intro.reading .section-title { color: var(--ivory); }
+  .section-intro.reading::after {
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold) 40%, rgba(143, 111, 43,0) 90%);
+    transform: scaleX(1);
+  }
+}
 
 /* — Visible keyboard focus (accessibility) — */
 a:focus-visible, button:focus-visible, .dot-rail a:focus-visible {
@@ -4652,6 +4665,48 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
     }
     x.globalAlpha = 1;
   })();
+})();
+</script>
+<script>
+/* gravitational monad — the two-body system leans toward a nearby pointer */
+(function(){
+  if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if(!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  var m = document.querySelector('.hero-monad');
+  if(!m) return;
+  var tx = 0, ty = 0, cx = 0, cy = 0, live = false;
+  addEventListener('mousemove', function(e){
+    var r = m.getBoundingClientRect();
+    if(!r.width) return;
+    var mx = r.left + r.width/2, my = r.top + r.height/2;
+    var dx = e.clientX - mx, dy = e.clientY - my;
+    var d = Math.hypot(dx, dy);
+    var pull = Math.max(0, 1 - d / 420);        // 1 at center -> 0 at 420px
+    tx = dx * pull * 0.12; ty = dy * pull * 0.12;
+    if(!live){ live = true; requestAnimationFrame(step); }
+  }, { passive: true });
+  function step(){
+    cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+    m.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px)';
+    if(Math.abs(tx - cx) > .05 || Math.abs(ty - cy) > .05 || tx || ty) requestAnimationFrame(step);
+    else { live = false; tx = ty = 0; }
+  }
+})();
+</script>
+<script>
+/* reading spotlight — the intro nearest viewport center holds a warm focus */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var intros = [].slice.call(document.querySelectorAll('.section-intro'));
+  if(!intros.length) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var r = e.boundingClientRect;
+      var centered = r.top < innerHeight * 0.55 && r.bottom > innerHeight * 0.35;
+      e.target.classList.toggle('reading', centered && e.isIntersecting);
+    });
+  }, { threshold: [0, .2, .5] });
+  intros.forEach(function(i){ io.observe(i); });
 })();
 </script>
 <style>

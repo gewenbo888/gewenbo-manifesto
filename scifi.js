@@ -507,3 +507,43 @@
     document.addEventListener("DOMContentLoaded", function () { mount(); decryptReveal(); });
   else { mount(); decryptReveal(); }
 })();
+
+/* ── accent dust: pointer trail tinted by each world's --accent ── */
+(function(){
+  if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if(!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  var cs = getComputedStyle(document.body);
+  var acc = cs.getPropertyValue('--accent') || '#a8801f';
+  var gold = cs.getPropertyValue('--gold-bright') || '#b8860b';
+  acc = acc.trim() || '#a8801f'; gold = gold.trim() || '#b8860b';
+  var c = document.createElement('canvas');
+  c.setAttribute('aria-hidden', 'true');
+  c.style.cssText = 'position:fixed;inset:0;z-index:1;pointer-events:none;';
+  document.body.appendChild(c);
+  var x = c.getContext('2d'), W, H, motes = [], last = 0;
+  function size(){ W = c.width = innerWidth; H = c.height = innerHeight; }
+  size(); addEventListener('resize', size);
+  addEventListener('mousemove', function(e){
+    var now = performance.now();
+    if(now - last < 28) return; last = now;
+    if(motes.length < 80) motes.push({
+      x: e.clientX + (Math.random()*10 - 5),
+      y: e.clientY + (Math.random()*10 - 5),
+      vx: (Math.random() - .5) * .3, vy: -Math.random() * .45 - .1,
+      life: 1, r: Math.random() * 1.4 + .4
+    });
+  }, { passive: true });
+  (function loop(){
+    requestAnimationFrame(loop);
+    x.clearRect(0, 0, W, H);
+    for(var i = motes.length - 1; i >= 0; i--){
+      var m = motes[i];
+      m.x += m.vx; m.y += m.vy; m.life -= .016;
+      if(m.life <= 0){ motes.splice(i, 1); continue; }
+      x.globalAlpha = m.life * .45;
+      x.fillStyle = m.life > .5 ? gold : acc;
+      x.beginPath(); x.arc(m.x, m.y, m.r * m.life, 0, 6.2832); x.fill();
+    }
+    x.globalAlpha = 1;
+  })();
+})();
