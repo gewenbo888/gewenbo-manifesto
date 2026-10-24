@@ -4403,7 +4403,7 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
     while(n = w.nextNode()){ if(n.nodeValue && n.nodeValue.trim()) nodes.push(n); }
     nodes.forEach(function(t){
       var p = t.parentElement; if(!p || SKIP[p.tagName]) return;
-      if(p.closest('.topbar') || p.closest('svg') || tagged(p)) return;
+      if(p.closest('.topbar') || p.closest('svg') || p.closest('.cell-cn') || tagged(p)) return;
       var L = langOf(t.nodeValue);
       if(!L) return;
       if(L === 'mix'){
