@@ -53,7 +53,7 @@ html[data-lang="en"] .book-description .en { display:block; font-family:var(--se
 .edition-text-link { border-bottom:1px solid var(--line); }
 .hero-actions .en { display:none; }
 html[data-lang="en"] .hero-actions .en { display:inline; }
-.first-chapter { display:grid; grid-template-columns:150px 1fr 350px 70px; align-items:center; gap:40px; padding:24px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); color:var(--ivory); text-decoration:none; transition:background .2s; }
+.first-chapter { display:grid; grid-template-columns:150px 1fr 350px 70px; align-items:center; gap:40px; padding:24px 0; border:0; color:var(--ivory); text-decoration:none; transition:background .2s; }
 .first-chapter:hover { background:rgba(198,173,120,.035); }
 .first-number { font:300 100px/.9 var(--serif); letter-spacing:-.05em; border-right:1px solid var(--line); }
 .first-name strong { font:400 42px/1.4 var(--cjk); letter-spacing:.15em; }
@@ -64,11 +64,11 @@ html[data-lang="en"] .first-description .en { display:block; font-size:17px; }
 .long-arrow { font:300 60px/1 var(--serif); color:var(--gold); transition:transform .2s; }
 .first-chapter:hover .long-arrow { transform:translateX(8px); }
 .hero-colophon { padding-top:24px; display:flex; align-items:center; gap:18px; color:var(--ivory-dim); font:9px var(--mono); letter-spacing:.35em; }
-.hero-colophon i { flex:1; height:1px; background:var(--line); }
-.hero-colophon>span:last-child { color:var(--gold); font-size:20px; }
+.hero-colophon i { display:none; }
+.hero-colophon>span:last-child { display:none; }
 /* Reading chapters preserve all sixteen original content structures. */
 section:not(.hero) { max-width:1504px; padding:86px var(--page-gutter); scroll-margin-top:24px; }
-.section-intro { grid-template-columns:130px 1fr auto; gap:35px; margin-bottom:40px; padding-bottom:30px; align-items:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding-top:30px; }
+.section-intro { grid-template-columns:130px 1fr auto; gap:35px; margin-bottom:40px; padding-bottom:30px; align-items:center; border:0; padding-top:30px; }
 .section-num { font:300 100px/.85 var(--serif); font-style:normal; background:none; -webkit-text-fill-color:var(--gold-bright); color:var(--gold-bright); filter:none; text-shadow:none; border-right:1px solid var(--line); }
 .section-title { display:flex; flex-direction:column; font:italic 27px/1.4 var(--serif); }
 .section-title .cn { order:-1; font:400 clamp(26px,3vw,42px)/1.5 var(--cjk); margin:0 0 3px; letter-spacing:.1em; color:var(--ivory); }
@@ -119,12 +119,12 @@ html[data-lang="en"] .reading-tools .en { display:inline; }
 }
 
 /* Original, directly accessible chapter navigation at the top of every viewport. */
-.topbar { position:fixed; inset:0 0 auto; max-width:none; height:108px; padding:0 36px; display:grid; grid-template-columns:1fr auto; grid-template-rows:62px 45px; column-gap:24px; row-gap:0; background:rgba(8,27,25,.97); backdrop-filter:blur(12px); }
+.topbar { position:fixed; inset:0 0 auto; max-width:none; height:108px; padding:0 36px; display:grid; grid-template-columns:1fr auto; grid-template-rows:62px 45px; column-gap:24px; row-gap:0; background:rgba(8,27,25,.97); backdrop-filter:blur(12px); border-bottom-color:var(--line-soft); }
 .topbar .brand { grid-column:1; grid-row:1; justify-self:start; }
 .topbar .brand svg { width:36px; height:36px; }
 .topbar .header-actions { grid-column:2; grid-row:1; }
 .topbar .header-read { display:none; }
-.topbar .top-nav { grid-column:1 / -1; grid-row:2; width:100%; min-width:0; display:flex; justify-content:space-between; align-items:center; flex-wrap:nowrap; gap:8px; overflow-x:auto; border-top:1px solid var(--line-soft); mask-image:none; scrollbar-width:thin; scroll-padding-inline:8px; }
+.topbar .top-nav { grid-column:1 / -1; grid-row:2; width:100%; min-width:0; display:flex; justify-content:space-between; align-items:center; flex-wrap:nowrap; gap:8px; overflow-x:auto; border-top:0; mask-image:none; scrollbar-width:thin; scroll-padding-inline:8px; }
 .topbar .top-nav a { min-height:40px; padding:6px 2px; gap:5px; border-radius:0; font-size:9px; letter-spacing:.06em; color:var(--ivory-dim); }
 .topbar .top-nav a+a::before { display:none; }
 .topbar .top-nav .n { font:italic 13px var(--serif); color:var(--gold); }
