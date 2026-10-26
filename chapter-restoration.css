@@ -480,3 +480,69 @@
 .mission-opening .first-description>.cn { display:block; }
 .mission-opening .first-description>.en { display:block; margin-top:18px; color:var(--ivory-faint); }
 html[data-lang="en"] .mission-opening .first-description>.en { margin-top:0; }
+
+/* Three principles: restore the original triangle and typographic hierarchy. */
+#three {
+ --serif:"Cormorant Garamond","Noto Serif SC",serif;
+ --display:"Fraunces","Noto Serif SC",serif;
+ --cjk:"Noto Serif SC","Songti SC",serif;
+ --mono:"JetBrains Mono",monospace;
+}
+#three .three-wrap {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
+  align-items: center;
+}
+#three .triangle-diagram {
+  aspect-ratio: 1;
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+}
+#three .triangle-diagram svg { width: 100%; height: 100%; }
+#three .three-list {
+  display: flex; flex-direction: column; gap: 0;
+}
+#three .three-item {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line-soft);
+  display: grid; grid-template-columns: 100px 1fr; gap: 32px;
+  align-items: baseline;
+}
+#three .three-item:last-child { border-bottom: none; }
+#three .three-item .char {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 80px; color: var(--gold);
+  line-height: 1;
+}
+#three .three-item .name-en {
+  font-family: var(--display); font-size: 36px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); letter-spacing: -0.02em;
+}
+#three .three-item .name-roman {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em; color: var(--ivory-faint);
+  margin-top: 8px;
+}
+#three .three-item .desc {
+  margin-top: 14px;
+  font-size: 15px; line-height: 1.7;
+  color: var(--ivory-dim);
+}
+
+
+#three .triangle-diagram { width:100%; filter:none; }
+#three .three-item .name-roman { display:block; }
+#three .three-item .desc { font-family:var(--serif); }
+#three .three-item .desc .cn { font:400 15px/1.7 var(--cjk); }
+#three .three-item .char.auto-zh { display:block!important; }
+@media(max-width:1000px) {
+ #three .three-wrap { grid-template-columns:minmax(0,1fr); gap:48px; }
+}
+@media(max-width:760px) {
+ #three .triangle-diagram { max-width:320px; }
+ #three .three-item { grid-template-columns:64px minmax(0,1fr); gap:20px; padding:24px 0; }
+ #three .three-item .char { font-size:60px; }
+ #three .three-item .name-en { font-size:32px; }
+ #three .three-item .desc,#three .three-item .desc .cn { font-size:16px; line-height:1.8; }
+}

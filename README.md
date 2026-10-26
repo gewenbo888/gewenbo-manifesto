@@ -67,3 +67,5 @@ Four Integrations, Six Domains, Eight Hubs, and Fourteen Cultures restore their 
 The Fifteen Belief Aggregations homepage catalogue also restores the original three-column framed cards, large tradition glyphs, category/index labels, and name/principle hierarchy. Phones retain two columns with safe glyph sizing and text wrapping.
 
 The opening mission now uses an indexed serif reading introduction below the retained animated cover. The Creator/Seeker section restores the original framed diptych, large Chinese glyphs, direction labels, central join, and original text hierarchy, stacked safely on phones.
+
+Third homepage chapter: restored the original Truth / Goodness / Beauty triangle, large serif characters and three-row text hierarchy. SVG viewport includes the outer labels.
