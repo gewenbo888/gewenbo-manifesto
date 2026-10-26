@@ -1,14 +1,14 @@
 /* Source Code — one coherent reading system; manuscript styles remain the fallback. */
 :root {
-  --bg:#081b19; --bg-2:#102522; --bg-3:#19302b;
-  --gold:#c6ad78; --gold-bright:#e6d4a9; --gold-deep:#ac9463;
-  --ivory:#f1efdf; --ivory-dim:#bdc9bd; --ivory-faint:#92ac9d;
-  --jade:#9cbea4; --rouge:#d4947d;
-  --line:rgba(198,173,120,.23); --line-soft:rgba(198,173,120,.11);
+  --bg:#f4f6f5; --bg-2:#e9eeeb; --bg-3:#dde5e0;
+  --gold:#365c4d; --gold-bright:#234b3b; --gold-deep:#496959;
+  --ivory:#202b27; --ivory-dim:#4a5952; --ivory-faint:#607168;
+  --jade:#376954; --rouge:#9c4d3f;
+  --line:rgba(34,65,49,.20); --line-soft:rgba(34,65,49,.12);
   --page-gutter:clamp(24px,5.6vw,88px); --header-height:108px;
   --ease:cubic-bezier(.2,.7,.2,1);
 }
-html { color-scheme:dark; scroll-padding-top:calc(var(--header-height) + 24px); scrollbar-color:#577367 var(--bg); }
+html { color-scheme:light; scroll-padding-top:calc(var(--header-height) + 24px); scrollbar-color:#577367 var(--bg); }
 body.archive-home { background:var(--bg); background-image:none; color:var(--ivory); animation:none; }
 body::after,section:not(.hero)::after { display:none; }
 ::selection { background:var(--gold-bright); color:var(--bg); }
@@ -18,7 +18,7 @@ a:focus-visible,button:focus-visible,[tabindex="0"]:focus-visible { outline:2px 
 .skip-link { position:fixed; top:12px; left:20px; transform:translateY(-180%); z-index:200; padding:12px 20px; background:var(--ivory); color:var(--bg); font:14px sans-serif; }
 .skip-link:focus { transform:none; }
 /* The entire chapter index stays in the masthead, including on small screens. */
-.topbar { position:fixed; inset:0 0 auto; z-index:50; max-width:none; height:var(--header-height); padding:0 var(--page-gutter); margin:0; display:grid; grid-template-columns:1fr auto; grid-template-rows:58px 50px; gap:0 24px; background:rgba(8,27,25,.95); backdrop-filter:blur(18px); border:0; box-shadow:0 12px 30px -24px #0009; }
+.topbar { position:fixed; inset:0 0 auto; z-index:50; max-width:none; height:var(--header-height); padding:0 var(--page-gutter); margin:0; display:grid; grid-template-columns:1fr auto; grid-template-rows:58px 50px; gap:0 24px; background:rgba(244,246,245,.97); backdrop-filter:blur(18px); border:0; box-shadow:0 12px 30px -24px #0009; }
 .brand { grid-column:1; grid-row:1; justify-self:start; display:flex; gap:16px; font:16px Georgia,serif; font-style:normal; color:var(--ivory); letter-spacing:.3em; }
 .brand svg { width:38px; height:38px; fill:none; stroke:currentColor; stroke-width:.85; overflow:visible; }
 .book-wordmark { position:absolute; top:18px; left:50%; transform:translateX(-50%); display:flex; gap:14px; color:var(--ivory-dim); font:13px var(--cjk); letter-spacing:.06em; }
@@ -57,7 +57,7 @@ html[data-lang="en"] .topbar .top-nav .l.en { display:inline; font:10px var(--mo
 .hero h1::after { display:none; }
 .book-subtitle { margin-top:32px; font:400 clamp(18px,1.85vw,27px)/1.65 var(--cjk); letter-spacing:.08em; }
 .book-subtitle .en,.book-description .en,.hero-actions .en,.first-description .en { display:none; }
-.book-description { max-width:540px; margin-top:18px; color:#d1d7c9; font:15px/2 var(--cjk); letter-spacing:.025em; }
+.book-description { max-width:540px; margin-top:18px; color:#4a5952; font:15px/2 var(--cjk); letter-spacing:.025em; }
 .hero-actions { display:flex; gap:32px; align-items:center; margin-top:32px; }
 .edition-button,.edition-text-link { display:inline-flex; align-items:center; justify-content:center; gap:24px; min-height:48px; color:var(--gold-bright); text-decoration:none; font:14px var(--cjk); letter-spacing:.1em; transition:background .2s,color .2s; }
 .edition-button { border:1px solid var(--gold); padding:12px 28px; }
@@ -106,7 +106,7 @@ html[data-lang="en"] .chapter-open .en { display:inline; }
 .two-cell .role-desc { order:4; font-size:18px; line-height:1.65; margin-top:14px; max-width:420px; color:var(--ivory-dim); }
 .two-divider { display:none; }
 .three-wrap { display:grid; grid-template-columns:minmax(260px,.9fr) minmax(0,1.1fr); gap:70px; align-items:center; }
-.triangle-diagram { max-width:390px; width:100%; margin:auto; filter:drop-shadow(0 0 30px #c6ad780e); }
+.triangle-diagram { max-width:390px; width:100%; margin:auto; filter:drop-shadow(0 0 30px #365c4d0e); }
 .three-list { display:flex; flex-direction:column; gap:22px; }
 .three-item { padding:20px 0; border:0; }
 .three-item .char { color:var(--gold-bright); font-size:58px; font-weight:400; }
@@ -135,11 +135,11 @@ html[data-lang="en"] .chapter-open .en { display:inline; }
 .bt-wrap { margin:0; padding:0 0 12px; }
 .bt-table { display:table; width:100%; min-width:1120px; border:0; border-collapse:separate; border-spacing:0; table-layout:fixed; }
 .bt-table th,.bt-table td { display:table-cell; position:relative; vertical-align:middle; text-align:left; border:0; padding:24px 20px; font:17px/1.6 var(--serif); color:var(--ivory); background:none; }
-.bt-table thead th { background:#17312b; padding-block:24px; }
-.bt-table th:first-child { width:180px; position:sticky; left:0; z-index:2; background:#102522; }
-.bt-table thead th:first-child { background:#1c362e; }
-.bt-table tbody tr:nth-child(even) td { background:#0d2420; }
-.bt-table tbody tr:nth-child(even) th { background:#163027; }
+.bt-table thead th { background:#dce6df; padding-block:24px; }
+.bt-table th:first-child { width:180px; position:sticky; left:0; z-index:2; background:#e9eeeb; }
+.bt-table thead th:first-child { background:#d5e1d9; }
+.bt-table tbody tr:nth-child(even) td { background:#edf1ee; }
+.bt-table tbody tr:nth-child(even) th { background:#e4ece6; }
 .bt-table .bt-row-head { font-weight:400; }
 .bt-table .t-cn { font-size:19px; font-weight:500; line-height:1.6; letter-spacing:.04em; }
 .bt-table .t-en { font-size:17px; }.bt-table .t-idx { display:none; }
@@ -162,7 +162,7 @@ html[data-lang="en"] .overflow-hint .en { display:inline; }
 .matrix9-cell .cell-ch,.m12-cell .p-ch { font-size:36px; font-weight:500; }
 .agi-domain-head { border:0; padding:20px 0; }.agi-row { gap:24px; padding:24px 0; }.agi-row:hover { padding-left:0; }
 .agi-row .a-desc { font-size:17px; line-height:1.75; }.agi-row .a-method .cn,.agi-row .a-object .cn { font-size:15px; letter-spacing:.04em; line-height:1.7; }
-.agi-row.missing .a-desc { color:#bdacd7; }.agi-row.missing .a-method,.agi-row.missing .a-method .cn { color:#cdb5ec; }
+.agi-row.missing .a-desc { color:#6b507e; }.agi-row.missing .a-method,.agi-row.missing .a-method .cn { color:#6b507e; }
 .nav13-phase-head { border:0; }.nav13-step { padding:22px 0; }.nav13-step .st-fn { line-height:1.8; }
 .culture-grid { gap:16px; }.culture-card { border:0; background:var(--bg-2); padding:30px; }.culture-card .c-desc { font-size:16px; line-height:1.8; }
 .beliefs-grid { gap:16px; }.belief-card { border:0; background:var(--bg-2); padding:28px; }.belief-card .belief-glyph { font-size:58px; }
@@ -174,7 +174,7 @@ section svg [fill="#f6f1e6"] { fill:var(--bg); }
 section svg [stroke="#a8801f"] { stroke:var(--gold); }
 section svg [fill="#8f6f2b"],section svg [fill="#7c6024"],section svg [fill="#241e13"] { fill:var(--gold-bright); }
 /* Persistent reading controls have actual previous/next destinations. */
-.reading-tools { position:fixed; z-index:60; bottom:20px; left:50%; transform:translate(-50%,120px); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:28px; min-width:380px; padding:6px 18px; background:rgba(13,36,32,.96); backdrop-filter:blur(16px); border:1px solid var(--line-soft); border-radius:4px; box-shadow:0 6px 30px #0003; transition:transform .25s var(--ease); }
+.reading-tools { position:fixed; z-index:60; bottom:20px; left:50%; transform:translate(-50%,120px); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:28px; min-width:380px; padding:6px 18px; background:rgba(244,246,245,.97); backdrop-filter:blur(16px); border:1px solid var(--line-soft); border-radius:4px; box-shadow:0 6px 30px #0003; transition:transform .25s var(--ease); }
 .reading-tools.visible { transform:translate(-50%,0); }.reading-tools a { display:flex; align-items:center; gap:10px; min-height:44px; color:var(--gold-bright); text-decoration:none; font:13px var(--cjk); white-space:nowrap; }
 .reading-tools a:last-child { justify-self:end; }.reading-current { color:var(--ivory-dim); font:11px var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; }
 .reading-tools .en { display:none; }html[data-lang="en"] .reading-tools .en { display:inline; }
@@ -214,7 +214,56 @@ footer { max-width:1440px; margin:auto; padding:40px var(--page-gutter) 100px; b
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; }*,*::before,*::after { animation:none!important; transition:none!important; } }
 @media print { .topbar,.hero-art,.reading-tools,.reading-progress,.hero-actions,.overflow-hint { display:none!important; }body.archive-home { color:#111; background:white; }.hero { min-height:0; height:auto; max-height:none; }.hero-copy { width:100%; padding:30px 0; }.two-grid,.two-cell { background:none!important; }.reading-scroll { overflow:visible; }.bt-table { min-width:0; font-size:10px; }.bt-table th,.bt-table td { position:static!important; font-size:10px; padding:7px; } }
 .overflow-hint[hidden] { display:none; }
-.bt-table tbody tr:hover td { background:#152e28; }
+.bt-table tbody tr:hover td { background:#e0e9e3; }
 
 .bt-corner .cn,.bt-corner .en { display:block; }
 .bt-corner .en { font:italic 17px var(--serif); color:var(--ivory-dim); }
+
+/* A typographic cover, built from the book's own title and mission. */
+.topbar { backdrop-filter:none; box-shadow:none; }
+.brand { font:600 15px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; letter-spacing:.14em; gap:12px; }
+.brand svg { width:30px; height:30px; }
+.book-wordmark,.hero-art,.hero-colophon { display:none; }
+.topbar .top-nav .n { display:none; }
+.topbar .top-nav a { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; font-size:13px; }
+.hero { min-height:740px; height:auto; max-height:none; padding-bottom:44px; }
+.hero-copy { width:100%; max-width:1000px; padding:90px 0 70px; }
+.hero h1 { font-size:clamp(80px,11vw,152px); letter-spacing:-.06em; }
+.hero h1 em { font:400 .28em/1.4 -apple-system,BlinkMacSystemFont,sans-serif; letter-spacing:-.03em; margin-top:18px; }
+.book-subtitle { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; font-size:22px; letter-spacing:0; }
+.book-description { font:18px/1.9 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; max-width:650px; }
+.edition-button,.edition-text-link { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; letter-spacing:0; }
+.first-chapter { grid-template-columns:1fr minmax(260px,1fr) 40px; gap:40px; }
+.first-number { display:none; }
+.first-name strong { font:500 26px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; letter-spacing:0; }
+.first-name em { font:400 18px/1.5 -apple-system,BlinkMacSystemFont,sans-serif; }
+.first-description { font:16px/1.9 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.section-intro { grid-template-columns:minmax(0,1fr) auto; gap:24px; }
+.section-num { display:none; }
+.section-title,.section-title .cn { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; font-style:normal; letter-spacing:0; }
+.section-title .cn { font-size:34px; font-weight:500; }
+.section-title { font-size:20px; }
+.two-grid { background:none; gap:64px; }
+.two-cell { min-height:350px; padding:24px 0; }
+.two-cell::before { display:none; }
+.two-cell .icon { font-size:72px; }
+.two-cell .role-title { font-family:-apple-system,BlinkMacSystemFont,sans-serif; font-style:normal; font-size:24px; }
+.two-cell .role-desc-cn { padding-top:28px; }
+.four-cell,.six-cell,.hub-card,.culture-card,.belief-card { background:none; padding-left:0; padding-right:16px; }
+.four-cell .four-formula { font-size:30px; }
+.reading-tools { box-shadow:none; }
+@media(max-width:760px) {
+ .hero { min-height:0; padding-bottom:30px; }
+ .hero-copy { padding:56px 0 48px; }
+ .hero h1 { font-size:80px; }
+ .hero h1 em { font-size:28px; }
+ .book-subtitle { font-size:18px; }
+ .book-description { font-size:16px; }
+ .first-chapter { grid-template-columns:1fr 32px; gap:18px; }
+ .first-name strong { font-size:24px; }
+ .section-intro { grid-template-columns:minmax(0,1fr); }
+ .section-title .cn { font-size:28px; }
+ .chapter-open { grid-column:1; }
+ .two-grid { gap:24px; }
+ .two-cell { min-height:320px; padding-block:20px; }
+}

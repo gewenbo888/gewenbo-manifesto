@@ -1,12 +1,12 @@
 /* Unified long-form edition. The manuscript and its original interactive widgets stay native. */
 :root.publication-page {
- --bg:#081b19; --bg-2:#102522; --bg-3:#19302b;
- --gold:#c6ad78; --gold-bright:#e6d4a9; --gold-deep:#bda574;
- --ivory:#f1efdf; --ivory-dim:#bdc9bd; --ivory-faint:#96ad9f;
- --jade:#a5c7ae; --rouge:#d99d87; --line:rgba(198,173,120,.22); --line-soft:rgba(198,173,120,.11);
+ --bg:#f4f6f5; --bg-2:#e9eeeb; --bg-3:#dde5e0;
+ --gold:#365c4d; --gold-bright:#234b3b; --gold-deep:#496959;
+ --ivory:#202b27; --ivory-dim:#4a5952; --ivory-faint:#607168;
+ --jade:#376954; --rouge:#9c4d3f; --line:rgba(34,65,49,.20); --line-soft:rgba(34,65,49,.12);
  --reading:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
  --pub-gutter:clamp(24px,5.2vw,80px); --pub-header:112px;
- color-scheme:dark; scroll-padding-top:140px; scrollbar-color:#577367 var(--bg);
+ color-scheme:light; scroll-padding-top:140px; scrollbar-color:#577367 var(--bg);
 }
 .publication { background:var(--bg); background-image:none; color:var(--ivory); font-family:var(--reading); font-size:17px; line-height:1.8; }
 .publication::after,.publication .w-section::after { display:none; }
@@ -15,7 +15,7 @@
 .publication .cn { font-family:var(--reading); }
 .publication .pub-skip { position:fixed; z-index:150; left:20px; top:14px; transform:translateY(-200%); padding:10px 18px; background:var(--ivory); color:var(--bg); text-decoration:none; }
 .publication .pub-skip:focus { transform:none; }
-.publication-bar { position:fixed; inset:0 0 auto; height:var(--pub-header); z-index:70; display:grid; grid-template-columns:1fr auto; grid-template-rows:60px 52px; gap:0 24px; padding:0 var(--pub-gutter); background:rgba(8,27,25,.97); backdrop-filter:blur(16px); }
+.publication-bar { position:fixed; inset:0 0 auto; height:var(--pub-header); z-index:70; display:grid; grid-template-columns:1fr auto; grid-template-rows:60px 52px; gap:0 24px; padding:0 var(--pub-gutter); background:rgba(244,246,245,.97); backdrop-filter:blur(16px); }
 .pub-brand { grid-column:1; grid-row:1; justify-self:start; display:flex; align-items:center; gap:16px; color:var(--ivory); font:16px Georgia,serif; letter-spacing:.3em; text-decoration:none; }
 .pub-brand svg { width:38px; height:38px; fill:none; stroke:currentColor; stroke-width:.85; }
 .pub-book { position:absolute; left:50%; top:16px; transform:translateX(-50%); display:flex; gap:14px; align-items:baseline; text-decoration:none; color:var(--ivory-dim); font:14px var(--cjk); letter-spacing:.07em; }
@@ -168,3 +168,69 @@ html[data-lang="en"] .publication-atlas .sort button .en,html[data-lang="en"] .p
 @media(max-width:760px){.publication .w-hero h1{font-size:34px}.publication[data-world="mission"] .w-hero+.w-section .w-lead .cn{font-size:20px}}
 /* Atlas does not load worlds.css, so language visibility belongs to the shared shell too. */
 html[data-lang="zh"] .publication .en,html[data-lang="en"] .publication .cn { display:none!important; }
+
+/* Reading edition: titles carry the hierarchy; the manuscript needs no ornament. */
+.publication-bar { backdrop-filter:none; }
+.pub-brand { letter-spacing:.14em; font:600 15px var(--reading); gap:12px; }
+.pub-brand svg { width:30px; height:30px; }
+.pub-book { display:none; }
+.pub-chapters .pub-n { display:none; }
+.pub-chapters a { font-size:13px; }
+.pub-layout { max-width:1320px; grid-template-columns:minmax(0,1fr) 200px; gap:100px; padding-top:calc(var(--pub-header) + 72px); }
+.pub-outline { border:0; padding-left:0; }
+.pub-outline summary { font:500 13px var(--reading); color:var(--ivory-faint); margin-bottom:14px; }
+.pub-outline nav { gap:0; }
+.pub-outline nav a { padding:10px 0; font-size:13px; border-radius:0; }
+.pub-outline nav a[aria-current] { background:none; color:var(--ivory); font-weight:600; }
+.pub-outline-pn { margin-top:24px; }
+.publication .w-hero { display:block; padding-bottom:36px; }
+.publication .w-hero .w-num { display:none; }
+.publication .w-hero h1 { font:500 clamp(38px,4vw,56px)/1.3 var(--reading); letter-spacing:-.04em; }
+.publication .w-hero .pub-title-en,.publication .w-h2 .pub-title-en,.publication .w-h2>.en:not(.pub-title-en) { font:400 22px/1.5 var(--reading); letter-spacing:0; }
+.publication .w-hero .tagline { font-size:18px; }
+.publication .w-section { padding:40px 0; }
+.publication .w-eyebrow { display:none; }
+.publication .w-h2 { font:500 28px/1.5 var(--reading); letter-spacing:-.025em; }
+.publication .w-h3 { font-weight:500; }
+.publication .w-lead,.publication .w-p { max-width:40em; }
+.publication[data-world="mission"] .w-hero+.w-section .w-lead .cn { font:400 clamp(22px,2vw,28px)/1.8 var(--reading); max-width:27em; text-wrap:balance; }
+.publication .w-grid { gap:32px; }
+.publication .w-card,.publication .w-card:hover { background:none; border-radius:0; padding:0; }
+.publication .w-card .idx { display:none; }
+.publication .w-card .ttl { font:500 20px/1.5 var(--reading); color:var(--ivory); }
+.publication .w-card .ttl .cn { color:var(--ivory); font-size:19px; margin-top:0; }
+.publication .w-card .body { margin-top:14px; }
+.publication .w-card .body .cn { margin-top:0; }
+.publication .w-quote { font:400 28px/1.7 var(--reading); }
+.publication .w-interactive { padding:28px; border-radius:0; }
+.publication .ix-title,.publication .triad b,.publication .ip-name { font-family:var(--reading); font-style:normal; font-weight:500; }
+.publication .triad b { font-size:25px; }
+.publication .ip-cell,.publication .refusal-card { padding:20px 0; background:none; border:0; border-radius:0; box-shadow:none; }
+.publication .ip-cell:hover,.publication .refusal-card:hover { background:none; box-shadow:none; transform:none; }
+.publication .rf-idx,.publication .ip-label,.publication .ipc-label { letter-spacing:0; }
+.publication .rf-ttl,.publication .rf-ttl .cn { font:500 19px/1.6 var(--reading); color:var(--ivory); }
+.publication .rf-body,.publication .rf-body .cn,.publication .ipc-body,.publication .ipc-body .cn { font:16px/1.9 var(--reading); color:var(--ivory-dim); }
+.publication .w-nav-pn a,.publication .w-nav-pn a .big { font-family:var(--reading); font-style:normal; }
+.publication .world-tile:hover { background:none; }
+.publication .world-tile .wt-num { font:400 22px var(--reading); }
+.publication .world-tile .wt-en { font:500 22px var(--reading); }
+.publication-atlas .hero h1 { font:500 56px/1.3 var(--reading); letter-spacing:-.04em; }
+.publication-atlas .hero h1 .pub-title-en,.publication-atlas .hero-side .num { font-family:var(--reading); font-style:normal; }
+.publication-atlas .hero-side .num { font-size:25px; font-weight:500; font-variant-numeric:tabular-nums; }
+.publication-atlas .card-shot { border-radius:0; }
+.publication-atlas .card-spark { display:none; }
+@media(max-width:1119px) {
+ .pub-layout { gap:26px; padding-top:calc(var(--pub-header) + 32px); }
+ .pub-outline summary { margin-bottom:0; min-height:44px; }
+}
+@media(max-width:760px) {
+ .pub-brand { font-size:13px; }
+ .publication .w-hero h1 { font-size:36px; }
+ .publication .w-hero { padding-bottom:26px; }
+ .publication .w-h2 { font-size:25px; }
+ .publication .w-section { padding-block:32px; }
+ .publication .w-grid { gap:28px; }
+ .publication[data-world="mission"] .w-grid { grid-template-columns:1fr; }
+ .publication .w-interactive { padding:22px 18px; }
+ .publication-atlas .hero h1 { font-size:40px; }
+}
