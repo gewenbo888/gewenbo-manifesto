@@ -7,7 +7,7 @@
   const tools = document.createElement('nav');
   tools.className = 'reading-tools edition';
   tools.setAttribute('aria-label', '阅读导航 / Reading navigation');
-  tools.innerHTML = '<a href="#chapters"><span class="cn">章节目录</span><span class="en">Index</span> ↑</a><span class="reading-current"></span><a href="#one"><span class="cn">返回封面</span><span class="en">Cover</span> ↑</a>';
+  tools.innerHTML = '<a href="#one"><span class="cn">返回顶部</span><span class="en">Top</span> ↑</a><span class="reading-current"></span><a href="#one"><span class="cn">返回封面</span><span class="en">Cover</span> ↑</a>';
   document.body.append(tools);
   const current = tools.querySelector('.reading-current');
   const hero = document.querySelector('.hero');
@@ -33,9 +33,13 @@
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) if (entry.isIntersecting) {
         const index = sections.indexOf(entry.target);
-        current.textContent = index < 2 ? '01 — 16' : `${String(index).padStart(2, '0')} / 16`;
-        document.querySelectorAll('.chapter-entry').forEach(link => {
-          if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
+        current.textContent = `${String(index + 1).padStart(2, '0')} / 16`;
+        document.querySelectorAll('.top-nav a').forEach(link => {
+          if (link.hash === `#${entry.target.id}`) {
+            link.setAttribute('aria-current', 'location');
+            const nav = link.parentElement;
+            nav.scrollTo({ left: link.offsetLeft - nav.offsetLeft - nav.clientWidth / 2 + link.clientWidth / 2, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+          }
           else link.removeAttribute('aria-current');
         });
       }

@@ -22,7 +22,7 @@ Every section includes a distinct geometric motif — a single dot for One, a du
 ## Design & Tech
 
 - **Stack:** Static HTML, vanilla JavaScript, inline SVG diagrams; no build step or runtime dependencies
-- **Aesthetic:** Ink-green digital archive with ivory editorial typography, antique-gold orbital artwork, an open sixteen-chapter index, and lightweight reading navigation. Standalone worlds retain their existing reading layouts.
+- **Aesthetic:** Ink-green digital archive with ivory editorial typography, antique-gold orbital artwork, a fixed sixteen-chapter top navigation, and lightweight reading navigation. Standalone worlds retain their existing reading layouts.
 - **Typography:** Fraunces (variable serif) · Cormorant Garamond (body serif) · Noto Serif SC (Chinese) · JetBrains Mono (data)
 - **Bilingual:** Chinese, English, and bilingual modes with a persisted language preference
 - **Deployment:** Vercel
