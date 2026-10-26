@@ -453,8 +453,8 @@
         aria-label="Slide between poles (0 = Pole A, 50 = Synthesis, 100 = Pole B)"
         aria-valuetext="Synthesis — centre" />
       <div class="diss-poles">
-        <span id="diss-label-a" class="en">Capitalism</span>
-        <span id="diss-label-b" class="en">Socialism</span>
+        <span id="diss-label-a">Capitalism</span>
+        <span id="diss-label-b">Socialism</span>
       </div>
       <div class="diss-readout w-readout" id="diss-readout" aria-live="polite">
         <span class="en">Synthesis — 50</span><span class="cn">融合 — 50</span>
@@ -464,7 +464,7 @@
       <div id="diss-panel" role="tabpanel">
         <!-- Zone A (Pole A dominant) -->
         <div class="diss-zone" data-dz="a" id="diss-zone-a" hidden>
-          <div class="dz-label en">Pole A dominant · 主导：A极</div>
+          <div class="dz-label"><span class="en">Pole A dominant</span><span class="cn">主导：A极</span></div>
           <div class="dz-strength" id="dz-a-strength"></div>
           <div class="dz-blind" id="dz-a-blind"></div>
         </div>
@@ -479,7 +479,7 @@
         </div>
         <!-- Zone B (Pole B dominant) -->
         <div class="diss-zone" data-dz="b" id="diss-zone-b" hidden>
-          <div class="dz-label en">Pole B dominant · 主导：B极</div>
+          <div class="dz-label"><span class="en">Pole B dominant</span><span class="cn">主导：B极</span></div>
           <div class="dz-strength" id="dz-b-strength"></div>
           <div class="dz-blind" id="dz-b-blind"></div>
         </div>
@@ -795,13 +795,10 @@
     /* fill bar */
     fill.style.width = val + '%';
     /* readout */
-    var zoneLabel = z === 'a'
-      ? (p.labelA_en + ' 主导 · ' + val)
-      : z === 'b'
-        ? (p.labelB_en + ' 主导 · ' + val)
-        : ('Synthesis 融合 · ' + val);
-    readout.textContent = zoneLabel;
-    slider.setAttribute('aria-valuetext', zoneLabel);
+    var en = (z === 'a' ? p.labelA_en : z === 'b' ? p.labelB_en : 'Synthesis') + ' · ' + val;
+    var cn = (z === 'a' ? p.labelA_cn + '主导' : z === 'b' ? p.labelB_cn + '主导' : '融合') + ' · ' + val;
+    readout.innerHTML = '<span class="en">' + en + '</span><span class="cn">' + cn + '</span>';
+    slider.setAttribute('aria-valuetext', document.documentElement.dataset.lang === 'en' ? en : cn);
     /* show/hide zones */
     zoneA.hidden = (z !== 'a');
     zoneS.hidden = (z !== 's');
@@ -810,6 +807,7 @@
 
   /* ── event wiring ──────────────────────────────────────────── */
   slider.addEventListener('input', update);
+  document.documentElement.addEventListener('langchange', update);
 
   tabs.forEach(function (tab, i) {
     tab.addEventListener('click', function () {

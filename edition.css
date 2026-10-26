@@ -281,8 +281,30 @@ footer { max-width:1440px; margin:auto; padding:40px var(--page-gutter) 100px; b
 .hero.edition .hero-actions { justify-content:center; margin-top:38px; }
 .hero.edition .edition-button { background:var(--gold-bright); color:var(--bg); border-color:var(--gold-bright); }
 .hero.edition .edition-button:hover { background:var(--ivory); }
-.mission-opening { max-width:1440px; margin:auto; padding:64px var(--page-gutter) 24px; scroll-margin-top:var(--header-height); }
-.mission-opening .first-chapter { padding-block:28px; }
+.mission-opening { max-width:1440px; margin:auto; padding:88px var(--page-gutter) 64px; scroll-margin-top:0; min-height:75svh; display:flex; align-items:center; }
+.mission-opening .first-chapter { width:100%; grid-template-columns:minmax(0,1fr) 48px; gap:36px; padding:0; }
+.mission-opening .first-name { grid-column:1; }
+.mission-opening .first-name strong { font-size:clamp(40px,4.5vw,64px); }
+.mission-opening .first-description { display:block; grid-column:1/-1; grid-row:2; font-size:clamp(30px,3.8vw,54px); line-height:1.65; color:var(--ivory); font-weight:500; letter-spacing:-.025em; }
+.mission-opening .first-description br { display:none; }
+.mission-opening .long-arrow { grid-column:2; grid-row:1; }
+.hero.edition .hero-art { opacity:.48; }
+.hero.edition .hero-motion { position:absolute; z-index:-1; inset:var(--header-height) 0 0; pointer-events:none; }
+.hero-motion canvas { display:block; width:100%; height:100%; }
+.hero.edition.has-motion .hero-art { display:none; }
+
+/* Pairings read as four complete ideas, not remnants of the old card grid. */
+#four .four-grid { border:0; gap:48px 64px; }
+#four .four-cell { min-height:0; padding:0; border:0; display:block; background:none; box-shadow:none; }
+#four .four-cell:hover { transform:none; background:none; box-shadow:none; }
+#four .four-num { display:none; }
+#four .four-kind { letter-spacing:0; font:13px/1.5 -apple-system,BlinkMacSystemFont,sans-serif; margin-bottom:14px; }
+#four .four-formula { font:500 clamp(23px,2.3vw,32px)/1.5 -apple-system,BlinkMacSystemFont,sans-serif; }
+#four .four-formula-cn { font:500 clamp(23px,2.2vw,30px)/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; color:var(--ivory); letter-spacing:0; margin-top:10px; }
+#four .four-formula-cn .x,#four .four-formula .x { margin:0 .35em; color:var(--gold); transform:none; }
+#four .four-note { max-width:34em; margin-top:18px; font:17px/1.9 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+#four .four-note-cn { display:block; margin-top:10px; font:17px/1.9 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+@media(max-width:760px) { #four .four-grid { gap:36px; } #four .four-formula-cn { font-size:23px; } #four .four-note,#four .four-note-cn { font-size:16px; } }
 html[data-lang="en"] .hero.edition h1 em { font-size:clamp(70px,10vw,144px); line-height:1.1; }
 @media(max-width:760px) {
  .hero.edition .hero-copy { padding:68px 0 90px; }
@@ -291,6 +313,7 @@ html[data-lang="en"] .hero.edition h1 em { font-size:clamp(70px,10vw,144px); lin
  .hero.edition h1 em { font-size:29px; }
  .hero.edition .book-subtitle { font-size:18px; }
  .hero.edition .hero-actions { gap:24px; margin-top:32px; }
- .mission-opening { padding:40px 24px 8px; }
+ .mission-opening { padding:56px 24px 40px; min-height:75svh; }
+ .mission-opening .first-chapter { gap:28px 16px; }
  html[data-lang="en"] .hero.edition h1 em { font-size:clamp(64px,18vw,100px); }
 }

@@ -83,7 +83,7 @@
           const prev=document.createElement('a');prev.href=index?'/'+registry[index-1].slug:'/';prev.innerHTML='<span aria-hidden="true">←</span><span class="cn">'+(index?'上一章':'返回封面')+'</span><span class="en">'+(index?'Previous':'Cover')+'</span>';
           const next=document.createElement('a');next.href=index<15?'/'+registry[index+1].slug:'/worlds';next.innerHTML='<span class="cn">'+(index<15?'下一章':'全部章节')+'</span><span class="en">'+(index<15?'Next':'All chapters')+'</span><span aria-hidden="true">→</span>';pn.append(prev,next);outline.append(pn);}
         layout.prepend(outline);
-        const desktop=matchMedia('(min-width:1120px)');details.open=desktop.matches;desktop.addEventListener('change',()=>{details.open=desktop.matches;});
+        const desktop=matchMedia('(min-width:1120px)');details.open=current!=='mission'&&desktop.matches;desktop.addEventListener('change',()=>{details.open=current!=='mission'&&desktop.matches;});
         let positions=[],queued=false;
         function updateOutline(){const line=scrollY+header.offsetHeight+100;let active=0;positions.forEach((top,i)=>{if(top<=line)active=i;});items.forEach(({link},i)=>{if(i===active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});queued=false;}
         function measureOutline(){positions=items.map(({section})=>section.getBoundingClientRect().top+scrollY);updateOutline();}
@@ -101,6 +101,8 @@
       const read=document.createElement('a');read.className='pub-cover-read';read.href='#'+main.querySelector('.w-section').id;
       read.innerHTML='<span class="cn">开始阅读</span><span class="en">Start reading</span><span aria-hidden="true">↓</span>';
       hero.append(read);
+      const outline=layout.querySelector('.pub-outline');
+      if(outline)main.querySelector('.w-section').after(outline);
     }
     const tables=[...main.querySelectorAll('table')].map(table=>{
       const region=document.createElement('div');region.className='pub-data-region';region.tabIndex=0;region.setAttribute('role','region');region.setAttribute('aria-label',table.getAttribute('aria-label')||'数据表格 / Data table');

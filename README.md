@@ -42,7 +42,7 @@ npm run dev
 
 Open http://127.0.0.1:4174. The preview server supports the same extensionless HTML routes as Vercel. Override the port with `PORT=4175 npm run dev`.
 
-The homepage edition is implemented in `edition.css` and `edition.js`. The cover fills the viewport and centers the original title over a local vector orbital mesh (`assets/orbital-mesh.svg`). The mission statement starts below the cover. All text, links, and language controls remain native HTML. The original sixteen chapter destinations and content remain available. The mission introduction directly states the original mission rather than defining the word “mission.”
+The homepage edition is implemented in `edition.css` and `edition.js`. The cover fills the viewport and centers the original title over the existing Psy triangle-field animation. `triangle-field.js` ports the reference site’s TypeScript simulation; `hero-motion.js` mounts it without React. The vector orbital mesh remains a no-JavaScript fallback. The mission statement starts below the cover. All text, links, and language controls remain native HTML. The original sixteen chapter destinations and content remain available. The mission introduction directly states the original mission rather than defining the word “mission.”
 
 ### Reading interface
 
@@ -52,8 +52,10 @@ The breakthroughs comparison is a native table with row/column headers. It and t
 
 ### Standalone chapters and atlas
 
-`publication.css` and `publication.js` extend the same cool-white, graphite, and restrained forest-green reading system to the sixteen standalone chapters, the existing worlds index, and the project atlas. Each page exposes the full chapter rail at the top. The mission page has a full-screen title cover and a reading link into the unchanged article. Articles add an in-page outline that stays beside the article on desktop and becomes a native disclosure on small screens. The existing source paragraphs, illustrations, and per-chapter interactive tools remain in place.
+`publication.css` and `publication.js` extend the same cool-white, graphite, and restrained forest-green reading system to the sixteen standalone chapters, the existing worlds index, and the project atlas. Each page exposes the full chapter rail at the top. The mission page has a full-screen title cover and a reading link into a full-width mission statement; its collapsible outline follows the statement. Articles add an in-page outline that stays beside the article on desktop and becomes a native disclosure on small screens. The existing source paragraphs, illustrations, and per-chapter interactive tools remain in place.
 
 The shared shell preserves language preference, adds roving keyboard behavior to existing tab panels, and keeps native article tables within labeled scroll regions. Atlas search, category filtering, sorting, live counts, and screenshots continue to use the existing project data; loading failures now offer a retry action. Decorative telemetry and particle overlays are omitted from this reading edition.
 
 The restrained edition removes repeated display numbers, decorative English section labels, gold ornament, and generic card surfaces. The complete chapter index stays in the masthead; original manuscript paragraphs and functional diagrams are preserved.
+
+The motion field preserves the reference’s folding geometry, facet lighting, pointer scattering and spring recovery. It pauses offscreen and in hidden tabs, and renders a still frame for reduced motion. Four Integrations uses open paired formulas on the homepage; its chapter slider has one visible track, localized pole labels/readout, and preserves all four pairings and three zones.

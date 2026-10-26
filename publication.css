@@ -245,10 +245,40 @@ html[data-lang="zh"] .publication .en,html[data-lang="en"] .publication .cn { di
 .pub-cover-read:hover { background:var(--ivory); }
 .publication[data-world="mission"] .pub-layout { padding-top:72px; }
 html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title-en { font-size:clamp(64px,9vw,128px); }
+.publication[data-world="mission"] .pub-layout { display:block; max-width:1320px; padding-top:0; }
+.publication[data-world="mission"] .w-wrap>.w-section:first-child { min-height:calc(85svh - var(--pub-header)); display:flex; align-items:center; padding:88px 0 64px; scroll-margin-top:0; }
+.publication[data-world="mission"] .w-wrap>.w-section:first-child .w-lead { width:100%; max-width:none; margin:0; }
+.publication[data-world="mission"] .w-wrap>.w-section:first-child .w-lead .cn { font-size:clamp(32px,4.2vw,60px); line-height:1.65; font-weight:500; max-width:none; letter-spacing:-.025em; }
+.publication[data-world="mission"] .w-wrap>.w-section:first-child .w-lead .en { font-size:clamp(26px,3vw,43px); line-height:1.6; }
+.publication[data-world="mission"] .pub-outline { position:static; width:100%; margin:0 0 64px; padding:16px 0; }
+.publication[data-world="mission"] .pub-outline summary { justify-content:flex-start; gap:24px; font-size:14px; margin:0; }
+.publication[data-world="mission"] .pub-disclosure { display:inline; }
+.publication[data-world="mission"] .pub-outline nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); max-height:none; padding-top:20px; }
+.publication[data-world="mission"] .pub-outline-pn { display:none; }
+.publication[data-world="mission"] .pub-cover::before { opacity:.48; }
+.publication[data-world="mission"] .hero-motion { display:block; position:absolute; z-index:-1; inset:var(--pub-header) 0 0; pointer-events:none; }
+.hero-motion canvas { display:block; width:100%; height:100%; }
+.publication[data-world="mission"] .pub-cover.has-motion::before { display:none; }
+.publication[data-world="integrations"] .diss-track { display:none; }
+.publication[data-world="integrations"] .diss-poles { color:var(--ivory-dim); font:14px/1.6 var(--reading); letter-spacing:0; gap:20px; text-transform:none; }
+.publication[data-world="integrations"] .diss-readout { font:14px/1.6 var(--reading); letter-spacing:0; margin-top:18px; }
+.publication[data-world="integrations"] .diss-zone { min-height:200px; padding:24px; }
+.publication[data-world="integrations"] .dz-strength,.publication[data-world="integrations"] .dz-strength .cn { font:500 21px/1.6 var(--reading); }
+.publication[data-world="integrations"] .dz-contrib,.publication[data-world="integrations"] .dz-contrib .cn,.publication[data-world="integrations"] .dz-blind,.publication[data-world="integrations"] .dz-blind .cn { font:16px/1.9 var(--reading); }
+.publication[data-world="integrations"] .ix-title>.cn { font:500 18px/1.5 var(--reading)!important; margin:0!important; }
+.publication[data-world="integrations"] #sec-dissolve .w-h2>.cn+.cn { font:400 16px/1.7 var(--reading)!important; letter-spacing:0!important; margin:0!important; }
+.publication[data-world="integrations"] .w-range { display:block; width:100%; height:44px; margin:12px 0 0; padding:0; background:transparent; accent-color:var(--gold-bright); }
+.publication[data-world="integrations"] .w-range::-webkit-slider-runnable-track { height:2px; background:var(--line); }
+.publication[data-world="integrations"] .w-range::-webkit-slider-thumb { margin-top:-9px; width:20px; height:20px; box-shadow:none; }
+.publication[data-world="integrations"] .w-range::-moz-range-track { height:2px; background:var(--line); }
+.publication[data-world="integrations"] .w-range::-moz-range-thumb { width:20px; height:20px; box-shadow:none; }
 @media(max-width:760px) {
  .publication[data-world="mission"] .pub-cover { padding-top:calc(var(--pub-header) + 48px); padding-bottom:72px; gap:32px; }
  .publication[data-world="mission"] .pub-cover h1 { font-size:clamp(72px,20vw,120px); }
  .publication[data-world="mission"] .pub-cover::before { inset:var(--pub-header) -45vw 0; background-size:auto 80%; }
- .publication[data-world="mission"] .pub-layout { padding-top:32px; }
+ .publication[data-world="mission"] .pub-layout { padding-top:0; }
+ .publication[data-world="mission"] .w-wrap>.w-section:first-child { min-height:calc(80svh - var(--pub-header)); padding:56px 0 40px; }
+ .publication[data-world="mission"] .pub-outline { margin-bottom:32px; }
+ .publication[data-world="mission"] .pub-outline nav { grid-template-columns:1fr; }
  html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title-en { font-size:clamp(54px,16vw,90px); }
 }
