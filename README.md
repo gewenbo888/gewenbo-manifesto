@@ -43,3 +43,9 @@ npm run dev
 Open http://127.0.0.1:4174. The preview server supports the same extensionless HTML routes as Vercel. Override the port with `PORT=4175 npm run dev`.
 
 The homepage edition is implemented in `edition.css` and `edition.js`. Its generated artwork lives in `assets/celestial-landscape.webp` (approximately 157 KB); all text, links, and language controls remain native HTML. The original sixteen chapter destinations and content remain available. The mission introduction directly states the original mission rather than defining the word “mission.”
+
+### Reading interface
+
+The fixed chapter rail includes localized labels and scroll buttons on narrow screens. Chapter headers link directly to the full chapter; the bottom reading controls move to the actual previous and next chapters. All manuscript statements remain unchanged.
+
+The breakthroughs comparison is a native table with row/column headers. It and the two matrices scroll within their own regions; row labels remain fixed while browsing columns. Localized hints and buttons provide an alternative to touch scrolling. The identity diptych uses the compressed `assets/identity-worlds.webp` artwork (approximately 106 KB). Reduced-motion preferences are respected throughout.
