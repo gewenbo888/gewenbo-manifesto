@@ -5,6 +5,7 @@
  --ivory:#202b27; --ivory-dim:#4a5952; --ivory-faint:#607168;
  --jade:#376954; --rouge:#9c4d3f; --line:rgba(34,65,49,.20); --line-soft:rgba(34,65,49,.12);
  --reading:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+ --cjk:var(--reading); --serif:var(--reading); --display:var(--reading);
  --pub-gutter:clamp(24px,5.2vw,80px); --pub-header:112px;
  color-scheme:light; scroll-padding-top:140px; scrollbar-color:#577367 var(--bg);
 }
@@ -170,7 +171,7 @@ html[data-lang="en"] .publication-atlas .sort button .en,html[data-lang="en"] .p
 html[data-lang="zh"] .publication .en,html[data-lang="en"] .publication .cn { display:none!important; }
 
 /* Reading edition: titles carry the hierarchy; the manuscript needs no ornament. */
-.publication-bar { backdrop-filter:none; }
+.publication-bar { backdrop-filter:none; background:var(--bg); }
 .pub-brand { letter-spacing:.14em; font:600 15px var(--reading); gap:12px; }
 .pub-brand svg { width:30px; height:30px; }
 .pub-book { display:none; }
@@ -259,6 +260,9 @@ html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title
 .publication[data-world="mission"] .hero-motion { display:block; position:absolute; z-index:-1; inset:var(--pub-header) 0 0; pointer-events:none; }
 .hero-motion canvas { display:block; width:100%; height:100%; }
 .publication[data-world="mission"] .pub-cover.has-motion::before { display:none; }
+.hero-motion-toggle { position:absolute; right:var(--pub-gutter); bottom:20px; min-height:44px; padding:8px 0 8px 16px; border:0; color:var(--ivory-dim); background:none; font:12px var(--reading); cursor:pointer; }
+.hero-motion-toggle[hidden] { display:none; }
+.hero-motion-toggle:hover { color:var(--ivory); }
 .publication[data-world="integrations"] .diss-track { display:none; }
 .publication[data-world="integrations"] .diss-poles { color:var(--ivory-dim); font:14px/1.6 var(--reading); letter-spacing:0; gap:20px; text-transform:none; }
 .publication[data-world="integrations"] .diss-readout { font:14px/1.6 var(--reading); letter-spacing:0; margin-top:18px; }
@@ -272,6 +276,37 @@ html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title
 .publication[data-world="integrations"] .w-range::-webkit-slider-thumb { margin-top:-9px; width:20px; height:20px; box-shadow:none; }
 .publication[data-world="integrations"] .w-range::-moz-range-track { height:2px; background:var(--line); }
 .publication[data-world="integrations"] .w-range::-moz-range-thumb { width:20px; height:20px; box-shadow:none; }
+
+/* Legacy chapter widgets share the same readable language scale. */
+.publication .w-section :is(span,div,p,td,th,li).cn { font-family:var(--reading); font-size:max(1em,15px); line-height:1.85; letter-spacing:0; }
+.publication select { color:var(--ivory); background-color:var(--bg); font:16px/1.6 var(--reading); min-height:44px; }
+.publication select option { background:var(--bg); color:var(--ivory); }
+.publication select:focus-visible { outline:2px solid var(--gold-bright); outline-offset:4px; }
+.publication .w-section :is(.region-tag,.kind-badge,.ss-trad-tag,.theme-word) { font:12px/1.6 var(--reading); letter-spacing:0; opacity:1; }
+.publication .w-section :is(.pc-body,.ss-card-body,.cmp-panel-body,.lsim-desc,.lv-text) { font-family:var(--reading); font-size:16px; line-height:1.85; }
+.publication[data-world="beliefs"] .w-card[data-kind]:hover { transform:none; background:none; box-shadow:none; }
+.publication[data-world="beliefs"] .glyph { opacity:1; font:400 36px/1.3 var(--reading); }
+.publication[data-world="beliefs"] .deity-line { font:500 18px/1.7 var(--reading); letter-spacing:0; }
+.publication[data-world="beliefs"] .kind-legend { gap:12px 20px; }
+.publication[data-world="beliefs"] .cmp-selector-label { font:13px/1.6 var(--reading); letter-spacing:0; }
+.publication[data-world="beliefs"] .ss-card-title { font:500 20px/1.6 var(--reading); }
+.publication[data-world="beliefs"] .ss-card-title .cn { display:block; font-size:18px; }
+.publication[data-world="cultures"] .w-card .ttl { line-height:1.6; overflow-wrap:anywhere; }
+.publication[data-world="cultures"] .w-card .ttl>.en { display:block!important; font:500 22px/1.5 var(--reading); }
+.publication[data-world="matrix"] .om-matrix .cell-body { font:16px/1.85 var(--reading); }
+.publication[data-world="matrix"] .om-matrix .cell-body .cn { opacity:1; color:var(--ivory-dim); }
+.publication[data-world="matrix"] .om-matrix .row-cn { font-size:15px; opacity:1; }
+@media(max-width:760px) {
+ .publication[data-world="beliefs"] .w-grid,.publication[data-world="cultures"] .cultures-grid { grid-template-columns:1fr; }
+ .publication[data-world="beliefs"] .cmp-selectors,.publication[data-world="beliefs"] .cmp-panel { grid-template-columns:1fr; }
+ .publication[data-world="matrix"] .om-matrix { display:table; min-width:960px; table-layout:fixed; }
+ .publication[data-world="matrix"] .om-matrix thead { display:table-header-group; }
+ .publication[data-world="matrix"] .om-matrix tbody { display:table-row-group; }
+ .publication[data-world="matrix"] .om-matrix tr { display:table-row; }
+ .publication[data-world="matrix"] .om-matrix th,.publication[data-world="matrix"] .om-matrix td { display:table-cell; width:auto; }
+ .publication[data-world="matrix"] .om-matrix th:first-child { width:130px; }
+ .publication[data-world="matrix"] .om-matrix td[data-col]::before { display:none; }
+}
 @media(max-width:760px) {
  .publication[data-world="mission"] .pub-cover { padding-top:calc(var(--pub-header) + 48px); padding-bottom:72px; gap:32px; }
  .publication[data-world="mission"] .pub-cover h1 { font-size:clamp(72px,20vw,120px); }
