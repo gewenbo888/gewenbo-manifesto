@@ -57,8 +57,8 @@
 .publication .w-hero .tagline { grid-column:1/-1; max-width:100%; margin-top:30px; color:var(--ivory-dim); font:20px/1.8 var(--reading); font-style:normal; }
 .publication .w-hero .tagline .cn { margin-top:14px; font:18px/1.9 var(--reading); letter-spacing:0; }
 .publication[data-world="mission"] .w-hero .tagline { display:none; }
-.publication[data-world="mission"] .w-hero + .w-section { padding-top:0; }
-.publication[data-world="mission"] .w-hero + .w-section>.w-eyebrow { display:none; }
+.publication[data-world="mission"] .w-wrap > .w-section:first-child { padding-top:0; }
+.publication[data-world="mission"] .w-wrap > .w-section:first-child>.w-eyebrow { display:none; }
 .publication .w-section { padding:46px 0; border:0; }
 .publication .w-section[hidden] { display:none!important; }
 .publication .w-section::after { display:none; }
@@ -162,10 +162,10 @@ html[data-lang="en"] .publication-atlas .sort button .en,html[data-lang="en"] .p
 .publication-atlas .lede { display:flex; flex-direction:column; }
 .publication-atlas .lede>.cn { order:-1; margin:0 0 12px; }
 .publication .w-hero h1 { font-size:clamp(32px,4.2vw,62px); }
-.publication[data-world="mission"] .w-hero + .w-section .w-lead { display:flex; flex-direction:column; }
-.publication[data-world="mission"] .w-hero + .w-section .w-lead .cn { order:-1; font:400 clamp(20px,1.65vw,24px)/1.9 var(--cjk); margin:0 0 14px; }
+.publication[data-world="mission"] .w-wrap > .w-section:first-child .w-lead { display:flex; flex-direction:column; }
+.publication[data-world="mission"] .w-wrap > .w-section:first-child .w-lead .cn { order:-1; font:400 clamp(20px,1.65vw,24px)/1.9 var(--cjk); margin:0 0 14px; }
 .publication .instrument-chain { display:none; }
-@media(max-width:760px){.publication .w-hero h1{font-size:34px}.publication[data-world="mission"] .w-hero+.w-section .w-lead .cn{font-size:20px}}
+@media(max-width:760px){.publication .w-hero h1{font-size:34px}.publication[data-world="mission"] .w-wrap>.w-section:first-child .w-lead .cn{font-size:20px}}
 /* Atlas does not load worlds.css, so language visibility belongs to the shared shell too. */
 html[data-lang="zh"] .publication .en,html[data-lang="en"] .publication .cn { display:none!important; }
 
@@ -194,7 +194,7 @@ html[data-lang="zh"] .publication .en,html[data-lang="en"] .publication .cn { di
 .publication .w-h3 { font-weight:500; }
 .publication .w-lead,.publication .w-p { max-width:40em; }
 .publication[data-world="mission"] .w-hero h1 { font-size:clamp(48px,5.5vw,76px); }
-.publication[data-world="mission"] .w-hero+.w-section .w-lead .cn { font:400 clamp(24px,2.4vw,34px)/1.8 var(--reading); max-width:27em; text-wrap:balance; }
+.publication[data-world="mission"] .w-wrap>.w-section:first-child .w-lead .cn { font:400 clamp(24px,2.4vw,34px)/1.8 var(--reading); max-width:27em; text-wrap:balance; }
 .publication .w-grid { gap:32px; }
 .publication .w-card,.publication .w-card:hover { background:none; border-radius:0; padding:0; }
 .publication .w-card .idx { display:none; }
@@ -234,4 +234,21 @@ html[data-lang="zh"] .publication .en,html[data-lang="en"] .publication .cn { di
  .publication[data-world="mission"] .w-grid { grid-template-columns:1fr; }
  .publication .w-interactive { padding:22px 18px; }
  .publication-atlas .hero h1 { font-size:40px; }
+}
+
+/* The mission opens as a cover; the outline belongs beside the article below it. */
+.publication[data-world="mission"] .pub-cover { min-height:100svh; width:100%; margin:0; padding:calc(var(--pub-header) + 64px) var(--pub-gutter) 80px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:40px; text-align:center; isolation:isolate; overflow:hidden; }
+.publication[data-world="mission"] .pub-cover::before { content:''; position:absolute; z-index:-1; inset:var(--pub-header) -8vw 0; background:url('/assets/orbital-mesh.svg') center/contain no-repeat; opacity:.9; pointer-events:none; }
+.publication[data-world="mission"] .pub-cover h1 { font-size:clamp(90px,12vw,172px); line-height:1.2; letter-spacing:-.055em; }
+.publication[data-world="mission"] .pub-cover h1 .pub-title-en { font-size:clamp(30px,3.2vw,46px); }
+.pub-cover-read { display:inline-flex; align-items:center; justify-content:center; gap:24px; min-height:50px; padding:12px 28px; color:var(--bg); background:var(--gold-bright); text-decoration:none; font:15px var(--reading); }
+.pub-cover-read:hover { background:var(--ivory); }
+.publication[data-world="mission"] .pub-layout { padding-top:72px; }
+html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title-en { font-size:clamp(64px,9vw,128px); }
+@media(max-width:760px) {
+ .publication[data-world="mission"] .pub-cover { padding-top:calc(var(--pub-header) + 48px); padding-bottom:72px; gap:32px; }
+ .publication[data-world="mission"] .pub-cover h1 { font-size:clamp(72px,20vw,120px); }
+ .publication[data-world="mission"] .pub-cover::before { inset:var(--pub-header) -45vw 0; background-size:auto 80%; }
+ .publication[data-world="mission"] .pub-layout { padding-top:32px; }
+ html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title-en { font-size:clamp(54px,16vw,90px); }
 }

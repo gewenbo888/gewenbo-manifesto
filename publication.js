@@ -94,6 +94,14 @@
         document.fonts?.ready.then(measureOutline);measureOutline();
       }
     }
+    if(current==='mission'&&hero){
+      const layout=main.closest('.pub-layout');
+      layout.before(hero);
+      hero.classList.add('pub-cover');
+      const read=document.createElement('a');read.className='pub-cover-read';read.href='#'+main.querySelector('.w-section').id;
+      read.innerHTML='<span class="cn">开始阅读</span><span class="en">Start reading</span><span aria-hidden="true">↓</span>';
+      hero.append(read);
+    }
     const tables=[...main.querySelectorAll('table')].map(table=>{
       const region=document.createElement('div');region.className='pub-data-region';region.tabIndex=0;region.setAttribute('role','region');region.setAttribute('aria-label',table.getAttribute('aria-label')||'数据表格 / Data table');
       table.before(region);region.append(table);

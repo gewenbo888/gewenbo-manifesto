@@ -270,3 +270,27 @@ footer { max-width:1440px; margin:auto; padding:40px var(--page-gutter) 100px; b
  .two-grid { gap:24px; }
  .two-cell { min-height:320px; padding-block:20px; }
 }
+
+/* Full-screen cover, with the opening chapter below the fold. */
+.hero.edition { position:relative; min-height:100svh; max-width:none; padding:var(--header-height) var(--page-gutter) 0; justify-content:center; overflow:hidden; }
+.hero.edition .hero-copy { flex:0 0 auto; width:100%; max-width:1280px; margin:auto; padding:72px 0 100px; text-align:center; }
+.hero.edition .hero-art { display:block; position:absolute; inset:var(--header-height) -8vw 0; height:auto; margin:0; background:url('/assets/orbital-mesh.svg') center/contain no-repeat; mask-image:none; opacity:.9; }
+.hero.edition h1 { font-size:clamp(112px,15vw,216px); line-height:1.12; letter-spacing:-.055em; }
+.hero.edition h1 em { font-size:clamp(30px,3.2vw,46px); letter-spacing:-.025em; margin-top:14px; }
+.hero.edition .book-subtitle { margin-top:28px; font-size:clamp(18px,2vw,27px); }
+.hero.edition .hero-actions { justify-content:center; margin-top:38px; }
+.hero.edition .edition-button { background:var(--gold-bright); color:var(--bg); border-color:var(--gold-bright); }
+.hero.edition .edition-button:hover { background:var(--ivory); }
+.mission-opening { max-width:1440px; margin:auto; padding:64px var(--page-gutter) 24px; scroll-margin-top:var(--header-height); }
+.mission-opening .first-chapter { padding-block:28px; }
+html[data-lang="en"] .hero.edition h1 em { font-size:clamp(70px,10vw,144px); line-height:1.1; }
+@media(max-width:760px) {
+ .hero.edition .hero-copy { padding:68px 0 90px; }
+ .hero.edition h1 { font-size:clamp(88px,23vw,160px); }
+ .hero.edition .hero-art { inset:var(--header-height) -45vw 0; background-size:auto 80%; opacity:.85; }
+ .hero.edition h1 em { font-size:29px; }
+ .hero.edition .book-subtitle { font-size:18px; }
+ .hero.edition .hero-actions { gap:24px; margin-top:32px; }
+ .mission-opening { padding:40px 24px 8px; }
+ html[data-lang="en"] .hero.edition h1 em { font-size:clamp(64px,18vw,100px); }
+}
