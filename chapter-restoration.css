@@ -256,3 +256,107 @@
 #cultures .c-concept-small.auto-en { display:block!important; }
 #four .four-cell .four-formula .x,#four .four-cell .four-formula-cn .x { transition:transform .45s cubic-bezier(.2,.7,.2,1),color .3s; }
 #four .four-cell .four-note { font-family:var(--serif); }
+
+/* Restore the original fifteen-belief catalogue alongside the other restored chapters. */
+#beliefs {
+ --serif:"Cormorant Garamond","Noto Serif SC",serif;
+ --display:"Fraunces","Noto Serif SC",serif;
+ --cjk:"Noto Serif SC","Songti SC",serif;
+ --mono:"JetBrains Mono",monospace;
+}
+
+#beliefs .beliefs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+#beliefs .belief-card {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 36px 32px;
+  min-height: 300px;
+  position: relative;
+  display: flex; flex-direction: column;
+  transition: background 0.3s;
+  overflow: hidden;
+}
+#beliefs .belief-card:hover { background: rgba(143, 111, 43, 0.04); }
+#beliefs .belief-card .belief-num {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+#beliefs .belief-card .belief-category {
+  position: absolute; top: 30px; right: 28px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+#beliefs .belief-card .belief-glyph {
+  font-family: var(--cjk); font-weight: 900;
+  font-size: 88px; line-height: 1;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin: 12px 0 26px;
+  opacity: 0.95;
+}
+#beliefs .belief-card .belief-sep {
+  width: 40px; height: 1px; background: var(--line);
+  margin-bottom: 16px;
+}
+#beliefs .belief-card .belief-name {
+  font-family: var(--display); font-size: 22px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+#beliefs .belief-card .belief-name-cn {
+  font-family: var(--cjk); font-size: 14px;
+  font-weight: 500; color: var(--ivory-dim);
+  letter-spacing: 0.18em;
+  margin-top: 4px;
+}
+#beliefs .belief-card .belief-deity {
+  font-family: var(--display); font-size: 20px;
+  font-weight: 500; font-style: italic;
+  color: var(--gold-bright);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+#beliefs .belief-card .belief-deity-cn {
+  font-family: var(--cjk); font-size: 14px;
+  font-weight: 500; color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-top: 4px;
+}
+
+
+#beliefs .belief-card[data-kind="abrahamic"] .belief-glyph { color: #b08a3e; }
+#beliefs .belief-card[data-kind="eastern"]   .belief-glyph { color: #5a8f73; }
+#beliefs .belief-card[data-kind="ideology"]  .belief-glyph { color: #b14d42; }
+#beliefs .belief-card[data-kind="modern"]    .belief-glyph { color: #46688a; }
+#beliefs .belief-card[data-kind="primal"]    .belief-glyph { color: #a8855a; }
+#beliefs .belief-card[data-kind="pop"]       .belief-glyph { color: #8a4a67; }
+
+
+#beliefs .belief-card { gap:0; min-width:0; }
+#beliefs .belief-card .belief-num,#beliefs .belief-card .belief-category { display:block; }
+#beliefs .belief-card .belief-category.auto-en { display:block!important; }
+#beliefs .belief-card .belief-glyph { padding:0; }
+#beliefs .belief-card .belief-name,#beliefs .belief-card .belief-deity { display:block; }
+#beliefs .belief-card .belief-name-cn,#beliefs .belief-card .belief-deity-cn { font-style:normal; }
+#beliefs .belief-card .belief-glyph[lang="he"] { font:600 60px/88px Arial,sans-serif; letter-spacing:0; text-align:left; }
+@media(max-width:760px) {
+ #beliefs .beliefs-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ #beliefs .belief-card { padding:28px 20px; min-height:260px; }
+ #beliefs .belief-card .belief-glyph { font-size:58px; }
+ #beliefs .belief-card .belief-glyph[lang="he"] { font-size:34px; line-height:58px; min-height:58px; display:block; }
+ #beliefs .belief-card .belief-category { position:static; margin-bottom:10px; font-size:9px; letter-spacing:.08em; }
+ #beliefs .belief-card .belief-num { margin-bottom:12px; }
+ #beliefs .belief-card .belief-name { font-size:21px; overflow-wrap:anywhere; }
+ #beliefs .belief-card .belief-deity { font-size:19px; overflow-wrap:anywhere; }
+ #beliefs .belief-card .belief-name-cn,#beliefs .belief-card .belief-deity-cn { font-size:15px; letter-spacing:.06em; }
+}
