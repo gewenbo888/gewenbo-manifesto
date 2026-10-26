@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="publication-page">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Three Core Principles · 三大原则" />
 <meta name="twitter:description" content="Truth, Goodness, and Beauty — the three standards that orient a life toward what is real, right, and worthy of care." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#f6f1e6" />
+<meta name="theme-color" content="#081b19" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,8 +46,6 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" /></noscript>
 <link rel="stylesheet" href="/worlds.css" />
 <script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
-<script src="/scifi.js" defer></script>
-
 <style>
 /* ── page-local: selector interactive ── */
 .tri-selector-wrap {
@@ -260,8 +258,10 @@
   }
 }
 </style>
+<link rel="stylesheet" href="/publication.css" />
+<script src="/publication.js" defer></script>
 </head>
-<body data-world="principles">
+<body class="publication" data-world="principles">
 
 <header class="w-bar">
   <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
@@ -314,7 +314,7 @@
   </div>
   <div class="eyebrow">Psyverse · World 03 / 16</div>
   <div class="w-num">03</div>
-  <h1>Three Core <em>Principles</em><span class="cn">三 大 原 则</span></h1>
+  <h1><span class="cn">三大原则</span><span class="en pub-title-en">Three Core <em>Principles</em></span></h1>
   <p class="tagline">
     <span class="en">Truth, Goodness, and Beauty — three standards that have oriented thought and action across every tradition that ever tried to live well.</span>
     <span class="cn">真、善、美——每一个曾认真尝试好好活着的传统，都以这三个标准校准自己的思想与行动。</span>
@@ -341,7 +341,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 03.2 · The Three Principles</div>
-    <h2 class="w-h2">真 · 善 · 美<span class="cn">Truth · Goodness · Beauty</span></h2>
+    <h2 class="w-h2"><span class="cn">Truth·Goodness·Beauty</span><span class="en pub-title-en">真 · 善 · 美</span></h2>
     <div class="w-grid">
 
       <div class="w-card">
@@ -377,7 +377,7 @@
   <!-- ═══ INTERACTIVE: 真·善·美 Selector ═══ -->
   <section class="w-section" id="sec-selector" aria-label="真·善·美 selector">
     <div class="w-eyebrow">§ 03.2b · Interactive Explorer</div>
-    <h2 class="w-h2">Examine each principle<span class="cn">逐一审视每条原则</span></h2>
+    <h2 class="w-h2"><span class="cn">逐一审视每条原则</span><span class="en pub-title-en">Examine each principle</span></h2>
 
     <div class="w-interactive">
       <div class="ix-head">
@@ -530,7 +530,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 03.3 · Truth — The First Obligation</div>
-    <h2 class="w-h2">Seek what is real, not what is reassuring<span class="cn">追求真实，而非安慰</span></h2>
+    <h2 class="w-h2"><span class="cn">追求真实，而非安慰</span><span class="en pub-title-en">Seek what is real, not what is reassuring</span></h2>
     <p class="w-p">
       <span class="en">Truth is easy to endorse in the abstract. In practice it asks something specific: a willingness to be wrong, publicly, and to update without retreating into defensiveness. Most drift toward managed narratives — versions of events that place themselves in the best light. Truth resists that drift.</span>
       <span class="cn">真在抽象层面容易获得认同。在实践中它要求某种具体的事：愿意在公开场合出错，并在更新时不退回到防御性姿态。大多数人倾向于管理叙事——将自己置于最佳位置的事件版本。真，抵制这种偏移。</span>
@@ -555,7 +555,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 03.4 · Goodness — The Widening Circle</div>
-    <h2 class="w-h2">Extend the range of what you are responsible for<span class="cn">扩展你负有责任的范围</span></h2>
+    <h2 class="w-h2"><span class="cn">扩展你负有责任的范围</span><span class="en pub-title-en">Extend the range of what you are responsible for</span></h2>
     <p class="w-p">
       <span class="en">Goodness is measured by the radius of your concern. An infant is concerned only with its own body. A child adds family. Adulthood, in the moral sense, is the ongoing expansion of that radius — to strangers, to future people, to other species, to the systems that sustain all of the above.</span>
       <span class="cn">善由你关怀的半径来衡量。婴儿只关心自己的身体。孩子加入了家人。道德意义上的成熟，是那个半径持续扩展的过程——扩展到陌生人、未来的人、其他物种、以及维系上述一切的系统。</span>
@@ -572,7 +572,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 03.5 · Beauty — The Signal in the Form</div>
-    <h2 class="w-h2">Elegance is not a luxury — it is a compass<span class="cn">优雅不是奢侈品——它是罗盘</span></h2>
+    <h2 class="w-h2"><span class="cn">优雅不是奢侈品——它是罗盘</span><span class="en pub-title-en">Elegance is not a luxury — it is a compass</span></h2>
     <p class="w-p">
       <span class="en">Beauty is the most misunderstood of the three principles. It is often treated as decoration — something added after the real work is done. The opposite is closer to true. When a derivation, a design, or a piece of prose achieves genuine elegance, it usually means the underlying structure has been understood deeply enough that all the unnecessary has been stripped away.</span>
       <span class="cn">美是三条原则中最易被误解的一条。它常被当作装饰——在真正的工作完成之后才添加的东西。与之相反的说法更接近真相。当一个推导、一个设计或一段文字达到真正的优雅，通常意味着其底层结构已被理解得足够深，以至于所有多余之物都已剥去。</span>
@@ -598,7 +598,7 @@
   <!-- ═══ NEW § 03.6a — When the Three Conflict ═══ -->
   <section class="w-section" id="sec-conflict">
     <div class="w-eyebrow">§ 03.6a · When the Three Conflict</div>
-    <h2 class="w-h2">Truth vs Kindness vs Elegance<span class="cn">真与善、美之间的冲突</span></h2>
+    <h2 class="w-h2"><span class="cn">真与善、美之间的冲突</span><span class="en pub-title-en">Truth vs Kindness vs Elegance</span></h2>
     <p class="w-lead">
       <span class="en">The three principles are not always allies. Each can, in context, demand something the other two forbid. These conflicts are not edge cases — they are daily life. Knowing how each collision tends to unfold is the beginning of adjudicating it well.</span>
       <span class="cn">三条原则并非总是盟友。在特定情境下，每一条都可能要求另外两条所禁止的事。这些冲突不是边角情形——它们就是日常生活。了解每种碰撞通常如何展开，是妥善裁决它的起点。</span>
@@ -651,7 +651,7 @@
   <!-- ═══ NEW § 03.6b — How to Adjudicate ═══ -->
   <section class="w-section" id="sec-adjudicate">
     <div class="w-eyebrow">§ 03.6b · How to Adjudicate</div>
-    <h2 class="w-h2">Working rules for genuine conflicts<span class="cn">面对真实冲突时的运作规则</span></h2>
+    <h2 class="w-h2"><span class="cn">面对真实冲突时的运作规则</span><span class="en pub-title-en">Working rules for genuine conflicts</span></h2>
     <p class="w-p">
       <span class="en">No algorithm resolves every collision between the three principles. But certain heuristics have proven robust across many contexts. They do not eliminate difficulty; they make it navigable.</span>
       <span class="cn">没有任何算法能解决三条原则之间的每一次碰撞。但某些启发式规则已在许多情境下被证明是稳健的。它们不能消除困难；它们使困难变得可以驾驭。</span>
@@ -722,7 +722,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 03.6 · The Tension and the Unity</div>
-    <h2 class="w-h2">Three pulls, one direction<span class="cn">三股张力，一个方向</span></h2>
+    <h2 class="w-h2"><span class="cn">三股张力，一个方向</span><span class="en pub-title-en">Three pulls, one direction</span></h2>
     <p class="w-lead">
       <span class="en">The three principles are not always in harmony. Truth can be brutal; Goodness can ask for silence; Beauty can be achieved through illusion. The friction between them is not a flaw in the framework — it is the framework.</span>
       <span class="cn">三条原则并不总是和谐共处。真可以是残酷的；善有时要求沉默；美可以经由幻觉来实现。它们之间的摩擦不是这个框架的缺陷——它就是这个框架本身。</span>

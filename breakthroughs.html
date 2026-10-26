@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="publication-page">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Ten Major Breakthroughs · 十大突破" />
 <meta name="twitter:description" content="Ten technological frontiers each progressing across five levels — from foundation to mastery." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#f6f1e6" />
+<meta name="theme-color" content="#081b19" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,8 +46,6 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" /></noscript>
 <link rel="stylesheet" href="/worlds.css" />
 <script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
-<script src="/scifi.js" defer></script>
-
 <style>
 /* page-local flourish: breakthrough level meter */
 .bt-spark {
@@ -437,8 +435,10 @@
   .level-legend .ll-item:nth-child(5) { grid-column: span 1; }
 }
 </style>
+<link rel="stylesheet" href="/publication.css" />
+<script src="/publication.js" defer></script>
 </head>
-<body data-world="breakthroughs">
+<body class="publication" data-world="breakthroughs">
 
 <header class="w-bar">
   <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
@@ -463,7 +463,7 @@
   </div>
   <div class="eyebrow">Psyverse · World 10 / 16</div>
   <div class="w-num">10</div>
-  <h1>Ten Major <em>Breakthroughs</em><span class="cn">十 大 突 破</span></h1>
+  <h1><span class="cn">十大突破</span><span class="en pub-title-en">Ten Major <em>Breakthroughs</em></span></h1>
   <p class="tagline">
     <span class="en">Ten technological frontiers — each ascending from foundation to mastery across five levels. The map of what humanity is building next.</span>
     <span class="cn">十条技术前沿，每条都从基础跨越五个层级，直抵精通。这是人类正在建造的未来之图。</span>
@@ -474,7 +474,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 10.1 · The Logic of Levels</div>
-    <h2 class="w-h2">Why five levels?<span class="cn">为何设定五个层级？</span></h2>
+    <h2 class="w-h2"><span class="cn">为何设定五个层级？</span><span class="en pub-title-en">Why five levels?</span></h2>
     <p class="w-lead">
       <span class="en">A breakthrough is not a single event. It is a progression — each level unlocking possibilities the previous one could not even name. Level 1 is a foundation, not a destination; Level 5 is mastery, rarely reached in any one lifetime.</span>
       <span class="cn">突破不是一个孤立的瞬间，而是一段进程——每个层级都开启上一层级根本无从命名的可能。第一级是基础，而非终点；第五级是精通，在任何一代人的时间里都鲜有企及。</span>
@@ -527,7 +527,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 10.2 · Ten Frontiers</div>
-    <h2 class="w-h2">The ten technological frontiers<span class="cn">十条技术前沿</span></h2>
+    <h2 class="w-h2"><span class="cn">十条技术前沿</span><span class="en pub-title-en">The ten technological frontiers</span></h2>
     <p class="w-lead">
       <span class="en">These ten were not chosen arbitrarily. Together they cover the material, digital, biological, spatial, and civilizational dimensions of what advanced technology can do. Each is a frontier precisely because progress is hard, non-linear, and contested — yet each has a clear ladder from where we are to where we could be.</span>
       <span class="cn">这十条并非随意选择。它们共同覆盖了先进技术所能触及的物质、数字、生物、空间与文明五个维度。每一条之所以是「前沿」，正因为进展艰难、非线性且充满争议——然而每一条都有一架清晰的梯子，从我们现在所处的位置，通往我们本可抵达之处。</span>
@@ -732,7 +732,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 10.3 · Reading the Map</div>
-    <h2 class="w-h2">Where we are — and where we are going<span class="cn">我们在哪里——以及我们去往何处</span></h2>
+    <h2 class="w-h2"><span class="cn">我们在哪里——以及我们去往何处</span><span class="en pub-title-en">Where we are — and where we are going</span></h2>
     <p class="w-p">
       <span class="en">No frontier is at Level 5 today. Most sit between L2 and L4, with enormous variation by country, organization, and application. The map is not a prediction; it is a framework for honest navigation. It tells you which breakthroughs are engineering problems, which are physics problems, and which are coordination problems — and those are very different kinds of hard.</span>
       <span class="cn">今天，没有任何一条前沿已达到第五级。大多数处于第二至第四级之间，因国家、机构与应用场景的不同而差异巨大。这张地图不是预测，而是诚实导航的框架。它告诉你：哪些突破是工程问题，哪些是物理问题，哪些是协作问题——而这三类「难」有着本质的区别。</span>
@@ -758,7 +758,7 @@
   <!-- § 10.4 — Level Simulator (Enhancement A) -->
   <section class="w-section" id="level-sim">
     <div class="w-eyebrow">§ 10.4 · Level Simulator</div>
-    <h2 class="w-h2">All ten frontiers at one level<span class="cn">同一层级下的十条前沿</span></h2>
+    <h2 class="w-h2"><span class="cn">同一层级下的十条前沿</span><span class="en pub-title-en">All ten frontiers at one level</span></h2>
     <p class="w-lead">
       <span class="en">Drag the slider to a level and see every frontier as it stands at that stage of development — a snapshot across the entire map at once.</span>
       <span class="cn">拖动滑块选择层级，即可同时查看每条前沿在该发展阶段的状态——一次性纵览整张地图的横截面。</span>
@@ -801,7 +801,7 @@
   <!-- § 10.5 — What a Level Means (Enhancement B) -->
   <section class="w-section" id="level-meaning">
     <div class="w-eyebrow">§ 10.5 · What a Level Means</div>
-    <h2 class="w-h2">The character of each level across all ten<span class="cn">每个层级在十条前沿中的共同特征</span></h2>
+    <h2 class="w-h2"><span class="cn">每个层级在十条前沿中的共同特征</span><span class="en pub-title-en">The character of each level across all ten</span></h2>
     <p class="w-lead">
       <span class="en">The same level number recurs across every frontier — but what does it feel like? Each level has a characteristic texture that repeats whether you are talking about energy, longevity, or autonomous driving.</span>
       <span class="cn">同一层级编号在每条前沿中反复出现——但它的质感是什么？每个层级都有一种反复出现的特征纹理，无论你谈论的是能源、长生不老，还是自动驾驶。</span>
@@ -875,7 +875,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 10.6 · From Frontiers to Convergence</div>
-    <h2 class="w-h2">When frontiers intersect<span class="cn">当前沿彼此相遇</span></h2>
+    <h2 class="w-h2"><span class="cn">当前沿彼此相遇</span><span class="en pub-title-en">When frontiers intersect</span></h2>
     <p class="w-lead">
       <span class="en">The ten frontiers are not independent. They converge, accelerate, and in some cases require each other. The most powerful dynamics happen at intersections — when a level gain on one frontier removes a hard constraint from another.</span>
       <span class="cn">这十条前沿并非相互独立。它们交汇、相互加速，在某些情况下彼此依存。最强大的动力往往在交叉点上迸发——当某条前沿的层级提升，消解了另一条前沿的关键约束时。</span>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="publication-page">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Five Archetypes · 五行人格" />
 <meta name="twitter:description" content="Metal cuts, Wood grows, Water flows, Fire ignites, Earth endures — five ways of meeting the world." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#f6f1e6" />
+<meta name="theme-color" content="#081b19" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,8 +46,6 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" /></noscript>
 <link rel="stylesheet" href="/worlds.css" />
 <script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
-<script src="/scifi.js" defer></script>
-
 <style>
 /* ── Wu Xing pentagon flourish ── */
 .wx-pentagon {
@@ -509,8 +507,10 @@
 .cycle-table .td-en { color: var(--ivory, #241e13); }
 .cycle-table .td-cn { font-family: var(--serif-cn, 'Noto Serif SC', serif); font-weight: 300; font-size: 12px; color: var(--ivory-faint, rgba(236,228,211,.45)); margin-top: 2px; }
 </style>
+<link rel="stylesheet" href="/publication.css" />
+<script src="/publication.js" defer></script>
 </head>
-<body data-world="archetypes">
+<body class="publication" data-world="archetypes">
 
 <header class="w-bar">
   <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
@@ -558,25 +558,25 @@
       <circle class="wx-node-glow" cx="24"  cy="67"  r="10" fill="#9a7a3c" opacity="0.18"/>
       <!-- element nodes -->
       <g font-family="Noto Serif SC" font-weight="700" text-anchor="middle">
-        <circle cx="100" cy="20"  r="16" fill="#f6f1e6" stroke="#837b6a" stroke-width="1"/>
+        <circle cx="100" cy="20"  r="16" fill="var(--bg)" stroke="#837b6a" stroke-width="1"/>
         <text x="100" y="25"  font-size="16" fill="#837b6a">金</text>
-        <circle cx="176" cy="67"  r="16" fill="#f6f1e6" stroke="#67914f" stroke-width="1"/>
+        <circle cx="176" cy="67"  r="16" fill="var(--bg)" stroke="#67914f" stroke-width="1"/>
         <text x="176" y="72"  font-size="16" fill="#67914f">木</text>
-        <circle cx="148" cy="163" r="16" fill="#f6f1e6" stroke="#d66b4a" stroke-width="1"/>
+        <circle cx="148" cy="163" r="16" fill="var(--bg)" stroke="#d66b4a" stroke-width="1"/>
         <text x="148" y="168" font-size="16" fill="#d66b4a">火</text>
-        <circle cx="52"  cy="163" r="16" fill="#f6f1e6" stroke="#4d81a6" stroke-width="1"/>
+        <circle cx="52"  cy="163" r="16" fill="var(--bg)" stroke="#4d81a6" stroke-width="1"/>
         <text x="52"  y="168" font-size="16" fill="#4d81a6">水</text>
-        <circle cx="24"  cy="67"  r="16" fill="#f6f1e6" stroke="#9a7a3c" stroke-width="1"/>
+        <circle cx="24"  cy="67"  r="16" fill="var(--bg)" stroke="#9a7a3c" stroke-width="1"/>
         <text x="24"  y="72"  font-size="16" fill="#9a7a3c">土</text>
       </g>
       <!-- centre dot -->
       <circle cx="100" cy="100" r="3" fill="#a8801f"/>
-      <text x="100" y="116" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="8" fill="#241e13" opacity="0.45">wu xing</text>
+      <text x="100" y="116" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="8" fill="var(--ivory)" opacity="0.45">wu xing</text>
     </svg>
   </div>
   <div class="eyebrow">Psyverse · World 05 / 16</div>
   <div class="w-num">05</div>
-  <h1>Five <em>Archetypes</em><span class="cn">五 行 人 格</span></h1>
+  <h1><span class="cn">五行人格</span><span class="en pub-title-en">Five <em>Archetypes</em></span></h1>
   <p class="tagline">
     <span class="en">Metal cuts. Wood grows. Water flows. Fire ignites. Earth endures. Five ways of meeting the world — one mantra to hold them all.</span>
     <span class="cn">金锋锐，木觉醒，水流动，火点燃，土承载。五种与世界相遇的方式——一息五字，各持一行。</span>
@@ -792,31 +792,31 @@
 
               <!-- Metal (top) -->
               <g class="wxe-vertex active" data-el="metal" tabindex="0" role="button" aria-label="Metal 金">
-                <circle cx="130" cy="22" r="20" fill="#f6f1e6" stroke="#837b6a" class="node-ring" stroke-width="1.2"/>
+                <circle cx="130" cy="22" r="20" fill="var(--bg)" stroke="#837b6a" class="node-ring" stroke-width="1.2"/>
                 <text x="130" y="28" font-size="17" fill="#837b6a">金</text>
               </g>
 
               <!-- Wood (upper-right) -->
               <g class="wxe-vertex" data-el="wood" tabindex="0" role="button" aria-label="Wood 木">
-                <circle cx="228" cy="89" r="20" fill="#f6f1e6" stroke="#67914f" class="node-ring" stroke-width="1.2"/>
+                <circle cx="228" cy="89" r="20" fill="var(--bg)" stroke="#67914f" class="node-ring" stroke-width="1.2"/>
                 <text x="228" y="95" font-size="17" fill="#67914f">木</text>
               </g>
 
               <!-- Fire (lower-right) -->
               <g class="wxe-vertex" data-el="fire" tabindex="0" role="button" aria-label="Fire 火">
-                <circle cx="192" cy="210" r="20" fill="#f6f1e6" stroke="#d66b4a" class="node-ring" stroke-width="1.2"/>
+                <circle cx="192" cy="210" r="20" fill="var(--bg)" stroke="#d66b4a" class="node-ring" stroke-width="1.2"/>
                 <text x="192" y="216" font-size="17" fill="#d66b4a">火</text>
               </g>
 
               <!-- Water (lower-left) -->
               <g class="wxe-vertex" data-el="water" tabindex="0" role="button" aria-label="Water 水">
-                <circle cx="68" cy="210" r="20" fill="#f6f1e6" stroke="#4d81a6" class="node-ring" stroke-width="1.2"/>
+                <circle cx="68" cy="210" r="20" fill="var(--bg)" stroke="#4d81a6" class="node-ring" stroke-width="1.2"/>
                 <text x="68" y="216" font-size="17" fill="#4d81a6">水</text>
               </g>
 
               <!-- Earth (upper-left) -->
               <g class="wxe-vertex" data-el="earth" tabindex="0" role="button" aria-label="Earth 土">
-                <circle cx="32" cy="89" r="20" fill="#f6f1e6" stroke="#9a7a3c" class="node-ring" stroke-width="1.2"/>
+                <circle cx="32" cy="89" r="20" fill="var(--bg)" stroke="#9a7a3c" class="node-ring" stroke-width="1.2"/>
                 <text x="32" y="95" font-size="17" fill="#9a7a3c">土</text>
               </g>
             </g>
@@ -824,7 +824,7 @@
             <!-- centre -->
             <circle cx="130" cy="130" r="3.5" fill="#a8801f"/>
             <text x="130" y="148" text-anchor="middle" font-family="Fraunces" font-style="italic"
-                  font-size="9" fill="#241e13" opacity="0.4">wu xing</text>
+                  font-size="9" fill="var(--ivory)" opacity="0.4">wu xing</text>
           </svg>
         </div>
 

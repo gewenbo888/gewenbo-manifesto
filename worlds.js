@@ -44,8 +44,8 @@
       var prev = WORLDS[(idx - 1 + WORLDS.length) % WORLDS.length];
       var next = WORLDS[(idx + 1) % WORLDS.length];
       html += '<div class="w-nav-pn">';
-      html += '<a class="prev" href="/' + prev.slug + '">← ' + prev.n + '<span class="big">' + prev.en + '</span></a>';
-      html += '<a class="next" href="/' + next.slug + '">' + next.n + ' →<span class="big">' + next.en + '</span></a>';
+      html += '<a class="prev" href="/' + prev.slug + '">← ' + prev.n + '<span class="big">' + '<span class="en">' + prev.en + '</span><span class="cn">' + prev.cn + '</span></span></a>';
+      html += '<a class="next" href="/' + next.slug + '">' + next.n + ' →<span class="big">' + '<span class="en">' + next.en + '</span><span class="cn">' + next.cn + '</span></span></a>';
       html += '</div>';
     }
     html += '<div class="w-allgrid">';
@@ -68,7 +68,9 @@
       if (!valid[lang]) lang = 'both';
       if (lang === 'both') root.removeAttribute('data-lang');
       else root.setAttribute('data-lang', lang);
-      btns.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-setlang') === lang); });
+      root.lang = lang === 'en' ? 'en' : 'zh-CN';
+      btns.forEach(function (b) { var active = b.getAttribute('data-setlang') === lang; b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active)); });
+      root.dispatchEvent(new CustomEvent('langchange', { detail: { language: lang } }));
       try { localStorage.setItem(KEY, lang); } catch (e) {}
     }
     btns.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-setlang')); }); });
@@ -97,7 +99,7 @@
     var top = document.createElement('button'); top.className = 'w-top';
     top.setAttribute('aria-label', 'Back to top'); top.innerHTML = '↑';
     document.body.appendChild(top);
-    top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }); });
     function on() {
       var h = document.documentElement.scrollHeight - window.innerHeight, y = window.pageYOffset;
       bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';

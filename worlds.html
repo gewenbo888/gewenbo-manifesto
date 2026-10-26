@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="publication-page">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="The Sixteen Worlds · 十六世界" />
 <meta name="twitter:description" content="Sixteen standalone worlds, one mission. Enter any of them directly." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#f6f1e6" />
+<meta name="theme-color" content="#081b19" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,8 +46,6 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" /></noscript>
 <link rel="stylesheet" href="/worlds.css" />
 <script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
-<script src="/scifi.js" defer></script>
-
 <style>
 .worlds-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; margin-top: 56px; padding-bottom: 30px; }
 .world-tile {
@@ -68,8 +66,10 @@
 .world-tile:hover .wt-go { color: var(--accent); transform: translateX(3px); }
 .worlds-lead { max-width: 760px; }
 </style>
+<link rel="stylesheet" href="/publication.css" />
+<script src="/publication.js" defer></script>
 </head>
-<body data-world="worlds">
+<body class="publication" data-world="worlds">
 
 <header class="w-bar">
   <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
@@ -87,7 +87,7 @@
 <section class="w-hero">
   <div class="eyebrow">Psyverse · The Atlas of Worlds</div>
   <div class="w-num">✦</div>
-  <h1>Sixteen <em>Worlds</em><span class="cn">十 六 世 界</span></h1>
+  <h1><span class="cn">十六世界</span><span class="en pub-title-en">Sixteen <em>Worlds</em></span></h1>
   <p class="tagline">
     <span class="en">One mission, refracted into sixteen worlds. Each is a standalone place you can enter directly — together they form the whole of the Psyverse.</span>
     <span class="cn">一条使命，折射为十六个世界。每一个都是可以直接进入的独立之地——它们合起来，便是心域的全部。</span>

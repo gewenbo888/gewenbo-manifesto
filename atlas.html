@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="publication-page">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,6 @@
 <meta property="og:image" content="https://psyverse.fun/og.png" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f6f1e6'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23a8801f' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23a8801f' stroke-width='0.8' opacity='0.5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23a8801f' stroke-width='1'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23c9a24b'/%3E%3C/svg%3E" />
 <script defer src="https://analytics-dashboard-two-blue.vercel.app/tracker.js"></script>
-<script src="/scifi.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=Noto+Serif+SC:wght@200;300;400;500;700&family=JetBrains+Mono:wght@300;400;500&display=swap" />
@@ -466,8 +465,10 @@ footer a:hover { color: var(--gold); }
   footer { flex-direction: column; gap: 14px; }
 }
 </style>
+<link rel="stylesheet" href="/publication.css" />
+<script src="/publication.js" defer></script>
 </head>
-<body>
+<body class="publication publication-atlas">
 
 <header class="topbar">
   <a href="/" class="brand" aria-label="Back to manifesto">
@@ -486,41 +487,35 @@ footer a:hover { color: var(--gold); }
 
 <main>
   <div class="hero">
-    <h1>
-      The <em>Atlas</em>
-      <span class="cn">全 图</span>
-    </h1>
+    <h1><span class="cn">全图</span><span class="en pub-title-en">The <em>Atlas</em></span></h1>
     <div class="hero-side">
-      <span class="num" id="stat-projects">—</span>
-      sites shipped<br>
-      <span class="num" id="stat-views">—</span>
-      total pageviews<br>
-      <span class="num" id="stat-today">—</span>
-      today
+      <div class="atlas-stat"><span class="num" id="stat-projects">—</span><span class="stat-label"><span class="cn">已发布项目</span><span class="en">Sites shipped</span></span></div>
+      <div class="atlas-stat"><span class="num" id="stat-views">—</span><span class="stat-label"><span class="cn">累计访问</span><span class="en">Total pageviews</span></span></div>
+      <div class="atlas-stat"><span class="num" id="stat-today">—</span><span class="stat-label"><span class="cn">今日访问</span><span class="en">Today</span></span></div>
     </div>
   </div>
 
-  <p class="lede">
-    Every site in the Psyverse — atlases of thought, operating systems, rankings, civilizational maps. The manifesto says <em>do work that matters across six domains</em>. This page is the proof.
-    <span class="cn">一份宣言之外，是这些落成的网站本身。</span>
+  <p class="lede"><span class="en">Every site in the Psyverse — atlases of thought, operating systems, rankings, civilizational maps. The manifesto says <em>do work that matters across six domains</em>. This page is the proof.</span><span class="cn">一份宣言之外，是这些落成的网站本身。</span>
   </p>
 
   <div class="controls">
     <div class="search">
-      <input id="q" type="text" placeholder="Search by name or subdomain…" autocomplete="off" />
+      <label class="atlas-search-label" for="q"><span class="cn">搜索项目</span><span class="en">Search projects</span></label>
+      <input id="q" type="search" placeholder="Search by name or subdomain…" autocomplete="off" />
     </div>
     <div class="sort">
       <span>Sort</span>
-      <button data-sort="views" class="active">Most viewed</button>
-      <button data-sort="alpha">A–Z</button>
-      <button data-sort="trend">Trending</button>
+      <button data-sort="views" class="active"><span class="cn">访问最多</span><span class="en">Most viewed</span></button>
+      <button data-sort="alpha"><span class="cn">名称排序</span><span class="en">A–Z</span></button>
+      <button data-sort="trend"><span class="cn">趋势上升</span><span class="en">Trending</span></button>
     </div>
   </div>
 
   <div class="chips" id="chips"></div>
 
+  <p id="atlas-result-count" role="status" aria-live="polite" aria-atomic="true"></p>
   <div id="content">
-    <div class="loading">Loading the atlas…</div>
+    <div class="loading"><span class="cn">正在加载项目…</span><span class="en">Loading the atlas…</span></div>
   </div>
 </main>
 
@@ -964,6 +959,7 @@ function sparkline(last7, w = 60, h = 22) {
 }
 
 // ═══════ state ═══════
+const GROUP_LABELS = { All:'全部', Core:'核心', Atlases:'图谱', 'OS Series':'操作系统', Rankings:'榜单', Civilization:'文明', Engines:'引擎', CivLab:'CivLab', CivTech:'CivTech', 'Startup Lab':'创业实验', Other:'其他' };
 let projects = [];
 let activeGroup = 'All';
 let activeSort = 'views';
@@ -993,8 +989,9 @@ function render() {
   else if (activeSort === 'trend') filtered.sort((a, b) => trendScore(b) - trendScore(a));
 
   const content = document.getElementById('content');
+  document.getElementById('atlas-result-count').textContent = document.documentElement.getAttribute('data-lang') === 'en' ? `${filtered.length} projects` : `${filtered.length} 个项目`;
   if (!filtered.length) {
-    content.innerHTML = '<div class="empty">Nothing matches.</div>';
+    content.innerHTML = '<div class="empty"><span class="cn">没有匹配的项目，试试其他关键词。</span><span class="en">No projects match. Try another search.</span></div>';
     return;
   }
 
@@ -1038,7 +1035,7 @@ function renderChips() {
   counts['All'] = projects.length;
   const chipsEl = document.getElementById('chips');
   chipsEl.innerHTML = groups.map(g =>
-    `<button class="chip${g === activeGroup ? ' active' : ''}" data-group="${g}">${g}<span class="count">${counts[g] || 0}</span></button>`
+    `<button class="chip${g === activeGroup ? ' active' : ''}" aria-pressed="${g === activeGroup}" data-group="${g}"><span class="cn">${GROUP_LABELS[g] || g}</span><span class="en">${g}</span><span class="count">${counts[g] || 0}</span></button>`
   ).join('');
   chipsEl.querySelectorAll('.chip').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1071,7 +1068,8 @@ async function load() {
     render();
   } catch (err) {
     document.getElementById('content').innerHTML =
-      `<div class="empty">Couldn't load atlas data. <br><span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;">${err.message}</span></div>`;
+      `<div class="empty"><p><span class="cn">暂时无法加载项目数据。</span><span class="en">Project data is temporarily unavailable.</span></p><button type="button" id="atlas-retry"><span class="cn">重新加载</span><span class="en">Try again</span></button></div>`;
+    document.getElementById('atlas-retry').addEventListener('click', () => { document.getElementById('content').innerHTML = '<div class="loading"><span class="cn">正在加载…</span><span class="en">Loading…</span></div>'; load(); });
   }
 }
 
@@ -1081,13 +1079,15 @@ document.getElementById('q').addEventListener('input', e => {
 });
 document.querySelectorAll('.sort button').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.sort button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.sort button').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed','true');
     activeSort = btn.dataset.sort;
     render();
   });
 });
 
+document.documentElement.addEventListener('langchange', () => { if(projects.length) render(); });
 load();
 </script>
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="publication-page">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Six Major Domains · 六大领域" />
 <meta name="twitter:description" content="Matter, Energy, Information, Biology, Consciousness, Space-Time — the six territories where science, technology, and engineering do their deepest work." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#f6f1e6" />
+<meta name="theme-color" content="#081b19" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,8 +46,6 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Noto+Serif+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" /></noscript>
 <link rel="stylesheet" href="/worlds.css" />
 <script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
-<script src="/scifi.js" defer></script>
-
 <style>
 /* page-local flourish: six-fold hex territory map */
 .hex-map {
@@ -105,8 +103,10 @@
   letter-spacing: .02em;
 }
 </style>
+<link rel="stylesheet" href="/publication.css" />
+<script src="/publication.js" defer></script>
 </head>
-<body data-world="domains">
+<body class="publication" data-world="domains">
 
 <header class="w-bar">
   <a class="home" href="https://psyverse.fun/"><span class="mark">ψ</span><span>Psyverse</span></a>
@@ -149,7 +149,7 @@
   </div>
   <div class="eyebrow">Psyverse · World 06 / 16</div>
   <div class="w-num">06</div>
-  <h1>Six <em>Domains</em><span class="cn">六 大 领 域</span></h1>
+  <h1><span class="cn">六大领域</span><span class="en pub-title-en">Six <em>Domains</em></span></h1>
   <p class="tagline">
     <span class="en">The six territories where science, technology, and engineering do their deepest work — Matter, Energy, Information, Biology, Consciousness, and Space-Time.</span>
     <span class="cn">科学、技术与工程深耕于此的六片疆土——物质、能量、信息、生命、意识与时空。</span>
@@ -176,7 +176,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 06.2 · The Six Domains</div>
-    <h2 class="w-h2">Territory of Work<span class="cn">工作的疆域</span></h2>
+    <h2 class="w-h2"><span class="cn">工作的疆域</span><span class="en pub-title-en">Territory of Work</span></h2>
     <div class="w-grid">
 
       <div class="w-card">
@@ -244,7 +244,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 06.3 · Why Six</div>
-    <h2 class="w-h2">The logic of the partition<span class="cn">划分的逻辑</span></h2>
+    <h2 class="w-h2"><span class="cn">划分的逻辑</span><span class="en pub-title-en">The logic of the partition</span></h2>
     <p class="w-p">
       <span class="en">The choice is not arbitrary, but it is not exhaustive either. These six represent a pragmatic cut: domains broad enough to encompass entire careers and civilizations, yet distinct enough that moving between them feels like crossing a genuine border.</span>
       <span class="cn">这一划分并非随意，但也非穷尽。这六者是一种务实的切割：每个领域足够宽广，可以容纳整条职业生涯乃至整个文明；又足够分明，使得在它们之间移动，真实地像是越过了某道边界。</span>
@@ -261,7 +261,7 @@
 
   <section class="w-section">
     <div class="w-eyebrow">§ 06.4 · Depth vs. Breadth</div>
-    <h2 class="w-h2">On choosing where to press<span class="cn">关于选择在何处施压</span></h2>
+    <h2 class="w-h2"><span class="cn">关于选择在何处施压</span><span class="en pub-title-en">On choosing where to press</span></h2>
     <p class="w-lead">
       <span class="en">A common temptation is to claim all six. The rare, more useful move is to choose one or two — and go deep enough to become genuinely useful at the frontier.</span>
       <span class="cn">一个常见的诱惑是声称拥有全部六个。更罕见、也更有用的做法，是选择一两个——然后深入到足以在前沿真正有所作为。</span>
@@ -295,7 +295,7 @@
   <!-- § 06.6 — How the six domains interlock -->
   <section class="w-section" id="interlocks">
     <div class="w-eyebrow">§ 06.6 · How the Six Domains Interlock</div>
-    <h2 class="w-h2">A topology, not a hierarchy<span class="cn">拓扑结构，而非层级秩序</span></h2>
+    <h2 class="w-h2"><span class="cn">拓扑结构，而非层级秩序</span><span class="en pub-title-en">A topology, not a hierarchy</span></h2>
     <p class="w-lead">
       <span class="en">The six domains do not stack. They interlock — each one touching at least two others, and every edge between them already a field of its own.</span>
       <span class="cn">六大领域并非叠加关系，而是彼此咬合——每个领域至少与另外两个相接，而每条边界本身就已是一个独立的研究领域。</span>
@@ -366,7 +366,7 @@
   <!-- § 06.7 — Choosing where to work -->
   <section class="w-section" id="choosing">
     <div class="w-eyebrow">§ 06.7 · Choosing Where to Work</div>
-    <h2 class="w-h2">On entering a domain<span class="cn">关于进入一片领域</span></h2>
+    <h2 class="w-h2"><span class="cn">关于进入一片领域</span><span class="en pub-title-en">On entering a domain</span></h2>
     <p class="w-lead">
       <span class="en">The choice of domain is rarely rational at first. Most people enter because something surprised them — a fact that didn't fit, an experiment that shouldn't have worked, a question that wouldn't leave.</span>
       <span class="cn">选择领域，最初往往并不理性。大多数人的入口，是某个令他们惊异的时刻——一个不合常理的事实，一个本不该成功的实验，一个挥之不去的问题。</span>
@@ -411,7 +411,7 @@
   <!-- § 06.8 — Domains Explorer interactive component -->
   <section class="w-section" id="explorer">
     <div class="w-eyebrow">§ 06.8 · Domains Explorer</div>
-    <h2 class="w-h2">Explore each domain<span class="cn">逐一探索六大领域</span></h2>
+    <h2 class="w-h2"><span class="cn">逐一探索六大领域</span><span class="en pub-title-en">Explore each domain</span></h2>
     <div class="w-interactive" id="dom-explorer" aria-label="Domains explorer">
       <div class="ix-head">
         <span class="ix-title">
