@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,7 @@
 <meta property="og:type" content="website" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f6f1e6'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23a8801f' stroke-width='1.2' opacity='0.35'/%3E%3Ccircle cx='32' cy='32' r='14.5' fill='none' stroke='%23a8801f' stroke-width='1.6' opacity='0.9'/%3E%3Ccircle cx='48.3' cy='15.7' r='3' fill='%23c9a24b'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23c9a24b'/%3E%3C/svg%3E" />
 <script defer src="https://analytics-dashboard-two-blue.vercel.app/tracker.js"></script>
-<script src="/scifi.js" defer></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,500&family=Noto+Serif+SC:wght@200;300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap" />
@@ -2379,7 +2379,7 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
 <meta name="twitter:url" content="https://psyverse.fun/" />
 <meta name="author" content="Gewenbo" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
-<meta name="theme-color" content="#f6f1e6" />
+<meta name="theme-color" content="#081b19" />
 <link rel="alternate" hreflang="en" href="https://psyverse.fun/" />
 <link rel="alternate" hreflang="zh" href="https://psyverse.fun/" />
 <link rel="alternate" hreflang="x-default" href="https://psyverse.fun/" />
@@ -2409,66 +2409,53 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Manifesto 一使命" />
 <meta name="twitter:image" content="https://psyverse.fun/og.png" />
+<link rel="stylesheet" href="/edition.css" />
+<link rel="preload" as="image" href="/assets/celestial-landscape.webp" fetchpriority="high" />
+<script src="/edition.js" defer></script>
 </head>
-<body>
+<body class="archive-home">
 
 <!-- ═══════ TOP BAR ═══════ -->
-<header class="topbar">
-  <a href="#one" class="brand" aria-label="Back to top">
-    <span class="mark">∞</span>
-    <span>One Mission</span>
-  </a>
-  <nav class="top-nav">
-    <a href="#one"><span class="n">1</span><span class="l">Mission</span></a>
-    <a href="#two"><span class="n">2</span><span class="l">Identity</span></a>
-    <a href="#three"><span class="n">3</span><span class="l">Principles</span></a>
-    <a href="#four"><span class="n">4</span><span class="l">Merge</span></a>
-    <a href="#five"><span class="n">5</span><span class="l">Elements</span></a>
-    <a href="#six"><span class="n">6</span><span class="l">Domains</span></a>
-    <a href="#seven"><span class="n">7</span><span class="l">Path</span></a>
-    <a href="#hubs"><span class="n">8</span><span class="l">Hubs</span></a>
-    <a href="#matrix"><span class="n">9</span><span class="l">Matrix</span></a>
-    <a href="#breakthroughs"><span class="n">10</span><span class="l">Tech</span></a>
-    <a href="#agi"><span class="n">11</span><span class="l">AGI</span></a>
-    <a href="#purposes"><span class="n">12</span><span class="l">Purpose</span></a>
-    <a href="#navigation"><span class="n">13</span><span class="l">Nav</span></a>
-    <a href="#cultures"><span class="n">14</span><span class="l">Culture</span></a>
-    <a href="#beliefs"><span class="n">15</span><span class="l">Belief</span></a>
-    <a href="#sixteen"><span class="n">16</span><span class="l">Visions</span></a>
-    <a href="/atlas"><span class="n">∴</span><span class="l">Atlas</span></a>
+<a class="skip-link" href="#chapters">跳至章节目录 / Skip to chapters</a>
+<header class="topbar edition">
+  <a href="#one" class="brand" aria-label="Psyverse 首页"><svg viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="15"/><ellipse cx="25" cy="25" rx="26" ry="10" transform="rotate(-40 25 25)"/><circle cx="25" cy="25" r="3" fill="currentColor"/></svg><span>PSYVERSE</span></a>
+  <nav class="edition-nav" aria-label="主导航 / Main navigation">
+    <a href="#one"><span class="cn">理念</span><span class="en">Philosophy</span></a>
+    <a href="#chapters"><span class="cn">章节目录</span><span class="en">Chapters</span></a>
+    <a href="/atlas"><span class="cn">世界图谱</span><span class="en">Atlas</span></a>
   </nav>
-  <div class="lang-switch" role="group" aria-label="Language">
-    <button type="button" data-setlang="both">双语</button>
-    <button type="button" data-setlang="zh">中</button>
-    <button type="button" data-setlang="en">EN</button>
-  </div>
+  <div class="header-actions"><div class="lang-switch" role="group" aria-label="语言 / Language"><button type="button" data-setlang="both">双语</button><button type="button" data-setlang="zh">中</button><button type="button" data-setlang="en">EN</button></div><a class="header-read" href="/mission"><span class="cn">阅读第一章</span><span class="en">Read chapter 01</span><span aria-hidden="true">↗</span></a></div>
 </header>
 
 <!-- ═══════ HERO · ONE ═══════ -->
-<section class="hero" id="one">
-  <div class="hero-top">
-    <span class="site-title">
-      <span class="cn">源代码 — 科技文明的底层逻辑十六章</span>
-      <span class="en">Source Code — The Underlying Logic of Tech Civilization in 16 Chapters</span>
-    </span>
-    <span>2026</span>
+<main id="main-content">
+<section class="hero edition" id="one" aria-labelledby="book-title">
+  <div class="hero-art" aria-hidden="true"></div>
+  <div class="hero-copy">
+    <h1 id="book-title"><span class="cn">源代码</span><em class="en">Source Code</em></h1>
+    <p class="book-subtitle"><span class="cn">科技文明的底层逻辑十六章</span><span class="en">The underlying logic of tech civilization.</span></p>
+    <p class="book-description"><span class="cn">用科学、技术和工程，解决真实的问题，<br class="desktop-break">满足人们的需求，创造新的可能和趋势。</span><span class="en">Solve real problems. Meet human needs.<br>Create new possibilities through science, technology, and engineering.</span></p>
+    <div class="hero-actions"><a class="edition-button" href="/mission"><span class="cn">开始探索</span><span class="en">Start exploring</span><span aria-hidden="true">↗</span></a><a class="edition-text-link" href="#chapters"><span class="cn">浏览十六章</span><span class="en">Browse chapters</span><span aria-hidden="true">↓</span></a></div>
   </div>
-  <div class="hero-center">
-    <div class="hero-monad" aria-hidden="true">
-      <div class="hero-dot"></div>
-      <div class="hero-dot-label">1 · 一</div>
-    </div>
-    <h1>
-      One <em>Mission</em>
-      <span class="cn">一 使 命</span>
-    </h1>
-    <p class="hero-tagline">
-      Use science, technology, and engineering to solve real problems, meet people's needs, and create new possibilities and trends.
-      <span class="cn">用科学、技术和工程，解决真实的问题，满足人们的需求，创造新的可能和趋势。</span>
-    </p>
-  </div>
-  <div class="hero-scroll">2 ↓ 二</div>
+  <a class="first-chapter" href="/mission"><span class="first-number">01</span><span class="first-name"><strong class="cn">一使命</strong><em class="en">One Mission</em></span><span class="first-description"><span class="cn">用科学、技术和工程，解决真实的问题，<br>满足人们的需求，创造新的可能和趋势。</span><span class="en">Use science, technology, and engineering to solve real problems, meet people's needs, and create new possibilities and trends.</span></span><span class="long-arrow" aria-hidden="true">⟶</span></a>
+  <div class="hero-colophon"><span>16 CHAPTERS · ONE CONNECTED WORLD</span><i></i><span aria-hidden="true">⊙</span></div>
 </section>
+<section id="chapters" class="chapter-directory edition" aria-labelledby="chapter-title"><div class="directory-heading"><div><h2 id="chapter-title"><span class="cn">十六章，一个相连的世界。</span><span class="en">Sixteen chapters. <br>One connected world.</span></h2><p class="directory-caption"><span class="cn">从一个使命出发，抵达十六种未来。</span><span class="en">From one mission to sixteen visions of the future.</span></p></div><span class="directory-index" aria-hidden="true">01—16<br>INDEX</span></div><nav class="chapter-index" aria-label="十六章目录 / Chapter index"><a href="/mission" class="chapter-entry"><span class="entry-number">01</span><span class="entry-title"><strong class="cn">一使命</strong><em class="en">One Mission</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#two" class="chapter-entry"><span class="entry-number">02</span><span class="entry-title"><strong class="cn">二重身份</strong><em class="en">Two Identities</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#three" class="chapter-entry"><span class="entry-number">03</span><span class="entry-title"><strong class="cn">三大原则</strong><em class="en">Three Core Principles</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#four" class="chapter-entry"><span class="entry-number">04</span><span class="entry-title"><strong class="cn">四大融合</strong><em class="en">Four Integrations</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#five" class="chapter-entry"><span class="entry-number">05</span><span class="entry-title"><strong class="cn">五行人格</strong><em class="en">Five Archetypes</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#six" class="chapter-entry"><span class="entry-number">06</span><span class="entry-title"><strong class="cn">六大领域</strong><em class="en">Six Major Domains</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#seven" class="chapter-entry"><span class="entry-number">07</span><span class="entry-title"><strong class="cn">深度系列</strong><em class="en">Deep Series Framework</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#hubs" class="chapter-entry"><span class="entry-number">08</span><span class="entry-title"><strong class="cn">八大枢纽</strong><em class="en">Eight Major Hubs</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#matrix" class="chapter-entry"><span class="entry-number">09</span><span class="entry-title"><strong class="cn">存在之矩阵</strong><em class="en">Ontological Matrix</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#breakthroughs" class="chapter-entry"><span class="entry-number">10</span><span class="entry-title"><strong class="cn">十大突破</strong><em class="en">Ten Major Breakthroughs</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#agi" class="chapter-entry"><span class="entry-number">11</span><span class="entry-title"><strong class="cn">十一种通往AGI之路</strong><em class="en">Eleven Approaches to AGI</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#purposes" class="chapter-entry"><span class="entry-number">12</span><span class="entry-title"><strong class="cn">十二组织宗旨</strong><em class="en">Twelve Organizational Purposes</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#navigation" class="chapter-entry"><span class="entry-number">13</span><span class="entry-title"><strong class="cn">十三步导航</strong><em class="en">Thirteen-Step Navigation</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#cultures" class="chapter-entry"><span class="entry-number">14</span><span class="entry-title"><strong class="cn">十四文化观</strong><em class="en">Fourteen Cultural Concepts</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#beliefs" class="chapter-entry"><span class="entry-number">15</span><span class="entry-title"><strong class="cn">十五信仰集合</strong><em class="en">Fifteen Belief Aggregations</em></span><span class="entry-arrow" aria-hidden="true">→</span></a>
+<a href="#sixteen" class="chapter-entry"><span class="entry-number">16</span><span class="entry-title"><strong class="cn">十六愿景</strong><em class="en">Sixteen Visions</em></span><span class="entry-arrow" aria-hidden="true">→</span></a></nav></section>
 
 <!-- ═══════ TWO · IDENTITIES ═══════ -->
 <section id="two">
@@ -2525,9 +2512,9 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
         <circle cx="200" cy="200" r="180" fill="url(#glow3)"/>
         <polygon points="200,40 360,320 40,320" fill="none" stroke="#a8801f" stroke-width="1" stroke-linejoin="round"/>
         <polygon points="200,40 360,320 40,320" fill="none" stroke="#a8801f" stroke-width="0.5" opacity="0.3" transform="rotate(180 200 200)"/>
-        <circle cx="200" cy="40" r="28" fill="#f6f1e6" stroke="#a8801f" stroke-width="1"/>
-        <circle cx="360" cy="320" r="28" fill="#f6f1e6" stroke="#a8801f" stroke-width="1"/>
-        <circle cx="40" cy="320" r="28" fill="#f6f1e6" stroke="#a8801f" stroke-width="1"/>
+        <circle cx="200" cy="40" r="28" fill="#081b19" stroke="#a8801f" stroke-width="1"/>
+        <circle cx="360" cy="320" r="28" fill="#081b19" stroke="#a8801f" stroke-width="1"/>
+        <circle cx="40" cy="320" r="28" fill="#081b19" stroke="#a8801f" stroke-width="1"/>
         <text x="200" y="49" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#8f6f2b">真</text>
         <text x="360" y="329" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#8f6f2b">善</text>
         <text x="40" y="329" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#8f6f2b">美</text>
@@ -2689,27 +2676,27 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
         <g id="penta">
           <!-- Metal top -->
           <g transform="translate(210 40)">
-            <circle r="38" fill="#f6f1e6" stroke="#837b6a" stroke-width="1.2"/>
+            <circle r="38" fill="#081b19" stroke="#837b6a" stroke-width="1.2"/>
             <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#837b6a">金</text>
           </g>
           <!-- Wood top-right -->
           <g transform="translate(371 157)">
-            <circle r="38" fill="#f6f1e6" stroke="#67914f" stroke-width="1.2"/>
+            <circle r="38" fill="#081b19" stroke="#67914f" stroke-width="1.2"/>
             <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#67914f">木</text>
           </g>
           <!-- Fire bottom-right -->
           <g transform="translate(310 354)">
-            <circle r="38" fill="#f6f1e6" stroke="#d66b4a" stroke-width="1.2"/>
+            <circle r="38" fill="#081b19" stroke="#d66b4a" stroke-width="1.2"/>
             <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#d66b4a">火</text>
           </g>
           <!-- Water bottom-left -->
           <g transform="translate(110 354)">
-            <circle r="38" fill="#f6f1e6" stroke="#4d81a6" stroke-width="1.2"/>
+            <circle r="38" fill="#081b19" stroke="#4d81a6" stroke-width="1.2"/>
             <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#4d81a6">水</text>
           </g>
           <!-- Earth top-left -->
           <g transform="translate(49 157)">
-            <circle r="38" fill="#f6f1e6" stroke="#9a7a3c" stroke-width="1.2"/>
+            <circle r="38" fill="#081b19" stroke="#9a7a3c" stroke-width="1.2"/>
             <text text-anchor="middle" y="14" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#9a7a3c">土</text>
           </g>
         </g>
@@ -4311,6 +4298,7 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
 </script>
 
 <!-- ═══════ FOOTER ═══════ -->
+</main>
 <footer>
   <div>© 2026 · psyverse.fun · 一使命</div>
   <div>
@@ -4322,70 +4310,7 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
   </div>
 </footer>
 
-<script>
-/* ── Tier-1 reveal choreography (refined, content-agnostic) ──
-   Inner pieces of each section cascade in; the section header's
-   gold underline draws itself; giant index numerals drift in parallax.
-   Degrades gracefully: no JS / reduced-motion → everything stays visible. */
-(function(){
-  var root = document.documentElement;
-  if(!('IntersectionObserver' in window)) return;
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  root.classList.add('js-anim');
 
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
-
-  function reveal(el, delay, attr){
-    if(!el) return;
-    el.setAttribute(attr || 'data-rv', '');
-    if(delay) el.style.setProperty('--rv', delay + 'ms');
-    io.observe(el);
-  }
-
-  document.querySelectorAll('section').forEach(function(sec){
-    if(sec.classList.contains('hero')) return;            // hero has its own CSS entrance
-    var intro = sec.querySelector('.section-intro');
-    if(intro){
-      io.observe(intro);                                  // triggers the underline draw
-      reveal(intro.querySelector('.section-num'), 0, 'data-rv-fade'); // fade-only (parallax owns transform)
-      reveal(intro.querySelector('.section-title'), 90);
-      reveal(intro.querySelector('.section-stamp'), 170);
-    }
-    if(sec.id === 'sixteen') return;                      // §16 cascades via its own observer
-    var wrap = intro ? intro.nextElementSibling : sec.firstElementChild;
-    if(!wrap) return;
-    var kids = [].slice.call(wrap.children);
-    if(kids.length === 1 && kids[0].children.length > 2){ // unwrap a lone inner container
-      kids = [].slice.call(kids[0].children);
-    }
-    var base = 160, step = 65, cap = 12;
-    kids.forEach(function(k, i){ reveal(k, base + Math.min(i, cap) * step); });
-  });
-
-  /* parallax drift on the giant index numerals */
-  var nums = [].slice.call(document.querySelectorAll('.section-num'));
-  var ticking = false;
-  function onScroll(){
-    if(ticking) return; ticking = true;
-    requestAnimationFrame(function(){
-      var vh = window.innerHeight;
-      nums.forEach(function(n){
-        var r = n.getBoundingClientRect();
-        if(r.bottom < -200 || r.top > vh + 200) return;
-        var p = (r.top + r.height/2 - vh/2) / vh;          // -0.5 .. 0.5
-        n.style.transform = 'translateY(' + (p * -26).toFixed(1) + 'px)';
-      });
-      ticking = false;
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-</script>
 <script>
 /* ── Auto language classifier: tag every text node so 中 / EN can hide the other side.
    Source content is untouched — this only adds wrapper classes in the live DOM. ── */
@@ -4403,7 +4328,7 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
     while(n = w.nextNode()){ if(n.nodeValue && n.nodeValue.trim()) nodes.push(n); }
     nodes.forEach(function(t){
       var p = t.parentElement; if(!p || SKIP[p.tagName]) return;
-      if(p.closest('.topbar') || p.closest('svg') || p.closest('.cell-cn') || tagged(p)) return;
+      if(p.closest('.topbar') || p.closest('.edition') || p.closest('svg') || p.closest('.cell-cn') || tagged(p)) return;
       var L = langOf(t.nodeValue);
       if(!L) return;
       if(L === 'mix'){
@@ -4450,8 +4375,10 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
     if(!valid[lang]) lang = 'both';
     if(lang === 'both') root.removeAttribute('data-lang');
     else root.setAttribute('data-lang', lang);
+    root.lang = lang === 'en' ? 'en' : 'zh-CN';
     btns.forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-setlang') === lang);
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-setlang') === lang));
     });
     try { localStorage.setItem(KEY, lang); } catch(e){}
   }
@@ -4463,141 +4390,10 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
   apply(saved);
 })();
 
-/* ── §16 scroll reveal (opt-in, degrades gracefully) ── */
-(function(){
-  if(!('IntersectionObserver' in window)) return;
-  document.documentElement.classList.add('js-anim');
-  var ro = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('#sixteen .level-row, #sixteen .sixteen-cell')
-    .forEach(function(it){ ro.observe(it); });
-})();
+
 </script>
-<script>
-/* ── Tier-2 wayfinding: scroll-progress bar + section-dot rail ──
-   Built from the existing nav anchors; injects presentational DOM only. */
-(function(){
-  var navLinks = [].slice.call(document.querySelectorAll('.top-nav a[href^="#"]'));
-  if(!navLinks.length) return;
 
-  // progress bar
-  var bar = document.createElement('div');
-  bar.className = 'scroll-progress';
-  document.body.appendChild(bar);
-  function progress(){
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (h > 0 ? (window.pageYOffset / h) * 100 : 0) + '%';
-  }
 
-  // dot rail
-  var rail = document.createElement('nav');
-  rail.className = 'dot-rail';
-  rail.setAttribute('aria-label', 'Section navigation');
-  var map = [];
-  navLinks.forEach(function(a){
-    var id = a.getAttribute('href').slice(1);
-    var sec = document.getElementById(id);
-    if(!sec) return;
-    var num = (a.querySelector('.n') || {}).textContent || '';
-    var name = (a.querySelector('.l') || {}).textContent || '';
-    var dot = document.createElement('a');
-    dot.href = '#' + id;
-    dot.setAttribute('aria-label', name || id);
-    dot.innerHTML = '<span class="lbl">' + (num ? num + ' · ' : '') + name + '</span>';
-    rail.appendChild(dot);
-    map.push({ sec: sec, dot: dot, nav: a });
-  });
-  document.body.appendChild(rail);
-
-  // compact current-section pill (shown where the dot rail is hidden, ≤980px)
-  var indicator = document.createElement('div');
-  indicator.className = 'sec-indicator';
-  indicator.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(indicator);
-
-  window.addEventListener('scroll', progress, { passive: true });
-  window.addEventListener('resize', progress, { passive: true });
-  progress();
-
-  // highlight the section crossing the viewport's middle band
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(!e.isIntersecting) return;
-        var m = null;
-        for(var i=0;i<map.length;i++){ if(map[i].sec === e.target){ m = map[i]; break; } }
-        if(!m) return;
-        map.forEach(function(x){ x.dot.classList.remove('active'); if(x.nav) x.nav.classList.remove('active'); });
-        m.dot.classList.add('active');
-        if(m.nav){
-          m.nav.classList.add('active');
-          // keep the current section visible in the horizontally-scrollable top nav (mobile + narrow desktop)
-          var cont = m.nav.parentNode;
-          if(cont && cont.scrollWidth > cont.clientWidth + 4){
-            var cr = cont.getBoundingClientRect(), nr = m.nav.getBoundingClientRect();
-            var delta = (nr.left + nr.width/2) - (cr.left + cr.width/2);
-            cont.scrollTo({ left: cont.scrollLeft + delta, behavior: 'smooth' });
-          }
-          var ni = m.nav.querySelector('.n'), li = m.nav.querySelector('.l');
-          indicator.textContent = (ni ? ni.textContent : '') + ' · ' + (li ? li.textContent : '');
-        }
-      });
-    }, { threshold: 0, rootMargin: '-45% 0px -45% 0px' });
-    map.forEach(function(m){ io.observe(m.sec); });
-  }
-})();
-</script>
-<script>
-/* ── Pointer flourishes: trailing gold cursor aura + gentle magnetic pull ──
-   Fine-pointer devices only; fully disabled under reduced-motion. */
-(function(){
-  var mm = window.matchMedia;
-  if(!mm) return;
-  if(mm('(prefers-reduced-motion: reduce)').matches) return;
-  if(!mm('(hover: hover) and (pointer: fine)').matches) return;
-
-  // trailing aura (native cursor stays visible)
-  var aura = document.createElement('div');
-  aura.className = 'cursor-aura';
-  document.body.appendChild(aura);
-  var tx = window.innerWidth/2, ty = window.innerHeight/2, cx = tx, cy = ty, seen = false;
-  window.addEventListener('mousemove', function(e){
-    tx = e.clientX; ty = e.clientY;
-    if(!seen){ seen = true; aura.classList.add('on'); }
-  }, { passive: true });
-  document.addEventListener('mouseleave', function(){ aura.classList.remove('on'); });
-  document.addEventListener('mouseover', function(e){
-    if(e.target.closest && e.target.closest('a, button')) aura.classList.add('hot');
-  });
-  document.addEventListener('mouseout', function(e){
-    if(e.target.closest && e.target.closest('a, button')) aura.classList.remove('hot');
-  });
-  (function loop(){
-    cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
-    aura.style.left = cx.toFixed(1) + 'px';
-    aura.style.top  = cy.toFixed(1) + 'px';
-    requestAnimationFrame(loop);
-  })();
-
-  // gentle magnetic pull (preserves each element's own transitions)
-  function magnetic(el, strength, keep){
-    el.style.transition = 'transform .3s cubic-bezier(.2,.7,.2,1)' + (keep ? ', ' + keep : '');
-    el.addEventListener('mousemove', function(e){
-      var r = el.getBoundingClientRect();
-      var mx = (e.clientX - (r.left + r.width/2)) * strength;
-      var my = (e.clientY - (r.top + r.height/2)) * strength;
-      el.style.transform = 'translate(' + mx.toFixed(1) + 'px,' + my.toFixed(1) + 'px)';
-    });
-    el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
-  }
-  document.querySelectorAll('.lang-switch button').forEach(function(b){ magnetic(b, 0.3, 'background .25s, color .25s, box-shadow .25s'); });
-  document.querySelectorAll('footer a').forEach(function(a){ magnetic(a, 0.25, 'color .3s'); });
-  var brand = document.querySelector('.brand'); if(brand) magnetic(brand, 0.2, 'opacity .2s');
-})();
-</script>
 <script>
 /* ── Link each manifesto section to its standalone World (psyverse.fun/{slug}) ── */
 (function(){
@@ -4609,7 +4405,7 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
     var sec = document.getElementById(id); if(!sec) return;
     var a = document.createElement('a');
     a.href = '/' + W[id];
-    if(id === 'one'){
+    if(id === 'one'){ return;
       a.className = 'world-link hero-cta';
       a.innerHTML = '✦ Explore the Sixteen Worlds <span aria-hidden="true">→</span>';
       var hc = sec.querySelector('.hero-center');
@@ -4630,85 +4426,9 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
   }
 })();
 </script>
-<script>
-/* gold-dust cursor trail — paper motes stirred by the pointer (desktop, motion-safe) */
-(function(){
-  if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  if(!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  var c = document.createElement('canvas');
-  c.setAttribute('aria-hidden', 'true');
-  c.style.cssText = 'position:fixed;inset:0;z-index:1;pointer-events:none;';
-  document.body.appendChild(c);
-  var x = c.getContext('2d'), W, H, motes = [], last = 0;
-  function size(){ W = c.width = innerWidth; H = c.height = innerHeight; }
-  size(); addEventListener('resize', size);
-  addEventListener('mousemove', function(e){
-    var now = performance.now();
-    if(now - last < 28) return; last = now;
-    if(motes.length < 90) motes.push({
-      x: e.clientX + (Math.random()*10 - 5),
-      y: e.clientY + (Math.random()*10 - 5),
-      vx: (Math.random() - .5) * .3, vy: -Math.random() * .45 - .1,
-      life: 1, r: Math.random() * 1.4 + .4
-    });
-  }, { passive: true });
-  (function loop(){
-    requestAnimationFrame(loop);
-    x.clearRect(0, 0, W, H);
-    for(var i = motes.length - 1; i >= 0; i--){
-      var m = motes[i];
-      m.x += m.vx; m.y += m.vy; m.life -= .016;
-      if(m.life <= 0){ motes.splice(i, 1); continue; }
-      x.globalAlpha = m.life * .5;
-      x.fillStyle = m.life > .5 ? '#c9a24b' : '#a8801f';
-      x.beginPath(); x.arc(m.x, m.y, m.r * m.life, 0, 6.2832); x.fill();
-    }
-    x.globalAlpha = 1;
-  })();
-})();
-</script>
-<script>
-/* gravitational monad — the two-body system leans toward a nearby pointer */
-(function(){
-  if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  if(!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  var m = document.querySelector('.hero-monad');
-  if(!m) return;
-  var tx = 0, ty = 0, cx = 0, cy = 0, live = false;
-  addEventListener('mousemove', function(e){
-    var r = m.getBoundingClientRect();
-    if(!r.width) return;
-    var mx = r.left + r.width/2, my = r.top + r.height/2;
-    var dx = e.clientX - mx, dy = e.clientY - my;
-    var d = Math.hypot(dx, dy);
-    var pull = Math.max(0, 1 - d / 420);        // 1 at center -> 0 at 420px
-    tx = dx * pull * 0.12; ty = dy * pull * 0.12;
-    if(!live){ live = true; requestAnimationFrame(step); }
-  }, { passive: true });
-  function step(){
-    cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
-    m.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px)';
-    if(Math.abs(tx - cx) > .05 || Math.abs(ty - cy) > .05 || tx || ty) requestAnimationFrame(step);
-    else { live = false; tx = ty = 0; }
-  }
-})();
-</script>
-<script>
-/* reading spotlight — the intro nearest viewport center holds a warm focus */
-(function(){
-  if(!('IntersectionObserver' in window)) return;
-  var intros = [].slice.call(document.querySelectorAll('.section-intro'));
-  if(!intros.length) return;
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      var r = e.boundingClientRect;
-      var centered = r.top < innerHeight * 0.55 && r.bottom > innerHeight * 0.35;
-      e.target.classList.toggle('reading', centered && e.isIntersecting);
-    });
-  }, { threshold: [0, .2, .5] });
-  intros.forEach(function(i){ io.observe(i); });
-})();
-</script>
+
+
+
 <style>
 /* print: the paper-and-ink manifesto is print-native */
 @media print {

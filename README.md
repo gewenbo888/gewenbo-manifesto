@@ -21,13 +21,25 @@ Every section includes a distinct geometric motif — a single dot for One, a du
 
 ## Design & Tech
 
-- **Stack:** Single HTML file, vanilla JavaScript, inline SVG diagrams
-- **Aesthetic:** Ink-black ceremonial with gold leaf and ivory — an illuminated-manuscript treatment of a contemporary personal manifesto
+- **Stack:** Static HTML, vanilla JavaScript, inline SVG diagrams; no build step or runtime dependencies
+- **Aesthetic:** Ink-green digital archive with ivory editorial typography, antique-gold orbital artwork, an open sixteen-chapter index, and lightweight reading navigation. Standalone worlds retain their existing reading layouts.
 - **Typography:** Fraunces (variable serif) · Cormorant Garamond (body serif) · Noto Serif SC (Chinese) · JetBrains Mono (data)
-- **Bilingual:** English and Chinese side-by-side throughout (no toggle — the parallel is the point)
+- **Bilingual:** Chinese, English, and bilingual modes with a persisted language preference
 - **Deployment:** Vercel
 
 ## Links
 
 - [Live Site](https://gewenbo-manifesto.vercel.app)
 - [GitHub Repository](https://github.com/gewenbo888/gewenbo-manifesto)
+
+## Local preview
+
+Requires Node.js 20 or later. No dependency installation is needed.
+
+```sh
+npm run dev
+```
+
+Open http://127.0.0.1:4174. The preview server supports the same extensionless HTML routes as Vercel. Override the port with `PORT=4175 npm run dev`.
+
+The homepage edition is implemented in `edition.css` and `edition.js`. Its generated artwork lives in `assets/celestial-landscape.webp` (approximately 157 KB); all text, links, and language controls remain native HTML. The original sixteen chapter destinations and content remain available. The mission introduction directly states the original mission rather than defining the word “mission.”
