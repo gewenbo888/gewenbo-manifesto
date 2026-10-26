@@ -1,0 +1,258 @@
+/* Restore the four original chapter designs from 02c6f88, before the UI redesign.
+   Scoped to the requested sections; the new cover and the remaining chapters stay intact. */
+#four,#six,#hubs,#cultures {
+ --serif:"Cormorant Garamond","Noto Serif SC",serif;
+ --display:"Fraunces","Noto Serif SC",serif;
+ --cjk:"Noto Serif SC","Songti SC",serif;
+ --mono:"JetBrains Mono",monospace;
+}
+#four .four-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line); }
+#four .four-cell { border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 48px;
+  position: relative;
+  min-height: 260px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: background 0.3s; }
+#four .four-cell:hover { background: rgba(143, 111, 43, 0.05); }
+#four .four-cell .four-num { position: absolute; top: 24px; right: 28px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; color: var(--gold-deep); }
+#four .four-cell .four-kind { font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px; }
+#four .four-cell .four-formula { font-family: var(--display); font-size: 30px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); line-height: 1.2; }
+#four .four-cell .four-formula .x { color: var(--rouge); font-style: normal; margin: 0 14px;
+  font-weight: 500; }
+#four .four-cell .four-formula-cn { font-family: var(--cjk); font-size: 20px;
+  font-weight: 500;
+  color: var(--gold); margin-top: 12px;
+  letter-spacing: 0.1em; }
+#four .four-cell .four-formula-cn .x { color: var(--rouge); margin: 0 10px; }
+#four .four-cell .four-note { margin-top: 28px;
+  font-size: 14px; line-height: 1.7;
+  color: var(--ivory-dim); font-style: italic;
+  max-width: 340px; }
+#four .four-cell .four-note-cn { margin-top: 6px;
+  font-family: var(--cjk); font-size: 13px;
+  line-height: 1.9; color: var(--ivory-dim); }
+#six .six-grid { display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 40px; }
+#six .six-cell { padding: 44px 32px;
+  border-right: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  transition: background 0.3s; }
+#six .six-cell:nth-child(3n) { border-right: none; }
+#six .six-cell:nth-child(n+4) { border-bottom: none; }
+#six .six-cell:hover { background: rgba(143, 111, 43, 0.04); }
+#six .six-cell .six-glyph { position: absolute; top: 20px; right: 24px;
+  font-family: var(--display);
+  font-size: 100px; font-weight: 200;
+  color: var(--gold); opacity: 0.15;
+  line-height: 0.8;
+  font-style: italic;
+  pointer-events: none; }
+#six .six-cell .six-num { font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; color: var(--gold);
+  margin-bottom: 14px; }
+#six .six-cell .six-name-en { font-family: var(--display); font-size: 34px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); line-height: 1.05;
+  letter-spacing: -0.01em; }
+#six .six-cell .six-name-cn { font-family: var(--cjk); font-size: 18px;
+  font-weight: 500; color: var(--gold);
+  margin-top: 6px; letter-spacing: 0.2em; }
+#hubs .hubs-grid { display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line); }
+#hubs .hub-card { border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 300px;
+  position: relative;
+  transition: background 0.3s;
+  overflow: hidden; }
+#hubs .hub-card::after { content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--hub-accent, var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease; }
+#hubs .hub-card:hover { background: rgba(143, 111, 43, 0.04); }
+#hubs .hub-card:hover::after { transform: scaleX(1); }
+#hubs .hub-card[data-region="asia"] { --hub-accent: #b14d42; }
+#hubs .hub-card[data-region="mena"] { --hub-accent: #a8801f; }
+#hubs .hub-card[data-region="europe"] { --hub-accent: #5a8f73; }
+#hubs .hub-card[data-region="americas"] { --hub-accent: #46688a; }
+#hubs .hub-num { font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--hub-accent);
+  margin-bottom: auto; }
+#hubs .hub-coord-glyph { position: absolute; top: 26px; right: 24px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.15em; color: var(--ivory-faint); }
+#hubs .hub-name-en { font-family: var(--display); font-size: 36px;
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); letter-spacing: -0.02em;
+  line-height: 1; }
+#hubs .hub-name-cn { font-family: var(--cjk); font-size: 22px;
+  font-weight: 500; letter-spacing: 0.2em;
+  color: var(--hub-accent); }
+#hubs .hub-sep { width: 28px; height: 1px; background: var(--line);
+  margin: 8px 0; }
+#hubs .hub-role { font-family: var(--display); font-size: 15px;
+  font-style: italic;
+  color: var(--ivory-dim);
+  line-height: 1.4; }
+#hubs .hub-region { font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--hub-accent);
+  margin-top: 8px; }
+#cultures .culture-grid { display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line); }
+#cultures .culture-card { border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 36px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: center;
+  min-height: 170px;
+  position: relative;
+  transition: background 0.3s;
+  overflow: hidden; }
+#cultures .culture-card:hover { background: rgba(143, 111, 43, 0.04); }
+#cultures .culture-card::before { content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--culture-accent, var(--gold));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s ease; }
+#cultures .culture-card:hover::before { transform: scaleY(1); }
+#cultures .culture-card .c-num { position: absolute; top: 18px; right: 22px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--ivory-faint); }
+#cultures .culture-card .c-country-en { font-family: var(--display); font-size: 26px;
+  font-weight: 400; font-style: italic;
+  color: var(--ivory); letter-spacing: -0.01em;
+  line-height: 1; }
+#cultures .culture-card .c-country-cn { font-family: var(--cjk); font-size: 18px;
+  font-weight: 600; color: var(--culture-accent, var(--gold));
+  margin-top: 6px;
+  letter-spacing: 0.2em;
+  filter: brightness(1.18); }
+#cultures .culture-card .c-divider { color: var(--culture-accent, var(--gold));
+  font-family: var(--mono); font-size: 14px;
+  margin-top: 10px; }
+#cultures .culture-card .c-concept { font-family: var(--display); font-size: 30px;
+  font-weight: 500; font-style: italic;
+  color: var(--culture-accent, var(--gold-bright));
+  line-height: 1.1;
+  letter-spacing: -0.02em; }
+#cultures .culture-card .c-concept-small { font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ivory-faint);
+  margin-top: 8px; }
+#cultures .culture-card .c-gloss { font-family: var(--serif); font-size: 14px;
+  font-style: italic; color: var(--ivory-dim);
+  margin-top: 12px; line-height: 1.5; }
+#cultures .culture-card .c-gloss-cn { font-family: var(--cjk); font-size: 16px;
+  font-weight: 500;
+  color: var(--gold-bright); margin-top: 6px;
+  letter-spacing: 0.18em; }
+#cultures .culture-card[data-region="south-asia"] { --culture-accent: #d66b4a; }
+#cultures .culture-card[data-region="nordic"] { --culture-accent: #4d81a6; }
+#cultures .culture-card[data-region="diaspora"] { --culture-accent: #a8801f; }
+#cultures .culture-card[data-region="east-asia"] { --culture-accent: #b14d42; }
+#cultures .culture-card[data-region="americas"] { --culture-accent: #46688a; }
+#cultures .culture-card[data-region="w-europe"] { --culture-accent: #5a8f73; }
+#cultures .culture-card[data-region="africa"] { --culture-accent: #a8855a; }
+#six .sixteen-cell .six-idx { position: absolute; top: 12px; right: 14px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.2em; color: var(--ivory-faint); }
+@media (max-width: 1000px) {
+#four .four-grid { grid-template-columns: 1fr; }
+#four .four-cell:nth-child(odd) { border-right: 1px solid var(--line); }
+#six .six-grid { grid-template-columns: 1fr 1fr; }
+#six .six-cell { border-right: 1px solid var(--line-soft) !important; }
+#six .six-cell:nth-child(2n) { border-right: none !important; }
+#cultures .culture-grid { grid-template-columns: 1fr; }
+#cultures .culture-card { grid-template-columns: 1fr; gap: 12px; padding: 22px 24px; min-height: 140px; }
+#cultures .culture-card .c-concept { font-size: 24px; }
+#hubs .hubs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+#four .four-cell { transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s; }
+#hubs .hub-card { transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s; }
+#cultures .culture-card { transition: background .3s, box-shadow .35s, transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s; }
+#four .four-cell:hover { transform: translateY(-3px);
+  box-shadow: 0 16px 42px -14px rgba(62, 48, 20, 0.20),
+              0 0 0 1px rgba(143, 111, 43,0.28),
+              0 0 32px -8px rgba(143, 111, 43,0.2); }
+#hubs .hub-card:hover { transform: translateY(-3px);
+  box-shadow: 0 16px 42px -14px rgba(62, 48, 20, 0.20),
+              0 0 0 1px rgba(143, 111, 43,0.28),
+              0 0 32px -8px rgba(143, 111, 43,0.2); }
+#cultures .culture-card:hover { transform: translateY(-3px);
+  box-shadow: 0 16px 42px -14px rgba(62, 48, 20, 0.20),
+              0 0 0 1px rgba(143, 111, 43,0.28),
+              0 0 32px -8px rgba(143, 111, 43,0.2); }
+#four .four-formula .x,
+#four .four-formula-cn .x { display: inline-block; transition: transform .45s cubic-bezier(.2,.7,.2,1), color .3s; }
+#four .four-cell:hover .four-formula .x,
+#four .four-cell:hover .four-formula-cn .x { transform: rotate(90deg); color: var(--gold-bright); }
+#four .four-note,
+#four .four-note-cn { text-wrap: pretty; }
+/* Keep non-translated context and numeric glyphs visible in single-language mode. */
+#six .six-glyph.auto-en { display:block!important; }
+#hubs .hub-role.auto-en,#hubs .hub-region.auto-en,#hubs .hub-coord-glyph.auto-en,
+#cultures .c-concept.auto-en,#four .four-kind.auto-en { display:block!important; }
+#four .four-cell,#six .six-cell,#hubs .hub-card,#cultures .culture-card { min-width:0; }
+#four .four-formula,#six .six-name-en,#hubs .hub-name-en,#cultures .c-concept { overflow-wrap:anywhere; }
+@media(max-width:760px) {
+ #four .four-cell { padding:32px 24px; }
+ #four .four-formula { font-size:28px; }
+ #four .four-formula-cn { font-size:19px; letter-spacing:.04em; }
+ #four .four-note,#four .four-note-cn { font-size:15px; line-height:1.85; }
+ #six .six-cell { padding:32px 20px; min-height:190px; }
+ #six .six-cell .six-name-en { font-size:clamp(21px,5.2vw,27px); }
+ #six .six-cell:nth-child(3n) { border-right:1px solid var(--line-soft); }
+ #six .six-cell:nth-child(2n) { border-right:0; }
+ #six .six-cell:nth-child(n+4) { border-bottom:1px solid var(--line-soft); }
+ #six .six-cell:nth-last-child(-n+2) { border-bottom:0; }
+ #hubs .hub-card { padding:28px 20px; min-height:260px; }
+ #hubs .hub-name-en { font-size:27px; }
+ #hubs .hub-name-cn { font-size:19px; }
+ #hubs .hub-coord-glyph { top:16px; right:14px; font-size:8px; letter-spacing:0; }
+ #hubs .hub-role { font-size:16px; }
+ #cultures .culture-card { padding:28px 24px; grid-template-columns:minmax(90px,.6fr) minmax(0,1.4fr); gap:24px; }
+ #cultures .culture-card .c-concept { font-size:25px; }
+ #cultures .culture-card .c-gloss-cn { font-size:15px; letter-spacing:.06em; }
+ #cultures .culture-card .c-num { top:12px; right:14px; }
+}
+/* Undo properties introduced by the later minimal edition, absent in the original rules. */
+#four .four-num,#six .six-num,#hubs .hub-num,#hubs .hub-coord-glyph,#hubs .hub-sep,
+#cultures .culture-card .c-num,#cultures .culture-card .c-divider { display:block; }
+#hubs .hub-card::after,#cultures .culture-card::before { display:block; }
+#cultures .c-concept-small.auto-en { display:block!important; }
+#four .four-cell .four-formula .x,#four .four-cell .four-formula-cn .x { transition:transform .45s cubic-bezier(.2,.7,.2,1),color .3s; }
+#four .four-cell .four-note { font-family:var(--serif); }
