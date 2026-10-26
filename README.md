@@ -65,3 +65,5 @@ The full reading review removes partial grid frames and obsolete fixed card heig
 Four Integrations, Six Domains, Eight Hubs, and Fourteen Cultures restore their pre-redesign component rules from commit `02c6f88` through `chapter-restoration.css`. The restoration is scoped to those four homepage sections, with narrow-screen wrapping adjustments; the current cover, navigation, manuscript, and standalone pages remain in place.
 
 The Fifteen Belief Aggregations homepage catalogue also restores the original three-column framed cards, large tradition glyphs, category/index labels, and name/principle hierarchy. Phones retain two columns with safe glyph sizing and text wrapping.
+
+The opening mission now uses an indexed serif reading introduction below the retained animated cover. The Creator/Seeker section restores the original framed diptych, large Chinese glyphs, direction labels, central join, and original text hierarchy, stacked safely on phones.
