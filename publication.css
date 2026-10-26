@@ -166,3 +166,5 @@ html[data-lang="en"] .publication-atlas .sort button .en,html[data-lang="en"] .p
 .publication[data-world="mission"] .w-hero + .w-section .w-lead .cn { order:-1; font:400 clamp(20px,1.65vw,24px)/1.9 var(--cjk); margin:0 0 14px; }
 .publication .instrument-chain { display:none; }
 @media(max-width:760px){.publication .w-hero h1{font-size:34px}.publication[data-world="mission"] .w-hero+.w-section .w-lead .cn{font-size:20px}}
+/* Atlas does not load worlds.css, so language visibility belongs to the shared shell too. */
+html[data-lang="zh"] .publication .en,html[data-lang="en"] .publication .cn { display:none!important; }
