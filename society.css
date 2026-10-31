@@ -22,6 +22,39 @@ html[data-lang="en"] .society-home .brand .org-wordmark .en { font-size:14px; }
 .society-home .org-signature-note .cn,.society-home .org-signature-note .en { display:block; }
 .society-home .org-signature-note .en { margin-top:6px; }
 html[data-lang="en"] .society-home .hero.edition h1 em { font-size:clamp(70px,10vw,144px); }
+.brand-resources { max-width:1440px; margin:auto; padding:64px var(--page-gutter) 72px; scroll-margin-top:140px; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.brand-resources .cn,.brand-resources .en { display:block; }
+.brand-resources .en { margin-top:8px; font-size:.86em; line-height:1.75; color:var(--ivory-faint); }
+.brand-story { display:grid; grid-template-columns:200px minmax(0,1fr); gap:64px; align-items:center; margin-bottom:48px; }
+.brand-story-mark { text-align:center; }
+.brand-story-mark img { max-width:100%; height:auto; }
+.brand-story-copy h2 { font-size:20px; font-weight:500; color:var(--ivory-faint); }
+.brand-story-copy h2 .en { font-size:13px; }
+.brand-belief { margin:20px 0; font:500 38px/1.6 "Noto Serif SC","Songti SC",serif; color:var(--gold-bright); }
+.brand-belief .en { font:400 20px/1.6 -apple-system,BlinkMacSystemFont,sans-serif; }
+.brand-meaning { max-width:46em; font-size:17px; line-height:1.95; color:var(--ivory-dim); }
+.brand-downloads { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.brand-download { position:relative; min-width:0; padding:24px; border:1px solid var(--line-soft); color:var(--ivory); text-decoration:none; background:transparent; }
+.brand-download:hover { border-color:var(--gold); }
+.brand-file-preview { margin-bottom:26px; }
+.brand-file-preview img { display:block; }
+.brand-file-name { font-size:16px; font-weight:500; line-height:1.6; }
+.brand-file-name .en { font-size:12px; font-weight:400; margin-top:4px; }
+.brand-file-format { display:block; margin-top:14px; font-size:10px; letter-spacing:.05em; color:var(--ivory-faint); }
+.brand-file-arrow { position:absolute; right:24px; bottom:22px; color:var(--gold-bright); font-size:20px; }
+.brand-download.inverse { background:#244c40; color:#f4f6f5; border-color:#244c40; }
+.brand-download.inverse .en,.brand-download.inverse .brand-file-format { color:#c0d0c6; }
+.brand-download.inverse .brand-file-arrow { color:#f4f6f5; }
+.brand-resource-actions { display:flex; align-items:flex-start; justify-content:space-between; gap:24px 56px; margin-top:28px; }
+.brand-kit-download { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; min-height:44px; padding:8px 0; color:var(--gold-bright); font-size:15px; line-height:1.7; text-decoration:none; }
+.brand-kit-download .en { margin:0; font-size:12px; }
+.brand-use { max-width:580px; flex:1; font-size:14px; line-height:1.9; color:var(--ivory-dim); }
+.brand-use summary { min-height:44px; padding:8px 0; cursor:pointer; color:var(--gold-bright); }
+.brand-use summary .cn,.brand-use summary .en { display:inline; }
+.brand-use p { margin-top:16px; }
+.brand-resources a:focus-visible,.brand-resources summary:focus-visible { outline:2px solid var(--gold); outline-offset:5px; }
+html[data-lang="en"] .brand-resources .en { margin-top:0; font-size:1em; color:inherit; }
+html[data-lang="en"] .brand-belief .en { font-size:32px; }
 @media(max-width:760px) {
  .society-home .hero.edition h1 { font-size:clamp(60px,17vw,120px); line-height:1.4; }
  .society-home .hero.edition h1 em { margin-top:8px; font-size:30px; }
@@ -33,4 +66,18 @@ html[data-lang="en"] .society-home .hero.edition h1 em { font-size:clamp(70px,10
  .society-home .hero.edition .hero-actions { gap:22px; }
  .society-home .org-signature { font-size:25px; }
  html[data-lang="en"] .society-home .hero.edition h1 em { font-size:clamp(48px,15vw,100px); }
+ .brand-resources { padding:48px 24px 56px; scroll-margin-top:124px; }
+ .brand-story { grid-template-columns:minmax(0,1fr); gap:24px; margin-bottom:32px; }
+ .brand-story-mark { text-align:left; }
+ .brand-story-mark img { width:88px; }
+ .brand-belief { font-size:28px; }
+ .brand-belief .en { font-size:18px; }
+ .brand-meaning { font-size:16px; }
+ .brand-downloads { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+ .brand-download { padding:20px 16px; }
+ .brand-file-arrow { right:16px; bottom:18px; }
+ .brand-file-format { font-size:9px; }
+ .brand-resource-actions { display:block; }
+ .brand-use { margin-top:20px; }
+ html[data-lang="en"] .brand-belief .en { font-size:26px; }
 }
