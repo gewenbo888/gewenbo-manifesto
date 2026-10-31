@@ -364,3 +364,8 @@ html[data-lang="en"] .hero.edition h1 em { font-size:clamp(70px,10vw,144px); lin
  .mission-opening .first-chapter { gap:28px 16px; }
  html[data-lang="en"] .hero.edition h1 em { font-size:clamp(64px,18vw,100px); }
 }
+
+/* Psyverse source mark: optical size and stable monochrome identity. */
+.brand .psy-mark { width:32px; height:32px; flex:none; stroke:none; fill:none; overflow:visible; }
+.brand { gap:12px; letter-spacing:.16em; }
+@media(max-width:760px) { .brand .psy-mark { width:28px; height:28px; } }

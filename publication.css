@@ -317,3 +317,8 @@ html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title
  .publication[data-world="mission"] .pub-outline nav { grid-template-columns:1fr; }
  html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title-en { font-size:clamp(54px,16vw,90px); }
 }
+
+/* Psyverse source mark: optical size and stable monochrome identity. */
+.pub-brand .psy-mark { width:32px; height:32px; flex:none; stroke:none; fill:none; overflow:visible; }
+.pub-brand { gap:12px; letter-spacing:.16em; }
+@media(max-width:760px) { .pub-brand .psy-mark { width:28px; height:28px; } }
