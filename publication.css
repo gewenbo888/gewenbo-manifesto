@@ -322,3 +322,9 @@ html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title
 .pub-brand .psy-mark { width:32px; height:32px; flex:none; stroke:none; fill:none; overflow:visible; }
 .pub-brand { gap:12px; letter-spacing:.16em; }
 @media(max-width:760px) { .pub-brand .psy-mark { width:28px; height:28px; } }
+
+/* Society identity, shared by every chapter header. */
+.pub-brand .org-wordmark { display:flex; flex-direction:column; gap:3px; align-items:flex-start; }
+.pub-brand .org-wordmark .cn { font:600 17px/1.3 var(--reading); letter-spacing:.15em; }
+.pub-brand .org-wordmark .en { font:500 9px/1.3 var(--reading); letter-spacing:.16em; }
+html[data-lang="en"] .pub-brand .org-wordmark .en { font-size:14px; }

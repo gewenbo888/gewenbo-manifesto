@@ -1,0 +1,36 @@
+/* Organization above the manifesto; the sixteen-chapter manuscript stays intact. */
+.society-home .brand .org-wordmark { display:flex; flex-direction:column; gap:3px; align-items:flex-start; }
+.society-home .brand .org-wordmark .cn { font:600 17px/1.3 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; letter-spacing:.15em; }
+.society-home .brand .org-wordmark .en { font:500 9px/1.3 -apple-system,BlinkMacSystemFont,sans-serif; letter-spacing:.16em; }
+html[data-lang="en"] .society-home .brand .org-wordmark .en { font-size:14px; }
+.society-home .org-kicker { margin:0 0 26px; color:var(--gold-bright); font:500 15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; letter-spacing:.12em; }
+.society-home .org-kicker .cn,.society-home .org-kicker .en { display:block; }
+.society-home .org-kicker .en { margin-top:5px; font-size:12px; letter-spacing:.04em; color:var(--ivory-faint); }
+.society-home .hero.edition h1 { font-size:clamp(96px,13vw,200px); letter-spacing:.015em; }
+.society-home .hero.edition h1 em { font-size:44px; }
+.society-home .hero.edition .book-subtitle { font-size:22px; line-height:1.65; }
+.society-home .book-subtitle>.cn,.society-home .book-subtitle>.en { display:block; }
+.society-home .org-book-detail { display:block; margin-top:6px; font-size:16px; color:var(--ivory-faint); }
+.society-home .book-subtitle>.en { margin-top:10px; font-size:15px; color:var(--ivory-faint); }
+.society-home .org-mission-caption { margin-bottom:32px; color:var(--ivory-faint); font:13px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.society-home .org-mission-caption .cn,.society-home .org-mission-caption .en { display:block; }
+.society-home .org-mission-caption .en { margin-top:4px; font-size:12px; }
+.society-home .org-signature { margin-bottom:14px; color:var(--gold-bright); font:500 28px/1.5 "Noto Serif SC","Songti SC",serif; }
+.society-home .org-signature .cn,.society-home .org-signature .en { display:block; }
+.society-home .org-signature .en { margin-top:8px; font:500 12px/1.6 -apple-system,BlinkMacSystemFont,sans-serif; letter-spacing:.16em; }
+.society-home .org-signature-note { margin-bottom:52px; color:var(--ivory-faint); font:13px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.society-home .org-signature-note .cn,.society-home .org-signature-note .en { display:block; }
+.society-home .org-signature-note .en { margin-top:6px; }
+html[data-lang="en"] .society-home .hero.edition h1 em { font-size:clamp(70px,10vw,144px); }
+@media(max-width:760px) {
+ .society-home .hero.edition h1 { font-size:clamp(60px,17vw,120px); line-height:1.4; }
+ .society-home .hero.edition h1 em { margin-top:8px; font-size:30px; }
+ .society-home .org-kicker { margin-bottom:20px; font-size:13px; letter-spacing:.05em; }
+ .society-home .org-kicker .en { font-size:11px; }
+ .society-home .hero.edition .book-subtitle { font-size:19px; margin-top:24px; }
+ .society-home .org-book-detail { font-size:14px; }
+ .society-home .book-subtitle>.en { font-size:13px; }
+ .society-home .hero.edition .hero-actions { gap:22px; }
+ .society-home .org-signature { font-size:25px; }
+ html[data-lang="en"] .society-home .hero.edition h1 em { font-size:clamp(48px,15vw,100px); }
+}
