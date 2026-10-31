@@ -1,6 +1,7 @@
-/* Independent, keyboard-accessible readers for homepage comparison columns. */
+/* Mobile reading is derived from the same five columns as the comparison table. */
 (() => {
- document.querySelectorAll('.worldview-mobile, [data-plane-reader]').forEach(view => {
+ const view = document.querySelector('.worldview-mobile');
+ if (!view) return;
  const tabs = [...view.querySelectorAll('[role="tab"]')];
  const panels = [...view.querySelectorAll('[role="tabpanel"]')];
  function select(index, focus = false) {
@@ -18,5 +19,4 @@
  });
  select(0);
  view.classList.add('planes-ready');
- });
 })();
