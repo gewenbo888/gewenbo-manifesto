@@ -614,7 +614,7 @@ html[data-lang="en"] #five .worldview-table thead .en { font:500 20px/1.6 var(--
 @media print { #five .worldview-mobile { display:none; } #five .worldview-scroll { display:block; overflow:visible; } #five .worldview-table { min-width:0; font-size:10px; } #five .worldview-table th,#five .worldview-table td { padding:6px; } }
 
 /* Quiet text links replace the chapter navigation arrows. */
-.chapter-open.edition,.chapter-entry {
+.chapter-open.edition {
  font:400 13px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
  letter-spacing:.03em;
  color:var(--gold);
@@ -624,16 +624,35 @@ html[data-lang="en"] #five .worldview-table thead .en { font:500 20px/1.6 var(--
  text-decoration-thickness:1px;
  transition:color .2s,text-decoration-color .2s;
 }
-.chapter-open.edition:hover,.first-chapter:hover .chapter-entry {
- color:var(--gold-bright);
- text-decoration-color:currentColor;
-}
+.chapter-open.edition:hover { color:var(--gold-bright); text-decoration-color:currentColor; }
 .chapter-open.edition:hover span { transform:none; }
-.mission-opening .first-chapter { grid-template-columns:100px minmax(0,1fr) auto; }
-.chapter-entry { grid-column:3; grid-row:1; padding-block:16px 12px; min-height:44px; white-space:nowrap; }
-.chapter-entry .en { display:none; }
-html[data-lang="en"] .chapter-entry .en { display:inline; }
+
+/* The mission is readable content; only its dedicated reading link is interactive. */
+.society-home .mission-opening {
+ display:block;
+ max-width:1440px;
+ padding:72px var(--page-gutter) 64px;
+ scroll-margin-top:var(--header-height);
+}
+.mission-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; }
+.mission-meta { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 16px; margin:0 0 14px; color:var(--ivory-faint); font:400 12px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.mission-index { color:var(--gold); font:400 13px/1.6 var(--mono); letter-spacing:.06em; }
+.mission-title { margin:0; color:var(--ivory); font:400 36px/1.4 var(--cjk); letter-spacing:.04em; }
+.mission-title .cn,.mission-title .en { display:block; }
+.mission-title .en { font:italic 30px/1.4 var(--serif); letter-spacing:0; }
+.mission-statement { max-width:38em; margin:26px 0 0; color:var(--ivory-dim); font:400 clamp(24px,2.3vw,30px)/1.85 var(--cjk); letter-spacing:.02em; }
+.mission-statement .cn,.mission-statement .en { display:block; }
+.mission-statement .en { max-width:35em; margin-top:14px; font:400 24px/1.7 var(--serif); letter-spacing:0; }
+html[data-lang="en"] .mission-statement .en { margin-top:0; }
+.mission-read { flex:none; }
 @media(max-width:760px) {
- .mission-opening .first-chapter { grid-template-columns:56px minmax(0,1fr); }
- .mission-opening .chapter-entry { grid-column:1/-1; grid-row:3; padding-block:8px; justify-self:start; }
+ .society-home .mission-opening { padding:44px 24px 48px; }
+ .mission-heading { gap:16px; }
+ .mission-meta { gap:6px 10px; margin-bottom:10px; font-size:11px; }
+ .mission-title { font-size:30px; }
+ .mission-title .en { font-size:25px; }
+ .mission-statement { margin-top:22px; font-size:22px; line-height:1.9; }
+ .mission-statement br { display:none; }
+ .mission-statement .en { font-size:21px; }
+ .mission-read { padding-block:10px; }
 }
