@@ -613,21 +613,23 @@ html[data-lang="en"] #five .worldview-table thead .en { font:500 20px/1.6 var(--
 }
 @media print { #five .worldview-mobile { display:none; } #five .worldview-scroll { display:block; overflow:visible; } #five .worldview-table { min-width:0; font-size:10px; } #five .worldview-table th,#five .worldview-table td { padding:6px; } }
 
-/* Quiet text links replace the chapter navigation arrows. */
-.chapter-open.edition {
- font:400 13px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
- letter-spacing:.03em;
- color:var(--gold);
+/* Chapter titles are the reading links, with no duplicate call to action. */
+.section-intro { grid-template-columns:minmax(0,1fr); }
+.chapter-title-link {
+ display:inline-block;
+ max-width:100%;
+ color:inherit;
  text-decoration:underline;
- text-decoration-color:var(--line);
- text-underline-offset:6px;
+ text-decoration-color:transparent;
+ text-underline-offset:.18em;
  text-decoration-thickness:1px;
  transition:color .2s,text-decoration-color .2s;
 }
-.chapter-open.edition:hover { color:var(--gold-bright); text-decoration-color:currentColor; }
-.chapter-open.edition:hover span { transform:none; }
+.chapter-title-link:hover,.chapter-title-link:focus-visible { color:var(--gold); text-decoration-color:currentColor; }
+.chapter-title-link:focus-visible { outline:2px solid var(--gold); outline-offset:6px; }
+@media(hover:none) { .chapter-title-link { text-decoration-color:var(--line); } }
 
-/* The mission is readable content; only its dedicated reading link is interactive. */
+/* The mission is readable content; only its title is interactive. */
 .society-home .mission-opening {
  display:block;
  max-width:1440px;
@@ -644,7 +646,6 @@ html[data-lang="en"] #five .worldview-table thead .en { font:500 20px/1.6 var(--
 .mission-statement .cn,.mission-statement .en { display:block; }
 .mission-statement .en { max-width:35em; margin-top:14px; font:400 24px/1.7 var(--serif); letter-spacing:0; }
 html[data-lang="en"] .mission-statement .en { margin-top:0; }
-.mission-read { flex:none; }
 @media(max-width:760px) {
  .society-home .mission-opening { padding:44px 24px 48px; }
  .mission-heading { gap:16px; }
@@ -654,5 +655,4 @@ html[data-lang="en"] .mission-statement .en { margin-top:0; }
  .mission-statement { margin-top:22px; font-size:22px; line-height:1.9; }
  .mission-statement br { display:none; }
  .mission-statement .en { font-size:21px; }
- .mission-read { padding-block:10px; }
 }
