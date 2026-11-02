@@ -14,11 +14,6 @@ function mount() {
   if (!artwork) { host.remove(); return; }
   hero.classList.add('has-motion');
   const media = matchMedia('(prefers-reduced-motion: reduce)');
-  const toggle = document.createElement('button');
-  toggle.type = 'button';
-  toggle.className = 'hero-motion-toggle';
-  hero.append(toggle);
-  let paused = false;
   let visible = false, frame = 0, lastTime = 0, disposed = false;
   const animate = time => {
     const dt = lastTime ? Math.min((time-lastTime)/(1000/60), 2) : 1;
@@ -30,13 +25,7 @@ function mount() {
     if (disposed) return;
     cancelAnimationFrame(frame);
     lastTime = 0;
-    const running = visible && !document.hidden && !media.matches && !paused;
-    toggle.hidden = media.matches;
-    const zh = paused ? '播放动效' : '暂停动效';
-    const en = paused ? 'Play animation' : 'Pause animation';
-    toggle.setAttribute('aria-label', zh + ' / ' + en);
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">' + (paused ? '<path d="M8 5v14l11-7z"/>' : '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>') + '</svg>';
+    const running = visible && !document.hidden && !media.matches;
     host.dataset.running = String(running);
     if (running) frame = requestAnimationFrame(animate);
     else {
@@ -45,7 +34,6 @@ function mount() {
     }
   };
   const resize = () => { artwork.resize(); sync(); };
-  toggle.addEventListener('click', () => { paused = !paused; sync(); });
   const intersection = new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting && entry.intersectionRatio > .1;
     sync();

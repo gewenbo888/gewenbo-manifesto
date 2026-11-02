@@ -80,8 +80,8 @@
         });
         const index=registry.findIndex(w=>w.slug===current);
         if(index>=0){const pn=document.createElement('div');pn.className='pub-outline-pn';
-          const prev=document.createElement('a');prev.href=index?'/'+registry[index-1].slug:'/';prev.innerHTML='<span aria-hidden="true">←</span><span class="cn">'+(index?'上一章':'返回封面')+'</span><span class="en">'+(index?'Previous':'Cover')+'</span>';
-          const next=document.createElement('a');next.href=index<15?'/'+registry[index+1].slug:'/worlds';next.innerHTML='<span class="cn">'+(index<15?'下一章':'全部章节')+'</span><span class="en">'+(index<15?'Next':'All chapters')+'</span><span aria-hidden="true">→</span>';pn.append(prev,next);outline.append(pn);}
+          const prev=document.createElement('a');prev.href=index?'/'+registry[index-1].slug:'/';prev.innerHTML='<span class="cn">'+(index?'上一章':'返回封面')+'</span><span class="en">'+(index?'Previous':'Cover')+'</span>';
+          const next=document.createElement('a');next.href=index<15?'/'+registry[index+1].slug:'/worlds';next.innerHTML='<span class="cn">'+(index<15?'下一章':'全部章节')+'</span><span class="en">'+(index<15?'Next':'All chapters')+'</span>';pn.append(prev,next);outline.append(pn);}
         layout.prepend(outline);
         const desktop=matchMedia('(min-width:1120px)');details.open=current!=='mission'&&desktop.matches;desktop.addEventListener('change',()=>{details.open=current!=='mission'&&desktop.matches;});
         let positions=[],queued=false;

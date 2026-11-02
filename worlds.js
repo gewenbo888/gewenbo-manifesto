@@ -44,8 +44,8 @@
       var prev = WORLDS[(idx - 1 + WORLDS.length) % WORLDS.length];
       var next = WORLDS[(idx + 1) % WORLDS.length];
       html += '<div class="w-nav-pn">';
-      html += '<a class="prev" href="/' + prev.slug + '">← ' + prev.n + '<span class="big">' + '<span class="en">' + prev.en + '</span><span class="cn">' + prev.cn + '</span></span></a>';
-      html += '<a class="next" href="/' + next.slug + '">' + next.n + ' →<span class="big">' + '<span class="en">' + next.en + '</span><span class="cn">' + next.cn + '</span></span></a>';
+      html += '<a class="prev" href="/' + prev.slug + '"><span class="cn">上一章</span><span class="en">Previous</span> · ' + prev.n + '<span class="big">' + '<span class="en">' + prev.en + '</span><span class="cn">' + prev.cn + '</span></span></a>';
+      html += '<a class="next" href="/' + next.slug + '">' + next.n + ' · <span class="cn">下一章</span><span class="en">Next</span><span class="big">' + '<span class="en">' + next.en + '</span><span class="cn">' + next.cn + '</span></span></a>';
       html += '</div>';
     }
     html += '<div class="w-allgrid">';

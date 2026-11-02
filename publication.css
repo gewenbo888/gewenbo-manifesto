@@ -260,9 +260,6 @@ html[data-lang="en"] .publication[data-world="mission"] .pub-cover h1 .pub-title
 .publication[data-world="mission"] .hero-motion { display:block; position:absolute; z-index:-1; inset:var(--pub-header) 0 0; pointer-events:none; }
 .hero-motion canvas { display:block; width:100%; height:100%; }
 .publication[data-world="mission"] .pub-cover.has-motion::before { display:none; }
-.hero-motion-toggle { position:absolute; right:var(--pub-gutter); bottom:20px; display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; color:var(--ivory-dim); background:none; cursor:pointer; }
-.hero-motion-toggle[hidden] { display:none; }
-.hero-motion-toggle:hover { color:var(--ivory); }
 .publication[data-world="integrations"] .diss-track { display:none; }
 .publication[data-world="integrations"] .diss-poles { color:var(--ivory-dim); font:14px/1.6 var(--reading); letter-spacing:0; gap:20px; text-transform:none; }
 .publication[data-world="integrations"] .diss-readout { font:14px/1.6 var(--reading); letter-spacing:0; margin-top:18px; }

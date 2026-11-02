@@ -14,7 +14,7 @@
   const tools = document.createElement('nav');
   tools.className = 'reading-tools edition';
   tools.setAttribute('aria-label', '章节阅读导航 / Chapter navigation');
-  tools.innerHTML = '<a class="reading-prev"><span aria-hidden="true">←</span><span class="cn">上一章</span><span class="en">Previous</span></a><span class="reading-current"></span><a class="reading-next"><span class="cn">下一章</span><span class="en">Next</span><span aria-hidden="true">→</span></a>';
+  tools.innerHTML = '<a class="reading-prev"><span class="cn">上一章</span><span class="en">Previous</span></a><span class="reading-current"></span><a class="reading-next"><span class="cn">下一章</span><span class="en">Next</span></a>';
   document.body.append(tools);
   const prev = tools.querySelector('.reading-prev');
   const next = tools.querySelector('.reading-next');

@@ -294,9 +294,6 @@ footer { max-width:1440px; margin:auto; padding:40px var(--page-gutter) 100px; b
 .hero.edition .hero-motion { position:absolute; z-index:-1; inset:var(--header-height) 0 0; pointer-events:none; }
 .hero-motion canvas { display:block; width:100%; height:100%; }
 .hero.edition.has-motion .hero-art { display:none; }
-.hero-motion-toggle { position:absolute; right:var(--page-gutter); bottom:20px; display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; color:var(--ivory-dim); background:none; cursor:pointer; }
-.hero-motion-toggle[hidden] { display:none; }
-.hero-motion-toggle:hover { color:var(--ivory); }
 
 /* Pairings read as four complete ideas, not remnants of the old card grid. */
 #four .four-grid { border:0; gap:48px 64px; }
