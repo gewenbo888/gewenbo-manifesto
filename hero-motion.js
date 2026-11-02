@@ -34,7 +34,9 @@ function mount() {
     toggle.hidden = media.matches;
     const zh = paused ? '播放动效' : '暂停动效';
     const en = paused ? 'Play animation' : 'Pause animation';
-    toggle.innerHTML = '<span class="cn">'+zh+'</span><span class="en">'+en+'</span>';
+    toggle.setAttribute('aria-label', zh + ' / ' + en);
+    toggle.setAttribute('aria-pressed', String(paused));
+    toggle.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">' + (paused ? '<path d="M8 5v14l11-7z"/>' : '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>') + '</svg>';
     host.dataset.running = String(running);
     if (running) frame = requestAnimationFrame(animate);
     else {
