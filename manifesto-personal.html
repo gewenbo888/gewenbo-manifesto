@@ -673,6 +673,30 @@ section {
   font-weight: 500; color: var(--gold);
   margin-top: 6px; letter-spacing: 0.2em;
 }
+.six-cell .six-quantum {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  text-align: right;
+  font-family: var(--mono), var(--cjk), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+  opacity: 0.82;
+  line-height: 1.5;
+  pointer-events: none;
+  transition: opacity 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.six-cell:hover .six-quantum {
+  opacity: 1;
+  color: var(--gold);
+  transform: translateX(-2px);
+}
+.six-cell .six-quantum .en {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
 
 /* ═══════ SEVEN-STEP PATH ═══════ */
 .seven-wrap {
@@ -2329,36 +2353,60 @@ footer a:hover { color: var(--gold); }
       <div class="six-num">06 · 01</div>
       <div class="six-name-en">Matter</div>
       <div class="six-name-cn">物 质</div>
+      <div class="six-quantum">
+        <div class="cn">夸克 - 氢原子</div>
+        <div class="en">Quark - Hydrogen</div>
+      </div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">ii</div>
       <div class="six-num">06 · 02</div>
       <div class="six-name-en">Energy</div>
       <div class="six-name-cn">能 量</div>
+      <div class="six-quantum">
+        <div class="cn">光子 - 电子</div>
+        <div class="en">Photon - Electron</div>
+      </div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">iii</div>
       <div class="six-num">06 · 03</div>
       <div class="six-name-en">Information</div>
       <div class="six-name-cn">信 息</div>
+      <div class="six-quantum">
+        <div class="cn">Bit - Token</div>
+        <div class="en">Bit - Token</div>
+      </div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">iv</div>
       <div class="six-num">06 · 04</div>
       <div class="six-name-en">Biology</div>
       <div class="six-name-cn">生 命</div>
+      <div class="six-quantum">
+        <div class="cn">碱基对 - 基因</div>
+        <div class="en">Base Pair - Gene</div>
+      </div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">v</div>
       <div class="six-num">06 · 05</div>
       <div class="six-name-en">Consciousness</div>
       <div class="six-name-cn">意 识</div>
+      <div class="six-quantum">
+        <div class="cn">念头 - 感质</div>
+        <div class="en">Thought - Qualia</div>
+      </div>
     </div>
     <div class="six-cell">
       <div class="six-glyph">vi</div>
       <div class="six-num">06 · 06</div>
       <div class="six-name-en">Space-Time</div>
       <div class="six-name-cn">时 空</div>
+      <div class="six-quantum">
+        <div class="cn">时空泡 - 普朗克体积</div>
+        <div class="en">Bubble - Planck Vol</div>
+      </div>
     </div>
   </div>
 </section>
