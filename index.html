@@ -1440,6 +1440,172 @@ section {
   letter-spacing: 0.2em;
 }
 
+/* ═══════ THIRTEEN GENERATIONS OF CIVILIZATION ═══════ */
+.civ13-wrap {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px dashed var(--line);
+  position: relative;
+}
+.civ13-stamp {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.civ13-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ivory);
+  line-height: 1.25;
+}
+.civ13-title .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.72em;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-top: 6px;
+}
+.civ13-lead {
+  font-family: var(--display);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ivory-dim);
+  max-width: 720px;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+.civ13-lead .cn {
+  display: block;
+  font-family: var(--cjk);
+  font-style: normal;
+  font-size: 14px;
+  color: var(--ivory-dim);
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+.civ13-table-wrap {
+  margin-top: 28px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(143, 111, 43, 0.02);
+}
+.civ13-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.civ13-table th {
+  padding: 14px 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid var(--line);
+  background: rgba(143, 111, 43, 0.04);
+}
+.civ13-table th .cn {
+  font-family: var(--cjk);
+  margin-left: 6px;
+  letter-spacing: 0.1em;
+}
+.civ13-table td {
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--line-soft);
+  transition: background 0.2s;
+}
+.civ13-table tr:last-child td {
+  border-bottom: none;
+}
+.civ13-table tr:hover td {
+  background: rgba(143, 111, 43, 0.04);
+}
+.civ13-table tr.final-row td {
+  background: rgba(196, 122, 31, 0.05);
+}
+.civ13-table tr.final-row:hover td {
+  background: rgba(196, 122, 31, 0.09);
+}
+.civ13-table .td-gen {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--gold);
+  width: 80px;
+}
+.civ13-table .td-era {
+  font-family: var(--display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ivory);
+}
+.civ13-table .td-era .cn {
+  display: inline-block;
+  font-family: var(--cjk);
+  font-style: normal;
+  font-size: 15px;
+  color: var(--ivory);
+  margin-right: 8px;
+}
+.civ13-table .td-prim {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--gold-bright);
+}
+.civ13-table .td-prim .cn {
+  display: inline-block;
+  font-family: var(--cjk);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--gold-bright);
+  margin-right: 8px;
+}
+.civ13-epic {
+  margin-top: 32px;
+  padding: 22px 26px;
+  background: rgba(143, 111, 43, 0.04);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+}
+.civ13-epic-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.civ13-quote {
+  margin: 0;
+}
+.civ13-quote .cn {
+  font-family: var(--cjk);
+  font-size: 16px;
+  line-height: 1.95;
+  color: var(--ivory);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+.civ13-quote .en {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ivory-dim);
+  margin: 10px 0 0;
+}
+
 /* ═══════ FOURTEEN CULTURES ═══════ */
 .culture-grid {
   display: grid;
@@ -3584,6 +3750,111 @@ section:nth-of-type(17) { --atmo: rgba(143, 111, 43,0.06); } /* Coda       · go
       <span class="loop-cn">第 十 三 步 归 于 第 二 步 — 此 乃 循 环，非 终 点。</span>
     </div>
 
+  </div>
+
+  <!-- ═══════ THIRTEEN GENERATIONS OF CIVILIZATION ═══════ -->
+  <div class="civ13-wrap" role="region" aria-label="人类文明十三代 / Thirteen Generations of Civilization">
+    <div class="civ13-header">
+      <div class="civ13-stamp">§ 13 · MACRO HORIZON · 13 GENERATIONS</div>
+      <h3 class="civ13-title">
+        Thirteen Generations of Civilization
+        <span class="cn">人类文明十三代</span>
+      </h3>
+      <p class="civ13-lead">
+        <span class="en">The thirteen-epoch evolution of civilization, distilled into thirteen core primitives.</span>
+        <span class="cn">这十三代文明演进，可以精炼为以下十三个核心词：</span>
+      </p>
+    </div>
+
+    <div class="civ13-table-wrap">
+      <table class="civ13-table">
+        <thead>
+          <tr>
+            <th class="th-gen"><span class="en">Gen</span><span class="cn">代</span></th>
+            <th class="th-era"><span class="en">Era</span><span class="cn">时代</span></th>
+            <th class="th-prim"><span class="en">Core Primitive</span><span class="cn">核心词</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-gen">1</td>
+            <td class="td-era"><span class="cn">陆地</span><span class="en">Land</span></td>
+            <td class="td-prim"><span class="cn">蹄铁</span><span class="en">Horseshoe</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">2</td>
+            <td class="td-era"><span class="cn">海洋</span><span class="en">Ocean</span></td>
+            <td class="td-prim"><span class="cn">钢铁</span><span class="en">Steel</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">3</td>
+            <td class="td-era"><span class="cn">信息</span><span class="en">Information</span></td>
+            <td class="td-prim"><span class="cn">算力</span><span class="en">Compute</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">4</td>
+            <td class="td-era"><span class="cn">星际</span><span class="en">Interstellar</span></td>
+            <td class="td-prim"><span class="cn">星舰</span><span class="en">Starship</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">5</td>
+            <td class="td-era"><span class="cn">生命</span><span class="en">Life</span></td>
+            <td class="td-prim"><span class="cn">基因</span><span class="en">Gene</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">6</td>
+            <td class="td-era"><span class="cn">恒星</span><span class="en">Stellar</span></td>
+            <td class="td-prim"><span class="cn">戴森</span><span class="en">Dyson</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">7</td>
+            <td class="td-era"><span class="cn">虚拟</span><span class="en">Virtual</span></td>
+            <td class="td-prim"><span class="cn">上传</span><span class="en">Upload</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">8</td>
+            <td class="td-era"><span class="cn">时空</span><span class="en">Spacetime</span></td>
+            <td class="td-prim"><span class="cn">虫洞</span><span class="en">Wormhole</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">9</td>
+            <td class="td-era"><span class="cn">法则</span><span class="en">Law</span></td>
+            <td class="td-prim"><span class="cn">常数</span><span class="en">Constant</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">10</td>
+            <td class="td-era"><span class="cn">创世</span><span class="en">Genesis</span></td>
+            <td class="td-prim"><span class="cn">奇点</span><span class="en">Singularity</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">11</td>
+            <td class="td-era"><span class="cn">逻辑</span><span class="en">Logic</span></td>
+            <td class="td-prim"><span class="cn">公理</span><span class="en">Axiom</span></td>
+          </tr>
+          <tr>
+            <td class="td-gen">12</td>
+            <td class="td-era"><span class="cn">因果</span><span class="en">Causality</span></td>
+            <td class="td-prim"><span class="cn">闭环</span><span class="en">Closed Loop</span></td>
+          </tr>
+          <tr class="final-row">
+            <td class="td-gen">13</td>
+            <td class="td-era"><span class="cn">归零</span><span class="en">Return to Zero</span></td>
+            <td class="td-prim"><span class="cn">大梦</span><span class="en">Cosmic Dream</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="civ13-epic">
+      <div class="civ13-epic-label">
+        <span class="en">THE COSMIC EPIC</span>
+        <span class="cn">宇宙史诗</span>
+      </div>
+      <blockquote class="civ13-quote">
+        <p class="cn">“从蹄铁与钢铁出发，借算力铸造星舰驶向深空，重塑基因、筑起戴森、上传意识，穿越虫洞改写常数，在奇点处确立公理与闭环，最终在万物归零的终局里，化作一场宇宙的大梦。”</p>
+        <p class="en">“Starting from horseshoes and steel, forging starships through compute to leap into the deep, reshaping genes, harnessing Dyson spheres, uploading consciousness, traversing wormholes to rewrite constants, establishing axioms and closed loops at the singularity, and finally dissolving in the return to zero as a cosmic dream.”</p>
+      </blockquote>
+    </div>
   </div>
 </section>
 
