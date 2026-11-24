@@ -1,4 +1,4 @@
-/* Mobile reading is derived from the same five columns as the comparison table. */
+/* Five reading panels share the same original content on every screen size. */
 (() => {
  const view = document.querySelector('.worldview-mobile');
  if (!view) return;

@@ -548,99 +548,105 @@ html[data-lang="en"] .mission-opening .first-description>.en { margin-top:0; }
 }
 
 
-/* Five planes: a spacious comparison, with one focused plane on small screens. */
+/* Five short essays: typography and open space instead of a comparison grid. */
 #five .worldview { margin-top:104px; scroll-margin-top:144px; }
-#five .worldview-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:32px; }
-#five .worldview h3 { margin:0; color:var(--ivory); font:400 34px/1.4 var(--cjk); letter-spacing:.04em; }
-#five .worldview h3 .en { font:400 21px/1.5 var(--cjk); letter-spacing:0; }
-#five .worldview-heading p { margin:0 0 3px; color:var(--ivory-faint); font:12px/1.8 var(--cjk); }
+#five .worldview-heading { display:flex; justify-content:space-between; align-items:baseline; gap:32px; }
+#five .worldview h3 { margin:0; color:var(--ivory); font:400 32px/1.5 var(--cjk); letter-spacing:.04em; }
+#five .worldview h3 .en { font:400 20px/1.5 var(--cjk); letter-spacing:0; }
+#five .worldview-heading p { margin:0; color:var(--ivory-faint); font:12px/1.8 var(--cjk); }
 #five .worldview .cn,#five .worldview .en { display:block; }
-#five .worldview .en { margin-top:8px; color:var(--ivory-faint); font-size:.86em; line-height:1.65; }
-#five .worldview-quote { max-width:none; margin:40px 0 48px; padding:38px 0 44px; background:none; border-block:1px solid var(--line-soft); color:var(--gold-bright); }
-#five .worldview-quote>.cn { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; font:400 clamp(26px,3vw,43px)/1.6 "Noto Serif SC","Songti SC",serif; letter-spacing:.02em; }
+#five .worldview .en { margin-top:8px; color:var(--ivory-faint); font-size:.86em; line-height:1.7; }
+#five .worldview-quote { max-width:none; margin:36px 0 48px; padding:0; border:0; background:none; color:var(--gold-bright); }
+#five .worldview-quote>.cn { display:flex; flex-wrap:wrap; gap:8px 24px; font:400 clamp(26px,2.7vw,38px)/1.7 "Noto Serif SC","Songti SC",serif; }
 #five .worldview-quote>.cn>span { white-space:nowrap; }
-#five .worldview-quote>.en { max-width:760px; margin-top:22px; font:400 16px/1.8 var(--cjk); }
-#five .worldview-scroll { width:100%; overflow:auto; }
-#five .worldview-table { width:100%; min-width:1000px; border-collapse:collapse; table-layout:fixed; font:400 15px/1.9 var(--cjk); }
-#five .worldview-table th,#five .worldview-table td { padding:24px 20px; text-align:left; vertical-align:top; border:0; border-bottom:1px solid var(--line-soft); overflow-wrap:break-word; background:none; }
-#five .worldview-table thead th { padding:24px 20px 28px; background:var(--bg-2); color:var(--gold-bright); font:400 48px/1.3 "Noto Serif SC","Songti SC",serif; border-bottom:0; }
-#five .worldview-table th:first-child { width:104px; padding-left:16px; color:var(--ivory-faint); font:400 12px/1.8 var(--cjk); }
-#five .worldview-table thead th:first-child { background:none; vertical-align:middle; }
-#five .worldview-table tbody th { padding-top:29px; }
-#five .worldview-table td { color:var(--ivory-dim); }
-#five .worldview-table tbody tr:first-child td { padding-top:28px; color:var(--ivory); font-size:18px; font-weight:500; }
-#five .worldview-table tbody tr:nth-child(3) td { color:var(--gold-bright); }
-#five .worldview-table tbody tr:last-child td { font-size:14px; line-height:2; }
-#five .worldview-table tbody tr:last-child th,#five .worldview-table tbody tr:last-child td { border-bottom:0; }
-#five .worldview-table thead .en { margin-top:10px; font:400 12px/1.6 var(--cjk); letter-spacing:.02em; }
-#five .worldview-table td .en { margin-top:10px; font-size:13px; line-height:1.8; }
-#five .worldview-mobile { display:none; }
-#five .worldview-notes { margin-top:36px; padding:0 16px; border-top:1px solid var(--line); color:var(--ivory-dim); font:14px/1.9 var(--cjk); }
-#five .worldview-notes summary { width:fit-content; min-height:48px; padding:18px 0; color:var(--gold-bright); cursor:pointer; font-size:14px; }
+#five .worldview-quote>.en { max-width:780px; margin-top:20px; font:400 16px/1.8 var(--cjk); }
+#five .worldview-scroll { display:none; }
+#five .worldview-mobile { display:block; }
+#five .plane-tabs { display:none; grid-template-columns:repeat(5,minmax(0,1fr)); gap:24px; max-width:780px; margin:0 0 48px auto; }
+#five .planes-ready .plane-tabs { display:grid; }
+#five .plane-tabs button { position:relative; min-width:0; min-height:64px; padding:8px 4px 16px; border:0; background:none; color:var(--ivory-faint); cursor:pointer; font:400 28px/1.4 "Noto Serif SC","Songti SC",serif; }
+#five .plane-tabs button[aria-selected="true"] { color:var(--gold-bright); }
+#five .plane-tabs button[aria-selected="true"]::after { content:""; position:absolute; bottom:2px; left:calc(50% - 2px); width:4px; height:4px; border-radius:50%; background:currentColor; }
+#five .plane-tabs button .en { margin-top:4px; font:400 11px/1.5 var(--cjk); letter-spacing:.03em; }
+#five .plane-panel { display:grid; grid-template-columns:minmax(180px,.7fr) minmax(0,2fr); gap:clamp(48px,7vw,112px); min-height:440px; padding:0 0 24px; }
+#five .plane-panel[hidden] { display:none; }
+#five .plane-heading { display:block; padding:0; background:none; }
+#five .plane-heading h4 { margin:0 0 32px; color:var(--gold-bright); font:400 clamp(100px,10vw,144px)/1.05 "Noto Serif SC","Songti SC",serif; letter-spacing:-.04em; }
+#five #plane-panel-4 .plane-heading h4>.cn { font-size:.72em; letter-spacing:-.08em; }
+#five .plane-heading h4 .en { margin-top:16px; font:400 16px/1.5 var(--cjk); letter-spacing:.05em; }
+#five .plane-label,#five .plane-entry dt { color:var(--ivory-faint); font:400 11px/1.7 var(--cjk); }
+#five .plane-theory p { margin:10px 0 0; color:var(--ivory); font:400 22px/1.6 var(--cjk); }
+#five .plane-theory p .en { font-size:16px; }
+#five .plane-panel dl { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-content:start; gap:32px 44px; margin:0; }
+#five .plane-entry { display:block; min-width:0; padding:0; border:0; }
+#five .plane-entry dt { margin-bottom:10px; }
+#five .plane-entry dt .en { font-size:11px; margin-top:2px; }
+#five .plane-entry dd { margin:0; color:var(--ivory-dim); font:400 18px/1.9 var(--cjk); overflow-wrap:break-word; }
+#five .plane-entry dd .en { margin-top:10px; font-size:15px; }
+#five .plane-entry:nth-child(2) { grid-column:1/-1; order:-1; }
+#five .plane-entry:nth-child(2) dd { color:var(--gold-bright); font:400 clamp(26px,2.8vw,38px)/1.65 "Noto Serif SC","Songti SC",serif; }
+#five .plane-entry:nth-child(2) dd .en { max-width:36em; font:400 20px/1.7 var(--cjk); }
+#five #plane-panel-3 .plane-entry:nth-child(2) dd { font-size:27px; line-height:1.85; }
+#five .plane-entry:last-child { grid-column:1/-1; }
+#five .plane-entry:last-child dd { font-size:17px; line-height:2; }
+#five .plane-tabs button:focus-visible,#five .plane-panel:focus-visible { outline:2px solid var(--gold); outline-offset:5px; }
+#five .worldview-notes { margin:32px 0 0; padding:0; border:0; color:var(--ivory-dim); font:14px/1.9 var(--cjk); }
+#five .worldview-notes summary { width:fit-content; min-height:48px; padding:12px 0; color:var(--gold-bright); cursor:pointer; font-size:13px; }
 #five .worldview-notes summary .cn,#five .worldview-notes summary .en { display:inline; }
-#five .worldview-notes dl { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:28px; margin:8px 0 0; padding:12px 0 20px; }
+#five .worldview-notes dl { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:28px; margin:20px 0 0; padding:0; }
 #five .worldview-notes dl>div { display:block; }
 #five .worldview-notes dt { margin-bottom:12px; color:var(--gold-bright); font:400 26px/1.5 "Noto Serif SC","Songti SC",serif; }
 #five .worldview-notes dt .en { font:400 12px/1.5 var(--cjk); }
 #five .worldview-notes dd { margin:0; }
 #five .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 html[data-lang="en"] #five .worldview .en { margin-top:0; color:inherit; font-size:1em; }
-html[data-lang="en"] #five .worldview-table thead .en { font:400 25px/1.5 var(--cjk); }
-html[data-lang="en"] #five .worldview-table thead th:first-child .en { font:400 12px/1.8 var(--cjk); }
-html[data-lang="en"] #five .worldview-quote>.en { font:400 27px/1.65 var(--cjk); max-width:1000px; }
+html[data-lang="en"] #five .plane-heading h4 .en { font:400 clamp(32px,3.6vw,50px)/1.3 var(--cjk); letter-spacing:-.03em; }
+html[data-lang="en"] #five .plane-tabs button .en { font:400 14px/1.6 var(--cjk); letter-spacing:0; }
+html[data-lang="en"] #five .plane-entry:nth-child(2) dd .en { font:400 30px/1.6 var(--cjk); }
 html[data-lang="en"] #five .worldview-notes dt .en { font-size:21px; }
-@media(max-width:1100px) {
- #five .worldview-scroll { display:none; }
- #five .worldview-mobile { display:block; }
- #five .plane-tabs { display:none; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; position:sticky; top:112px; z-index:25; padding:8px; background:var(--bg-2); border-radius:4px; }
- #five .planes-ready .plane-tabs { display:grid; }
- #five .plane-tabs button { min-width:0; min-height:62px; padding:10px 2px; border:0; border-radius:2px; background:none; color:var(--ivory-faint); font:400 23px/1.4 "Noto Serif SC","Songti SC",serif; cursor:pointer; }
- #five .plane-tabs button[aria-selected="true"] { background:var(--bg); color:var(--gold-bright); box-shadow:0 1px 4px #203c2e10; }
- #five .plane-tabs button .en { margin-top:4px; font:400 11px/1.5 var(--cjk); }
- #five .plane-panel { padding:32px 0 0; }
- #five .plane-panel[hidden] { display:none; }
- #five .plane-heading { display:flex; gap:28px; align-items:center; padding:26px 28px; background:var(--bg-2); }
- #five .plane-heading h4 { flex:none; margin:0; color:var(--gold-bright); font:400 64px/1.2 "Noto Serif SC","Songti SC",serif; }
- #five .plane-heading h4 .en { font:400 13px/1.5 var(--cjk); }
- #five .plane-theory { min-width:0; }
- #five .plane-label,#five .plane-entry dt { color:var(--ivory-faint); font:400 12px/1.7 var(--cjk); }
- #five .plane-theory p { margin:8px 0 0; color:var(--ivory); font:500 22px/1.5 var(--cjk); }
- #five .plane-panel dl { margin:4px 0 0; }
- #five .plane-entry { display:grid; grid-template-columns:76px minmax(0,1fr); gap:20px; padding:24px 4px; border-bottom:1px solid var(--line-soft); }
- #five .plane-entry:last-child { border-bottom:0; }
- #five .plane-entry dt { padding-top:5px; }
- #five .plane-entry dt .en { margin-top:4px; font-size:11px; }
- #five .plane-entry dd { margin:0; color:var(--ivory); font:400 18px/1.9 var(--cjk); overflow-wrap:break-word; }
- #five .plane-entry dd .en { margin-top:10px; font-size:15px; }
- #five .plane-tabs button:focus-visible,#five .plane-panel:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
- #five .worldview-notes dl { grid-template-columns:repeat(3,minmax(0,1fr)); }
- html[data-lang="en"] #five .plane-tabs button .en { font:500 13px/1.6 var(--cjk); }
- html[data-lang="en"] #five .plane-heading h4 .en { font:400 28px/1.4 var(--cjk); }
+@media(max-width:900px) {
+ #five .plane-panel { grid-template-columns:160px minmax(0,1fr); gap:40px; }
+ #five .plane-panel dl { gap:28px; }
+ #five .plane-entry:nth-child(2) dd { font-size:29px; }
 }
 @media(max-width:760px) {
  #five .worldview { margin-top:72px; scroll-margin-top:124px; }
  #five .worldview-heading { display:block; }
  #five .worldview-heading p { margin-top:12px; font-size:11px; }
- #five .worldview h3 { font-size:30px; }
+ #five .worldview h3 { font-size:28px; }
  #five .worldview h3 .en { font-size:18px; }
- #five .worldview-quote { margin:28px 0 28px; padding:26px 0 28px; }
- #five .worldview-quote>.cn { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 8px; font-size:clamp(23px,6.7vw,32px); line-height:1.65; letter-spacing:0; }
- #five .worldview-quote>.en { font-size:14px; margin-top:20px; }
- #five .plane-tabs { top:104px; gap:3px; padding:5px; }
- #five .plane-tabs button { min-height:58px; font-size:21px; }
- #five .plane-panel { padding-top:20px; }
- #five .plane-heading { gap:24px; padding:24px; }
- #five .plane-heading h4 { font-size:56px; }
- #five #plane-panel-4 .plane-heading h4>.cn { font-size:44px; }
- #five .plane-theory p { font-size:20px; }
- #five .plane-entry { grid-template-columns:62px minmax(0,1fr); gap:14px; padding:22px 0; }
- #five .plane-entry dd { font-size:17px; }
+ #five .worldview-quote { margin:28px 0 32px; }
+ #five .worldview-quote>.cn { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; font-size:clamp(22px,6.5vw,29px); }
+ #five .worldview-quote>.en { font-size:14px; }
+ #five .plane-tabs { position:sticky; top:104px; z-index:25; max-width:none; gap:4px; margin-bottom:32px; padding:8px 0; background:var(--bg); }
+ #five .plane-tabs button { min-height:56px; padding:6px 0 12px; font-size:23px; }
+ #five .plane-panel { display:block; min-height:0; padding-bottom:8px; }
+ #five .plane-heading { display:flex; align-items:center; gap:28px; margin-bottom:32px; }
+ #five .plane-heading h4 { flex:none; margin:0; font-size:80px; }
+ #five #plane-panel-4 .plane-heading h4>.cn { font-size:54px; }
+ #five .plane-heading h4 .en { margin-top:8px; font-size:12px; }
+ #five .plane-theory { min-width:0; }
+ #five .plane-theory p { font-size:19px; margin-top:6px; }
+ #five .plane-theory p .en { font-size:14px; }
+ #five .plane-panel dl { gap:26px 24px; }
+ #five .plane-entry dd { font-size:16px; }
+ #five .plane-entry:nth-child(2) dd { font-size:28px; line-height:1.7; }
+ #five #plane-panel-3 .plane-entry:nth-child(2) dd { font-size:23px; }
+ #five .plane-entry:nth-child(2) dd .en { font-size:18px; }
+ #five .plane-entry:last-child dd { font-size:16px; }
  #five .plane-entry dd .en { font-size:14px; }
- #five .worldview-notes { padding:0; margin-top:24px; }
+ #five .worldview-notes { margin-top:28px; }
  #five .worldview-notes dl { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
- html[data-lang="en"] #five .worldview-quote>.en { font-size:21px; }
+ html[data-lang="en"] #five .plane-tabs button .en { font-size:11px; }
+ html[data-lang="en"] #five .plane-heading h4 .en { font-size:28px; }
+ html[data-lang="en"] #five .plane-entry:nth-child(2) dd .en { font-size:25px; }
 }
-@media print { #five .worldview-mobile { display:none; } #five .worldview-scroll { display:block; overflow:visible; } #five .worldview-table { min-width:0; font-size:10px; } #five .worldview-table th,#five .worldview-table td { padding:6px; } }
+@media print {
+ #five .worldview-mobile { display:none; }
+ #five .worldview-scroll { display:block; }
+ #five .worldview-table { width:100%; border-collapse:collapse; font-size:10px; }
+ #five .worldview-table th,#five .worldview-table td { padding:6px; text-align:left; vertical-align:top; border-bottom:1px solid #ddd; }
+}
 
 /* Chapter titles are the reading links, with no duplicate call to action. */
 .section-intro { grid-template-columns:minmax(0,1fr); }
