@@ -656,3 +656,47 @@ html[data-lang="en"] .mission-statement .en { margin-top:0; }
  .mission-statement br { display:none; }
  .mission-statement .en { font-size:21px; }
 }
+
+/* Keep the small comparison matrices readable without a horizontal detour. */
+@media(max-width:760px) {
+ #matrix .matrix9,#purposes .matrix12 {
+  min-width:0;
+  grid-template-columns:74px repeat(3,minmax(0,1fr));
+ }
+ #matrix .matrix9>div,#purposes .matrix12>div { min-width:0; padding:18px 6px; }
+ #matrix .matrix9-cell,#purposes .m12-cell { min-height:110px; }
+ #matrix .matrix9-cell .cell-ch,#purposes .m12-cell .p-ch { font-size:23px; letter-spacing:0; white-space:nowrap; }
+ #matrix .cell-idx,#purposes .p-idx { font-size:8px; letter-spacing:0; }
+ #matrix .col-cn,#matrix .row-cn,#purposes .lvl-cn { font-size:12px; letter-spacing:0; }
+ #matrix .col-en,#matrix .row-en { font-size:12px; overflow-wrap:anywhere; }
+ #purposes .lvl-en { font-size:11px; line-height:1.5; overflow-wrap:normal; }
+ #matrix .cell-en,#purposes .p-en { font-size:12px; line-height:1.5; overflow-wrap:anywhere; }
+ #matrix .row-tag { display:none; }
+ #purposes .m12-col-head { font-size:10px; letter-spacing:0; overflow-wrap:anywhere; }
+ #purposes .m12-corner { font-size:10px; letter-spacing:0; overflow-wrap:anywhere; }
+ #purposes .m12-col-head .col-en { display:none; }
+ #purposes .m12-col-head .col-num { margin:0; font-size:9px; line-height:1.7; letter-spacing:.04em; }
+
+ /* A step and its purpose belong together, rather than three stacked rows. */
+ #navigation .nav13-step { grid-template-columns:44px minmax(0,1fr); gap:6px 12px; padding:18px 0; }
+ #navigation .nav13-step .st-num { grid-row:1 / 3; font-size:10px; letter-spacing:0; white-space:nowrap; }
+ #navigation .nav13-step .st-fn { grid-column:2; font-size:16px; font-style:normal; }
+ #navigation .nav13-step .st-fn::before { content:none; }
+ #navigation .nav13-step .st-fn .cn { margin:0; letter-spacing:.04em; font-size:14px; }
+ #navigation .nav13-step .st-name .cn { font-size:17px; letter-spacing:.03em; }
+ #navigation .nav13-step:hover { padding-left:0; }
+ #navigation .ph-title .cn { letter-spacing:.05em; }
+
+ /* Preserve the cultural catalogue, with calmer labels and no decorative arrows. */
+ #cultures .culture-card { grid-template-columns:76px minmax(0,1fr); gap:16px; padding:30px 20px 24px; }
+ #cultures .culture-card .c-divider { display:none; }
+ #cultures .culture-card .c-concept { font-size:25px; line-height:1.3; overflow-wrap:normal; }
+ #cultures .culture-card .c-country-cn { font-size:16px; letter-spacing:.04em; }
+ #cultures .culture-card .c-concept-small { letter-spacing:.06em; line-height:1.7; }
+ .reading-tools { width:auto; min-width:244px; gap:20px; padding:2px 14px; border-radius:24px; bottom:max(10px,env(safe-area-inset-bottom)); }
+}
+@media(prefers-reduced-motion:reduce) { .chapter-title-link { transition:none; } }
+@media(max-width:360px) {
+ #matrix .matrix9>div,#purposes .matrix12>div { padding-inline:4px; }
+ #matrix .cell-en,#purposes .p-en { font-size:10px; }
+}
