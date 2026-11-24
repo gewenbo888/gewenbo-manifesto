@@ -666,7 +666,7 @@ html[data-lang="en"] .mission-statement .en { margin-top:0; }
  #matrix .matrix9>div,#purposes .matrix12>div { min-width:0; padding:18px 6px; }
  #matrix .matrix9-cell,#purposes .m12-cell { min-height:110px; }
  #matrix .matrix9-cell .cell-ch,#purposes .m12-cell .p-ch { font-size:23px; letter-spacing:0; white-space:nowrap; }
- #matrix .cell-idx,#purposes .p-idx { font-size:8px; letter-spacing:0; }
+ #matrix .cell-idx,#purposes .p-idx { position:static; margin-bottom:12px; font-size:8px; letter-spacing:0; }
  #matrix .col-cn,#matrix .row-cn,#purposes .lvl-cn { font-size:12px; letter-spacing:0; }
  #matrix .col-en,#matrix .row-en { font-size:12px; overflow-wrap:anywhere; }
  #purposes .lvl-en { font-size:11px; line-height:1.5; overflow-wrap:normal; }
